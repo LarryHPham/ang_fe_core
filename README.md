@@ -8,22 +8,22 @@ To include this repo as a git submodule dependancy in a project, follow the step
 
 If the parent repo already has the core included simply run:
 
-1. Initialize the parent repo "git clone --recursive https://yourRepoUrl". And the folder where the submodule was declared will be populated with the submodule
+1. Initialize the parent repo `git clone --recursive https://yourRepoUrl`. And the folder where the submodule was declared will be populated with the submodule
 
 
 If you are creating a new project and want to include the core submodule:
 
-1. Initialize the parent repo "git clone https://yourRepoUrl".
+1. Initialize the parent repo `git clone https://yourRepoUrl`.
 
 2. cd into the parent directory you want to add the core submodule into
 
-3. Initialize the submodule "git submodule add https://github.com/passit/SNT-framework-core-frontend.git"
+3. Initialize the submodule `git submodule add https://github.com/passit/SNT-framework-core-frontend.git`
 
 
 If you want to update to the latest version of Core Framework in your project that already includes core:
 
 1. cd into the core submodule directory
 
-2. Fetch the latest updates to the core "git fetch"
+2. Fetch the latest updates to the core `git fetch`
 
-3. Merge the updated changes into the parent project "git merge origin / submodule branch you want to merge from"
+3. Merge the updated changes into the parent project `git merge origin/submodule branch you want to merge from`
