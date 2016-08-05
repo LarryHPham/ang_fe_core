@@ -9,7 +9,7 @@ declare var moment:any;
 
 @Component({
     selector: 'side-scroll-test',
-    templateUrl: './app/components/side-scroll/side-scroll.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/side-scroll/side-scroll.component.html',
     directives: [ScheduleBox, ROUTER_DIRECTIVES],
     outputs: ['carouselCount'],
     pipes:[SanitizeStyle, SanitizeHtml, SanitizeRUrl]

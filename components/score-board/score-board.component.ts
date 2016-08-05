@@ -8,7 +8,7 @@ export interface ScoreBoardInput{
 
 @Component({
     selector: 'score-board',
-    templateUrl: './app/components/score-board/score-board.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/score-board/score-board.component.html',
     directives: [],
     pipes: [StatHyphenValuePipe, SanitizeStyle],
 })

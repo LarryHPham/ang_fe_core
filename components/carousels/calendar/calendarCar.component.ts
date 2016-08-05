@@ -27,7 +27,7 @@ export interface weekDate {
 
 @Component({
     selector: 'calendar-carousel',
-    templateUrl: './app/components/carousels/calendar/calendarCar.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/calendar/calendarCar.component.html',
     directives: [DatePicker, FORM_DIRECTIVES],
     providers: [BoxScoresService],
 })

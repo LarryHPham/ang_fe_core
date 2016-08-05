@@ -31,7 +31,7 @@ export interface TransactionsListInput {
 
 @Component({
     selector: 'transactions-list-item',
-    templateUrl: './app/components/transactions-list-item/transactions-list-item.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/transactions-list-item/transactions-list-item.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage, ComplexInnerHtml, ResponsiveWidget],
     providers: [],
 })

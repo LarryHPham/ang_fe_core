@@ -29,7 +29,7 @@ export interface SchedulesCarouselInput{
 
 @Component({
     selector: 'schedules-carousel',
-    templateUrl: './app/components/carousels/schedules-carousel/schedules-carousel.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/schedules-carousel/schedules-carousel.component.html',
     directives: [Carousel, CircleImage,CircleButton, ROUTER_DIRECTIVES],
     providers: [],
     outputs:['indexNum'],

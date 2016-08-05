@@ -12,7 +12,7 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 @Component({
     selector: 'directory-module',
-    templateUrl: './app/modules/directory/directory.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/directory/directory.module.html',
     directives: [ROUTER_DIRECTIVES, NgClass, LoadingComponent, ErrorComponent, DirectoryPagination, NoDataBox],
     providers: [],
     pipes: [DateTimePipe]

@@ -10,7 +10,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'syndicated-trending-component',
-    templateUrl: './app/components/articles/syndicated-trending/syndicated-trending.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/syndicated-trending/syndicated-trending.component.html',
     directives: [ShareLinksComponent, ROUTER_DIRECTIVES, ResponsiveWidget],
     inputs: ['trendingData', 'trendingImages'],
     pipes: [SanitizeHtml],

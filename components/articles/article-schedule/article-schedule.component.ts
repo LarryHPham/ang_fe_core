@@ -7,7 +7,7 @@ import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 
 @Component({
     selector: 'article-schedule-component',
-    templateUrl: './app/components/articles/article-schedule/article-schedule.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/article-schedule/article-schedule.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES],
     inputs: ['articleData', 'league', 'homeData', 'awayData'],
     providers: [],

@@ -13,7 +13,7 @@ export interface CompetitionInput{
 
 @Component({
     selector: 'competition',
-    templateUrl: './app/components/competition/competition.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/competition/competition.component.html',
     directives: [CircleImage],
     providers: [],
 })

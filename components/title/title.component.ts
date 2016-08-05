@@ -15,7 +15,7 @@ export interface TitleInputData {
 
 @Component({
     selector: 'title-component',
-    templateUrl: './app/components/title/title.component.html',    
+    templateUrl: './app/SNT-framework-core-frontend/components/title/title.component.html',    
     directives: [CircleImage]
 })
 export class TitleComponent implements OnChanges {

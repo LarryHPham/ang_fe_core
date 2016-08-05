@@ -15,7 +15,7 @@ export interface BoxArticleData {
 
 @Component({
   selector: 'box-article-component',
-  templateUrl: './app/components/box-article/box-article.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/box-article/box-article.component.html',
   directives: [RectangleImage, ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })

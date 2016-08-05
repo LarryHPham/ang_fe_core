@@ -14,7 +14,7 @@ import {PaginationFooter, PaginationParameters} from '../../components/paginatio
 
 @Component({
     selector: 'draft-history',
-    templateUrl: './app/components/draft-history/draft-history.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/draft-history/draft-history.component.html',
     directives: [ErrorComponent, LoadingComponent, NoDataBox, Tab, Tabs, SliderCarousel, DetailedListItem, PaginationFooter]
 })
 

@@ -4,7 +4,7 @@ import {SanitizeHtml} from "../../pipes/safe.pipe";
 
 @Component({
   selector: 'tile-stack-module',
-  templateUrl: './app/modules/tile-stack/tile-stack.module.html',
+  templateUrl: './app/SNT-framework-core-frontend/modules/tile-stack/tile-stack.module.html',
   directives: [ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })

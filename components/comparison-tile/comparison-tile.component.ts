@@ -21,7 +21,7 @@ export interface ComparisonTileInput {
 
 @Component({
     selector: 'comparison-tile',
-    templateUrl: './app/components/comparison-tile/comparison-tile.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/comparison-tile/comparison-tile.component.html',
     directives:[CircleImage, DropdownComponent, ComplexInnerHtml, ROUTER_DIRECTIVES],
     pipes:[SanitizeHtml],
 })

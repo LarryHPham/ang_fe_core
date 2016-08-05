@@ -9,7 +9,7 @@ declare var moment;
 
 @Component({
   selector: 'carousel-dive-module',
-  templateUrl: './app/modules/carousel-dive/carousel-dive.module.html',
+  templateUrl: './app/SNT-framework-core-frontend/modules/carousel-dive/carousel-dive.module.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [DeepDiveService],
   pipes: [SanitizeRUrl,SanitizeHtml]

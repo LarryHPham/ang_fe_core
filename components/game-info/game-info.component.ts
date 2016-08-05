@@ -29,7 +29,7 @@ export interface GameInfoInput{
 
 @Component({
     selector: 'game-info',
-    templateUrl: './app/components/game-info/game-info.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/game-info/game-info.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage],
     pipes: [StatHyphenValuePipe],
 })

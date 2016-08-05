@@ -27,7 +27,7 @@ export interface ComparisonBarInput {
 
 @Component({
     selector: 'comparison-bar',
-    templateUrl: './app/components/comparison-bar/comparison-bar.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/comparison-bar/comparison-bar.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES],
     pipes: [NaValuePipe],
 })

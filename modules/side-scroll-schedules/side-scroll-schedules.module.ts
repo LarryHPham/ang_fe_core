@@ -6,7 +6,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll-schedules',
-    templateUrl: './app/modules/side-scroll-schedules/side-scroll-schedules.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/side-scroll-schedules/side-scroll-schedules.module.html',
     directives: [ScheduleBox,SideScroll],
     outputs: ['count']
 })

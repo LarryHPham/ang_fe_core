@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, Renderer} fro
 
 @Component({
   selector: 'sort-dropdown',
-  templateUrl: './app/components/custom-table/sort-dropdown.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/custom-table/sort-dropdown.component.html',
   providers: []
 })
 

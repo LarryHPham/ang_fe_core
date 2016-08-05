@@ -7,7 +7,7 @@ import {GlobalSettings} from '../../../global/global-settings';
 
 @Component({
     selector: 'like-us-module',
-    templateUrl: './app/modules/likeus/likeus.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/likeus/likeus.module.html',
 
     directives: [ModuleHeader],
 })

@@ -14,7 +14,7 @@ export interface TransactionModuleData {
 
 @Component({
   selector: 'transactions-module',
-  templateUrl: './app/modules/transactions/transactions.module.html',
+  templateUrl: './app/SNT-framework-core-frontend/modules/transactions/transactions.module.html',
   directives: [ModuleHeader, ModuleFooter, TransactionsComponent]
 })
 

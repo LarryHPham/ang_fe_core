@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'error-component',
-    templateUrl: './app/components/error/error.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/error/error.component.html',
     
     directives: [],
     providers: []

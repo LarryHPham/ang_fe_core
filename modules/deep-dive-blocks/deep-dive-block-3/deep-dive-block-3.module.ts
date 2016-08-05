@@ -13,7 +13,7 @@ import {RecommendationsComponent} from '../../../components/articles/recommendat
 
 @Component({
     selector: 'deep-dive-block-3',
-    templateUrl: './app/modules/deep-dive-blocks/deep-dive-block-3/deep-dive-block-3.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/deep-dive-blocks/deep-dive-block-3/deep-dive-block-3.module.html',
     directives: [ROUTER_DIRECTIVES, ArticleStackModule, TileStackModule, ResponsiveWidget, VideoStackComponent, RecommendationsComponent],
     providers: [DeepDiveService]
 })

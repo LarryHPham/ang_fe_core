@@ -5,7 +5,7 @@ import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@
 
 @Component({
     selector: 'contactus-module',
-    templateUrl: './app/modules/contactus/contactus.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/contactus/contactus.module.html',
     directives:[FORM_DIRECTIVES, BackTabComponent, TitleComponent],
     providers: []
 })

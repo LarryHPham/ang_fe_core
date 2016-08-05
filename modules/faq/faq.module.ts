@@ -8,7 +8,7 @@ export interface faqModuleData{
 }
 @Component({
     selector: 'faq-module',
-    templateUrl: './app/modules/faq/faq.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/faq/faq.module.html',
     directives: [ModuleHeader],
 })
 

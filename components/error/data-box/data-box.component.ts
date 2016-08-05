@@ -2,7 +2,7 @@ import {Component,Input} from '@angular/core';
 
 @Component({
     selector: 'no-data-box',
-    templateUrl: './app/components/error/data-box/data-box.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/error/data-box/data-box.component.html',
     directives: [],
     providers: [],
     inputs:[]

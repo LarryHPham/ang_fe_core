@@ -95,7 +95,7 @@ export interface Type2CarouselItem {
 
 @Component({
   selector: 'slider-carousel',
-  templateUrl: './app/components/carousels/slider-carousel/slider-carousel.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/carousels/slider-carousel/slider-carousel.component.html',
   directives: [ModuleFooter, Carousel, CircleImage, ROUTER_DIRECTIVES, ComplexInnerHtml],
   providers: [],
   outputs:['indexNum'],

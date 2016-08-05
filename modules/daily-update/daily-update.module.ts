@@ -16,7 +16,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'daily-update-module',
-    templateUrl: './app/modules/daily-update/daily-update.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/daily-update/daily-update.module.html',
     directives: [ModuleHeader, CircleImage, NoDataBox, BarChartComponent, ROUTER_DIRECTIVES],
     pipes: [SanitizeHtml, PossessivePipe]
 })

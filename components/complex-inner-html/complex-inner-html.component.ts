@@ -4,7 +4,7 @@ import {Link} from '../../../global/global-interface';
 
 @Component({
     selector: 'complex-inner-html',
-    templateUrl: './app/components/complex-inner-html/complex-inner-html.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/complex-inner-html/complex-inner-html.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [],
 })

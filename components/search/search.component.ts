@@ -58,7 +58,7 @@ export interface SearchInput {
     host: {
       '(document:click)': 'handleClick($event)'
     },
-    templateUrl: './app/components/search/search.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/search/search.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES],
     providers: []
 })

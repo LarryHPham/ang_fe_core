@@ -32,7 +32,7 @@ export interface SeasonStatsTabData {
 
 @Component({
     selector: 'season-stats-module',
-    templateUrl: './app/modules/season-stats/season-stats.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/season-stats/season-stats.module.html',
     directives: [
                   SliderCarousel,
                   ModuleHeader,

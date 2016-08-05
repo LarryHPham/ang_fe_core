@@ -13,7 +13,7 @@ export interface ComparisonLegendInput {
 
 @Component({
     selector: 'comparison-legend',
-    templateUrl: './app/components/comparison-legend/comparison-legend.component.html'
+    templateUrl: './app/SNT-framework-core-frontend/components/comparison-legend/comparison-legend.component.html'
 })
 
 export class ComparisonLegend{

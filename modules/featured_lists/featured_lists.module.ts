@@ -8,7 +8,7 @@ import {GlobalFunctions} from '../../../global/global-functions';
 
 @Component({
     selector: 'featured-lists-module',
-    templateUrl: './app/modules/featured_lists/featured_lists.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/featured_lists/featured_lists.module.html',
     directives: [ModuleHeader, FlipTilesComponent, FeatureComponent],
     providers: [],
     inputs:['locData']

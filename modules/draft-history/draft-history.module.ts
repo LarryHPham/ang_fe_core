@@ -14,7 +14,7 @@ import {IProfileData, ProfileHeaderService} from '../../../services/profile-head
 
 @Component({
     selector: 'draft-history-module',
-    templateUrl: './app/modules/draft-history/draft-history.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/draft-history/draft-history.module.html',
     directives: [DraftHistoryComponent, ModuleHeader, ModuleFooter]
 })
 

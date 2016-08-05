@@ -6,7 +6,7 @@ import {CarouselButton} from '../../components/buttons/carousel/carousel.button'
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 @Component({
     selector: 'feature-component',
-    templateUrl: './app/components/feature-list/feature-list.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/feature-list/feature-list.component.html',
     
     directives: [ROUTER_DIRECTIVES, CarouselButton],
     providers: [],

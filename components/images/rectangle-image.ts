@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({
     selector: 'rectangle-image',
-    templateUrl: './app/components/images/rectangle-image.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/images/rectangle-image.html',
     directives: [ROUTER_DIRECTIVES]
 })
 export class RectangleImage implements OnInit {

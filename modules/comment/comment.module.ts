@@ -9,7 +9,7 @@ declare var DISQUS: any;
 
 @Component({
     selector: 'comment-module',
-    templateUrl: './app/modules/comment/comment.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/comment/comment.module.html',
     directives: [ModuleHeader],
     providers: [],
 })

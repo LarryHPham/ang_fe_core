@@ -5,7 +5,7 @@ import {DomSanitizationService} from '@angular/platform-browser';
 
 @Component({
     selector: 'hover-image',
-    templateUrl: './app/components/images/hover-image.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/images/hover-image.html',
     directives: [ROUTER_DIRECTIVES]
 })
 export class HoverImage {

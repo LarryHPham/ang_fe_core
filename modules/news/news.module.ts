@@ -9,7 +9,7 @@ declare var stButtons: any;
 
 @Component({
     selector: 'news-module',
-    templateUrl: './app/modules/news/news.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/news/news.module.html',
     directives: [ModuleHeader, NewsCarousel, ModuleFooter, CircleButton],
     providers: []
 })

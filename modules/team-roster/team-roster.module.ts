@@ -19,7 +19,7 @@ export interface RosterModuleData<T> {
 
 @Component({
     selector: 'team-roster-module',
-    templateUrl: './app/modules/team-roster/team-roster.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/team-roster/team-roster.module.html',
     directives: [RosterComponent,
                 ModuleHeader,
                 ModuleFooter]

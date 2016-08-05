@@ -15,7 +15,7 @@ declare var moment;
 
 @Component({
     selector: 'deep-dive-block-1',
-    templateUrl: './app/modules/deep-dive-blocks/deep-dive-block-1/deep-dive-block-1.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/deep-dive-blocks/deep-dive-block-1/deep-dive-block-1.module.html',
     directives: [ROUTER_DIRECTIVES, ArticleStackModule, TileStackModule, ResponsiveWidget, VideoStackComponent, BoxScoresModule, BoxArticleComponent],
     providers: [DeepDiveService, BoxScoresService]
 })

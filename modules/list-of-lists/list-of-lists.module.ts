@@ -15,7 +15,7 @@ export interface ListOfListsData {
 
 @Component({
     selector: 'list-of-lists',
-    templateUrl: './app/modules/list-of-lists/list-of-lists.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/list-of-lists/list-of-lists.module.html',
     directives: [ModuleHeader, ModuleFooter, ListOfListsItem],
 })
 

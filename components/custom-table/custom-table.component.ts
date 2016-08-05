@@ -8,7 +8,7 @@ import {ResponsiveWidget} from '../../components/responsive-widget/responsive-wi
 
 @Component({
   selector: 'custom-table',
-  templateUrl: './app/components/custom-table/custom-table.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/custom-table/custom-table.component.html',
   directives: [TableHeader, TableCell, CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget]
 })
 

@@ -6,7 +6,7 @@ import {ArticleStacktopComponent,StackTopInput} from '../../components/article-s
 
 @Component({
   selector: 'article-stack-module',
-  templateUrl: './app/modules/article-stack/article-stack.module.html',
+  templateUrl: './app/SNT-framework-core-frontend/modules/article-stack/article-stack.module.html',
   directives: [RectangleImage,StackRowsComponent,ArticleStacktopComponent]
 })
 

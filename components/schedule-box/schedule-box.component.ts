@@ -20,7 +20,7 @@ export interface scheduleBoxInput{
 
 @Component({
     selector: 'schedule-box',
-    templateUrl: './app/components/schedule-box/schedule-box.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/schedule-box/schedule-box.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage],
     pipes: [SanitizeHtml],
 })

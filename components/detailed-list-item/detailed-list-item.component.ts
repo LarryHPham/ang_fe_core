@@ -37,7 +37,7 @@ export interface DetailListInput {
 
 @Component({
     selector: 'detailed-list-item',
-    templateUrl: './app/components/detailed-list-item/detailed-list-item.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/detailed-list-item/detailed-list-item.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage, ComplexInnerHtml, ResponsiveWidget],
     providers: [],
 })

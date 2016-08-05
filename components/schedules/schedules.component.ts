@@ -19,7 +19,7 @@ export interface TableComponentData<T> {
 }
 @Component({
     selector: 'schedules-component',
-    templateUrl: './app/components/schedules/schedules.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/schedules/schedules.component.html',
     directives: [LoadingComponent, Tabs, Tab, SchedulesCarousel, CustomTable],
 })
 

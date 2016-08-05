@@ -16,7 +16,7 @@ export interface FooterStyle {
 
 @Component({
     selector: 'module-footer',
-    templateUrl: './app/components/module-footer/module-footer.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/module-footer/module-footer.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [],
 })

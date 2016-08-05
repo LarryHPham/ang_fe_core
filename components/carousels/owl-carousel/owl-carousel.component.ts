@@ -4,7 +4,7 @@ import { Component, Input, Output, AfterViewInit, EventEmitter, ElementRef } fro
 
 @Component({
     selector: 'owl-carousel',
-    templateUrl: './app/components/carousels/owl-carousel/owl-carousel.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/owl-carousel/owl-carousel.component.html',
     outputs: ['carouselCount']
 })
 

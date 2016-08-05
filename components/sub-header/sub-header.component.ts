@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({
   selector: 'sub-header-component',
-  templateUrl: './app/components/sub-header/sub-header.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/sub-header/sub-header.component.html',
   directives: [ROUTER_DIRECTIVES],
   inputs: [],
   providers: []

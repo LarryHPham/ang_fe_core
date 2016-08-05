@@ -7,7 +7,7 @@ declare var moment;
 
 @Component({
   selector: 'datepicker[ngModel]',
-  templateUrl: './app/components/date-picker/date-picker.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/date-picker/date-picker.component.html',
   providers: [],
   directives: [FORM_DIRECTIVES, NgIf, NgFor, NgClass],
   pipes: []

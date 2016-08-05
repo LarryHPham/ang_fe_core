@@ -5,7 +5,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'circle-button',
-    templateUrl: './app/components/buttons/circle/circle.button.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/buttons/circle/circle.button.html',
     
     outputs: ['scrollRight', 'scrollLeft']
 })

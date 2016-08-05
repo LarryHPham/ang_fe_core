@@ -3,7 +3,7 @@ import {WidgetModule} from "../../modules/widget/widget.module";
 
 @Component({
     selector: 'sidekick-wrapper',
-    templateUrl: './app/components/sidekick-wrapper/sidekick-wrapper.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/sidekick-wrapper/sidekick-wrapper.component.html',
     directives:[WidgetModule],
     providers: []
 })

@@ -45,7 +45,7 @@ export interface SearchPageInput {
 
 @Component({
     selector: 'search-page-module',
-    templateUrl: './app/modules/search-page/search-page.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/search-page/search-page.module.html',
     directives:[ResponsiveWidget, ROUTER_DIRECTIVES, NoDataBox, BackTabComponent, Tabs, Tab, Search, PaginationFooter],
     providers: [NgStyle]
 })

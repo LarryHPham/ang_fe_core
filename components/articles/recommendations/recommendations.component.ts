@@ -5,7 +5,7 @@ import {SanitizeHtml} from "../../../pipes/safe.pipe";
 
 @Component({
     selector: 'recommendations-component',
-    templateUrl: './app/components/articles/recommendations/recommendations.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/recommendations/recommendations.component.html',
     directives: [ROUTER_DIRECTIVES],
     pipes: [SanitizeHtml]
 })

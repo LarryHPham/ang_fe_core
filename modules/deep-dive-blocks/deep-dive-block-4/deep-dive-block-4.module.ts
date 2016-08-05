@@ -12,7 +12,7 @@ import {RecommendationsComponent} from '../../../components/articles/recommendat
 
 @Component({
     selector: 'deep-dive-block-4',
-    templateUrl: './app/modules/deep-dive-blocks/deep-dive-block-4/deep-dive-block-4.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/deep-dive-blocks/deep-dive-block-4/deep-dive-block-4.module.html',
     directives: [ROUTER_DIRECTIVES, ArticleStackModule, TileStackModule, ResponsiveWidget, RecommendationsComponent],
     providers: [DeepDiveService]
 })

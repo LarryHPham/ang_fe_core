@@ -3,7 +3,7 @@ import {TableColumn} from '../../components/custom-table/table-data.component';
 
 @Component({
   selector: 'custom-table-header',
-  templateUrl: './app/components/custom-table/table-header.component.html'
+  templateUrl: './app/SNT-framework-core-frontend/components/custom-table/table-header.component.html'
 })
 
 export class TableHeader implements OnInit {

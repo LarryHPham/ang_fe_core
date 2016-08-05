@@ -11,7 +11,7 @@ export interface twitterModuleData{
 
 @Component({
     selector: 'twitter-module',
-    templateUrl: './app/modules/twitter/twitter.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/twitter/twitter.module.html',
     directives: [ModuleHeader],
 })
 

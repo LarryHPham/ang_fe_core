@@ -7,7 +7,7 @@ import {GlobalFunctions} from '../../../global/global-functions';
 
 @Component({
     selector: 'schedules',
-    templateUrl: './app/modules/schedules/schedules.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/schedules/schedules.module.html',
     directives: [SchedulesComponent, ModuleHeader, ModuleFooter],
     providers: [],
     inputs:['']

@@ -26,7 +26,7 @@ export interface IListOfListsItem {
 
 @Component({
     selector: 'list-of-lists-item',
-    templateUrl: './app/components/list-of-lists-item/list-of-lists-item.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/list-of-lists-item/list-of-lists-item.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget],
     providers: [],
 })

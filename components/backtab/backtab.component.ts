@@ -3,7 +3,7 @@ import {Input} from "@angular/core";
 
 @Component({
     selector: 'backtab-component',
-    templateUrl: './app/components/backtab/backtab.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/backtab/backtab.component.html',
 })
 
 export class BackTabComponent{

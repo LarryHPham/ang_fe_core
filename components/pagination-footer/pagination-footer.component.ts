@@ -48,7 +48,7 @@ export interface PaginationParameters {
 
 @Component({
     selector: 'pagination-footer',
-    templateUrl: './app/components/pagination-footer/pagination-footer.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/pagination-footer/pagination-footer.component.html',
 
     directives:[ROUTER_DIRECTIVES],
     providers: [],

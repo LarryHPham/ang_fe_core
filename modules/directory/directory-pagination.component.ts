@@ -6,7 +6,7 @@ import {PagingData} from './directory.data';
 
 @Component({
     selector: 'directory-pagination',
-    templateUrl: './app/modules/directory/directory-pagination.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/directory/directory-pagination.component.html',
     directives: [ROUTER_DIRECTIVES, NgClass],
     providers: []
 })

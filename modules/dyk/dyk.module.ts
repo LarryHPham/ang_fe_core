@@ -7,7 +7,7 @@ export interface dykModuleData{
 }
 @Component({
     selector: 'dyk-module',
-    templateUrl: './app/modules/dyk/dyk.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/dyk/dyk.module.html',
     directives: [ModuleHeader],
 })
 

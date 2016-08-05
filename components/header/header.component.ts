@@ -8,7 +8,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'header-component',
-    templateUrl: './app/components/header/header.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/header/header.component.html',
     directives: [Search, ROUTER_DIRECTIVES, SubHeaderComponent, HamburgerMenuComponent],
     providers: [],
 })

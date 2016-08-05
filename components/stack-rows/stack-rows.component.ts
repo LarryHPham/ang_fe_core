@@ -15,7 +15,7 @@ export interface StackRowsInput {
 
 @Component({
   selector: 'stack-rows-component',
-  templateUrl: './app/components/stack-rows/stack-rows.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/stack-rows/stack-rows.component.html',
   directives: [RectangleImage, ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })

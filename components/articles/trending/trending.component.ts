@@ -6,7 +6,7 @@ import {SidekickContainerComponent} from "../sidekick-container/sidekick-contain
 
 @Component({
     selector: 'trending-component',
-    templateUrl: './app/components/articles/trending/trending.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/trending/trending.component.html',
     directives: [ShareLinksComponent, ROUTER_DIRECTIVES, SidekickContainerComponent],
     inputs: ['trendingData', 'trendingImages'],
     pipes: [SanitizeHtml],

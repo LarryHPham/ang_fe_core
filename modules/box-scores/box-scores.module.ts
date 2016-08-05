@@ -11,7 +11,7 @@ import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
     selector: 'box-scores',
-    templateUrl: './app/modules/box-scores/box-scores.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/box-scores/box-scores.module.html',
     directives: [ScrollableContent, GameArticle, ScoreBoard, GameInfo, ArticleScheduleComponent, CalendarCarousel,  ModuleHeader],
     providers: [ScrollerFunctions],
     outputs: ['dateEmit'],

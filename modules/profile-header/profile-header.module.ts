@@ -31,7 +31,7 @@ export interface ProfileHeaderData {
 
 @Component({
     selector: 'profile-header',
-    templateUrl: './app/modules/profile-header/profile-header.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/profile-header/profile-header.module.html',
     directives: [ROUTER_DIRECTIVES, CircleImage, ScrollableContent, LoadingComponent],
     pipes: [NaValuePipe]
 })

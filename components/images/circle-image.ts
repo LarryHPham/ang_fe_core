@@ -60,7 +60,7 @@ import {CircleImageData} from '../../components/images/image-data';
  */
 @Component({
     selector: 'circle-image',
-    templateUrl: './app/components/images/circle-image.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/images/circle-image.html',
     directives: [HoverImage]
 })
 export class CircleImage implements OnInit {

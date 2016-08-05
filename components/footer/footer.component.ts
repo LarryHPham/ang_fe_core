@@ -8,7 +8,7 @@ import {DropdownDirectoryComponent} from '../dropdown-directory/dropdown-directo
 
 @Component({
     selector: 'footer-component',
-    templateUrl: './app/components/footer/footer.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/footer/footer.component.html',
     directives: [ROUTER_DIRECTIVES, DropdownDirectoryComponent],
     inputs: [],
     providers: [],

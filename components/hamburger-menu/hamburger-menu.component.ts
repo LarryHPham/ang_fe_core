@@ -9,7 +9,7 @@ export interface MenuData{
 
 @Component({
     selector: 'hamburger-menu-component',
-    templateUrl: './app/components/hamburger-menu/hamburger-menu.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/hamburger-menu/hamburger-menu.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [],
 })

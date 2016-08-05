@@ -3,7 +3,7 @@ declare var stButtons: any;
 
 @Component({
     selector: 'shareLinks-component',
-    templateUrl: './app/components/articles/shareLinks/shareLinks.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/shareLinks/shareLinks.component.html',
     directives: [],
 })
 

@@ -18,7 +18,7 @@ export interface ShareModuleInput{
 
 @Component({
     selector: 'share-module',
-    templateUrl: './app/modules/share/share.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/share/share.module.html',
     directives: [ModuleHeader, CircleImage],
     providers: []
 })

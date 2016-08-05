@@ -6,7 +6,7 @@ import {PriceFormatPipe} from '../../pipes/price-format.pipe';
 
 @Component({
     selector: 'dynamic-list',
-    templateUrl: './app/components/dynamic-list/dynamic-list.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/dynamic-list/dynamic-list.component.html',
     
     directives: [ROUTER_DIRECTIVES],
     providers: [],

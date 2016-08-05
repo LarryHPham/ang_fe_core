@@ -7,7 +7,7 @@ declare var moment;
 
 @Component({
   selector: 'video-stack-component',
-  templateUrl: './app/components/video-stack/video-stack.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/video-stack/video-stack.component.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [],
   pipes: [SanitizeHtml]

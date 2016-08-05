@@ -17,7 +17,7 @@ declare var moment:any;
 
 @Component({
     selector: 'articles-module',
-    templateUrl: './app/modules/articles/articles.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/articles/articles.module.html',
     directives: [
         ModuleHeader,
         ROUTER_DIRECTIVES,

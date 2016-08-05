@@ -3,7 +3,7 @@ import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
     selector: 'scrollable-content',
-    templateUrl: './app/components/scrollable-content/scrollable-content.component.html'
+    templateUrl: './app/SNT-framework-core-frontend/components/scrollable-content/scrollable-content.component.html'
 })
 export class ScrollableContent implements AfterViewInit, OnChanges {  
   private _elementRef: ElementRef;

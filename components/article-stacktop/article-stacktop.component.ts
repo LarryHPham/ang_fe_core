@@ -18,7 +18,7 @@ export interface StackTopInput{
 
 @Component({
   selector: 'article-stacktop-component',
-  templateUrl: './app/components/article-stacktop/article-stacktop.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/article-stacktop/article-stacktop.component.html',
   directives: [RectangleImage, ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })

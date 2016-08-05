@@ -7,7 +7,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({
     selector: 'about-us',
-    templateUrl: './app/modules/about-us/about-us.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/about-us/about-us.module.html',
     directives: [ModuleHeader, FlipTilesComponent, ROUTER_DIRECTIVES],
     providers: []
 })

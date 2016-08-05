@@ -9,7 +9,7 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 
 @Component({
     selector: 'mvp-module',
-    templateUrl: './app/modules/mvp/mvp.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/mvp/mvp.module.html',
     directives: [MVPListComponent, ModuleHeader, ModuleFooter, LoadingComponent],
     providers: [],
     inputs:['mvpData', 'title']

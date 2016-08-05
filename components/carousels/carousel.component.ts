@@ -6,7 +6,7 @@ import {CircleButton} from "../buttons/circle/circle.button";
 
 @Component({
     selector: 'carousel',
-    templateUrl: './app/components/carousels/carousel.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/carousel.component.html',
     directives: [CircleButton],
     providers: [],
     outputs: ['scrollRight', 'scrollLeft','carouselDataPoint']

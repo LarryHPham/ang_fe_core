@@ -4,7 +4,7 @@ declare var DISQUS: any;
 
 @Component({
     selector: 'disqus-component',
-    templateUrl: './app/components/articles/disqus/disqus.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/articles/disqus/disqus.component.html',
     inputs: ["comment"]
 })
 

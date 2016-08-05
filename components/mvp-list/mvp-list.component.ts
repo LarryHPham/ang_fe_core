@@ -21,7 +21,7 @@ export interface MVPTabData {
 
 @Component({
     selector: 'mvp-list',
-    templateUrl: './app/components/mvp-list/mvp-list.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/mvp-list/mvp-list.component.html',
     directives: [SliderCarousel, DetailedListItem, Tabs, Tab, NoDataBox, LoadingComponent],
 })
 

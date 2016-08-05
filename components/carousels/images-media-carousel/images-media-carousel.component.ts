@@ -16,7 +16,7 @@ export interface MediaImageItem {
 
 @Component({
     selector: 'images-media-carousel',
-    templateUrl: './app/components/carousels/images-media-carousel/images-media-carousel.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/images-media-carousel/images-media-carousel.component.html',
     directives: [
         ROUTER_DIRECTIVES,
         CircleButton,

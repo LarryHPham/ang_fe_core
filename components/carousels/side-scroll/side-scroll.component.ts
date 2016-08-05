@@ -5,7 +5,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll',
-    templateUrl: './app/components/carousels/side-scroll/side-scroll.component.html',
+    templateUrl: './app/SNT-framework-core-frontend/components/carousels/side-scroll/side-scroll.component.html',
     outputs: ['carouselCount'],
     pipes:[SanitizeStyle]
 })

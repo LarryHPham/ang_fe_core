@@ -25,7 +25,7 @@ export interface TransactionTabData {
 
 @Component({
   selector: 'transactions',
-  templateUrl: './app/components/transactions/transactions.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/transactions/transactions.component.html',
   directives: [NoDataBox, Tab, Tabs, SliderCarousel, DropdownComponent, TransactionsListItem, LoadingComponent]
 })
 

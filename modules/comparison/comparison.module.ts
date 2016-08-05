@@ -39,7 +39,7 @@ export interface ComparisonModuleData {
 
 @Component({
     selector: 'comparison-module',
-    templateUrl: './app/modules/comparison/comparison.module.html',
+    templateUrl: './app/SNT-framework-core-frontend/modules/comparison/comparison.module.html',
     directives:[ModuleHeader, ComparisonTile, ComparisonBar, ComparisonLegend, Tabs, Tab, NoDataBox]
 })
 

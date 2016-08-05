@@ -5,7 +5,7 @@ import {CircleImage} from '../../components/images/circle-image';
 
 @Component({
   selector: 'table-cell',
-  templateUrl: './app/components/custom-table/table-cell.component.html',
+  templateUrl: './app/SNT-framework-core-frontend/components/custom-table/table-cell.component.html',
   directives: [CircleImage, ROUTER_DIRECTIVES]
 })
 
