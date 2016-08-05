@@ -20,7 +20,7 @@ export interface RosterTabData<T> {
 
 @Component({
   selector: "roster-component",
-  templateUrl: "./app/components/roster/roster.component.html",
+  templateUrl: "./app/SNT-framework-core-frontend/components/roster/roster.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class RosterComponent implements DoCheck {

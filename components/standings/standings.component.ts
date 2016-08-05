@@ -26,7 +26,7 @@ export interface TableComponentData<T> {
 
 @Component({
   selector: "standings-component",
-  templateUrl: "./app/components/standings/standings.component.html",
+  templateUrl: "./app/SNT-framework-core-frontend/components/standings/standings.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class StandingsComponent implements DoCheck {
@@ -81,7 +81,7 @@ export class StandingsComponent implements DoCheck {
   setSelectedCarouselIndex(tab: StandingsTableTabData<any>, index: number) {
     let offset = 0;
     if ( !tab.sections ) return;
-    
+
     tab.sections.forEach((section, sectionIndex) => {
       if ( index >= offset && index < section.tableData.rows.length + offset ) {
         section.tableData.setRowSelected(index-offset);
@@ -93,15 +93,15 @@ export class StandingsComponent implements DoCheck {
     });
   }
 
-  tabSelected(newTitle) {    
+  tabSelected(newTitle) {
     this.noDataMessage = "Sorry, there is no data available for the "+ newTitle;
-    
+
     var priorTab = this.getSelectedTab();
     if ( priorTab ) {
       this.selectedKey = priorTab.getSelectedKey();
     }
-    
-    this.selectedTabTitle = newTitle;    
+
+    this.selectedTabTitle = newTitle;
     var newTab = this.getSelectedTab();
     if ( newTab ) {
       newTab.setSelectedKey(this.selectedKey);
@@ -146,7 +146,7 @@ export class StandingsComponent implements DoCheck {
           });
       });
     }
-    
+
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carouselData = carouselData;
   }

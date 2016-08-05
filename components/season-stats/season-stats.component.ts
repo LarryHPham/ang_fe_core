@@ -25,7 +25,7 @@ export interface TableComponentData<T> {
 
 @Component({
   selector: "season-stats-component",
-  templateUrl: "./app/components/season-stats/season-stats.component.html",
+  templateUrl: "./app/SNT-framework-core-frontend/components/season-stats/season-stats.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class SeasonStatsComponent implements DoCheck {

@@ -22,7 +22,7 @@ export interface StatsTableTabData<T> {
 
 @Component({
   selector: "player-stats-component",
-  templateUrl: "./app/components/player-stats/player-stats.component.html",
+  templateUrl: "./app/SNT-framework-core-frontend/components/player-stats/player-stats.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox],
 })
 export class PlayerStatsComponent implements DoCheck {

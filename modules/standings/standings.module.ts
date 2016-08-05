@@ -20,7 +20,7 @@ export interface StandingsModuleData {
 
 @Component({
   selector: "standings-module",
-  templateUrl: "./app/modules/standings/standings.module.html",
+  templateUrl: "./app/SNT-framework-core-frontend/modules/standings/standings.module.html",
   directives: [ModuleHeader, ModuleFooter, StandingsComponent],
 })
 export class StandingsModule implements OnChanges {

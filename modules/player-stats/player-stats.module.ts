@@ -20,7 +20,7 @@ export interface PlayerStatsModuleData {
 
 @Component({
   selector: "player-stats-module",
-  templateUrl: "./app/modules/player-stats/player-stats.module.html",
+  templateUrl: "./app/SNT-framework-core-frontend/modules/player-stats/player-stats.module.html",
   directives: [ModuleHeader, ModuleFooter, PlayerStatsComponent],
 })
 export class PlayerStatsModule implements OnChanges {
