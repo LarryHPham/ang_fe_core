@@ -1,7 +1,7 @@
 import {Component, ViewContainerRef, Input, Output, EventEmitter, AfterViewInit} from '@angular/core';
 import {NgIf, NgFor, NgClass, NgModel, FORM_DIRECTIVES, ControlValueAccessor} from '@angular/common';
-import {BoxScoresService} from '../../services/box-scores.service';
-import {GlobalFunctions} from '../../global/global-functions';
+import {BoxScoresService} from '../../../services/box-scores.service';
+import {GlobalFunctions} from '../../../global/global-functions';
 
 declare var moment;
 

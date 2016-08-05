@@ -1,6 +1,6 @@
 import {Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
-import {SearchService} from '../../services/search.service';
+import {SearchService} from '../../../services/search.service';
 import {Observable} from 'rxjs/Rx';
 import {Control} from '@angular/common';
 import {CircleImage} from '../images/circle-image';

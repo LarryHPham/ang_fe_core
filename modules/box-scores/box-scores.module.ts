@@ -7,7 +7,7 @@ import {GameInfo} from '../../components/game-info/game-info.component';
 import {ScoreBoard} from '../../components/score-board/score-board.component';
 import {GameArticle} from '../../components/game-article/game-article.component';
 import {ScrollableContent} from '../../components/scrollable-content/scrollable-content.component';
-import {ScrollerFunctions} from '../../global/scroller-functions';
+import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
     selector: 'box-scores',

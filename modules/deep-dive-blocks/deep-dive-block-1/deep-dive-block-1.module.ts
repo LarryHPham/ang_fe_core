@@ -1,14 +1,14 @@
 import {Component, Input, Injector, OnChanges} from '@angular/core';
-import {GlobalSettings} from '../../../global/global-settings';
-import {GlobalFunctions} from '../../../global/global-functions';
-import {DeepDiveService} from '../../../services/deep-dive.service';
+import {GlobalSettings} from '../../../../global/global-settings';
+import {GlobalFunctions} from '../../../../global/global-functions';
+import {DeepDiveService} from '../../../../services/deep-dive.service';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {ArticleStackModule} from '../../../modules/article-stack/article-stack.module';
 import {TileStackModule} from '../../../modules/tile-stack/tile-stack.module';
 import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
 import {VideoStackComponent} from '../../../components/video-stack/video-stack.component';
 import {BoxScoresModule} from '../../../modules/box-scores/box-scores.module';
-import {BoxScoresService} from '../../../services/box-scores.service';
+import {BoxScoresService} from '../../../../services/box-scores.service';
 import {BoxArticleComponent} from '../../../components/box-article/box-article.component';
 
 declare var moment;

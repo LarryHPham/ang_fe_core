@@ -1,4 +1,4 @@
-import {Link, NavigationData} from '../../global/global-interface';
+import {Link, NavigationData} from '../../../global/global-interface';
 
 export interface PagingData {
   rangeText: string;

@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {CircleImage} from '../../components/images/circle-image';
 import {CircleImageData} from '../../components/images/image-data';
 import {ComplexInnerHtml} from '../../components/complex-inner-html/complex-inner-html.component';
-import {Link} from '../../global/global-interface';
+import {Link} from '../../../global/global-interface';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 

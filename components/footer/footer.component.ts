@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router, ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {GlobalFunctions} from '../../global/global-functions';
-import {MLBGlobalFunctions} from '../../global/mlb-global-functions';
-import {Link, NavigationData} from '../../global/global-interface';
-import {GlobalSettings} from "../../global/global-settings";
+import {GlobalFunctions} from '../../../global/global-functions';
+import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
+import {Link, NavigationData} from '../../../global/global-interface';
+import {GlobalSettings} from "../../../global/global-settings";
 import {DropdownDirectoryComponent} from '../dropdown-directory/dropdown-directory.component';
 
 @Component({

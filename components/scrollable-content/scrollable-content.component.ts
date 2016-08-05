@@ -1,5 +1,5 @@
 import {Component, Input, Inject, OnChanges, AfterViewInit, AfterViewChecked, ElementRef} from '@angular/core';
-import {ScrollerFunctions} from '../../global/scroller-functions';
+import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
     selector: 'scrollable-content',

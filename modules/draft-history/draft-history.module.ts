@@ -10,7 +10,7 @@ import {Tab} from '../../components/tabs/tab.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {LoadingComponent} from "../../components/loading/loading.component";
 import {DraftHistoryComponent} from "../../components/draft-history/draft-history.component";
-import {IProfileData, ProfileHeaderService} from '../../services/profile-header.service';
+import {IProfileData, ProfileHeaderService} from '../../../services/profile-header.service';
 
 @Component({
     selector: 'draft-history-module',

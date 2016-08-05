@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
-import {GlobalSettings} from '../../global/global-settings';
+import {GlobalSettings} from '../../../global/global-settings';
 
 import {PriceFormatPipe} from '../../pipes/price-format.pipe';
 

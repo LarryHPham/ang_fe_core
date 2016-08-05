@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject, OnDestroy, Input, Output, EventEmitter, Renderer, OnChanges, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import {ScrollableContent} from '../scrollable-content/scrollable-content.component';
-import {Scroller, ScrollerFunctions} from '../../global/scroller-functions';
+import {Scroller, ScrollerFunctions} from '../../../global/scroller-functions';
 
 /**
  * Adds listeners that determine whether the

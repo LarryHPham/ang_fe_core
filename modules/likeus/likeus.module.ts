@@ -3,7 +3,7 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {GlobalSettings} from '../../global/global-settings';
+import {GlobalSettings} from '../../../global/global-settings';
 
 @Component({
     selector: 'like-us-module',

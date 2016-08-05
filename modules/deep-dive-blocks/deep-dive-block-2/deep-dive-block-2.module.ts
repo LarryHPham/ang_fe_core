@@ -1,7 +1,7 @@
 import {Component, Input, Injector, OnChanges} from '@angular/core';
-import {GlobalSettings} from '../../../global/global-settings';
-import {GlobalFunctions} from '../../../global/global-functions';
-import {DeepDiveService} from '../../../services/deep-dive.service';
+import {GlobalSettings} from '../../../../global/global-settings';
+import {GlobalFunctions} from '../../../../global/global-functions';
+import {DeepDiveService} from '../../../../services/deep-dive.service';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {ArticleStackModule} from '../../../modules/article-stack/article-stack.module';
 import {TileStackModule} from '../../../modules/tile-stack/tile-stack.module';

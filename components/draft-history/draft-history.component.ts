@@ -4,12 +4,12 @@ import {DetailedListItem, DetailListInput} from '../../components/detailed-list-
 import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
 import {Tabs} from '../../components/tabs/tabs.component';
 import {Tab} from '../../components/tabs/tab.component';
-import {ListPageService} from '../../services/list-page.service';
+import {ListPageService} from '../../../services/list-page.service';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {LoadingComponent} from "../../components/loading/loading.component";
 import {ErrorComponent} from "../../components/error/error.component";
-import {DraftHistoryTab, DraftHistoryService} from '../../services/draft-history.service';
-import {IProfileData} from '../../services/profile-header.service';
+import {DraftHistoryTab, DraftHistoryService} from '../../../services/draft-history.service';
+import {IProfileData} from '../../../services/profile-header.service';
 import {PaginationFooter, PaginationParameters} from '../../components/pagination-footer/pagination-footer.component';
 
 @Component({
