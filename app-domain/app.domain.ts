@@ -7,7 +7,7 @@ import {MyAppComponent} from "../../app-webpage/app.mywebpage";
 
 @Component({
     selector: 'app-domain',
-    templateUrl: './app/app-domain/app.domain.html',
+    templateUrl: './app/SNT-framework-core-frontend/app-domain/app.domain.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [Title]
 })
