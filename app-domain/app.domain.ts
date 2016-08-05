@@ -2,8 +2,8 @@ import {Component, ApplicationRef} from '@angular/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Title} from '@angular/platform-browser';
 import {Observable} from 'rxjs/Rx';
-import {AppComponent} from "../app-webpage/app.webpage";
-import {MyAppComponent} from "../app-webpage/app.mywebpage";
+import {AppComponent} from "../../app-webpage/app.webpage";
+import {MyAppComponent} from "../../app-webpage/app.mywebpage";
 
 @Component({
     selector: 'app-domain',
