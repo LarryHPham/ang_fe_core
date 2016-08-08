@@ -16,7 +16,7 @@ export interface MediaImageItem {
 
 @Component({
     selector: 'images-media-carousel',
-    templateUrl: './app/SNT-framework-core-frontend/components/carousels/images-media-carousel/images-media-carousel.component.html',
+    templateUrl: './app/fe-core/components/carousels/images-media-carousel/images-media-carousel.component.html',
     directives: [
         ROUTER_DIRECTIVES,
         CircleButton,
@@ -46,7 +46,7 @@ export class ImagesMedia implements OnInit {
     totalImageCount:number = 0;
     imageCounter:number = 0;
     imagesTitle:string = "Images";
-    image_url = './app/public/no_photo_images/onError.png';
+    image_url = './app/../public/no_photo_images/onError.png';
     images:any;
     displayCounter:number;
     imageCredit:string;

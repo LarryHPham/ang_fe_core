@@ -3,7 +3,7 @@ import {DomSanitizationService, SafeResourceUrl} from '@angular/platform-browser
 
 @Component({
     selector: 'billboard-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/billboard/billboard.component.html'
+    templateUrl: './app/fe-core/components/articles/billboard/billboard.component.html'
 })
 
 export class BillboardComponent implements OnInit {

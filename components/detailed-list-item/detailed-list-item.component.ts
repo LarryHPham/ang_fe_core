@@ -1,10 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {CircleImage} from '../../components/images/circle-image';
-import {CircleImageData} from '../../components/images/image-data';
-import {ComplexInnerHtml} from '../../components/complex-inner-html/complex-inner-html.component';
-import {Link} from '../../../global/global-interface';
+import {CircleImage} from '../../fe-core/components/images/circle-image';
+import {CircleImageData} from '../../fe-core/components/images/image-data';
+import {ComplexInnerHtml} from '../../fe-core/components/complex-inner-html/complex-inner-html.component';
+import {Link} from '../../../global/../global-interface';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
 
 export interface DetailListInput {
   // must have a length of 3 or the styling will be off
@@ -37,7 +37,7 @@ export interface DetailListInput {
 
 @Component({
     selector: 'detailed-list-item',
-    templateUrl: './app/SNT-framework-core-frontend/components/detailed-list-item/detailed-list-item.component.html',
+    templateUrl: './app/fe-core/components/detailed-list-item/detailed-list-item.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage, ComplexInnerHtml, ResponsiveWidget],
     providers: [],
 })

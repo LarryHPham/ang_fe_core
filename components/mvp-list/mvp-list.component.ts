@@ -2,13 +2,13 @@ import {Component, DoCheck, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
-import {DetailedListItem, DetailListInput} from '../../components/detailed-list-item/detailed-list-item.component';
-import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
-import {LoadingComponent} from '../../components/loading/loading.component';
-import {FooterStyle} from '../../components/module-footer/module-footer.component';
+import {DetailedListItem, DetailListInput} from '../../fe-core/components/detailed-list-item/detailed-list-item.component';
+import {SliderCarousel, SliderCarouselInput} from '../../fe-core/components/carousels/slider-carousel/slider-carousel.component';
+import {Tabs} from '../../fe-core/components/tabs/tabs.component';
+import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
+import {FooterStyle} from '../../fe-core/components/module-footer/module-footer.component';
 
 export interface MVPTabData {
   tabDisplayTitle: string;
@@ -21,7 +21,7 @@ export interface MVPTabData {
 
 @Component({
     selector: 'mvp-list',
-    templateUrl: './app/SNT-framework-core-frontend/components/mvp-list/mvp-list.component.html',
+    templateUrl: './app/fe-core/components/mvp-list/mvp-list.component.html',
     directives: [SliderCarousel, DetailedListItem, Tabs, Tab, NoDataBox, LoadingComponent],
 })
 

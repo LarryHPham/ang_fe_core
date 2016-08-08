@@ -2,14 +2,14 @@ import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {MVPListComponent, MVPTabData} from '../../components/mvp-list/mvp-list.component';
-import {LoadingComponent} from '../../components/loading/loading.component';
+import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {MVPListComponent, MVPTabData} from '../../fe-core/components/mvp-list/mvp-list.component';
+import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
 
 @Component({
     selector: 'mvp-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/mvp/mvp.module.html',
+    templateUrl: './app/fe-core/modules/mvp/mvp.module.html',
     directives: [MVPListComponent, ModuleHeader, ModuleFooter, LoadingComponent],
     providers: [],
     inputs:['mvpData', 'title']

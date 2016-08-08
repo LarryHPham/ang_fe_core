@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Router,ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
 import {ShareLinksComponent} from "../shareLinks/shareLinks.component";
-import {SanitizeHtml} from "../../../pipes/safe.pipe";
-import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
+import {SanitizeHtml} from "../../../fe-core/pipes/safe.pipe";
+import {ResponsiveWidget} from '../../../fe-core/components/responsive-widget/responsive-widget.component';
 import {DeepDiveService} from '../../../../services/deep-dive.service';
 
 declare var moment;
@@ -10,7 +10,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'syndicated-trending-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/syndicated-trending/syndicated-trending.component.html',
+    templateUrl: './app/fe-core/components/articles/syndicated-trending/syndicated-trending.component.html',
     directives: [ShareLinksComponent, ROUTER_DIRECTIVES, ResponsiveWidget],
     inputs: ['trendingData', 'trendingImages'],
     pipes: [SanitizeHtml],

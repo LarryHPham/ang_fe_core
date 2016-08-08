@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {ImageData} from '../../components/images/image-data';
+import {ImageData} from '../../fe-core/components/images/image-data';
 import {DomSanitizationService} from '@angular/platform-browser';
 
 @Component({
     selector: 'hover-image',
-    templateUrl: './app/SNT-framework-core-frontend/components/images/hover-image.html',
+    templateUrl: './app/fe-core/components/images/hover-image.html',
     directives: [ROUTER_DIRECTIVES]
 })
 export class HoverImage {
@@ -15,7 +15,7 @@ export class HoverImage {
 
     imageUrl;
     
-    public noImageUrl: string = "/app/public/no-image.png";
+    public noImageUrl: string = "/app/../public/no-image.png";
 
     constructor(private _sanitizer: DomSanitizationService) {}
 

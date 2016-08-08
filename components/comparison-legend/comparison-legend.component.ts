@@ -7,23 +7,15 @@ export interface ComparisonLegendInput {
     }>;
     legendValues: Array<{
        title: string,
-       color: string 
+       color: string
     }>;
 }
 
 @Component({
     selector: 'comparison-legend',
-    templateUrl: './app/SNT-framework-core-frontend/components/comparison-legend/comparison-legend.component.html'
+    templateUrl: './app/fe-core/components/comparison-legend/comparison-legend.component.html'
 })
 
 export class ComparisonLegend{
     @Input() comparisonLegendInput: ComparisonLegendInput;
-    
-    ngOnInit() {
-        // if ( this.comparisonLegendInput ) {
-        //     this.comparisonLegendInput.legendTitle.forEach(item => {
-        //         if ( item.class == )
-        //     })
-        // }
-    }
 }

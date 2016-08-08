@@ -1,11 +1,11 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter} from '@angular/core';
-import {SanitizeStyle} from '../../../pipes/safe.pipe';
+import {SanitizeStyle} from '../../../fe-core/pipes/safe.pipe';
 
 declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll',
-    templateUrl: './app/SNT-framework-core-frontend/components/carousels/side-scroll/side-scroll.component.html',
+    templateUrl: './app/fe-core/components/carousels/side-scroll/side-scroll.component.html',
     outputs: ['carouselCount'],
     pipes:[SanitizeStyle]
 })

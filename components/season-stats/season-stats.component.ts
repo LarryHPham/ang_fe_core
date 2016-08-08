@@ -6,7 +6,7 @@ import {Tab} from '../tabs/tab.component';
 import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
 
 export interface TableTabData<T> {
   title: string;
@@ -25,7 +25,7 @@ export interface TableComponentData<T> {
 
 @Component({
   selector: "season-stats-component",
-  templateUrl: "./app/SNT-framework-core-frontend/components/season-stats/season-stats.component.html",
+  templateUrl: "./app/fe-core/components/season-stats/season-stats.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class SeasonStatsComponent implements DoCheck {

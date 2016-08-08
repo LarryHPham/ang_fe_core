@@ -1,7 +1,7 @@
 import {Component,OnInit,EventEmitter,Input} from '@angular/core';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {DeepDiveService} from '../../../services/deep-dive.service';
-import {SanitizeRUrl, SanitizeHtml} from "../../pipes/safe.pipe";
+import {SanitizeRUrl, SanitizeHtml} from "../../fe-core/pipes/safe.pipe";
 
 
 declare var jQuery:any;
@@ -9,7 +9,7 @@ declare var moment;
 
 @Component({
   selector: 'carousel-dive-module',
-  templateUrl: './app/SNT-framework-core-frontend/modules/carousel-dive/carousel-dive.module.html',
+  templateUrl: './app/fe-core/modules/carousel-dive/carousel-dive.module.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [DeepDiveService],
   pipes: [SanitizeRUrl,SanitizeHtml]

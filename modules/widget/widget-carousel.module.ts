@@ -4,7 +4,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'widget-carousel-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/widget/widget.module.html',
+    templateUrl: './app/fe-core/modules/widget/widget.module.html',
     inputs: ['aiSidekick']
 })
 

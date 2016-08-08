@@ -1,13 +1,13 @@
 import {Component, ViewContainerRef, Input, Output, EventEmitter, AfterViewInit} from '@angular/core';
 import {NgIf, NgFor, NgClass, NgModel, FORM_DIRECTIVES, ControlValueAccessor} from '@angular/common';
 import {BoxScoresService} from '../../../services/box-scores.service';
-import {GlobalFunctions} from '../../../global/global-functions';
+import {GlobalFunctions} from '../../../global/../global-functions';
 
 declare var moment;
 
 @Component({
   selector: 'datepicker[ngModel]',
-  templateUrl: './app/SNT-framework-core-frontend/components/date-picker/date-picker.component.html',
+  templateUrl: './app/fe-core/components/date-picker/date-picker.component.html',
   providers: [],
   directives: [FORM_DIRECTIVES, NgIf, NgFor, NgClass],
   pipes: []

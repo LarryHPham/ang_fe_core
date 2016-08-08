@@ -3,7 +3,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'carousel-button',
-    templateUrl: './app/SNT-framework-core-frontend/components/buttons/carousel/carousel.button.html',
+    templateUrl: './app/fe-core/components/buttons/carousel/carousel.button.html',
     
     outputs: ['scrollRight', 'scrollLeft']
 })

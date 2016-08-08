@@ -1,23 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ArticleScheduleComponent} from "../../components/articles/article-schedule/article-schedule.component";
-import {ArticleMainComponent} from "../../components/articles/main-article/main-article.component";
-import {ArticleSubComponent} from "../../components/articles/sub-article/sub-article.component";
-import {HeadToHeadComponent} from "../../components/articles/head-to-head-articles/head-to-head-articles.component";
-import {ModuleHeader} from "../../components/module-header/module-header.component";
-import {HeadlineData} from "../../../global/global-interface";
-import {GlobalFunctions} from '../../../global/global-functions';
-import {HeadlineDataService} from "../../../global/global-ai-headline-module-service";
+import {ArticleScheduleComponent} from "../../fe-core/components/articles/article-schedule/article-schedule.component";
+import {ArticleMainComponent} from "../../fe-core/components/articles/main-article/main-article.component";
+import {ArticleSubComponent} from "../../fe-core/components/articles/sub-article/sub-article.component";
+import {HeadToHeadComponent} from "../../fe-core/components/articles/head-to-head-articles/head-to-head-articles.component";
+import {ModuleHeader} from "../../fe-core/components/module-header/module-header.component";
+import {HeadlineData} from "../../../global/../global-interface";
+import {GlobalFunctions} from '../../../global/../global-functions';
+import {HeadlineDataService} from "../../../global/../global-ai-headline-module-service";
 import {RouteParams} from "@angular/router-deprecated";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {ModuleHeaderData} from "../../components/module-header/module-header.component";
-import {LoadingComponent} from "../../components/loading/loading.component";
+import {ModuleHeaderData} from "../../fe-core/components/module-header/module-header.component";
+import {LoadingComponent} from "../../fe-core/components/loading/loading.component";
 import {MLBGlobalFunctions} from "../../../global/mlb-global-functions";
 
 declare var moment:any;
 
 @Component({
     selector: 'articles-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/articles/articles.module.html',
+    templateUrl: './app/fe-core/modules/articles/articles.module.html',
     directives: [
         ModuleHeader,
         ROUTER_DIRECTIVES,

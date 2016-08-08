@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {StandingsComponent, StandingsTableTabData} from '../../components/standings/standings.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
+import {StandingsComponent, StandingsTableTabData} from '../../fe-core/components/standings/standings.component';
 
 export interface StandingsModuleData {
   moduleTitle: string;
@@ -20,7 +20,7 @@ export interface StandingsModuleData {
 
 @Component({
   selector: "standings-module",
-  templateUrl: "./app/SNT-framework-core-frontend/modules/standings/standings.module.html",
+  templateUrl: "./app/fe-core/modules/standings/standings.module.html",
   directives: [ModuleHeader, ModuleFooter, StandingsComponent],
 })
 export class StandingsModule implements OnChanges {

@@ -1,13 +1,13 @@
 import {Component,OnInit, Input} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeHtml} from "../../pipes/safe.pipe";
+import {SanitizeHtml} from "../../fe-core/pipes/safe.pipe";
 
 
 declare var moment;
 
 @Component({
   selector: 'video-stack-component',
-  templateUrl: './app/SNT-framework-core-frontend/components/video-stack/video-stack.component.html',
+  templateUrl: './app/fe-core/components/video-stack/video-stack.component.html',
   directives: [ROUTER_DIRECTIVES],
   providers: [],
   pipes: [SanitizeHtml]

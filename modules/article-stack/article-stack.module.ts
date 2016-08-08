@@ -1,12 +1,12 @@
 import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImageData} from '../../components/images/image-data';
-import {RectangleImage} from '../../components/images/rectangle-image';
-import {StackRowsComponent,StackRowsInput} from '../../components/stack-rows/stack-rows.component';
-import {ArticleStacktopComponent,StackTopInput} from '../../components/article-stacktop/article-stacktop.component';
+import {RectangleImageData} from '../../fe-core/components/images/image-data';
+import {RectangleImage} from '../../fe-core/components/images/rectangle-image';
+import {StackRowsComponent,StackRowsInput} from '../../fe-core/components/stack-rows/stack-rows.component';
+import {ArticleStacktopComponent,StackTopInput} from '../../fe-core/components/article-stacktop/article-stacktop.component';
 
 @Component({
   selector: 'article-stack-module',
-  templateUrl: './app/SNT-framework-core-frontend/modules/article-stack/article-stack.module.html',
+  templateUrl: './app/fe-core/modules/article-stack/article-stack.module.html',
   directives: [RectangleImage,StackRowsComponent,ArticleStacktopComponent]
 })
 

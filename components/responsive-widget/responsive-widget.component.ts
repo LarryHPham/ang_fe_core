@@ -3,7 +3,7 @@ import {Component, Input, Output, ChangeDetectorRef, OnInit} from '@angular/core
 
 @Component({
   selector: 'responsive-widget',
-  templateUrl: './app/SNT-framework-core-frontend/components/responsive-widget/responsive-widget.component.html',
+  templateUrl: './app/fe-core/components/responsive-widget/responsive-widget.component.html',
   directives: []
 })
 

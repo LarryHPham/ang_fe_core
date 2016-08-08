@@ -1,15 +1,15 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {NewsCarousel, NewsCarouselInput} from '../../components/carousels/news-carousel/news-carousel.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {NewsCarousel, NewsCarouselInput} from '../../fe-core/components/carousels/news-carousel/news-carousel.component';
+import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
 import {RouteParams} from "@angular/router-deprecated";
-import {GlobalFunctions} from '../../../global/global-functions';
-import {CircleButton} from "../../components/buttons/circle/circle.button";
+import {GlobalFunctions} from '../../../global/../global-functions';
+import {CircleButton} from "../../fe-core/components/buttons/circle/circle.button";
 declare var stButtons: any;
 
 @Component({
     selector: 'news-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/news/news.module.html',
+    templateUrl: './app/fe-core/modules/news/news.module.html',
     directives: [ModuleHeader, NewsCarousel, ModuleFooter, CircleButton],
     providers: []
 })

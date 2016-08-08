@@ -1,5 +1,5 @@
 import {Component, OnChanges, Input} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
 declare var stButtons: any;
 
 export interface dykModuleData{
@@ -7,7 +7,7 @@ export interface dykModuleData{
 }
 @Component({
     selector: 'dyk-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/dyk/dyk.module.html',
+    templateUrl: './app/fe-core/modules/dyk/dyk.module.html',
     directives: [ModuleHeader],
 })
 

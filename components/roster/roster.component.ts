@@ -6,7 +6,7 @@ import {Tab} from '../tabs/tab.component';
 import {CustomTable} from '../custom-table/custom-table.component';
 import {LoadingComponent} from '../loading/loading.component';
 import {TableModel} from '../custom-table/table-data.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
 
 export interface RosterTabData<T> {
   title: string;
@@ -20,7 +20,7 @@ export interface RosterTabData<T> {
 
 @Component({
   selector: "roster-component",
-  templateUrl: "./app/SNT-framework-core-frontend/components/roster/roster.component.html",
+  templateUrl: "./app/fe-core/components/roster/roster.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class RosterComponent implements DoCheck {

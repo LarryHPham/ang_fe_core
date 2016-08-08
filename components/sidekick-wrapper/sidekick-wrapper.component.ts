@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {WidgetModule} from "../../modules/widget/widget.module";
+import {WidgetModule} from "../../fe-core/modules/widget/widget.module";
 
 @Component({
     selector: 'sidekick-wrapper',
-    templateUrl: './app/SNT-framework-core-frontend/components/sidekick-wrapper/sidekick-wrapper.component.html',
+    templateUrl: './app/fe-core/components/sidekick-wrapper/sidekick-wrapper.component.html',
     directives:[WidgetModule],
     providers: []
 })

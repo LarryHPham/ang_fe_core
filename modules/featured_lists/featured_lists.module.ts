@@ -1,14 +1,14 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {Router, RouteParams} from '@angular/router-deprecated';
 
-import {ModuleHeader} from '../../components/module-header/module-header.component';
-import {FlipTilesComponent, TileData} from '../../components/flip-tiles/flip-tiles.component';
-import {FeatureComponent} from '../../components/feature-list/feature-list.component';
-import {GlobalFunctions} from '../../../global/global-functions';
+import {ModuleHeader} from '../../fe-core/components/module-header/module-header.component';
+import {FlipTilesComponent, TileData} from '../../fe-core/components/flip-tiles/flip-tiles.component';
+import {FeatureComponent} from '../../fe-core/components/feature-list/feature-list.component';
+import {GlobalFunctions} from '../../../global/../global-functions';
 
 @Component({
     selector: 'featured-lists-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/featured_lists/featured_lists.module.html',
+    templateUrl: './app/fe-core/modules/featured_lists/featured_lists.module.html',
     directives: [ModuleHeader, FlipTilesComponent, FeatureComponent],
     providers: [],
     inputs:['locData']
@@ -114,7 +114,7 @@ export class FeaturedListsModule implements OnInit{
         this.listData = {
             rank: this.index + 1,
             header: 'Trending Real Estate',
-            title: "",//GlobalFunctions.convertListName(data.listName),
+            title: "",//../globalFunctions.convertListName(data.listName),
             hding1: GlobalFunctions.toTitleCase(listData.fullStreetAddress),
             hding2: GlobalFunctions.toTitleCase(listData.city) + ', ' + listData.stateOrProvince + ' ' + listData.postalCode,
             detail1: heading2,

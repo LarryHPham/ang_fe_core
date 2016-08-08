@@ -6,7 +6,7 @@ import {RouteParams} from '@angular/router-deprecated';
 
 @Component({
     selector: 'property-type',
-    templateUrl: './app/SNT-framework-core-frontend/components/property-type/property-type.html',
+    templateUrl: './app/fe-core/components/property-type/property-type.html',
     
     directives: [],
     providers: [],

@@ -1,14 +1,14 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
-import {Search, SearchInput} from '../../components/search/search.component';
+import {Search, SearchInput} from '../../fe-core/components/search/search.component';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SubHeaderComponent} from '../../components/sub-header/sub-header.component';
-import {HamburgerMenuComponent, MenuData} from '../../components/hamburger-menu/hamburger-menu.component';
+import {SubHeaderComponent} from '../../fe-core/components/sub-header/sub-header.component';
+import {HamburgerMenuComponent, MenuData} from '../../fe-core/components/hamburger-menu/hamburger-menu.component';
 declare var stButtons: any;
 declare var jQuery:any;
 
 @Component({
     selector: 'header-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/header/header.component.html',
+    templateUrl: './app/fe-core/components/header/header.component.html',
     directives: [Search, ROUTER_DIRECTIVES, SubHeaderComponent, HamburgerMenuComponent],
     providers: [],
 })
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit,OnChanges {
     }
   }
   loadData(partnerID: string) {
-    this.logoUrl = 'app/public/Home-Run-Loyal_Logo.svg';
+    this.logoUrl = 'app/../public/Touchdown-Loyal_Logo_Outlined-W.svg';
     this.hamburgerMenuData = [{
         menuTitle: "Home",
         url: ['Home-page']

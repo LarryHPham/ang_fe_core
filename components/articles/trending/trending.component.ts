@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router,ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
 import {ShareLinksComponent} from "../shareLinks/shareLinks.component";
-import {SanitizeHtml} from "../../../pipes/safe.pipe";
+import {SanitizeHtml} from "../../../fe-core/pipes/safe.pipe";
 import {SidekickContainerComponent} from "../sidekick-container/sidekick-container.component";
 
 @Component({
     selector: 'trending-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/trending/trending.component.html',
+    templateUrl: './app/fe-core/components/articles/trending/trending.component.html',
     directives: [ShareLinksComponent, ROUTER_DIRECTIVES, SidekickContainerComponent],
     inputs: ['trendingData', 'trendingImages'],
     pipes: [SanitizeHtml],

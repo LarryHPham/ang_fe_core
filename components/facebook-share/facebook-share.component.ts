@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'share-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/facebook-share/facebook-share.component.html',
+    templateUrl: './app/fe-core/components/facebook-share/facebook-share.component.html',
     
     directives: [],
 })

@@ -11,7 +11,7 @@ export interface TileData {
 
 @Component({
     selector: 'flip-tiles',
-    templateUrl: './app/SNT-framework-core-frontend/components/flip-tiles/flip-tiles.component.html',
+    templateUrl: './app/fe-core/components/flip-tiles/flip-tiles.component.html',
     directives: [ROUTER_DIRECTIVES]
 })
 

@@ -5,7 +5,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'slider-button',
-    templateUrl: './app/SNT-framework-core-frontend/components/buttons/slider/slider.button.html',
+    templateUrl: './app/fe-core/components/buttons/slider/slider.button.html',
 
     outputs: ['scrollRight', 'scrollLeft']
 })

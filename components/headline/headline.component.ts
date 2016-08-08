@@ -5,7 +5,7 @@ import {Component, Input, OnInit}  from "@angular/core";
 
 @Component({
     selector: 'headline-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/headline/headline.component.html'
+    templateUrl: './app/fe-core/components/headline/headline.component.html'
 })
 
 export class HeadlineComponent implements OnInit {

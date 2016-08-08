@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CircleImageData} from '../images/image-data';
 import {CircleImage} from '../images/circle-image';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeHtml} from '../../pipes/safe.pipe';
+import {SanitizeHtml} from '../../fe-core/pipes/safe.pipe';
 
 export interface scheduleBoxInput{
   date:string;
@@ -20,7 +20,7 @@ export interface scheduleBoxInput{
 
 @Component({
     selector: 'schedule-box',
-    templateUrl: './app/SNT-framework-core-frontend/components/schedule-box/schedule-box.component.html',
+    templateUrl: './app/fe-core/components/schedule-box/schedule-box.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage],
     pipes: [SanitizeHtml],
 })
@@ -37,7 +37,7 @@ export class ScheduleBox{
           awayImageConfig:{//interface is found in image-data.ts
               imageClass: 'image-44',
               mainImage: {
-                  imageUrl: '/app/public/no-image.png',
+                  imageUrl: '/app/../public/no-image.png',
                   urlRouteArray: ['Home-page'],
                   hoverText: "<i class='fa fa-mail-forward'></i>",
                   imageClass: 'border-1',
@@ -46,7 +46,7 @@ export class ScheduleBox{
           homeImageConfig:{//interface is found in image-data.ts
               imageClass: 'image-44',
               mainImage: {
-                  imageUrl: '/app/public/no-image.png',
+                  imageUrl: '/app/../public/no-image.png',
                   urlRouteArray: ['Home-page'],
                   hoverText: "<i class='fa fa-mail-forward'></i>",
                   imageClass: 'border-1',

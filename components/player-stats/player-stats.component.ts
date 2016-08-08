@@ -5,9 +5,9 @@ import {Tabs} from '../tabs/tabs.component';
 import {Tab} from '../tabs/tab.component';
 import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel, TableColumn} from '../custom-table/table-data.component';
-import {DropdownComponent} from '../../components/dropdown/dropdown.component';
-import {LoadingComponent} from '../../components/loading/loading.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {DropdownComponent} from '../../fe-core/components/dropdown/dropdown.component';
+import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
 
 export interface StatsTableTabData<T> {
   tabTitle: string;
@@ -22,7 +22,7 @@ export interface StatsTableTabData<T> {
 
 @Component({
   selector: "player-stats-component",
-  templateUrl: "./app/SNT-framework-core-frontend/components/player-stats/player-stats.component.html",
+  templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
   directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox],
 })
 export class PlayerStatsComponent implements DoCheck {

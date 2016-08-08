@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProfileDataComponent} from "../profileData/profileData.component";
 import {BillboardComponent} from "../billboard/billboard.component";
-import {SanitizeHtml} from '../../../pipes/safe.pipe';
+import {SanitizeHtml} from '../../../fe-core/pipes/safe.pipe';
 
 @Component({
     selector: 'article-content-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/article-content/article-content.component.html',
+    templateUrl: './app/fe-core/components/articles/article-content/article-content.component.html',
     directives: [ProfileDataComponent, BillboardComponent],
     inputs: ["articleData", "articleType", "articleSubType", "imageLinks", "teamId", "partnerId"],
     pipes: [SanitizeHtml]

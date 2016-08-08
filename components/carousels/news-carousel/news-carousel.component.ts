@@ -12,7 +12,7 @@ export interface NewsCarouselInput {
 
 @Component({
   selector: 'news-carousel',
-  templateUrl: './app/SNT-framework-core-frontend/components/carousels/news-carousel/news-carousel.component.html',
+  templateUrl: './app/fe-core/components/carousels/news-carousel/news-carousel.component.html',
   directives: [Carousel],
   providers: [],
   inputs: ['newsData'],

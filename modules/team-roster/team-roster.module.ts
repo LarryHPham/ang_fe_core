@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {RosterComponent, RosterTabData} from "../../components/roster/roster.component";
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
+import {RosterComponent, RosterTabData} from "../../fe-core/components/roster/roster.component";
 
 export interface RosterModuleData<T> {
   moduleTitle: string;
@@ -19,7 +19,7 @@ export interface RosterModuleData<T> {
 
 @Component({
     selector: 'team-roster-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/team-roster/team-roster.module.html',
+    templateUrl: './app/fe-core/modules/team-roster/team-roster.module.html',
     directives: [RosterComponent,
                 ModuleHeader,
                 ModuleFooter]

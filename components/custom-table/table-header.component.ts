@@ -1,9 +1,9 @@
 import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, Renderer, ViewChild} from '@angular/core';
-import {TableColumn} from '../../components/custom-table/table-data.component';
+import {TableColumn} from '../../fe-core/components/custom-table/table-data.component';
 
 @Component({
   selector: 'custom-table-header',
-  templateUrl: './app/SNT-framework-core-frontend/components/custom-table/table-header.component.html'
+  templateUrl: './app/fe-core/components/custom-table/table-header.component.html'
 })
 
 export class TableHeader implements OnInit {

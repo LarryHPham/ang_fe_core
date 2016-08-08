@@ -1,5 +1,5 @@
 import {Component, OnChanges, Input, Output, EventEmitter} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
 
 export interface faqModuleData{
   question: string;
@@ -8,7 +8,7 @@ export interface faqModuleData{
 }
 @Component({
     selector: 'faq-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/faq/faq.module.html',
+    templateUrl: './app/fe-core/modules/faq/faq.module.html',
     directives: [ModuleHeader],
 })
 

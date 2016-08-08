@@ -4,7 +4,7 @@
 import {Component} from '@angular/core';
 @Component({
     selector: 'listbutton-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/buttons/list-button/listbutton.component.html',
+    templateUrl: './app/fe-core/components/buttons/list-button/listbutton.component.html',
     
 })
 export class ListButtonComponent{}

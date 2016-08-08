@@ -2,13 +2,13 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
-import {TransactionsListItem, TransactionsListInput} from '../../components/transactions-list-item/transactions-list-item.component';
-import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
-import {DropdownComponent} from "../../components/dropdown/dropdown.component";
-import {LoadingComponent} from '../../components/loading/loading.component';
+import {TransactionsListItem, TransactionsListInput} from '../../fe-core/components/transactions-list-item/transactions-list-item.component';
+import {SliderCarousel, SliderCarouselInput} from '../../fe-core/components/carousels/slider-carousel/slider-carousel.component';
+import {Tabs} from '../../fe-core/components/tabs/tabs.component';
+import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {DropdownComponent} from "../../fe-core/components/dropdown/dropdown.component";
+import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
 
 export interface TransactionTabData {
   tabDataKey: string;
@@ -25,7 +25,7 @@ export interface TransactionTabData {
 
 @Component({
   selector: 'transactions',
-  templateUrl: './app/SNT-framework-core-frontend/components/transactions/transactions.component.html',
+  templateUrl: './app/fe-core/components/transactions/transactions.component.html',
   directives: [NoDataBox, Tab, Tabs, SliderCarousel, DropdownComponent, TransactionsListItem, LoadingComponent]
 })
 

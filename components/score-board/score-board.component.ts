@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, EventEmitter} from '@angular/core';
-import {StatHyphenValuePipe} from '../../pipes/stat-hyphen.pipe';
-import {SanitizeStyle} from '../../pipes/safe.pipe';
+import {StatHyphenValuePipe} from '../../fe-core/pipes/stat-hyphen.pipe';
+import {SanitizeStyle} from '../../fe-core/pipes/safe.pipe';
 
 export interface ScoreBoardInput{
 
@@ -8,7 +8,7 @@ export interface ScoreBoardInput{
 
 @Component({
     selector: 'score-board',
-    templateUrl: './app/SNT-framework-core-frontend/components/score-board/score-board.component.html',
+    templateUrl: './app/fe-core/components/score-board/score-board.component.html',
     directives: [],
     pipes: [StatHyphenValuePipe, SanitizeStyle],
 })

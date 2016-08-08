@@ -2,11 +2,11 @@
  * Created by Victoria on 2/25/2016.
  */
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {CarouselButton} from '../../components/buttons/carousel/carousel.button';
+import {CarouselButton} from '../../fe-core/components/buttons/carousel/carousel.button';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 @Component({
     selector: 'feature-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/feature-list/feature-list.component.html',
+    templateUrl: './app/fe-core/components/feature-list/feature-list.component.html',
     
     directives: [ROUTER_DIRECTIVES, CarouselButton],
     providers: [],

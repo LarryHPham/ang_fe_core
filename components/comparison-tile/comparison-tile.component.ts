@@ -3,9 +3,9 @@ import {CircleImageData} from '../images/image-data';
 import {CircleImage} from '../images/circle-image';
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {ComplexInnerHtml} from '../complex-inner-html/complex-inner-html.component';
-import {Link} from '../../../global/global-interface';
+import {Link} from '../../../global/../global-interface';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeHtml} from '../../pipes/safe.pipe';
+import {SanitizeHtml} from '../../fe-core/pipes/safe.pipe';
 
 
 export interface ComparisonTileInput {
@@ -21,7 +21,7 @@ export interface ComparisonTileInput {
 
 @Component({
     selector: 'comparison-tile',
-    templateUrl: './app/SNT-framework-core-frontend/components/comparison-tile/comparison-tile.component.html',
+    templateUrl: './app/fe-core/components/comparison-tile/comparison-tile.component.html',
     directives:[CircleImage, DropdownComponent, ComplexInnerHtml, ROUTER_DIRECTIVES],
     pipes:[SanitizeHtml],
 })

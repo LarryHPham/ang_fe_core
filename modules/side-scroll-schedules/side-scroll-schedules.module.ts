@@ -1,12 +1,12 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ScheduleBox} from '../../components/schedule-box/schedule-box.component'
-import {SideScroll} from '../../components/carousels/side-scroll/side-scroll.component'
+import {ScheduleBox} from '../../fe-core/components/schedule-box/schedule-box.component'
+import {SideScroll} from '../../fe-core/components/carousels/side-scroll/side-scroll.component'
 
 declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll-schedules',
-    templateUrl: './app/SNT-framework-core-frontend/modules/side-scroll-schedules/side-scroll-schedules.module.html',
+    templateUrl: './app/fe-core/modules/side-scroll-schedules/side-scroll-schedules.module.html',
     directives: [ScheduleBox,SideScroll],
     outputs: ['count']
 })

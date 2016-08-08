@@ -8,7 +8,7 @@ export interface ModuleHeaderData {
 
 @Component({
     selector: 'module-header',
-    templateUrl: './app/SNT-framework-core-frontend/components/module-header/module-header.component.html',
+    templateUrl: './app/fe-core/components/module-header/module-header.component.html',
     directives:[],
     providers: []
 })

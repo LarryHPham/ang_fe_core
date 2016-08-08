@@ -3,7 +3,7 @@ import { Tab } from './tab.component';
 
 @Component({
   selector: 'tabs',
-  templateUrl: './app/SNT-framework-core-frontend/components/tabs/tabs.component.html',
+  templateUrl: './app/fe-core/components/tabs/tabs.component.html',
 })
 
 export class Tabs implements AfterContentInit {

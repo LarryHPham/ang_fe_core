@@ -7,7 +7,7 @@ import {ImageData, CircleImageData} from '../../images/image-data';
 import {Carousel} from '../carousel.component';
 import {ModuleFooter, ModuleFooterData} from '../../module-footer/module-footer.component'
 import {ComplexInnerHtml} from '../../complex-inner-html/complex-inner-html.component'
-import {Link, ParagraphItem} from '../../../../global/global-interface';
+import {Link, ParagraphItem} from '../../../../global/../global-interface';
 
 /*
   index?: //(optional) parameter in case it is needed to know the position of the object in its current array
@@ -95,7 +95,7 @@ export interface Type2CarouselItem {
 
 @Component({
   selector: 'slider-carousel',
-  templateUrl: './app/SNT-framework-core-frontend/components/carousels/slider-carousel/slider-carousel.component.html',
+  templateUrl: './app/fe-core/components/carousels/slider-carousel/slider-carousel.component.html',
   directives: [ModuleFooter, Carousel, CircleImage, ROUTER_DIRECTIVES, ComplexInnerHtml],
   providers: [],
   outputs:['indexNum'],
@@ -124,7 +124,7 @@ export class SliderCarousel implements OnInit {
     }
     else {
       //var randomIndex = Math.random() > .5 ? 1 : 2;
-      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/public/Image-Placeholder-2.jpg');
+      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/../public/Image-Placeholder-2.jpg');
     }
     //sets the index of the dataPoint of its current position in the array
     // the '?' meaning if there is data to even receive
@@ -141,12 +141,12 @@ export class SliderCarousel implements OnInit {
   ngOnInit() {
     //incase there is no backgroundImage being return set the default background
     if(typeof this.backgroundImage == 'undefined'){
-      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/public/Image-Placeholder-1.jpg');
+      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/../public/Image-Placeholder-1.jpg');
     }
 
     //In case of errors display below
     if (typeof this.dataPoint == 'undefined') {
-      var sampleImage = "./app/public/no-image.png";
+      var sampleImage = "./app/../public/no-image.png";
       this.dataPoint =
       {//placeholder data
         index:'1',
@@ -317,7 +317,7 @@ export class SliderCarousel implements OnInit {
         mainImage: {
           imageClass: "border-10",
           urlRouteArray: null,
-          imageUrl: "/app/public/no-image.png",
+          imageUrl: "/app/../public/no-image.png",
           hoverText: ""
         },
         subImages: []

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CircleImage} from '../images/circle-image';
 import {CircleImageData} from '../images/image-data';
-import {StatHyphenValuePipe} from '../../pipes/stat-hyphen.pipe';
+import {StatHyphenValuePipe} from '../../fe-core/pipes/stat-hyphen.pipe';
 import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 
 export interface GameInfoInput{
@@ -29,7 +29,7 @@ export interface GameInfoInput{
 
 @Component({
     selector: 'game-info',
-    templateUrl: './app/SNT-framework-core-frontend/components/game-info/game-info.component.html',
+    templateUrl: './app/fe-core/components/game-info/game-info.component.html',
     directives: [ROUTER_DIRECTIVES, CircleImage],
     pipes: [StatHyphenValuePipe],
 })

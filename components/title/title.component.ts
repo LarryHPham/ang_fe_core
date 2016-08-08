@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {CircleImage} from '../../components/images/circle-image';
-import {ImageData, CircleImageData} from '../../components/images/image-data';
-import {GlobalSettings} from '../../../global/global-settings';
+import {CircleImage} from '../../fe-core/components/images/circle-image';
+import {ImageData, CircleImageData} from '../../fe-core/components/images/image-data';
+import {GlobalSettings} from '../../../global/../global-settings';
 
 export interface TitleInputData {
     imageURL  : string;
@@ -15,7 +15,7 @@ export interface TitleInputData {
 
 @Component({
     selector: 'title-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/title/title.component.html',    
+    templateUrl: './app/fe-core/components/title/title.component.html',    
     directives: [CircleImage]
 })
 export class TitleComponent implements OnChanges {

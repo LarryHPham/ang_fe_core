@@ -3,7 +3,7 @@ import {ScrollableContent} from '../scrollable-content/scrollable-content.compon
 
 @Component({
   selector: 'dropdown-directory',
-  templateUrl: './app/SNT-framework-core-frontend/components/dropdown-directory/dropdown-directory.component.html',
+  templateUrl: './app/fe-core/components/dropdown-directory/dropdown-directory.component.html',
   directives: [ScrollableContent]
 })
 

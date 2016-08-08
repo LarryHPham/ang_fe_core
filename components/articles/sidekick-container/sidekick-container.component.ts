@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
     selector: 'sidekick-container-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/sidekick-container/sidekick-container.component.html',
+    templateUrl: './app/fe-core/components/articles/sidekick-container/sidekick-container.component.html',
     inputs: ['trending']
 })
 

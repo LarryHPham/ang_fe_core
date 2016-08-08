@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({
     selector: 'game-article',
-    templateUrl: './app/SNT-framework-core-frontend/components/game-article/game-article.component.html',
+    templateUrl: './app/fe-core/components/game-article/game-article.component.html',
     directives: [ROUTER_DIRECTIVES],
 })
 

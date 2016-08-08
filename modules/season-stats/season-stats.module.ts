@@ -1,19 +1,19 @@
 import {Component, Input, Output, OnInit, EventEmitter, OnChanges} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {ComparisonBar, ComparisonBarInput} from '../../components/comparison-bar/comparison-bar.component';
-import {ComparisonLegend, ComparisonLegendInput} from '../../components/comparison-legend/comparison-legend.component';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
+import {ComparisonBar, ComparisonBarInput} from '../../fe-core/components/comparison-bar/comparison-bar.component';
+import {ComparisonLegend, ComparisonLegendInput} from '../../fe-core/components/comparison-legend/comparison-legend.component';
+import {Tabs} from '../../fe-core/components/tabs/tabs.component';
+import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {SliderCarousel, SliderCarouselInput} from '../../fe-core/components/carousels/slider-carousel/slider-carousel.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
 
 import {SeasonStatsService} from '../../../services/season-stats.service';
 
-import {GlobalSettings} from '../../../global/global-settings';
-import {GlobalFunctions} from '../../../global/global-functions';
+import {GlobalSettings} from '../../../global/../global-settings';
+import {GlobalFunctions} from '../../../global/../global-functions';
 import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
-import {MLBPageParameters} from '../../../global/global-interface';
+import {MLBPageParameters} from '../../../global/../global-interface';
 
 export interface SeasonStatsModuleData {
   tabs: Array<SeasonStatsTabData>;
@@ -32,7 +32,7 @@ export interface SeasonStatsTabData {
 
 @Component({
     selector: 'season-stats-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/season-stats/season-stats.module.html',
+    templateUrl: './app/fe-core/modules/season-stats/season-stats.module.html',
     directives: [
                   SliderCarousel,
                   ModuleHeader,

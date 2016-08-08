@@ -2,14 +2,15 @@
  * Created by Victoria on 5/2/2016.
  */
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {MLBPageParameters} from '../../../global/global-interface';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {MLBPageParameters} from '../../../global/../global-interface';
+import {GlobalSettings} from "../../../global/../global-settings";
 
 declare var DISQUS: any;
 
 @Component({
     selector: 'comment-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/comment/comment.module.html',
+    templateUrl: './app/fe-core/modules/comment/comment.module.html',
     directives: [ModuleHeader],
     providers: [],
 })
@@ -43,7 +44,7 @@ export class CommentModule implements OnInit, OnChanges {
                     });
                 }else{
                     js = d.createElement(s); js.id = id;
-                    js.src = "//homerunloyal.disqus.com/embed.js";
+                    js.src = "//"+GlobalSettings.getHomePageLinkName()+".disqus.com/embed.js";
                     fjs.parentNode.insertBefore(js, fjs);
                 }
               }(document, 'script', 'disqusJS'));

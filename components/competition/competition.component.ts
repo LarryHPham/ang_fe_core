@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CircleImage} from '../../components/images/circle-image';
-import {CircleImageData} from '../../components/images/image-data';
+import {CircleImage} from '../../fe-core/components/images/circle-image';
+import {CircleImageData} from '../../fe-core/components/images/image-data';
 
 export interface CompetitionInput{
   leftData:string;
@@ -13,7 +13,7 @@ export interface CompetitionInput{
 
 @Component({
     selector: 'competition',
-    templateUrl: './app/SNT-framework-core-frontend/components/competition/competition.component.html',
+    templateUrl: './app/fe-core/components/competition/competition.component.html',
     directives: [CircleImage],
     providers: [],
 })
@@ -33,7 +33,7 @@ export class Competition implements OnInit{
           leftCircle:{//for left image data
             imageClass: "image-70-sub",
             mainImage: {
-              imageUrl: "./app/public/placeholder-location.jpg",
+              imageUrl: "./app/../public/placeholder-location.jpg",
               urlRouteArray: ['Disclaimer-page'],
               hoverText: "<i class='fa fa-mail-forward competition-fa'></i>",
               imageClass: "border-1"
@@ -44,7 +44,7 @@ export class Competition implements OnInit{
           rightCircle:{//for right image data
             imageClass: "image-70-sub",
             mainImage: {
-              imageUrl: "./app/public/placeholder-location.jpg",
+              imageUrl: "./app/../public/placeholder-location.jpg",
               urlRouteArray: ['Disclaimer-page'],
               hoverText: "<i class='fa fa-mail-forward competition-fa'></i>",
               imageClass: "border-1"

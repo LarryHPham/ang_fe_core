@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HoverImage} from '../../components/images/hover-image';
-import {CircleImageData} from '../../components/images/image-data';
+import {HoverImage} from '../../fe-core/components/images/hover-image';
+import {CircleImageData} from '../../fe-core/components/images/image-data';
 
 /**
  * Component: CircleImage
@@ -60,7 +60,7 @@ import {CircleImageData} from '../../components/images/image-data';
  */
 @Component({
     selector: 'circle-image',
-    templateUrl: './app/SNT-framework-core-frontend/components/images/circle-image.html',
+    templateUrl: './app/fe-core/components/images/circle-image.html',
     directives: [HoverImage]
 })
 export class CircleImage implements OnInit {

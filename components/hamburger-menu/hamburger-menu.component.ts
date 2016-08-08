@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {GlobalSettings} from "../../../global/global-settings";
+import {GlobalSettings} from "../../../global/../global-settings";
 
 export interface MenuData{
   menuTitle: string,
@@ -9,7 +9,7 @@ export interface MenuData{
 
 @Component({
     selector: 'hamburger-menu-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/hamburger-menu/hamburger-menu.component.html',
+    templateUrl: './app/fe-core/components/hamburger-menu/hamburger-menu.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [],
 })

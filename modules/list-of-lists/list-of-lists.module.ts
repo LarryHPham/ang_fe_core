@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {DetailedListItem, DetailListInput} from '../../components/detailed-list-item/detailed-list-item.component';
-import {ModuleFooter} from "../../components/module-footer/module-footer.component";
-import {ModuleHeader} from '../../components/module-header/module-header.component';
-import {ListOfListsItem} from "../../components/list-of-lists-item/list-of-lists-item.component";
-import {ModuleHeaderData} from "../../components/module-header/module-header.component";
+import {DetailedListItem, DetailListInput} from '../../fe-core/components/detailed-list-item/detailed-list-item.component';
+import {ModuleFooter} from "../../fe-core/components/module-footer/module-footer.component";
+import {ModuleHeader} from '../../fe-core/components/module-header/module-header.component';
+import {ListOfListsItem} from "../../fe-core/components/list-of-lists-item/list-of-lists-item.component";
+import {ModuleHeaderData} from "../../fe-core/components/module-header/module-header.component";
 import {RouteParams} from "@angular/router-deprecated";
 import {Router} from "@angular/router-deprecated";
 import {Input} from "@angular/core";
@@ -15,7 +15,7 @@ export interface ListOfListsData {
 
 @Component({
     selector: 'list-of-lists',
-    templateUrl: './app/SNT-framework-core-frontend/modules/list-of-lists/list-of-lists.module.html',
+    templateUrl: './app/fe-core/modules/list-of-lists/list-of-lists.module.html',
     directives: [ModuleHeader, ModuleFooter, ListOfListsItem],
 })
 

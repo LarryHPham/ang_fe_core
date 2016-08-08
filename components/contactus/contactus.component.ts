@@ -1,11 +1,11 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {BackTabComponent} from '../../components/backtab/backtab.component';
-import {TitleComponent} from '../../components/title/title.component';
+import {BackTabComponent} from '../../fe-core/components/backtab/backtab.component';
+import {TitleComponent} from '../../fe-core/components/title/title.component';
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 
 @Component({
     selector: 'contactus-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/contactus/contactus.module.html',
+    templateUrl: './app/fe-core/components/contactus/contactus.component.html',
     directives:[FORM_DIRECTIVES, BackTabComponent, TitleComponent],
     providers: []
 })

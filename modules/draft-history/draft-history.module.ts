@@ -1,20 +1,20 @@
 import {Component, Output, EventEmitter, Injectable, Input, OnInit} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 
-import {DetailedListItem, DetailListInput} from '../../components/detailed-list-item/detailed-list-item.component';
-import {ModuleFooter} from '../../components/module-footer/module-footer.component';
-import {ModuleHeader} from '../../components/module-header/module-header.component';
-import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
-import {LoadingComponent} from "../../components/loading/loading.component";
-import {DraftHistoryComponent} from "../../components/draft-history/draft-history.component";
+import {DetailedListItem, DetailListInput} from '../../fe-core/components/detailed-list-item/detailed-list-item.component';
+import {ModuleFooter} from '../../fe-core/components/module-footer/module-footer.component';
+import {ModuleHeader} from '../../fe-core/components/module-header/module-header.component';
+import {SliderCarousel, SliderCarouselInput} from '../../fe-core/components/carousels/slider-carousel/slider-carousel.component';
+import {Tabs} from '../../fe-core/components/tabs/tabs.component';
+import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {LoadingComponent} from "../../fe-core/components/loading/loading.component";
+import {DraftHistoryComponent} from "../../fe-core/components/draft-history/draft-history.component";
 import {IProfileData, ProfileHeaderService} from '../../../services/profile-header.service';
 
 @Component({
     selector: 'draft-history-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/draft-history/draft-history.module.html',
+    templateUrl: './app/fe-core/modules/draft-history/draft-history.module.html',
     directives: [DraftHistoryComponent, ModuleHeader, ModuleFooter]
 })
 

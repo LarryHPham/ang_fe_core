@@ -50,7 +50,7 @@ class Dropdown {
 
 @Component({
   selector: 'dropdown',
-  templateUrl: './app/SNT-framework-core-frontend/components/dropdown/dropdown.component.html',
+  templateUrl: './app/fe-core/components/dropdown/dropdown.component.html',
   directives: [ScrollableContent]
 })
 

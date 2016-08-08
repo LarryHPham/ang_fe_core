@@ -1,13 +1,13 @@
 import {Component, Input, Output, OnChanges, EventEmitter} from '@angular/core';
 import {NgStyle} from '@angular/common';
-import {BackTabComponent} from '../../components/backtab/backtab.component';
+import {BackTabComponent} from '../../fe-core/components/backtab/backtab.component';
 import {ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {Search, SearchInput} from '../../components/search/search.component';
-import {PaginationFooter, PaginationParameters} from '../../components/pagination-footer/pagination-footer.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
-import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {Tabs} from '../../fe-core/components/tabs/tabs.component';
+import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {Search, SearchInput} from '../../fe-core/components/search/search.component';
+import {PaginationFooter, PaginationParameters} from '../../fe-core/components/pagination-footer/pagination-footer.component';
+import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
 
 export interface SearchPageInput {
     //Data for the search bar component
@@ -45,7 +45,7 @@ export interface SearchPageInput {
 
 @Component({
     selector: 'search-page-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/search-page/search-page.module.html',
+    templateUrl: './app/fe-core/modules/search-page/search-page.module.html',
     directives:[ResponsiveWidget, ROUTER_DIRECTIVES, NoDataBox, BackTabComponent, Tabs, Tab, Search, PaginationFooter],
     providers: [NgStyle]
 })

@@ -7,7 +7,7 @@ import {MyAppComponent} from "../../app-webpage/app.mywebpage";
 
 @Component({
     selector: 'app-domain',
-    templateUrl: './app/SNT-framework-core-frontend/app-domain/app.domain.html',
+    templateUrl: './app/fe-core/app-domain/app.domain.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [Title]
 })
@@ -23,7 +23,7 @@ import {MyAppComponent} from "../../app-webpage/app.mywebpage";
         path: '/:partner_id/...',
         name: 'Partner-home',
         component: MyAppComponent,
-    },
+    }
 ])
 
 export class AppDomain {

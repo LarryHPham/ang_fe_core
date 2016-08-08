@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges, Input, AfterContentChecked} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
 
 // declare var twttr: any;
 
@@ -11,7 +11,7 @@ export interface twitterModuleData{
 
 @Component({
     selector: 'twitter-module',
-    templateUrl: './app/SNT-framework-core-frontend/modules/twitter/twitter.module.html',
+    templateUrl: './app/fe-core/modules/twitter/twitter.module.html',
     directives: [ModuleHeader],
 })
 

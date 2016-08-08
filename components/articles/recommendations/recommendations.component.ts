@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {SanitizeHtml} from "../../../pipes/safe.pipe";
+import {SanitizeHtml} from "../../../fe-core/pipes/safe.pipe";
 
 
 @Component({
     selector: 'recommendations-component',
-    templateUrl: './app/SNT-framework-core-frontend/components/articles/recommendations/recommendations.component.html',
+    templateUrl: './app/fe-core/components/articles/recommendations/recommendations.component.html',
     directives: [ROUTER_DIRECTIVES],
     pipes: [SanitizeHtml]
 })

@@ -1,8 +1,8 @@
 import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImage} from '../../components/images/rectangle-image';
-import {ImageData, RectangleImageData} from '../../components/images/image-data';
+import {RectangleImage} from '../../fe-core/components/images/rectangle-image';
+import {ImageData, RectangleImageData} from '../../fe-core/components/images/image-data';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {SanitizeHtml} from "../../pipes/safe.pipe";
+import {SanitizeHtml} from "../../fe-core/pipes/safe.pipe";
 
 
 export interface StackRowsInput {
@@ -15,7 +15,7 @@ export interface StackRowsInput {
 
 @Component({
   selector: 'stack-rows-component',
-  templateUrl: './app/SNT-framework-core-frontend/components/stack-rows/stack-rows.component.html',
+  templateUrl: './app/fe-core/components/stack-rows/stack-rows.component.html',
   directives: [RectangleImage, ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })

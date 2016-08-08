@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'infinity-button',
-    templateUrl: './app/SNT-framework-core-frontend/components/buttons/infinity/infinity.button.html',
+    templateUrl: './app/fe-core/components/buttons/infinity/infinity.button.html',
     
     directives: [],
     providers: [],

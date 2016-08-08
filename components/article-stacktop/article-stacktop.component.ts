@@ -1,8 +1,8 @@
 import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImage} from '../../components/images/rectangle-image';
-import {ImageData, RectangleImageData} from '../../components/images/image-data';
+import {RectangleImage} from '../../fe-core/components/images/rectangle-image';
+import {ImageData, RectangleImageData} from '../../fe-core/components/images/image-data';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeHtml} from "../../pipes/safe.pipe";
+import {SanitizeHtml} from "../../fe-core/pipes/safe.pipe";
 
 
 export interface StackTopInput{
@@ -18,7 +18,7 @@ export interface StackTopInput{
 
 @Component({
   selector: 'article-stacktop-component',
-  templateUrl: './app/SNT-framework-core-frontend/components/article-stacktop/article-stacktop.component.html',
+  templateUrl: './app/fe-core/components/article-stacktop/article-stacktop.component.html',
   directives: [RectangleImage, ROUTER_DIRECTIVES],
   pipes: [SanitizeHtml]
 })
@@ -27,7 +27,7 @@ export class ArticleStacktopComponent implements OnInit{
   @Input() stackTopData: StackTopInput;
   ngOnInit() {
     if (typeof this.stackTopData == 'undefined') {
-      var sampleImage = "/app/public/placeholder_XL.png";
+      var sampleImage = "/app/../public/placeholder_XL.png";
       this.stackTopData = {
         articleStackRoute: ['Syndicated-article-page', {articleType: 'story', eventID: 1}],
         keyword: "[Keyword]",

@@ -4,7 +4,7 @@ declare var jQuery:any;
 
 @Component({
   selector: 'bar-chart',
-  templateUrl: './app/SNT-framework-core-frontend/components/bar-chart/bar-chart.component.html'
+  templateUrl: './app/fe-core/components/bar-chart/bar-chart.component.html'
 })
 
 export class BarChartComponent implements AfterViewInit {

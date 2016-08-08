@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, OnChanges, ViewChild, AfterViewChecked} from '@angular/core';
-import {NaValuePipe} from '../../pipes/na.pipe';
+import {NaValuePipe} from '../../fe-core/pipes/na.pipe';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 import {ImageData, CircleImageData} from '../images/image-data';
 import {CircleImage} from '../images/circle-image';
@@ -27,7 +27,7 @@ export interface ComparisonBarInput {
 
 @Component({
     selector: 'comparison-bar',
-    templateUrl: './app/SNT-framework-core-frontend/components/comparison-bar/comparison-bar.component.html',
+    templateUrl: './app/fe-core/components/comparison-bar/comparison-bar.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES],
     pipes: [NaValuePipe],
 })

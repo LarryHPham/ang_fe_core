@@ -1,12 +1,12 @@
 import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
-import {GlobalSettings} from '../../../global/global-settings';
+import {GlobalSettings} from '../../../global/../global-settings';
 
-import {PriceFormatPipe} from '../../pipes/price-format.pipe';
+import {PriceFormatPipe} from '../../fe-core/pipes/price-format.pipe';
 
 @Component({
     selector: 'dynamic-list',
-    templateUrl: './app/SNT-framework-core-frontend/components/dynamic-list/dynamic-list.component.html',
+    templateUrl: './app/fe-core/components/dynamic-list/dynamic-list.component.html',
     
     directives: [ROUTER_DIRECTIVES],
     providers: [],

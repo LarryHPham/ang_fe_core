@@ -1,8 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {CircleImage} from '../../components/images/circle-image';
-import {CircleImageData} from '../../components/images/image-data';
+import {CircleImage} from '../../fe-core/components/images/circle-image';
+import {CircleImageData} from '../../fe-core/components/images/image-data';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
 
 export interface IListOfListsItem {
     url:          string;  // API url for list call
@@ -26,7 +26,7 @@ export interface IListOfListsItem {
 
 @Component({
     selector: 'list-of-lists-item',
-    templateUrl: './app/SNT-framework-core-frontend/components/list-of-lists-item/list-of-lists-item.component.html',
+    templateUrl: './app/fe-core/components/list-of-lists-item/list-of-lists-item.component.html',
     directives: [CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget],
     providers: [],
 })

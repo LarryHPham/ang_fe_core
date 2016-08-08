@@ -1,17 +1,17 @@
 import {Component, OnChanges, Output, Input, EventEmitter, ElementRef, OnInit} from '@angular/core';
-import {ModuleHeader} from '../../components/module-header/module-header.component';
-import {CalendarCarousel} from '../../components/carousels/calendar/calendarCar.component';
-import {Competition} from '../../components/competition/competition.component';
-import {ArticleScheduleComponent} from '../../components/articles/article-schedule/article-schedule.component';
-import {GameInfo} from '../../components/game-info/game-info.component';
-import {ScoreBoard} from '../../components/score-board/score-board.component';
-import {GameArticle} from '../../components/game-article/game-article.component';
-import {ScrollableContent} from '../../components/scrollable-content/scrollable-content.component';
+import {ModuleHeader} from '../../fe-core/components/module-header/module-header.component';
+import {CalendarCarousel} from '../../fe-core/components/carousels/calendar/calendarCar.component';
+import {Competition} from '../../fe-core/components/competition/competition.component';
+import {ArticleScheduleComponent} from '../../fe-core/components/articles/article-schedule/article-schedule.component';
+import {GameInfo} from '../../fe-core/components/game-info/game-info.component';
+import {ScoreBoard} from '../../fe-core/components/score-board/score-board.component';
+import {GameArticle} from '../../fe-core/components/game-article/game-article.component';
+import {ScrollableContent} from '../../fe-core/components/scrollable-content/scrollable-content.component';
 import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
     selector: 'box-scores',
-    templateUrl: './app/SNT-framework-core-frontend/modules/box-scores/box-scores.module.html',
+    templateUrl: './app/fe-core/modules/box-scores/box-scores.module.html',
     directives: [ScrollableContent, GameArticle, ScoreBoard, GameInfo, ArticleScheduleComponent, CalendarCarousel,  ModuleHeader],
     providers: [ScrollerFunctions],
     outputs: ['dateEmit'],
