@@ -10,10 +10,10 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 import {SeasonStatsService} from '../../../services/season-stats.service';
 
-import {GlobalSettings} from '../../../global//global-settings';
-import {GlobalFunctions} from '../../../global//global-functions';
+import {GlobalSettings} from '../../../global/global-settings';
+import {GlobalFunctions} from '../../../global/global-functions';
 import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
-import {MLBPageParameters} from '../../../global//global-interface';
+import {MLBPageParameters} from '../../../global/global-interface';
 
 export interface SeasonStatsModuleData {
   tabs: Array<SeasonStatsTabData>;

@@ -3,7 +3,7 @@ import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/mod
 import {NewsCarousel, NewsCarouselInput} from '../../components/carousels/news-carousel/news-carousel.component';
 import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
 import {RouteParams} from "@angular/router-deprecated";
-import {GlobalFunctions} from '../../../global//global-functions';
+import {GlobalFunctions} from '../../../global/global-functions';
 import {CircleButton} from "../../components/buttons/circle/circle.button";
 declare var stButtons: any;
 

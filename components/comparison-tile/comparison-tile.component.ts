@@ -3,7 +3,7 @@ import {CircleImageData} from '../images/image-data';
 import {CircleImage} from '../images/circle-image';
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {ComplexInnerHtml} from '../complex-inner-html/complex-inner-html.component';
-import {Link} from '../../../global//global-interface';
+import {Link} from '../../../global/global-interface';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {SanitizeHtml} from '../../pipes/safe.pipe';
 

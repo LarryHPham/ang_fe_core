@@ -6,8 +6,8 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 import {CircleImage} from '../../components/images/circle-image';
 import {CircleImageData} from '../../components/images/image-data';
 import {ScrollableContent} from '../../components/scrollable-content/scrollable-content.component';
-import {GlobalFunctions} from '../../../global//global-functions';
-import {GlobalSettings} from '../../../global//global-settings';
+import {GlobalFunctions} from '../../../global/global-functions';
+import {GlobalSettings} from '../../../global/global-settings';
 import {NaValuePipe} from '../../pipes/na.pipe';
 
 export interface DataItem {

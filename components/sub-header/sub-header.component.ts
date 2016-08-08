@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalSettings} from '../../../global//global-settings';
+import {GlobalSettings} from '../../../global/global-settings';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({

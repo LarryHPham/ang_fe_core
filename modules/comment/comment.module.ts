@@ -3,8 +3,8 @@
  */
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {MLBPageParameters} from '../../../global//global-interface';
-import {GlobalSettings} from "../../../global//global-settings";
+import {MLBPageParameters} from '../../../global/global-interface';
+import {GlobalSettings} from "../../../global/global-settings";
 
 declare var DISQUS: any;
 

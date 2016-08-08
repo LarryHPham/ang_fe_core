@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {CircleImage} from '../../components/images/circle-image';
 import {ImageData, CircleImageData} from '../../components/images/image-data';
-import {GlobalSettings} from '../../../global//global-settings';
+import {GlobalSettings} from '../../../global/global-settings';
 
 export interface TitleInputData {
     imageURL  : string;

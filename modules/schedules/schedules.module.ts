@@ -3,7 +3,7 @@ import {ModuleFooter} from '../../components/module-footer/module-footer.compone
 import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 import {SchedulesComponent} from '../../components/schedules/schedules.component';
 import {RouteParams} from '@angular/router-deprecated';
-import {GlobalFunctions} from '../../../global//global-functions';
+import {GlobalFunctions} from '../../../global/global-functions';
 
 @Component({
     selector: 'schedules',
