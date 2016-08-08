@@ -15,7 +15,7 @@ export class HoverImage {
 
     imageUrl;
     
-    public noImageUrl: string = "/app/../public/no-image.png";
+    public noImageUrl: string = "/app/public/no-image.png";
 
     constructor(private _sanitizer: DomSanitizationService) {}
 

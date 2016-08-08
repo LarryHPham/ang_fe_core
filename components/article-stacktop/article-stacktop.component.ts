@@ -27,7 +27,7 @@ export class ArticleStacktopComponent implements OnInit{
   @Input() stackTopData: StackTopInput;
   ngOnInit() {
     if (typeof this.stackTopData == 'undefined') {
-      var sampleImage = "/app/../public/placeholder_XL.png";
+      var sampleImage = "/app/public/placeholder_XL.png";
       this.stackTopData = {
         articleStackRoute: ['Syndicated-article-page', {articleType: 'story', eventID: 1}],
         keyword: "[Keyword]",

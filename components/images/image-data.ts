@@ -24,7 +24,7 @@ export interface ImageData {
    * imageUrl could not be found.
    *
    * If this is not included, then placeholder image will default
-   * to '/app/../public/placeholder-location.png'
+   * to '/app/public/placeholder-location.png'
    */
   placeholderImageUrl?: string;
 

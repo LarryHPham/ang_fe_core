@@ -47,7 +47,7 @@ export class ProfileHeaderModule implements OnChanges {
       imageClass: "image-180",
       mainImage: {
         imageClass: "border-large",
-        placeholderImageUrl: "/app/../public/profile_placeholder_large.png"
+        placeholderImageUrl: "/app/public/profile_placeholder_large.png"
       }
     };
 
@@ -66,10 +66,10 @@ export class ProfileHeaderModule implements OnChanges {
       var data = this.profileHeaderData;
       if ( data ) {
         if ( !data.backgroundImageUrl ) {
-          data.backgroundImageUrl = "/app/../public/no-image.png";
+          data.backgroundImageUrl = "/app/public/no-image.png";
         }
         if ( !data.profileImageUrl ) {
-          data.profileImageUrl = "/app/../public/no-image.png";
+          data.profileImageUrl = "/app/public/no-image.png";
         }
         this.imageConfig.mainImage.imageUrl = data.profileImageUrl;
         this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + data.backgroundImageUrl + ")");

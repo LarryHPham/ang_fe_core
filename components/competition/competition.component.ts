@@ -33,7 +33,7 @@ export class Competition implements OnInit{
           leftCircle:{//for left image data
             imageClass: "image-70-sub",
             mainImage: {
-              imageUrl: "./app/../public/placeholder-location.jpg",
+              imageUrl: "./app/public/placeholder-location.jpg",
               urlRouteArray: ['Disclaimer-page'],
               hoverText: "<i class='fa fa-mail-forward competition-fa'></i>",
               imageClass: "border-1"
@@ -44,7 +44,7 @@ export class Competition implements OnInit{
           rightCircle:{//for right image data
             imageClass: "image-70-sub",
             mainImage: {
-              imageUrl: "./app/../public/placeholder-location.jpg",
+              imageUrl: "./app/public/placeholder-location.jpg",
               urlRouteArray: ['Disclaimer-page'],
               hoverText: "<i class='fa fa-mail-forward competition-fa'></i>",
               imageClass: "border-1"

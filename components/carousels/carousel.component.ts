@@ -79,10 +79,10 @@ export class Carousel implements OnInit, OnChanges {
 
   ngOnInit() {
     if(typeof this.carouselData == 'undefined' || this.carouselData.length == 0){
-      var sampleImage = "./app/../public/no-image.jpg";
+      var sampleImage = "./app/public/no-image.jpg";
       this.carouselData =[
         // {
-        //   backgroundImage: '/app/../public/Image-Placeholder-1.jpg',
+        //   backgroundImage: '/app/public/Image-Placeholder-1.jpg',
         //   imageData: {
         //     imageClass: "image-150",
         //     mainImage: {
@@ -107,7 +107,7 @@ export class Carousel implements OnInit, OnChanges {
         //   description: [],
         // },
         // {
-        //   backgroundImage: '/app/../public/Image-Placeholder-1.jpg',
+        //   backgroundImage: '/app/public/Image-Placeholder-1.jpg',
         //   imageData: {
         //     imageClass: "image-150",
         //     mainImage: {
