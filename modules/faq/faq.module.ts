@@ -1,5 +1,5 @@
 import {Component, OnChanges, Input, Output, EventEmitter} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 
 export interface faqModuleData{
   question: string;

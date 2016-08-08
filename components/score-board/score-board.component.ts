@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, EventEmitter} from '@angular/core';
-import {StatHyphenValuePipe} from '../../fe-core/pipes/stat-hyphen.pipe';
-import {SanitizeStyle} from '../../fe-core/pipes/safe.pipe';
+import {StatHyphenValuePipe} from '../../pipes/stat-hyphen.pipe';
+import {SanitizeStyle} from '../../pipes/safe.pipe';
 
 export interface ScoreBoardInput{
 

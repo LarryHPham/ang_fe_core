@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {CircleImage} from '../../fe-core/components/images/circle-image';
-import {CircleImageData} from '../../fe-core/components/images/image-data';
-import {Link} from '../../../global/../global-interface';
+import {CircleImage} from '../../components/images/circle-image';
+import {CircleImageData} from '../../components/images/image-data';
+import {Link} from '../../../global//global-interface';
 import {ComplexInnerHtml} from '../complex-inner-html/complex-inner-html.component';
-import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
+import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 
 export interface TransactionsListInput {
   // must have a length of 3 or the styling will be off

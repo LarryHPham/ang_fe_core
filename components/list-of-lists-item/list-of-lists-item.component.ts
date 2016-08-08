@@ -1,8 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {CircleImage} from '../../fe-core/components/images/circle-image';
-import {CircleImageData} from '../../fe-core/components/images/image-data';
+import {CircleImage} from '../../components/images/circle-image';
+import {CircleImageData} from '../../components/images/image-data';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
+import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 
 export interface IListOfListsItem {
     url:          string;  // API url for list call

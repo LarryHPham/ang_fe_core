@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges, Input, AfterContentChecked} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 
 // declare var twttr: any;
 

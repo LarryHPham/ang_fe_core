@@ -1,9 +1,9 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
-import {ModuleFooter} from '../../fe-core/components/module-footer/module-footer.component';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {SchedulesComponent} from '../../fe-core/components/schedules/schedules.component';
+import {ModuleFooter} from '../../components/module-footer/module-footer.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {SchedulesComponent} from '../../components/schedules/schedules.component';
 import {RouteParams} from '@angular/router-deprecated';
-import {GlobalFunctions} from '../../../global/../global-functions';
+import {GlobalFunctions} from '../../../global//global-functions';
 
 @Component({
     selector: 'schedules',

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HoverImage} from '../../fe-core/components/images/hover-image';
-import {CircleImageData} from '../../fe-core/components/images/image-data';
+import {HoverImage} from '../../components/images/hover-image';
+import {CircleImageData} from '../../components/images/image-data';
 
 /**
  * Component: CircleImage

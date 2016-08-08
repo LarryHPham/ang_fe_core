@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProfileDataComponent} from "../profileData/profileData.component";
 import {BillboardComponent} from "../billboard/billboard.component";
-import {SanitizeHtml} from '../../../fe-core/pipes/safe.pipe';
+import {SanitizeHtml} from '../../../pipes/safe.pipe';
 
 @Component({
     selector: 'article-content-component',

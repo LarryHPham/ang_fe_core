@@ -2,15 +2,15 @@ import {Component, Input} from '@angular/core';
 import {DomSanitizationService, SafeStyle} from '@angular/platform-browser';
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {CircleImageData} from "../../fe-core/components/images/image-data";
-import {CircleImage} from "../../fe-core/components/images/circle-image";
-import {GlobalSettings} from "../../../global/../global-settings";
-import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
-import {BarChartComponent} from '../../fe-core/components/bar-chart/bar-chart.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {CircleImageData} from "../../components/images/image-data";
+import {CircleImage} from "../../components/images/circle-image";
+import {GlobalSettings} from "../../../global//global-settings";
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {BarChartComponent} from '../../components/bar-chart/bar-chart.component';
 import {DailyUpdateData, DailyUpdateChart} from "../../../services/daily-update.service";
-import {SanitizeHtml} from "../../fe-core/pipes/safe.pipe";
-import {PossessivePipe} from "../../fe-core/pipes/possessive.pipe";
+import {SanitizeHtml} from "../../pipes/safe.pipe";
+import {PossessivePipe} from "../../pipes/possessive.pipe";
 
 declare var jQuery:any;
 

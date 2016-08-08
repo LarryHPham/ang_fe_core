@@ -1,5 +1,5 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter} from '@angular/core';
-import {SanitizeStyle} from '../../../fe-core/pipes/safe.pipe';
+import {SanitizeStyle} from '../../../pipes/safe.pipe';
 
 declare var jQuery:any;
 

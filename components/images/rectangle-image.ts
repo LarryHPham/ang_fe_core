@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RectangleImageData} from '../../fe-core/components/images/image-data';
+import {RectangleImageData} from '../../components/images/image-data';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 @Component({

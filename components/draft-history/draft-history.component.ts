@@ -1,16 +1,16 @@
 import {Component, OnInit, OnChanges, Input} from '@angular/core';
 
-import {DetailedListItem, DetailListInput} from '../../fe-core/components/detailed-list-item/detailed-list-item.component';
-import {SliderCarousel, SliderCarouselInput} from '../../fe-core/components/carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../../fe-core/components/tabs/tabs.component';
-import {Tab} from '../../fe-core/components/tabs/tab.component';
+import {DetailedListItem, DetailListInput} from '../../components/detailed-list-item/detailed-list-item.component';
+import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
+import {Tabs} from '../../components/tabs/tabs.component';
+import {Tab} from '../../components/tabs/tab.component';
 import {ListPageService} from '../../../services/list-page.service';
-import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
-import {LoadingComponent} from "../../fe-core/components/loading/loading.component";
-import {ErrorComponent} from "../../fe-core/components/error/error.component";
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {LoadingComponent} from "../../components/loading/loading.component";
+import {ErrorComponent} from "../../components/error/error.component";
 import {DraftHistoryTab, DraftHistoryService} from '../../../services/draft-history.service';
 import {IProfileData} from '../../../services/profile-header.service';
-import {PaginationFooter, PaginationParameters} from '../../fe-core/components/pagination-footer/pagination-footer.component';
+import {PaginationFooter, PaginationParameters} from '../../components/pagination-footer/pagination-footer.component';
 
 @Component({
     selector: 'draft-history',

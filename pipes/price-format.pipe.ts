@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {GlobalFunctions} from '../../global/../global-functions';
+import {GlobalFunctions} from '../../global//global-functions';
 
 @Pipe({
   name: 'priceFormat'
@@ -7,9 +7,9 @@ import {GlobalFunctions} from '../../global/../global-functions';
 
 export class PriceFormatPipe implements PipeTransform {
   constructor(private globalFunctions: GlobalFunctions) {
-    
+
   }
-  
+
   transform(value) : string {
     return this.globalFunctions.formatPriceNumber(value);
   }

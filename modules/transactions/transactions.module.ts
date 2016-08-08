@@ -2,9 +2,9 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
-import {ModuleFooter, FooterStyle, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {TransactionsComponent, TransactionTabData} from '../../fe-core/components/transactions/transactions.component';
+import {ModuleFooter, FooterStyle, ModuleFooterData} from '../../components/module-footer/module-footer.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {TransactionsComponent, TransactionTabData} from '../../components/transactions/transactions.component';
 
 export interface TransactionModuleData {
   tabs: Array<TransactionTabData>;

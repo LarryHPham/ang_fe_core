@@ -1,10 +1,10 @@
 import {Component, Input, ViewChildren, OnChanges, EventEmitter, Output} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {TableHeader} from '../../fe-core/components/custom-table/table-header.component';
-import {TableCell} from '../../fe-core/components/custom-table/table-cell.component';
-import {TableModel, TableColumn, CellData} from '../../fe-core/components/custom-table/table-data.component';
-import {CircleImage} from '../../fe-core/components/images/circle-image';
-import {ResponsiveWidget} from '../../fe-core/components/responsive-widget/responsive-widget.component';
+import {TableHeader} from '../../components/custom-table/table-header.component';
+import {TableCell} from '../../components/custom-table/table-cell.component';
+import {TableModel, TableColumn, CellData} from '../../components/custom-table/table-data.component';
+import {CircleImage} from '../../components/images/circle-image';
+import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 
 @Component({
   selector: 'custom-table',

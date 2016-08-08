@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {BackTabComponent} from '../../fe-core/components/backtab/backtab.component';
-import {TitleComponent} from '../../fe-core/components/title/title.component';
+import {BackTabComponent} from '../../components/backtab/backtab.component';
+import {TitleComponent} from '../../components/title/title.component';
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 
 @Component({

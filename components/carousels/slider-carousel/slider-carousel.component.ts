@@ -7,7 +7,7 @@ import {ImageData, CircleImageData} from '../../images/image-data';
 import {Carousel} from '../carousel.component';
 import {ModuleFooter, ModuleFooterData} from '../../module-footer/module-footer.component'
 import {ComplexInnerHtml} from '../../complex-inner-html/complex-inner-html.component'
-import {Link, ParagraphItem} from '../../../../global/../global-interface';
+import {Link, ParagraphItem} from '../../../../global//global-interface';
 
 /*
   index?: //(optional) parameter in case it is needed to know the position of the object in its current array

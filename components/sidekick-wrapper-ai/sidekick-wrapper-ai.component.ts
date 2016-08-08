@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {WidgetModule} from "../../fe-core/modules/widget/widget.module";
+import {WidgetModule} from "../../modules/widget/widget.module";
 
 @Component({
     selector: 'sidekick-wrapper-ai',

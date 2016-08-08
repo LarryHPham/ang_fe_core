@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {ImageData} from '../../fe-core/components/images/image-data';
+import {ImageData} from '../../components/images/image-data';
 import {DomSanitizationService} from '@angular/platform-browser';
 
 @Component({

@@ -1,8 +1,8 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-import {SanitizeStyle, SanitizeHtml} from '../../fe-core/pipes/safe.pipe';
+import {SanitizeStyle, SanitizeHtml} from '../../pipes/safe.pipe';
 import {ScheduleBox} from '../schedule-box/schedule-box.component'
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeRUrl} from "../../fe-core/pipes/safe.pipe";
+import {SanitizeRUrl} from "../../pipes/safe.pipe";
 
 declare var jQuery:any;
 declare var moment:any;

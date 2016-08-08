@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CircleImage} from '../../fe-core/components/images/circle-image';
-import {CircleImageData} from '../../fe-core/components/images/image-data';
+import {CircleImage} from '../../components/images/circle-image';
+import {CircleImageData} from '../../components/images/image-data';
 
 export interface CompetitionInput{
   leftData:string;

@@ -1,4 +1,4 @@
-import {CircleImageData} from '../../fe-core/components/images/image-data';
+import {CircleImageData} from '../../components/images/image-data';
 
 export class CellData {  
   /**

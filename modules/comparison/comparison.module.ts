@@ -1,18 +1,18 @@
 import {Component, Input, Output, OnInit, EventEmitter, OnChanges} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {ComparisonTile, ComparisonTileInput} from '../../fe-core/components/comparison-tile/comparison-tile.component';
-import {ComparisonBar, ComparisonBarInput} from '../../fe-core/components/comparison-bar/comparison-bar.component'
-import {ComparisonLegend, ComparisonLegendInput} from '../../fe-core/components/comparison-legend/comparison-legend.component';
-import {Tabs} from '../../fe-core/components/tabs/tabs.component';
-import {Tab} from '../../fe-core/components/tabs/tab.component';
-import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ComparisonTile, ComparisonTileInput} from '../../components/comparison-tile/comparison-tile.component';
+import {ComparisonBar, ComparisonBarInput} from '../../components/comparison-bar/comparison-bar.component'
+import {ComparisonLegend, ComparisonLegendInput} from '../../components/comparison-legend/comparison-legend.component';
+import {Tabs} from '../../components/tabs/tabs.component';
+import {Tab} from '../../components/tabs/tab.component';
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
-import {GlobalSettings} from '../../../global/../global-settings';
-import {GlobalFunctions} from '../../../global/../global-functions';
+import {GlobalSettings} from '../../../global//global-settings';
+import {GlobalFunctions} from '../../../global//global-functions';
 import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
-import {MLBPageParameters} from '../../../global/../global-interface';
+import {MLBPageParameters} from '../../../global//global-interface';
 import {ComparisonStatsData, PlayerData, SeasonStats} from '../../../services/comparison-stats.service';
-import {Gradient} from '../../../global/../global-gradient'
+import {Gradient} from '../../../global//global-gradient'
 
 export interface ComparisonTabData {
     tabTitle: string;

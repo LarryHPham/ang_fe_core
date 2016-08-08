@@ -2,9 +2,9 @@
  * Created by Victoria on 5/2/2016.
  */
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {MLBPageParameters} from '../../../global/../global-interface';
-import {GlobalSettings} from "../../../global/../global-settings";
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {MLBPageParameters} from '../../../global//global-interface';
+import {GlobalSettings} from "../../../global//global-settings";
 
 declare var DISQUS: any;
 

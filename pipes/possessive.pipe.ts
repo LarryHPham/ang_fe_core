@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {GlobalFunctions} from '../../global/../global-functions';
+import {GlobalFunctions} from '../../global//global-functions';
 
 @Pipe({
   name: 'possessive'

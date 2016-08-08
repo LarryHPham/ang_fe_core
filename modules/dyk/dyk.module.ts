@@ -1,5 +1,5 @@
 import {Component, OnChanges, Input} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 declare var stButtons: any;
 
 export interface dykModuleData{

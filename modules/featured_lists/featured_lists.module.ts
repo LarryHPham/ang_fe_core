@@ -1,10 +1,10 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {Router, RouteParams} from '@angular/router-deprecated';
 
-import {ModuleHeader} from '../../fe-core/components/module-header/module-header.component';
-import {FlipTilesComponent, TileData} from '../../fe-core/components/flip-tiles/flip-tiles.component';
-import {FeatureComponent} from '../../fe-core/components/feature-list/feature-list.component';
-import {GlobalFunctions} from '../../../global/../global-functions';
+import {ModuleHeader} from '../../components/module-header/module-header.component';
+import {FlipTilesComponent, TileData} from '../../components/flip-tiles/flip-tiles.component';
+import {FeatureComponent} from '../../components/feature-list/feature-list.component';
+import {GlobalFunctions} from '../../../global//global-functions';
 
 @Component({
     selector: 'featured-lists-module',

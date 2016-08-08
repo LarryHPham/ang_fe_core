@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ScheduleBox} from '../../fe-core/components/schedule-box/schedule-box.component'
-import {SideScroll} from '../../fe-core/components/carousels/side-scroll/side-scroll.component'
+import {ScheduleBox} from '../../components/schedule-box/schedule-box.component'
+import {SideScroll} from '../../components/carousels/side-scroll/side-scroll.component'
 
 declare var jQuery:any;
 

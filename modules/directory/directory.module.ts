@@ -1,14 +1,14 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {RouteParams, ROUTER_DIRECTIVES, RouteConfig, Router} from '@angular/router-deprecated';
-import {GlobalFunctions} from '../../../global/../global-functions';
-import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
-import {ErrorComponent} from '../../fe-core/components/error/error.component';
-import {DateTimePipe} from '../../fe-core/pipes/datetime-format.pipe';
-import {Link} from '../../../global/../global-interface';
+import {GlobalFunctions} from '../../../global//global-functions';
+import {LoadingComponent} from '../../components/loading/loading.component';
+import {ErrorComponent} from '../../components/error/error.component';
+import {DateTimePipe} from '../../pipes/datetime-format.pipe';
+import {Link} from '../../../global//global-interface';
 import {PagingData, DirectoryModuleData} from './directory.data';
 import {DirectoryPagination} from './directory-pagination.component';
-import {NoDataBox} from '../../fe-core/components/error/data-box/data-box.component';
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 @Component({
     selector: 'directory-module',

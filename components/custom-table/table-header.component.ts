@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, Renderer, ViewChild} from '@angular/core';
-import {TableColumn} from '../../fe-core/components/custom-table/table-data.component';
+import {TableColumn} from '../../components/custom-table/table-data.component';
 
 @Component({
   selector: 'custom-table-header',

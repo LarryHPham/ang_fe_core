@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CircleImageData} from '../images/image-data';
 import {CircleImage} from '../images/circle-image';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SanitizeHtml} from '../../fe-core/pipes/safe.pipe';
+import {SanitizeHtml} from '../../pipes/safe.pipe';
 
 export interface scheduleBoxInput{
   date:string;

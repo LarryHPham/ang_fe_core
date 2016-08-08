@@ -1,15 +1,15 @@
 import {Component, Input, Injector, OnChanges} from '@angular/core';
-import {GlobalSettings} from '../../../../global/../global-settings';
-import {GlobalFunctions} from '../../../../global/../global-functions';
+import {GlobalSettings} from '../../../../global//global-settings';
+import {GlobalFunctions} from '../../../../global//global-functions';
 import {DeepDiveService} from '../../../../services/deep-dive.service';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {ArticleStackModule} from '../../../fe-core/modules/article-stack/article-stack.module';
-import {TileStackModule} from '../../../fe-core/modules/tile-stack/tile-stack.module';
-import {ResponsiveWidget} from '../../../fe-core/components/responsive-widget/responsive-widget.component';
-import {VideoStackComponent} from '../../../fe-core/components/video-stack/video-stack.component';
-import {BoxScoresModule} from '../../../fe-core/modules/box-scores/box-scores.module';
+import {ArticleStackModule} from '../../../modules/article-stack/article-stack.module';
+import {TileStackModule} from '../../../modules/tile-stack/tile-stack.module';
+import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
+import {VideoStackComponent} from '../../../components/video-stack/video-stack.component';
+import {BoxScoresModule} from '../../../modules/box-scores/box-scores.module';
 import {BoxScoresService} from '../../../../services/box-scores.service';
-import {BoxArticleComponent} from '../../../fe-core/components/box-article/box-article.component';
+import {BoxArticleComponent} from '../../../components/box-article/box-article.component';
 
 declare var moment;
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router,ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
 import {ShareLinksComponent} from "../shareLinks/shareLinks.component";
-import {SanitizeHtml} from "../../../fe-core/pipes/safe.pipe";
+import {SanitizeHtml} from "../../../pipes/safe.pipe";
 import {SidekickContainerComponent} from "../sidekick-container/sidekick-container.component";
 
 @Component({

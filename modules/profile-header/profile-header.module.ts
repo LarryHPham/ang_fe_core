@@ -2,13 +2,13 @@ import {Component, Input, OnChanges} from '@angular/core';
 import {DomSanitizationService, SafeStyle} from '@angular/platform-browser';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
-import {LoadingComponent} from '../../fe-core/components/loading/loading.component';
-import {CircleImage} from '../../fe-core/components/images/circle-image';
-import {CircleImageData} from '../../fe-core/components/images/image-data';
-import {ScrollableContent} from '../../fe-core/components/scrollable-content/scrollable-content.component';
-import {GlobalFunctions} from '../../../global/../global-functions';
-import {GlobalSettings} from '../../../global/../global-settings';
-import {NaValuePipe} from '../../fe-core/pipes/na.pipe';
+import {LoadingComponent} from '../../components/loading/loading.component';
+import {CircleImage} from '../../components/images/circle-image';
+import {CircleImageData} from '../../components/images/image-data';
+import {ScrollableContent} from '../../components/scrollable-content/scrollable-content.component';
+import {GlobalFunctions} from '../../../global//global-functions';
+import {GlobalSettings} from '../../../global//global-settings';
+import {NaValuePipe} from '../../pipes/na.pipe';
 
 export interface DataItem {
   label: string;

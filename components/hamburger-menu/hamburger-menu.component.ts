@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {GlobalSettings} from "../../../global/../global-settings";
+import {GlobalSettings} from "../../../global//global-settings";
 
 export interface MenuData{
   menuTitle: string,

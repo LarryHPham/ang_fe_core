@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CircleImage} from '../images/circle-image';
 import {CircleImageData} from '../images/image-data';
-import {StatHyphenValuePipe} from '../../fe-core/pipes/stat-hyphen.pipe';
+import {StatHyphenValuePipe} from '../../pipes/stat-hyphen.pipe';
 import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 
 export interface GameInfoInput{

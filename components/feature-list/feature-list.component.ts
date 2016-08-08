@@ -2,7 +2,7 @@
  * Created by Victoria on 2/25/2016.
  */
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {CarouselButton} from '../../fe-core/components/buttons/carousel/carousel.button';
+import {CarouselButton} from '../../components/buttons/carousel/carousel.button';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 @Component({
     selector: 'feature-component',

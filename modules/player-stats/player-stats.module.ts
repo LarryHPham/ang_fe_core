@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 
-import {ModuleHeader, ModuleHeaderData} from '../../fe-core/components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../fe-core/components/module-footer/module-footer.component';
-import {PlayerStatsComponent, StatsTableTabData} from '../../fe-core/components/player-stats/player-stats.component';
+import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
+import {PlayerStatsComponent, StatsTableTabData} from '../../components/player-stats/player-stats.component';
 
 export interface PlayerStatsModuleData {
   moduleTitle: string;
