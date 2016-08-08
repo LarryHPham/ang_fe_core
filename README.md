@@ -17,7 +17,7 @@ If you are creating a new project and want to include the core submodule:
 
 2. cd into the parent directory you want to add the core submodule into
 
-3. Initialize the submodule `git submodule add git://github.com/passit/SNT-framework-core-frontend.git`
+3. Initialize the submodule `git submodule add https://github.com/passit/SNT-framework-core-frontend.git`
 
 
 If you want to update to the latest version of Core Framework in your project that already includes core:
@@ -27,5 +27,3 @@ If you want to update to the latest version of Core Framework in your project th
 2. Fetch the latest updates to the core `git fetch`
 
 3. Merge the updated changes into the parent project `git merge origin/<submodule branch you want to merge from>`
-
-4. test
