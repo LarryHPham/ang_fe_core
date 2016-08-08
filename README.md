@@ -27,3 +27,5 @@ If you want to update to the latest version of Core Framework in your project th
 2. Fetch the latest updates to the core `git fetch`
 
 3. Merge the updated changes into the parent project `git merge origin/<submodule branch you want to merge from>`
+
+4. test
