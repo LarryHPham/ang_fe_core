@@ -33,3 +33,4 @@ If you want to update to the latest version of Core Framework in your project th
 ### Ver 1.0
 1. Added changeLog
 2. added css for responsive profile header at 320px
+3. responsive css for daily update
