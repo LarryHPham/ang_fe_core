@@ -20,12 +20,41 @@
   color: @white;
   position: relative;
   font-size: 12px;
+  .circles {
+    @media @mobile {
+      border: none;
+      background: none;
+    }
+  }
+  .circles-left {
+    @media @mobile {
+      left:  -5px;
+    }
+  }
+  .circles-right {
+    @media @mobile {
+      right:  -5px;
+    }
+  }
+  .feature-btn.articles {
+    @media @mobile {
+      background-color: transparent!important;
+      border: none;
+      bottom: 0;
+      left: 0;
+      right: auto;
+      top: auto;
+    }
+  }
     &-placeholder{
       width: 100%;
       height: 350px;
       background-color: @textEmphasisGrey;
       background-image: url('/app/public/baseball.png');
       position: relative;
+      @media @mobile {
+        height:240px;
+      }
     }
     &-text{
       .flexDisplay;
@@ -34,6 +63,9 @@
       height: auto;
       margin:auto;
       padding-top: 20%;
+      @media @mobile {
+        padding-top: 13%;
+      }
     }//.news-text ends
     &-headline{
       overflow: hidden;
@@ -77,6 +109,9 @@
       .fa-share-alt{
         font-size: 1.5em;
         padding-right: 5px;
+      }
+      @media @mobile {
+        display: none;
       }
     }
     .st_sharethis_large{
