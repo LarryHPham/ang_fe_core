@@ -24,6 +24,9 @@
     position: relative;
     background: url("/app/public/drk-linen.png") top center no-repeat;
     background-size: cover;
+    @media @mobile {
+      min-height: 180px;
+    }
 
     &:before{
       content: "";
@@ -49,6 +52,10 @@
       color: @white;
       font-size: 30px;
       line-height:78px;
+      @media @mobile {
+        font-size:22px;
+
+      }
     }
 
   }
@@ -62,6 +69,11 @@
       padding: 0 15px 2px 15px;
       border-right: 1px solid @strokeGrey;
       margin-right: -1px;
+      @media @mobile {
+        width: 100%;
+        clear: both;
+        border-right-width: 0px;
+      }
       &-title{
         margin: 7px 0 0 0;
         .globalDefaultFont(20px, 400);
@@ -100,6 +112,11 @@
       width: ~"calc(100% - 280px)";
       float: left;
       border-left: 1px solid @strokeGrey;
+      @media @mobile {
+        width: 100%;
+        clear: both;
+        border-left-width: 0px;
+      }
       bar-chart{
         display: block;
         width: 100%;
@@ -146,13 +163,25 @@
 
     circle-image{
       padding: 22px;
+      .image-round {
+        @media @mobile {
+          width: 100px;
+          height: 100px;
+        }
+      }
     }
     &-text{
       display: block;
       width: ~"calc(100% - 170px)";
       padding: 20px 20px 10px 0;
-    }
-    &-text{
+      &-body {
+        width: ~"calc(100% - 170px)";
+        @media @mobile {
+          width:100%;
+          padding: 0 15px 15px;
+
+        }
+      }
       &-title{
         .globalDefaultFont(18px, 800);
         margin: 0 0 6px 0;
@@ -178,6 +207,10 @@
         &-link {
           .globalDefaultModFont(12px, 800, @masterBrandColor);
           line-height: 20px;
+          @media @mobile {
+            width: 100%;
+            padding: 0 0 15px 15px;
+          }
           &:hover{
             text-decoration: underline;
           }
