@@ -15,18 +15,20 @@
 
     &-ptr {
       content: '';
+      width: 15px;
       border-top: 15px solid rgba(0, 0, 0, 0.6);
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
       position: absolute;
       left: 110px;
       bottom: -15px;
+      margin: 0;
     }
 
     &-date {
       text-transform: uppercase;
       .globalDefaultModFont(8px, 400, @strokeGrey);
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
 
     &-title {
@@ -36,7 +38,6 @@
 
     &-datapts {
       .globalDefaultFont(14px, 400);
-      margin-bottom: 14px;
 
       &-value {
         font-weight: 800;
@@ -44,7 +45,6 @@
       }
 
       a, a:hover, a:focus, a:active {
-        color: @masterBrandColor;
         text-decoration: none;
       }
 
@@ -56,6 +56,9 @@
   }
 
   &-content {
+    p {
+      line-height: 16px;
+    }
     .flexDisplay;
 
     &-image {
@@ -68,7 +71,7 @@
     &-wrapper {
       margin-left: 18px;
       margin-top: 35px;
-      width: 452px; // needed to fix flex bug in IE; otherwise content overflow parent
+      width: ~"calc(100% - 100px)"; // needed to fix flex bug in IE; otherwise content overflow parent
     }
 
     &-title {
@@ -126,7 +129,7 @@
 
   &-datapts {
     .flexDisplay;
-
+    .flexWrap(wrap);
     &-pt {
       .flexGrow(1);
       padding: 18px 0;
@@ -148,3 +151,122 @@
     }
   }
 }
+
+@media @mobile {
+  .ph {
+    &-hdr {
+      padding: 15px 20px;
+      &-title {
+        margin: 0 0 15px 0;
+        .globalDefaultModFont(32px, 800, @white);
+      }
+      &-datapts {
+        > span {
+          display: block;
+          margin: 0 0 5px 0;
+          &:last-child {
+            margin: 0;
+          }
+        }
+        &-sep {
+          display: none;
+        }
+        &-label {
+          .globalDefaultModFont(14px, 400, @white);
+        }
+        &-value {
+          .globalDefaultModFont(14px, 800, @white);
+        }
+        &-pt {
+          padding: 10px 25px;
+        }
+      } //&-datapts
+      &-ptr {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    } //&-hdr
+
+    &-content {
+      padding: 20px 15px;
+      &-wrapper {
+        margin: 0;
+        width: ~"calc(100% - 100px)";
+      }
+      &-image {
+        margin: 0;
+      }
+      &-title {
+        display: none;
+        .image-40 {
+          display: none;
+        }
+      }
+      &-desc {
+        margin: 0;
+        padding: 0;
+        &-border {
+          display: none;
+        }
+        .scrollable-item {
+          height: 80px;
+        }
+      }
+      .image-180 {
+        width: 100px;
+        height: 100px;
+        .imageShadow(5px, @masterLargeImageShadow);
+      }
+    } //&-content
+    &-datapts {
+      overflow: auto;
+      &-pt {
+        width: 50%;
+        padding: 10px 25px;
+        &:nth-of-type(1), &:nth-of-type(2) {
+          border-bottom: 1px solid @strokeGrey;
+        }
+      }
+      &-value {
+        .globalDefaultModFont(18px, 800, @black);
+      }
+    }
+  } //.ph
+} //@media @mobile
+
+@media @tablet {
+  .ph {
+    &-hdr {
+      padding: 10px 30px 25px 30px;
+      &-title {
+        margin: 0 0 20px 0;
+      }
+    } //&-hdr
+    &-content {
+      &-wrapper {
+        margin: 20px 0 0 15px;
+      }
+      &-title {
+        &-text {
+          margin-right: 20px;
+        }
+      }
+      &-desc {
+        .scrollable-item {
+          height: 100px;
+        }
+      }
+    } //&-content
+  }
+} //@media @tablet
+
+@media @desktop-m {
+  .ph {
+    &-content {
+      &-wrapper {
+        margin: 30px 0 0 15px;
+      }
+    }
+  }
+} //@media @desktop-m
