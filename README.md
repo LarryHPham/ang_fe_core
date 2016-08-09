@@ -28,4 +28,7 @@ If you want to update to the latest version of Core Framework in your project th
 
 3. Merge the updated changes into the parent project `git merge origin/<submodule branch you want to merge from>`
 
-4. A level 40 lawrence held a meeting
+## ChangeLog:
+
+### Ver 1.0
+1. Added changeLog
