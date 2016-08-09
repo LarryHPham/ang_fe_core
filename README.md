@@ -32,3 +32,4 @@ If you want to update to the latest version of Core Framework in your project th
 
 ### Ver 1.0
 1. Added changeLog
+gi
