@@ -36,3 +36,4 @@ If you want to update to the latest version of Core Framework in your project th
 3. responsive css for daily update
 4. responsive css for other content you will love
 5. header and hamburger menu modularity and leagues
+6. footer new design

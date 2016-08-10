@@ -5,22 +5,25 @@
     <ul>
         <a href="{{_siteFacebookUrl}}" target="_blank"><li id="share-facebook"><i class="fa fa-facebook"></i></li></a>
         <a href="{{_siteTwitterUrl}}" target="_blank"><li id="share-twitter"><i class="fa fa-twitter"></i></li></a>
+        <a href="{{_siteGoogleUrl}}" target="_blank"><li id="share-google"><i class="fa-google-plus"></i></li></a>
     </ul>
   </section>
 
   <section class="footer-main col-xs-12">
-    <dropdown-directory [heading]="'Team Listings'">
-      <li *ngFor="let link of teamDirectoryListings">
-        <a [routerLink]='link.route'>{{link.text}}</a>
-      </li>
-    </dropdown-directory>
-    <dropdown-directory [heading]="'Player Listings'">
-      <li *ngFor="let link of playerDirectoryListings">
-        <a [routerLink]='link.route'>{{link.text}}</a>
-      </li>
-    </dropdown-directory>
+    <div class="footer-dropDown col-xs-12">
+      <dropdown-directory [heading]="'Team Listings'">
+        <li *ngFor="let link of teamDirectoryListings">
+          <a [routerLink]='link.route'>{{link.text}}</a>
+        </li>
+      </dropdown-directory>
+      <dropdown-directory [heading]="'Player Listings'">
+        <li *ngFor="let link of playerDirectoryListings">
+          <a [routerLink]='link.route'>{{link.text}}</a>
+        </li>
+      </dropdown-directory>
+    </div>
     <ul>
-        <li class="footer-text1"><a [routerLink]="['Home-page']"><b>{{linkName}}</b></a></li>
+        <li class="footer-text1"><a [routerLink]="['Home-page']"><b>{{pageName}}</b></a></li>
     </ul>
     <ul>
         <li><a [routerLink]="['Contact-us-page']">Advertise with {{pageName}}</a> <i class="fa fa-caret-right"></i></li>
@@ -28,7 +31,10 @@
         <li><a [routerLink]="['Disclaimer-page']"><b>Disclaimer</b></a><i class="fa fa-caret-right"></i></li>
         <li><a [routerLink]="['About-us-page']"><b>About Us</b></a></li>
     </ul>
-    <p class="footer-main-citation">Images Provided By: <em>{{_copyrightInfo}}</em></p>
+    <div class="footer-main-cit">
+      <p class="footer-main-citation">{{_lastUpdated}}</p>
+      <p class="footer-main-citation">Images Provided By: <em>{{_copyrightInfo}}</em></p>
+    </div>
   </section>
 
 </footer>
