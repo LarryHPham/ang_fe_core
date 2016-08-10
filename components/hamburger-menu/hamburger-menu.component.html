@@ -1,5 +1,13 @@
-<div class="hamburger-component">
+<div *ngIf="menuData" class="hamburger-component">
   <div class="hamburger">
+    <div class="hamburger-division-select">
+      <span class="hamburger-division-select-button active" onclick="event.stopPropagation();" (click)="changeActiveLeague(_sportLeagueAbbrv, $event)">
+        {{_sportLeagueAbbrv}}
+      </span>
+      <span class="hamburger-division-select-button" onclick="event.stopPropagation();" (click)="changeActiveLeague(_collegeDivisionAbbrv, $event)">
+        {{_collegeDivisionAbbrv}}
+      </span>
+    </div>
     <ul class="hamburger-topics-list">
       <span  *ngFor="let menuData of menuData">
         <a *ngIf="menuData.menuTitle == 'Home' && isHome" class="disabled"><li class="hamburger-topics-list-item">{{menuData.menuTitle}}</li></a>

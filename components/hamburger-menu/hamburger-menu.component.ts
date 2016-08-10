@@ -15,19 +15,64 @@ export interface MenuData{
 })
 
 export class HamburgerMenuComponent implements OnInit {
-  @Input() menuData: MenuData;
-  @Input() menuInfo: MenuData;
+  public menuData: any;
+  public menuInfo: any;
+  public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
+  public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
   public menuInfoHeader: string = "Company Info";
   public isHome:any;
   constructor(){
     this.isHome = GlobalSettings.getHomeInfo().isHome;
   }
   ngOnInit(){
-    if(typeof this.menuData == 'undefined'){
-      this.menuData = {
-        menuTitle:'Contact Us',
-        url: ['Contactus-page']
-      }//example
-    }
+    this.loadData(this._sportLeagueAbbrv);
   }//ngOnInit ends
+  loadData(division) {
+
+    this.menuData = [{
+        menuTitle: "Home",
+        url: ['Home-page']
+      },
+      {
+        menuTitle: division + " Teams",
+        url: ['Pick-team-page']//todo
+      },
+      {
+        menuTitle: division + " Players",
+        url: ['Directory-page-starts-with', {type: "players", startsWith: "a", page: "1"}]//todo
+      },
+      {
+        menuTitle: division + " League",
+        url: ['MLB-page']//todo
+      },
+      {
+        menuTitle: division + " Schedule",
+        url: ['Schedules-page-league', {pageNum:1}]//todo
+      },
+      {
+        menuTitle: division + " Standings",
+        url: ['Standings-page-league', {type: division}]
+    }];
+    this.menuInfo = [{
+        menuTitle: "About Us",
+        url: ['About-us-page']
+      },
+      {
+        menuTitle: "Contact Us",
+        url: ['Contact-us-page']
+      },
+      {
+        menuTitle: "Disclamer",
+        url: ['Disclaimer-page']
+    }];
+  }//loadData ends
+  changeActiveLeague(division, event){
+    this.loadData(division);
+    var buttons = document.getElementsByClassName("hamburger-division-select-button");
+    var i;
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+    event.target.classList.add("active");
+  }
 }
