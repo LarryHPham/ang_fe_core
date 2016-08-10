@@ -3,6 +3,30 @@
   width: 320px;
 }
 .hamburger {
+  &-division-select{
+    position:absolute;
+    right: 10px;
+    top: 17px;
+    z-index:999;
+    font-size: 14px;
+    &-button {
+      padding: 5px 10px;
+      border: 1px solid @white;
+      border-radius: 5px;
+    }
+    &-button:first-of-type {
+      margin-right: 10px;
+    }
+    .active {
+      background-color: @white;
+      color: @textEmphasisGrey;
+    }
+    &-button:hover {
+      border-color: @black;
+      background-color: @black;
+      color: @white;
+    }
+  }
   ul {
     margin: 0px;
   }
