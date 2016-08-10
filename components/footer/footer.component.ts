@@ -23,8 +23,9 @@ export class FooterComponent implements OnInit {
     public _copyrightInfo: string = GlobalSettings.getCopyrightInfo();
     public _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
     public _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl();
+    public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
     public _sportLeagueFull: string = GlobalSettings.getSportLeagueFull();
-
+    public _lastUpdated: string = "© 2016 ";
     teamDirectoryListings: Array<Link> = [];
 
     playerDirectoryListings: Array<Link> = [];
@@ -35,10 +36,10 @@ export class FooterComponent implements OnInit {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
           this.pageName = GlobalSettings.getBaseTitle();
-          this.linkName = GlobalSettings.getHomePageLinkName() + ".com";
+          this._lastUpdated += GlobalSettings.getBaseTitle();
      } else {
           this.pageName = GlobalSettings.getBasePartnerTitle();
-          this.linkName = GlobalSettings.getPartnerHomePageLinkName() + ".com";
+          this._lastUpdated += GlobalSettings.getBasePartnerTitle();
       }
     }
 

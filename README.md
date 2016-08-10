@@ -35,4 +35,5 @@ If you want to update to the latest version of Core Framework in your project th
 2. added css for responsive profile header at 320px and updated backtab css
 3. responsive css for daily update
 4. responsive css for other content you will love
->>>>>>> origin/develop
+5. header and hamburger menu modularity and leagues
+6. footer new design
