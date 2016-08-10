@@ -23,35 +23,23 @@ export class FooterComponent implements OnInit {
     public _copyrightInfo: string = GlobalSettings.getCopyrightInfo();
     public _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
     public _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl();
+    public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
     public _sportLeagueFull: string = GlobalSettings.getSportLeagueFull();
-
+    public _lastUpdated: string = "© 2016 ";
     teamDirectoryListings: Array<Link> = [];
 
     playerDirectoryListings: Array<Link> = [];
 
     mlbTeamListings: Array<Link> = [];
 
-    //TODO: create footer links for mlb by specifying ID
-    mlbTeams = [
-        { name: "Arizona Diamondbacks", id: 2793},
-        { name: "Atlanta Braves", id: 2796},
-        { name: "Baltimore Orioles", id: 2799},
-        { name: "Boston Red Sox", id: 2791},
-        { name: "Chicago Cubs", id: 2795},
-        { name: "Chicago White Sox", id: 2790},
-        { name: "Cincinnati Reds", id: 2816},
-        { name: "Cleveland Indians", id: 2809},
-        { name: "Colorado Rockies", id: 2800},
-        { name: "Detroit Tigers", id: 2797}
-    ];
     loadData(partner: string) {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
           this.pageName = GlobalSettings.getBaseTitle();
-          this.linkName = GlobalSettings.getHomePageLinkName() + ".com";
+          this._lastUpdated += GlobalSettings.getBaseTitle();
      } else {
           this.pageName = GlobalSettings.getBasePartnerTitle();
-          this.linkName = GlobalSettings.getPartnerHomePageLinkName() + ".com";
+          this._lastUpdated += GlobalSettings.getBasePartnerTitle();
       }
     }
 
@@ -59,12 +47,6 @@ export class FooterComponent implements OnInit {
         this.loadData(this.partner);
         this.teamDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("teams");
         this.playerDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("players");
-        this.mlbTeams.forEach(team => {
-           this.mlbTeamListings.push({
-              text: team.name,
-              route: MLBGlobalFunctions.formatTeamRoute(team.name, team.id.toString())
-           });
-        });
     }
 
 }
