@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {GlobalSettings} from "../../../global/global-settings";
+import {HamburgerDeliveryService} from '../../../services/hamburger-delivery.service';
 
 export interface MenuData{
   menuTitle: string,
@@ -11,7 +12,7 @@ export interface MenuData{
     selector: 'hamburger-menu-component',
     templateUrl: './app/fe-core/components/hamburger-menu/hamburger-menu.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [],
+    providers: [HamburgerDeliveryService],
 })
 
 export class HamburgerMenuComponent implements OnInit {
@@ -28,43 +29,9 @@ export class HamburgerMenuComponent implements OnInit {
     this.loadData(this._sportLeagueAbbrv);
   }//ngOnInit ends
   loadData(division) {
-
-    this.menuData = [{
-        menuTitle: "Home",
-        url: ['Home-page']
-      },
-      {
-        menuTitle: division + " Teams",
-        url: ['Pick-team-page']//todo
-      },
-      {
-        menuTitle: division + " Players",
-        url: ['Directory-page-starts-with', {type: "players", startsWith: "a", page: "1"}]//todo
-      },
-      {
-        menuTitle: division + " League",
-        url: ['MLB-page']//todo
-      },
-      {
-        menuTitle: division + " Schedule",
-        url: ['Schedules-page-league', {pageNum:1}]//todo
-      },
-      {
-        menuTitle: division + " Standings",
-        url: ['Standings-page-league', {type: division}]
-    }];
-    this.menuInfo = [{
-        menuTitle: "About Us",
-        url: ['About-us-page']
-      },
-      {
-        menuTitle: "Contact Us",
-        url: ['Contact-us-page']
-      },
-      {
-        menuTitle: "Disclamer",
-        url: ['Disclaimer-page']
-    }];
+    var data = HamburgerDeliveryService.createMenu(division);
+    this.menuData = data.menuData;
+    this.menuInfo = data.menuInfo;
   }//loadData ends
   changeActiveLeague(division, event){
     this.loadData(division);
