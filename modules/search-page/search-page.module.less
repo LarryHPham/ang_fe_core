@@ -25,10 +25,15 @@
     }
 
     &-input{
-      width: 600px;
-      margin: 0 auto;
+      width: 100%;
+      padding:0px 3.125%;
       & .fa-caret-left{
         display:none;
+      }
+      @media @tablet{
+        height:50px;
+        max-width: 600px;
+        margin: 0 auto;
       }
     }
   }
