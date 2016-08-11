@@ -17,6 +17,9 @@
       text-transform: uppercase;
     }
   }
+  .spacer {
+    display:none;
+  }
 
   &-sort {
     position: absolute;
@@ -32,7 +35,9 @@
     tr {
       height: 70px;
     }
-
+    th {
+      position: relative;
+    }
     td {
       position: relative;
     }
@@ -121,6 +126,9 @@
     &-even {
       background: @backgroundGrey;
     }
+    &-odd {
+      background: @white;
+    }
 
     &-selected,
     &-selected .custom-table-compact-bold-column,
@@ -129,7 +137,7 @@
       border-color: @masterBrandColor;
     }
 
-    &-selected .highlight-box {
+    &-selected th .highlight-box {
       background-color: @masterBrandColor;
     }
   }
