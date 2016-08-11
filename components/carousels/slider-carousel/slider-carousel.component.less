@@ -47,13 +47,14 @@ slider-carousel{
       width: 80%;
       height: auto;
       margin:auto;
-      padding-top: 20px;
+      padding-top: 0px;
       min-height: 250px;
       position: relative;
       @media @mobile {
         width: ~"calc( 100% - 40px)";
         display: block;
-        padding-bottom:20px;
+        padding-top: 15px;
+        padding-bottom:30px;
       }
       &-mainImg{
         width: 38%;
@@ -67,6 +68,7 @@ slider-carousel{
           .image-150 {
             width:125px;
             height:125px;
+            .imageShadow(5px, @masterLargeImageShadow);
           }
         }
       }//.scc-details-mainImg ends
@@ -115,7 +117,7 @@ slider-carousel{
 
         &-date {
           .globalDefaultModFont(10px, 400, @white);
-          margin-top: 12px;
+          margin-top: 15px;
         }
       }
 

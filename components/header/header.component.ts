@@ -2,6 +2,7 @@ import {Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, R
 import {Search, SearchInput} from '../../components/search/search.component';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {SubHeaderComponent} from '../../components/sub-header/sub-header.component';
+import {GlobalSettings} from "../../../global/global-settings";
 import {HamburgerMenuComponent, MenuData} from '../../components/hamburger-menu/hamburger-menu.component';
 declare var stButtons: any;
 declare var jQuery:any;
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit,OnChanges {
   public logoUrl:string;
   private _stickyHeader: string;
   public searchInput: SearchInput = {
-       placeholderText: "Search for a player or team...",
+       placeholderText: "Search for anything " + GlobalSettings.getSportName(),
        hasSuggestions: true
   };
   public hamburgerMenuData: Array<MenuData>;
@@ -26,7 +27,10 @@ export class HeaderComponent implements OnInit,OnChanges {
   public titleHeader: string;
   public isOpened: boolean = false;
   public isActive: boolean = false;
+  public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
+  public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
   private elementRef:any;
+
   constructor(elementRef: ElementRef, private _renderer: Renderer){
     this.elementRef = elementRef;
   }
@@ -40,41 +44,6 @@ export class HeaderComponent implements OnInit,OnChanges {
       event.target.parentElement.parentElement.classList.add('active');
     }
   }
-  loadData(partnerID: string) {
-    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
-    this.hamburgerMenuData = [{
-        menuTitle: "Home",
-        url: ['Home-page']
-      },
-      {
-        menuTitle: "Pick a Team",
-        url: ['Pick-team-page']
-      },
-      {
-        menuTitle: "MLB League",
-        url: ['MLB-page']
-      },
-      {
-        menuTitle: "MLB Schedule",
-        url: ['Schedules-page-league', {pageNum:1}]
-      },
-      {
-        menuTitle: "MLB Standings",
-        url: ['Standings-page-league', {type: 'mlb'}]
-    }];
-    this.hamburgerMenuInfo = [{
-        menuTitle: "About Us",
-        url: ['About-us-page']
-      },
-      {
-        menuTitle: "Contact Us",
-        url: ['Contact-us-page']
-      },
-      {
-        menuTitle: "Disclamer",
-        url: ['Disclaimer-page']
-    }];
-  }//loadData ends
   // Page is being scrolled
   onScrollStick(event) {
     //check if partner header exist and the sticky header shall stay and not partner header
@@ -113,6 +82,6 @@ export class HeaderComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges() {
-    this.loadData(this.partnerID);
+    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
   }
 }
