@@ -35,9 +35,9 @@ export class DirectoryPagination implements OnChanges {
   pagesUpdated() {
     if ( this.data !== undefined && this.data !== null ) {
       this.enableNext = this.data.currentPage + 1 <= this.data.totalPages;
-      this.enablePrev = this.data.currentPage -1 > 0;
-      this.enableFwd = this.data.currentPage + 5 <= this.data.totalPages;
-      this.enableRevr = this.data.currentPage - 5 > 0;
+      this.enablePrev = this.data.currentPage - 1 > 0;
+      this.enableFwd = this.data.currentPage + 10 <= this.data.totalPages;
+      this.enableRevr = this.data.currentPage - 10 > 0;
     }
     else {
       this.enableNext = false;

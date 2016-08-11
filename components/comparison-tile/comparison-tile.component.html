@@ -20,7 +20,7 @@
     </div>
     <div class="comparison-tile-label">
         <span *ngIf="comparisonTileInput.titleUrl" class="comparison-tile-label-line-one">
-            <a [routerLink]="comparisonTileInput.titleUrl">{{comparisonTileInput.title}}</a>
+            <a [routerLink]="comparisonTileInput.titleUrl" [innerHtml]="comparisonTileInput.title | safeHtml"></a>
         </span>
         <span *ngIf="!comparisonTileInput.titleUrl" class="comparison-tile-label-line-one">{{comparisonTileInput.title}}</span>
         <span class="comparison-tile-label-line-two">
@@ -34,5 +34,4 @@
             <span class="comparison-tile-stats-line-two">{{item.key}}</span>
         </div>
     </div>
-
 </div>

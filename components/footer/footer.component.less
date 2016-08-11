@@ -48,14 +48,15 @@
   &-main{
     background-color: @darkTouchDownBlue;
     height: auto;
-    padding: 0 325px 15px 325px;
+    padding: 0 15px 15px;
     .globalDefaultModFont(10px, 400, @strokeGrey);
     .flexAlignItems(center);
     .flexDisplay;
     .flexDirection(column);
-    h1{
-      .globalDefaultModFont(30px, 800,@strokeGrey);
-    }// h1 ends
+    @media @desktop-xl{
+      padding: 0 325px 15px 325px;
+      font-size: 12px;
+    }
     ul{
       .flexDisplay;
       .flexWrap(wrap);
@@ -117,6 +118,9 @@
     a{
       .globalDefaultFont(12px, 800);
       margin-bottom:12px;
+      @media @desktop-xl{
+        font-size: 14px;
+      }
     }
   }//footer-text1 ends
   &-line3{

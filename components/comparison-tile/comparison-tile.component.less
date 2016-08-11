@@ -1,13 +1,7 @@
 .comparison-tile{
-  &-container{
-    font-family: Lato;
-  }
-
-
   &-dropdown {
     .dropdown {
       width: 100%;
-
       &-hdr {
         padding: 7px 15px 0 15px;
         background-color: rgba(39, 39, 39, 0.35);
@@ -22,47 +16,61 @@
   }
 
   &-image{
-    width: 150px;
-    margin: 25px auto;
+    width: 125px;
+    height: 125px;
+    margin: 20px auto;
   }
 
   &-label {
     color: @white;
     text-align: center;
     margin-bottom: 12px;
-
     &-line-one {
-      .globalDefaultFont(24px, 800);
+      .globalDefaultFont(18px, 800);
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 8px;
     }
-
     &-line-two {
       .globalDefaultFont(12px, 400);
       display: block;
       line-height: 15px;
     }
-
   }
-
   &-stats {
-    color: @white;
-    text-align: center;
-    padding: 0px 20px;
-
-    &-line-one {
-      .globalDefaultFont(20px, 800);
-      display: block;
+    display: none;
+  }
+}
+@media @tablet {
+  .comparison-tile{
+    &-image{
+      width: 150px;
+      height: 150px;
+      margin: 25px auto;
     }
-    &-line-two {
-      .globalDefaultFont(12px, 400);
-      display: block;
-      text-transform: uppercase;
+    &-label{
+      &-line-one{
+        font-size: 24px;
+      }
     }
+    &-stats {
+      color: @white;
+      display: block;
+      text-align: center;
+      padding: 0px 20px;
+      &-line-one {
+        .globalDefaultFont(20px, 800);
+        display: block;
+      }
+      &-line-two {
+        .globalDefaultFont(12px, 400);
+        display: block;
+        text-transform: uppercase;
+      }
 
-    sup {
-      font-size: 10px;
-      top: -8px;
+      sup {
+        font-size: 10px;
+        top: -8px;
+      }
     }
   }
 }
