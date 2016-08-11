@@ -15,7 +15,7 @@
       top: 0;
     }
   }
-  .side-scroller {
+  .side-scroller{
     background-color: transparent;
   }
   @media @mobile {
@@ -28,6 +28,10 @@
   overflow-x: scroll;
   overflow-y: hidden;
   background-color: @highlightGrey;
+  & ::-webkit-scrollbar {
+    height: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
 }
 .nav-tabs{
   background-color: @highlightGrey;
