@@ -14,6 +14,12 @@
   width: 20px;
   height: 100%;
   left: 140px;
+  @media @mobile {
+    left: 80px;
+  }
+  @media @tablet {
+    left: 90px;
+  }
   .transactions-li-timeline-line {
     display: block;
     width: 3px;
@@ -67,15 +73,29 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
     &-img{
       position: absolute;
       left: 176px;
+      @media @mobile {
+        left: 110px;
+      }
+      @media @tablet {
+        left: 125px;
+      }
     }
     &-text{
       &-left{
-        top:19px;
+        top:20px;
         position: absolute;
         left: 20px;
         font-size: 12px;
         width: 106px;
         text-align: center;
+        @media @mobile {
+          left: 0;
+          width: auto;
+        }
+        @media @tablet {
+          width: auto;
+          left: 5px;
+        }
       }
       &-right{
         position: relative;
@@ -87,6 +107,16 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
         padding-bottom:10px;
         overflow: hidden;
         text-overflow: ellipsis;
+        @media @mobile {
+          left: 170px;
+          font-size: 12px;
+          line-height: 14px;
+          width: ~"calc(100% - 180px)";
+        }
+        @media @tablet {
+          left: 190px;
+          width: ~"calc(100% - 190px)";
+        }
         a:hover {
           color: @masterBrandColor;
         }
