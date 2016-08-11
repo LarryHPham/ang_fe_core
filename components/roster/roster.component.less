@@ -1,0 +1,49 @@
+.roster {
+  &-no-hover{
+    .no-hover(@white);
+  }
+  .image-column-hdr, .image-column {
+    width: 230px;
+    @media @mobile {
+      width: 150px;
+    }
+  }
+  .data-column-hdr,.data-column{
+    min-width: 55px;
+  }
+  table circle-image {
+    @media @mobile {
+      display: none;
+    }
+  }
+  .table-cell-image span {
+    @media @mobile {
+      margin-left: 10px;
+    }
+  }
+  th.image-column-column {
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      background-color: inherit;
+      height: 70px;
+      border-width: 0 5px 0 0;
+      border-style: solid;
+      border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+    }
+    .table-cell-image {
+      @media @mobile {
+        margin-top: 20px;
+      }
+    }
+  }
+  .image-column-hdr {
+    position: absolute;
+    z-index: 1;
+    background-color: @white;
+  }
+  .custom-table .spacer {
+    width: 155px;
+    display:block;
+  }
+}
