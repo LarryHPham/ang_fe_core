@@ -26,9 +26,9 @@ export class FooterComponent implements OnInit {
     public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
     public _sportLeagueFull: string = GlobalSettings.getSportLeagueFull();
     public _lastUpdated: string = GlobalSettings.getEstYear();
-    teamDirectoryListings: Array<Link> = [];
+    teamDirectoryListings: Array<Link>;
 
-    playerDirectoryListings: Array<Link> = [];
+    playerDirectoryListings: Array<Link>;
 
     mlbTeamListings: Array<Link> = [];
     constructor(private _service: FooterService){//TODO
@@ -69,5 +69,7 @@ export class FooterComponent implements OnInit {
 
     ngOnInit() {
         this.loadData(this.partner);
+        // this.teamDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("teams");
+        // this.playerDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("players");
     }
 }
