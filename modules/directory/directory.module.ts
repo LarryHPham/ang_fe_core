@@ -47,6 +47,9 @@ export class DirectoryModule implements OnChanges {
   ngOnChanges() {
     this.setupData();
   }
+  isActive(instruction: any[]): boolean {
+     return this.router.isRouteActive(this.router.generate(instruction));
+   }
 
   setupData() {
     if ( this.data === undefined || this.data === null ){
@@ -76,11 +79,11 @@ export class DirectoryModule implements OnChanges {
     this.setPageParams(this.prevLink);
 
     //Fast Forward Page
-    this.fastFowardLink.route = [pageName, { page: currPage + 5 }]
+    this.fastFowardLink.route = [pageName, { page: currPage + 10 }]
     this.setPageParams(this.fastFowardLink);
 
     //Reverse Page
-    this.reverseLink.route = [pageName, { page: currPage - 5 }]
+    this.reverseLink.route = [pageName, { page: currPage - 10 }]
     this.setPageParams(this.reverseLink);
 
     //Determine range display for directory page (ex. 1-20, 22-40, etc)

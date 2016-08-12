@@ -12,7 +12,7 @@
   outline:none;
   overflow:hidden;
   .scrollable-item-wrapper {
-    max-height: 117px;
+    max-height: 80px;
   }
   .dropdownArrow {
     position:absolute;
@@ -22,10 +22,10 @@
     color:@white;
     height:100%;
     width:30px;
-    padding-top:5px;
+    padding-top:8px;
     text-align:center;
     z-index:2;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 5px 5px 0;
     cursor:pointer;
     i{font-size: 14px;}
   }
@@ -44,7 +44,6 @@
   }
   ul {
     width:100%!important;
-    padding:5px;
     background-color:@masterFooter1;
   }
   li:hover a {
@@ -52,9 +51,9 @@
   }
   a {
     color:@bulletGrey;
-    padding:5px!important;
     height:30px;
     width:30px;
+    line-height: 30px;
     text-align:center;
     margin:2px;
   }
@@ -92,5 +91,10 @@
 @media @tablet{
   .dropdownCategory{
     width: 196px;
+  }
+}
+@media @desktop-xl{
+  .dropdownCategory{
+    width: 250px;
   }
 }
