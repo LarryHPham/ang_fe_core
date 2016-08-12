@@ -34,7 +34,7 @@ export class FooterComponent implements OnInit {
     constructor(private _service: FooterService){//TODO
       this._service.getFooterService("nfl", "player")
       .subscribe(data => {
-        // this.playerDirectoryListings = data;
+        this.playerDirectoryListings = data;
       },
       err => {
         console.log("Error getting footer data");

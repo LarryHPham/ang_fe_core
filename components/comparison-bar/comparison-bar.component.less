@@ -17,6 +17,11 @@
   &-qualifier {
     .globalDefaultModFont(10px, 400, @bulletGrey);
     padding-left: 6px;
+    @media @mobile{
+      white-space: nowrap;
+      padding-left: 0px;
+      padding-right: 30px;
+    }
   }
 
   &-capsule{
