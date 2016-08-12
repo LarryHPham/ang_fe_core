@@ -13,12 +13,12 @@
     <div class="footer-dropDown col-xs-12">
       <dropdown-directory [heading]="'Team Listings'">
         <li *ngFor="let link of teamDirectoryListings">
-          <a [routerLink]='link.route'>{{link.text}}</a>
+          <a *ngIf="link.active" [routerLink]='link.route'>{{link.text}}</a>
         </li>
       </dropdown-directory>
       <dropdown-directory [heading]="'Player Listings'">
         <li *ngFor="let link of playerDirectoryListings">
-          <a [routerLink]='link.route'>{{link.text}}</a>
+          <a *ngIf="link.active" [routerLink]='link.route'>{{link.text}}</a>
         </li>
       </dropdown-directory>
     </div>

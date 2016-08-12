@@ -32,14 +32,10 @@ export class FooterComponent implements OnInit {
 
     mlbTeamListings: Array<Link> = [];
     constructor(private _service: FooterService){//TODO
-      this._service.getFooterService("nfl", "player")
-      .subscribe(data => {
-        this.playerDirectoryListings = data;
-      },
-      err => {
-        console.log("Error getting footer data");
-      });
+      this.teamDirectory();
+      this.playerDirectory();
     }
+
     loadData(partner: string) {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
@@ -51,10 +47,27 @@ export class FooterComponent implements OnInit {
       }
     }
 
-    ngOnInit() {
-        this.loadData(this.partner);
-        this.teamDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("teams");
-        this.playerDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("players");
+    teamDirectory() {//TODO
+      this._service.getFooterService("nfl", "team")
+      .subscribe(data => {
+        this.teamDirectoryListings = data;
+      },
+      err => {
+        console.log("Error getting footer data");
+      });
     }
 
+    playerDirectory() {//TODO
+      this._service.getFooterService("nfl", "player")
+      .subscribe(data => {
+        this.playerDirectoryListings = data;
+      },
+      err => {
+        console.log("Error getting footer data");
+      });
+    }
+
+    ngOnInit() {
+        this.loadData(this.partner);
+    }
 }
