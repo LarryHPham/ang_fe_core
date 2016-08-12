@@ -127,6 +127,9 @@
 }
 .image-48-rank {
   .roundText(48px, 1px, @masterSmallImageShadow, @white, 18px);
+  @media @mobile{
+    .roundText(40px, 1px, @masterSmallImageShadow, @white, 12px);
+  }
 }
 .image-40-sub {
   .roundImageSub(40px);
@@ -204,6 +207,9 @@
 }
 .image-180 {
   .roundImageMain(180px);
+}
+.image-res {
+  .roundImageMain(100%);
 }
 .border-large {
   .imageShadow(10px, @masterLargeImageShadow);

@@ -168,16 +168,16 @@ export class ComparisonModule implements OnInit, OnChanges {
                 {
                     title: data.playerOne.playerName,
                     // color: data.playerOne.mainTeamColor
-                    color: '#BC1624'
+                    color: '#2D3E50'
                 },
                 {
                     title: data.playerTwo.playerName,
                     // color: data.playerTwo.mainTeamColor
-                    color: '#444444'
+                    color: '#999999'
                 },
                 {
                     title: "Stat High",
-                    color: "#e1e1e1"
+                    color: "#E1E1E1"
                 },
             ]
         };
@@ -196,7 +196,7 @@ export class ComparisonModule implements OnInit, OnChanges {
             dropdownOneKey: player.teamId,
             dropdownTwoKey: player.playerId,
             imageConfig: {
-                imageClass: "image-150",
+                imageClass: "image-res",
                 mainImage: {
                     imageUrl: GlobalSettings.getImageUrl(player.playerHeadshot),
                     urlRouteArray: playerRoute,

@@ -66,7 +66,7 @@ export class ProfileHeaderModule implements OnChanges {
       var data = this.profileHeaderData;
       if ( data ) {
         if ( !data.backgroundImageUrl ) {
-          data.backgroundImageUrl = "/app/public/no-image.png";
+          data.backgroundImageUrl = "/app/public/drk-linen.png";
         }
         if ( !data.profileImageUrl ) {
           data.profileImageUrl = "/app/public/no-image.png";
