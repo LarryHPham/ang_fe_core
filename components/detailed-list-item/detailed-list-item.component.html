@@ -8,8 +8,8 @@
       <!--put in right box styles-->
       <div class="dataBox">
         <div class="dataBox-info" *ngFor="let data of details.dataPoints" [ngClass]="data.style">
-          <i class="{{data.icon}}"></i>
           <span class="databox-info-text">
+            <i class="{{data.icon}}"></i>
             <complex-inner-html [textItems]="data.leftText"></complex-inner-html>
           </span>
           <span class="databox-info-text-right">
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="list-widget">
-    <responsive-widget *ngIf="!((rowIndex + 1) % 5)  && rowIndex != 9 && !isLast" embedPlace="widgetForPage"></responsive-widget>
+  <div class="list-widget" *ngIf="!((rowIndex + 1) % 5) && rowIndex != 9 && !isLast">
+    <responsive-widget embedPlace="widgetForPage"></responsive-widget>
   </div>
 </div>
