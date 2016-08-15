@@ -38,6 +38,9 @@
     .flexAlignItems(baseline);
     .flexJustify(center);
     margin-bottom: 15px;
+    span{
+      
+    }
   }
   dropdown-directory:first-of-type {
     margin-top:20px;
@@ -48,14 +51,15 @@
   &-main{
     background-color: @darkTouchDownBlue;
     height: auto;
-    padding: 0 325px 15px 325px;
+    padding: 0 15px 15px;
     .globalDefaultModFont(10px, 400, @strokeGrey);
     .flexAlignItems(center);
     .flexDisplay;
     .flexDirection(column);
-    h1{
-      .globalDefaultModFont(30px, 800,@strokeGrey);
-    }// h1 ends
+    @media @desktop-xl{
+      padding: 0 325px 15px 325px;
+      font-size: 12px;
+    }
     ul{
       .flexDisplay;
       .flexWrap(wrap);
@@ -67,13 +71,12 @@
       }
       li{
         line-height: 1em;
-        padding-right: 5px;
         .flexDisplay;
+        i{
+          padding: 0 5px;
+        }
         span{
           color: @strokeGrey;
-        }
-        a{
-          padding-right: 5px;
         }
         &:hover{
           a{
@@ -117,6 +120,9 @@
     a{
       .globalDefaultFont(12px, 800);
       margin-bottom:12px;
+      @media @desktop-xl{
+        font-size: 14px;
+      }
     }
   }//footer-text1 ends
   &-line3{

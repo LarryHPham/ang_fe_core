@@ -25,11 +25,9 @@
              {{data.navigationData.title}}
          </div>
          <div class="dir-nav-links">
-             <span *ngFor="let item of data.navigationData.links; let isLast = last">
+             <span *ngFor="let item of data.navigationData.links; let isLast = last" [class.active]="isActive(item.route)">
                <span class="dir-nav-separator">|</span>
-               <a [routerLink]="item.route" >
-                   {{item.text}}
-               </a>
+               <a [routerLink]="item.route">{{item.text}}</a>
              </span>
              <span *ngIf="data.navigationData.moreLink">
                <span class="dir-nav-separator">|</span>
