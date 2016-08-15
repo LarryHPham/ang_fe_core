@@ -81,8 +81,8 @@ export class ArticlesModule implements OnInit {
                     this.getHeaderData(HeadlineData);
                     this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
                     this.getMainArticle(this.headlineData, this.imageData, this.eventID);
-                    this.getLeftColumnArticles(this.leftColumnData, this.imageData, this.eventID);
-                    this.getHeadToHeadArticles(this.headToHeadData, this.eventID);
+                    this.getSubArticles(HeadlineData, this.imageData, this.eventID);
+                    //this.getHeadToHeadArticles(this.headToHeadData, this.eventID);
                 },
                 err => {
                     this.error = true;
@@ -194,27 +194,27 @@ export class ArticlesModule implements OnInit {
         var pageIndex = Object.keys(headlineData)[0];
         headlineData = headlineData[Object.keys(headlineData)[0]];
         this.mainTitle = headlineData.displayHeadline;
-        if (this.mainTitle.length >= 85) {
-            this.titleFontSize = "font-size: 16px;";
-        }
         this.eventType = pageIndex;
         this.mainEventID = eventID;
         var articleContent = headlineData.article[0];
-        var maxLength = 235;
+        var maxLength = 2000;
         var trimmedArticle = articleContent.substring(0, maxLength);
         this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
         var articleType = 'main';
         this.getImages(imageData, articleType);
     }
 
-    getLeftColumnArticles(leftColumnData, imageData, eventID) {
+    getSubArticles(data, imageData, eventID) {
+        //This code will change drastically once the proper api call has been created. This is temporary.
         var articleType = 'sub';
         var articles;
         this.getImages(imageData, articleType);
+        var articleLeft = [];
+        var articleRight = [];
         var articleArr = [];
         var imageCount = 0;
         var self = this;
-        Object.keys(leftColumnData).forEach(function (val) {
+        Object.keys(data['leftColumn']).forEach(function (val) {
             switch (val) {
                 case'about-the-teams':
                 case'historical-team-statistics':
@@ -226,25 +226,16 @@ export class ArticlesModule implements OnInit {
                 case'upcoming':
                     imageCount++;
                     articles = {
-                        title: leftColumnData[val].displayHeadline,
+                        title: data['leftColumn'][val].displayHeadline,
                         eventType: val,
                         eventID: eventID,
                         images: self.subImages[imageCount]
                     };
-                    articleArr.push(articles);
+                    articleLeft.push(articles);
                     break;
             }
         });
-        articleArr.sort(function () {
-            return 0.5 - Math.random()
-        });
-        this.randomLeftColumn = articleArr;
-    }
-
-    getHeadToHeadArticles(headToHeadData, eventID) {
-        var articleArr = [];
-        var articles;
-        Object.keys(headToHeadData).forEach(function (val) {
+        Object.keys(data['rightColumn']).forEach(function (val) {
             switch (val) {
                 case'pitcher-player-comparison':
                 case'catcher-player-comparison':
@@ -262,26 +253,22 @@ export class ArticlesModule implements OnInit {
                 case'infield-most-home-runs':
                 case'infield-best-batting-average':
                 case'infield-most-putouts':
+                    imageCount++;
                     articles = {
-                        title: headToHeadData[val].displayHeadline,
+                        title: data['rightColumn'][val].displayHeadline,
                         eventType: val,
-                        eventID: eventID
+                        eventID: eventID,
+                        images: self.subImages[imageCount]
                     };
-                    articleArr.push(articles);
+                    articleRight.push(articles);
                     break;
             }
         });
+        articleArr = articleLeft.concat(articleRight);
         articleArr.sort(function () {
             return 0.5 - Math.random()
         });
-        if (articleArr.length == 10) {
-            articleArr.shift();
-            articleArr.pop();
-        } else if (articleArr.length == 9) {
-            articleArr.pop();
-        }
-        this.arrLength = articleArr.length - 1;
-        this.randomHeadToHead = articleArr;
+        this.randomLeftColumn = articleArr;
     }
 
     ngOnInit() {
