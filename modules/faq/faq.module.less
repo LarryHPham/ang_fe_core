@@ -1,4 +1,5 @@
 .faq{
+  width:100%;
   height: auto;
   &-details{
     cursor:pointer;
@@ -14,20 +15,24 @@
       .flexDisplay;
       .flexAlignItems(center);
       p{
-        margin: 25px;
+        margin: 15px 0 15px 20px;
         line-height: 20px;
-        width: 100%;
+        width: 90%;
       }
       &-icon{
         .globalDefaultModFont(25px, 400, @masterBrandColor);
-        .flexDisplay;
-        .flexAlignItems(center);
-        margin: 25px 30px;
+        margin: 25px 15px;
+        text-align: center;
+        width:25px;
         a{
           color: @masterBrandColor;
           &:hover{
             color: @black;
           }
+        }
+
+        @media @tablet{
+          margin: 25px 30px;
         }
       }//faq-details-info-icon ends
     }//faq-details-info ends
