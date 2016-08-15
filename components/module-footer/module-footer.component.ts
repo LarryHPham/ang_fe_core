@@ -37,7 +37,7 @@ export class ModuleFooter implements OnInit{
 
       if(typeof this.footerData == 'undefined'){
         this.footerData = {
-          infoDesc:'Want to see everybody involved in this list',
+          infoDesc:'Want to see the full list',
           text:'VIEW THE LIST',
           url:['Disclaimer-page'],
         }
