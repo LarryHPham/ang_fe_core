@@ -16,6 +16,7 @@ export interface MenuData{
 })
 
 export class HamburgerMenuComponent implements OnInit {
+  @Input() partnerID:string;
   public menuData: any;
   public menuInfo: any;
   public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
@@ -29,7 +30,7 @@ export class HamburgerMenuComponent implements OnInit {
     this.loadData(this._sportLeagueAbbrv);
   }//ngOnInit ends
   loadData(division) {
-    var data = HamburgerDeliveryService.createMenu(division);
+    var data = HamburgerDeliveryService.createMenu(division, this.partnerID);
     this.menuData = data.menuData;
     this.menuInfo = data.menuInfo;
   }//loadData ends

@@ -5,15 +5,50 @@
       width: 320px;
     }
   }
-
+  .image-column-hdr {
+    position: absolute;
+    z-index: 1;
+    background-color: @white;
+  }
   .image-column-hdr, .image-column {
     width: 200px;
+    @media @mobile {
+      width: 150px;
+    }
   }
-  .data-column-hdr:first-child, .data-column:first-child {
-    max-width: 40px;
+  table circle-image {
+    @media @mobile {
+      display: none;
+    }
+  }
+  .table-cell-image span {
+    @media @mobile {
+      margin-left: 10px;
+    }
+  }
+  th.image-column-column {
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      background-color: inherit;
+      height: 70px;
+      border-width: 0 5px 0 0;
+      border-style: solid;
+      border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+    }
+    .table-cell-image {
+      @media @mobile {
+        margin-top: 20px;
+      }
+    }
   }
   .data-column-hdr:last-child, .data-column:last-child {
     min-width: 55px;
+  }
+
+  .custom-table .spacer {
+    width: 155px;
+    display:block;
   }
   .pane {
     padding-top: 0;
