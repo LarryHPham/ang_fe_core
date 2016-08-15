@@ -5,20 +5,20 @@
     <ul>
         <a href="{{_siteFacebookUrl}}" target="_blank"><li id="share-facebook"><i class="fa fa-facebook"></i></li></a>
         <a href="{{_siteTwitterUrl}}" target="_blank"><li id="share-twitter"><i class="fa fa-twitter"></i></li></a>
-        <a href="{{_siteGoogleUrl}}" target="_blank"><li id="share-google"><i class="fa-google-plus"></i></li></a>
+        <a href="{{_siteGoogleUrl}}" target="_blank"><li id="share-google"><i class="fa fa-fontawesome-webfont"></i></li></a>
     </ul>
   </section>
 
   <section class="footer-main col-xs-12">
     <div class="footer-dropDown col-xs-12">
-      <dropdown-directory [heading]="'Team Listings'">
+      <dropdown-directory *ngIf="teamDirectoryListings" [heading]="'Team Listings'">
         <li *ngFor="let link of teamDirectoryListings">
-          <a [routerLink]='link.route'>{{link.text}}</a>
+          <a *ngIf="link.active" [routerLink]='link.route'>{{link.text}}</a>
         </li>
       </dropdown-directory>
-      <dropdown-directory [heading]="'Player Listings'">
+      <dropdown-directory *ngIf="playerDirectoryListings" [heading]="'Player Listings'">
         <li *ngFor="let link of playerDirectoryListings">
-          <a [routerLink]='link.route'>{{link.text}}</a>
+          <a *ngIf="link.active" [routerLink]='link.route'>{{link.text}}</a>
         </li>
       </dropdown-directory>
     </div>
