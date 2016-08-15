@@ -67,6 +67,6 @@
          <no-data-box [data]="data.noResultsMessage" [icon]="'fa fa-remove'"></no-data-box>
      </div>
 
-     <directory-pagination *ngIf="data.pagingDescription" [data]="pagingDescription" [nextLink]="nextLink" [prevLink]="prevLink" [fastFowardLink]="fastFowardLink" [reverseLink]="reverseLink" [dirPagination]=true></directory-pagination>
+     <directory-pagination *ngIf="data.pagingDescription" [data]="pagingDescription" [nextLink]="nextLink" [prevLink]="prevLink" [lastLink]="lastLink" [firstLink]="firstLink" [dirPagination]=true></directory-pagination>
 
  </div>
