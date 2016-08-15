@@ -1,4 +1,6 @@
 .dyk{
+  width:100%;
+  height:auto;
   &-details{
     border-left: solid 5px @highlightGrey;
     border-bottom: solid 1px @highlightGrey;
@@ -7,13 +9,16 @@
     .globalDefaultModFont(16px, 400, @black);
     width: 100%;
     &-info{
-      width: 92%;
+      width: 90%;
       text-align: left;
       p{
-        margin: 25px;
+        margin: 15px 0 15px 15px;
       }
     }
     &-icon{
+      width:25px;
+      margin: 25px 15px;
+      text-align: center;
       .st_sharethis_large{
         cursor: pointer;
         span:first-child{
@@ -21,10 +26,11 @@
         }
       }
       .globalDefaultModFont(25px, 400, @masterBrandColor);
-      .flexDisplay;
-      .flexAlignItems(center);
       &:hover{
         color: @black;
+      }
+      @media @tablet{
+        margin: 25px 35px;
       }
     }
     &:hover{
