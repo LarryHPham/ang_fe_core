@@ -28,7 +28,6 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
   };
 
   ngAfterContentChecked() {
-    console.log(this.twitterData);
     if ( window['twttr'] && !this.twitterLoaded ) {
       if ( document.getElementById("twitter-href") ) {
         var a = document.getElementById("twitter-href");
