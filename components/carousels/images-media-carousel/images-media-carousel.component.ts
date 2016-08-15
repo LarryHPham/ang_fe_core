@@ -101,12 +101,6 @@ export class ImagesMedia implements OnInit {
         }
     }
 
-    changeClick(num) {
-        this.imageCounter = this.mediaImages[num % 5].id;
-        this.smallObjCounter = num % 5;
-        this.changeMain(this.imageCounter);
-    }
-
     modifyMedia(images, copyright, imageTitle, forward = true):Array<MediaImageItem> {
         if (this.modalButton) {//just so the carousel knows that the expand button is
             this.expandText = 'Collapse';

@@ -6,7 +6,7 @@
   padding: 5px 15px;
   margin-right: 8px;
   position: relative;
-  top: 10px;
+  bottom: 0;
   z-index: 1;
   &-large {
     i {
@@ -48,10 +48,6 @@
 
 .art-hdr, .st_sharethis_large, .share-buttons {
   display: inline;
-  margin: 0;
-  width: 100px;
-  position: relative;
-  top: 6px;
   z-index: 1;
   @media @mobile {
     top: 0;
@@ -111,7 +107,7 @@
     background-color: @strokeGrey;
     width: 610px;
     height: 1px;
-    margin: 0 auto;
+    margin-bottom: 15px;
     @media (max-width: 1023px) {
       display: none;
     }
@@ -155,21 +151,14 @@
         color: @black;
       }
     }
-    &:hover .articleBoxTrendingMedium {
-      .articleImageLinkWithHoverMedium(140px, 100px);
-      div {
-        left: 0;
-        margin-top: 15px;
-      }
-    }
     &-title {
       .globalDefaultFont(32px, 800);
       text-align: left;
-      margin-top: 30px;
+      margin-top: 15px;
       &-short {
         .globalDefaultFont(32px, 800);
         text-align: left;
-        margin-top: 30px;
+        margin-top: 20px;
         width: 88%;
       }
     }
@@ -196,7 +185,7 @@
       height: 100px !important;
       .line-clamp;
       .line-clamp-5;
-      left: 155px;
+      left: 10px;
     }
     &-read-more {
       .globalDefaultModFont(16px, 800, @masterBrandColor);
@@ -264,13 +253,6 @@
         color: @black;
       }
     }
-    &:hover .articleBoxTrendingSmall {
-      .articleImageLinkWithHoverSmall(100px, 56px);
-      div {
-        left: 0;
-        margin-top: 15px;
-      }
-    }
     &-title {
       .globalDefaultFont(18px, 800);
       text-align: left;
@@ -299,7 +281,7 @@
       height: 65px !important;
       .line-clamp;
       .line-clamp-4;
-      left: 105px;
+      left: 10px;
     }
     &-read-more {
       .globalDefaultModFont(16px, 800, @masterBrandColor);
