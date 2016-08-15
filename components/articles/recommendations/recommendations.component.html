@@ -8,13 +8,8 @@
                 <a *ngIf="i < 3" class="recommendations-articles-six article-recommend"
                    [routerLink]="['Article-pages', {eventType: data.eventType, eventID: data.eventID}]"
                    title="{{data.title}}">
-                    <span class="articleBoxMedium">
-                        <img class="recommendations-articles-six-image" src="{{data.images}}"
-                             onerror="this.src='/app/public/no-image.png'"/>
-                        <div>
-                            <p>View Article</p>
-                        </div>
-                    </span>
+                    <img class="recommendations-articles-six-image" src="{{data.images}}"
+                         onerror="this.src='/app/public/no-image.png'"/>
                     <div class="recommendations-articles-six-content">
                         <div class="recommendations-articles-six-content-dateline">
                             <span class="recommendations-articles-six-content-dateline-keyword">{{data.keyword}}</span>
@@ -31,9 +26,6 @@
                     <div class="deep_recs-ai-articles-item">
                         <div class="deep_recs-ai-articles-item-article-images"
                              [style.background-image]="'url(' + data.images + ')'">
-                            <div class="deep_recs-ai-articles-item-article-images-highlight">
-                                <p> View Article </p>
-                            </div>
                         </div>
                         <div class="deep_recs-ai-articles-item-content">
                             <div class="deep_recs-ai-articles-item-content-dateline">
@@ -62,13 +54,17 @@
                 </div>
                 <div class="deep_recs-articles-item-content">
                     <div class="deep_recs-articles-item-content-dateline">
-                        <span class="deep_recs-articles-item-content-dateline-keyword" [innerHTML]="item.keyword | safeHtml"></span>
-                        <span class="deep_recs-articles-item-content-dateline-date" [innerHTML]="item.new_date | safeHtml"></span>
+                        <span class="deep_recs-articles-item-content-dateline-keyword"
+                              [innerHTML]="item.keyword | safeHtml"></span>
+                        <span class="deep_recs-articles-item-content-dateline-date"
+                              [innerHTML]="item.new_date | safeHtml"></span>
                     </div>
                     <div class="deep_recs-articles-item-content-dateline-below">
-                        <span class="deep_recs-articles-item-content-dateline-below-date" [innerHTML]="item.new_date"></span>
+                        <span class="deep_recs-articles-item-content-dateline-below-date"
+                              [innerHTML]="item.new_date"></span>
                     </div>
-                    <div class="deep_recs-articles-item-content-teaser" [innerHTML]="item.displayHeadline | safeHtml"></div>
+                    <div class="deep_recs-articles-item-content-teaser"
+                         [innerHTML]="item.displayHeadline | safeHtml"></div>
                 </div>
             </div>
         </a>

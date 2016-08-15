@@ -1,15 +1,12 @@
 // height should only be specified for the module when it's on a profile page
-.profile-container {
-  .images-media-module {
-    height: 510px;
-  }
+.profile-carousel-container {
 
   .images-media-module-small {
     height: 429px;
   }
 
   .profile-carousel {
-    height: 465px;
+    height: 506px;
   }
 }
 
@@ -19,7 +16,7 @@
 }
 
 .plcholder {
-  height: 82.5%;
+  height: 100%;
   width: 100%;
   position: relative;
   &-img {
@@ -90,19 +87,16 @@
   background-color: @masterButtonBackground;
   position: absolute;
   bottom: 0;
-  padding-right: 10px;
+  padding-right: 15px;
   padding-left: 10px;
   .globalDefaultModFont(10px, 400, @white);
   .flexDisplay;
   &-counter {
-    left: 10px;
-    top: 5px;
-    width: 16%;
+    position: relative;
+    left: 5px;
+    margin-right: 20px;
     text-align: left;
     .globalDefaultModFont(10px, 400, @white);
-    @media @mobile {
-      width: 45%;
-    }
     .fa-file-image-o {
       padding-right: 3px;
       margin-left: 0
@@ -114,11 +108,14 @@
   }
   &-title {
     text-align: left;
-    width: 54%;
   }
   &-credit {
+    .flexDisplay;
+    .flexAlignItems(center);
     text-align: right;
-    width: 30%;
+    position: absolute;
+    right: 15px;
+    bottom: 8px;
     &-bold {
       font-style: italic;
       padding-left: 3px;
