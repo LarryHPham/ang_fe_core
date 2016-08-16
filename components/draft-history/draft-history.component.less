@@ -2,8 +2,47 @@
   &-no-data {
     margin-top: 10px;
   }
+  .pane {
+    padding:5px 0 0 0;
+    .shader {
+      display: none;
+    }
+  .draft-list-title {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    h4 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+      @media @tablet {
+        display:none;
+      }
+    }
+    .sort-title {
+      margin-left: auto;
+      width:170px;
+      @media @mobile {
+        width: 117px;
+      }
+      &-text {
+        @media @mobile {
+          display: none;
+        }
+      }
+    }
+    .dropdown {
+      width: 117px;
+      display: inline-block;
+      &-hdr {
+        height: 28px;
+      }
+    }
+  }
+  }
 }
 
 .draft-container {
-  margin: -5px -15px 5px;
+  margin: -5px -15px 0;
 }

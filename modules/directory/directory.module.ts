@@ -35,10 +35,10 @@ export class DirectoryModule implements OnChanges {
     text: "Back"
   }
 
-  public reverseLink: Link = {
+  public firstLink: Link = {
     text: "Reverse"
   }
-  public fastFowardLink: Link = {
+  public lastLink: Link = {
     text: "Fast Forward"
   }
 
@@ -78,13 +78,13 @@ export class DirectoryModule implements OnChanges {
     this.prevLink.route = [pageName, { page: currPage - 1 }]
     this.setPageParams(this.prevLink);
 
-    //Fast Forward Page
-    this.fastFowardLink.route = [pageName, { page: currPage + 10 }]
-    this.setPageParams(this.fastFowardLink);
+    //Last Page
+    this.lastLink.route = [pageName, { page: maxPageCount }]
+    this.setPageParams(this.lastLink);
 
-    //Reverse Page
-    this.reverseLink.route = [pageName, { page: currPage - 10 }]
-    this.setPageParams(this.reverseLink);
+    //First Page
+    this.firstLink.route = [pageName, { page: 1 }]
+    this.setPageParams(this.firstLink);
 
     //Determine range display for directory page (ex. 1-20, 22-40, etc)
     var rangeStart = 0;

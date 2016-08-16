@@ -8,10 +8,10 @@
   <!-- TODO -->
   <div *ngIf="dirPagination" class="col-sm-6 dir-pag-buttons">
     <div>
-      <a [routerLink]="reverseLink.route" class="dir-pag-skip"
-       [class.dir-pag-skip-active]="enableRevr"
-       [class.dir-pag-skip-disabled]="!enableRevr">
-          <i class="fa fa-angle-left"></i>
+      <a [routerLink]="firstLink.route" class="dir-pag-skip"
+       [class.dir-pag-skip-active]="enableFirst"
+       [class.dir-pag-skip-disabled]="!enableFirst">
+          <i class="fa fa-angle-double-left"></i>
       </a>
       <a [routerLink]="prevLink.route" class="dir-pag-button"
        [class.dir-pag-button-active]="enablePrev"
@@ -25,10 +25,10 @@
        [class.dir-pag-button-disabled]="!enableNext">
           <i class="fa fa-angle-right"></i>
       </a>
-      <a [routerLink]="fastFowardLink.route" class="dir-pag-skip"
-      [class.dir-pag-skip-active]="enableFwd"
-      [class.dir-pag-skip-disabled]="!enableFwd">
-          <i class="fa fa-angle-right"></i>
+      <a [routerLink]="lastLink.route" class="dir-pag-skip"
+      [class.dir-pag-skip-active]="enableLast"
+      [class.dir-pag-skip-disabled]="!enableLast">
+          <i class="fa fa-angle-double-right"></i>
       </a>
     </div>
   </div>

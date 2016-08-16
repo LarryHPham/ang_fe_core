@@ -13,15 +13,16 @@
   padding: 0 5px;
 }
 tabs .dli-container.even{
-  background-color: @white;
+  background-color: @backgroundGrey;
 }
 tabs .dli-container{
-  background-color: @backgroundGrey;
+  background-color: @white;
 }
 .dli-container{
   width:100%;
   height:155px;
   border-bottom: 1px solid @highlightGrey;
+  padding: 0 15px;
   &.odd{
     background-color: @white;
   }
@@ -33,6 +34,9 @@ tabs .dli-container{
     width: ~"calc(100% - 490px)";
     height:100%;
     padding:15px 15px 15px 15px;
+    @media @desktop-xl {
+      width: ~"calc(100% - 750px)";
+    }
   }
   &-right{
     float:right;
@@ -52,6 +56,7 @@ tabs .dli-container{
       height:auto;
       color:@black;
       margin: 10px 0;
+      position: relative;
       .inlineFlexDisplay;
       .flexDirection(column);
       .flexJustify(space-between);
@@ -87,10 +92,18 @@ tabs .dli-container{
           font-size: 18px;
           font-weight: 800;
           line-height: 1.2em;
+          @media @mobile {
+            font-size: 16px;
+          }
         }
         &.detail-medium{
           font-size: 14px;
           line-height: 1.3em;
+          margin-top:12px;
+          @media @mobile {
+            font-size: 12px;
+            margin-top:0;
+          }
           & > i{
             float:left;
             color:@masterBrandColor;
@@ -105,11 +118,22 @@ tabs .dli-container{
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            @media @mobile {
+              width:100%;
+            }
           &-right{
             display: inline;
             width:33%;
             float: right;
             text-align: right;
+            @media @mobile {
+              display: block;
+              position: absolute;
+              width:100%;
+              text-align: left;
+              left:0;
+              margin-top: 40px;
+            }
           }
         }//END OF a tag css modifier
       }//END OF <div> tag css modifier
@@ -122,6 +146,12 @@ tabs .dli-container{
       background-color: @white;
       line-height: 2em;
       padding: 4px 4px 4px 19px;
+      @media @mobile {
+        padding: 0;
+        height: 35px;
+        border: none;
+        background-color: transparent;
+      }
       & > span:first-child{
         display: inline-block;
         width:62%;
@@ -130,10 +160,17 @@ tabs .dli-container{
         text-align: left;
         float: left;
         margin: 3px 0 3px 5px;
+        @media @mobile {
+          display:none;
+        }
       }
       & > span:last-child{
         display: inline-block;
         float:right;
+        @media @mobile {
+          float: none;
+          margin-top: 40px;
+        }
       }
       & a{
         .mod-page-btn(35px, 160px, 25px, 14px, 400);
@@ -149,6 +186,12 @@ tabs .dli-container{
 }
 @media @tablet {
   .list-widget {
+    height: 270px;
     padding-bottom: 20px;
+  }
+}
+@media @desktop-l {
+  .list-widget {
+    height: auto;
   }
 }
