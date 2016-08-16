@@ -35,7 +35,9 @@ export class DraftHistoryComponent implements OnInit {
 
   private currentIndex: number = 0;
 
-  private sortOptions: Array<any> = [{key: '1', value: 'ascending'}, {key: '2', value: 'descending'}];
+  private sortOptions: Array<any> = [{key: '1', value: 'Ascending'}, {key: '2', value: 'Descending'}];
+
+  private currentTab: any;
 
   constructor(private _draftService:DraftHistoryService) {
   }
@@ -44,9 +46,10 @@ export class DraftHistoryComponent implements OnInit {
     if ( this.profileData != null ) {
       this.dataArray = this._draftService.getDraftHistoryTabs(this.profileData);
       if ( this.dataArray && this.dataArray.length > 0 ) {
-        this.getDraftPage(this.dataArray[0], "descending");
+        this.getDraftPage(this.dataArray[0], "Descending");
       }
     }
+    this.currentTab = this.dataArray[0];
   }
 
   getDraftPage(tab: DraftHistoryTab, sortBy) {
@@ -75,9 +78,10 @@ export class DraftHistoryComponent implements OnInit {
 
   selectedTab(tabTitle) {
     let tabs = this.dataArray.filter(tab => tab.tabTitle == tabTitle);
+    this.currentTab = tabs[0];
     if ( tabs.length > 0 ) {
       this.currentIndex = 0; // change page back to beginning
-      this.getDraftPage(tabs[0], "descending");
+      this.getDraftPage(tabs[0], "Descending");
     }
   }
 
@@ -86,6 +90,6 @@ export class DraftHistoryComponent implements OnInit {
     this.currentIndex = index - 1; //page index is 1-based, but we need 0-based to select correct array
   }
   dropdownChanged($event) {
-    this.getDraftPage(this.dataArray[0], event.target.innerText);
+    this.getDraftPage(this.currentTab, event.target.innerText);
   }
 }

@@ -38,3 +38,4 @@ If you want to update to the latest version of Core Framework in your project th
 5. header and hamburger menu modularity and leagues
 6. footer new design
 7. team roster sticky table columns
+8. responsive draft history and sorting
