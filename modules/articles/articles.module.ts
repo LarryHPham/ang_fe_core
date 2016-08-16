@@ -55,6 +55,8 @@ export class ArticlesModule implements OnInit {
     arrLength:number;
     league:boolean = false;
     error:boolean=false;
+    timeStamp:string;
+    keyword:string;
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
@@ -93,6 +95,7 @@ export class ArticlesModule implements OnInit {
 
     getHeaderData(data) {
         moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
+        this.timeStamp = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MMMM DD YYYY");
         var dateString = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MM/DD/YYYY");
         var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
         var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
@@ -192,6 +195,18 @@ export class ArticlesModule implements OnInit {
 
     getMainArticle(headlineData, imageData, eventID) {
         var pageIndex = Object.keys(headlineData)[0];
+        switch (pageIndex) {
+            case'pregame-report':
+                this.keyword = 'PREGAME';
+                break;
+            case'postgame-report':
+                this.keyword = 'POSTGAME';
+                break;
+            //do not have live game data yet. The default is for testing.
+            default:
+                this.keyword = 'LIVE';
+                break;
+        }
         headlineData = headlineData[Object.keys(headlineData)[0]];
         this.mainTitle = headlineData.displayHeadline;
         this.eventType = pageIndex;

@@ -11,11 +11,12 @@ import {ErrorComponent} from "../../components/error/error.component";
 import {DraftHistoryTab, DraftHistoryService} from '../../../services/draft-history.service';
 import {IProfileData} from '../../../services/profile-header.service';
 import {PaginationFooter, PaginationParameters} from '../../components/pagination-footer/pagination-footer.component';
+import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
 @Component({
     selector: 'draft-history',
     templateUrl: './app/fe-core/components/draft-history/draft-history.component.html',
-    directives: [ErrorComponent, LoadingComponent, NoDataBox, Tab, Tabs, SliderCarousel, DetailedListItem, PaginationFooter]
+    directives: [ErrorComponent, LoadingComponent, NoDataBox, Tab, Tabs, SliderCarousel, DetailedListItem, PaginationFooter, DropdownComponent]
 })
 
 export class DraftHistoryComponent implements OnInit {
@@ -27,12 +28,16 @@ export class DraftHistoryComponent implements OnInit {
   @Input() type: string;
 
   private dataArray: Array<DraftHistoryTab>;
-  
+
   private carouselDataArray: Array<Array<SliderCarouselInput>>;
 
   private isError: boolean = false;
 
   private currentIndex: number = 0;
+
+  private sortOptions: Array<any> = [{key: '1', value: 'Ascending'}, {key: '2', value: 'Descending'}];
+
+  private currentTab: any;
 
   constructor(private _draftService:DraftHistoryService) {
   }
@@ -41,21 +46,20 @@ export class DraftHistoryComponent implements OnInit {
     if ( this.profileData != null ) {
       this.dataArray = this._draftService.getDraftHistoryTabs(this.profileData);
       if ( this.dataArray && this.dataArray.length > 0 ) {
-        this.getDraftPage(this.dataArray[0]);
+        this.getDraftPage(this.dataArray[0], "Descending");
       }
     }
+    this.currentTab = this.dataArray[0];
   }
 
-  getDraftPage(tab: DraftHistoryTab) {
+  getDraftPage(tab: DraftHistoryTab, sortBy) {
     if ( tab.isLoaded ) {
       if ( tab.paginationDetails ) {
         tab.paginationDetails.index = this.currentIndex + 1;
-      }    
+      }
       this.carouselDataArray = tab.carouselDataArray;
-      return;
     }
-    
-    this._draftService.getDraftHistoryService(this.profileData, tab, this.currentIndex, this.type)
+    this._draftService.getDraftHistoryService(this.profileData, tab, this.currentIndex, this.type, sortBy)
         .subscribe(
             draftData => {
               tab.isLoaded = true;
@@ -74,14 +78,18 @@ export class DraftHistoryComponent implements OnInit {
 
   selectedTab(tabTitle) {
     let tabs = this.dataArray.filter(tab => tab.tabTitle == tabTitle);
+    this.currentTab = tabs[0];
     if ( tabs.length > 0 ) {
       this.currentIndex = 0; // change page back to beginning
-      this.getDraftPage(tabs[0]);
+      this.getDraftPage(tabs[0], "Descending");
     }
   }
 
   newIndex(index) {
     window.scrollTo(0,0);
     this.currentIndex = index - 1; //page index is 1-based, but we need 0-based to select correct array
+  }
+  dropdownChanged($event) {
+    this.getDraftPage(this.currentTab, event.target.innerText);
   }
 }

@@ -2,6 +2,9 @@
   width: 100%;
   height: 200px;
   margin: 10px;
+  @media @mobile {
+    height: auto;
+  }
   a {
     color: @black;
   }
@@ -11,7 +14,7 @@
     }
   }
   &:hover .articleBoxLarge {
-    .articleImageLinkWithHover(300px, 200px);
+    .articleImageLinkWithHover(400px, 200px);
     div {
       left: 0;
     }
@@ -24,18 +27,32 @@
     background-repeat: no-repeat;
     display: inline-block;
     float: left;
+    @media @mobile {
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.5%;
+      position: relative;
+      display: inline-block;
+      line-height: 120px;
+    }
   }
   &-container {
     color: inherit;
     position: absolute;
     right: 30px;
-    width: 550px;
+    width: 290px;
     height: 189px;
+    @media @desktop-xl {
+      width: 550px;
+    }
     &-title {
       .globalDefaultFont(22px, 800);
       color: inherit;
       line-height: 25px;
       text-align: left;
+      @media @mobile {
+        margin-bottom: 10px;
+      }
     }
     &-content {
       .globalDefaultFont(14px, 400);
@@ -43,12 +60,28 @@
       line-height: 20px;
       text-align: left;
       margin-top: 10px;
+      @media @mobile {
+        position: relative;
+        top: 10px;
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 15px;
+        padding-right: 25px;
+      }
       &:hover {
         color: @black;
       }
       &-read-more {
-        .globalDefaultModFont(14px, 700, @masterBrandColor);
+        .globalDefaultModFont(12px, 800, @masterBrandColor);
       }
+    }
+    &-keyword {
+      .globalDefaultFont(10px, 400);
+      margin: 1px 0 2px 0;
+    }
+    &-date {
+      .globalDefaultModFont(10px, 800, @bulletGrey);
+      padding-left: 1px;
     }
     &-source {
       .globalDefaultFont(14px, 400);
