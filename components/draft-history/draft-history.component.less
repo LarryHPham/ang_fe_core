@@ -1,6 +1,14 @@
 .draft-history{
-  &-no-data {
-    margin-top: 10px;
+  .draft-no-data {
+    margin-top: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .no-data-column:first-of-type {
+    width: 70px;
+  }
+  .no-data-column:last-of-type {
+    width: ~"calc(100% - 70px)";
   }
   .pane {
     padding:5px 0 0 0;
@@ -11,6 +19,13 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
+    .list-filter-heading {
+      position: absolute;
+      padding-top: 5px;
+      i {
+        color: @masterBrandColor;
+      }
+    }
     h4 {
     font-weight: 400;
     font-size: 16px;
@@ -40,6 +55,11 @@
       }
     }
   }
+  }
+  .list-college {
+    @media @mobile {
+      display: none;
+    }
   }
 }
 
