@@ -1,28 +1,28 @@
+.large {
+  @media @mobile {
+    display: none !important;
+  }
+}
+
+.small {
+  @media @tablet {
+    display: none !important;
+  }
+}
+
 .sub-container {
-  width: 440px;
+  width: 310px;
   float: left;
   position: relative;
   margin: 10px 0 10px 10px;
-  display: -webkit-box;
-  /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;
-  /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;
-  /* IE 10 */
-  display: -webkit-flex;
-  /* NEW - Chrome */
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  vertical-align: middle;
-  justify-content: space-between;
-  a {
-    color: @darkBrown;
+  .flexDisplay;
+  .flexDirection(column);
+  .flexJustify(space-between);
+  @media @desktop-xl {
+    width: 440px;
+  }
+  @media @mobile {
+    width: 100%;;
   }
   &:hover {
     a {
@@ -37,23 +37,45 @@
     background-repeat: no-repeat;
     display: inline-block;
     float: left;
+    @media @mobile {
+      height: 56px;
+    }
   }
   &-content {
     .globalDefaultFont(16px, 400);
     text-align: left;
     margin-bottom: 10px;
-    width: 330px;
+    width: 200px;
     float: right;
     height: 65px;
     display: flex;
     align-items: center;
+    padding-right: 10px;
+    @media @desktop-xl {
+      width: 330px;
+    }
+    @media @mobile {
+      font-size: 14px;
+      width: auto;
+      float: left;
+      height: 56px;
+      margin-left: 10px;
+      position: absolute;
+      left: 100px;
+      padding-right: 25px;
+    }
   }
   &-hr {
     border-top: 1px solid @highlightGrey;
-    width: 435px;
+    width: 300px;
     height: 1px;
     position: relative;
     top: 5px;
     margin: 0 auto;
+    left: -5px;
+    @media @desktop-xl {
+      width: 435px;
+      left: 0;
+    }
   }
 }

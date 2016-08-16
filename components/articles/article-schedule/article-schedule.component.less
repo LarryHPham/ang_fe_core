@@ -17,8 +17,11 @@
   height: 100px;
   background-color: @fontIconGrey;
   position: relative;
+  @media @mobile {
+    height: 60px;
+  }
   &-next {
-    height: 100px;
+    height: 100%;
     width: 100%;
     position: relative;
     &-circle {
@@ -32,27 +35,46 @@
       background-clip: padding-box;
       position: absolute;
       top: 15px;
+      z-index: 1;
       &-left {
-        left: 330px;
+        left: 223px;
+        @media @desktop-xl {
+          left: 330px;
+        }
       }
       &-right {
-        right: 330px;
+        right: 223px;
+        @media @desktop-xl {
+          right: 337px;
+        }
+      }
+      @media @mobile {
+        display: none;
       }
     }
     &-team {
       font-size: 1em;
       position: absolute;
-      width: 300px;
+      width: 215px;
       height: 55px;
       line-height: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       color: @white;
+      @media @desktop-xl {
+        width: 300px;
+      }
+      @media @mobile {
+        width: ~"calc(50% - 25px)";
+      }
       &-left {
         left: 0px;
         text-align: right;
         z-index: 1;
         top: 30px;
+        @media @mobile {
+          top: 12px;
+        }
         &-url {
           color: @white;
           display: inline-block;
@@ -66,6 +88,9 @@
         text-align: left;
         z-index: 1;
         top: 30px;
+        @media @mobile {
+          top: 12px;
+        }
         &-url {
           color: @white;
           display: inline-block;
@@ -80,12 +105,18 @@
         width: 125px;
         text-overflow: ellipsis;
         overflow: hidden;
+        @media @mobile {
+          font-size: 14px;
+        }
         &-bold {
           font-weight: 800;
         }
       }
       &-record {
         font-weight: 400;
+        @media @mobile {
+          font-size: 12px;
+        }
         &-bold {
           font-weight: 800;
         }
@@ -95,9 +126,12 @@
       .globalDefaultModFont(20px, 800, @white);
       position: absolute;
       top: 40px;
-      left: 48.7%;
+      width: 100%;
       text-align: center;
       line-height: 10px;
+      @media @mobile {
+        top: 25px;
+      }
     }
   }
 }
