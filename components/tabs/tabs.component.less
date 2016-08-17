@@ -78,10 +78,12 @@
       padding: 0;
     }
     span {
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      left:0;
+      @media @mobile {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        left:0;
+      }
     }
     i{
       display: none;

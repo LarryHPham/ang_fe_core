@@ -38,13 +38,17 @@
     }
   }
   .image-column-hdr {
-    position: absolute;
-    z-index: 1;
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+    }
     background-color: @white;
   }
   .custom-table .spacer {
-    width: 155px;
-    display:block;
+    @media @mobile {
+      width: 155px;
+      display:block;
+    }
   }
   .pane {
     @media @mobile {
