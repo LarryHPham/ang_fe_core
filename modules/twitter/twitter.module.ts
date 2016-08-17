@@ -3,10 +3,12 @@ import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/mod
 
 // declare var twttr: any;
 
-export interface twitterModuleData{
-  twitterUrl: string;
-  twitterApi: string;
-  twitterUserName: string;
+export interface twitterModuleData {
+  twitterHandle: string;
+  id: number;
+  entityId: number;
+  entityFirstName: string;
+  entitySecondName: string;
 }
 
 @Component({
@@ -20,6 +22,7 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
   @Input() twitterData: twitterModuleData;
 
   twitterLoaded: boolean = false;
+  twitterUrl: string;
 
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Twitter Feed - [Profile Name]",
@@ -38,6 +41,8 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
   }
 
   ngOnChanges() {
+    this.twitterUrl = "https://www.twitter.com/"+this.twitterData.twitterHandle;
+
     let profileName = this.profileName ? this.profileName : "[Profile Name]";
     this.headerInfo.moduleTitle = "Twitter Feed - " + profileName;
   }

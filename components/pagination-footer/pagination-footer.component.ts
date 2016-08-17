@@ -278,6 +278,9 @@ export class PaginationFooter implements OnChanges{
             params[indexKey] = max;
         }
         this.nextButtonParameters = params;
+
+
+        // console.log(this.paginationParameters, this.previousButtonParameters);
     }
 
     //Copy object of input navigationParameters
@@ -304,7 +307,11 @@ export class PaginationFooter implements OnChanges{
         if(this.paginationParameters.index == 1){
             return false;
         }else{
+          if(event == 'single'){
             var newIndex = this.paginationParameters.index - 1;
+          }else if (event == 'last'){
+            var newIndex = 1;
+          }
         }
         //Send new index to output event emitter
         this.newIndex.next(newIndex);
@@ -319,7 +326,11 @@ export class PaginationFooter implements OnChanges{
         if(this.paginationParameters.index == this.paginationParameters.max){
             return false;
         }else{
-            var newIndex = this.paginationParameters.index + 1;
+            if(event == 'single'){
+              var newIndex = this.paginationParameters.index + 1;
+            }else if (event == 'last'){
+              var newIndex = this.paginationParameters.max;
+            }
         }
         //Send new index to output event emitter
         this.newIndex.next(newIndex);

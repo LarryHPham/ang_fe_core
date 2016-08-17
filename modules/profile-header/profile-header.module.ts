@@ -69,7 +69,7 @@ export class ProfileHeaderModule implements OnChanges {
           data.backgroundImageUrl = "/app/public/drk-linen.png";
         }
         if ( !data.profileImageUrl ) {
-          data.profileImageUrl = "/app/public/no-image.png";
+          data.profileImageUrl = "/app/public/no-image.svg";
         }
         this.imageConfig.mainImage.imageUrl = data.profileImageUrl;
         this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + data.backgroundImageUrl + ")");

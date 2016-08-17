@@ -37,7 +37,7 @@ export class ScheduleBox{
           awayImageConfig:{//interface is found in image-data.ts
               imageClass: 'image-44',
               mainImage: {
-                  imageUrl: '/app/public/no-image.png',
+                  imageUrl: '/app/public/no-image.svg',
                   urlRouteArray: ['Home-page'],
                   hoverText: "<i class='fa fa-mail-forward'></i>",
                   imageClass: 'border-1',
@@ -46,7 +46,7 @@ export class ScheduleBox{
           homeImageConfig:{//interface is found in image-data.ts
               imageClass: 'image-44',
               mainImage: {
-                  imageUrl: '/app/public/no-image.png',
+                  imageUrl: '/app/public/no-image.svg',
                   urlRouteArray: ['Home-page'],
                   hoverText: "<i class='fa fa-mail-forward'></i>",
                   imageClass: 'border-1',
