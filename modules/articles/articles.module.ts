@@ -33,6 +33,7 @@ declare var moment:any;
 
 export class ArticlesModule implements OnInit {
     headlineData:HeadlineData;
+    moduleData:Array<any>;
     imageData:any;
     scheduleHomeData:any;
     scheduleAwayData:any;
@@ -54,9 +55,10 @@ export class ArticlesModule implements OnInit {
     mainEventID:number;
     arrLength:number;
     league:boolean = false;
-    error:boolean=false;
+    error:boolean = false;
     timeStamp:string;
     keyword:string;
+    isSmall:boolean = false;
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
@@ -80,6 +82,7 @@ export class ArticlesModule implements OnInit {
                     this.eventID = HeadlineData.event;
                     this.scheduleHomeData = HeadlineData['home'];
                     this.scheduleAwayData = HeadlineData['away'];
+                    this.moduleData = HeadlineData;
                     this.getHeaderData(HeadlineData);
                     this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
                     this.getMainArticle(this.headlineData, this.imageData, this.eventID);
@@ -100,9 +103,17 @@ export class ArticlesModule implements OnInit {
         var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
         var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
         if (isPost) {
-            this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+            if (!this.isSmall) {
+                this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+            } else {
+                this.headerInfo.moduleTitle = "Post Matchup Against the " + (this.teamID == data.home.id ? data.away.name : data.home.name);
+            }
         } else {
-            this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+            if (!this.isSmall) {
+                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+            } else {
+                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Matchup Against the " + (this.teamID == data.home.id ? data.away.name : data.home.name);
+            }
         }
     }
 
@@ -212,7 +223,7 @@ export class ArticlesModule implements OnInit {
         this.eventType = pageIndex;
         this.mainEventID = eventID;
         var articleContent = headlineData.article[0];
-        var maxLength = 2000;
+        var maxLength = 235;
         var trimmedArticle = articleContent.substring(0, maxLength);
         this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
         var articleType = 'main';
@@ -286,6 +297,12 @@ export class ArticlesModule implements OnInit {
         this.randomLeftColumn = articleArr;
     }
 
+    onResize(event) {
+        this.isSmall = event.target.innerWidth <= 639;
+        this.getHeaderData(this.moduleData);
+    }
+
     ngOnInit() {
+        this.isSmall = window.innerWidth <= 639;
     }
 }
