@@ -40,7 +40,7 @@ export class DraftHistoryModule implements OnInit {
       ["Draft-history-mlb-page"];
 
     this.footerData = {
-      infoDesc: 'Want to see everybody involved in this list?',
+      infoDesc: 'Want to see the full list?',
       text: 'VIEW THE FULL LIST',
       url: pageRoute
     };

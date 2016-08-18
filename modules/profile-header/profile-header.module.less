@@ -109,7 +109,7 @@
       }
       circle-image {
         float: left;
-        margin-right: 12px;
+        margin: 0 12px 10px 0;
       }
     }
 
@@ -123,9 +123,9 @@
       }
       &-border {
         position: absolute;
-        top: 6px;
+        top: 2px;
         left: 2px;
-        bottom: 4px;
+        bottom: 2px;
         border: 1px solid @strokeGrey;
         content: '';
         @media @mobile {
@@ -134,6 +134,11 @@
       }
       .scrollable-item {
         height: 130px;
+        &.showScroll {
+          .scrollable-item-content {
+            margin-right: 20px;
+          }
+        }
       }
       .scrollable-item-content {
         position: relative;
@@ -180,7 +185,7 @@
     }
 
     &-label {
-      .globalDefaultModFont(12px, 400, @fontIconGrey);
+      .globalDefaultModFont(12px, 400, @bulletGrey);
     }
 
     &-value {
@@ -199,7 +204,7 @@
       padding: 15px 20px;
       &-title {
         margin: 0 0 15px 0;
-        .globalDefaultModFont(32px, 800, @white);
+        .globalDefaultModFont(32px, 400, @white);
       }
       &-datapts {
         > span {
@@ -213,10 +218,10 @@
           display: none;
         }
         &-label {
-          .globalDefaultModFont(14px, 400, @white);
+          .globalDefaultModFont(12px, 400, @white);
         }
         &-value {
-          .globalDefaultModFont(14px, 800, @white);
+          .globalDefaultModFont(12px, 800, @white);
         }
         &-pt {
           padding: 10px 25px;
@@ -252,7 +257,7 @@
           display: none;
         }
         .scrollable-item {
-          height: 80px;
+          height: 90px;
           margin-left: 0;
         }
       }

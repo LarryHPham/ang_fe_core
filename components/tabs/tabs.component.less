@@ -68,6 +68,7 @@
     text-align: center;
     //padding: 0 12px;
     margin: 0 10px;
+    position: relative;
     @media @mobile {
       display: inline-block;
       width: 100px!important;
@@ -75,6 +76,14 @@
     }
     @media @tablet {
       padding: 0;
+    }
+    span {
+      @media @mobile {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        left:0;
+      }
     }
     i{
       display: none;

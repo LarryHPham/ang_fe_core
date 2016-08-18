@@ -146,7 +146,7 @@ export class SliderCarousel implements OnInit {
 
     //In case of errors display below
     if (typeof this.dataPoint == 'undefined') {
-      var sampleImage = "./app/public/no-image.png";
+      var sampleImage = "./app/public/no-image.svg";
       this.dataPoint =
       {//placeholder data
         index:'1',
@@ -317,7 +317,7 @@ export class SliderCarousel implements OnInit {
         mainImage: {
           imageClass: "border-10",
           urlRouteArray: null,
-          imageUrl: "/app/public/no-image.png",
+          imageUrl: "/app/public/no-image.svg",
           hoverText: ""
         },
         subImages: []
