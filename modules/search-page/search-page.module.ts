@@ -8,6 +8,7 @@ import {Search, SearchInput} from '../../components/search/search.component';
 import {PaginationFooter, PaginationParameters} from '../../components/pagination-footer/pagination-footer.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
 export interface SearchPageInput {
     //Data for the search bar component
@@ -46,7 +47,7 @@ export interface SearchPageInput {
 @Component({
     selector: 'search-page-module',
     templateUrl: './app/fe-core/modules/search-page/search-page.module.html',
-    directives:[ResponsiveWidget, ROUTER_DIRECTIVES, NoDataBox, BackTabComponent, Tabs, Tab, Search, PaginationFooter],
+    directives:[DropdownComponent, ResponsiveWidget, ROUTER_DIRECTIVES, NoDataBox, BackTabComponent, Tabs, Tab, Search, PaginationFooter],
     providers: [NgStyle]
 })
 
@@ -59,13 +60,24 @@ export class SearchPageModule implements OnChanges{
 
     currentShowing: string;
 
+    dropdownFilter: Array<{key:string, value:string}> = [];
+    @Output() selectedKeyFilter =  new EventEmitter();
+
     constructor(private _route:RouteParams){
       if(typeof this._route.params['pageNum'] != 'undefined'){
         this.pageNumber = Number(this._route.params['pageNum']);
       }else{
         this.pageNumber = 1;// if nothing is in route params then default to first piece of obj array
       }
+      this.dropdownFilter = [{
+        key: 'nfl',
+        value: 'NFL',
+      },{
+        key: 'ncaaf',
+        value: 'NCAAF',
+      }];
     }
+
     ngOnChanges(){
         this.configureSearchPageModule();
         this.getShowResults(this.searchPageInput);
@@ -73,6 +85,14 @@ export class SearchPageModule implements OnChanges{
 
     configureSearchPageModule(){
         let input = this.searchPageInput;
+    }
+
+    filterSwitch($event){
+      console.log($event);
+      this.selectedKeyFilter.next({
+          dropdownIndex: 0,
+          key: $event
+      });
     }
 
     newIndex(index){
@@ -102,6 +122,8 @@ export class SearchPageModule implements OnChanges{
         }
       })
     }
+
+
 
     tabSelected(event){
       this.pageNumber = 1;
