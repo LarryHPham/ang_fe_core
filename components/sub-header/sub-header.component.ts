@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {GlobalSettings} from '../../../global/global-settings';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
@@ -11,6 +11,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 })
 
 export class SubHeaderComponent{
+  @Input()sport: string;
   constructor(){}
   ngDoCheck(){
     if(GlobalSettings.getHomeInfo().isHome){
