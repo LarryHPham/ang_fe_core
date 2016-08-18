@@ -15,6 +15,7 @@ export interface ModuleHeaderData {
 
 export class ModuleHeader {
    @Input() modHeadData: ModuleHeaderData;
+   moduleTitle: string = "";
 
    ngOnInit(){
      if(typeof this.modHeadData == 'undefined'){
@@ -24,5 +25,21 @@ export class ModuleHeader {
          iconClass: '',
        }
      }// end of placeholder if statement
+     var windowWidth = window.innerWidth;
+     if (windowWidth > 640) {
+      this.moduleTitle = this.modHeadData.moduleTitle;
+     }
+     else {
+       this.moduleTitle = this.modHeadData.moduleTitle.split('-')[0];
+     }
+   }
+   private onWindowLoadOrResize(event) {
+     var windowWidth = event.target.innerWidth;
+     if (windowWidth > 640) {
+      this.moduleTitle = this.modHeadData.moduleTitle;
+     }
+     else {
+       this.moduleTitle = this.modHeadData.moduleTitle.split('-')[0];
+     }
    }
 }
