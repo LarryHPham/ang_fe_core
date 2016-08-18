@@ -4,6 +4,9 @@
   &-header {
     position: relative;
     padding: 8px 0px;
+    @media @mobile {
+      padding: 8px 15px;
+    }
     text-align: center;
     border: @strokeGrey 1px solid;
     margin-bottom: 5px;
@@ -34,6 +37,9 @@
   &-body {
     tr {
       height: 70px;
+      @media @mobile {
+        height: 40px;
+      }
     }
     th {
       position: relative;

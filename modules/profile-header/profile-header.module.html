@@ -39,7 +39,7 @@
       <div *ngFor="let data of profileHeaderData.bottomDataPoints" class="ph-datapts-pt">
         <div class="ph-datapts-label">{{data.label}}</div>
         <div class="ph-datapts-value">{{data.value | naValue}}</div>
-        <div class="ph-datapts-label">{{data.labelCont}}</div>
+        <div class="ph-datapts-label" *ngIf="data.labelCont">{{data.labelCont}}</div>
       </div>
   </div>
 </section>

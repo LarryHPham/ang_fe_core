@@ -26,14 +26,14 @@
       position: absolute;
       z-index: 1;
       background-color: inherit;
-      height: 70px;
+      height: 40px;
       border-width: 0 5px 0 0;
       border-style: solid;
       border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
     }
     .table-cell-image {
       @media @mobile {
-        margin-top: 20px;
+        margin-top: 5px;
       }
     }
   }
@@ -41,8 +41,14 @@
     @media @mobile {
       position: absolute;
       z-index: 1;
+      .custom-table-header {
+        margin-right:0!important;
+      }
     }
     background-color: @white;
+    .custom-table-header {
+      margin-right:5px;
+    }
   }
   .custom-table .spacer {
     @media @mobile {
@@ -54,5 +60,7 @@
     @media @mobile {
       padding: 5px 0 5px 10px;
     }
+    max-height: 380px;
+    min-height: 0!important;
   }
 }
