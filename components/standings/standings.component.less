@@ -11,9 +11,12 @@
     background-color: @white;
   }
   .image-column-hdr, .image-column {
-    width: 200px;
-    @media @mobile {
-      width: 150px;
+    width: 150px;
+    @media @tablet {
+      width: 204px;
+    }
+    @media @desktop-xl {
+      width: 240px;
     }
   }
   table circle-image {
@@ -43,7 +46,10 @@
     }
   }
   .data-column-hdr:last-child, .data-column:last-child {
-    min-width: 55px;
+    min-width: 51px;
+    @media @desktop-xl{
+      min-width: 83px;
+    }
   }
 
   .custom-table .spacer {
