@@ -40,3 +40,4 @@ If you want to update to the latest version of Core Framework in your project th
 7. team roster sticky table columns
 8. responsive draft history and sorting
 9. responsive article pages and AI headline module
+10. responsive directory page and update design
