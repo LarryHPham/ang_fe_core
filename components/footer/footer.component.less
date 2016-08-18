@@ -1,14 +1,22 @@
 .footer{
   height: auto;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
   &-top{
-    .flexDisplay;
-    .flexJustify(space-between);
-    .flexAlignItems(center);
-    background-color: @masterBrandColor;
-    padding:0 15px;
-    min-height: 40px;
+    &-container{
+      .flexDisplay;
+      .flexAlignItems(center);
+      .flexJustify(space-between);
+      background-color: @masterBrandColor;
+      min-height: 40px;
+      width: 100%;
+      padding: 0 15px;
+    }
     @media @desktop-xl{
-      padding: 0 325px;
+      &-container{
+        padding: 0 ~"calc(50% - 395px)";
+      }
     }
     img{
       margin: 7px auto;
@@ -54,7 +62,7 @@
     .flexDisplay;
     .flexDirection(column);
     @media @desktop-xl{
-      padding: 0 325px 15px 325px;
+      padding: 0 ~"calc(50% - 395px)" 15px ~"calc(50% - 395px)";
       font-size: 12px;
     }
     ul{
@@ -107,9 +115,6 @@
       margin-bottom: 0;
       line-height: 1em;
       .globalDefaultFont(10px, 400);
-      em{
-        font-style: italic;
-      }
     }
   }// footer-main ends
   &-text1{
