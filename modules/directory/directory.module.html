@@ -2,7 +2,7 @@
 
  <error-component *ngIf="isError"></error-component>
 
- <div *ngIf="!isLoading && !isError">
+ <div class="dir-container" *ngIf="!isLoading && !isError">
 
      <!-- Title and Path Name -->
      <header class="dir-hdr">
@@ -44,7 +44,7 @@
      <ul *ngIf="data.hasListings && data.listingItems" class="dir-list">
          <li *ngFor="let item of data.listingItems.items" class="dir-list-item">
              <p *ngIf="item.lastUpdated" class="dir-list-item-small">
-                 Last updated: {{item.lastUpdated | dateTimeStamp}}
+                 Last updated: <span class="dir-list-item-small-dow">{{item.dayOfWeek}}</span> {{item.lastUpdated}}
              </p>
              <p class="dir-list-item-line">
                <span *ngFor="let link of item.mainDescription; let isLast = last">
