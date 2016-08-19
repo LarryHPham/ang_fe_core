@@ -1,3 +1,46 @@
+.mvp-list-title {
+  padding: 10px;
+  .list-filter-heading {
+    display: inline-block;
+    vertical-align: middle;
+    i {
+      color: @masterBrandColor;
+      vertical-align: top;
+    }
+  }
+  h4 {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+    @media @tablet {
+      display:none;
+    }
+  }
+  .sort-title {
+    display: inline-block;
+    width:170px;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+    @media @mobile {
+      width: 115px;
+      height: 30px;
+    }
+    &-text {
+      @media @mobile {
+        display: none;
+      }
+    }
+  }
+  .dropdown {
+    width: 117px;
+    display: inline-block;
+    &-hdr {
+      height: 28px;
+    }
+  }
+} //mvp-list-title
+
 .mvp-container {
   .separator {
     padding: 0 6px;

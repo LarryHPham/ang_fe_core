@@ -44,7 +44,7 @@ export class MVPListComponent implements DoCheck  {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
-        if ( !this.selectedTabTitle ) {          
+        if ( !this.selectedTabTitle ) {
           this.selectedTabTitle = this.tabs[0].tabDisplayTitle;
         }
         this.tabSelected(this.selectedTabTitle);
@@ -84,7 +84,7 @@ export class MVPListComponent implements DoCheck  {
     }
   }
 
-  updateCarousel(tab: MVPTabData) {    
+  updateCarousel(tab: MVPTabData) {
     if ( tab.listData.length == 0 ) {
       this.carouselDataArray = tab.getCarouselData()
     }
