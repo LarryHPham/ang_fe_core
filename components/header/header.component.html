@@ -2,7 +2,10 @@
   <div *ngIf="!partnerID" class="header-logo">
     <a [routerLink]="['Home-page']"><img src={{logoUrl}}/></a>
   </div>
-  <section class="header-top">
+  <div *ngIf="partnerID" class="header-logo">
+    <a [routerLink]="['Home-page']"><img src={{partnerLogoUrl}}/></a>
+  </div>
+  <section class="header-top" [class.header-partner]="partnerID">
     <div class="header-left">
       <!-- <div class="header-hamburger" tabindex="999"> -->
       <!-- menucheck class is for the document click funtion to determine to close it when in view -->
