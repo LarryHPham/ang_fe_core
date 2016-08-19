@@ -20,12 +20,16 @@ export class FooterComponent implements OnInit {
     public linkName: string;
     public currentUrl: string = window.location.href;
     public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
-    public _copyrightInfo: string = GlobalSettings.getCopyrightInfo();
+    public _copyrightInfo: string = "Images Provided By: <i>" + GlobalSettings.getCopyrightInfo() + "</i>";
     public _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
     public _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl();
     public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
     public _sportLeagueFull: string = GlobalSettings.getSportLeagueFull();
     public _lastUpdated: string = GlobalSettings.getEstYear();
+    public advertise: string = "Advertise with ";
+    public contactUs: string = "Contact Us";
+    public disc: string = "Disclaimer";
+    public au: string = "About Us";
     teamDirectoryListings: Array<Link>;
 
     playerDirectoryListings: Array<Link>;
@@ -41,6 +45,7 @@ export class FooterComponent implements OnInit {
       if(!partner && !checkPartner) {
           this.pageName = GlobalSettings.getBaseTitle();
           this._lastUpdated += " " + GlobalSettings.getBaseTitle();
+          this.advertise += this.pageName;
      } else {
           this.pageName = GlobalSettings.getBasePartnerTitle();
           this._lastUpdated += " " + GlobalSettings.getBasePartnerTitle();
@@ -69,7 +74,5 @@ export class FooterComponent implements OnInit {
 
     ngOnInit() {
         this.loadData(this.partner);
-        // this.teamDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("teams");
-        // this.playerDirectoryListings = GlobalFunctions.setupAlphabeticalNavigation("players");
     }
 }

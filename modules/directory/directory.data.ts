@@ -15,18 +15,19 @@ export interface DirectoryItems {
 
 export interface DirectoryProfileItem {
   lastUpdated: string;
+  dayOfWeek: string;
   mainDescription: Array<Link>;
   subDescription: Array<string>;
 }
 
-export interface DirectoryModuleData {  
+export interface DirectoryModuleData {
   pageName: string;
   pageParams: any;
   breadcrumbList: Array<Link>;
   directoryListTitle: string;
   hasListings: boolean;
   noResultsMessage: string;
-  listingItems: DirectoryItems;  
+  listingItems: DirectoryItems;
   listingsLimit: number;
   navigationData: NavigationData;
   pagingDescription: string;

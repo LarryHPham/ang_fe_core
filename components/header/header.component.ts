@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
 import {Search, SearchInput} from '../../components/search/search.component';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {SubHeaderComponent} from '../../components/sub-header/sub-header.component';
 import {GlobalSettings} from "../../../global/global-settings";
 import {HamburgerMenuComponent, MenuData} from '../../components/hamburger-menu/hamburger-menu.component';
 declare var stButtons: any;
@@ -10,13 +9,14 @@ declare var jQuery:any;
 @Component({
     selector: 'header-component',
     templateUrl: './app/fe-core/components/header/header.component.html',
-    directives: [Search, ROUTER_DIRECTIVES, SubHeaderComponent, HamburgerMenuComponent],
+    directives: [Search, ROUTER_DIRECTIVES, HamburgerMenuComponent],
     providers: [],
 })
 export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
   public logoUrl:string;
+  public partnerLogoUrl: string;
   private _stickyHeader: string;
   public searchInput: SearchInput = {
        placeholderText: "Search for anything " + GlobalSettings.getSportName(),
@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit,OnChanges {
   public isActive: boolean = false;
   public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
   public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
+  public _sportName: string = GlobalSettings.getSportName().toUpperCase();
   private elementRef:any;
 
   constructor(elementRef: ElementRef, private _renderer: Renderer){
@@ -79,9 +80,11 @@ export class HeaderComponent implements OnInit,OnChanges {
         this.isOpened = false;
       }
     });
+    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
+    this.partnerLogoUrl = 'app/public/Football-DeepDive_Logo_Outlined-W.svg';
   }
 
   ngOnChanges() {
-    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
+
   }
 }

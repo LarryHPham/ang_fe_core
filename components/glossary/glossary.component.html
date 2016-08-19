@@ -1,0 +1,9 @@
+<div class="glossary pane-content">
+  <h4 class="glossary-title">{{title}}</h4>
+  <div class="glossary-box row">
+    <ul>
+      <li *ngFor="let glossaryData of glossaryData" class="{{classType}}" [innerHTML]="glossaryData.terms | safeHtml">
+      </li>
+    </ul>
+  </div>
+</div>
