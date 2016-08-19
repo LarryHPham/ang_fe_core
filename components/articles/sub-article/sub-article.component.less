@@ -11,13 +11,13 @@
 }
 
 .sub-container {
-  width: 310px;
+  width: 48%;
   float: left;
   position: relative;
   margin: 10px 0 10px 10px;
   .flexDisplay;
   .flexDirection(column);
-  .flexJustify(space-between);
+  .flexJustify(space-around);
   @media @desktop-xl {
     width: 440px;
   }
@@ -45,13 +45,13 @@
     .globalDefaultFont(16px, 400);
     text-align: left;
     margin-bottom: 15px;
-    width: 200px;
+    width: ~'calc(100% - 100px)';
     float: right;
     height: 60px;
-    display: flex;
     align-items: center;
-    padding-right: 10px;
-    .line-clamp;
+    padding: 0 10px;
+    overflow: hidden;
+    display: block;
     @media @desktop-xl {
       width: 330px;
     }
@@ -74,6 +74,9 @@
     top: 5px;
     margin: 0 auto;
     left: -5px;
+    @media @fluid {
+      width: 97%;
+    }
     @media @desktop-xl {
       width: 435px;
       left: 0;
