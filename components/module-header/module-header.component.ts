@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export interface ModuleHeaderData {
   moduleTitle:string,
+  moduleIdentifier?: string,
   hasIcon: boolean,
   iconClass: string,
 }
