@@ -135,17 +135,22 @@
   &-share{
     display: none;
   }//header-share ends
-}
-.st_sharethis_large{
-  span:first-child{
+  .st_sharethis_large{
+    display:none;
+    @media @desktop-m {
+      display:flex;
+    }
     span:first-child{
-      height: 65px;
-      width: 65px;
-      background-repeat: no-repeat;
-      background-size: cover;
+      span:first-child{
+        height: 65px;
+        width: 65px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
   }
 }
+
 @media @mobile {
   .header-search {
     margin-left: -45px;

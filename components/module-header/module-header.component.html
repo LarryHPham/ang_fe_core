@@ -1,3 +1,4 @@
+<div (window:resize)="onWindowLoadOrResize($event)"></div>
 <header *ngIf="modHeadData" class='module-header'>
   <span *ngIf="!modHeadData.hasIcon" class="module-header-line"></span>
   <span *ngIf="modHeadData.hasIcon" class="module-header-icon"><i class="{{modHeadData.iconClass}}"></i></span>
@@ -10,5 +11,4 @@
     *ngIf="modHeadData.moduleIdentifier"
     [innerHTML]="modHeadData.moduleIdentifier">
   </h3>
-
 </header>
