@@ -133,6 +133,13 @@
         }
       }
       .scrollable-item {
+        .scrollable-item-wrapper {
+          height: auto;
+          max-height: none;
+          @media @mobile {
+            max-height: 100px;
+          }
+        }
         &.showScroll {
           .scrollable-item-content {
             margin-right: 20px;
