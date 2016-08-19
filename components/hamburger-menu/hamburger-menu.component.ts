@@ -27,6 +27,7 @@ export class HamburgerMenuComponent implements OnInit {
     this.isHome = GlobalSettings.getHomeInfo().isHome;
   }
   ngOnInit(){
+    if (this._collegeDivisionAbbrv == "FBS"){this._collegeDivisionAbbrv = "NCAAF";}
     this.loadData(this._sportLeagueAbbrv);
   }//ngOnInit ends
   loadData(division) {
