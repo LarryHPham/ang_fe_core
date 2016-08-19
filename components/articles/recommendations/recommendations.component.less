@@ -1,7 +1,8 @@
 .recommendations {
   width: 610px;
   display: inline-block;
-  @media @mobile {
+  overflow: hidden;
+  @media @fluid {
     width: 100%;
     padding-top: 10px;
   }
@@ -48,6 +49,10 @@
         background-position: top center;
         background-size: cover;
         background-repeat: no-repeat;
+        @media @fluid {
+          width: 100%;
+          height: ~'calc(6vw * 3.15)';
+        }
       }
       &-content {
         .globalDefaultFont(16px, 800);
@@ -61,6 +66,7 @@
         text-overflow: ellipsis;
         position: relative;
         top: 15px;
+        margin-bottom: 35px;
         &-dateline {
           .globalDefaultFont(10px, 800);
           &-keyword {
@@ -86,6 +92,10 @@
   float: left;
   width: 190px;
   height: 210px;
+  @media @fluid {
+    width: calc(6vw * 5.1);;
+    height: auto;
+  }
   @media @mobile {
     width: 100%;
     height: 225px;

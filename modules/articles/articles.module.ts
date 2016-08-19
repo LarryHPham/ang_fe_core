@@ -106,13 +106,13 @@ export class ArticlesModule implements OnInit {
             if (!this.isSmall) {
                 this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
             } else {
-                this.headerInfo.moduleTitle = "Post Matchup Against the " + (this.teamID == data.home.id ? data.away.name : data.home.name);
+                this.headerInfo.moduleTitle = "Post Gameday Matchup";
             }
         } else {
             if (!this.isSmall) {
                 this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
             } else {
-                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Matchup Against the " + (this.teamID == data.home.id ? data.away.name : data.home.name);
+                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
             }
         }
     }
