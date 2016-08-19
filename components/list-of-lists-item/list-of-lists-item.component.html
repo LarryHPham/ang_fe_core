@@ -7,11 +7,11 @@
     <div class="dataBox">
       <h2 class="loli-title">{{item.name}}</h2>
     </div>
-    <div class="cta-container">
-      <span class="cta-container-text">
+    <div class="cta-container" id="container-loli">
+      <span class="cta-container-text" id="container-loli-text">
         {{item.ctaDesc}}
       </span>
-      <a class="cta-container-button" [routerLink]="item.ctaUrl">
+      <a class="cta-container-button" [routerLink]="item.ctaUrl" id = "container-loli-button">
         <span></span> <!-- needed for button styles to apply correctly -->
         <span [innerHTML]="item.ctaText"></span>
         <i class="fa fa-angle-right"></i>
