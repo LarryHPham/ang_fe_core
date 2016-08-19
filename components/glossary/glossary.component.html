@@ -1,9 +1,8 @@
-<div *ngIf="showGlossary" class="stats-glossary pane-content">
-  <h4 class="stats-glossary-title">{{title}}</h4>
-  <div class="stats-glossary-box row">
+<div class="glossary pane-content">
+  <h4 class="glossary-title">{{title}}</h4>
+  <div class="glossary-box row">
     <ul>
-      <li *ngFor="let term of glossary" class="col-xs-6">
-        <span class="text-heavy">{{term.key}}:</span> {{term.value}}
+      <li *ngFor="let glossaryData of glossaryData" class="{{classType}}" [innerHTML]="glossaryData.terms | safeHtml">
       </li>
     </ul>
   </div>
