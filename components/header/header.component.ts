@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
   public logoUrl:string;
+  public partnerLogoUrl: string;
   private _stickyHeader: string;
   public searchInput: SearchInput = {
        placeholderText: "Search for anything " + GlobalSettings.getSportName(),
@@ -79,9 +80,11 @@ export class HeaderComponent implements OnInit,OnChanges {
         this.isOpened = false;
       }
     });
+    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
+    this.partnerLogoUrl = 'app/public/Football-DeepDive_Logo_Outlined-W.svg';
   }
 
   ngOnChanges() {
-    this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
+
   }
 }

@@ -41,11 +41,17 @@
         @media @desktop-xl {
           left: 330px;
         }
+        @media @fluid {
+          left: ~"calc(38% - 25px)";
+        }
       }
       &-right {
         right: 223px;
         @media @desktop-xl {
           right: 337px;
+        }
+        @media @fluid {
+          right: ~"calc(38% - 25px)";
         }
       }
       @media @mobile {
@@ -66,6 +72,9 @@
       }
       @media @mobile {
         width: ~"calc(50% - 25px)";
+      }
+      @media @fluid {
+        width: ~"calc(36% - 25px)";
       }
       &-left {
         left: 0px;
