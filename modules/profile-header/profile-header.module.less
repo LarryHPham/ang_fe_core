@@ -133,7 +133,13 @@
         }
       }
       .scrollable-item {
-        height: 130px;
+        .scrollable-item-wrapper {
+          height: auto;
+          max-height: none;
+          @media @mobile {
+            max-height: 100px;
+          }
+        }
         &.showScroll {
           .scrollable-item-content {
             margin-right: 20px;
@@ -257,7 +263,7 @@
           display: none;
         }
         .scrollable-item {
-          height: 90px;
+
           margin-left: 0;
         }
       }
@@ -290,9 +296,6 @@
     } //&-hdr
     &-content {
       &-desc {
-        .scrollable-item {
-          height: 100px;
-        }
       }
     } //&-content
   }

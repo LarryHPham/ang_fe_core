@@ -1,12 +1,8 @@
 import {Component,OnInit,Input} from '@angular/core';
 import {SanitizeHtml} from "../../pipes/safe.pipe";
+
 export interface GlossaryData{
-  key: string;
-  value: string;
-}
-export interface GlossaryInput{
-  title: string;
-  glossary: Array<GlossaryData>;
+  terms: string;
 }
 
 @Component({
@@ -15,23 +11,19 @@ export interface GlossaryInput{
   pipes: [SanitizeHtml]
 })
 
-export class ArticleStacktopComponent implements OnInit{
-  @Input() glossaryData: GlossaryInput;
-  ngOnInit() {
-    if(this.glossaryData === null){
-      this.glossaryData = {
-        title: "Glossary",
-        glossary: [
-          {
-            key: "Key 1",
-            value: "Value 1"
-          },
-          {
-            key: "Key 2",
-            value: "Value 2"
-          }
-        ]
-      }
+export class GlossaryComponent implements OnInit{
+  public title: string = "Glossary";
+  @Input() glossaryData: Array<GlossaryData>;
+  public classType: string;
+  getClassType(){
+    var termsCount = this.glossaryData.length;
+    if(termsCount > 6){
+      this.classType = "col-xs-4";
+    } else {
+      this.classType = "col-xs-6";
     }
+  }
+  ngOnInit() {
+    this.getClassType();
   }//ngOnInit ends
 }

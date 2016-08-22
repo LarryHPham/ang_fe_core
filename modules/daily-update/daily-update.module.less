@@ -127,6 +127,7 @@
         .clearfix;
         padding: 10px 20px 10px 10px;
         border-bottom: 1px solid @strokeGrey;
+        display: flex;
         h4{
           margin: 0;
           .globalDefaultModFont(14px, 400, @textEmphasisGrey);
@@ -143,14 +144,20 @@
             vertical-align: middle;
           }
         }
+        #foragainst {
+          width: 100%;
+        }
         &-primary{
+          float: right;
+          margin-right: 10px;
           &:before{
             background-color: @textEmphasisGrey;
           }
         }
         &-secondary{
+          float: right;
           &:before{
-            margin-left: 20px;
+      //      margin-left: 20px;
             background-color: @masterBrandColor;
           }
         }

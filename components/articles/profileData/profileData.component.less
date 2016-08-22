@@ -2,10 +2,13 @@
   width: 610px;
   height: 198px;
   font-family: @globalFont;
-  @media @mobile {
+  @media @fluid {
     width: 100%;
-    height: 113px;
+    height: 200px;
     margin-bottom: 10px;
+  }
+  @media @mobile {
+    height: 113px;
   }
   &-double {
     @media @mobile {
@@ -24,7 +27,7 @@
     width: 582px;
     height: 1px;
     margin: 25px 0;
-    @media @mobile {
+    @media @fluid {
       margin: 10px 0 10px 0;
       width: 100%;
     }
@@ -104,6 +107,11 @@
         z-index: 1;
         background-position: center center;
         background-size: contain;
+        @media @fluid {
+          left: 50%;
+          margin-right: -50%;
+          transform: translate(-50%, 0%);
+        }
         @media @mobile {
           width: 75px;
           height: 75px;
@@ -154,12 +162,14 @@
     bottom: 10px;
     &-images {
       width: 100%;
-      margin: 0 auto;
+      margin: auto;
       position: relative;
+      @media @fluid {
+        width: 600px;
+      }
       @media @mobile {
         height: 90px;
         width: 300px;
-        margin: auto;
       }
     }
     &-circles {
@@ -217,6 +227,10 @@
       }
     }
     &-container {
+      @media @fluid {
+        margin: auto;
+        width: 600px;
+      }
       @media @mobile {
         height: 85px;
         width: 300px;
@@ -303,6 +317,10 @@
       width: 100%;
       height: 130px;
       position: relative;
+      @media @fluid {
+        width: 600px;
+        margin: auto;
+      }
       @media @mobile {
         height: 85px;
         width: 300px;
@@ -360,6 +378,10 @@
       }
     }
     &-container {
+      @media @fluid {
+        margin: auto;
+        width: 600px;
+      }
       @media @mobile {
         height: 85px;
         width: 300px;
