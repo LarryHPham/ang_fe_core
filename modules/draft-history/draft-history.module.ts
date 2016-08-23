@@ -44,9 +44,9 @@ export class DraftHistoryModule implements OnInit {
       text: 'VIEW THE FULL LIST',
       url: pageRoute
     };
-
     this.modHeadData = {
-        moduleTitle: "Draft History - "+ this.profileData.profileName,
+        moduleTitle: "Draft History",
+        moduleIdentifier: " - " + this.profileData.headerData.teamMarket + " " + this.profileData.profileName,
         hasIcon: false,
         iconClass: '',
     }

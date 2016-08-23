@@ -11,9 +11,11 @@
     border: @strokeGrey 1px solid;
     margin-bottom: 5px;
     .globalDefaultFont(10px, 400);
-    &-sort:hover {
-      border-color: @masterBrandColor;
-      cursor: pointer;
+    @media @tablet {
+      &-sort:hover {
+        border-color: @masterBrandColor;
+        cursor: pointer;
+      }
     }
 
     &-name {
@@ -104,12 +106,14 @@
           text-overflow: ellipsis;
         }
       }
-      a:hover {
-        color: @masterBrandColor;
-        text-decoration: none;
-        .image-round-hover {
-          div {
-            .flexDisplay;
+      @media @tablet {
+        a:hover {
+          color: @masterBrandColor;
+          text-decoration: none;
+          .image-round-hover {
+            div {
+              .flexDisplay;
+            }
           }
         }
       }
