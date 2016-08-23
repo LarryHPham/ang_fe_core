@@ -1,35 +1,8 @@
 <div *ngIf="data" class="dir-pag row">
-  <div *ngIf="dirRangeTotal" class="col-sm-6 dir-pag-text">
+  <div class="col-sm-6 dir-pag-text">
     <span class="dir-pag-text-lbl">Showing:</span>
     <span class="text-heavy">{{data.rangeText}}</span> of
     <span class="text-heavy">{{data.totalItems}}</span>
     {{data.description}}
-  </div>
-  <!-- TODO -->
-  <div *ngIf="dirPagination" class="col-sm-6 dir-pag-buttons">
-    <div>
-      <a [routerLink]="firstLink.route" class="dir-pag-skip"
-       [class.dir-pag-skip-active]="enableFirst"
-       [class.dir-pag-skip-disabled]="!enableFirst">
-          <i class="fa fa-angle-double-left"></i>
-      </a>
-      <a [routerLink]="prevLink.route" class="dir-pag-button"
-       [class.dir-pag-button-active]="enablePrev"
-       [class.dir-pag-button-disabled]="!enablePrev">
-          <i class="fa fa-angle-left"></i>
-      </a>
-    </div>
-    <div>
-      <a [routerLink]="nextLink.route" class="dir-pag-button"
-       [class.dir-pag-button-active]="enableNext"
-       [class.dir-pag-button-disabled]="!enableNext">
-          <i class="fa fa-angle-right"></i>
-      </a>
-      <a [routerLink]="lastLink.route" class="dir-pag-skip"
-      [class.dir-pag-skip-active]="enableLast"
-      [class.dir-pag-skip-disabled]="!enableLast">
-          <i class="fa fa-angle-double-right"></i>
-      </a>
-    </div>
   </div>
 </div>

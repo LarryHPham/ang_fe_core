@@ -13,7 +13,7 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 @Component({
     selector: 'directory-module',
     templateUrl: './app/fe-core/modules/directory/directory.module.html',
-    directives: [ROUTER_DIRECTIVES, NgClass, LoadingComponent, ErrorComponent, DirectoryPagination, NoDataBox],
+    directives: [ROUTER_DIRECTIVES, NgClass, LoadingComponent, ErrorComponent, NoDataBox, DirectoryPagination],
     providers: [],
     pipes: [DateTimePipe]
 })
@@ -27,21 +27,6 @@ export class DirectoryModule implements OnChanges {
   @Input() isError: boolean = false;
 
   public isLoading: boolean = true;
-  public pagingDescription: PagingData;
-  public nextLink: Link = {
-    text: "Next"
-  }
-  public prevLink: Link = {
-    text: "Back"
-  }
-
-  public firstLink: Link = {
-    text: "Reverse"
-  }
-  public lastLink: Link = {
-    text: "Fast Forward"
-  }
-
   constructor(private router: Router) {}
 
   ngOnChanges() {
@@ -49,7 +34,7 @@ export class DirectoryModule implements OnChanges {
   }
   isActive(instruction: any[]): boolean {
      return this.router.isRouteActive(this.router.generate(instruction));
-   }
+  }
 
   setupData() {
     if ( this.data === undefined || this.data === null ){
@@ -66,25 +51,9 @@ export class DirectoryModule implements OnChanges {
 
     this.isLoading = false;
 
-    var pageName:string = this.data.pageName;
+    // var pageName:string = this.data.pageName;
     var maxPageCount: number = Math.ceil(this.data.listingItems.totalItems / this.data.listingsLimit);
     var currPage: number = this.currentPage;
-
-    //Next Page
-    this.nextLink.route = [pageName, { page: currPage + 1 }]
-    this.setPageParams(this.nextLink);
-
-    //Previous Page
-    this.prevLink.route = [pageName, { page: currPage - 1 }]
-    this.setPageParams(this.prevLink);
-
-    //Last Page
-    this.lastLink.route = [pageName, { page: maxPageCount }]
-    this.setPageParams(this.lastLink);
-
-    //First Page
-    this.firstLink.route = [pageName, { page: 1 }]
-    this.setPageParams(this.firstLink);
 
     //Determine range display for directory page (ex. 1-20, 22-40, etc)
     var rangeStart = 0;
@@ -102,13 +71,6 @@ export class DirectoryModule implements OnChanges {
       totalPages: maxPageCount,
       currentPage: currPage,
       description: this.data.pagingDescription
-    }
-  }
-
-  setPageParams(link: Link) {
-    for ( var key in this.data.pageParams ) {
-      //assuming key is field.
-      link.route[1][key] = this.data.pageParams[key];
     }
   }
 }
