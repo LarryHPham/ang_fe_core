@@ -5,10 +5,19 @@
   min-height: @defaultPageHdrHeight;
   line-height: @defaultPageHdrHeight;
   background: @white;
+  @media @mobile {
+    padding: 15px 10px;
+  }
+  @media @tablet {
+    padding: 15px;
+  }
+  @media @desktop-m {
+    padding: 15px 15px 20px 15px;
+  }
   .flexDisplay;
   &-titleImage {
     .roundImageMain(96px);
-     margin: 17px 15px 22px;
+     margin: 0 15px 0 0;
   }
   .titleText {
     width: 80%;
@@ -28,7 +37,10 @@
     }
     .mainTitle {
       //.globalDefaultModFont(28px, 800, @black);
-      line-height: 28px;
+      //line-height: 28px;
+      @media @mobile {
+        margin: 10px 0 0 0;
+      }
     }
     .subTitle {
       .globalDefaultModFont(26px, 400, @black);
@@ -53,7 +65,6 @@
     }
     .titleText {
       width: 100%;
-      padding: 15px 10px;
     }
     .mainTitle {
       .globalDefaultModFont(22px, 800, @black);
@@ -65,9 +76,6 @@
     min-height: auto;
     &-titleImage {
       display: inline-block;
-    }
-    .titleText {
-      padding: 15px 15px 15px 0px;
     }
     .mainTitle {
       .globalDefaultModFont(28px, 800, @black);

@@ -35,6 +35,7 @@ export class DraftHistoryComponent implements OnInit {
 
   private currentIndex: number = 0;
 
+  //needs to change to a dropdown of positions
   private sortOptions: Array<any> = [{key: '1', value: 'Ascending'}, {key: '2', value: 'Descending'}];
 
   private currentTab: any;
