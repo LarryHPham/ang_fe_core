@@ -17,6 +17,7 @@ export interface MVPTabData {
   errorData: any;
   isLoaded: boolean;
   listData: DetailListInput[];
+  position?: string;
   getCarouselData(): Array<SliderCarouselInput>;
 }
 
@@ -41,7 +42,7 @@ export class MVPListComponent implements DoCheck  {
 
   tabsLoaded: {[index:number]:string};
 
-  private sortOptions: Array<any> = [
+  private sortOptions2: Array<any> = [
     {key: '1', value: 'Cornerback'},
     {key: '2', value: 'Defensive end'},
     {key: '3', value: 'Defensive back'},
@@ -55,11 +56,14 @@ export class MVPListComponent implements DoCheck  {
     {key: '10', value: 'Running back'},
     {key: '11', value: 'Return specialist'},
     {key: '12', value: 'Wide receiver'},
-    {key: '13', value: 'Tight end'}
+    {key: '13', value: 'Tight end'},
+    {key: '14', value: 'Pitcher'},
+    {key: '15', value: 'Batter'}
   ];
 
-  ngDoCheck() {
+  private sortOptions: Array<any> = [{key: '1', value: 'Ascending'}, {key: '2', value: 'Descending'}];
 
+  ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
@@ -111,5 +115,9 @@ export class MVPListComponent implements DoCheck  {
       this.carouselDataArray = tab.getCarouselData();
       this.detailedDataArray = tab.listData;
     }
+  }
+
+  dropdownChanged($event) {
+    this.getSelectedTab();
   }
 }
