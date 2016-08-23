@@ -53,6 +53,7 @@ export interface SearchPageInput {
 
 export class SearchPageModule implements OnChanges{
     @Input() searchPageInput: SearchPageInput;
+    @Input() dropdownFilter: Array<{key:string, value:string}> = [];
 
     pageNumber: number;
 
@@ -60,7 +61,8 @@ export class SearchPageModule implements OnChanges{
 
     currentShowing: string;
 
-    dropdownFilter: Array<{key:string, value:string}> = [];
+    currentFilter: any;
+
     @Output() selectedKeyFilter =  new EventEmitter();
 
     constructor(private _route:RouteParams){
@@ -69,13 +71,6 @@ export class SearchPageModule implements OnChanges{
       }else{
         this.pageNumber = 1;// if nothing is in route params then default to first piece of obj array
       }
-      this.dropdownFilter = [{
-        key: 'nfl',
-        value: 'NFL',
-      },{
-        key: 'ncaaf',
-        value: 'NCAAF',
-      }];
     }
 
     ngOnChanges(){
