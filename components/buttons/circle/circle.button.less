@@ -25,9 +25,11 @@
   &-left {
     left: 10px;
   }
-  &:hover{
-    border-color: @black;
-    background-color: @black;
+  @media @tablet {
+    &:hover{
+      border-color: @black;
+      background-color: @black;
+    }
   }
 }
 @media @mobile{
