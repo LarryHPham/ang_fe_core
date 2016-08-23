@@ -11,6 +11,7 @@
   }
   &-fields{
     width: 100%;
+    .inputPlaceholder(normal, @bulletGrey);
   }
   &-required{
     margin-bottom: 10px;
@@ -41,10 +42,12 @@
     .flexDirection(column);
     .flexAlignItems(flex-start);
   }
+
   &-labels{
     margin-bottom: 10px;
     .col-xs-12;
   }
+
   &-label{
     .globalDefaultModFont(14px, 800, @textEmphasisGrey);
   }
@@ -58,7 +61,6 @@
       outline: 2px solid @homeRunLoyalImageHover;
     }
   }
-  .inputPlaceholder(normal, @bulletGrey);
 
   &-checkbox{
     float: left;
