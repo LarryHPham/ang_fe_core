@@ -5,7 +5,7 @@ import {RosterComponent, RosterTabData} from "../../components/roster/roster.com
 
 export interface RosterModuleData<T> {
   moduleTitle: string;
-
+  moduleIdentifier: string;
   /**
     * Used for the link in the footer button
     */
@@ -30,6 +30,7 @@ export class TeamRosterModule implements OnChanges {
 
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Team Roster",
+    moduleIdentifier: "",
     hasIcon: false,
     iconClass: ""
   };
@@ -41,11 +42,13 @@ export class TeamRosterModule implements OnChanges {
   };
 
   ngOnChanges() {
+    console.log(this.data);
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Team Roster";
     }
     else {
       this.headerInfo.moduleTitle = this.data.moduleTitle;
+      this.headerInfo.moduleIdentifier = this.data.moduleIdentifier;
       this.footerInfo.url = this.data.pageRouterLink;
     }
   }

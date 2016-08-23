@@ -1,31 +1,32 @@
-.custom-table {            
+.custom-table {
   &-sort-dropdown {
     box-sizing: border-box;
     background-color: @white;
     border: @masterBrandColor 1px solid;
     width: 146px;
-    
+
     position: absolute;
     top: 34;
     right: -1;
-  
+
     &-option {
       height: auto;
       text-align: left;
       .globalDefaultFont(12px, 400);
       padding: 10px 8px;
-      
-      &:hover {
-        cursor: pointer;
-        background-color: @masterBrandColor;
-        color: @white;
-        
-        .caret-top::after {
-          border-bottom-color: @masterBrandColor;
+      @media @tablet {
+        &:hover {
+          cursor: pointer;
+          background-color: @masterBrandColor;
+          color: @white;
+
+          .caret-top::after {
+            border-bottom-color: @masterBrandColor;
+          }
         }
       }
     }
-    
+
     hr {
       color: @strokeGrey;
       height: 1px;
