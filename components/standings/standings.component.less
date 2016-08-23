@@ -2,7 +2,6 @@
   &-car {
     .scc-details-desc {
       height: 170px;
-      width: 320px;
     }
   }
   .image-column-hdr {
@@ -10,15 +9,15 @@
     z-index: 1;
     background-color: @white;
   }
-  .image-column-hdr, .image-column {
-    width: 150px;
-    @media @tablet {
-      width: 204px;
-    }
-    @media @desktop-xl {
-      width: 240px;
-    }
-  }
+  // .image-column-hdr, .image-column {
+  //   width: 25%;
+  //   @media @tablet {
+  //     max-width: 328px;
+  //   }
+  //   @media @desktop-xl {
+  //     max-width: 322px;
+  //   }
+  // }
   table circle-image {
     @media @mobile {
       display: none;
@@ -30,19 +29,15 @@
     }
   }
   th.image-column-column {
+
     @media @mobile {
       position: absolute;
       z-index: 1;
       background-color: inherit;
-      height: 70px;
+      height: 40px;
       border-width: 0 5px 0 0;
       border-style: solid;
       border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
-    }
-    .table-cell-image {
-      @media @mobile {
-        margin-top: 20px;
-      }
     }
   }
   .data-column-hdr:last-child, .data-column:last-child {
