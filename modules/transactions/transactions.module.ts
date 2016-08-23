@@ -34,7 +34,8 @@ export class TransactionsModule {
       url: this.data.ctaRoute
     };
     this.modHeadData = {
-      moduleTitle: "Transactions - "+ this.data.profileName,
+      moduleTitle: "Transactions",
+      moduleIdentifier: " - "+this.data.profileName,
       hasIcon: false,
       iconClass: '',
     }

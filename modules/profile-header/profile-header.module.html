@@ -5,7 +5,7 @@
       <div class="ph-hdr-title" [innerHtml]="profileTitle"></div>
       <div class="ph-hdr-datapts">
         <span *ngFor="let data of profileHeaderData.topDataPoints let isLast = last">
-          <span class="ph-hdr-datapts-label">{{data.label}}:</span>
+          <span *ngIf="!data.value || data.value != 'N/A' || !data.routerLink" class="ph-hdr-datapts-label">{{data.label}}:</span>
           <span *ngIf="!data.value || !data.routerLink" class="ph-hdr-datapts-value">
             {{data.value | naValue}}
           </span>

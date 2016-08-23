@@ -22,7 +22,7 @@ tabs .dli-container{
   width:100%;
   height:155px;
   border-bottom: 1px solid @highlightGrey;
-  padding: 0 15px;
+  padding: 15px;
   &.odd{
     background-color: @white;
   }
@@ -31,15 +31,15 @@ tabs .dli-container{
   }
   &-left{
     float:left;
-    width: 155px;
+    width: 131px;
     height:100%;
-    padding:15px 15px 15px 15px;
+    padding: 0 10px 0px 0px;
   }
   &-right{
     float:right;
-    width: ~"calc(100% - 160px)";
+    width: ~"calc(100% - 131px)";
     height:100%;
-    padding: 10px 15px 0 0;
+    padding: 0px;
     > i{
       padding-top: 5px
     }
@@ -52,11 +52,14 @@ tabs .dli-container{
       width:100%;
       height:auto;
       color:@black;
-      margin: 10px 0;
+      padding: 0 0 12px 0;
       position: relative;
       .inlineFlexDisplay;
       .flexDirection(column);
       .flexJustify(space-between);
+      @media @mobile {
+        padding: 0 0 10px 0;
+      }
 
       &-mainLink {
         color: @black;
@@ -90,15 +93,16 @@ tabs .dli-container{
           font-weight: 800;
           line-height: 1.2em;
           @media @mobile {
+            padding-bottom: 10px;
             font-size: 16px;
+            font-weight: 400;
           }
         }
         &.detail-medium{
-          font-size: 14px;
+          font-size: 12px;
           line-height: 1.3em;
           margin-top:12px;
           @media @mobile {
-            font-size: 12px;
             margin-top:0;
           }
           & > i{
@@ -125,11 +129,10 @@ tabs .dli-container{
             text-align: right;
             @media @mobile {
               display: block;
-              position: absolute;
               width:100%;
-              text-align: left;
               left:0;
-              margin-top: 40px;
+              font-size: 12px;
+              text-align: left;
             }
           }
         }//END OF a tag css modifier
@@ -142,7 +145,7 @@ tabs .dli-container{
       border-radius: 5px;
       background-color: @white;
       line-height: 2em;
-      padding: 4px 4px 4px 19px;
+      padding: 4px 4px 4px 20px;
       @media @mobile {
         padding: 0;
         height: 35px;
@@ -166,7 +169,6 @@ tabs .dli-container{
         float:right;
         @media @mobile {
           float: none;
-          margin-top: 40px;
         }
       }
       & a{
@@ -181,13 +183,13 @@ tabs .dli-container{
 
 @media @mobile {
   .list-widget {
-    padding-bottom: 20px;
+    padding: 20px 0;
   }
 }
 @media @tablet {
   .list-widget {
-    height: 270px;
-    padding-bottom: 20px;
+    height: 290px;
+    padding: 20px 0;
   }
 }
 @media @desktop-l {

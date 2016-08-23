@@ -26,6 +26,7 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
 
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Twitter Feed - [Profile Name]",
+    moduleIdentifier: "[Profile Identifier]",
     hasIcon: false,
     iconClass: ""
   };
@@ -44,7 +45,8 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
     this.twitterUrl = "https://www.twitter.com/"+this.twitterData.twitterHandle;
 
     let profileName = this.profileName ? this.profileName : "[Profile Name]";
-    this.headerInfo.moduleTitle = "Twitter Feed - " + profileName;
+    this.headerInfo.moduleTitle = "Twitter Feed";
+    this.headerInfo.moduleIdentifier = " - " + profileName;
   }
 
   ngOnInit() {
