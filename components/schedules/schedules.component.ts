@@ -6,6 +6,7 @@ import {Tab} from '../tabs/tab.component';
 import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
+import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
 export interface TableTabData<T> {
   title: string;
@@ -20,11 +21,13 @@ export interface TableComponentData<T> {
 @Component({
     selector: 'schedules-component',
     templateUrl: './app/fe-core/components/schedules/schedules.component.html',
-    directives: [LoadingComponent, Tabs, Tab, SchedulesCarousel, CustomTable],
+    directives: [DropdownComponent, LoadingComponent, Tabs, Tab, SchedulesCarousel, CustomTable],
 })
 
 export class SchedulesComponent implements OnInit{
   public selectedIndex;
+  dropdownFilter: Array<{key:string, value:string}> = [];
+  @Output() selectedKeyFilter =  new EventEmitter();
 
   @Input() carouselData: Array<SchedulesCarouselInput> = [];// the data to send through the schedules carousel to display
   @Input() data;// the data to display is inputed through this variable
@@ -95,6 +98,13 @@ export class SchedulesComponent implements OnInit{
     this.tabSelectedListener.emit(event);
   }
 
+  filterSwitch($event){
+    this.selectedKeyFilter.next({
+        dropdownIndex: 0,
+        key: $event
+    });
+  }
+
   ngOnChanges(){
     if(this.getSelectedTab() != null){
       this.getSelectedTab()['tabData'].sections = this.data;
@@ -124,6 +134,13 @@ export class SchedulesComponent implements OnInit{
   }
 
   constructor() {
+    this.dropdownFilter = [{
+      key: 'nfl',
+      value: 'NFL',
+    },{
+      key: 'ncaaf',
+      value: 'NCAAF',
+    }];
   } //constructor ENDS
 
   ngOnInit(){//on view load set default data

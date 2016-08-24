@@ -8,7 +8,16 @@
             <!--<p [innerHTML]="data.groupName"></p>-->
           <p><span class="schedules-heading-title-timestamp">{{tab.disclaimer}}</span></p>
         </div>
-        <!-- <div class="schedules-heading-time">Games are displayed by most recent</div> -->
+
+        <div class="schedules-heading-filter">
+            <div class="col-xs-6 filter-dropdown">
+              <dropdown
+                  [list]="dropdownFilter"
+                  [selectedKey]="'nfl'"
+                  [icon]="'fa-caret-down'"
+                  (selectionChanged)="filterSwitch($event)"></dropdown>
+            </div>
+        </div>
       </div>
       <div class="schedules-table">
         <div *ngFor="let section of tab.tabData.sections" class="schedules-section">

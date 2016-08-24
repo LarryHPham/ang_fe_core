@@ -39,13 +39,21 @@
       font-weight: 400;
     }
   }
-  &-time{
+  &-filter{
     width:33%;
     color:@bulletGrey;
     font-size: 12px;
     font-weight: 400;
     float: right;
-    margin:7px 0;
+    .filter-dropdown{
+      width:117px;
+      float:right;
+      .dropdown {
+        &-hdr{
+          height:30px;
+        }
+      }
+    }
   }
 }
 
