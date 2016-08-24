@@ -4,7 +4,6 @@
     border-top: 1px solid @masterSmallImageShadow;
     width: 100%;
     min-width: 400px;
-    height: 45px;
     padding-top: 5px;
     background-color: @white;
     font-family: @globalFont;
@@ -44,25 +43,32 @@
       line-height: 20px;
       text-align: center;
       position: relative;
-      top: 3px;
       font-size: 16px;
       border: none;
       border-radius: 50%;
       background-color: @bulletGrey;
       margin: 0px 2px;
       display: inline-block;
+      vertical-align: middle;
       color: @white;
       padding: 0px;
 
       &:hover {
         color: @black;
       }
+
+      .fa-angle-right {
+        padding: 1px 0 0 2px;
+      }
+      .fa-angle-left {
+        padding: 1px 2px 0 0;
+      }
     }
 
     &-circle {
       min-width: 25px;
       height: 25px;
-      line-height: 25px;
+      line-height: 23px;
       padding: 0;
       border-radius: 25px;
       background-color: @white;
@@ -70,6 +76,7 @@
       border: 1px solid @highlightGrey;
       margin: 0px 2px;
       display: inline-block;
+      vertical-align: middle;
       font-size: 12px;
       //Class is being overwritten by button default
       font-family: @globalFont;

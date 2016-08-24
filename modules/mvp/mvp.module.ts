@@ -36,7 +36,8 @@ export class MVPModule {
 
   displayData(){
     this.modHeadData = {
-        moduleTitle: "Most Valuable "+this.title+" - MLB",
+        moduleTitle: "Most Valuable Players "+this.title,
+        moduleIdentifier: '',
         hasIcon: false,
         iconClass: '',
     };

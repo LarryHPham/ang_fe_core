@@ -28,6 +28,7 @@
   overflow-x: scroll;
   overflow-y: hidden;
   background-color: @highlightGrey;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   & ::-webkit-scrollbar {
     height: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
@@ -62,6 +63,7 @@
   li{
     height: 100%;
     min-width: 100px;
+    background: @highlightGrey;
     .flexAlignItems(center);
     .flexDisplay;
     .flexJustify(center);

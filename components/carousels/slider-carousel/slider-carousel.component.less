@@ -6,6 +6,11 @@ slider-carousel{
   width:100%;
   height:auto;
   position: relative;
+  .image-48-rank {
+    @media @mobile {
+      font-size: 16px;
+    }
+  }
   &-slide-background-image{
     position: absolute;
     top:0;
@@ -32,9 +37,11 @@ slider-carousel{
           .list-footer-btn{
             background: @masterBrandColor;
             color: @white;
-            &:hover {
-              background: @textEmphasisGrey;
-              color: @white;
+            @media @tablet {
+              &:hover {
+                background: @textEmphasisGrey;
+                color: @white;
+              }
             }
           }
         }
@@ -64,7 +71,7 @@ slider-carousel{
         @media @mobile {
           width:100%;
           margin-top: 60px;
-          margin-bottom: 15px;
+          margin-bottom: 20px;
           .image-150 {
             width:125px;
             height:125px;
@@ -111,7 +118,11 @@ slider-carousel{
         &-desc {
           .globalDefaultModFont(14px, 400, @white);
           line-height: 1.2em;
-          margin-top: 10px;
+          margin-top: 15px;
+          @media @mobile {
+            margin-top: 10px;
+          }
+
         }
 
         &-date {
@@ -188,8 +199,10 @@ slider-carousel{
           height: auto !important;
           text-align: center;
         }
-        a:hover {
-          color: @masterBrandColor;
+        @media @tablet {
+          a:hover {
+            color: @masterBrandColorLink;
+          }
         }
 
         & p { //TODO: remove when not used by list-of-lists
