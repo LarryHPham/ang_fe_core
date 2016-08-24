@@ -41,11 +41,13 @@
     display:inline-block;
     width:50%;
     margin:15px 0;
+    min-width: 260px;
   }
   &-filter{
     .flexDisplay;
     .flexDirection(row);
     .flexJustify(space-between);
+    .flexWrap(wrap);
   }
   &-results{
     min-height:500px;
@@ -114,17 +116,24 @@
 
 .filter{
   width:50%;
+  min-width: 145px;
   display:inline-block;
   margin:5px 0px;
   border-radius:2px;
   .flexDisplay;
   .flexDirection(row);
   .flexJustify(flex-end);
+  @media @mobile{
+    width:100%;
+  }
   &-text{
     font-size:12px;
     float:left;
     line-height:30px;
     padding-right:10px;
+    @media @mobile{
+      display:none;
+    }
   }
   &-dropdown{
     height:30px;
