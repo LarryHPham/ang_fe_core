@@ -1,7 +1,6 @@
-<section >
-    <div *ngIf="isProfilePage">
+<section  class="videos-module" *ngIf="isProfilePage">
   <module-header [modHeadData]="modHeadData"></module-header>
-    <div class="videos-module">
+
         <loading-component *ngIf="!videoData"></loading-component>
         <!--Playable video component on the same page-->
         <div class="videos-module_carousel">
@@ -14,7 +13,7 @@
         <video-stack-component *ngIf="videoData" [page]="1" [videoData]="videoData" [isProfilePage]="isProfilePage"></video-stack-component>
 
         </div>
-   </div>
-    </div>
+
+
 
 </section>
