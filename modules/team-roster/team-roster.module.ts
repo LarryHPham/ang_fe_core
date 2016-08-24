@@ -42,7 +42,6 @@ export class TeamRosterModule implements OnChanges {
   };
 
   ngOnChanges() {
-    console.log(this.data);
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Team Roster";
     }
