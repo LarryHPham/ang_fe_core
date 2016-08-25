@@ -10,7 +10,7 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {GlobalSettings} from '../../../global/global-settings';
 import {GlobalFunctions} from '../../../global/global-functions';
 import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
-import {MLBPageParameters} from '../../../global/global-interface';
+import {SportPageParameters} from '../../../global/global-interface';
 import {ComparisonStatsData, PlayerData, SeasonStats} from '../../../services/comparison-stats.service';
 import {Gradient} from '../../../global/global-gradient'
 
