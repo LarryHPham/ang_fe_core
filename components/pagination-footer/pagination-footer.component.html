@@ -46,7 +46,7 @@
     <div *ngIf="paginationParameters.paginationType == 'page'" class="pagination-row">
         <!-- Angle Left Button -->
         <div class="pagination-leftnav">
-          <a class="pagination-button-doubleangle">
+          <a class="pagination-button-doubleangle" [routerLink]="[paginationParameters.navigationPage, firstButtonParameters]">
             <i class="fa fa-angle-double-left"></i>
           </a>
           <a class="pagination-button-angle" *ngIf="paginationParameters.max > 1" [routerLink]="[paginationParameters.navigationPage, previousButtonParameters]">
@@ -78,7 +78,7 @@
           <a class="pagination-button-angle" *ngIf="paginationParameters.max > 1" [routerLink]="[paginationParameters.navigationPage, nextButtonParameters]">
             <i class="fa fa-angle-right"></i>
           </a>
-          <a class="pagination-button-doubleangle">
+          <a class="pagination-button-doubleangle" [routerLink]="[paginationParameters.navigationPage, lastButtonParameters]">
             <i class="fa fa-angle-double-right"></i>
           </a>
         </div>

@@ -3,17 +3,31 @@
   position: relative;
 }
 .search-page{
+  &-container{
+    width:100%;
+    height:auto;
+    .pane{
+      padding: 0 15px;
+      @media @mobile{
+        padding:0;
+      }
+    }
+  }
   &-header{
     color: @white;
     padding: 50px 0px 65px 0px;
     background-color: @black;
 
     &-heading{
-      font-size: 38px;
+      font-size: 24px;
       font-weight: 800;
       display: block;
       text-align: center;
       margin: 0px;
+      padding:0 50px;
+      @media @tablet{
+        font-size: 38px;
+      }
     }
     &-sub-heading{
       font-size: 16px;
@@ -22,6 +36,7 @@
       text-align: center;
       margin: 20px 0px;
       font-weight: 400;
+      padding:0 50px;
     }
 
     &-input{
@@ -40,24 +55,28 @@
   &-total{
     display:inline-block;
     width:50%;
-    margin:15px 0;
-    min-width: 260px;
+    min-width: 240px;
   }
   &-filter{
     .flexDisplay;
     .flexDirection(row);
     .flexJustify(space-between);
     .flexWrap(wrap);
+    padding:10px;
+    @media @tablet{
+      padding: 20px 15px;
+    }
   }
   &-results{
     min-height:500px;
+
     & > li + li{
       border-top: 1px solid @masterSmallImageShadow;
     }
 
     &-item{
       line-height: 25px;
-      padding: 35px 15px 15px;
+      padding: 20px 15px;
 
       &:first-child{
         border-top: none;
@@ -118,13 +137,14 @@
   width:50%;
   min-width: 145px;
   display:inline-block;
-  margin:5px 0px;
+  margin:10px 0px;
   border-radius:2px;
   .flexDisplay;
   .flexDirection(row);
   .flexJustify(flex-end);
   @media @mobile{
     width:100%;
+    margin-right: 10px;
   }
   &-text{
     font-size:12px;
