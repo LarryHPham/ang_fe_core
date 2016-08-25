@@ -63,6 +63,11 @@ slider-carousel{
         padding-top: 15px;
         padding-bottom:30px;
       }
+      @media @tablet {
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+         top:45px;
+        }
+      }
       &-mainImg{
         width: 38%;
         .flexDisplay;
@@ -96,7 +101,7 @@ slider-carousel{
 
           }
           .fa {
-            color: @masterBrandColor;
+            color: @masterBrandColorLink;
             padding-right: 6px;
             top: 2px;
             position: relative;
@@ -122,7 +127,6 @@ slider-carousel{
           @media @mobile {
             margin-top: 10px;
           }
-
         }
 
         &-date {
