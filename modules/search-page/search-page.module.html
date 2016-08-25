@@ -24,7 +24,7 @@
                   <div class="col-xs-6 filter-dropdown">
                     <dropdown
                         [list]="dropdownFilter"
-                        [selectedKey]=""
+                        [selectedKey]="selectedKey"
                         [icon]="'fa-caret-down'"
                         (selectionChanged)="filterSwitch($event)"></dropdown>
                   </div>
