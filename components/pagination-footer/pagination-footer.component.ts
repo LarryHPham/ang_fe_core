@@ -198,13 +198,14 @@ export class PaginationFooter implements OnChanges{
         var indexKey = this.paginationParameters.indexKey;
         //Determine values before index that can be added to button array
         var r = 0;
-        if(index < max-5 && index > 5){
-          r = 5;
+        if(index < max-5 && index > 1){
+          r = 4;
         } else {
           r = max-index;
         }
         for(var p = range - r; p > 0; p--){
             if(index - p > 1){
+              console.log(p);
               //Build routerLink params for index values
               var params = this.copyDynamicParams();
               params[indexKey] = index - p;
@@ -230,7 +231,7 @@ export class PaginationFooter implements OnChanges{
 
         //Determine values after index that can be added to button array
         var i = 0;
-        if(index >  5){
+        if(index > 5){
           i = 5;
         } else {
           i = range - (range - index) - 1;
@@ -260,17 +261,17 @@ export class PaginationFooter implements OnChanges{
         this.maxButtonParameters = params;
 
         //Determine if absolute first button should be shown (show ellipsis if first item in array is not 2)
-        if(this.paginationButtonsPage.length != 0 && this.paginationButtonsPage[0].index != (1 + 1) && this.paginationButtonsPage[0].index != 1){
-            this.showMinSkip = true;
-        }else{
+        if(this.paginationButtonsPage[0].index > 6){
             this.showMinSkip = false;
+        }else{
+            this.showMinSkip = true;
         }
 
         //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
         if(this.paginationButtonsPage.length != 0 && this.paginationButtonsPage[this.paginationButtonsPage.length - 1].index != (max - 1)){
-            this.showMaxSkip = true;
-        }else{
             this.showMaxSkip = false;
+        }else{
+            this.showMaxSkip = true;
         }
         var firstParams = this.copyDynamicParams();
         firstParams[indexKey] = 1;
