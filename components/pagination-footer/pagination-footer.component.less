@@ -1,10 +1,11 @@
 .pagination {
   &-container {
     margin-top:-1px;
-    border-top: 1px solid @masterSmallImageShadow;
+    border-top: 1px solid @highlightGrey;
+    border-bottom: 1px solid @highlightGrey;
     width: 100%;
     min-width: 400px;
-    padding-top: 5px;
+    padding: 5px 0;
     background-color: @white;
     font-family: @globalFont;
     position: relative;
@@ -14,6 +15,10 @@
       &:focus {
         outline: none;
       }
+    }
+
+    @media @mobile{
+      display:none;
     }
   }
 
@@ -34,7 +39,7 @@
       background-color: transparent;
       line-height: 20px;
       position: relative;
-      top:3px;
+      top:4px;
       padding:0;
     }
     &-angle {
@@ -56,28 +61,31 @@
       &:hover {
         color: @black;
       }
-
+      i{
+        position: absolute;
+        top:2px
+      }
       .fa-angle-right {
-        padding: 1px 0 0 2px;
+        right:1px;
       }
       .fa-angle-left {
-        padding: 1px 2px 0 0;
+        left:1px;
       }
     }
 
     &-circle {
-      min-width: 25px;
-      height: 25px;
-      line-height: 23px;
+      min-width: 28px;
+      height: 28px;
+      line-height: 28px;
       padding: 0;
-      border-radius: 25px;
+      border-radius: 50%;
       background-color: @white;
       color: @black;
-      border: 1px solid @highlightGrey;
       margin: 0px 2px;
       display: inline-block;
       vertical-align: middle;
       font-size: 12px;
+      border: 1px solid @highlightGrey;
       //Class is being overwritten by button default
       font-family: @globalFont;
 
@@ -87,6 +95,7 @@
       }
 
       &.active {
+        border: 1px solid @masterBrandColor;
         background-color: @masterBrandColor;
         color: @white;
       }

@@ -91,6 +91,8 @@ export class PaginationFooter implements OnChanges{
     public maxButtonParameters: Object;
     public previousButtonParameters: Object;
     public nextButtonParameters: Object;
+    public firstButtonParameters: Object;
+    public lastButtonParameters: Object;
     //Number to determine +- range of buttons. (ex. buttonRange of 2 with an index of 6 yields buttons, 4 5 6 7 8)
     public buttonRange: number = 2;
     //Array of what indexes are displayed. paginationButtonsModule is used for paginationType module. paginationButtonsPage is used for paginationType page
@@ -270,6 +272,10 @@ export class PaginationFooter implements OnChanges{
         }
         this.previousButtonParameters = params;
 
+        var firstParams = params;
+        firstParams[indexKey] = 1;
+        this.firstButtonParameters = firstParams;
+
         //Build parameters of next angle button
         var params = this.copyDynamicParams();
         if (index + 1 <= max) {
@@ -278,6 +284,10 @@ export class PaginationFooter implements OnChanges{
             params[indexKey] = max;
         }
         this.nextButtonParameters = params;
+
+        var lastParams = params;
+        lastParams[indexKey] = max;
+        this.lastButtonParameters = lastParams;
 
 
         // console.log(this.paginationParameters, this.previousButtonParameters);
