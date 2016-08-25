@@ -19,9 +19,10 @@ export class VideoStackComponent implements OnInit{
   @Input() state: any;
   @Input() page: number;
   @Input() videoData: any;
+  @Input() isProfilePage:boolean;
 
-  formatDate(date) {
-    return moment(date, "YYYY-MM-Do").format("MMMM DD, YYYY");
+  formatDate(date, isProfilePage) {
+    return isProfilePage ? moment(date, "YYYY-MM-Do").format("MM DD, YYYY | HH:MM") : moment(date, "YYYY-MM-Do").format("MMMM DD, YYYY");
   }
   ngOnInit() {
   }

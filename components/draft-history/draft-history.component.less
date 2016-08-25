@@ -56,6 +56,9 @@
     .dropdown {
       width: 117px;
       display: inline-block;
+      .scrollable-item-wrapper {
+        overflow: hidden;
+      }
       &-hdr {
         height: 28px;
       }
@@ -76,6 +79,7 @@
   .databox {
     height: 110px!important;
     margin-top: -25px;
+    display: flex!important;
     .detail-large{
       >span:last-of-type {
         position: absolute;
@@ -90,12 +94,6 @@
         top:48px;
       }
     }
-  }
-}
-//ie fix for carousel margin
-.scc-details {
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-   top:45px;
   }
 }
 }
