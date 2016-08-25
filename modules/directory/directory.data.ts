@@ -2,9 +2,7 @@ import {Link, NavigationData} from '../../../global/global-interface';
 
 export interface PagingData {
   rangeText: string;
-  currentPage: number;
   totalItems: number;
-  totalPages: number;
   description: string;
 }
 

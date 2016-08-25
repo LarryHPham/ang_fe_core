@@ -7,18 +7,19 @@
           <i class="fa fa-play"></i>
         </div>
       </div>
-      <div class="overlay">
+     <!-- <div class="overlay">
         <div class="watch-large">Watch Video</div>
         <div class="watch-small">Watch</div>
-      </div>
+      </div>-->
     </div>
     </a>
     <div class="video-stack-right">
       <div class="video-stack-right-title">
-        <span class="video-title-top"><span>{{formatDate(item.pubDate)}}</span></span>
+        <span class="video-title-top" *ngIf="!isProfilePage"><span>{{formatDate(item.pubDate, isProfilePage)}}</span></span>
         <a [routerLink]="['Syndicated-article-page', {eventID:item.id, articleType:'video'}]">
         <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
         </a>
+        <span class="video-title-top" *ngIf="isProfilePage"><span style="position: relative; top: 10px">{{formatDate(item.pubDate, isProfilePage)}}</span></span>
         </div>
         <div class="video-stack-right-text" [innerHTML]="item.description | safeHtml">
         </div>

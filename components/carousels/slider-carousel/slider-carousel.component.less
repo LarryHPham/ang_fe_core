@@ -6,6 +6,11 @@ slider-carousel{
   width:100%;
   height:auto;
   position: relative;
+  .image-48-rank {
+    @media @mobile {
+      font-size: 16px;
+    }
+  }
   &-slide-background-image{
     position: absolute;
     top:0;
@@ -32,9 +37,11 @@ slider-carousel{
           .list-footer-btn{
             background: @masterBrandColor;
             color: @white;
-            &:hover {
-              background: @textEmphasisGrey;
-              color: @white;
+            @media @tablet {
+              &:hover {
+                background: @textEmphasisGrey;
+                color: @white;
+              }
             }
           }
         }
@@ -55,6 +62,11 @@ slider-carousel{
         display: block;
         padding-top: 15px;
         padding-bottom:30px;
+      }
+      @media @tablet {
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+         top:45px;
+        }
       }
       &-mainImg{
         width: 38%;
@@ -89,7 +101,7 @@ slider-carousel{
 
           }
           .fa {
-            color: @masterBrandColor;
+            color: @masterBrandColorLink;
             padding-right: 6px;
             top: 2px;
             position: relative;
@@ -115,7 +127,6 @@ slider-carousel{
           @media @mobile {
             margin-top: 10px;
           }
-
         }
 
         &-date {
@@ -192,8 +203,10 @@ slider-carousel{
           height: auto !important;
           text-align: center;
         }
-        a:hover {
-          color: @masterBrandColor;
+        @media @tablet {
+          a:hover {
+            color: @masterBrandColorLink;
+          }
         }
 
         & p { //TODO: remove when not used by list-of-lists

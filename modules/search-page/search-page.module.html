@@ -20,11 +20,11 @@
             <ul class="search-page-results">
               <div class="search-page-filter">
                 <div class="search-page-total">Showing: <span class="text-heavy">{{currentShowing}}</span> of <span class="text-heavy">{{totalResults}}</span> results:</div>
-                <div class="filter"><span class="filter-text">Sorted By:</span>
+                <div *ngIf="dropdownFilter" class="filter"><span class="filter-text">Sorted By:</span>
                   <div class="col-xs-6 filter-dropdown">
                     <dropdown
                         [list]="dropdownFilter"
-                        [selectedKey]="'nfl'"
+                        [selectedKey]=""
                         [icon]="'fa-caret-down'"
                         (selectionChanged)="filterSwitch($event)"></dropdown>
                   </div>

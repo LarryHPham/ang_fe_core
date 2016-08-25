@@ -8,6 +8,11 @@
       width: 150px;
     }
   }
+  .custom-table-sort  {
+    @media @mobile {
+      top: 8px;
+    }
+  }
   .data-column-hdr,.data-column{
     min-width: 55px;
   }
@@ -25,6 +30,7 @@
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       background-color: inherit;
       height: 40px;
       border-width: 0 5px 0 0;
@@ -41,6 +47,7 @@
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       .custom-table-header {
         margin-right:0!important;
       }
@@ -59,8 +66,13 @@
   .pane {
     @media @mobile {
       padding: 5px 0 5px 10px;
+      max-height: 380px;
+      min-height: 0!important;
     }
-    max-height: 380px;
-    min-height: 0!important;
+  }
+}
+team-roster-page {
+  .pane {
+  max-height: none!important;
   }
 }
