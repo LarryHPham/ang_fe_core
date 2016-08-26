@@ -15,13 +15,13 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 export class CustomTable implements OnChanges {
   @ViewChildren(TableHeader) _tableHeaders: Array<TableHeader>;
+  @Input() error: any;
 
   @Output() sortChanged = new EventEmitter(true); //async=true
 
   public isSortDropdownVisible: boolean = false;
 
   public bodyClass: string;
-  @Input() error: any;
   /**
    * The column data and settings for the table. To sort by
    * a particular column, set sortDirection for that column to either
