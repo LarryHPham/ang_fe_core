@@ -32,7 +32,7 @@ export class MVPModule {
   tabKey: string;
 
   ngOnChanges(){
-    this.displayData('pitcher');
+    this.displayData('qb');
   }
 
   displayData(position){
@@ -42,9 +42,6 @@ export class MVPModule {
         hasIcon: false,
         iconClass: '',
     };
-
-    console.log('displayData - query');
-    console.log(this.query);
 
     var type = this.query.statName.indexOf(position)>=0 ? position : "qb";
     var url;
@@ -81,6 +78,7 @@ export class MVPModule {
   }
 
   dropdownChanged($event) {
+    console.log('dropdownChanged');
     // this.displayData(selectedItem);
     this.dropdownPositionSelection.next($event);
   }

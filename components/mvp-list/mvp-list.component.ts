@@ -46,22 +46,16 @@ export class MVPListComponent implements DoCheck  {
   private sortOptions: Array<any> = [
     {key: 'pitcher', value: 'Pitcher'},
     {key: 'batter', value: 'Batter'},
-    {key: 'CR', value: 'Cornerback'},
-    {key: 'DE', value: 'Defensive end'},
-    {key: '3', value: 'Defensive back'},
-    {key: '4', value: 'Defensive lineman'},
-    {key: '5', value: 'Defensive tackle'},
-    {key: '6', value: 'Safety'},
-    {key: '7', value: 'Linebacker'},
-    {key: '7', value: 'Kicker'},
-    {key: '8', value: 'Punter'},
-    {key: 'QB', value: 'Quarterback'},
-    {key: '10', value: 'Running back'},
-    {key: '11', value: 'Return specialist'},
-    {key: '12', value: 'Wide receiver'},
-    {key: '13', value: 'Tight end'},
-    {key: '14', value: 'Pitcher'},
-    {key: '15', value: 'Batter'}
+    {key: 'qb', value: 'Quarterback'}
+    // {key: 'cr', value: 'Cornerback'},
+    // {key: 'de', value: 'Defensive end'},
+    // {key: 'db', value: 'Defensive back'},
+    // {key: 'dl', value: 'Defensive lineman'},
+    // {key: 'dt', value: 'Defensive tackle'},
+    // {key: 's', value: 'Safety'},
+    // {key: 'lb', value: 'Linebacker'},
+    // {key: 'k', value: 'Kicker'},
+    // {key: 'p', value: 'Punter'}
   ];
 
 
@@ -94,6 +88,7 @@ export class MVPListComponent implements DoCheck  {
 
     var tabTitle = this.selectedTabTitle;
     var matches = this.tabs.filter(tab => tab.tabDataKey == tabTitle);
+
     return matches.length > 0 ? matches[0] : null;
   } //getSelectedTab()
 
@@ -132,11 +127,12 @@ export class MVPListComponent implements DoCheck  {
     }
   } //updateCarousel
 
+
   dropdownChanged($event) {
     this.position = $event;
     this.dropdownPositionSelection.next({
-      tab:this.getSelectedTab(),
-      position:this.position
+      tab: this.getSelectedTab(),
+      position: this.position //position 'key' value
     });
   }
 }
