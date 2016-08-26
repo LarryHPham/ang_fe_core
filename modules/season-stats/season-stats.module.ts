@@ -12,7 +12,7 @@ import {SeasonStatsService} from '../../../services/season-stats.service';
 
 import {GlobalSettings} from '../../../global/global-settings';
 import {GlobalFunctions} from '../../../global/global-functions';
-import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
 import {SportPageParameters} from '../../../global/global-interface';
 
 export interface SeasonStatsModuleData {

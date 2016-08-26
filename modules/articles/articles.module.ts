@@ -11,7 +11,7 @@ import {RouteParams} from "@angular/router-deprecated";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {ModuleHeaderData} from "../../components/module-header/module-header.component";
 import {LoadingComponent} from "../../components/loading/loading.component";
-import {MLBGlobalFunctions} from "../../../global/mlb-global-functions";
+import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 
 declare var moment:any;
 
@@ -141,7 +141,7 @@ export class ArticlesModule implements OnInit {
                 subImages: []
             };
         } else {
-            let homeLink = MLBGlobalFunctions.formatTeamRoute(homeName, homeData.id);
+            let homeLink = VerticalGlobalFunctions.formatTeamRoute(homeName, homeData.id);
             val['url'] = homeLink;
             val['homeLogo'] = {
                 imageClass: "image-68",
@@ -172,7 +172,7 @@ export class ArticlesModule implements OnInit {
                 subImages: []
             };
         } else {
-            let awayLink = MLBGlobalFunctions.formatTeamRoute(awayName, awayData.id);
+            let awayLink = VerticalGlobalFunctions.formatTeamRoute(awayName, awayData.id);
             val['url'] = awayLink;
             val['awayLogo'] = {
                 imageClass: "image-68",
