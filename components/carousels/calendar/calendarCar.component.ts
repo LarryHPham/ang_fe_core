@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import {BoxScoresService} from '../../../../services/box-scores.service';
 import {GlobalFunctions} from '../../../../global/global-functions';
-import {MLBGlobalFunctions} from '../../../../global/mlb-global-functions';
+import {VerticalGlobalFunctions} from '../../../../global/vertical-global-functions';
 import {GlobalSettings} from '../../../../global/global-settings';
 
 import {DatePicker} from '../../date-picker/date-picker.component';

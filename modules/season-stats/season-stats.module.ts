@@ -12,7 +12,7 @@ import {SeasonStatsService} from '../../../services/season-stats.service';
 
 import {GlobalSettings} from '../../../global/global-settings';
 import {GlobalFunctions} from '../../../global/global-functions';
-import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
 import {SportPageParameters} from '../../../global/global-interface';
 
 export interface SeasonStatsModuleData {
@@ -21,6 +21,7 @@ export interface SeasonStatsModuleData {
   carouselDataItem: SliderCarouselInput;
   pageRouterLink: Array<any>;
   playerInfo: any;
+  stats: any;
 }
 
 export interface SeasonStatsTabData {
@@ -68,7 +69,7 @@ export class SeasonStatsModule implements OnChanges {
       url: data.pageRouterLink
     };
     this.profileName = data.profileName;
-    
+
     if ( this.data.tabs && this.data.tabs.length > 0 ) {
       var selectedTabs = this.data.tabs.filter(tab => tab.tabTitle == this.selectedTabTitle);
       this.formatTitle(selectedTabs && selectedTabs.length > 0 ? selectedTabs[0] : this.data.tabs[0]);
@@ -78,9 +79,10 @@ export class SeasonStatsModule implements OnChanges {
     }
   }
 
-  formatTitle(tab: SeasonStatsTabData) {      
+  formatTitle(tab: SeasonStatsTabData) {
     this.moduleHeaderData = {
-        moduleTitle: (tab ? tab.longSeasonName : 'Season') + ' Stats - ' + this.profileName,
+        moduleTitle: (tab ? tab.longSeasonName : 'Season') + ' Stats',
+        moduleIdentifier: " - " + this.profileName,
         hasIcon: false,
         iconClass: ''
     };
@@ -105,7 +107,7 @@ export class SeasonStatsModule implements OnChanges {
     var selectedTabs = this.data.tabs.filter(tab => tab.tabTitle == tabTitle);
     if ( selectedTabs && selectedTabs.length > 0 ) {
       var tab = selectedTabs[0];
-      this.carouselDataArray = [SeasonStatsService.getCarouselData(this.data.playerInfo, tab.longSeasonName)];
+      this.carouselDataArray = [SeasonStatsService.getCarouselData(this.data.playerInfo, this.data.stats, tab.longSeasonName, tab.tabTitle)];
       this.formatTitle(tab);
     }
   }

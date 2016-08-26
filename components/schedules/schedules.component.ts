@@ -7,6 +7,7 @@ import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
 import {DropdownComponent} from '../../components/dropdown/dropdown.component';
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 export interface TableTabData<T> {
   title: string;
@@ -21,7 +22,7 @@ export interface TableComponentData<T> {
 @Component({
     selector: 'schedules-component',
     templateUrl: './app/fe-core/components/schedules/schedules.component.html',
-    directives: [DropdownComponent, LoadingComponent, Tabs, Tab, SchedulesCarousel, CustomTable],
+    directives: [NoDataBox, DropdownComponent, LoadingComponent, Tabs, Tab, SchedulesCarousel, CustomTable],
 })
 
 export class SchedulesComponent implements OnInit{
@@ -32,6 +33,7 @@ export class SchedulesComponent implements OnInit{
   @Input() carouselData: Array<SchedulesCarouselInput> = [];// the data to send through the schedules carousel to display
   @Input() data;// the data to display is inputed through this variable
   @Input() tabs;// the tab data gets inputed through here to display all tabs
+  @Input() error;
   tabTitle: string;
   private tabsLoaded: {[index:number]:string};
 

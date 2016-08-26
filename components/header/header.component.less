@@ -121,6 +121,20 @@
         background-color: darken(@masterBrandColor, 10%);
       }
     }
+    @media @desktop-m {
+      &.active, &:focus, &:active{
+        height: 100%;
+        .header-search-searchBox{
+          display: inline-block;
+        }
+        .header-search-searchBtn{
+          .header-search-searchBox{
+            display: block;
+          }
+          background-color: @masterBrandColor;
+        }
+      }
+    }
     &-searchBtn{
       height: 45px;
       width: 45px;
@@ -208,7 +222,7 @@
     }
   }
 }
-@media @desktop-l{
+@media @desktop-m{
   .header{
     &-search{
       height: 65px;
