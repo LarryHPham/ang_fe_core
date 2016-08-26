@@ -62,7 +62,13 @@
     width:155px;
   }
   .location-column2, .location-column2-hdr {
-    width:155px;
+    width:104px;
+    @media @tablet{
+      width:153px;
+    }
+    @media @desktop-m{
+      width:218px;
+    }
   }
   .results-column{
     width:145px;
@@ -82,11 +88,17 @@
   }
 
   .date-column, .date-column-hdr {
-    width:67px;
+    width:53px;
     font-size:14px;
     padding-left: 5px;
     &:first-child{
       padding-left: 0;
+    }
+    @media @tablet{
+      width:69px;
+    }
+    @media @desktop-m{
+      width:98px;
     }
   }
 
@@ -112,7 +124,10 @@
     }
   }
 .record-column, .wl-column, .record-column-hdr, .wl-column-hdr{
-  width: 70px;
+  width:75px;
+  @media @desktop-m{
+    width:105px;
+  }
 }
 .results-column, .results-column-hdr{
   width: 130px;
