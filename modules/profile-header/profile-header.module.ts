@@ -13,7 +13,7 @@ import {NaValuePipe} from '../../pipes/na.pipe';
 export interface DataItem {
   label: string;
   labelCont?: string;
-  value: string;
+  value: any; //values can be stats, age or class
   routerLink?: Array<any>;
 }
 
