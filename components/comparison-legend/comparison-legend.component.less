@@ -1,10 +1,12 @@
 .comparison-legend{
-    padding: 10px 0 20px;
+    padding: 10px 0 15px;
     .flexDisplay;
     .flexJustify(space-between);
     @media @mobile {
       display: block;
-      padding: 10px 0 15px;
+    }
+    @media @tablet {
+      padding: 4px 0 12px;
     }
     li{
       display: inline-block;
@@ -19,6 +21,9 @@
     &-title{
       font-size: 18px;
       margin-bottom: 10px;
+      @media @tablet {
+        margin-bottom:0;
+      }
       &-sub {
         .globalDefaultModFont(10px, 400, @bulletGrey);
         font-style: italic;
