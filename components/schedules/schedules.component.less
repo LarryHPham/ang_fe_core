@@ -1,6 +1,11 @@
 .schedules{
   width:auto;
   height:auto;
+  @media @mobile{
+    .nav-tabs{
+      width:100%;
+    }
+  }
   &-section{
     h4{
       font-weight: 800;
@@ -22,6 +27,9 @@
   width:100%;
   height:45px;
   background-color: @white;
+  @media @mobile{
+    position: absolute;
+  }
   &-title{
     color:@black;
     font-size: 18px;
@@ -58,11 +66,31 @@
 }
 
 .schedules-table {
+  @media @mobile{
+    padding-top: 45px;
+  }
   .location-column, .location-column-hdr {
     width:155px;
+    @media @mobile{
+      circle-image{
+        display:none;
+      }
+    }
+  }
+  .location-column2-hdr{
+    padding-left: 5px;
+    &:first-child{
+      padding-left: 0;
+    }
   }
   .location-column2, .location-column2-hdr {
     width:104px;
+
+    @media @mobile{
+      circle-image{
+        display:none;
+      }
+    }
     @media @tablet{
       width:153px;
     }
@@ -86,14 +114,15 @@
       top:-3px;
     }
   }
-
-  .date-column, .date-column-hdr {
-    width:53px;
-    font-size:14px;
+  .date-column-hdr{
     padding-left: 5px;
     &:first-child{
       padding-left: 0;
     }
+  }
+  .date-column, .date-column-hdr {
+    width:53px;
+    font-size:12px;
     @media @tablet{
       width:69px;
     }
