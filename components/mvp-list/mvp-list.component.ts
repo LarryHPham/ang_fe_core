@@ -28,6 +28,7 @@ export interface MVPTabData {
 
 export class MVPListComponent implements DoCheck  {
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
+  @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() tabs: Array<MVPTabData>;
 
@@ -40,31 +41,30 @@ export class MVPListComponent implements DoCheck  {
   @Input() selectedTabTitle: string;
 
   tabsLoaded: {[index:number]:string};
+  position: string;
 
   private sortOptions: Array<any> = [
-    {key: '1', value: 'Cornerback'},
-    {key: '2', value: 'Defensive end'},
-    {key: '3', value: 'Defensive back'},
-    {key: '4', value: 'Defensive lineman'},
-    {key: '5', value: 'Defensive tackle'},
-    {key: '6', value: 'Safety'},
-    {key: '7', value: 'Linebacker'},
-    {key: '7', value: 'Kicker'},
-    {key: '8', value: 'Punter'},
-    {key: '9', value: 'Quarterback'},
-    {key: '10', value: 'Running back'},
-    {key: '11', value: 'Return specialist'},
-    {key: '12', value: 'Wide receiver'},
-    {key: '13', value: 'Tight end'}
+    {key: 'pitcher', value: 'Pitcher'},
+    {key: 'batter', value: 'Batter'},
+    {key: 'qb', value: 'Quarterback'}
+    // {key: 'cr', value: 'Cornerback'},
+    // {key: 'de', value: 'Defensive end'},
+    // {key: 'db', value: 'Defensive back'},
+    // {key: 'dl', value: 'Defensive lineman'},
+    // {key: 'dt', value: 'Defensive tackle'},
+    // {key: 's', value: 'Safety'},
+    // {key: 'lb', value: 'Linebacker'},
+    // {key: 'k', value: 'Kicker'},
+    // {key: 'p', value: 'Punter'}
   ];
 
-  ngDoCheck() {
 
+  ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
         if ( !this.selectedTabTitle ) {
-          this.selectedTabTitle = this.tabs[0].tabDisplayTitle;
+          this.selectedTabTitle = this.tabs[0].tabDataKey;
         }
         this.tabSelected(this.selectedTabTitle);
       }
@@ -78,26 +78,40 @@ export class MVPListComponent implements DoCheck  {
     }
   } //ngDoCheck()
 
+  ngOnInit(){
+    this.position = this.position == null ? this.sortOptions[0]:this.position;
+    //console.log(this.tabs);
+  }
+
   getSelectedTab() {
     if ( !this.tabs ) return null;
 
     var tabTitle = this.selectedTabTitle;
-    var matches = this.tabs.filter(tab => tab.tabDisplayTitle == tabTitle);
+    var matches = this.tabs.filter(tab => tab.tabDataKey == tabTitle);
+
     return matches.length > 0 ? matches[0] : null;
   } //getSelectedTab()
 
   //each time a tab is selected the carousel needs to change accordingly to the correct list being shown
   tabSelected(tabTitle){
     this.selectedTabTitle = tabTitle;
+
     var selectedTab = this.getSelectedTab();
+
     if ( selectedTab ) {
       this.detailedDataArray = null;
       if(!selectedTab.listData){
         selectedTab.isLoaded = false;
-        this.tabSelectedListener.next(selectedTab);
+        this.tabSelectedListener.next({
+          tab:selectedTab,
+          position:this.position
+        });
       }
       else {
-        this.tabSelectedListener.next(selectedTab);
+        this.tabSelectedListener.next({
+          tab:selectedTab,
+          position:this.position
+        });
         this.updateCarousel(selectedTab);
       }
     }
@@ -111,5 +125,14 @@ export class MVPListComponent implements DoCheck  {
       this.carouselDataArray = tab.getCarouselData();
       this.detailedDataArray = tab.listData;
     }
+  } //updateCarousel
+
+
+  dropdownChanged($event) {
+    this.position = $event;
+    this.dropdownPositionSelection.next({
+      tab: this.getSelectedTab(),
+      position: this.position //position 'key' value
+    });
   }
 }

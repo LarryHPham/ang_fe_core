@@ -134,7 +134,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       });
       this.selectedIndex = tempIndex;
     }
-    this.dropdownChangedListener.next($item.key);
+    this.dropdownChangedListener.next($item.key); //item.key must always be emitted, item.value is for DISPLAY ONLY!
   }
 
   ngOnDestroy() {
