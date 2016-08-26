@@ -15,6 +15,11 @@
     .nav-tabs li{
       width:50%;
     }
+    @media @mobile{
+      .nav-tabs{
+        width:100%;
+      }
+    }
   }
   &-header{
     color: @white;
@@ -71,8 +76,6 @@
     }
   }
   &-results{
-    min-height:500px;
-
     & > li + li{
       border-top: 1px solid @masterSmallImageShadow;
     }
@@ -122,7 +125,8 @@
         max-width: 640px;
       }
     }
-    &.no-results{
+    .no-results{
+      margin-bottom: 10px;
       line-height: 24px;
       font-size: 20px;
     }
