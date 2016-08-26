@@ -13,6 +13,7 @@
       width: 10px;
       right:0;
       top: 0;
+      z-index: 1;
     }
   }
   .side-scroller{
@@ -28,6 +29,7 @@
   overflow-x: scroll;
   overflow-y: hidden;
   background-color: @highlightGrey;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   & ::-webkit-scrollbar {
     height: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
@@ -46,6 +48,7 @@
   .flexDisplay;
   @media @mobile {
     white-space: nowrap;
+    width: 10%;
   }
   color:@fontIconGrey;
   .shader {
@@ -57,11 +60,17 @@
       position: absolute;
       width: 10px;
       right:0;
+      z-index: 1;
+      //fix for ie and firefox
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (min--moz-device-pixel-ratio:0) {
+        margin-top:-30px;
+      }
     }
   }
   li{
     height: 100%;
     min-width: 100px;
+    background: @highlightGrey;
     .flexAlignItems(center);
     .flexDisplay;
     .flexJustify(center);

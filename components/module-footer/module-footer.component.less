@@ -44,14 +44,17 @@
         outline: 0;
         text-decoration: none;
       }
-      &:hover, &:active{
-        background-color:@textEmphasisGrey;
-        color:@white;
-        text-decoration: none;
+      @media @tablet {
+        &:hover, &:active{
+          background-color:@textEmphasisGrey;
+          color:@white;
+          text-decoration: none;
+        }
       }
       .module-footer-text{
         font-size: 14px;
         font-weight: 800;
+        vertical-align: top;
       }
       i{
         margin-left: 5px;

@@ -1,0 +1,19 @@
+<section  class="videos-module" *ngIf="isProfilePage">
+  <module-header [modHeadData]="modHeadData"></module-header>
+
+        <loading-component *ngIf="!videoData"></loading-component>
+        <!--Playable video component on the same page-->
+        <div class="videos-module_carousel">
+            <iframe width="100%" height="100%" [src]="embedUrl" frameborder="0" scrolling = "no" allowfullscreen></iframe>
+          <!--  <circle-button class="videos-module_carousel_buttons" (scrollLeft)="prev()" (scrollRight)="next()"></circle-button>-->
+        </div>
+        <!--List that navigate to the video routes-->
+        <div class="videos-module_list">
+        <!-- <video-stack-component *ngIf="videoData" [state]="'KS'" [page]="1" [videoData]="videoData" (getRowIndex)="getRowIndex($event)"></video-stack-component>-->
+        <video-stack-component *ngIf="videoData" [page]="1" [videoData]="videoData" [isProfilePage]="isProfilePage"></video-stack-component>
+
+        </div>
+
+
+
+</section>

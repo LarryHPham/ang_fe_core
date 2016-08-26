@@ -20,25 +20,20 @@
      </header>
 
      <!-- Navigation Links to Sub Directories -->
-     <div *ngIf="data.navigationData" class="dir-nav">
+     <div class="dir-nav">
          <div class="dir-nav-title">
              {{data.navigationData.title}}
          </div>
          <div class="dir-nav-links">
              <span *ngFor="let item of data.navigationData.links; let isLast = last" [class.active]="isActive(item.route)">
                <span class="dir-nav-separator">|</span>
-               <a [routerLink]="item.route">{{item.text}}</a>
-             </span>
-             <span *ngIf="data.navigationData.moreLink">
-               <span class="dir-nav-separator">|</span>
-               <a [routerLink]="data.navigationData.moreLink.route" class="dir-nav-links-more">
-                   {{data.navigationData.moreLink.text}}
-               </a>
+               <a *ngIf="item.active" [routerLink]="item.route">{{item.text}}</a>
+               <span id="nav-inactive" *ngIf="!item.active">{{item.text}}</span>
              </span>
          </div>
      </div>
 
-     <directory-pagination *ngIf="data.pagingDescription" [data]="pagingDescription" [dirRangeTotal]=true></directory-pagination>
+     <directory-pagination *ngIf="data.pagingDescription" [data]="pagingDescription"></directory-pagination>
 
      <!-- Directory List Data -->
      <ul *ngIf="data.hasListings && data.listingItems" class="dir-list">
@@ -62,11 +57,9 @@
              </p>
          </li>
      </ul>
+     <pagination-footer *ngIf="data.paginationParameters" [paginationParameters]="data.paginationParameters" (newIndex)="newIndex($event)"></pagination-footer>
 
      <div *ngIf="!data.hasListings" class="dir-list dir-list-noresults">
          <no-data-box [data]="data.noResultsMessage" [icon]="'fa fa-remove'"></no-data-box>
      </div>
-
-     <directory-pagination *ngIf="data.pagingDescription" [data]="pagingDescription" [nextLink]="nextLink" [prevLink]="prevLink" [lastLink]="lastLink" [firstLink]="firstLink" [dirPagination]=true></directory-pagination>
-
- </div>
+   </div>
