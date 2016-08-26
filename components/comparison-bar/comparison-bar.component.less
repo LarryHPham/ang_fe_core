@@ -94,6 +94,7 @@
       cursor: pointer;
       color: @masterBrandColor;
       padding: 0;
+      text-align: center;
     }
     .fa-sort-up{
       color: @white;
@@ -128,6 +129,9 @@
     .flexDisplay;
     .flexJustify(flex-end);
     margin-right: 10px;
+    @media @mobile {
+      margin-top: 2px;
+    }
   }
 
   &-list{
@@ -139,18 +143,20 @@
       .flexDisplay;
       .flexJustify(flex-start);
       position: relative;
-      &:hover{
-        .fa-angle-right{
-          color: @masterBrandColor;
-        }
-        .border-3 img{
-          box-shadow: 0 0 0 2px @white;
-        }
-        .infobox-list-playerName{
-          color: @black;
-        }
-        .image-round-hover div{
-          .flexDisplay;
+      @media @tablet {
+        &:hover{
+          .fa-angle-right{
+            color: @masterBrandColor;
+          }
+          .border-3 img{
+            box-shadow: 0 0 0 2px @white;
+          }
+          .infobox-list-playerName{
+            color: @black;
+          }
+          .image-round-hover div{
+            .flexDisplay;
+          }
         }
       }
     }

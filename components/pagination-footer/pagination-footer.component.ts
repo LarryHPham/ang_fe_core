@@ -94,7 +94,7 @@ export class PaginationFooter implements OnChanges{
     public firstButtonParameters: Object;
     public lastButtonParameters: Object;
     //Number to determine +- range of buttons. (ex. buttonRange of 2 with an index of 6 yields buttons, 4 5 6 7 8)
-    public buttonRange: number = 2;
+    public buttonRange: number = 9;
     //Array of what indexes are displayed. paginationButtonsModule is used for paginationType module. paginationButtonsPage is used for paginationType page
     public paginationButtonsModule: Array<Number>;
     public paginationButtonsPage: Array<{
@@ -152,7 +152,6 @@ export class PaginationFooter implements OnChanges{
         var index = Number(this.paginationParameters.index);
         var max = Number(this.paginationParameters.max);
         var range = this.buttonRange;
-
         this.paginationButtonsModule = [];
         //Determine values before index that can be added to button array
         for(var p = range; p >= 1; p--){
@@ -174,14 +173,14 @@ export class PaginationFooter implements OnChanges{
         }
 
         //Determine if absolute first button should be shown (show ellipsis if first item in array is not 2)
-        if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[0] != (1 + 1)){
+        if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[0] != (1 + 4)){
             this.showMinSkip = true;
         }else{
             this.showMinSkip = false;
         }
 
         //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
-        if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[this.paginationButtonsModule.length - 1] != (max - 1)){
+        if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[this.paginationButtonsModule.length - 1] != (max - 4)){
             this.showMaxSkip = true;
         }else{
             this.showMaxSkip = false;
@@ -193,23 +192,28 @@ export class PaginationFooter implements OnChanges{
         var index = Number(this.paginationParameters.index);
         var max = Number(this.paginationParameters.max);
         var range = this.buttonRange;
-
         this.paginationButtonsPage = [];
 
         var navigationPage = this.paginationParameters.navigationPage;
         var indexKey = this.paginationParameters.indexKey;
         //Determine values before index that can be added to button array
-        for(var p = range; p > 0; p--){
+        var r = 0;
+        if(index < max-5 && index > 5){
+          r = 5;
+        } else {
+          r = max-index;
+        }
+        for(var p = range - r; p > 0; p--){
             if(index - p > 1){
-                //Build routerLink params for index values
-                var params = this.copyDynamicParams();
-                params[indexKey] = index - p;
-                //Push button parameters to array
-                this.paginationButtonsPage.push({
-                    index: (index - p),
-                    page: navigationPage,
-                    params: params
-                });
+              //Build routerLink params for index values
+              var params = this.copyDynamicParams();
+              params[indexKey] = index - p;
+              //Push button parameters to array
+              this.paginationButtonsPage.push({
+                  index: (index - p),
+                  page: navigationPage,
+                  params: params
+              });
             }
         }
         if(index != 1 && index != max) {
@@ -225,11 +229,17 @@ export class PaginationFooter implements OnChanges{
         }
 
         //Determine values after index that can be added to button array
-        for(var n = 1; n <= range; n++){
+        var i = 0;
+        if(index >  5){
+          i = 5;
+        } else {
+          i = range - (range - index) - 1;
+        }
+        for(var n = 1; n <= range - i; n++){
             if(index + n < max){
                 //Build routerLink params for index values
                 var params = this.copyDynamicParams();
-                params[indexKey] = index + n;
+                params[indexKey] = (index + n);
                 //Push button parameters to array
                 this.paginationButtonsPage.push({
                     index: (index + n),
@@ -262,35 +272,31 @@ export class PaginationFooter implements OnChanges{
         }else{
             this.showMaxSkip = false;
         }
-
-        //Build parameters of previous angle button
-        var params = this.copyDynamicParams();
-        if (index - 1 >= 1) {
-            params[indexKey] = index - 1;
-        } else {
-            params[indexKey] = 1;
-        }
-        this.previousButtonParameters = params;
-
-        var firstParams = params;
+        var firstParams = this.copyDynamicParams();
         firstParams[indexKey] = 1;
         this.firstButtonParameters = firstParams;
 
-        //Build parameters of next angle button
-        var params = this.copyDynamicParams();
-        if (index + 1 <= max) {
-            params[indexKey] = index + 1;
+        //Build parameters of previous angle button
+        var prevParams = this.copyDynamicParams();
+        if (index - 1 >= 1) {
+            prevParams[indexKey] = index - 1;
         } else {
-            params[indexKey] = max;
+            prevParams[indexKey] = 1;
         }
-        this.nextButtonParameters = params;
+        this.previousButtonParameters = prevParams;
+
+        //Build parameters of next angle button
+        var nextParams = this.copyDynamicParams();
+        if (index + 1 <= max) {
+            nextParams[indexKey] = index + 1;
+        } else {
+            nextParams[indexKey] = max;
+        }
+        this.nextButtonParameters = nextParams;
 
         var lastParams = params;
         lastParams[indexKey] = max;
         this.lastButtonParameters = lastParams;
-
-
-        // console.log(this.paginationParameters, this.previousButtonParameters);
     }
 
     //Copy object of input navigationParameters
