@@ -17,6 +17,7 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 
 export class MVPModule {
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
+  @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() mvpData: Array<MVPTabData>;
 
@@ -31,18 +32,20 @@ export class MVPModule {
   tabKey: string;
 
   ngOnChanges(){
-    this.displayData();
+    this.displayData('qb');
   }
 
-  displayData(){
+  displayData(position){
     this.modHeadData = {
-        moduleTitle: "Most Valuable Players "+this.title,
-        moduleIdentifier: '',
+        moduleTitle: "Most Valuable Players ",
+        moduleIdentifier: this.title,
         hasIcon: false,
         iconClass: '',
     };
-    var type = this.query.listname.indexOf("pitcher")>=0 ? "pitcher" : "batter";
+
+    var type = this.query.statName.indexOf(position)>=0 ? position : "qb";
     var url;
+
     if ( this.tabKey ) {
       url = ['MVP-list-tab-page', {
         tab: this.tabKey,
@@ -64,12 +67,19 @@ export class MVPModule {
   }
 
   tabSelected(tab) {
-    this.tabKey = tab.tabDataKey;
+    this.tabKey = tab.tab.tabDataKey;
+
     if (!tab.listData) { //let the page handle the service call if there's no data
       this.tabSelectedListener.next(tab);
     }
     else {
-      this.displayData();
+      this.displayData('qb');
     }
+  }
+
+  dropdownChanged($event) {
+    console.log('dropdownChanged');
+    // this.displayData(selectedItem);
+    this.dropdownPositionSelection.next($event);
   }
 }
