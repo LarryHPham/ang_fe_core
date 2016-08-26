@@ -5,11 +5,12 @@ import {TableCell} from '../../components/custom-table/table-cell.component';
 import {TableModel, TableColumn, CellData} from '../../components/custom-table/table-data.component';
 import {CircleImage} from '../../components/images/circle-image';
 import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 @Component({
   selector: 'custom-table',
   templateUrl: './app/fe-core/components/custom-table/custom-table.component.html',
-  directives: [TableHeader, TableCell, CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget]
+  directives: [NoDataBox, TableHeader, TableCell, CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget]
 })
 
 export class CustomTable implements OnChanges {
@@ -20,7 +21,7 @@ export class CustomTable implements OnChanges {
   public isSortDropdownVisible: boolean = false;
 
   public bodyClass: string;
-
+  @Input() error: any;
   /**
    * The column data and settings for the table. To sort by
    * a particular column, set sortDirection for that column to either

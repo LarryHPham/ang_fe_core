@@ -16,6 +16,7 @@ import {GlobalFunctions} from '../../../global/global-functions';
 export class SchedulesModule implements OnInit{
     @Input() data;
     @Input() profHeader;
+    @Input() error;
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
     footerData:any;
     tabData: any;
