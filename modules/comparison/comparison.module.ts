@@ -9,7 +9,7 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 import {GlobalSettings} from '../../../global/global-settings';
 import {GlobalFunctions} from '../../../global/global-functions';
-import {MLBGlobalFunctions} from '../../../global/mlb-global-functions';
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
 import {SportPageParameters} from '../../../global/global-interface';
 import {ComparisonStatsData, PlayerData, SeasonStats} from '../../../services/comparison-stats.service';
 import {Gradient} from '../../../global/global-gradient'
@@ -187,10 +187,10 @@ export class ComparisonModule implements OnInit, OnChanges {
         var playerRoute = null;
         var teamRoute = null;
         if ( this.profileType != "player" || this.profileId != player.playerId ) {
-            playerRoute = MLBGlobalFunctions.formatPlayerRoute(player.teamName, player.playerName, player.playerId);
+            playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, player.playerName, player.playerId);
         }
         if ( this.profileType != "team" || this.profileId != player.teamId ) {
-            teamRoute = MLBGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
+            teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
         }
         return {
             dropdownOneKey: player.teamId,
@@ -206,7 +206,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                 subImages: [
                     // {
                         // imageUrl: GlobalSettings.getImageUrl(player.teamLogo),
-                        // urlRouteArray: MLBGlobalFunctions.formatTeamRoute(player.teamName, player.teamId),
+                        // urlRouteArray: VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId),
                         // hoverText: "<i class='fa fa-mail-forward'></i>",
                         // imageClass: "image-50-sub image-round-lower-right"
                     // },
