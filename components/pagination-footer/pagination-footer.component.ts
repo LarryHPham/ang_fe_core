@@ -272,14 +272,14 @@ export class PaginationFooter implements OnChanges{
           this.disabledMin = "pagDisabled";
         }
         //Determine if absolute first button should be shown (show ellipsis if first item in array is not 5)
-        if(index > 6){
+        if(index > 6 && range + 1 < max){
             this.showMinSkip = false;
         }else{
             this.showMinSkip = true;
         }
 
         //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
-        if(index < max - 4 || max < 2){
+        if((index < max - 4 && range + 1 < max) || max < 2){
             this.showMaxSkip = false;
         }else{
             this.showMaxSkip = true;
