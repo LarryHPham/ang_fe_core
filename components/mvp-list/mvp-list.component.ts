@@ -44,18 +44,20 @@ export class MVPListComponent implements DoCheck  {
   position: string;
 
   private sortOptions: Array<any> = [
-    {key: 'pitcher', value: 'Pitcher'},
-    {key: 'batter', value: 'Batter'},
-    {key: 'qb', value: 'Quarterback'}
-    // {key: 'cr', value: 'Cornerback'},
-    // {key: 'de', value: 'Defensive end'},
-    // {key: 'db', value: 'Defensive back'},
-    // {key: 'dl', value: 'Defensive lineman'},
-    // {key: 'dt', value: 'Defensive tackle'},
-    // {key: 's', value: 'Safety'},
-    // {key: 'lb', value: 'Linebacker'},
-    // {key: 'k', value: 'Kicker'},
-    // {key: 'p', value: 'Punter'}
+    {key: 'qb', value: 'Quarterback'},
+    {key: 'cb', value: 'Cornerback'},
+    {key: 'de', value: 'Defensive end'},
+    {key: 'db', value: 'Defensive back'},
+    {key: 'dl', value: 'Defensive lineman'},
+    {key: 'dt', value: 'Defensive tackle'},
+    {key: 's', value: 'Safety'},
+    {key: 'lb', value: 'Linebacker'},
+    {key: 'k', value: 'Kicker'},
+    {key: 'p', value: 'Punter'},
+    {key: 'rb', value: 'Running Back'},
+    {key: 'rs', value: 'Return specialist'},
+    {key: 'wr', value: 'Wide Receiver'},
+    {key: 'te', value: 'Tight End'}
   ];
 
 
@@ -64,14 +66,16 @@ export class MVPListComponent implements DoCheck  {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
         if ( !this.selectedTabTitle ) {
-          this.selectedTabTitle = this.tabs[0].tabDataKey;
+          this.selectedTabTitle = this.tabs[0].tabDisplayTitle;
         }
+
         this.tabSelected(this.selectedTabTitle);
       }
       else {
         let selectedTab = this.getSelectedTab();
+
         if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle] ) {
-          this.tabsLoaded[selectedTab.tabDisplayTitle] = "1";
+          this.tabsLoaded[selectedTab.tabDisplayTitle] = "qb";
           this.updateCarousel(selectedTab);
         }
       }
@@ -79,15 +83,13 @@ export class MVPListComponent implements DoCheck  {
   } //ngDoCheck()
 
   ngOnInit(){
-    this.position = this.position == null ? this.sortOptions[0]:this.position;
-    //console.log(this.tabs);
-  }
+    this.position = this.position == null ? this.sortOptions[0]:this.position;  }
 
   getSelectedTab() {
     if ( !this.tabs ) return null;
 
     var tabTitle = this.selectedTabTitle;
-    var matches = this.tabs.filter(tab => tab.tabDataKey == tabTitle);
+    var matches = this.tabs.filter(tab => tab.tabDisplayTitle == tabTitle);
 
     return matches.length > 0 ? matches[0] : null;
   } //getSelectedTab()
@@ -109,8 +111,8 @@ export class MVPListComponent implements DoCheck  {
       }
       else {
         this.tabSelectedListener.next({
-          tab:selectedTab,
-          position:this.position
+          tab: selectedTab,
+          position: this.position
         });
         this.updateCarousel(selectedTab);
       }
