@@ -7,7 +7,10 @@ slider-carousel{
   height:auto;
   position: relative;
   .image-48-rank {
+    display: block;
+    line-height: 2.5;
     @media @mobile {
+      display: none;
       font-size: 16px;
     }
   }
@@ -70,12 +73,13 @@ slider-carousel{
       }
       &-mainImg{
         width: 38%;
+        max-width: 225px;
         .flexDisplay;
         .flexDirection(column);
         .flexAlignItems(center);
         @media @mobile {
           width:100%;
-          margin-top: 60px;
+          margin-top: 65px;
           margin-bottom: 20px;
           .image-150 {
             width:125px;
@@ -137,16 +141,13 @@ slider-carousel{
 
       &-type2 { //for most list modules
         &-hdr {
-          .globalDefaultModFont(22px, 800, @white);
+          .globalDefaultModFont(20px, 800, @white);
           @media @mobile {
             margin-top: 0;
             position: absolute;
             top: 15px;
             width: 100%;
             text-align: center;
-          }
-          @media (max-width: 768px) {
-            font-size:20px;
           }
         }
 
@@ -155,32 +156,29 @@ slider-carousel{
         }
 
         &-desc {
-          .globalDefaultModFont(16px, 400, @white);
+          .globalDefaultModFont(14px, 400, @white);
           line-height: 1.2em;
           margin-top: 4px;
           @media @mobile {
             margin-top: 0;
             position: absolute;
-            top: 40px;
+            top: 43px;
             width: 100%;
             text-align: center;
-          }
-          @media (max-width: 768px) {
-            font-size:14px;
           }
         }
 
         &-value {
-          .globalDefaultModFont(22px, 800, @white);
-          margin-top: 18px;
-          @media (max-width: 768px) {
-            font-size:20px;
-          }
+          .globalDefaultModFont(20px, 800, @white);
+          margin-top: 15px;
         }
 
         &-lbl {
           .globalDefaultModFont(16px, 400, @white);
-          margin-top: 4px;
+          margin-top: 5px;
+          @media @mobile {
+            margin-top: 10px;
+          }
           @media (max-width: 768px) {
             font-size:14px;
           }
