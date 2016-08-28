@@ -19,7 +19,7 @@
         <a [routerLink]="['Syndicated-article-page', {eventID:item.id, articleType:'video'}]">
         <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
         </a>
-        <span class="video-title-top" *ngIf="isProfilePage"><span style="position: relative; top: 10px">{{formatDate(item.pubDate, isProfilePage)}}</span></span>
+        <span class="video-title-top" *ngIf="isProfilePage"><span>{{formatDate(item.pubDate, isProfilePage)}}</span></span>
         </div>
         <div class="video-stack-right-text" [innerHTML]="item.description | safeHtml">
         </div>
