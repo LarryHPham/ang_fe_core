@@ -86,6 +86,8 @@ export class PaginationFooter implements OnChanges{
     //Booleans to determine if max/min skip buttons should be shown
     public showMinSkip: boolean = false;
     public showMaxSkip: boolean = false;
+    public disabledMin: string;
+    public disabledMax: string;
     //Button (anchor tag) parameters for min, max, previous angle, and next angle buttons
     public minButtonParameters: Object;
     public maxButtonParameters: Object;
@@ -95,6 +97,7 @@ export class PaginationFooter implements OnChanges{
     public lastButtonParameters: Object;
     //Number to determine +- range of buttons. (ex. buttonRange of 2 with an index of 6 yields buttons, 4 5 6 7 8)
     public buttonRange: number = 9;
+
     //Array of what indexes are displayed. paginationButtonsModule is used for paginationType module. paginationButtonsPage is used for paginationType page
     public paginationButtonsModule: Array<Number>;
     public paginationButtonsPage: Array<{
@@ -172,14 +175,14 @@ export class PaginationFooter implements OnChanges{
             }
         }
 
-        //Determine if absolute first button should be shown (show ellipsis if first item in array is not 2)
+        //Determine if absolute first button should be shown (show ellipsis if first item in array is not 5)
         if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[0] != (1 + 4)){
             this.showMinSkip = true;
         }else{
             this.showMinSkip = false;
         }
 
-        //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
+        //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 4)
         if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[this.paginationButtonsModule.length - 1] != (max - 4)){
             this.showMaxSkip = true;
         }else{
@@ -198,8 +201,8 @@ export class PaginationFooter implements OnChanges{
         var indexKey = this.paginationParameters.indexKey;
         //Determine values before index that can be added to button array
         var r = 0;
-        if(index < max-5 && index > 5){
-          r = 5;
+        if(index < max-4 && index > 1){
+          r = 4;
         } else {
           r = max-index;
         }
@@ -230,7 +233,7 @@ export class PaginationFooter implements OnChanges{
 
         //Determine values after index that can be added to button array
         var i = 0;
-        if(index >  5){
+        if(index > 5){
           i = 5;
         } else {
           i = range - (range - index) - 1;
@@ -259,18 +262,27 @@ export class PaginationFooter implements OnChanges{
         params[indexKey] = max;
         this.maxButtonParameters = params;
 
-        //Determine if absolute first button should be shown (show ellipsis if first item in array is not 2)
-        if(this.paginationButtonsPage.length != 0 && this.paginationButtonsPage[0].index != (1 + 1) && this.paginationButtonsPage[0].index != 1){
-            this.showMinSkip = true;
-        }else{
+        //Determine if next/previous and last/first buttons should be inactive
+        if(max <= 1){
+          this.disabledMin = "pagDisabled";
+          this.disabledMax = "pagDisabled";
+        } else if(index == max){
+          this.disabledMax = "pagDisabled";
+        } else if(index == 1){
+          this.disabledMin = "pagDisabled";
+        }
+        //Determine if absolute first button should be shown (show ellipsis if first item in array is not 5)
+        if(index > 6 && range + 1 < max){
             this.showMinSkip = false;
+        }else{
+            this.showMinSkip = true;
         }
 
         //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
-        if(this.paginationButtonsPage.length != 0 && this.paginationButtonsPage[this.paginationButtonsPage.length - 1].index != (max - 1)){
-            this.showMaxSkip = true;
-        }else{
+        if((index < max - 4 && range + 1 < max) || max < 2){
             this.showMaxSkip = false;
+        }else{
+            this.showMaxSkip = true;
         }
         var firstParams = this.copyDynamicParams();
         firstParams[indexKey] = 1;
