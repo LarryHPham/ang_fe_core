@@ -1,3 +1,8 @@
+.pagDisabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 .pagination {
   &-container {
     margin-top:-1px;
@@ -16,10 +21,6 @@
         outline: none;
       }
     }
-
-    @media @mobile{
-      display:none;
-    }
   }
 
   &-row {
@@ -29,18 +30,21 @@
     text-align: center;
     font-size: 14px;
     position: relative;
+    padding: 0 15px;
   }
 
   &-button {
     &-doubleangle{
       font-size: 18px;
       border:none;
-      margin: 0 3px;
       background-color: transparent;
       line-height: 20px;
       position: relative;
       top:4px;
       padding:0;
+      &:hover{
+        color: @masterBrandColor;
+      }
     }
     &-angle {
       width:20px;
@@ -59,7 +63,8 @@
       padding: 0px;
 
       &:hover {
-        color: @black;
+        color: @white;
+        background-color: @masterBrandColor;
       }
       i{
         position: absolute;
@@ -129,5 +134,18 @@
         margin-left: 5px;
         background-image: url('/app/public/icons/Infinity_Icon.png');
       }
+  }
+}
+@media @mobile{
+  .pagination{
+    &-row{
+      height: 25px;
+    }
+    &-container{
+      min-width: 320px;
+    }
+    &-button-circle{
+      display:none;
+    }
   }
 }

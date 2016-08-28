@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export interface ModuleHeaderData {
   moduleTitle:string,
+  moduleTitleProfile?:string;
   moduleIdentifier?: string,
   hasIcon: boolean,
   iconClass: string,
@@ -22,6 +23,7 @@ export class ModuleHeader {
      if(typeof this.modHeadData == 'undefined'){
        this.modHeadData = {
          moduleTitle: "Module Title [Here]",
+         moduleTitleProfile:"",
          hasIcon: false,
          iconClass: '',
        }
