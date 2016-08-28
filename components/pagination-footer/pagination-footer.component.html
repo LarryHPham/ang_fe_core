@@ -4,26 +4,26 @@
     <div *ngIf="paginationParameters.paginationType == 'module'" class="pagination-row">
         <!-- Angle Left Button -->
         <div class="pagination-leftnav">
-          <button (click)="indexLeft('last')" class="pagination-button-doubleangle">
+          <a (click)="indexLeft('last')" class="pagination-button-doubleangle">
             <i class="fa fa-angle-double-left"></i>
-          </button>
-          <button id="pf-angle-left" *ngIf="paginationParameters.max > 1" (click)="indexLeft('single')" class="pagination-button-angle">
+          </a>
+          <a id="pf-angle-left" *ngIf="paginationParameters.max > 1" (click)="indexLeft('single')" class="pagination-button-angle">
             <i class="fa fa-angle-left"></i>
-          </button>
+          </a>
         </div>
         <div class="pagination-centernav">
           <!-- Minimum Button -->
-          <button *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}">
+          <!-- <a *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}">
             1
-          </button>
+          </a> -->
 
-          <button *ngFor="let item of paginationButtonsModule" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item && item !== 1 && item !== paginationParameters.max}">
+          <a *ngFor="let item of paginationButtonsModule" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item && item !== 1 && item !== paginationParameters.max}">
             {{item}}
-          </button>
+          </a>
 
-          <button *ngIf="showMaxSkip" (click)="indexClick($event)" *ngIf="paginationParameters.max > 1" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}">
+          <!-- <a *ngIf="showMaxSkip" (click)="indexClick($event)" *ngIf="paginationParameters.max > 1" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}">
             {{paginationParameters.max}}
-          </button>
+          </a> -->
         </div>
         <!-- Angle Right Button -->
         <div class="pagination-rightnav">
