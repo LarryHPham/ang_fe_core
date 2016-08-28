@@ -7,23 +7,24 @@ import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 export interface GameInfoInput{
   gameHappened: boolean,
   inning:string;
+  dataPointCategories:Array<string>;
   homeData:{
     homeTeamName:string;
     homeImageConfig:CircleImageData;
     homeLink:any;
     homeRecord:string;
-    runs:any;
-    hits:any;
-    errors:any
+    DP1:any;
+    DP2:any;
+    DP3:any;
   };
   awayData:{
     awayTeamName:string;
     awayImageConfig:CircleImageData;
     awayLink:any,
     awayRecord:string;
-    runs:any;
-    hits:any;
-    errors:any
+    DP1:any;
+    DP2:any;
+    DP3:any;
   };
 }
 
