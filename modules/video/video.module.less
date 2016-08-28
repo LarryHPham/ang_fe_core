@@ -25,7 +25,7 @@
     .video-stack-container {
       width: 100%;
       margin: 0 auto;
-      //padding: 0 15px;
+      padding: 0px;
 
       .video-stack-right-text {
         display: inline-block;
@@ -247,17 +247,30 @@
   .videos-module_carousel{
     height: 506px ;
   }
-
-
+  .videos-module_list {
+    .video-stack:nth-of-type(6), .video-stack:nth-of-type(5) {
+      margin-bottom: 0px;
+    }
+  }
 }
 @media @desktop-m {
   .videos-module_carousel{
     height: 506px ;
+  }
+  .videos-module_list {
+    .video-stack:nth-of-type(6), .video-stack:nth-of-type(5) {
+      margin-bottom: 0px;
+    }
   }
 }
 
 @media @small-grid {
   .videos-module_carousel{
     height: 320px;
+  }
+  .videos-module_list {
+    .video-stack:nth-of-type(6), .video-stack:nth-of-type(5) {
+      margin-bottom: 0px;
+    }
   }
 }
