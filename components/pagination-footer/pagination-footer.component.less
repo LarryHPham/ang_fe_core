@@ -21,10 +21,6 @@
         outline: none;
       }
     }
-
-    @media @mobile{
-      display:none;
-    }
   }
 
   &-row {
@@ -138,5 +134,18 @@
         margin-left: 5px;
         background-image: url('/app/public/icons/Infinity_Icon.png');
       }
+  }
+}
+@media @mobile{
+  .pagination{
+    &-row{
+      height: 25px;
+    }
+    &-container{
+      min-width: 320px;
+    }
+    &-button-circle{
+      display:none;
+    }
   }
 }
