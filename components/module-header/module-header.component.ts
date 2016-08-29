@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export interface ModuleHeaderData {
   moduleTitle:string,
+  moduleTitleProfile?:string;
   moduleIdentifier?: string,
   hasIcon: boolean,
   iconClass: string,
@@ -22,25 +23,10 @@ export class ModuleHeader {
      if(typeof this.modHeadData == 'undefined'){
        this.modHeadData = {
          moduleTitle: "Module Title [Here]",
+         moduleTitleProfile:"",
          hasIcon: false,
          iconClass: '',
        }
      }// end of placeholder if statement
-     var windowWidth = window.innerWidth;
-     if (windowWidth > 640) {
-      this.moduleTitle = this.modHeadData.moduleTitle;
-     }
-     else {
-       this.moduleTitle = this.modHeadData.moduleTitle.split('-')[0];
-     }
-   }
-   private onWindowLoadOrResize(event) {
-     var windowWidth = event.target.innerWidth;
-     if (windowWidth > 640) {
-      this.moduleTitle = this.modHeadData.moduleTitle;
-     }
-     else {
-       this.moduleTitle = this.modHeadData.moduleTitle.split('-')[0];
-     }
    }
 }

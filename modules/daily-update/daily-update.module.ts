@@ -156,7 +156,10 @@ export class DailyUpdateModule {
             crop: false,
             overflow: 'none',
             backgroundColor: undefined,
-            y: 0
+            y: 0,
+            style: {
+              textShadow: false
+            }
           },
           enableMouseTracking: false
         }
