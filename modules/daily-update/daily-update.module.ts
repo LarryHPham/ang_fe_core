@@ -90,7 +90,8 @@ export class DailyUpdateModule {
             data: item.values,
             dataLabels: {
               style: {
-                color: '#999999'
+                color: '#999999',
+                textShadow: false
               }
             }
           };
@@ -135,7 +136,8 @@ export class DailyUpdateModule {
         },
         labels: {
           style: {
-            color: "#999999"
+            color: "#999999",
+            textShadow: false
           }
         },
         gridLineColor: "rgba(225, 225, 225, 0.5)"
@@ -148,6 +150,7 @@ export class DailyUpdateModule {
           minPointLength: 3,
           dataLabels: {
             enabled: true,
+            textShadow: false,
             inside: false,
             allowOverlap: true,
             crop: false,

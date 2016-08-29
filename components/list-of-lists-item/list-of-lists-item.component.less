@@ -24,13 +24,13 @@
 
         &-left{
           float:left;
-          width: 140px;
+          width: 136px;
           padding-top: 2px;
         }
 
         &-right{
           float:right;
-          width: ~"calc(100% - 145px)";
+          width: ~"calc(100% - 136px)";
           height: 125px;
           .clearfix;
           position: relative;
@@ -75,11 +75,15 @@
             &-button {
               float: right;
               .mod-page-btn(35px, 160px, 25px, 14px, 400);
+              .flexJustify(inherit);
+              >i {
+                margin-left: 4px;
+              }
             }
-            #loli-icon {
-              position: relative;
-              top: 50%;
-              transform: translate(0,-50%);
+            .loli-icon {
+              line-height: 25px;
+              padding-top: 0px;
+              margin-right: 10px;
             }
           }
         }
@@ -95,8 +99,15 @@
         #container-loli-text {
           display: none;
         }
-        #loli-icon {
-          margin-left: 20px;
+        #container-loli-button {
+          float: left;
+          clear: right;
+          &:hover {
+            background-color: @touchDownLoyalBlue;
+          }
+          &:active {
+            background-color: @black;
+          }
         }
         .dataBox {
           h2 {

@@ -66,13 +66,14 @@
       display: block;
       width: 280px;
       float: left;
-      padding: 0 15px 2px 15px;
+      padding: 1px 15px 0px 15px;
       border-right: 1px solid @strokeGrey;
       margin-right: -1px;
       @media @mobile {
         width: 100%;
         clear: both;
         border-right-width: 0px;
+        padding: 0px 10px 0px 10px;
       }
       &-title{
         margin: 7px 0 0 0;
@@ -106,6 +107,12 @@
           }
         }
       }
+      @media @mobile {
+        .datapoints:last-child {
+          border-bottom: 1px solid #ccc;
+
+        }
+      }
     }
     &-charts{
       display: block;
@@ -125,33 +132,45 @@
       &-key{
         line-height:14px;
         .clearfix;
-        padding: 10px 20px 10px 10px;
+        padding: 10px 15px 10px 10px;
         border-bottom: 1px solid @strokeGrey;
         display: flex;
+        @media @mobile {
+          padding: 10px 10px 10px 10px;
+        }
         h4{
           margin: 0;
           .globalDefaultModFont(14px, 400, @textEmphasisGrey);
+          @media @mobile {
+            font-size: 12px;
+          }
         }
         &-item{
-          .globalDefaultModFont(10px, 800, @textEmphasisGrey);
+          .globalDefaultModFont(12px, 800, @textEmphasisGrey);
+          // @media @mobile {
+          //   font-size: 12px;
+          // }
           &:before {
             content: "";
             display: inline-block;
             width: 10px;
             height: 10px;
-            margin-right: 6px;
+            margin-right: 5px;
+            position: relative;
+            bottom: 1px;
             border-radius: 2px;
             vertical-align: middle;
           }
         }
         #foragainst {
           width: 100%;
+          margin-top: 2px;
         }
         &-primary{
           float: right;
           margin-right: 10px;
           &:before{
-            background-color: @textEmphasisGrey;
+            background-color: @bulletGrey;
           }
         }
         &-secondary{
@@ -169,8 +188,13 @@
     .clearfix;
 
     circle-image{
-      padding: 22px;
+      padding: 20px;
+      @media @mobile {
+        padding: 15px 10px 10px 10px;
+      }
       .image-round {
+        width: 125px;
+        height: 125px;
         @media @mobile {
           width: 100px;
           height: 100px;
@@ -181,11 +205,16 @@
       display: block;
       width: ~"calc(100% - 170px)";
       padding: 20px 20px 10px 0;
+      @media @mobile {
+        width: ~"calc(100% - 130px)";
+      }
       &-body {
-        width: ~"calc(100% - 170px)";
+        width: ~"calc(100% - 180px)";
+        margin: 0px 10px 0px 0px;
         @media @mobile {
           width:100%;
           padding: 0 15px 15px;
+          margin: 0 0 0 0;
 
         }
       }
@@ -202,7 +231,7 @@
         margin: 0 0 6px 0;
       }
       &-body{
-        margin: 0;
+
         .globalDefaultFont(14px, 400);
         line-height: 16px;
         a{
@@ -214,9 +243,14 @@
         &-link {
           .globalDefaultModFont(12px, 800, @masterBrandColor);
           line-height: 20px;
+          width: ~"calc(100% - 170px)";
+          margin-top: 15px;
+          margin-bottom: 17px;
           @media @mobile {
             width: 100%;
             padding: 0 0 15px 15px;
+            margin-top: 0px;
+            margin-bottom: 0px;
           }
           &:hover{
             text-decoration: underline;
@@ -228,4 +262,13 @@
       }
     }
   }
+}
+@media @mobile {
+  g.highcharts-series.highcharts-series-0 > rect {
+    width: 27;
+  }
+  g.highcharts-series.highcharts-series-1 > rect {
+    width: 27;
+  }
+
 }

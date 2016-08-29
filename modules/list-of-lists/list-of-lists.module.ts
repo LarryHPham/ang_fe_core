@@ -39,6 +39,7 @@ export class ListOfListsModule{
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
+
     this.moduleHeader = {
       moduleTitle: "Top Lists - " + this.profileHeaderData.profileName,
       hasIcon: false,
