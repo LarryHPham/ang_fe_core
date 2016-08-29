@@ -1,6 +1,6 @@
 <section class="stackRows row">
   <div *ngFor="let stackRow of stackRow;">
-    <a class="stackSmall {{gridStackCol}}" [routerLink]="stackRow.stackRowsRoute">
+    <a class="stackSmall" [routerLink]="stackRow.stackRowsRoute">
         <div class="stackSmall-image">
           <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
         </div>

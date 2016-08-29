@@ -97,7 +97,7 @@ export class DeepDiveBlock1{
           this.tilestackData = this._deepDiveData.transformTileStack(data);
         });
   }
-  private getDeepDiveVideoBatch(region, numItems, startNum){
+  private getDeepDiveVideoBatch(scope, region, numItems, startNum){
     this._deepDiveData.getDeepDiveVideoBatchService(this.scope, numItems, startNum, region).subscribe(
       data => {
         this.videoData = data.data;
@@ -129,7 +129,7 @@ export class DeepDiveBlock1{
     this.getBoxScores(this.dateParam);
     this.getFirstArticleStackData();
     this.getSecArticleStackData();
-    this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
+    this.getDeepDiveVideoBatch(this.scope, this.geoLocation, 6, this.page);
     this.getThirdArticleStackData();
     this.getTileStackData();
   }

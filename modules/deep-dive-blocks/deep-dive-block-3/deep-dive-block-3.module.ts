@@ -9,8 +9,6 @@ import {ResponsiveWidget} from '../../../components/responsive-widget/responsive
 import {VideoStackComponent} from '../../../components/video-stack/video-stack.component';
 import {RecommendationsComponent} from '../../../components/articles/recommendations/recommendations.component';
 
-
-
 @Component({
     selector: 'deep-dive-block-3',
     templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-3/deep-dive-block-3.module.html',
@@ -33,8 +31,8 @@ export class DeepDiveBlock3{
   boxArticleData: any;
   partnerID:string;
   scope: string;
-  @Input() maxHeight: any;
   scroll: boolean = true;
+  @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
 

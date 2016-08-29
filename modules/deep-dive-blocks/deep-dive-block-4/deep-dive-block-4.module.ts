@@ -8,8 +8,6 @@ import {TileStackModule} from '../../../modules/tile-stack/tile-stack.module';
 import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
 import {RecommendationsComponent} from '../../../components/articles/recommendations/recommendations.component';
 
-
-
 @Component({
     selector: 'deep-dive-block-4',
     templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-4/deep-dive-block-4.module.html',
@@ -30,9 +28,9 @@ export class DeepDiveBlock4{
   scope: string;
   recommendationData: any;
   boxArticleData: any;
+  scroll: boolean = true;
 
   @Input() maxHeight: any;
-  scroll: boolean = true;
   @Input() geoLocation: any;
   @Input() profileName: any;
 
