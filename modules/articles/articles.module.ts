@@ -32,6 +32,7 @@ declare var moment:any;
 })
 
 export class ArticlesModule implements OnInit {
+    @Input() isLeague:boolean;
     headlineData:HeadlineData;
     moduleData:Array<any>;
     imageData:any;
@@ -72,22 +73,24 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles() {
-        this._headlineDataService.getAiHeadlineData(this.teamID)
+        this._headlineDataService.getAiHeadlineDataLeague()
             .subscribe(
                 HeadlineData => {
-                    this.headlineData = HeadlineData['featuredReport'];
-                    this.leftColumnData = HeadlineData['leftColumn'];
-                    this.headToHeadData = HeadlineData['rightColumn'];
-                    this.imageData = HeadlineData['home'].images.concat(HeadlineData['away'].images);
-                    this.eventID = HeadlineData.event;
-                    this.scheduleHomeData = HeadlineData['home'];
-                    this.scheduleAwayData = HeadlineData['away'];
-                    this.moduleData = HeadlineData;
+                    this.headlineData = "yup";
+                    //this.leftColumnData = HeadlineData['leftColumn'];
+                    //this.headToHeadData = HeadlineData['rightColumn'];
+                    //this.imageData = HeadlineData['home'].images.concat(HeadlineData['away'].images);
+                    this.imageData = "NADA";
+                    //this.eventID = HeadlineData.event;
+                    //this.scheduleHomeData = HeadlineData['home'];
+                    //this.scheduleAwayData = HeadlineData['away'];
+                    //this.moduleData = HeadlineData;
                     this.getHeaderData(HeadlineData);
-                    this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
-                    this.getMainArticle(this.headlineData, this.imageData, this.eventID);
+                    //if (!this.isLeague) {
+                    //    this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
+                    //}
+                    this.getMainArticle(HeadlineData, this.imageData, this.eventID);
                     this.getSubArticles(HeadlineData, this.imageData, this.eventID);
-                    //this.getHeadToHeadArticles(this.headToHeadData, this.eventID);
                 },
                 err => {
                     this.error = true;
@@ -97,23 +100,27 @@ export class ArticlesModule implements OnInit {
     }
 
     getHeaderData(data) {
-        moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
-        this.timeStamp = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MMMM DD YYYY");
-        var dateString = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MM/DD/YYYY");
-        var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
-        var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
-        if (isPost) {
-            if (!this.isSmall) {
-                this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+        if (!this.isLeague) {
+            moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
+            this.timeStamp = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MMMM DD YYYY");
+            var dateString = moment.tz(moment.unix(data.timestamp), 'America/New_York').format("MM/DD/YYYY");
+            var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
+            var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
+            if (isPost) {
+                if (!this.isSmall) {
+                    this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+                } else {
+                    this.headerInfo.moduleTitle = "Post Gameday Matchup";
+                }
             } else {
-                this.headerInfo.moduleTitle = "Post Gameday Matchup";
+                if (!this.isSmall) {
+                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
+                } else {
+                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
+                }
             }
         } else {
-            if (!this.isSmall) {
-                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == data.home.id ? data.away.location + ' ' + data.away.name : data.home.location + ' ' + data.home.name);
-            } else {
-                this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(data.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
-            }
+            this.headerInfo.moduleTitle = "Headlines";
         }
     }
 
@@ -205,91 +212,105 @@ export class ArticlesModule implements OnInit {
     }
 
     getMainArticle(headlineData, imageData, eventID) {
-        var pageIndex = Object.keys(headlineData)[0];
-        switch (pageIndex) {
-            case'pregame-report':
-                this.keyword = 'PREGAME';
-                break;
-            case'postgame-report':
-                this.keyword = 'POSTGAME';
-                break;
-            //do not have live game data yet. The default is for testing.
-            default:
-                this.keyword = 'LIVE';
-                break;
-        }
-        headlineData = headlineData[Object.keys(headlineData)[0]];
-        this.mainTitle = headlineData.displayHeadline;
-        this.eventType = pageIndex;
-        this.mainEventID = eventID;
-        var articleContent = headlineData.article[0];
+        //var pageIndex = Object.keys(headlineData)[0];
+        //switch (pageIndex) {
+        //    case'pregame-report':
+        //        this.keyword = 'PREGAME';
+        //        break;
+        //    case'postgame-report':
+        //        this.keyword = 'POSTGAME';
+        //        break;
+        //    //do not have live game data yet. The default is for testing.
+        //    default:
+        //        this.keyword = 'LIVE';
+        //        break;
+        //}
+        this.mainTitle = headlineData['data'][0].title;
+        this.eventType = "postgame-report";
+        this.mainEventID = headlineData['data'][0].event_id;
+        var articleContent = headlineData['data'][0].teaser;
         var maxLength = 235;
         var trimmedArticle = articleContent.substring(0, maxLength);
         this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
         var articleType = 'main';
-        this.getImages(imageData, articleType);
+        //this.getImages(imageData, articleType);
     }
 
     getSubArticles(data, imageData, eventID) {
         //This code will change drastically once the proper api call has been created. This is temporary.
         var articleType = 'sub';
         var articles;
-        this.getImages(imageData, articleType);
+        //this.getImages(imageData, articleType);
         var articleLeft = [];
         var articleRight = [];
         var articleArr = [];
         var imageCount = 0;
         var self = this;
-        Object.keys(data['leftColumn']).forEach(function (val) {
-            switch (val) {
-                case'about-the-teams':
-                case'historical-team-statistics':
-                case'last-matchup':
-                case'starting-lineup-home':
-                case'starting-lineup-away':
-                case'injuries-home':
-                case'injuries-away':
-                case'upcoming':
+        if (!this.isLeague) {
+            Object.keys(data['leftColumn']).forEach(function (val) {
+                switch (val) {
+                    case'about-the-teams':
+                    case'historical-team-statistics':
+                    case'last-matchup':
+                    case'starting-lineup-home':
+                    case'starting-lineup-away':
+                    case'injuries-home':
+                    case'injuries-away':
+                    case'upcoming':
+                        imageCount++;
+                        articles = {
+                            title: data['leftColumn'][val].displayHeadline,
+                            eventType: val,
+                            eventID: eventID,
+                            images: self.subImages[imageCount]
+                        };
+                        articleLeft.push(articles);
+                        break;
+                }
+            });
+            Object.keys(data['rightColumn']).forEach(function (val) {
+                switch (val) {
+                    case'pitcher-player-comparison':
+                    case'catcher-player-comparison':
+                    case'first-base-player-comparison':
+                    case'second-base-player-comparison':
+                    case'third-base-player-comparison':
+                    case'shortstop-player-comparison':
+                    case'left-field-player-comparison':
+                    case'center-field-player-comparison':
+                    case'right-field-player-comparison':
+                    case'outfield-most-putouts':
+                    case'outfielder-most-hits':
+                    case'outfield-most-home-runs':
+                    case'infield-most-hits':
+                    case'infield-most-home-runs':
+                    case'infield-best-batting-average':
+                    case'infield-most-putouts':
+                        imageCount++;
+                        articles = {
+                            title: data['rightColumn'][val].displayHeadline,
+                            eventType: val,
+                            eventID: eventID,
+                            images: self.subImages[imageCount]
+                        };
+                        articleRight.push(articles);
+                        break;
+                }
+            });
+        } else {
+            data['data'].forEach(function (val, index) {
+                if (index > 0) {
                     imageCount++;
                     articles = {
-                        title: data['leftColumn'][val].displayHeadline,
-                        eventType: val,
-                        eventID: eventID,
-                        images: self.subImages[imageCount]
+                        title: val.title,
+                        eventType: "postgame-report",
+                        eventID: val.event_id,
+                        //images: self.subImages[imageCount]
                     };
                     articleLeft.push(articles);
-                    break;
-            }
-        });
-        Object.keys(data['rightColumn']).forEach(function (val) {
-            switch (val) {
-                case'pitcher-player-comparison':
-                case'catcher-player-comparison':
-                case'first-base-player-comparison':
-                case'second-base-player-comparison':
-                case'third-base-player-comparison':
-                case'shortstop-player-comparison':
-                case'left-field-player-comparison':
-                case'center-field-player-comparison':
-                case'right-field-player-comparison':
-                case'outfield-most-putouts':
-                case'outfielder-most-hits':
-                case'outfield-most-home-runs':
-                case'infield-most-hits':
-                case'infield-most-home-runs':
-                case'infield-best-batting-average':
-                case'infield-most-putouts':
-                    imageCount++;
-                    articles = {
-                        title: data['rightColumn'][val].displayHeadline,
-                        eventType: val,
-                        eventID: eventID,
-                        images: self.subImages[imageCount]
-                    };
-                    articleRight.push(articles);
-                    break;
-            }
-        });
+                }
+            });
+        }
         articleArr = articleLeft.concat(articleRight);
         articleArr.sort(function () {
             return 0.5 - Math.random()
