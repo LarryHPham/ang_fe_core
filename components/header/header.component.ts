@@ -79,7 +79,6 @@ export class HeaderComponent implements OnInit,OnChanges {
       var element = document.elementFromPoint(event.clientX, event.clientY);
       let menuCheck = element.className.indexOf("menucheck");
       let searchCheck = element.className.indexOf("searchcheck");
-      console.log(searchCheck);
       if(this.isOpened && menuCheck < 0){
         this.isOpened = false;
       }
