@@ -8,8 +8,6 @@ import {TileStackModule} from '../../../modules/tile-stack/tile-stack.module';
 import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
 import {RecommendationsComponent} from '../../../components/articles/recommendations/recommendations.component';
 
-
-
 @Component({
     selector: 'deep-dive-block-4',
     templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-4/deep-dive-block-4.module.html',
@@ -26,39 +24,41 @@ export class DeepDiveBlock4{
   fourthStackRow: any;
   callLimit:number = 9;
   tilestackData: any;
-
+  partnerID:string;
+  scope: string;
   recommendationData: any;
   boxArticleData: any;
+  scroll: boolean = true;
 
   @Input() maxHeight: any;
-  scroll: boolean = true;
   @Input() geoLocation: any;
   @Input() profileName: any;
 
-  constructor(
-    private _router:Router,
-    private _deepDiveData: DeepDiveService
-    ){
+  constructor(private _router:Router, private _deepDiveData: DeepDiveService){
+      GlobalSettings.getParentParams(_router, parentParams => {
+        this.partnerID = parentParams.partnerID;
+        this.scope = parentParams.scope;
+      })
     }
     ngOnInit() {
        this.callModules();
     }
   getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 1, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
         .subscribe(data => {
           this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
           this.firstStackRow = this._deepDiveData.transformToArticleRow(data);
         });
   }
   getSecArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 2, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
         .subscribe(data => {
           this.secStackTop = this._deepDiveData.transformToArticleStack(data);
           this.secStackRow = this._deepDiveData.transformToArticleRow(data);
         });
   }
   getFourthArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 4, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 4, this.geoLocation)
         .subscribe(data => {
           this.fourthStackTop = this._deepDiveData.transformToArticleStack(data);
         });
@@ -68,7 +68,7 @@ export class DeepDiveBlock4{
         });
   }
   getTileStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 2, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
         .subscribe(data => {
           this.tilestackData = this._deepDiveData.transformTileStack(data);
         });
