@@ -64,6 +64,7 @@ export class SearchPageModule implements OnChanges{
     currentFilter: any;
 
     @Output() selectedKeyFilter =  new EventEmitter();
+    selectedKey: string;
 
     constructor(private _route:RouteParams){
       if(typeof this._route.params['pageNum'] != 'undefined'){
@@ -83,6 +84,7 @@ export class SearchPageModule implements OnChanges{
     }
 
     filterSwitch($event){
+      this.selectedKey = $event;
       this.selectedKeyFilter.next({
           dropdownIndex: 0,
           key: $event
