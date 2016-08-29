@@ -32,7 +32,7 @@ export class MVPModule {
   tabKey: string;
 
   ngOnChanges(){
-    //this.displayData('qb');
+    this.displayData('qb');
   }
 
   displayData(position){
@@ -68,7 +68,6 @@ export class MVPModule {
   }
 
   tabSelected(tab) {
-
     this.tabKey = tab.tab.tabDataKey;
 
     if (!tab.listData) { //let the page handle the service call if there's no data
