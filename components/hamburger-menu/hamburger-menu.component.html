@@ -1,11 +1,11 @@
 <div *ngIf="menuData" class="hamburger-component">
   <div class="hamburger">
     <div class="hamburger-division-select">
-      <span class="hamburger-division-select-button active" onclick="event.stopPropagation();" (click)="changeActiveLeague(_sportLeagueAbbrv, $event)">
+      <span class="hamburger-division-select-button" [class.active]="scope == _sportLeagueAbbrv" onclick="event.stopPropagation();" (click)="changeActiveLeague(_sportLeagueAbbrv)">
         {{_sportLeagueAbbrv}}
       </span>
-      <span class="hamburger-division-select-button" onclick="event.stopPropagation();" (click)="changeActiveLeague(_collegeDivisionAbbrv, $event)">
-        {{_collegeDivisionAbbrv}}
+      <span class="hamburger-division-select-button" [class.active]="scope == _collegeDivisionFullAbbrv" onclick="event.stopPropagation();" (click)="changeActiveLeague(_collegeDivisionAbbrv)">
+        {{_collegeDivisionFullAbbrv}}
       </span>
     </div>
     <ul class="hamburger-topics-list">

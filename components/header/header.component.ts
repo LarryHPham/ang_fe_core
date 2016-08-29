@@ -15,6 +15,7 @@ declare var jQuery:any;
 export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
+  public scope: string;
   public logoUrl:string;
   public partnerLogoUrl: string;
   private _stickyHeader: string;
@@ -26,23 +27,24 @@ export class HeaderComponent implements OnInit,OnChanges {
   public hamburgerMenuInfo: Array<MenuData>;
   public titleHeader: string;
   public isOpened: boolean = false;
+  public isSearchOpened: boolean = false;
   public isActive: boolean = false;
   public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
   public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
   public _sportName: string = GlobalSettings.getSportName().toUpperCase();
   private elementRef:any;
 
-  constructor(elementRef: ElementRef, private _renderer: Renderer){
+  constructor(elementRef: ElementRef, private _renderer: Renderer, private _router:Router){
     this.elementRef = elementRef;
+    GlobalSettings.getParentParams(_router, parentParams =>
+      this.scope = parentParams.scope
+    );
   }
   openSearch(event) {
-    if(event.target.parentElement.classList.contains('active') || event.target.parentElement.parentElement.classList.contains('active')){
-      event.target.parentElement.classList.remove('active');
-      event.target.parentElement.parentElement.classList.remove('active');
-    }
-    else {
-      event.target.parentElement.classList.add('active');
-      event.target.parentElement.parentElement.classList.add('active');
+    if(this.isSearchOpened == true){
+      this.isSearchOpened = false;
+    }else{
+      this.isSearchOpened = true;
     }
   }
   // Page is being scrolled
@@ -76,8 +78,13 @@ export class HeaderComponent implements OnInit,OnChanges {
     this._renderer.listenGlobal('document', 'click', (event) => {
       var element = document.elementFromPoint(event.clientX, event.clientY);
       let menuCheck = element.className.indexOf("menucheck");
+      let searchCheck = element.className.indexOf("searchcheck");
+      console.log(searchCheck);
       if(this.isOpened && menuCheck < 0){
         this.isOpened = false;
+      }
+      if(this.isSearchOpened && searchCheck < 0){
+        this.isSearchOpened = false;
       }
     });
     this.logoUrl = 'app/public/Touchdown-Loyal_Logo_Outlined-W.svg';
