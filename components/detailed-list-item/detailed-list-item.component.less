@@ -139,23 +139,27 @@ tabs .dli-container{
             }
           }
 
-          .detail-large a, .detail-large span {
-            display: inline-block;
-            padding-bottom: 10px;
-            font-size: 18px;
-            font-weight: 800;
-            line-height: 1.2em;
-            @media @mobile {
-              padding-bottom: 5px;
-              font-size: 16px;
+          .detail-large {
+            .main-text {
+              display: inline-block;
+              padding-bottom: 10px;
+              font-size: 18px;
+              font-weight: 800;
+              line-height: 1.2em;
+              @media @mobile {
+                padding-bottom: 5px;
+                font-size: 16px;
+              }
             }
           }
 
-          .detail-medium a, .detail-medium span {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 400;
-            line-height: 1.2em;
+          .detail-medium {
+            .sub-text {
+              display: inline-block;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 1.2em;
+            }
           }
         }//END OF &-text
         &.detail-left {}

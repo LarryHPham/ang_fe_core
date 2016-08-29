@@ -14,6 +14,7 @@ export interface TransactionTabData {
   tabDataKey: string;
   tabDisplay: string;
   isLoaded: boolean;
+  sortTitle?: string;
   sortOptions?: Array<{key: string, value: string}>;
   selectedSort?: string;
   includeDropdown?: boolean;
@@ -40,6 +41,8 @@ export class TransactionsComponent {
 
   private selectedTabTitle: string;
   private tabsLoaded: {[index:number]:string};
+
+  private selectedDropdownTitle: string;
 
   ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
@@ -82,6 +85,8 @@ export class TransactionsComponent {
   }
 
   dropdownChanged(event) {
+    console.log('dropdownChanged');
+    console.log(event);
     this.dropdownSwitched.next(event);
   }
 }
