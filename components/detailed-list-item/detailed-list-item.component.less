@@ -23,6 +23,9 @@ tabs .dli-container{
   height:155px;
   border-bottom: 1px solid @highlightGrey;
   padding: 15px;
+  @media @mobile {
+    height: 165px;
+  }
   &.odd{
     background-color: @white;
   }
@@ -54,11 +57,11 @@ tabs .dli-container{
       color:@black;
       padding: 0 0 12px 0;
       position: relative;
-      .inlineFlexDisplay;
-      .flexDirection(column);
+      .flexDisplay;
       .flexJustify(space-between);
       @media @mobile {
-        padding: 0 0 10px 0;
+        display: block;
+        padding: 0;
       }
 
       &-mainLink {
@@ -76,10 +79,13 @@ tabs .dli-container{
           color: @masterBrandColor;
         }
       }
-      &-info{
-        font-size: 14px;
-        width: 100%;
+      &-info {
         display: inline-block;
+        width: 100%;
+        font-size: 14px;
+        @media @mobile {
+          padding-bottom: 10px;
+        }
         &.detail-small{
           font-size: 10px;
           font-weight: 800;
@@ -113,15 +119,12 @@ tabs .dli-container{
         }
         &-text{
             display: inline;
-            width:78%;
+            width:100%;
             float: left;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            @media @mobile {
-              width:100%;
-            }
           &-right{
             display: inline;
             width:22%;
@@ -135,8 +138,40 @@ tabs .dli-container{
               text-align: left;
             }
           }
-        }//END OF a tag css modifier
-      }//END OF <div> tag css modifier
+
+          .detail-large {
+            .main-text {
+              display: inline-block;
+              padding-bottom: 10px;
+              font-size: 18px;
+              font-weight: 800;
+              line-height: 1.2em;
+              @media @mobile {
+                padding-bottom: 5px;
+                font-size: 16px;
+              }
+            }
+          }
+
+          .detail-medium {
+            .sub-text {
+              display: inline-block;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 1.2em;
+            }
+          }
+        }//END OF &-text
+        &.detail-left {}
+
+        &.detail-right {
+          @media @tablet {
+            .dataBox-info-text {
+              text-align: right;
+            }
+          }
+        }
+      }//END OF &-info
     }
     .cta-container{
       width:100%;

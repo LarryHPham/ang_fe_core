@@ -4,9 +4,12 @@
     <div *ngIf="tab.isLoaded" class="transactions-container">
       <div class="tab-inset"> <!-- due to tab having a default value of padding 1em for tab purposes so we just reverse it with margin -->
         <div *ngIf="tab.includeDropdown" class="transactions-page-title">
-          <h4><b>{{pageName}}</b> Report</h4>
+          <h4><b>{{tab.sortOptions.value}}</b> {{tab.tabDisplay}}</h4>
           <p class="transactions-page-dropdown">
-            Sorted By: <dropdown [list]="tab.sortOptions" [selectedKey]="tab.selectedSort" (selectionChanged)="dropdownChanged($event)"></dropdown>
+            <span class="sort-title-text">
+              {{tab.sortTitle}}
+            </span>
+            <dropdown [list]="tab.sortOptions" [selectedKey]="tab.selectedSort" (selectionChanged)="dropdownChanged($event)"></dropdown>
           </p>
         </div>
         <transactions-list-item *ngIf="tab.dataArray" [transactionsItemData]='tab.dataArray'></transactions-list-item>

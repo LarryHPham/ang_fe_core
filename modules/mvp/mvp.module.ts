@@ -36,6 +36,7 @@ export class MVPModule {
   }
 
   displayData(position){
+
     this.modHeadData = {
         moduleTitle: "Most Valuable Players ",
         moduleIdentifier: this.title,
@@ -70,16 +71,15 @@ export class MVPModule {
     this.tabKey = tab.tab.tabDataKey;
 
     if (!tab.listData) { //let the page handle the service call if there's no data
+
       this.tabSelectedListener.next(tab);
     }
     else {
-      this.displayData('qb');
+      this.displayData(this.tabKey);
     }
   }
 
   dropdownChanged($event) {
-    console.log('dropdownChanged');
-    // this.displayData(selectedItem);
     this.dropdownPositionSelection.next($event);
   }
 }
