@@ -85,8 +85,6 @@ export class TransactionsComponent {
   }
 
   dropdownChanged(event) {
-    console.log('dropdownChanged');
-    console.log(event);
     this.dropdownSwitched.next(event);
   }
 }
