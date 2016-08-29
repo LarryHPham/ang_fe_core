@@ -74,7 +74,7 @@ export class PlayerStatsComponent implements DoCheck {
         this.selectedSubTab = $event;
         //this.tabSelectedListener.emit(this.selectedSubTab);
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
-        console.log("matching tabs?????", matchingTabs);
+
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
