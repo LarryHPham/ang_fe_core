@@ -181,11 +181,16 @@
       display: block;
       width: ~"calc(100% - 170px)";
       padding: 20px 20px 10px 0;
+      @media @mobile {
+        width: ~"calc(100% - 144px)";
+      }
+
       &-body {
         width: ~"calc(100% - 170px)";
+        padding-right: 16px;
         @media @mobile {
           width:100%;
-          padding: 0 15px 15px;
+          padding: 0 15px;
 
         }
       }
@@ -211,9 +216,16 @@
       }
       &-cta {
         margin: 12px 0 0 0;
+        text-align: right;
+        .pull-right;
+        @media @mobile {
+          .pull-left;
+          padding-bottom: 16px;
+        }
         &-link {
           .globalDefaultModFont(12px, 800, @masterBrandColor);
           line-height: 20px;
+          padding-right: 16px;
           @media @mobile {
             width: 100%;
             padding: 0 0 15px 15px;
