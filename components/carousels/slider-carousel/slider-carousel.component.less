@@ -6,6 +6,12 @@ slider-carousel{
   width:100%;
   height:auto;
   position: relative;
+  .fa {
+    color: @masterBrandColorLink;
+    padding-right: 6px;
+    top: 2px;
+    position: relative;
+  }
   .image-48-rank {
     display: block;
     line-height: 2.5;
@@ -102,12 +108,6 @@ slider-carousel{
           width: 100%;
           text-align: center;
 
-        }
-        .fa {
-          color: @masterBrandColorLink;
-          padding-right: 6px;
-          top: 2px;
-          position: relative;
         }
       }
 
@@ -221,6 +221,9 @@ slider-carousel{
 
       &-page-hdr {
         .globalDefaultModFont(24px, 800, @white);
+        @media @mobile {
+          text-align: center;
+        }
       }
 
       &-desc {

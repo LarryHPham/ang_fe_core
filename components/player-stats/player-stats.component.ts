@@ -32,6 +32,7 @@ export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;
 
     public carouselData: Array<SliderCarouselInput> = [];
+    @Input() tabName;
 
     @Input() tabs: Array<StatsTableTabData<any>>;
 

@@ -1,14 +1,21 @@
 
 .stats {
+  .custom-table-row .image-column .table-cell-image span{
+    width:100%;
+  }
   &-car {
-    .scc-details-mainImg .image-150 {
+    .carousel{
       @media @mobile {
-
-        left: 31px;
+        height: 320px;
       }
     }
+
     .scc-details-desc {
-      height: 170px;
+      height: 149px;
+      @media @tablet{
+        position: relative;
+        left:15px;
+      }
     }
   }
 
@@ -16,6 +23,8 @@
     min-width: 55px; //since it needs to include margin for padding
   }
   table circle-image {
+    position: relative;
+    top: 7px;
     @media @mobile {
       display: none;
     }
@@ -59,9 +68,9 @@
     display:block;
   }
   .pane {
-
+    min-height:165px;
     @media @mobile{
-      padding-top: 23%;
+      padding-top:72px;
       min-height: 165px;
     }
 
@@ -75,7 +84,7 @@
     .flexAlignItems(center);
     .flexJustify(space-between);
     @media @mobile{
-      height:60px;
+      height:30px;
       width:100%;
       position:absolute;
       z-index: 1;
