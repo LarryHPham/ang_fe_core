@@ -7,8 +7,6 @@ import {HeadlineDataService} from "../../../../global/global-ai-headline-module-
 import {GlobalFunctions} from "../../../../global/global-functions";
 import {GlobalSettings} from "../../../../global/global-settings";
 import {VerticalGlobalFunctions} from "../../../../global/vertical-global-functions";
-import {throttle} from "rxjs/operator/throttle";
-import {debounce} from "rxjs/operator/debounce";
 
 declare var moment;
 declare var jQuery:any;
@@ -29,14 +27,22 @@ export class TrendingComponent implements OnInit {
     public trendingData:any;
     public trendingLength:number = 10;
     @Input() currentArticleId:any;
+    partnerID:string;
+    scope:string = null;
 
     constructor(private _router:Router,
                 private _headlineDataService:HeadlineDataService) {
+        GlobalSettings.getParentParams(_router, parentParams => {
+            this.partnerID = parentParams.partnerID;
+            this.scope = parentParams.scope;
+            console.log(this.scope);
+        });
     }
 
     private getTrendingArticles(count, currentArticleId) {
-        this._headlineDataService.getAiHeadlineDataLeague(count).subscribe(
+        this._headlineDataService.getAiHeadlineDataLeague(count, this.scope ).subscribe(
             data => {
+                console.log(data);
                 this.trendingData = this.transformTrending(data['data'], currentArticleId);
                 if (this.trendingLength <= 100) {
                     this.trendingLength = this.trendingLength + 10;

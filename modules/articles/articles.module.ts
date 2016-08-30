@@ -73,10 +73,9 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles() {
-        this._headlineDataService.getAiHeadlineDataLeague()
+        this._headlineDataService.getAiHeadlineDataLeague(null)
             .subscribe(
                 HeadlineData => {
-                    this.headlineData = "yup";
                     //this.leftColumnData = HeadlineData['leftColumn'];
                     //this.headToHeadData = HeadlineData['rightColumn'];
                     //this.imageData = HeadlineData['home'].images.concat(HeadlineData['away'].images);
