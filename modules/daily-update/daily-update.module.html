@@ -38,6 +38,6 @@
         <p *ngIf="data.postGameArticle.pubDate" class="article-teaser-text-subtitle"><i class="fa fa-calendar-o"></i> {{data.postGameArticle.pubDate}}</p>
       </div>
       <p *ngIf="data.postGameArticle.text.length > 0 && data.type != 'Player'" class="article-teaser-text-body pull-right" [innerHtml]="data.postGameArticle.text[0] | safeHtml"></p>
-      <p class="article-teaser-text-cta"><a *ngIf="data.postGameArticle.url" class="article-teaser-text-cta-link pull-right" [routerLink]="data.postGameArticle.url">Continue Reading <i class="fa fa-angle-right"></i></a></p>
+      <p class="article-teaser-text-cta"><a *ngIf="data.postGameArticle.url" class="article-teaser-text-cta-link" [routerLink]="data.postGameArticle.url">Continue Reading <i class="fa fa-angle-right"></i></a></p>
     </div>
 </section>

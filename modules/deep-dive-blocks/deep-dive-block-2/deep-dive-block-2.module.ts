@@ -31,69 +31,72 @@ export class DeepDiveBlock2{
   page: number = 2;
   recommendationData: any;
   boxArticleData: any;
-
+  partnerID:string;
+  scope: string;
   @Input() maxHeight: any;
   scroll: boolean = true;
   @Input() geoLocation: any;
   @Input() profileName: any;
 
-  constructor(
-    private _router:Router,
-    private _deepDiveData: DeepDiveService
-    ){
+  constructor(private _router:Router, private _deepDiveData: DeepDiveService){
+      GlobalSettings.getParentParams(_router, parentParams => {
+        this.partnerID = parentParams.partnerID;
+        this.scope = parentParams.scope;
+        console.log(this.partnerID, this.scope);
+      })
     }
     ngOnInit() {
        this.callModules();
     }
-  getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 1, this.geoLocation)
-        .subscribe(data => {
-          this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.firstStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
-  getSecArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.secStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.secStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
-  getThirdArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 3, this.geoLocation)
-        .subscribe(data => {
-          this.thirdStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.thirdStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
-  getTileStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
-        });
-  }
-  getRecommendationData(){
-    var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(state, '1', '1')
-        .subscribe(data => {
-          this.recommendationData = this._deepDiveData.transformToRecArticles(data);
-        });
-  }
-  private getDeepDiveVideoBatch(region, numItems, startNum){
-    this._deepDiveData.getDeepDiveVideoBatchService(numItems, startNum, region).subscribe(
-      data => {
-        this.videoData = data.data;
-      }
-    )
-  }
+    getFirstArticleStackData(){
+      this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
+          .subscribe(data => {
+            this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
+            this.firstStackRow = this._deepDiveData.transformToArticleRow(data);
+          });
+    }
+    getSecArticleStackData(){
+      this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
+          .subscribe(data => {
+            this.secStackTop = this._deepDiveData.transformToArticleStack(data);
+            this.secStackRow = this._deepDiveData.transformToArticleRow(data);
+          });
+    }
+    getThirdArticleStackData(){
+      this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 3, this.geoLocation)
+          .subscribe(data => {
+            this.thirdStackTop = this._deepDiveData.transformToArticleStack(data);
+            this.thirdStackRow = this._deepDiveData.transformToArticleRow(data);
+          });
+    }
+    getTileStackData(){
+      this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
+          .subscribe(data => {
+            this.tilestackData = this._deepDiveData.transformTileStack(data);
+          });
+    }
+    getRecommendationData(){
+      var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
+      this._deepDiveData.getRecArticleData(state, '1', '1')
+          .subscribe(data => {
+            this.recommendationData = this._deepDiveData.transformToRecArticles(data);
+          });
+    }
+    private getDeepDiveVideoBatch(region, numItems, startNum){
+      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, numItems, startNum, region).subscribe(
+        data => {
+          this.videoData = data.data;
+        }
+      )
+    }
 
-  callModules(){
-    this.getRecommendationData();
-    this.getFirstArticleStackData();
-    this.getSecArticleStackData();
-    this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
-    this.getThirdArticleStackData();
-    this.getTileStackData();
-  }
+    callModules(){
+      this.getRecommendationData();
+      this.getFirstArticleStackData();
+      this.getSecArticleStackData();
+      this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
+      this.getThirdArticleStackData();
+      this.getTileStackData();
+    }
 
 }
