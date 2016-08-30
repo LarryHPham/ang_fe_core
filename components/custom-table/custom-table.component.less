@@ -101,6 +101,7 @@
       .table-cell-image {
         .flexDisplay;
         .flexAlignItems(center);
+
         span {
           min-height: 1em;
           max-height: 2.5em; //approx 2x line-height
@@ -171,5 +172,16 @@
   .no-data{
     height:70px;
     border-left:5px solid @masterBrandColor;
+  }
+}
+
+.bottomStats{
+  display: block;
+  position: relative;
+  left: 37%;
+  top: -6px;
+  font-weight: 400;
+  @media @mobile{
+    display: none;
   }
 }
