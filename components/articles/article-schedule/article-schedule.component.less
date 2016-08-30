@@ -70,11 +70,11 @@
       @media @desktop-xl {
         width: 300px;
       }
-      @media @mobile {
-        width: ~"calc(50% - 25px)";
-      }
       @media @fluid {
         width: ~"calc(36% - 25px)";
+      }
+      @media @mobile {
+        width: ~"calc(50% - 25px)";
       }
       &-left {
         left: 0px;
@@ -116,6 +116,11 @@
         overflow: hidden;
         @media @mobile {
           font-size: 14px;
+        }
+        &-firstName{
+          @media @mobile{
+            display:none;
+          }
         }
         &-bold {
           font-weight: 800;
