@@ -4,9 +4,6 @@
     game-info {
       width:100%;
     }
-    .game {
-      margin-left: ~"calc(50% - 156px)";
-    }
   }
 }
 .box-scores{// BOX-SCORES CONTAINER
@@ -42,11 +39,17 @@
     }
     .float-left{
       float:left;
-      margin-left:10px;
+      padding:0 15px;
+      width:50%
     }
     .float-right{
-      float:left;
-      margin-left:10px;
+      float:right;
+      padding-right:5px;
+      width:50%;
+      @media @mobile{
+          width:100%;
+          padding: 0 5px;
+      }
     }
     .odd{
       background-color: @backgroundGrey;
@@ -149,9 +152,16 @@
     }
   }
   .schedule-next-circle{
-    border: 2px solid @strokeGrey;
-    height:70px;
-    width:70px;
+    height:auto;
+    width:auto;
+    @mobile @desktop-m{
+      &-right{
+        right:230px;
+      }
+      &-left{
+        left:230px;
+      }
+    }
   }
   .schedule-next-vs{
     font-weight: 800;
