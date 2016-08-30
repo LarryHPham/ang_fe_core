@@ -1,8 +1,14 @@
 <!--GAME info-->
 <div class="game" *ngIf="gameInfo">
   <div class="game-title">
-    <span [class.gameAfter]="gameInfo.gameHappened" [class.gameBefore]="!gameInfo.gameHappened">{{gameInfo.inning}}</span>
-    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}</span>
+    <span [class.gameAfter]="gameInfo.gameHappened" [class.gameBefore]="!gameInfo.gameHappened" [innerHTML]="gameInfo.inning"></span>
+    <span class='game-verticalContent'>{{gameInfo.verticalContent}}</span>
+  </div>
+  <div class="game-title game-cat">
+    <div class="game-title-headeCategory1"></div>
+    <div class="game-title-headeCategory2">
+      <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}</span>
+    </div>
   </div>
   <div class="game-box"><!--AWAY-->
     <div class="game-box-main">
