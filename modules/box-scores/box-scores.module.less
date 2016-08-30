@@ -152,9 +152,16 @@
     }
   }
   .schedule-next-circle{
-    border: 2px solid @strokeGrey;
-    height:70px;
-    width:70px;
+    height:auto;
+    width:auto;
+    @mobile @desktop-m{
+      &-right{
+        right:230px;
+      }
+      &-left{
+        left:230px;
+      }
+    }
   }
   .schedule-next-vs{
     font-weight: 800;
