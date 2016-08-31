@@ -4,33 +4,33 @@
     <div *ngIf="paginationParameters.paginationType == 'module'" class="pagination-row">
         <!-- Angle Left Button -->
         <div class="pagination-leftnav">
-          <button (click)="indexLeft('last')" class="pagination-button-doubleangle">
+          <button (click)="indexLeft('last')" class="pagination-button-doubleangle" [ngClass]="{disable: paginationParameters.index == 1}">
             <i class="fa fa-angle-double-left"></i>
           </button>
-          <button id="pf-angle-left" *ngIf="paginationParameters.max > 1" (click)="indexLeft('single')" class="pagination-button-angle">
+          <button id="pf-angle-left" *ngIf="paginationParameters.max > 1" (click)="indexLeft('single')" class="pagination-button-angle" [ngClass]="{disable: paginationParameters.index == 1}">
             <i class="fa fa-angle-left"></i>
           </button>
         </div>
         <div class="pagination-centernav">
           <!-- Minimum Button -->
-          <button *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}">
+          <!-- <button *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}">
             1
-          </button>
+          </button> -->
 
-          <button *ngFor="let item of paginationButtonsModule" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item && item !== 1 && item !== paginationParameters.max}">
+          <button *ngFor="let item of paginationButtonsModule" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item}">
             {{item}}
           </button>
 
-          <button *ngIf="showMaxSkip" (click)="indexClick($event)" *ngIf="paginationParameters.max > 1" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}">
+          <!-- <button *ngIf="showMaxSkip" (click)="indexClick($event)" *ngIf="paginationParameters.max > 1" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}">
             {{paginationParameters.max}}
-          </button>
+          </button> -->
         </div>
         <!-- Angle Right Button -->
         <div class="pagination-rightnav">
-          <button id="pf-angle-right" *ngIf="paginationParameters.max > 1" (click)="indexRight('single')" class="pagination-button-angle">
+          <button id="pf-angle-right" *ngIf="paginationParameters.max > 1" (click)="indexRight('single')" class="pagination-button-angle" [ngClass]="{disable: paginationParameters.index == paginationParameters.max}">
             <i class="fa fa-angle-right"></i>
           </button>
-          <button (click)="indexRight('last')" class="pagination-button-doubleangle">
+          <button (click)="indexRight('last')" class="pagination-button-doubleangle" [ngClass]="{disable: paginationParameters.index == paginationParameters.max}">
             <i class="fa fa-angle-double-right"></i>
           </button>
         </div>
