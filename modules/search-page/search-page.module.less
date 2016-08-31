@@ -1,6 +1,7 @@
 .search-widget{
   width:100%;
   position: relative;
+  margin: 10px 0;
 }
 .search-page{
   &-container{
@@ -90,7 +91,8 @@
 
     &-item{
       line-height: 25px;
-      padding: 20px 15px;
+      padding: 20px 10px;
+      word-break: break-all;
       @media @tablet{
         padding: 20px 0
       }
@@ -114,10 +116,9 @@
         max-width: 640px;
         text-decoration: none;
         line-height: 18px;
-        margin:10px;
-        // span {
-        //   float:left;
-        // }
+        p{
+          margin: 5px 0;
+        }
         &:hover{
           color: @activeBlue;
           text-decoration: underline;;
@@ -164,7 +165,6 @@
   .flexJustify(flex-end);
   @media @mobile{
     width:100%;
-    margin-right: 10px;
   }
   &-text{
     font-size:12px;
