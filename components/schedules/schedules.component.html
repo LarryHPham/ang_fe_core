@@ -9,15 +9,22 @@
           <p><span class="schedules-heading-title-timestamp">{{tab.disclaimer}}</span></p>
         </div>
 
-        <!-- <div class="schedules-heading-filter">
-            <div class="col-xs-6 filter-dropdown">
-              <dropdown
-                  [list]="dropdownFilter"
-                  [selectedKey]="'nfl'"
-                  [icon]="'fa-caret-down'"
-                  (selectionChanged)="filterSwitch($event)"></dropdown>
-            </div>
-        </div> -->
+        <div class="schedules-heading-filter">
+          <div *ngIf="filter1" class="col-xs-6 filter-dropdown">
+            <dropdown
+              [list]="filter1"
+              [selectedKey]="dropdownKey1"
+              [icon]="'fa-caret-down'"
+              (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
+          </div>
+          <div *ngIf="filter2" class="col-xs-6 filter-dropdown">
+            <dropdown
+              [list]="filter2"
+              [selectedKey]="dropdownKey2"
+              [icon]="'fa-caret-down'"
+              (selectionChanged)="filterSwitch({key:$event,value:'filter2'})"></dropdown>
+          </div>
+        </div>
       </div>
       <div class="schedules-table">
         <div *ngFor="let section of tab.tabData.sections" class="schedules-section">
