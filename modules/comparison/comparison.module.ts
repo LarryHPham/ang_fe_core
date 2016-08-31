@@ -108,6 +108,7 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+      console.log("onchanges", this.modelData);
         if ( this.modelData ) {
             this.teamList = this.modelData.teamList;
             if ( this.modelData.playerLists && this.modelData.playerLists.length >= 2 ) {
@@ -166,12 +167,12 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             legendValues: [
                 {
-                    title: data.playerOne.playerName,
+                    title: data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName,
                     // color: data.playerOne.mainTeamColor
                     color: '#2D3E50'
                 },
                 {
-                    title: data.playerTwo.playerName,
+                    title: data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName,
                     // color: data.playerTwo.mainTeamColor
                     color: '#999999'
                 },
@@ -211,7 +212,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                         // imageClass: "image-50-sub image-round-lower-right"
                     // },
                     {
-                        text: "#" + player.uniformNumber,
+                        text: "#" + player.jerseyNumber,
                         imageClass: "image-48-rank image-round-upper-left image-round-sub-text"
                     }
                 ],
@@ -219,7 +220,7 @@ export class ComparisonModule implements OnInit, OnChanges {
             titleUrl: playerRoute,
             title: player.playerName,
             description: ["Position: ",
-                { text: player.position.join(', '), class: 'text-heavy' },
+                { text: player.playerPosition, class: 'text-heavy' },
                 { text: "<br>", class: "line-break" },
                 "Team: ",
                 {
@@ -230,19 +231,23 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             data: [
                 {
-                    data: player.height.split("-").join("'") + "\"",
+                    // TODO data: player.height.split("-").join("'") + "\"",
+                    data: '6-0',
                     key: 'Height'
                 },
                 {
-                    data: player.weight + "<sup>lbs</sup>",
+                    //TODO data: player.weight + "<sup>lbs</sup>",
+                    data: "<sup>200lbs</sup>",
                     key: 'Weight'
                 },
                 {
-                    data: player.age.toString(),
+                    // data: player.age.toString(),
+                    data: '25',
                     key: 'Age'
                 },
                 {
-                    data: player.yearsExperience + "<sup>" + GlobalFunctions.Suffix(player.yearsExperience) + "</sup>",
+                    // data: player.yearsExperience + "<sup>" + GlobalFunctions.Suffix(player.yearsExperience) + "</sup>",
+                    data: "<sup>2016</sup>",
                     key: 'Season'
                 },
             ]
