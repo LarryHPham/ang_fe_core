@@ -108,7 +108,6 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-      console.log("onchanges", this.modelData);
         if ( this.modelData ) {
             this.teamList = this.modelData.teamList;
             if ( this.modelData.playerLists && this.modelData.playerLists.length >= 2 ) {
