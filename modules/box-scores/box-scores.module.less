@@ -11,6 +11,9 @@
   height:auto;
   overflow: visible;
   margin: 0 auto 10px;
+  &-leagueNav{
+    width:100%;
+  }
   &-overlay{
     width:100%;
     height:50px;
@@ -82,21 +85,23 @@
     }
     .rightPag {
       background-color: @black;
+      float:right;
     }
     .rightPag:hover {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
       .leftPag {
         background-color: @black;
       }
     }
     .leftPag {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
+      float:left;
     }
     .leftPag:hover {
       background-color: @black;
     }
     .leftPag:hover.rightPag {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
     }
     .pagButton.disabled {
       background-color: @strokeGrey;
