@@ -104,8 +104,8 @@ export class SchedulesComponent implements OnInit{
     this.tabSelectedListener.emit(event);
   }
 
-  filterSwitch($event){
-    this.selectedKeyFilter.next($event);
+  filterSwitch(event){
+    this.selectedKeyFilter.next(event);
   }
 
   ngOnChanges(){

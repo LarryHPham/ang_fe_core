@@ -20,6 +20,7 @@ export class SchedulesModule implements OnInit{
     @Input() filter1;
     @Input() filter2;
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
+    @Output() selectedKeyFilter = new EventEmitter();
     footerData:any;
     tabData: any;
     constructor(private params: RouteParams){
@@ -54,6 +55,10 @@ export class SchedulesModule implements OnInit{
                 this.tabData = this.data.tabs;
             }
         }
+    }
+
+    filterSelected(event){
+      this.selectedKeyFilter.next(event);
     }
 
     tabSelected(tab) {
