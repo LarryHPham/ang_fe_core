@@ -62,9 +62,9 @@ export class DeepDiveBlock4{
         .subscribe(data => {
           this.fourthStackTop = this._deepDiveData.transformToArticleStack(data);
         });
-    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.geoLocation)
+    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, 'player comparisons', 1, this.callLimit)
         .subscribe(data => {
-          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data);
+          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, 'player comparisons');
         });
   }
   getTileStackData(){
