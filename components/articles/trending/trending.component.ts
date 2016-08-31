@@ -20,32 +20,33 @@ declare var jQuery:any;
 })
 
 export class TrendingComponent implements OnInit {
+    @Input() currentArticleId:string;
+    @Input() scope:string;
     isSmall:boolean = false;
+    hasRun:boolean = false;
     throttle:any;
     isScroll:number = 0;
     public imageData:any;
     public trendingData:any;
     public trendingLength:number = 10;
-    @Input() currentArticleId:any;
     partnerID:string;
-    scope:string = null;
 
     constructor(private _router:Router,
                 private _headlineDataService:HeadlineDataService) {
         GlobalSettings.getParentParams(_router, parentParams => {
             this.partnerID = parentParams.partnerID;
-            this.scope = parentParams.scope;
-            console.log(this.scope);
         });
     }
 
     private getTrendingArticles(count, currentArticleId) {
-        this._headlineDataService.getAiHeadlineDataLeague(count, this.scope ).subscribe(
+        this._headlineDataService.getAiHeadlineDataLeague(count, this.scope).subscribe(
             data => {
-                console.log(data);
-                this.trendingData = this.transformTrending(data['data'], currentArticleId);
-                if (this.trendingLength <= 100) {
-                    this.trendingLength = this.trendingLength + 10;
+                if (!this.hasRun) {
+                    this.hasRun = true;
+                    this.trendingData = this.transformTrending(data['data'], currentArticleId);
+                    if (this.trendingLength <= 100) {
+                        this.trendingLength = this.trendingLength + 10;
+                    }
                 }
             }
         )
@@ -57,6 +58,7 @@ export class TrendingComponent implements OnInit {
     }
 
     private onScroll(event) {
+        this.hasRun = false;
         if (jQuery(document).height() - window.innerHeight - jQuery("footer").height() <= jQuery(window).scrollTop() && this.trendingLength <= 100) {
             this.getTrendingArticles(this.trendingLength, this.currentArticleId);
         }
