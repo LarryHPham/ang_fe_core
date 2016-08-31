@@ -171,8 +171,8 @@
     }
   }
   .video-stack {
-    .col-xs-6;
     margin: 0 auto 20px auto;
+    .col-xs-6;
     .flexDirection(column);
     &-video {
       width: 100%;
@@ -211,6 +211,9 @@
   .video-stack:nth-of-type(5), .video-stack:nth-of-type(6) {
     padding-bottom: 0;
   }
+  .video-stack:nth-of-type(1), .video-stack:nth-of-type(3), .video-stack:nth-of-type(5){
+    padding-right: 10px;
+  }
 }
 @media @desktop-m {
   .video-stack-container {
@@ -220,7 +223,7 @@
   }
   .video-stack {
     .video-title-top {
-      padding: 0 0 5px 0;
+      padding-bottom: 5px;
       span {
         font-size: 12px;
       }

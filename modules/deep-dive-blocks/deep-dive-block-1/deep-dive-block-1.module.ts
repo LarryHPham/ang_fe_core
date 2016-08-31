@@ -23,10 +23,6 @@ export class DeepDiveBlock1{
   public widgetPlace: string = "widgetForPage";
   firstStackTop: any;
   firstStackRow: any;
-  secStackTop: any;
-  secStackRow: any;
-  thirdStackTop: any;
-  thirdStackRow: any;
   callLimit:number = 9;
   tilestackData: any;
 

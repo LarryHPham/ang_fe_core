@@ -19,12 +19,8 @@ import {RecommendationsComponent} from '../../../components/articles/recommendat
 })
 export class DeepDiveBlock2{
   public widgetPlace: string = "widgetForPage";
-  firstStackTop: any;
-  firstStackRow: any;
   secStackTop: any;
   secStackRow: any;
-  thirdStackTop: any;
-  thirdStackRow: any;
   callLimit:number = 9;
   tilestackData: any;
   videoData: any;
@@ -81,10 +77,8 @@ export class DeepDiveBlock2{
 
     callModules(){
       this.getRecommendationData();
-      this.getFirstArticleStackData();
       this.getSecArticleStackData();
       this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
-      this.getThirdArticleStackData();
       this.getTileStackData();
     }
 
