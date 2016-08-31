@@ -17,6 +17,8 @@ export class SchedulesModule implements OnInit{
     @Input() data;
     @Input() profHeader;
     @Input() error;
+    @Input() filter1;
+    @Input() filter2;
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
     footerData:any;
     tabData: any;
@@ -35,13 +37,13 @@ export class SchedulesModule implements OnInit{
             this.footerData = {
                 infoDesc: 'Want to see the full season schedule?',
                 text: 'VIEW SCHEDULE',
-                url: ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName), teamId:this.params.get('teamId'), pageNum:1}]
+                url: ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName), year:2015, teamId:this.params.get('teamId'), pageNum:1}]
             };
         }else{
             this.footerData = {
                 infoDesc: 'Want to see the full season schedule?',
                 text: 'VIEW SCHEDULE',
-                url: ['Schedules-page-league', {pageNum:1}]
+                url: ['Schedules-page-league', {year:2015,pageNum:1}]
             };
         }
     }
