@@ -55,12 +55,7 @@ export class DeepDiveBlock3{
             console.log("Error getting third article batch data");
         });
   }
-  getTileStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
-        });
-  }
+
   getRecommendationData(){
     //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
     this._deepDiveData.getRecArticleData(this.scope)
@@ -83,7 +78,6 @@ export class DeepDiveBlock3{
     this.getRecommendationData();
     this.getDeepDiveVideoBatch(this.geoLocation, this.videoCallLimit, this.page);
     this.getThirdArticleStackData();
-    this.getTileStackData();
   }
 
 }

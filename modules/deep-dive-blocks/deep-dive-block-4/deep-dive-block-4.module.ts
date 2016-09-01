@@ -18,7 +18,7 @@ export class DeepDiveBlock4{
   public widgetPlace: string = "widgetForPage";
   fourthStackTop: any;
   fourthStackRow: any;
-  callLimit:number = 7;
+  callLimit:number = 1;
   partnerID:string;
   scope: string;
   scroll: boolean = true;
@@ -45,7 +45,7 @@ export class DeepDiveBlock4{
         err => {
               console.log("Error getting forth article stack TOP data");
         });
-    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, this.aiBatchName, 1, this.callLimit)
+    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, this.aiBatchName, 1, this.callLimit, this.geoLocation)
         .subscribe(data => {
           this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, 'player-comparisons');
         },

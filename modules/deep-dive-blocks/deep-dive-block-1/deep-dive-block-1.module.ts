@@ -43,6 +43,7 @@ export class DeepDiveBlock1{
       GlobalSettings.getParentParams(_router, parentParams => {
         this.partnerID = parentParams.partnerID;
         this.scope = parentParams.scope;
+
       })
       var currentUnixDate = new Date().getTime();
       //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
@@ -62,6 +63,9 @@ export class DeepDiveBlock1{
      this.callModules();
   }
   getFirstArticleStackData(){
+    if(this.scope == null){
+      this.scope = 'NFL';
+    }
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
         .subscribe(data => {
           this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
@@ -69,9 +73,9 @@ export class DeepDiveBlock1{
         err => {
               console.log("Error getting first article stack data");
         });
-    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'postgame-report', 1, 9)
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, 9, this.geoLocation)
         .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'postgame-report');//TODO
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');
         },
         err => {
             console.log("Error getting first AI article batch data");
@@ -81,7 +85,7 @@ export class DeepDiveBlock1{
   getTileStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
         .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
+          this.tilestackData = this._deepDiveData.transformTileStack(data, this.scope);
         },
         err => {
             console.log("Error getting tile stack data");
