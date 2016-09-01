@@ -11,8 +11,8 @@
       <span class="cta-container-text" id="container-loli-text">
         {{item.ctaDesc}}
       </span>
-      <a class="cta-container-button" id = "container-loli-button">
-      <!-- <a class="cta-container-button" [routerLink]="item.ctaUrl" id = "container-loli-button"> -->
+      <!-- <a class="cta-container-button" id = "container-loli-button"> -->
+       <a class="cta-container-button" [routerLink]="item.ctaUrl" id = "container-loli-button">
         <span class="loli-icon" style="padding-top:0px; margin-left:15px;"></span> <!-- needed for button styles to apply correctly -->
         <span [innerHTML]="item.ctaText"></span>
         <i class="fa fa-angle-right"></i>

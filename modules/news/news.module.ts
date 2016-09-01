@@ -37,6 +37,7 @@ export class NewsModule implements OnInit, OnChanges {
       var counter = this.counter;
       counter--;
 
+
       //make a check to see if the array is below 0 change the array to the top level
       if(counter < 0){
         this.counter = (this.max - 1);
@@ -62,12 +63,16 @@ export class NewsModule implements OnInit, OnChanges {
     changeMain(num){
       if ( num < this.max ) {
         this.displayData = this.newsDataArray[num];
+        console.log(num,'DISPLAY DATA',this.displayData);
       };
     }
 
     private setupNewsData(){
-        // this.max = this.newsDataArray.length;
-        this.max = 10;
+      this.max = this.newsDataArray.length;
+         if (this.max >= 10) {
+           this.max = 10;
+         }
+      //  this.max = 10;
         this.changeMain(this.counter);
     }
 

@@ -128,14 +128,16 @@ export class SliderCarousel implements OnInit {
     }
     //sets the index of the dataPoint of its current position in the array
     // the '?' meaning if there is data to even receive
-    if(typeof this.dataPoint['index'] != 'undefined'){
-      this.indexNum.next(this.dataPoint.index);
-    }
+    // if(typeof this.dataPoint['index'] != 'undefined'){
+    //   this.indexNum.next(this.dataPoint.index);
+    // }
+    console.log('this.datapoint',this.dataPoint);
   }
 
   ngOnChanges(){
     // Don't set indexInput to 0 here, it resets anything the parent specifies
-    // this.indexInput = 0;
+     this.indexInput = 1;
+    console.log('FUCKK',this.indexInput);
   }
 
   ngOnInit() {
@@ -186,6 +188,7 @@ export class SliderCarousel implements OnInit {
  */
   static convertToCarouselItemType1(index: number, item: Type1CarouselItem): SliderCarouselInput {
     var subImages = [];
+    console.log('THEEEEE item',item);
 
     if ( item.subImageRoute ) {
       subImages.push({
