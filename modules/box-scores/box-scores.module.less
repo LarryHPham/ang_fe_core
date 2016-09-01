@@ -4,9 +4,6 @@
     game-info {
       width:100%;
     }
-    .game {
-      margin-left: ~"calc(50% - 156px)";
-    }
   }
 }
 .box-scores{// BOX-SCORES CONTAINER
@@ -14,6 +11,9 @@
   height:auto;
   overflow: visible;
   margin: 0 auto 10px;
+  &-leagueNav{
+    width:100%;
+  }
   &-overlay{
     width:100%;
     height:50px;
@@ -42,11 +42,17 @@
     }
     .float-left{
       float:left;
-      margin-left:10px;
+      padding:0 15px;
+      width:50%
     }
     .float-right{
-      float:left;
-      margin-left:10px;
+      float:right;
+      padding-right:5px;
+      width:50%;
+      @media @mobile{
+          width:100%;
+          padding: 0 5px;
+      }
     }
     .odd{
       background-color: @backgroundGrey;
@@ -79,21 +85,23 @@
     }
     .rightPag {
       background-color: @black;
+      float:right;
     }
     .rightPag:hover {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
       .leftPag {
         background-color: @black;
       }
     }
     .leftPag {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
+      float:left;
     }
     .leftPag:hover {
       background-color: @black;
     }
     .leftPag:hover.rightPag {
-      background-color: @homeRunLoyalRed;
+      background-color: @masterBrandColor;
     }
     .pagButton.disabled {
       background-color: @strokeGrey;
@@ -149,9 +157,16 @@
     }
   }
   .schedule-next-circle{
-    border: 2px solid @strokeGrey;
-    height:70px;
-    width:70px;
+    height:auto;
+    width:auto;
+    @mobile @desktop-m{
+      &-right{
+        right:230px;
+      }
+      &-left{
+        left:230px;
+      }
+    }
   }
   .schedule-next-vs{
     font-weight: 800;
