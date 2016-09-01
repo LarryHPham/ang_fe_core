@@ -7,6 +7,8 @@ import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/mod
 import {MVPListComponent, MVPTabData} from '../../components/mvp-list/mvp-list.component';
 import {LoadingComponent} from '../../components/loading/loading.component';
 
+import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
+
 @Component({
     selector: 'mvp-module',
     templateUrl: './app/fe-core/modules/mvp/mvp.module.html',
@@ -15,8 +17,8 @@ import {LoadingComponent} from '../../components/loading/loading.component';
     inputs:['mvpData', 'title']
 })
 
-export class MVPModule {
-  @Output("tabSelected") tabSelectedListener = new EventEmitter();
+export class MVPModule implements OnInit {
+  @Output() tabSelectedListener = new EventEmitter();
   @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() mvpData: Array<MVPTabData>;
@@ -31,20 +33,22 @@ export class MVPModule {
 
   tabKey: string;
 
-  ngOnChanges(){
-    this.displayData('qb');
+  ngOnChanges() {}
+
+  ngOnInit() {
+    this.displayData(this.query.scope, VerticalGlobalFunctions.convertPositionAbbrv(this.query.position));
   }
 
-  displayData(position){
+  displayData(scope, position){
 
     this.modHeadData = {
-        moduleTitle: "Most Valuable Players ",
-        moduleIdentifier: this.title,
+        moduleTitle: "Most Valuable Players - ",
+        moduleIdentifier: scope.toUpperCase() + " " + position +"s",
         hasIcon: false,
         iconClass: '',
     };
 
-    var type = this.query.statName.indexOf(position)>=0 ? position : "qb";
+    var type = this.query.statName.indexOf(position)>=0 ? position : "k";
     var url;
 
     if ( this.tabKey ) {
@@ -69,17 +73,16 @@ export class MVPModule {
 
   tabSelected(tab) {
     this.tabKey = tab.tab.tabDataKey;
-
-    if (!tab.listData) { //let the page handle the service call if there's no data
-
+    if (!tab.tab.listData) { //let the page handle the service call if there's no data
       this.tabSelectedListener.next(tab);
     }
     else {
-      this.displayData(this.tabKey);
+      this.displayData(this.query.scope, this.tabKey);
     }
   }
 
   dropdownChanged($event) {
+    this.displayData(this.query.scope, VerticalGlobalFunctions.convertPositionAbbrv($event.position) );
     this.dropdownPositionSelection.next($event);
   }
 }
