@@ -27,8 +27,6 @@ export interface TableComponentData<T> {
 
 export class SchedulesComponent implements OnInit{
   public selectedIndex;
-  dropdownKey1: string;
-  dropdownKey2: string;
   @Output() selectedKeyFilter =  new EventEmitter();
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
@@ -38,6 +36,8 @@ export class SchedulesComponent implements OnInit{
   @Input() error;
   @Input() filter1 : Array<{key:string, value:string}>;
   @Input() filter2 : Array<{key:string, value:string}>;
+  @Input() dropdownKey1: string;
+  @Input() dropdownKey2: string;
 
   tabTitle: string;
   private tabsLoaded: {[index:number]:string};
@@ -71,7 +71,6 @@ export class SchedulesComponent implements OnInit{
     let matchingTabs = this.tabs.filter(value => value.display == this.tabTitle);
     if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
       let selectedTab = matchingTabs[0].tabData;
-      // console.log('selectedTab',selectedIndex,selectedTab);
       this.setSelectedCarouselIndex(selectedTab, selectedIndex);
     }
   }
