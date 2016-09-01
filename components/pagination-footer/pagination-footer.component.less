@@ -20,6 +20,10 @@
       &:focus {
         outline: none;
       }
+      &.disable{
+        pointer-events:none;
+        opacity:0.25;
+      }
     }
   }
 
@@ -42,6 +46,7 @@
       position: relative;
       top:4px;
       padding:0;
+      display: inline-block;
       &:hover{
         color: @masterBrandColor;
       }
@@ -68,7 +73,7 @@
       }
       i{
         position: absolute;
-        top:2px
+        top:1.5px
       }
       .fa-angle-right {
         right:1px;
@@ -81,7 +86,7 @@
     &-circle {
       min-width: 28px;
       height: 28px;
-      line-height: 28px;
+      line-height: 25px;
       padding: 0;
       border-radius: 50%;
       background-color: @white;

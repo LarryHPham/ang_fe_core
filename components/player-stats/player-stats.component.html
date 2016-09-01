@@ -7,7 +7,7 @@
             <div class="stats-table-title">
                 <h4 [innerHtml]="tab.tableName"></h4>
                 <p class="stats-season-dropdown" *ngIf="isSpecialTeam">
-                    Season:<dropdown [list]="tab.subTabs" [selectedKey]="kicking" (selectionChanged)="dropdown2Changed($event) "></dropdown>
+                    Position:<dropdown style=" min-width: 70px; @media @mobile{width: 95px}" [list]="tab.subTabs" [selectedKey]="kicking" (selectionChanged)="dropdown2Changed($event) "></dropdown>
                 </p>
                 <p class="stats-season-dropdown">
                     Season:<dropdown [list]="tab.seasonIds" [selectedKey]="initialSeasonId" (selectionChanged)="dropdownChanged($event)"></dropdown>

@@ -27,17 +27,21 @@ export interface TableComponentData<T> {
 
 export class SchedulesComponent implements OnInit{
   public selectedIndex;
-  dropdownFilter: Array<{key:string, value:string}> = [];
   @Output() selectedKeyFilter =  new EventEmitter();
+  @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
   @Input() carouselData: Array<SchedulesCarouselInput> = [];// the data to send through the schedules carousel to display
   @Input() data;// the data to display is inputed through this variable
   @Input() tabs;// the tab data gets inputed through here to display all tabs
   @Input() error;
+  @Input() filter1 : Array<{key:string, value:string}>;
+  @Input() filter2 : Array<{key:string, value:string}>;
+  @Input() dropdownKey1: string;
+  @Input() dropdownKey2: string;
+
   tabTitle: string;
   private tabsLoaded: {[index:number]:string};
 
-  @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
   ngDoCheck() { // checks and runs everytime a dependency has changed
     if ( this.tabs && this.tabs.length > 0 && this.carouselData && this.data != null && !this.tabsLoaded && this.getSelectedTab()) {
@@ -67,7 +71,6 @@ export class SchedulesComponent implements OnInit{
     let matchingTabs = this.tabs.filter(value => value.display == this.tabTitle);
     if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
       let selectedTab = matchingTabs[0].tabData;
-      // console.log('selectedTab',selectedIndex,selectedTab);
       this.setSelectedCarouselIndex(selectedTab, selectedIndex);
     }
   }
@@ -100,11 +103,8 @@ export class SchedulesComponent implements OnInit{
     this.tabSelectedListener.emit(event);
   }
 
-  filterSwitch($event){
-    this.selectedKeyFilter.next({
-        dropdownIndex: 0,
-        key: $event
-    });
+  filterSwitch(event){
+    this.selectedKeyFilter.next(event);
   }
 
   ngOnChanges(){
@@ -135,17 +135,11 @@ export class SchedulesComponent implements OnInit{
     this.carouselData = carouselData;
   }
 
-  constructor() {
-    this.dropdownFilter = [{
-      key: 'nfl',
-      value: 'NFL',
-    },{
-      key: 'ncaaf',
-      value: 'NCAAF',
-    }];
-  } //constructor ENDS
 
   ngOnInit(){//on view load set default data
+    if(this.filter1 != null){
+      this.dropdownKey1 = this.filter1[0].key;
+    }
     var selectedTab = this.tabs.filter(value => value.tabData.isActive == true)[0];
     this.tabTitle = selectedTab.display;
   }//ngOnInit ENDS

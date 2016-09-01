@@ -155,22 +155,28 @@ export class PaginationFooter implements OnChanges{
         var index = Number(this.paginationParameters.index);
         var max = Number(this.paginationParameters.max);
         var range = this.buttonRange;
+        var minRange, maxRange;
         this.paginationButtonsModule = [];
         //Determine values before index that can be added to button array
-        for(var p = range; p >= 1; p--){
-            if(index - p > 1){
+        for(var p = range; p >= 0; p--){
+          let currentMin = index - p;
+            if(index - p > (index - 6) && index - p > 0){//only show if number is 4 below current index and above 0
+              minRange = index - p;
                 this.paginationButtonsModule.push(index - p);
             }
         }
 
-        //Push index value to array if it is not the minimum or maximum value
-        if(index != 1 && index != max){
-            this.paginationButtonsModule.push(index);
+        //set the minimum number gonig to be shown that is in the array
+        minRange = Math.min.apply(null, this.paginationButtonsModule);
+        if(minRange + range < max){//only show the next 4 buttons if its less than the maximum otherwise let the maximum become the biggest
+          maxRange = minRange + range;
+        }else{
+          maxRange = max
         }
 
         //Determine values after index that can be added to button array
         for(var n = 1; n <= range; n++){
-            if((index + n) < max){
+            if((index + n) <= maxRange){
                 this.paginationButtonsModule.push(index + n);
             }
         }

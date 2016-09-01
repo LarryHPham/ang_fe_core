@@ -17,13 +17,10 @@ import {RecommendationsComponent} from '../../../components/articles/recommendat
 })
 export class DeepDiveBlock3{
   public widgetPlace: string = "widgetForPage";
-  firstStackTop: any;
-  firstStackRow: any;
-  secStackTop: any;
-  secStackRow: any;
   thirdStackTop: any;
   thirdStackRow: any;
-  callLimit:number = 9;
+  callLimit:number = 8;
+  videoCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 3;
@@ -43,31 +40,19 @@ export class DeepDiveBlock3{
       GlobalSettings.getParentParams(_router, parentParams => {
         this.partnerID = parentParams.partnerID;
         this.scope = parentParams.scope;
-        console.log(this.partnerID, this.scope);
       })
     }
     ngOnInit() {
        this.callModules();
     }
-  getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
-        .subscribe(data => {
-          this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.firstStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
-  getSecArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.secStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.secStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
   getThirdArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 3, this.geoLocation)
         .subscribe(data => {
           this.thirdStackTop = this._deepDiveData.transformToArticleStack(data);
           this.thirdStackRow = this._deepDiveData.transformToArticleRow(data);
+        },
+        err => {
+            console.log("Error getting third article batch data");
         });
   }
   getTileStackData(){
@@ -77,10 +62,13 @@ export class DeepDiveBlock3{
         });
   }
   getRecommendationData(){
-    var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(state, '2', '1')
+    //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
+    this._deepDiveData.getRecArticleData(this.scope)
         .subscribe(data => {
           this.recommendationData = this._deepDiveData.transformToRecArticles(data);
+        },
+        err => {
+            console.log("Error getting recommendation data");
         });
   }
   private getDeepDiveVideoBatch(region, numItems, startNum){
@@ -93,9 +81,7 @@ export class DeepDiveBlock3{
 
   callModules(){
     this.getRecommendationData();
-    this.getFirstArticleStackData();
-    this.getSecArticleStackData();
-    this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
+    this.getDeepDiveVideoBatch(this.geoLocation, this.videoCallLimit, this.page);
     this.getThirdArticleStackData();
     this.getTileStackData();
   }

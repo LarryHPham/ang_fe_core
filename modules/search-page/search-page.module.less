@@ -1,6 +1,7 @@
 .search-widget{
   width:100%;
   position: relative;
+  margin: 10px 0;
 }
 .search-page{
   &-container{
@@ -90,7 +91,8 @@
 
     &-item{
       line-height: 25px;
-      padding: 20px 15px;
+      padding: 20px 10px;
+      word-break: break-all;
       @media @tablet{
         padding: 20px 0
       }
@@ -114,10 +116,9 @@
         max-width: 640px;
         text-decoration: none;
         line-height: 18px;
-        margin:10px;
-        // span {
-        //   float:left;
-        // }
+        p{
+          margin: 5px 0;
+        }
         &:hover{
           color: @activeBlue;
           text-decoration: underline;;
@@ -144,9 +145,6 @@
 .noSearch{
   width:34px;
   height:29px;
-  background-image: url('/app/public/icons/No_Search.png');
-  background-position: center;
-  background-repeat: no-repeat;
   display: block;
   margin:0 -5px;
 }
@@ -164,7 +162,6 @@
   .flexJustify(flex-end);
   @media @mobile{
     width:100%;
-    margin-right: 10px;
   }
   &-text{
     font-size:12px;
