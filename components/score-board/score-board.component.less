@@ -12,6 +12,7 @@
   .flexDisplay;
   .flexDirection(row);
   .flexJustify(space-between);
+  position: relative;
   border-top:1px solid @strokeGrey;
   border-bottom:1px solid @strokeGrey;
   background: -webkit-linear-gradient(90deg, @boardGrey 0%, @white 100%);
@@ -19,20 +20,50 @@
   background: -o-linear-gradient(90deg, @boardGrey 0%, @white 100%);
   background: -ms-linear-gradient(90deg, @boardGrey 0%, @white 100%);
   background: linear-gradient(0deg, @boardGrey 0%, @white 100%);
-
+  &-headtitle{
+    width:100%;
+    height:25px;
+    line-height: 25px;
+    .globalDefaultModFont(14px, 800, @black);
+    text-align: center;
+    border-top:1px solid @strokeGrey;
+    display:block;
+    @media @tablet{
+      display:none;
+    }
+  }
   &-total{
     height:100%;
-    width:165px;
+    width:32.2%;
     text-align: center;
-    padding:10px 0;
+    padding:0;
     font-size: 72px;
     font-weight: 800;
+    @media @mobile{
+      width:50%;
+      &:first-child{
+        border-right: 1px solid @strokeGrey;
+      }
+      &-name{
+        font-size: 18px;
+        margin-top: -2px;
+      }
+    }
+    @media @tablet{
+      padding:10px 0;
+      &-name{
+        display:none;
+      }
+    }
   }
 
   &-data{
-    width:350px;
+    width:100%;
     min-width: 350px;
     height: 100%;
+    position: absolute;
+    left:0;
+    right:0;
   }
 
   &-title{
@@ -45,11 +76,13 @@
   }
 
   .box-table{
-    width:100%;
+    // width:100%;
     height:calc(~'100% - 30px');
     color:@black;
     position: relative;
     .inlineFlexDisplay;
+    left:33%;
+    z-index: 1;
     &-arrows{
       position: absolute;
       font-size: 30px;
@@ -67,7 +100,7 @@
       }
     }
     &-labels{
-      min-width:107px;
+      min-width:43%;
       height:100%;
       border: 1px solid @strokeGrey;
       font-size: 10px;
@@ -77,22 +110,23 @@
         display:block;
         line-height: 2em;
         font-weight: 800;
-        text-align: center;
+        text-align: left;
         float:left;
       }
       & > span + span{
+        padding-left:10px;
         border-top: 1px solid @strokeGrey;
       }
     }//end of box-table-labels
 
     &-display{
       height:100%;
-      width:350px;
+      width:55%;
       overflow: hidden;
     }
     &-max{
       height:100%;
-      width:350px;
+      width:100%;
       position:relative;
       left:0;
       .inlineFlexDisplay;
@@ -101,7 +135,7 @@
     &-container{
       //need width of the containers to stay at 27px width
       min-width: 27px;
-      width: 27px;
+      width: 11%;
       height:100%;
       font-size: 14px;
       border-top: 1px solid @strokeGrey;

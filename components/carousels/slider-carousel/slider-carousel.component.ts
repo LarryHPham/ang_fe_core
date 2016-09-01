@@ -90,6 +90,8 @@ export interface Type2CarouselItem {
 
   subImageRoute?: Array<any>;
 
+  lastUpdatedDate?: string;
+
   rank?: string;
 }
 
@@ -291,6 +293,10 @@ export class SliderCarousel implements OnInit {
           {//[Data Point 1]
             class: 'scc-details-type2-lbl',
             textData: item.dataLabel ? [item.dataLabel] : []
+          },
+          {//Last Updated line
+            class: 'scc-details-type2-date',
+            textData: item.lastUpdatedDate ? ["Last Updated On " + item.lastUpdatedDate] : []
           }
         ],
       imageConfig: {

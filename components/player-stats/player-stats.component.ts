@@ -32,6 +32,7 @@ export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;
 
     public carouselData: Array<SliderCarouselInput> = [];
+    @Input() tabName;
 
     @Input() tabs: Array<StatsTableTabData<any>>;
 
@@ -72,7 +73,9 @@ export class PlayerStatsComponent implements DoCheck {
     }
     dropdown2Changed($event) {
         this.selectedSubTab = $event;
+        //this.tabSelectedListener.emit(this.selectedSubTab);
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
+
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);

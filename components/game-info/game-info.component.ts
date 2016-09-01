@@ -8,6 +8,7 @@ export interface GameInfoInput{
   gameHappened: boolean,
   inning:string;
   dataPointCategories:Array<string>;
+  verticalContent:string;
   homeData:{
     homeTeamName:string;
     homeImageConfig:CircleImageData;
@@ -45,7 +46,6 @@ export class GameInfo implements OnInit{
     ngOnInit(){
       this.homeInfo = this.gameInfo.homeData;
       this.awayInfo = this.gameInfo.awayData;
-      // console.log("GAMEINFO",this.gameInfo);
     }
     ngOnChanges(){
       if(this.gameInfo != null){

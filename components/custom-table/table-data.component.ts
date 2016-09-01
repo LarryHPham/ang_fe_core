@@ -1,6 +1,7 @@
 import {CircleImageData} from '../../components/images/image-data';
 
-export class CellData {  
+export class CellData {
+
   /**
    * The formatted value to display in the cell
    */
@@ -26,12 +27,17 @@ export class CellData {
    * When set to true, [innerHtml] is not used to display the text, but rather {{}}
    */
   displayAsRawText: boolean = false;  
-  
-  constructor(display: string, sort: any, routerLink?: Array<any>, imageUrl?: string, displayAsRawText?: boolean) {
+
+  bottomStat: any;
+  bottomStat2:any;
+
+  constructor(display: string, sort: any, routerLink?: Array<any>, imageUrl?: string, bottomStat?:any, bottomStat2?:any,  displayAsRawText?: boolean) {
     this.display = display;
     this.sort = sort;
     this.routerLink = routerLink;
     this.displayAsRawText = displayAsRawText;
+    this.bottomStat=bottomStat;
+    this.bottomStat2=bottomStat2;
     if ( imageUrl ) {
       this.image = {
         imageClass: "image-48",

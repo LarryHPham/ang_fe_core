@@ -1,53 +1,21 @@
 // height should only be specified for the module when it's on a profile page
 .profile-carousel-container {
 
-  .images-media-module-small {
-    height: 429px;
-  }
-
-  .profile-carousel {
+  .carousel {
     height: 506px;
-  }
-}
-
-.profile-carousel, .article-carousel {
-  width: 100%;
-  position: relative;
-}
-
-.plcholder {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  &-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    &-navigation {
-      position: relative;
-      top: 48%;
-      .flexDisplay;
-      .flexAlignItems(center);
-      .flexJustify(flex-end);
+    @media @fluid {
+      height: 60vw;
+      width: 100%;
     }
   }
-
-  &-details {
-    .inlineFlexDisplay;
-    .flexDirection(row);
-    .flexAlignItems(center);
-    background-color: rgba(0, 0, 0, 0.75);
-    width: 100%;
-    height: 21%;
-    position: absolute;
-    bottom: 0;
-  }
 }
 
-.article {
+.carousel{
+  width: 100%;
+  position: relative;
+}
+
+.container {
   height: 100%;
   width: 100%;
   position: relative;
@@ -107,6 +75,9 @@
   }
   &-title {
     text-align: left;
+    @media @mobile {
+      display: none;
+    }
   }
   &-credit {
     .flexDisplay;
@@ -234,7 +205,7 @@
   -o-animation: fadein .5s; /* Opera < 12.1 */
   animation: fadein .5s;
   pointer-events: auto !important;
-  &-plcholder {
+  &-container {
     height: 100%;
     width: 100%;
     position: relative;
@@ -292,6 +263,9 @@
     .flexAlignItems(center);
     height: 26px;
     width: 100%;
+    @media @mobile {
+      display: none;
+    }
   }
   &-credit {
     .flexDisplay;

@@ -23,10 +23,6 @@ export class DeepDiveBlock1{
   public widgetPlace: string = "widgetForPage";
   firstStackTop: any;
   firstStackRow: any;
-  secStackTop: any;
-  secStackRow: any;
-  thirdStackTop: any;
-  thirdStackRow: any;
   callLimit:number = 9;
   tilestackData: any;
 
@@ -69,36 +65,19 @@ export class DeepDiveBlock1{
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
         .subscribe(data => {
           this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
+        },
+        err => {
+              console.log("Error getting first article stack data");
+        });
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, 9)
+        .subscribe(data => {
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');//TODO
+        },
+        err => {
+            console.log("Error getting first AI article batch data");
+        });
+  }
 
-        });
-    this._deepDiveData.getDeepDiveAiBatchService(this.geoLocation)
-        .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data);
-        },
-        err => {
-            console.log("Error getting first article stack data");
-        });
-  }
-  getSecArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.secStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.secStackRow = this._deepDiveData.transformToArticleRow(data);
-        },
-        err => {
-            console.log("Error getting second article stack data");
-        });
-  }
-  getThirdArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 3, this.geoLocation)
-        .subscribe(data => {
-          this.thirdStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.thirdStackRow = this._deepDiveData.transformToArticleRow(data);
-        },
-        err => {
-            console.log("Error getting thrid article stack data");
-        });
-  }
   getTileStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
         .subscribe(data => {
@@ -144,9 +123,7 @@ export class DeepDiveBlock1{
   callModules(){
     this.getBoxScores(this.dateParam);
     this.getFirstArticleStackData();
-    this.getSecArticleStackData();
     this.getDeepDiveVideoBatch(this.scope, this.geoLocation, 6, this.page);
-    this.getThirdArticleStackData();
     this.getTileStackData();
   }
 
