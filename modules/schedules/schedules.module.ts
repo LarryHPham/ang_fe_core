@@ -17,8 +17,13 @@ export class SchedulesModule implements OnInit{
     @Input() data;
     @Input() profHeader;
     @Input() error;
+
     @Input() filter1;
     @Input() filter2;
+
+    @Input() dropdownKey1: string;
+    @Input() dropdownKey2: string;
+
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
     @Output() selectedKeyFilter = new EventEmitter();
     footerData:any;
@@ -54,6 +59,17 @@ export class SchedulesModule implements OnInit{
             if(typeof this.tabData == 'undefined'){
                 this.tabData = this.data.tabs;
             }
+        }
+
+        if(this.filter1 != null){
+          if(this.filter1.length > 0 && this.dropdownKey1 == null){
+            this.dropdownKey1 = this.filter1[0];
+          }
+        }
+        if(this.filter2 != null){
+          if(this.filter2.length > 0 && this.dropdownKey2 == null){
+            this.dropdownKey2 = this.filter1[0];
+          }
         }
     }
 
