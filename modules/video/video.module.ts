@@ -26,7 +26,7 @@ export class VideoModule implements OnInit,OnChanges{
     @Input() geoLocation;
 
 
-    modHeadData: ModuleHeaderData
+    modHeadData: ModuleHeaderData;
     constructor( private _sanitizer: DomSanitizationService){
 
     }
