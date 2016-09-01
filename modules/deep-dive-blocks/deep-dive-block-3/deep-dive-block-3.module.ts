@@ -19,7 +19,7 @@ export class DeepDiveBlock3{
   public widgetPlace: string = "widgetForPage";
   thirdStackTop: any;
   thirdStackRow: any;
-  callLimit:number = 9;
+  callLimit:number = 8;
   videoCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
@@ -40,7 +40,6 @@ export class DeepDiveBlock3{
       GlobalSettings.getParentParams(_router, parentParams => {
         this.partnerID = parentParams.partnerID;
         this.scope = parentParams.scope;
-        console.log(this.partnerID, this.scope);
       })
     }
     ngOnInit() {
@@ -63,10 +62,13 @@ export class DeepDiveBlock3{
         });
   }
   getRecommendationData(){
-    var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(state, '2', '1')
+    //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
+    this._deepDiveData.getRecArticleData(this.scope)
         .subscribe(data => {
           this.recommendationData = this._deepDiveData.transformToRecArticles(data);
+        },
+        err => {
+            console.log("Error getting recommendation data");
         });
   }
   private getDeepDiveVideoBatch(region, numItems, startNum){
