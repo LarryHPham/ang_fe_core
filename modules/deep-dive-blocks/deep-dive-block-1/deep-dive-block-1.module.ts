@@ -24,8 +24,8 @@ export class DeepDiveBlock1{
   firstStackTop: any;
   firstStackRow: any;
   callLimit:number = 9;
+  videoCallLimit: number = 6;
   tilestackData: any;
-
   partnerID:string;
   scope: string;
   //for box scores
@@ -69,9 +69,9 @@ export class DeepDiveBlock1{
         err => {
               console.log("Error getting first article stack data");
         });
-    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, 9)
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'postgame-report', 1, 9)
         .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');//TODO
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'postgame-report');//TODO
         },
         err => {
             console.log("Error getting first AI article batch data");
@@ -123,7 +123,7 @@ export class DeepDiveBlock1{
   callModules(){
     this.getBoxScores(this.dateParam);
     this.getFirstArticleStackData();
-    this.getDeepDiveVideoBatch(this.scope, this.geoLocation, 6, this.page);
+    this.getDeepDiveVideoBatch(this.scope, this.geoLocation, this.videoCallLimit, this.page);
     this.getTileStackData();
   }
 
