@@ -25,13 +25,15 @@ export interface PlayerStatsModuleData {
 })
 export class PlayerStatsModule implements OnChanges {
   @Input() data: PlayerStatsModuleData;
-
+  @Input() profileHeader;
+  @Input() isProfilePage:boolean;
+    @Input() profileData;
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
-
-  public headerInfo: ModuleHeaderData = {
-    moduleTitle: "Player Stats",
-    hasIcon: false,
-    iconClass: ""
+    //headerInfo: ModuleHeaderData;
+ public headerInfo: ModuleHeaderData = {
+     moduleTitle: "Player Stats",
+     hasIcon: false,
+     iconClass: ""
   };
 
   public footerInfo: ModuleFooterData = {
@@ -47,7 +49,12 @@ export class PlayerStatsModule implements OnChanges {
       this.headerInfo.moduleTitle = "Player Stats";
     }
     else {
-      this.headerInfo.moduleTitle = this.data.moduleTitle;
+        this.headerInfo = {
+            moduleTitle: "Player Stats",
+            moduleIdentifier: " - " + this.profileData.headerData.teamMarket + " " + this.profileData.profileName,
+            hasIcon: false,
+            iconClass: '',
+        };
       this.footerInfo.url = this.data.pageRouterLink;
       this.tabs = this.data.tabs;
     }

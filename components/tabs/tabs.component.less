@@ -44,11 +44,13 @@
   height: 60px;
   width: 100%;
   display: block;
-  .flexAlignItems(center);
-  .flexDisplay;
   @media @mobile {
     white-space: nowrap;
     width: 10%;
+  }
+  @media @tablet {
+    .flexAlignItems(center);
+    .flexDisplay;
   }
   color:@fontIconGrey;
   .shader {
@@ -81,13 +83,16 @@
     @media @mobile {
       display: inline-block;
       padding-top: 23px;
+      width: auto!important;
     }
     @media @tablet {
       padding: 0;
+      width: inherit;
     }
     span {
+      position: absolute;
       @media @mobile {
-        position: absolute;
+        position: relative;
         text-align: center;
         width: 100%;
         left:0;

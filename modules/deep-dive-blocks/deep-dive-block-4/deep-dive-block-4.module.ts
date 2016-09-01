@@ -16,18 +16,11 @@ import {RecommendationsComponent} from '../../../components/articles/recommendat
 })
 export class DeepDiveBlock4{
   public widgetPlace: string = "widgetForPage";
-  firstStackTop: any;
-  firstStackRow: any;
-  secStackTop: any;
-  secStackRow: any;
   fourthStackTop: any;
   fourthStackRow: any;
   callLimit:number = 9;
-  tilestackData: any;
   partnerID:string;
   scope: string;
-  recommendationData: any;
-  boxArticleData: any;
   scroll: boolean = true;
 
   @Input() maxHeight: any;
@@ -43,50 +36,26 @@ export class DeepDiveBlock4{
     ngOnInit() {
        this.callModules();
     }
-  getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
-        .subscribe(data => {
-          this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.firstStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
-  getSecArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.secStackTop = this._deepDiveData.transformToArticleStack(data);
-          this.secStackRow = this._deepDiveData.transformToArticleRow(data);
-        });
-  }
+
   getFourthArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 4, this.geoLocation)
         .subscribe(data => {
           this.fourthStackTop = this._deepDiveData.transformToArticleStack(data);
+        },
+        err => {
+              console.log("Error getting forth article stack TOP data");
         });
-    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.geoLocation)
+    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, 'player-comparisons', 1, this.callLimit)
         .subscribe(data => {
-          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data);
-        });
-  }
-  getTileStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
-        });
-  }
-  getRecommendationData(){
-    var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(state, '1', '1')
-        .subscribe(data => {
-          this.recommendationData = this._deepDiveData.transformToRecArticles(data);
+          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, 'player-comparisons');
+        },
+        err => {
+            console.log("Error getting forth article stack ROW data");
         });
   }
 
   callModules(){
-    this.getRecommendationData();
-    this.getFirstArticleStackData();
-    this.getSecArticleStackData();
     this.getFourthArticleStackData();
-    this.getTileStackData();
   }
 
 }
