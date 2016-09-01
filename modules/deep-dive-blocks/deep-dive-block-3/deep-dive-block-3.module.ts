@@ -20,6 +20,7 @@ export class DeepDiveBlock3{
   thirdStackTop: any;
   thirdStackRow: any;
   callLimit:number = 9;
+  videoCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 3;
@@ -78,7 +79,7 @@ export class DeepDiveBlock3{
 
   callModules(){
     this.getRecommendationData();
-    this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
+    this.getDeepDiveVideoBatch(this.geoLocation, this.videoCallLimit, this.page);
     this.getThirdArticleStackData();
     this.getTileStackData();
   }

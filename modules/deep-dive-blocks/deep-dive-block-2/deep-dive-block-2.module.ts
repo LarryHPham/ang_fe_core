@@ -22,6 +22,7 @@ export class DeepDiveBlock2{
   secStackTop: any;
   secStackRow: any;
   callLimit:number = 9;
+  videoCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 2;
@@ -78,7 +79,7 @@ export class DeepDiveBlock2{
     callModules(){
       this.getRecommendationData();
       this.getSecArticleStackData();
-      this.getDeepDiveVideoBatch(this.geoLocation, 6, this.page);
+      this.getDeepDiveVideoBatch(this.geoLocation, this.videoCallLimit, this.page);
       this.getTileStackData();
     }
 

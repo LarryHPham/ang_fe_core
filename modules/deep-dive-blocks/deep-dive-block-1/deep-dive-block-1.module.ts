@@ -24,8 +24,8 @@ export class DeepDiveBlock1{
   firstStackTop: any;
   firstStackRow: any;
   callLimit:number = 9;
+  videoCallLimit: number = 6;
   tilestackData: any;
-
   partnerID:string;
   scope: string;
   //for box scores
@@ -123,7 +123,7 @@ export class DeepDiveBlock1{
   callModules(){
     this.getBoxScores(this.dateParam);
     this.getFirstArticleStackData();
-    this.getDeepDiveVideoBatch(this.scope, this.geoLocation, 6, this.page);
+    this.getDeepDiveVideoBatch(this.scope, this.geoLocation, this.videoCallLimit, this.page);
     this.getTileStackData();
   }
 
