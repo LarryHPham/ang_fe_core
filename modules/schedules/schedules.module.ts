@@ -50,6 +50,7 @@ export class SchedulesModule implements OnInit{
     }
 
     ngOnChanges(){
+      console.log(this.data);
         if(typeof this.data != 'undefined'){
             if(typeof this.tabData == 'undefined'){
                 this.tabData = this.data.tabs;

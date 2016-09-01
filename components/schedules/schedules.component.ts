@@ -109,6 +109,7 @@ export class SchedulesComponent implements OnInit{
   }
 
   ngOnChanges(){
+    console.log(this.tabs);
     if(this.getSelectedTab() != null){
       this.getSelectedTab()['tabData'].sections = this.data;
     }
