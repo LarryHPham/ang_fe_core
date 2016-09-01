@@ -1,13 +1,45 @@
-
+.module-container .stats .pane {
+  min-height: 165px;
+}
 .stats {
   .custom-table-row .image-column .table-cell-image span{
     width:100%;
+    @media @mobile{
+      line-height: 14px;
+      //position: relative;
+      //top:-2px;
+      text-align:left;
+    }
+  }
+  .custom-table .spacer {
+    @media @mobile {
+      width: 155px;
+      display:block;
+    }
+  }
+  .pane {
+
+    @media @mobile{
+      padding: 10px 5px;
+      //padding: 70px 0 5px 5px;
+      min-height: 165px !important;
+
+    }
+
+  }
+  .pane-content{
+    @media @mobile{
+      margin-top:64px;
+    }
   }
   &-car {
     .carousel{
       @media @mobile {
         height: 320px;
       }
+    }
+    .scc-details-type1-hdr:hover{
+      color:@investKitBlue;
     }
 
     .scc-details-desc {
@@ -67,29 +99,25 @@
     width: 155px;
     display:block;
   }
-  .pane {
-    min-height:165px;
-    @media @mobile{
-      padding-top:72px;
-      min-height: 165px;
-    }
 
-
-
-  }
 
 
   &-table-title {
+    height: 40px;
+    margin:0px;
+    padding:0px;
     .flexDisplay;
     .flexAlignItems(center);
     .flexJustify(space-between);
     @media @mobile{
-      height:30px;
+      //height:30px;
       width:100%;
       position:absolute;
       z-index: 1;
       display: block;
-      top:0%;
+      //padding: 5px 5px ;
+      margin:0px;
+      padding: 0px;
 
     }
     h4 {
@@ -98,12 +126,12 @@
       @media @mobile{
         .globalDefaultFont(16px, 400);
         width:250%;
-        position:relative;
-        top:-15px;
+
+
 
       }
     }
-    margin: 20px 15px;
+    //margin: 10px;
   }
 
   &-season-dropdown {
@@ -117,19 +145,32 @@
     }
     .dropdown {
       margin-left: 10px;
-      width: 112px;
+      &:hover{
+        @media @tablet {
+          border: 1px solid @touchDownLoyalBlue ;
+        }
+      }
+      //margin-left: 10px;
+      width: auto;
       @media @mobile{
-        width: 117px;
+        width: auto;
         height:30px;
         position: relative;
         float:left;
-        top: -9px;
-        left: -38px;
+        top: 8px;
+        left: -17px;
+        margin-left:15px;
         .globalDefaultFont(12px, 400);
 
       }
+      .dropdown-hdr{
+        height: 30px;
+      }
+      .dropdown-list{
+        left:2px;
+      }
       .dropdown-list-option{
-        width:117%;
+        width:75px;
       }
     }
 
