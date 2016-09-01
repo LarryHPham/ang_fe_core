@@ -25,7 +25,6 @@ export class ListOfListsModule{
   moduleHeader: ModuleHeaderData;
   displayData: Array<any>;
   footerData: Object;
-
   constructor(private _router: Router) {
     this.footerData = {
       infoDesc:'Want to see more lists like the ones above?',
@@ -36,6 +35,7 @@ export class ListOfListsModule{
   }
 
   ngOnChanges(event) {
+    console.log('FUCKKKKKKKK',this.listOfListsData.listData);
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
@@ -46,10 +46,12 @@ export class ListOfListsModule{
       iconClass: "",
     }
     var type = this.listOfListsData['type'];
+    console.log('TYPEEEE',this.moduleHeader);
     var routeName = type == "league" ? 'List-of-lists-league-page' : 'List-of-lists-page';
     var params = {
       limit:10,
-      pageNum:1
+      pageNum:1,
+      id: ''
     };
     if ( this.listOfListsData['id'] ) {
       params["id"] = this.listOfListsData['id'];

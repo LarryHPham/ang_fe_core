@@ -139,7 +139,6 @@ export class SliderCarousel implements OnInit {
   ngOnChanges(){
     // Don't set indexInput to 0 here, it resets anything the parent specifies
      this.indexInput = 1;
-    console.log('FUCKK',this.indexInput);
   }
 
   ngOnInit() {
@@ -190,7 +189,6 @@ export class SliderCarousel implements OnInit {
  */
   static convertToCarouselItemType1(index: number, item: Type1CarouselItem): SliderCarouselInput {
     var subImages = [];
-    console.log('THEEEEE item',item);
 
     if ( item.subImageRoute ) {
       subImages.push({
