@@ -26,18 +26,18 @@
           </div>
         </div>
       </div>
-      <div class="schedules-table">
+      <div *ngIf="tab.tabData.sections.length > 0" class="schedules-table">
         <div *ngFor="let section of tab.tabData.sections" class="schedules-section">
           <h4 *ngIf="section.groupName" [innerHtml]="section.groupName"></h4>
           <loading-component *ngIf="!section.tableData"></loading-component>
           <custom-table *ngIf="section.tableData" [error]="error" [model]="section.tableData" (sortChanged)="updateCarousel($event)"></custom-table>
         </div>
       </div>
-      <template [ngIf]="tab.tabData.sections.length <= 0">
+      <!-- <template [ngIf]="tab.tabData.sections.length <= 0">
         <div class="no-results">
           <no-data-box [data]="error.data" [icon]="error.icon"></no-data-box>
         </div>
-      </template>
+      </template> -->
     </div>
   </tab>
 </tabs>
