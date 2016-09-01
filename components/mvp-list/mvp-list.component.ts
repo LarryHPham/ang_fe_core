@@ -1,4 +1,4 @@
-import {Component, DoCheck, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, DoCheck, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
@@ -26,38 +26,40 @@ export interface MVPTabData {
     directives: [SliderCarousel, DetailedListItem, Tabs, Tab, NoDataBox, LoadingComponent, DropdownComponent],
 })
 
-export class MVPListComponent implements DoCheck  {
-  @Output("tabSelected") tabSelectedListener = new EventEmitter();
+export class MVPListComponent implements DoCheck, OnInit  {
+  @Output() tabSelectedListener = new EventEmitter();
   @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() tabs: Array<MVPTabData>;
 
   @Input() carouselFooter: FooterStyle;
 
-  detailedDataArray: DetailListInput[]; //variable that is just a list of the detailed DataArray
-
-  carouselDataArray: Array<SliderCarouselInput>;
-
   @Input() selectedTabTitle: string;
 
+  @Input() position: string;
+
+  detailedDataArray: DetailListInput[]; //variable that is just a list of the detailed DataArray
+  carouselDataArray: Array<SliderCarouselInput>;
+  dropDownFirstRun: boolean = true;
   tabsLoaded: {[index:number]:string};
-  position: string;
+
+  listType: string;
 
   private sortOptions: Array<any> = [
-    {key: 'qb', value: 'Quarterback'},
     {key: 'cb', value: 'Cornerback'},
-    {key: 'de', value: 'Defensive end'},
     {key: 'db', value: 'Defensive back'},
+    {key: 'de', value: 'Defensive end'},
     {key: 'dl', value: 'Defensive lineman'},
     {key: 'dt', value: 'Defensive tackle'},
-    {key: 's', value: 'Safety'},
-    {key: 'lb', value: 'Linebacker'},
     {key: 'k', value: 'Kicker'},
+    {key: 'lb', value: 'Linebacker'},
     {key: 'p', value: 'Punter'},
+    {key: 'qb', value: 'Quarterback'},
     {key: 'rb', value: 'Running Back'},
     {key: 'rs', value: 'Return specialist'},
+    {key: 'saf', value: 'Safety'},
+    {key: 'te', value: 'Tight End'},
     {key: 'wr', value: 'Wide Receiver'},
-    {key: 'te', value: 'Tight End'}
   ];
 
 
@@ -75,15 +77,25 @@ export class MVPListComponent implements DoCheck  {
         let selectedTab = this.getSelectedTab();
 
         if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle] ) {
-          this.tabsLoaded[selectedTab.tabDisplayTitle] = "qb";
+          //this.tabsLoaded[selectedTab.tabDisplayTitle] = "qb";
           this.updateCarousel(selectedTab);
         }
       }
     }
   } //ngDoCheck()
 
+  constructor(private _params: RouteParams) {
+    this.listType = _params.get("type");
+  }
+
   ngOnInit(){
-    this.position = this.position == null ? this.sortOptions[0]:this.position;  }
+      if (this.listType == null ) {
+        this.position = this.position == null ? this.sortOptions[0]['key']:this.position;
+      }
+      else {
+        this.position = this.listType;
+      }
+  }
 
   getSelectedTab() {
     if ( !this.tabs ) return null;
@@ -97,7 +109,6 @@ export class MVPListComponent implements DoCheck  {
   //each time a tab is selected the carousel needs to change accordingly to the correct list being shown
   tabSelected(tabTitle){
     this.selectedTabTitle = tabTitle;
-
     var selectedTab = this.getSelectedTab();
 
     if ( selectedTab ) {
@@ -117,7 +128,7 @@ export class MVPListComponent implements DoCheck  {
         this.updateCarousel(selectedTab);
       }
     }
-  }
+  } //tabSelected
 
   updateCarousel(tab: MVPTabData) {
     if ( tab.listData.length == 0 ) {
@@ -129,12 +140,25 @@ export class MVPListComponent implements DoCheck  {
     }
   } //updateCarousel
 
+  ngOnChanges() {
+    // reset dropdown when new datapoints have populated
+    var matches = this.tabs.filter(tab => tab.tabDisplayTitle == this.selectedTabTitle);
+    if(matches.length > 0){
+      this.selectedTabTitle = matches[0].tabDisplayTitle;
+    }else{
+      this.selectedTabTitle = this.tabs[0].tabDisplayTitle;
+    }
+    this.dropDownFirstRun = true;
+  }
 
   dropdownChanged($event) {
-    this.position = $event;
-    this.dropdownPositionSelection.next({
-      tab: this.getSelectedTab(),
-      position: this.position //position 'key' value
-    });
+    if(this.dropDownFirstRun){
+      this.dropDownFirstRun = false;
+      this.position = $event;
+      this.dropdownPositionSelection.next({
+        tab: this.getSelectedTab(),
+        position: $event //position 'key' value
+      });
+    }
   }
 }

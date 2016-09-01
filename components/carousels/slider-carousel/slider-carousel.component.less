@@ -221,6 +221,13 @@ slider-carousel{
 
       &-page-hdr {
         .globalDefaultModFont(24px, 800, @white);
+        @media @mobile {
+          .globalDefaultModFont(20px, 800, @white);
+          position: absolute;
+          top: 15px;
+          width: 100%;
+          text-align: center;
+        }
       }
 
       &-desc {
@@ -234,6 +241,12 @@ slider-carousel{
           width: 100%;
           text-align: center;
         }
+      }
+
+      &-date {
+        .globalDefaultModFont(10px, 400, @white);
+        margin-top: 30px;
+        text-align: center;
       }
 
       &-value {
