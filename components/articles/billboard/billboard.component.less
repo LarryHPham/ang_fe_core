@@ -5,7 +5,7 @@
   margin: 0 auto;
   margin-bottom: 30px;
   border: 1px solid @strokeGrey;
-  @media (min-width: 750px) and (max-width: 1023px) {
+  @media (min-width: 750px) and (max-width: 999px) {
     display: none;
   }
   @media @mobile {
@@ -19,7 +19,7 @@
   font-family: @globalFont;
   margin: 20px auto;
   border: 1px solid @strokeGrey;
-  @media (min-width: 750px) and (max-width: 1023px) {
+  @media (min-width: 750px) and (max-width: 999px) {
     display: none;
   }
   @media (min-width: 640px) {
@@ -31,7 +31,7 @@
 }
 
 .billboard-720x460 {
-  @media (min-width: 750px) and (max-width: 1023px) {
+  @media (min-width: 750px) and (max-width: 999px) {
     width: 722px;
     height: 462px;
     font-family: @globalFont;
@@ -45,6 +45,9 @@
     display: none;
   }
   @media @desktop-l {
+    display: none;
+  }
+  @media @desktop-m {
     display: none;
   }
 }
