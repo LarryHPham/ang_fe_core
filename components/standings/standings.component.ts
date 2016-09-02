@@ -7,6 +7,7 @@ import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
+import {DropdownComponent} from '../../../fe-core/components/dropdown/dropdown.component';
 
 export interface StandingsTableTabData<T> {
   title: string;
@@ -27,7 +28,7 @@ export interface TableComponentData<T> {
 @Component({
   selector: "standings-component",
   templateUrl: "./app/fe-core/components/standings/standings.component.html",
-  directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
+  directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox, DropdownComponent],
 })
 export class StandingsComponent implements DoCheck {
   public selectedIndex;
@@ -42,6 +43,7 @@ export class StandingsComponent implements DoCheck {
   private selectedKey: string;
   private tabsLoaded: {[index:number]:string};
   private noDataMessage = "Sorry, there is no data available.";
+  sortSeason: Array<any> = [{key: "2015", value: "2015"}];
 
   constructor() {}
 
@@ -81,7 +83,7 @@ export class StandingsComponent implements DoCheck {
   setSelectedCarouselIndex(tab: StandingsTableTabData<any>, index: number) {
     let offset = 0;
     if ( !tab.sections ) return;
-    
+
     tab.sections.forEach((section, sectionIndex) => {
       if ( index >= offset && index < section.tableData.rows.length + offset ) {
         section.tableData.setRowSelected(index-offset);
@@ -93,15 +95,15 @@ export class StandingsComponent implements DoCheck {
     });
   }
 
-  tabSelected(newTitle) {    
+  tabSelected(newTitle) {
     this.noDataMessage = "Sorry, there is no data available for the "+ newTitle;
-    
+
     var priorTab = this.getSelectedTab();
     if ( priorTab ) {
       this.selectedKey = priorTab.getSelectedKey();
     }
-    
-    this.selectedTabTitle = newTitle;    
+
+    this.selectedTabTitle = newTitle;
     var newTab = this.getSelectedTab();
     if ( newTab ) {
       newTab.setSelectedKey(this.selectedKey);
@@ -146,8 +148,11 @@ export class StandingsComponent implements DoCheck {
           });
       });
     }
-    
+
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carouselData = carouselData;
+  }
+  seasonChanged(event) {
+    // this.getStandardList(this.params.params, event);
   }
 }

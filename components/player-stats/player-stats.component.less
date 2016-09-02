@@ -15,8 +15,9 @@
     }
   }
   .custom-table .spacer {
+    display:none;
     @media @mobile {
-      width: 155px;
+      width: 160px;
       display:block;
     }
   }
@@ -64,28 +65,26 @@
     }
   }
 
-  .data-column-hdr, .data-column {
-    min-width: 55px; //since it needs to include margin for padding
-  }
-  table circle-image {
-    position: relative;
-    top: 7px;
-    @media @mobile {
-      display: none;
-    }
-  }
-
   .image-column-hdr, .image-column {
-    min-width: 185px;
-    max-width: 300px;
-    width: 29%;
+    width: 230px;
     @media @mobile {
       width: 150px;
     }
   }
-
+  .custom-table-sort  {
+    @media @mobile {
+      top: 8px;
+    }
+  }
+  .data-column-hdr,.data-column{
+    min-width: 55px;
+  }
+  table circle-image {
+    @media @mobile {
+      display: none;
+    }
+  }
   .table-cell-image span {
-    width:60% !important;
     @media @mobile {
       margin-left: 10px;
     }
@@ -94,6 +93,7 @@
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       background-color: inherit;
       height: 40px;
       border-width: 0 5px 0 0;
@@ -107,18 +107,24 @@
     }
   }
   .image-column-hdr {
-    position: absolute;
-    z-index: 1;
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      left: 10px;
+      .custom-table-header {
+        margin-right:0!important;
+      }
+    }
     background-color: @white;
-  }
-  .custom-table .spacer {
-    width: 155px;
-    display:block;
+    .custom-table-header {
+      margin-right:5px;
+    }
   }
 
 
 
   &-table-title {
+    left:5px;
     height: 40px;
     margin:0px;
     padding:0px;
