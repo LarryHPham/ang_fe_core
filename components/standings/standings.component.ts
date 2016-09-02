@@ -36,17 +36,26 @@ export class StandingsComponent implements DoCheck {
   public carouselData: Array<SliderCarouselInput> = [];
 
   @Input() tabs: Array<StandingsTableTabData<any>>;
+  @Input() scope: string;
 
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
+  @Output("filterSelected") filterSelectedListener = new EventEmitter();
 
   private selectedTabTitle: string;
   private selectedKey: string;
   private tabsLoaded: {[index:number]:string};
   private noDataMessage = "Sorry, there is no data available.";
-  sortSeason: Array<any> = [{key: "2015", value: "2015"}];
+  sortConference: Array<any> = [{key: "", value: ""}];
+  sortDivision: Array<any> = [{key: "", value: ""}];
+  sortSeason: Array<any> = [{key: "", value: ""}];
+  sortConferenceSelected: string = "";
+  sortDivisionSelected: string = "";
+  sortSeasonSelected: string = "";
+  divFilterChanged: number = 0;
+  confFilterChanged: number = 0;
+  seasFilterChanged: number = 0;
 
   constructor() {}
-
   ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
@@ -68,6 +77,46 @@ export class StandingsComponent implements DoCheck {
         }
       }
     }
+  }
+  setupDropdowns(currentTab) {
+    var conference = [];
+    var division = [];
+    var seasons: Array<any> = [];
+    if (currentTab.conferences == null || currentTab.conferences == undefined) {
+      conference = [{key: "all", value: "All"}];
+      this.sortConferenceSelected = "all";
+    }
+    else {
+      conference = [{key: undefined, value: "All"}];
+      for (var item in currentTab.conferences) {
+        conference.push({key: item, value: item});
+      }
+      this.sortConferenceSelected = currentTab.conference;
+    }
+    if (currentTab.divisions == null || currentTab.divisions == undefined) {
+      division = [{key: undefined, value: "All"}];
+      this.sortDivisionSelected = undefined;
+    }
+    else {
+      division = [{key: undefined, value: "All"}];
+      for (var item in currentTab.divisions) {
+        division.push({key: item, value: item.replace(currentTab.conference, "")});
+      }
+      this.sortDivisionSelected = currentTab.division;
+    }
+    if (currentTab.seasonsArray == null || currentTab.seasonsArray == undefined) {
+      seasons = [{key: "N/A", value: "N/A"}];
+      this.sortSeasonSelected = "N/A";
+    }
+    else {
+      for (var i = 0; i < currentTab.seasonsArray.length; i++) {
+        seasons.push({key: currentTab.seasonsArray[i], value: currentTab.seasonsArray[i]});
+      }
+      this.sortSeasonSelected = currentTab.season;
+    }
+    this.sortConference = conference;
+    this.sortDivision = division;
+    this.sortSeason = seasons;
   }
 
   getSelectedTab(): StandingsTableTabData<any> {
@@ -93,11 +142,11 @@ export class StandingsComponent implements DoCheck {
       }
       offset += section.tableData.rows.length;
     });
+    this.setupDropdowns(this.getSelectedTab());
   }
 
   tabSelected(newTitle) {
     this.noDataMessage = "Sorry, there is no data available for the "+ newTitle;
-
     var priorTab = this.getSelectedTab();
     if ( priorTab ) {
       this.selectedKey = priorTab.getSelectedKey();
@@ -152,7 +201,46 @@ export class StandingsComponent implements DoCheck {
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carouselData = carouselData;
   }
+  conferenceChanged(event) {
+
+    var priorTab = this.getSelectedTab();
+    if ( priorTab ) {
+      this.selectedKey = priorTab.getSelectedKey();
+    }
+    var newTab = this.getSelectedTab();
+    if ( newTab ) {
+      newTab.setSelectedKey(priorTab.getSelectedKey());
+    }
+    var params = {conference: event, division: undefined, season: priorTab.season};
+    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+
+  }
+  divisionChanged(event) {
+
+    var priorTab = this.getSelectedTab();
+    if ( priorTab ) {
+      this.selectedKey = priorTab.getSelectedKey();
+    }
+    var newTab = this.getSelectedTab();
+    if ( newTab ) {
+      newTab.setSelectedKey(priorTab.getSelectedKey());
+    }
+    var params = {conference: priorTab.conference, division: event, season: priorTab.season};
+    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+
+  }
   seasonChanged(event) {
-    // this.getStandardList(this.params.params, event);
+
+    var priorTab = this.getSelectedTab();
+    if ( priorTab ) {
+      this.selectedKey = priorTab.getSelectedKey();
+    }
+    var newTab = this.getSelectedTab();
+    if ( newTab ) {
+      newTab.setSelectedKey(priorTab.getSelectedKey());
+    }
+    var params = {conference: priorTab.conference, division: priorTab.division, season: event};
+    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+
   }
 }
