@@ -1,4 +1,15 @@
 .standings {
+  .hidden-tabs {
+    .nav.nav-tabs {
+      display:none;
+    }
+    .sort-title.conferences {
+      visibility: visible;
+    }
+  }
+  .sort-title.conferences {
+    visibility: hidden;
+  }
   &-car {
     .scc-details-desc {
       height: 170px;
@@ -123,7 +134,7 @@
         }
       }
     }
-    .sort-title:last-of-type {
+    .sort-title:nth-of-type(2) {
       margin-left:20px;
     }
     dropdown {

@@ -32,7 +32,7 @@ export class SyndicatedTrendingComponent {
       ){}
 
       private getDeepDiveArticle(numItems, state, currentArticleId) {
-        this._deepdiveservice.getDeepDiveBatchService(numItems, 1, state).subscribe(
+        this._deepdiveservice.getDeepDiveBatchService(numItems, 10, state).subscribe(
           data => {
             this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
             if (this.trendingLength <= 20) {

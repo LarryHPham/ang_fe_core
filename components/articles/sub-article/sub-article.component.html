@@ -1,4 +1,4 @@
-<span *ngFor="let subData of randomLeftColumn; let even=even; let odd=odd; let last=last; let i=index;">
+<span *ngFor="let subData of randomArticles; let even=even; let odd=odd; let last=last; let i=index;">
     <div *ngIf="even && i < 8" class="sub-container large" style="float: left;">
         <a [routerLink]="['Article-pages', {eventType: subData.eventType, eventID: subData.eventID}]">
             <img class="sub-container-image" src="{{subData.images}}"
