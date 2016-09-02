@@ -49,7 +49,10 @@
     }
     .scc-details-mainImg{
       @media @tablet {
-        margin-right: 20px;
+        .image-150{
+          left: 20px;
+        }
+        //margin-right: 20px;
       }
     }
     .scc-details-type1-desc{
@@ -64,6 +67,8 @@
     .scc-details-desc {
       width: 100%;
       @media @tablet{
+        margin:9%;
+        display:inline-block;
         //position: relative;
         //left:15px;
       }
@@ -79,6 +84,7 @@
   .custom-table-sort  {
     @media @mobile {
       top: 8px;
+      right: 6%;
     }
   }
   .data-column-hdr,.data-column{
@@ -186,8 +192,8 @@
         position: relative;
         float:left;
         top: 8px;
-        left: -17px;
-        margin-left:15px;
+        left: -10px;
+        //margin-left:15px;
         .globalDefaultFont(12px, 400);
 
       }
@@ -205,7 +211,7 @@
   }
 
   &-glossary {
-    &.pane-content {
+    &.content {
       border-top: 1px solid @strokeGrey;
       padding-bottom: 10px;
     }
