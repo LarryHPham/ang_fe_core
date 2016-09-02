@@ -27,6 +27,6 @@ export class DYKModule implements OnChanges {
 
   ngOnChanges(event) {
     let profileName = this.profileName ? this.profileName : "MLB";
-    this.headerInfo.moduleTitle = "Did You Know - " + profileName;
+    this.headerInfo.moduleTitle = "Did You Know <span class='mod-info'>- " + profileName + "</span>";
   }//ngOnChanges ends
 }
