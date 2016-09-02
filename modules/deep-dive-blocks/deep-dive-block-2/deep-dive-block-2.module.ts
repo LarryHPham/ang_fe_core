@@ -27,18 +27,13 @@ export class DeepDiveBlock2{
   page: number = 2;
   recommendationData: any;
   boxArticleData: any;
-  partnerID:string;
-  scope: string;
   scroll: boolean = true;
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
+  @Input() scope: string;
 
   constructor(private _router:Router, private _deepDiveData: DeepDiveService){
-      GlobalSettings.getParentParams(_router, parentParams => {
-        this.partnerID = parentParams.partnerID;
-        this.scope = parentParams.scope;
-      })
   }
   ngOnInit() {
      this.callModules();

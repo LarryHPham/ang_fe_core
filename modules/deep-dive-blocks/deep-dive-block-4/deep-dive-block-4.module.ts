@@ -19,20 +19,14 @@ export class DeepDiveBlock4{
   fourthStackTop: any;
   fourthStackRow: any;
   callLimit:number = 8;
-  partnerID:string;
-  scope: string;
   scroll: boolean = true;
   aiBatchName: string = "player-comparisons";
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
+  @Input() scope: string;
 
-  constructor(private _router:Router, private _deepDiveData: DeepDiveService){
-      GlobalSettings.getParentParams(_router, parentParams => {
-        this.partnerID = parentParams.partnerID;
-        this.scope = parentParams.scope;
-      })
-    }
+  constructor(private _router:Router, private _deepDiveData: DeepDiveService){}
     ngOnInit() {
        this.callModules();
     }
