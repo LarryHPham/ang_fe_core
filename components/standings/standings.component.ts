@@ -36,6 +36,7 @@ export class StandingsComponent implements DoCheck {
   public carouselData: Array<SliderCarouselInput> = [];
 
   @Input() tabs: Array<StandingsTableTabData<any>>;
+  @Input() scope: string;
 
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
   @Output("filterSelected") filterSelectedListener = new EventEmitter();

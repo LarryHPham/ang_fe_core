@@ -3,7 +3,7 @@
     <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
   </div>
 
-  <tabs (tabSelected)="tabSelected($event)">
+  <tabs (tabSelected)="tabSelected($event)" [class.hidden-tabs]="scope != 'nfl'">
     <tab *ngFor="let tab of tabs" [tabTitle]="tab.title" [active]="tab.isActive">
       <loading-component *ngIf="!tab.isLoaded && !tab.hasError"></loading-component>
       <div *ngIf="tab.isLoaded && tab.sections" class="inner-pane">
@@ -11,7 +11,7 @@
           <span class="list-filter-heading">
             <i class="fa fa-cog"></i> List Filters
           </span>
-          <div class="sort-title">
+          <div class="sort-title conferences">
             <span class="sort-title-text">Conference: </span>
             <dropdown *ngIf="sortConference" [list]="sortConference" [selectedKey]="sortConferenceSelected" (selectionChanged)="conferenceChanged($event)"></dropdown>
             <dropdown *ngIf="sortDivision" [list]="sortDivision" [selectedKey]="sortDivisionSelected" (selectionChanged)="divisionChanged($event)"></dropdown>
