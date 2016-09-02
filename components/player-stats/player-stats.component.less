@@ -1,12 +1,16 @@
 .module-container .stats .pane {
+
   min-height: 80px;
+  @media @mobile {
+    z-index: 0;
+  }
 }
 .stats {
   .nav-tabs li span{
     position:relative;
   }
   .custom-table-row .image-column .table-cell-image span{
-    width:100%;
+    //width:100%;
     transform: translateY(-23%);
     -webkit-transform: translateY(-23%);
     @media @mobile{
@@ -211,21 +215,37 @@
   }
 
   &-glossary {
-    &.content {
-      border-top: 1px solid @strokeGrey;
+    &.pane-content {
+      //position: absolute;
+      //z-index: 1;
+      //border-top: 1px solid @strokeGrey;
       padding-bottom: 10px;
+      padding-top:10px;
+      @media @mobile{
+        margin-top:25px;
+      }
     }
 
     &-title {
       margin: 10px 0px;
       .globalDefaultFont(16px, 700);
+      @media @mobile {
+        position: absolute;
+        z-index: 1;
+        bottom: 89px;
+      }
     }
 
     &-box {
       background-color: @backgroundGrey;
+
       //border-top: 1px solid @strokeGrey;
       padding: 10px 10px;
       .globalDefaultFont(12px, 400);
+      @media @mobile{
+        position:absolute;
+        bottom:10px;
+      }
 
       li {
         line-height: 15px;
