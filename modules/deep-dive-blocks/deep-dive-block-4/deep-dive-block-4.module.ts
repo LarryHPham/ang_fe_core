@@ -18,11 +18,11 @@ export class DeepDiveBlock4{
   public widgetPlace: string = "widgetForPage";
   fourthStackTop: any;
   fourthStackRow: any;
-  callLimit:number = 1;
+  callLimit:number = 8;
   partnerID:string;
   scope: string;
   scroll: boolean = true;
-  aiBatchName: string = "player-comparison";
+  aiBatchName: string = "player-comparisons";
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
@@ -47,7 +47,7 @@ export class DeepDiveBlock4{
         });
     this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, this.aiBatchName, 1, this.callLimit, this.geoLocation)
         .subscribe(data => {
-          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, 'player-comparisons');
+          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, this.aiBatchName);
         },
         err => {
             console.log("Error getting forth article stack ROW data");

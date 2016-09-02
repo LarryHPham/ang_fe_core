@@ -21,6 +21,7 @@ export class DeepDiveBlock2{
   secStackRow: any;
   callLimit:number = 9;
   videoCallLimit: number = 6;
+  recCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 2;
@@ -55,9 +56,12 @@ export class DeepDiveBlock2{
 
   getRecommendationData(){
     //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(this.scope)
+    this._deepDiveData.getRecArticleData(this.scope, this.geoLocation, 1, this.recCallLimit)
         .subscribe(data => {
           this.recommendationData = this._deepDiveData.transformToRecArticles(data);
+        },
+        err => {
+            console.log("Error getting recommendation data");
         });
   }
   private getDeepDiveVideoBatch(region, numItems, startNum){

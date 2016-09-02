@@ -21,6 +21,7 @@ export class DeepDiveBlock3{
   thirdStackRow: any;
   callLimit:number = 8;
   videoCallLimit: number = 6;
+  recCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 3;
@@ -58,7 +59,7 @@ export class DeepDiveBlock3{
 
   getRecommendationData(){
     //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(this.scope)
+    this._deepDiveData.getRecArticleData(this.scope, this.geoLocation, 2, this.recCallLimit)
         .subscribe(data => {
           this.recommendationData = this._deepDiveData.transformToRecArticles(data);
         },
