@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
 
@@ -30,16 +30,19 @@ export interface TransactionTabData {
   directives: [NoDataBox, Tab, Tabs, SliderCarousel, DropdownComponent, TransactionsListItem, LoadingComponent]
 })
 
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit {
   @Output() tabSwitched = new EventEmitter();
-  @Output() dropdownSwitched = new EventEmitter();
+  @Output() transactionKeyFilter = new EventEmitter();
 
   @Input() tabs: Array<TransactionTabData>;
+  @Input() transactionFilter1 : Array<{key:string, value:string}>;
+  @Input() dropdownKey1: string;
 
   carouselDataArray: Array<SliderCarouselInput>;
   pageName: string;
 
   private selectedTabTitle: string;
+  private selectedFilterTitle: string;
   private tabsLoaded: {[index:number]:string};
 
   private selectedDropdownTitle: string;
@@ -61,7 +64,14 @@ export class TransactionsComponent {
     }
   }
 
+  ngOnInit() {
+    if(this.transactionFilter1 != null){
+      this.dropdownKey1 = this.transactionFilter1[0].key;
+    }
+  }
+
   updateCarousel() {
+    console.log('update carousel');
     var selectedTab = this.getSelectedTab();
     if ( selectedTab ) {
       this.carouselDataArray = selectedTab.carData;
@@ -84,7 +94,9 @@ export class TransactionsComponent {
     this.pageName = this.selectedTabTitle;
   }
 
-  dropdownChanged(event) {
-    this.dropdownSwitched.next(event);
+  transactionDropdownChange(event) {
+    this.selectedFilterTitle = event.key;
+    this.transactionKeyFilter.next(event);
+    this.updateCarousel();
   }
 }

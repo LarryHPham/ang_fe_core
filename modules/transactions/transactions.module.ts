@@ -19,11 +19,14 @@ export interface TransactionModuleData {
 })
 
 export class TransactionsModule {
-  @Output() tabSwitched = new EventEmitter(true)
+  @Output() tabSwitched = new EventEmitter(true);
+  @Output() transactionKeyFilter =  new EventEmitter();
+
   @Input() data: TransactionModuleData;
+  @Input() transactionFilter1;
+  @Input() dropdownKey1: string;
 
   modHeadData: ModuleHeaderData;
-
   footerData: ModuleFooterData;
 
   ngOnChanges() {
@@ -38,9 +41,19 @@ export class TransactionsModule {
       hasIcon: false,
       iconClass: '',
     }
-  }
+
+    if(this.transactionFilter1 != null){
+      if(this.transactionFilter1.length > 0 && this.dropdownKey1 == null){
+        this.dropdownKey1 = this.transactionFilter1[0];
+      }
+    }
+  } //ngOnChanges()
 
   tabSelected(tab) {
     this.tabSwitched.next(tab);
+  }
+
+  transactionFilterSelected(event) {
+    this.transactionKeyFilter.next(event);
   }
 }
