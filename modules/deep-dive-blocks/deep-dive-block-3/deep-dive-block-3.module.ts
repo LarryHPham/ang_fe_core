@@ -21,27 +21,22 @@ export class DeepDiveBlock3{
   thirdStackRow: any;
   callLimit:number = 8;
   videoCallLimit: number = 6;
+  recCallLimit: number = 6;
   tilestackData: any;
   videoData: any;
   page: number = 3;
   recommendationData: any;
   boxArticleData: any;
-  partnerID:string;
-  scope: string;
   scroll: boolean = true;
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
+  @Input() scope: string;
 
   constructor(
     private _router:Router,
     private _deepDiveData: DeepDiveService
-    ){
-      GlobalSettings.getParentParams(_router, parentParams => {
-        this.partnerID = parentParams.partnerID;
-        this.scope = parentParams.scope;
-      })
-    }
+    ){}
     ngOnInit() {
        this.callModules();
     }
@@ -55,15 +50,10 @@ export class DeepDiveBlock3{
             console.log("Error getting third article batch data");
         });
   }
-  getTileStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
-        .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
-        });
-  }
+
   getRecommendationData(){
     //var state = this.geoLocation; //required from AI to have the call of state come in UPPERCASE
-    this._deepDiveData.getRecArticleData(this.scope)
+    this._deepDiveData.getRecArticleData(this.scope, this.geoLocation, 2, this.recCallLimit)
         .subscribe(data => {
           this.recommendationData = this._deepDiveData.transformToRecArticles(data);
         },
@@ -83,7 +73,6 @@ export class DeepDiveBlock3{
     this.getRecommendationData();
     this.getDeepDiveVideoBatch(this.geoLocation, this.videoCallLimit, this.page);
     this.getThirdArticleStackData();
-    this.getTileStackData();
   }
 
 }
