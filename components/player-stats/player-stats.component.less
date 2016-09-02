@@ -1,12 +1,18 @@
 .module-container .stats .pane {
+
   min-height: 80px;
+  @media @mobile {
+    z-index: 0;
+  }
 }
 .stats {
   .nav-tabs li span{
     position:relative;
   }
   .custom-table-row .image-column .table-cell-image span{
-    width:100%;
+    //width:100%;
+    transform: translateY(-23%);
+    -webkit-transform: translateY(-23%);
     @media @mobile{
       line-height: 14px;
       //position: relative;
@@ -14,9 +20,13 @@
       text-align:left;
     }
   }
+  .custom-table-body-cell{
+    line-height:17px;
+  }
   .custom-table .spacer {
+    display:none;
     @media @mobile {
-      width: 155px;
+      width: 160px;
       display:block;
     }
   }
@@ -43,7 +53,10 @@
     }
     .scc-details-mainImg{
       @media @tablet {
-        margin-right: 20px;
+        .image-150{
+          left: 20px;
+        }
+        //margin-right: 20px;
       }
     }
     .scc-details-type1-desc{
@@ -58,34 +71,35 @@
     .scc-details-desc {
       width: 100%;
       @media @tablet{
+        margin:9%;
+        display:inline-block;
         //position: relative;
         //left:15px;
       }
     }
   }
 
-  .data-column-hdr, .data-column {
-    min-width: 55px; //since it needs to include margin for padding
-  }
-  table circle-image {
-    position: relative;
-    top: 7px;
-    @media @mobile {
-      display: none;
-    }
-  }
-
   .image-column-hdr, .image-column {
-    min-width: 185px;
-    max-width: 300px;
-    width: 29%;
+    width: 200px;
     @media @mobile {
       width: 150px;
     }
   }
-
+  .custom-table-sort  {
+    @media @mobile {
+      top: 8px;
+      right: 6%;
+    }
+  }
+  .data-column-hdr,.data-column{
+    min-width: 55px;
+  }
+  table circle-image {
+    @media @mobile {
+      display: none;
+    }
+  }
   .table-cell-image span {
-    width:60% !important;
     @media @mobile {
       margin-left: 10px;
     }
@@ -94,6 +108,7 @@
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       background-color: inherit;
       height: 40px;
       border-width: 0 5px 0 0;
@@ -107,18 +122,24 @@
     }
   }
   .image-column-hdr {
-    position: absolute;
-    z-index: 1;
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      left: 10px;
+      .custom-table-header {
+        margin-right:0!important;
+      }
+    }
     background-color: @white;
-  }
-  .custom-table .spacer {
-    width: 155px;
-    display:block;
+    .custom-table-header {
+      margin-right:5px;
+    }
   }
 
 
 
   &-table-title {
+    left:5px;
     height: 40px;
     margin:0px;
     padding:0px;
@@ -152,7 +173,7 @@
   }
 
   &-season-dropdown {
-    margin: 0px;
+    margin: 0px 7.5px;
     float: right;
     .flexDisplay;
     .flexAlignItems(center);
@@ -175,8 +196,8 @@
         position: relative;
         float:left;
         top: 8px;
-        left: -17px;
-        margin-left:15px;
+        left: -10px;
+        //margin-left:15px;
         .globalDefaultFont(12px, 400);
 
       }
@@ -195,20 +216,36 @@
 
   &-glossary {
     &.pane-content {
-      border-top: 1px solid @strokeGrey;
+      //position: absolute;
+      //z-index: 1;
+      //border-top: 1px solid @strokeGrey;
       padding-bottom: 10px;
+      padding-top:10px;
+      @media @mobile{
+        margin-top:25px;
+      }
     }
 
     &-title {
       margin: 10px 0px;
       .globalDefaultFont(16px, 700);
+      @media @mobile {
+        position: absolute;
+        z-index: 1;
+        bottom: 89px;
+      }
     }
 
     &-box {
       background-color: @backgroundGrey;
+
       //border-top: 1px solid @strokeGrey;
       padding: 10px 10px;
       .globalDefaultFont(12px, 400);
+      @media @mobile{
+        position:absolute;
+        bottom:10px;
+      }
 
       li {
         line-height: 15px;
@@ -216,73 +253,3 @@
     }
   }
 }
-
-/*.stats {
-  &-car {
-    .scc-details-desc {
-      height: 170px;
-    }
-  }
-
-  .data-column-hdr, .data-column {
-    width: 50px; //since it needs to include margin for padding
-  }
-
-  .image-column-hdr, .image-column {
-    width: 205px;
-  }
-
-  .pane {
-    padding: 0px;
-
-    &-content {
-      padding: 0 15px 5px;
-    }
-  }
-
-  &-table-title {
-    .flexDisplay;
-    .flexAlignItems(center);
-    .flexJustify(space-between);
-    h4 {
-      margin: 0px;
-      .globalDefaultFont(18px, 400);
-    }
-    margin: 20px 15px;
-  }
-
-  &-season-dropdown {
-    margin: 0px;
-    float: right;
-    .flexDisplay;
-    .flexAlignItems(center);
-    .globalDefaultFont(12px, 400);
-    .dropdown {
-      margin-left: 10px;
-      width: 145px;
-    }
-  }
-
-  &-glossary {
-    &.pane-content {
-      padding-bottom: 10px;
-    }
-
-    &-title {
-      margin: 25px 15px 0px 15px;
-      .globalDefaultFont(16px, 700);
-    }
-
-    &-box {
-      background-color: @backgroundGrey;
-      border-top: 1px solid @strokeGrey;
-      padding: 14px 16px;
-      .globalDefaultFont(12px, 400);
-
-      li {
-        line-height: 15px;
-      }
-    }
-  }
-}
-*/

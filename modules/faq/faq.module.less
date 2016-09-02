@@ -18,21 +18,20 @@
         margin: 15px 0 15px 20px;
         line-height: 20px;
         width: 90%;
+        @media @tablet{
+          margin: 25px 0 25px 25px;
+        }
       }
       &-icon{
         .globalDefaultModFont(25px, 400, @masterBrandColor);
-        margin: 25px 15px;
+        margin: auto;
         text-align: center;
-        width:25px;
+        width:10%;
         a{
           color: @masterBrandColor;
           &:hover{
             color: @black;
           }
-        }
-
-        @media @tablet{
-          margin: 25px 30px;
         }
       }//faq-details-info-icon ends
     }//faq-details-info ends
@@ -45,6 +44,7 @@
         color: @masterBrandColor;
         margin-right: 5px;
         font-size: 12px;
+        vertical-align: middle;
       }
     }//faq-details-answer ends
     &.active{
@@ -57,9 +57,13 @@
         }
       }
       .faq-details-answer{
-        margin: -15px 0 25px 25px;
         padding-right: 85px;
         display: block;
+        margin: -5px 0 15px 20px;
+        @media @tablet{
+          margin: -15px 0 25px 20px;
+
+        }
       }
     }
   }//faq-details ends
