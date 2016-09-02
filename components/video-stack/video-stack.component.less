@@ -1,8 +1,14 @@
 .video-stack {
   position: relative;
-  &:hover {
-    .video-title-mid {
-      color: @masterBrandColor!important;
+  @media @tablet{
+    &:hover {
+      .video-title-mid {
+        color: @masterBrandColor!important;
+      }
+      .playCircle{
+        color: rgba(30, 185, 227, 0.9)!important;
+        background-color: @white!important;
+      }
     }
   }
   .flexDisplay;
@@ -29,39 +35,8 @@
       }
     }
   }
-  .overlay {
-    width:100%;
-    height:100%;
-    background-color: @masterImageHover;
-    position: relative;
-    display: none;
-    div.watch-small {
-      color: @white;
-      position: absolute;
-      border: 1px solid @white;
-      font-size: 12px;
-      padding: 8px;
-      height: 30px;
-      width: 60px;
-      left: ~"calc(50% - 30px)";
-      top: ~"calc(50% - 15px)";
-      text-align: center;
-    }
-    div.watch-large {
-      color: @white;
-      position: absolute;
-      border: 1px solid @white;
-      font-size: 16px;
-      padding:10px;
-      height:40px;
-      width: 120px;
-      left: ~"calc(50% - 60px)";
-      top: ~"calc(50% - 20px)";
-      text-align: center;
-    }
-  }
+
   &-right {
-    margin-top: 5px;
     .video-title {
       &-top {
         text-transform: uppercase;
@@ -94,22 +69,12 @@
   .video-title-mid {
     color: @masterBrandColor;
   }
-  .video-stack-video {
-    .overlay {
-      display: block!important;
-    }
-    .greyout {
-      display:none!important;
-    }
-  }
 }
 @media @mobile {
   .video-stack-container {
     .col-xs-12;
     margin: 0 auto;
-    .video-stack-right-text {
-      display: none;
-    }
+    float: none;
   }
   .video-stack, .video-stack {
     display: block;
@@ -138,11 +103,7 @@
     }
     .video-stack-right {
       height: auto;
-      padding: 10px 10px 7px;
-      &-text {
-        height: auto;
-        .globalDefaultModFont(14px, 400, @black);
-      }
+      padding: 10px 10px 0px;
       .video-title-top {
         display: block;
         padding: 0 0 5px 0;
@@ -153,9 +114,6 @@
       }
     }
   }
-  .video-stack {
-    padding-bottom: 5px;
-  }
 
   .video-stack:nth-of-type(4), .video-stack:nth-of-type(5), .video-stack:nth-of-type(6) {
     display: none;
@@ -165,13 +123,9 @@
   .video-stack-container {
     margin: 0 auto;
     padding: 0 15px;
-    .video-stack-right-text {
-      display: inline-block;
-      height: auto;
-    }
   }
   .video-stack {
-    margin: 0 auto 20px auto;
+    margin: 0 auto 10px;
     .col-xs-6;
     .flexDirection(column);
     &-video {
@@ -196,14 +150,17 @@
       }
     }
     .video-stack-right {
+      &-title {
+        padding-top: 10px;
+      }
       .video-title-top {
         display: block;
         padding: 0 0 5px 0;
       }
       .video-title-mid {
         display: block;
-        .globalDefaultModFont(16px, 400, @black);
         line-height: 22px;
+        .globalDefaultModFont(16px, 400, @black);
       }
     }
   }
@@ -217,6 +174,7 @@
 }
 @media @desktop-m {
   .video-stack-container {
+    display: inherit;
     width: 670px;
     margin: 0 auto;
     padding: 0;

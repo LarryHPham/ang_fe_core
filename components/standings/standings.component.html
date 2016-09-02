@@ -3,12 +3,26 @@
     <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
   </div>
 
-  <tabs (tabSelected)="tabSelected($event)">
+  <tabs (tabSelected)="tabSelected($event)" [class.hidden-tabs]="scope != 'nfl'">
     <tab *ngFor="let tab of tabs" [tabTitle]="tab.title" [active]="tab.isActive">
       <loading-component *ngIf="!tab.isLoaded && !tab.hasError"></loading-component>
-      <div *ngIf="tab.isLoaded && tab.sections">
-        <div *ngFor="let section of tab.sections" class="standings-tab-section">
-            <h4 [innerHtml]="section.groupName"></h4>
+      <div *ngIf="tab.isLoaded && tab.sections" class="inner-pane">
+        <div class="filters">
+          <span class="list-filter-heading">
+            <i class="fa fa-cog"></i> List Filters
+          </span>
+          <div class="sort-title conferences">
+            <span class="sort-title-text">Conference: </span>
+            <dropdown *ngIf="sortConference" [list]="sortConference" [selectedKey]="sortConferenceSelected" (selectionChanged)="conferenceChanged($event)"></dropdown>
+            <dropdown *ngIf="sortDivision" [list]="sortDivision" [selectedKey]="sortDivisionSelected" (selectionChanged)="divisionChanged($event)"></dropdown>
+          </div>
+          <div class="sort-title">
+            <span class="sort-title-text">Season: </span>
+            <dropdown *ngIf="sortSeason" [list]="sortSeason" [selectedKey]="sortSeasonSelected" (selectionChanged)="seasonChanged($event)"></dropdown>
+          </div>
+        </div>
+        <div *ngFor="let section of tab.sections; let i = index" class="standings-tab-section">
+          <span class="tab-name {{'no-'+i}}" *ngIf="section.conference && section.division" [innerHtml]="'<b>' + section.conference + ': ' + section.division.replace(section.conference, '') + ' </b> Standings' "></span>
             <custom-table [model]="section.tableData" (sortChanged)="updateCarousel($event)"></custom-table>
         </div>
       </div>
@@ -17,5 +31,5 @@
       </div>
     </tab>
   </tabs>
-  
+
 </div>

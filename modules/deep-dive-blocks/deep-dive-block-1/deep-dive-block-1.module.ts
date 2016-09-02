@@ -23,11 +23,9 @@ export class DeepDiveBlock1{
   public widgetPlace: string = "widgetForPage";
   firstStackTop: any;
   firstStackRow: any;
-  callLimit:number = 9;
+  callLimit:number = 8;
   videoCallLimit: number = 6;
   tilestackData: any;
-  partnerID:string;
-  scope: string;
   //for box scores
   boxScoresData: any;
   videoData: any;
@@ -38,12 +36,8 @@ export class DeepDiveBlock1{
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
-
+  @Input() scope: string;
   constructor(private _router:Router, private _boxScores:BoxScoresService, private _deepDiveData: DeepDiveService){
-      GlobalSettings.getParentParams(_router, parentParams => {
-        this.partnerID = parentParams.partnerID;
-        this.scope = parentParams.scope;
-      })
       var currentUnixDate = new Date().getTime();
       //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
       this.dateParam ={
@@ -69,9 +63,9 @@ export class DeepDiveBlock1{
         err => {
               console.log("Error getting first article stack data");
         });
-    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'postgame-report', 1, 9)
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, this.callLimit, this.geoLocation)
         .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'postgame-report');//TODO
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');
         },
         err => {
             console.log("Error getting first AI article batch data");
@@ -81,7 +75,7 @@ export class DeepDiveBlock1{
   getTileStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 2, this.geoLocation)
         .subscribe(data => {
-          this.tilestackData = this._deepDiveData.transformTileStack(data);
+          this.tilestackData = this._deepDiveData.transformTileStack(data, this.scope);
         },
         err => {
             console.log("Error getting tile stack data");

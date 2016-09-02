@@ -2,7 +2,6 @@ import {Component,OnInit, Input} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {SanitizeHtml} from "../../pipes/safe.pipe";
 
-
 declare var moment;
 
 @Component({
@@ -11,7 +10,6 @@ declare var moment;
   directives: [ROUTER_DIRECTIVES],
   providers: [],
   pipes: [SanitizeHtml]
-
 })
 
 export class VideoStackComponent implements OnInit{
