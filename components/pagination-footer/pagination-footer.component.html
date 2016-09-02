@@ -57,7 +57,7 @@
             {{item.index}}
           </a>
 
-          <a *ngIf="showMaxSkip" (click)="indexClick($event)" *ngIf="paginationParameters.max > 1" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}" [routerLink]="[paginationParameters.navigationPage, maxButtonParameters]">
+          <a (click)="indexClick($event)" *ngIf="paginationParameters.max > 1 && showMaxSkip" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}" [routerLink]="[paginationParameters.navigationPage, maxButtonParameters]">
             {{paginationParameters.max}}
           </a>
         </div>

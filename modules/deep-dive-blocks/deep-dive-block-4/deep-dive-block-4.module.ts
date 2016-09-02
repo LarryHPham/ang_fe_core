@@ -18,21 +18,15 @@ export class DeepDiveBlock4{
   public widgetPlace: string = "widgetForPage";
   fourthStackTop: any;
   fourthStackRow: any;
-  callLimit:number = 7;
-  partnerID:string;
-  scope: string;
+  callLimit:number = 8;
   scroll: boolean = true;
-  aiBatchName: string = "player-comparison";
+  aiBatchName: string = "player-comparisons";
   @Input() maxHeight: any;
   @Input() geoLocation: any;
   @Input() profileName: any;
+  @Input() scope: string;
 
-  constructor(private _router:Router, private _deepDiveData: DeepDiveService){
-      GlobalSettings.getParentParams(_router, parentParams => {
-        this.partnerID = parentParams.partnerID;
-        this.scope = parentParams.scope;
-      })
-    }
+  constructor(private _router:Router, private _deepDiveData: DeepDiveService){}
     ngOnInit() {
        this.callModules();
     }
@@ -45,9 +39,9 @@ export class DeepDiveBlock4{
         err => {
               console.log("Error getting forth article stack TOP data");
         });
-    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, this.aiBatchName, 1, this.callLimit)
+    this._deepDiveData.getDeepDiveAiHeavyBatchService(this.scope, this.aiBatchName, 1, this.callLimit, this.geoLocation)
         .subscribe(data => {
-          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, 'player-comparisons');
+          this.fourthStackRow = this._deepDiveData.transformToAiHeavyArticleRow(data, this.aiBatchName);
         },
         err => {
             console.log("Error getting forth article stack ROW data");
