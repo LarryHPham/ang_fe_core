@@ -23,12 +23,7 @@
                             {{data.playerComparisonModule[0].name}}
                         </div>
                         <div class="comparison-player-container-profile-info-left-profile-data1">
-                        <span *ngIf="articleSubType != 'pitcher'">
-                            {{data.playerComparisonModule[0].season}} Average {{data.playerComparisonModule[0].value}}
-                        </span>
-                        <span *ngIf="articleSubType == 'pitcher'">
-                            {{data.playerComparisonModule[0].season}} ERA {{data.playerComparisonModule[0].value}}
-                        </span>
+                            {{data.playerComparisonModule[0].season}} {{data.playerComparisonModule[0].label}} {{data.playerComparisonModule[0].value}}
                         </div>
                     </div>
                     <div class="comparison-player-container-profile-info-right">
@@ -36,12 +31,7 @@
                             {{data.playerComparisonModule[1].name}}
                         </div>
                         <div class="comparison-player-container-profile-info-right-profile-data2">
-                        <span *ngIf="articleSubType != 'pitcher'">
-                            {{data.playerComparisonModule[1].season}} Average {{data.playerComparisonModule[1].value}}
-                        </span>
-                        <span *ngIf="articleSubType == 'pitcher'">
-                            {{data.playerComparisonModule[1].season}} ERA {{data.playerComparisonModule[1].value}}
-                        </span>
+                            {{data.playerComparisonModule[1].season}} {{data.playerComparisonModule[1].label}} {{data.playerComparisonModule[1].value}}
                         </div>
                     </div>
                 </div>
