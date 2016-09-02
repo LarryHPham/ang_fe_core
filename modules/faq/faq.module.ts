@@ -34,6 +34,6 @@ export class FAQModule implements OnChanges {
 
   ngOnChanges() {
     let profileName = this.profileName ? this.profileName : "MLB";
-    this.headerInfo.moduleTitle = "FAQ - " + profileName;
+    this.headerInfo.moduleTitle = "FAQ <span class='mod-info'>- " + profileName + "</span>";
   }
 }

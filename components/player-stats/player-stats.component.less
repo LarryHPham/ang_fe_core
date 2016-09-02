@@ -7,12 +7,17 @@
   }
   .custom-table-row .image-column .table-cell-image span{
     width:100%;
+    transform: translateY(-23%);
+    -webkit-transform: translateY(-23%);
     @media @mobile{
       line-height: 14px;
       //position: relative;
       //top:-2px;
       text-align:left;
     }
+  }
+  .custom-table-body-cell{
+    line-height:17px;
   }
   .custom-table .spacer {
     display:none;
@@ -44,7 +49,10 @@
     }
     .scc-details-mainImg{
       @media @tablet {
-        margin-right: 20px;
+        .image-150{
+          left: 20px;
+        }
+        //margin-right: 20px;
       }
     }
     .scc-details-type1-desc{
@@ -59,6 +67,8 @@
     .scc-details-desc {
       width: 100%;
       @media @tablet{
+        margin:9%;
+        display:inline-block;
         //position: relative;
         //left:15px;
       }
@@ -66,7 +76,7 @@
   }
 
   .image-column-hdr, .image-column {
-    width: 230px;
+    width: 200px;
     @media @mobile {
       width: 150px;
     }
@@ -74,6 +84,7 @@
   .custom-table-sort  {
     @media @mobile {
       top: 8px;
+      right: 6%;
     }
   }
   .data-column-hdr,.data-column{
@@ -158,7 +169,7 @@
   }
 
   &-season-dropdown {
-    margin: 0px;
+    margin: 0px 7.5px;
     float: right;
     .flexDisplay;
     .flexAlignItems(center);
@@ -181,8 +192,8 @@
         position: relative;
         float:left;
         top: 8px;
-        left: -17px;
-        margin-left:15px;
+        left: -10px;
+        //margin-left:15px;
         .globalDefaultFont(12px, 400);
 
       }
@@ -200,7 +211,7 @@
   }
 
   &-glossary {
-    &.pane-content {
+    &.content {
       border-top: 1px solid @strokeGrey;
       padding-bottom: 10px;
     }
@@ -222,73 +233,3 @@
     }
   }
 }
-
-/*.stats {
-  &-car {
-    .scc-details-desc {
-      height: 170px;
-    }
-  }
-
-  .data-column-hdr, .data-column {
-    width: 50px; //since it needs to include margin for padding
-  }
-
-  .image-column-hdr, .image-column {
-    width: 205px;
-  }
-
-  .pane {
-    padding: 0px;
-
-    &-content {
-      padding: 0 15px 5px;
-    }
-  }
-
-  &-table-title {
-    .flexDisplay;
-    .flexAlignItems(center);
-    .flexJustify(space-between);
-    h4 {
-      margin: 0px;
-      .globalDefaultFont(18px, 400);
-    }
-    margin: 20px 15px;
-  }
-
-  &-season-dropdown {
-    margin: 0px;
-    float: right;
-    .flexDisplay;
-    .flexAlignItems(center);
-    .globalDefaultFont(12px, 400);
-    .dropdown {
-      margin-left: 10px;
-      width: 145px;
-    }
-  }
-
-  &-glossary {
-    &.pane-content {
-      padding-bottom: 10px;
-    }
-
-    &-title {
-      margin: 25px 15px 0px 15px;
-      .globalDefaultFont(16px, 700);
-    }
-
-    &-box {
-      background-color: @backgroundGrey;
-      border-top: 1px solid @strokeGrey;
-      padding: 14px 16px;
-      .globalDefaultFont(12px, 400);
-
-      li {
-        line-height: 15px;
-      }
-    }
-  }
-}
-*/
