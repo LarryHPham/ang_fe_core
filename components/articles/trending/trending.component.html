@@ -17,7 +17,7 @@
                     <div class="arpt">
                         <div class="arpt-date">Posted: on {{data.date}}</div>
                     </div>
-                    <img class="trending-article-image" src="/app/public/no-image.svg"
+                    <img class="trending-article-image" src="{{data.image}}"
                          onerror="this.src='/app/public/no-image.svg'"/>
                     <div class="trending-article-content" [innerHTML]="data.content|safeHtml"></div>
                     <div class="trending-article-read-more">Read the story <i class="fa fa-arrow-right margin"></i>
@@ -42,8 +42,8 @@
             <div class="trending-small-article">
                 <a [routerLink]="data.url">
                     <div class="trending-small-article-title">{{data.title}}</div>
-                        <!--<img class="trending-small-article-image" src="{{trendingImages[i]}}"-->
-                             <!--onerror="this.src='/app/public/no-image.svg'"/>-->
+                        <img class="trending-small-article-image" src="{{data.image}}"
+                             onerror="this.src='/app/public/no-image.svg'"/>
                     <div class="trending-small-article-content" [innerHTML]="data.content|safeHtml"></div>
                     <div class="trending-small-article-read-more">Read the article <i
                             class="fa fa-arrow-right margin"></i>

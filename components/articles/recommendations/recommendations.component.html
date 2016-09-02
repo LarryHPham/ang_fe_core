@@ -8,8 +8,8 @@
                 <a class="recommendations-articles-six article-recommend"
                    [routerLink]="['Article-pages', {eventType: data.eventType, eventID: data.eventID}]"
                    title="{{data.title}}">
-                    <!--<img class="recommendations-articles-six-image" src="{{data.images}}"-->
-                         <!--onerror="this.src='/app/public/no-image.svg'"/>-->
+                    <img class="recommendations-articles-six-image" src="{{data.images}}"
+                         onerror="this.src='/app/public/no-image.svg'"/>
                     <div class="recommendations-articles-six-content">
                         <div class="recommendations-articles-six-content-dateline">
                             <span class="recommendations-articles-six-content-dateline-keyword">{{data.keyword}}</span>
@@ -24,9 +24,9 @@
                    [routerLink]="['Article-pages', {eventType: data.eventType, eventID: data.eventID}]"
                    title="{{data.title}}">
                     <div class="deep_recs-ai-articles-item">
-                        <!--<div class="deep_recs-ai-articles-item-article-images"-->
-                             <!--[style.background-image]="'url(' + data.images + ')'">-->
-                        <!--</div>-->
+                        <div class="deep_recs-ai-articles-item-article-images"
+                             [style.background-image]="'url(' + data.images + ')'">
+                        </div>
                         <div class="deep_recs-ai-articles-item-content">
                             <div class="deep_recs-ai-articles-item-content-dateline">
                                 <span class="deep_recs-ai-articles-item-content-dateline-keyword">{{data.keyword}}</span>

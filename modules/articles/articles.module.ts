@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {ArticleScheduleComponent} from "../../components/articles/article-schedule/article-schedule.component";
 import {ArticleMainComponent} from "../../components/articles/main-article/main-article.component";
 import {ArticleSubComponent} from "../../components/articles/sub-article/sub-article.component";
@@ -65,13 +65,12 @@ export class ArticlesModule implements OnInit {
     };
 
     constructor(private _params:RouteParams) {
+        console.log(this.headlineData);
         this.teamID = _params.get('teamId');
     }
 
     getArticles(data) {
         if (!this.isLeague) {
-            //this.imageData = HeadlineData['home'].images.concat(HeadlineData['away'].images);
-            this.imageData = "NADA";
             this.eventID = data['data'].event;
             this.scheduleHomeData = data['data'].home;
             this.scheduleAwayData = data['data'].away;
@@ -80,13 +79,12 @@ export class ArticlesModule implements OnInit {
             if (!this.isLeague) {
                 this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
             }
-            this.getMainArticle(data['data'], this.imageData, this.eventID);
-            this.getSubArticles(data['data'], this.imageData, this.eventID);
+            this.getMainArticle(data['data']);
+            this.getSubArticles(data['data'], this.eventID);
         } else {
-            this.imageData = "NADA";
             this.getHeaderData(data);
-            this.getMainArticle(data, this.imageData, this.eventID);
-            this.getSubArticles(data, this.imageData, this.eventID);
+            this.getMainArticle(data);
+            this.getSubArticles(data, this.eventID);
         }
 
     }
@@ -94,8 +92,8 @@ export class ArticlesModule implements OnInit {
     getHeaderData(header) {
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
-            this.timeStamp = moment.tz(moment.unix(header.timestamp), 'America/New_York').format("MMMM DD YYYY");
-            var dateString = moment.tz(moment.unix(header.timestamp), 'America/New_York').format("MM/DD/YYYY");
+            this.timeStamp = moment(header.timestamp).format("MMMM DD YYYY");
+            var dateString = moment(header.timestamp).format("MM/DD/YYYY");
             var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
             var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
             if (isPost) {
@@ -106,9 +104,9 @@ export class ArticlesModule implements OnInit {
                 }
             } else {
                 if (!this.isSmall) {
-                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(header.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name);
+                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name);
                 } else {
-                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment.unix(header.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
+                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
                 }
             }
         } else {
@@ -116,18 +114,17 @@ export class ArticlesModule implements OnInit {
         }
     }
 
-    static convertToETMoment(easternDateString) {
-        return moment(moment(easternDateString).format("MM/DD/YYYY"), "America/New_York");
-    };
-
     getSchedule(homeData, awayData) {
         var homeArr = [];
         var awayArr = [];
         var val = [];
-        var homeName = homeData.name;
-        var awayName = awayData.name;
+        var homeName = homeData.location + ' ' + homeData.name;
+        var awayName = awayData.location + ' ' + awayData.name;
+        console.log('1234', homeName);
+        console.log('1234', awayName);
         val['homeID'] = homeData.id;
-        val['homeLocation'] = homeData.name;
+        val['homeName'] = homeData.name;
+        val['homeLocation'] = homeData.location;
         val['homeHex'] = homeData.hex;
         if (this.teamID == homeData.id) {
             val['homeLogo'] = {
@@ -157,7 +154,8 @@ export class ArticlesModule implements OnInit {
         homeArr.push(val);
         val = [];
         val['awayID'] = awayData.id;
-        val['awayLocation'] = awayData.name;
+        val['awayName'] = awayData.name;
+        val['awayLocation'] = awayData.location;
         val['awayHex'] = awayData.hex;
         if (this.teamID == awayData.id) {
             val['awayLogo'] = {
@@ -201,7 +199,8 @@ export class ArticlesModule implements OnInit {
         }
     }
 
-    getMainArticle(headlineData, imageData, eventID) {
+    getMainArticle(headlineData) {
+        console.log(headlineData);
         if (!this.isLeague) {
             var pageIndex = Object.keys(headlineData['featuredReport'])[0];
             switch (pageIndex) {
@@ -239,7 +238,7 @@ export class ArticlesModule implements OnInit {
         }
     }
 
-    getSubArticles(data, imageData, eventID) {
+    getSubArticles(data, eventID) {
         //This code will change drastically once the proper api call has been created. This is temporary.
         var articleType = 'sub';
         var articles;
@@ -288,6 +287,7 @@ export class ArticlesModule implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.headlineData);
         this.isSmall = window.innerWidth <= 639;
     }
 

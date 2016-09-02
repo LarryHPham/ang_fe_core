@@ -68,18 +68,26 @@ export class TrendingComponent implements OnInit {
         this.isSmall = event.target.innerWidth <= 639;
     }
 
+    static convertToETMoment(easternDateString) {
+        moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
+        var date = moment(easternDateString).format('MMMM DD, YYYY');
+        var time = moment(easternDateString).format('hh:mmA');
+        return date + ' at ' + time;
+    };
+
     transformTrending(data, currentArticleId) {
         var articles = [];
         data.forEach(function (val, index) {
             if (val.id != currentArticleId) {
-                let date = GlobalFunctions.formatDate(val.last_updated);
-                val["date"] = date.month + " " + date.day + ", " + date.year + " " + date.time + " " + date.a + " EST";
+                var date = TrendingComponent.convertToETMoment(val.last_updated);
+                val["date"] = date + " EDT";
                 articles[index] = {
                     title: val.title,
                     date: val["date"],
                     content: val.teaser,
                     eventId: val.event_id,
                     eventType: "pregame-report",
+                    image: GlobalSettings.getImageUrl(val.image_url),
                     url: VerticalGlobalFunctions.formatArticleRoute("pregame-report", val.event_id),
                     rawUrl: window.location.protocol + "//" + window.location.host + "nfl/articles/pregame-report/" + val.event_id
                 };
