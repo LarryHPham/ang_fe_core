@@ -15,6 +15,7 @@ import {GlobalSettings} from "../../../global/global-settings";
 import {ImagesService} from "../../../services/carousel.service";
 
 declare var moment:any;
+declare var jQuery:any;
 
 @Component({
     selector: 'articles-module',
@@ -28,36 +29,31 @@ declare var moment:any;
         HeadToHeadComponent,
         LoadingComponent
     ],
-    inputs: ['headlineError'],
-    providers: [],
+    inputs: ['headlineError']
 })
 
 export class ArticlesModule implements OnInit {
-    @Input() isLeague:boolean;
     @Input() headlineData:Array<any>;
+    @Input() isLeague:boolean;
 
+    awayData:Array<any>;
+    homeData:Array<any>;
     moduleData:Array<any>;
-    imageData:any;
-    scheduleHomeData:any;
-    scheduleAwayData:any;
-    randomArticles:any;
-    mainImage:string;
+    randomArticles:Array<any>;
+    scheduleAwayData:Array<any>;
+    scheduleHomeData:Array<any>;
     subImages:Array<any>;
-    mainTitle:string;
-    titleFontSize:string;
-    mainContent:string;
-    images:any;
-    homeData:any;
-    awayData:any;
-    teamID:string;
-    eventID:number;
     eventType:string;
-    mainEventID:number;
-    arrLength:number;
-    league:boolean = false;
-    timeStamp:string;
     keyword:string;
+    mainContent:string;
+    mainImage:string;
+    mainTitle:string;
+    teamID:string;
+    timeStamp:string;
+    eventID:number;
+    mainEventID:number;
     isSmall:boolean = false;
+    league:boolean = false;
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
@@ -65,28 +61,26 @@ export class ArticlesModule implements OnInit {
     };
 
     constructor(private _params:RouteParams) {
-        console.log(this.headlineData);
         this.teamID = _params.get('teamId');
     }
 
     getArticles(data) {
         if (!this.isLeague) {
-            this.eventID = data['data'].event;
-            this.scheduleHomeData = data['data'].home;
-            this.scheduleAwayData = data['data'].away;
+            this.eventID = data.event;
+            this.scheduleHomeData = data.home;
+            this.scheduleAwayData = data.away;
             this.moduleData = data;
-            this.getHeaderData(data['data']);
+            this.getHeaderData(data);
             if (!this.isLeague) {
                 this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
             }
-            this.getMainArticle(data['data']);
-            this.getSubArticles(data['data'], this.eventID);
+            this.getMainArticle(data);
+            this.getSubArticles(data, this.eventID);
         } else {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
         }
-
     }
 
     getHeaderData(header) {
@@ -120,8 +114,6 @@ export class ArticlesModule implements OnInit {
         var val = [];
         var homeName = homeData.location + ' ' + homeData.name;
         var awayName = awayData.location + ' ' + awayData.name;
-        console.log('1234', homeName);
-        console.log('1234', awayName);
         val['homeID'] = homeData.id;
         val['homeName'] = homeData.name;
         val['homeLocation'] = homeData.location;
@@ -187,20 +179,7 @@ export class ArticlesModule implements OnInit {
         this.awayData = awayArr;
     }
 
-    getImages(imageList, articleType) {
-        imageList.sort(function () {
-            return 0.5 - Math.random()
-        });
-        if (articleType == 'main') {
-            this.mainImage = imageList[0];
-        }
-        if (articleType == 'sub') {
-            return this.subImages = imageList;
-        }
-    }
-
     getMainArticle(headlineData) {
-        console.log(headlineData);
         if (!this.isLeague) {
             var pageIndex = Object.keys(headlineData['featuredReport'])[0];
             switch (pageIndex) {
@@ -210,7 +189,6 @@ export class ArticlesModule implements OnInit {
                 case'postgame-report':
                     this.keyword = 'POSTGAME';
                     break;
-                //do not have live game data yet. The default is for testing.
                 default:
                     this.keyword = 'LIVE';
                     break;
@@ -219,53 +197,44 @@ export class ArticlesModule implements OnInit {
             this.eventType = pageIndex;
             this.mainEventID = headlineData.event;
             var articleContent = headlineData['featuredReport'][pageIndex].metaHeadline;
-            var maxLength = 500;
+            var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            var articleType = 'main';
-            //this.getImages(imageData, articleType);
+            this.mainImage = GlobalSettings.getImageUrl(headlineData['featuredReport'][pageIndex].image);
         } else {
             this.keyword = "PREGAME";
             this.mainTitle = headlineData['data'][0].title;
             this.eventType = "pregame-report";
             this.mainEventID = headlineData['data'][0].event_id;
             var articleContent = headlineData['data'][0].teaser;
-            var maxLength = 235;
+            this.mainImage = GlobalSettings.getImageUrl(headlineData['data'][0].image_url);
+            var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            var articleType = 'main';
-            //this.getImages(imageData, articleType);
         }
     }
 
     getSubArticles(data, eventID) {
-        //This code will change drastically once the proper api call has been created. This is temporary.
-        var articleType = 'sub';
         var articles;
-        //this.getImages(imageData, articleType);
         var articleArr = [];
-        var imageCount = 0;
-        var self = this;
         if (!this.isLeague) {
             Object.keys(data['otherReports']).forEach(function (val) {
-                imageCount++;
                 articles = {
                     title: data['otherReports'][val].displayHeadline,
                     eventType: val,
                     eventID: eventID,
-                    //images: self.subImages[imageCount]
+                    images: GlobalSettings.getImageUrl(data['otherReports'][val].image)
                 };
                 articleArr.push(articles);
             });
         } else {
             data['data'].forEach(function (val, index) {
                 if (index > 0) {
-                    imageCount++;
                     articles = {
                         title: val.title,
                         eventType: "pregame-report",
                         eventID: val.event_id,
-                        //images: self.subImages[imageCount]
+                        images: GlobalSettings.getImageUrl(val.image_url)
                     };
                     articleArr.push(articles);
                 }
@@ -277,23 +246,44 @@ export class ArticlesModule implements OnInit {
         this.randomArticles = articleArr;
     }
 
+    fitText() {
+        try {
+            var text = !this.isSmall ? jQuery('.main-article-container-content') : jQuery('.main-article-container-content-small');
+            if (text[0].scrollHeight > text[0].clientHeight) {
+                var original = text[0].innerHTML.substring(0, 400),
+                    index = 0;
+                while (index < 500 && text[0].scrollHeight > text[0].clientHeight) {
+                    index++;
+                    original = original.substring(0, original.lastIndexOf(" "));
+                    if (!this.isSmall) {
+                        text[0].innerHTML = original + '...<span class="main-article-container-content-read-more">Read More</span>';
+                    } else {
+                        text[0].innerHTML = original + '...';
+                    }
+                }
+            }
+        } catch (e) {
+        }
+    }
+
     static checkData(data) {
         return data
     }
 
     onResize(event) {
         this.isSmall = event.target.innerWidth <= 639;
+        this.fitText();
         this.getHeaderData(this.moduleData);
     }
 
     ngOnInit() {
-        console.log(this.headlineData);
         this.isSmall = window.innerWidth <= 639;
     }
 
     ngOnChanges() {
         if (ArticlesModule.checkData(this.headlineData)) {
             this.getArticles(this.headlineData);
+            this.fitText();
         }
     }
 }
