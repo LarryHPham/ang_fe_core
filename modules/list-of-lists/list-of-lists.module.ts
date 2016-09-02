@@ -4,6 +4,8 @@ import {ModuleFooter} from "../../components/module-footer/module-footer.compone
 import {ModuleHeader} from '../../components/module-header/module-header.component';
 import {ListOfListsItem} from "../../components/list-of-lists-item/list-of-lists-item.component";
 import {ModuleHeaderData} from "../../components/module-header/module-header.component";
+import {GlobalFunctions} from '../../../global/global-functions';
+import {VerticalGlobalFunctions}  from '../../../global/vertical-global-functions';
 import {RouteParams} from "@angular/router-deprecated";
 import {Router} from "@angular/router-deprecated";
 import {Input} from "@angular/core";
@@ -35,7 +37,7 @@ export class ListOfListsModule{
   }
 
   ngOnChanges(event) {
-    console.log('FUCKKKKKKKK',this.listOfListsData.listData);
+    var origin = window.location.origin;
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
@@ -45,20 +47,23 @@ export class ListOfListsModule{
       hasIcon: false,
       iconClass: "",
     }
-    var type = this.listOfListsData['type'];
-    console.log('TYPEEEE',this.moduleHeader);
-    var routeName = type == "league" ? 'List-of-lists-league-page' : 'List-of-lists-page';
+    var type = this.listOfListsData[0]['target'];
+    var routeName = type == "league" ? 'List-of-lists' : 'List-of-lists';
     var params = {
       limit:10,
       pageNum:1,
       id: ''
     };
-    if ( this.listOfListsData['id'] ) {
-      params["id"] = this.listOfListsData['id'];
+    // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
+
+
+    if ( this.listOfListsData[0]['id'] ) {
+      params["id"] = this.listOfListsData[0]['id'];
     }
     if ( type != "league" ) {
       params["type"] = type;
     }
-    this.footerData['url'] = [routeName, params];
+    this.footerData['url'] = origin+'/nfl/'+routeName+'/'+params.id+'/'+params.limit+'/'+params.pageNum;
+    console.log(this.footerData['url'])
   }
 }
