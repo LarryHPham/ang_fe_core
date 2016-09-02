@@ -4,20 +4,20 @@
       height: 170px;
     }
   }
-  .image-column-hdr {
-    position: absolute;
-    z-index: 1;
-    background-color: @white;
+  .image-column-hdr, .image-column {
+    width: 230px;
+    @media @mobile {
+      width: 150px;
+    }
   }
-  // .image-column-hdr, .image-column {
-  //   width: 25%;
-  //   @media @tablet {
-  //     max-width: 328px;
-  //   }
-  //   @media @desktop-xl {
-  //     max-width: 322px;
-  //   }
-  // }
+  .custom-table-sort  {
+    @media @mobile {
+      top: 8px;
+    }
+  }
+  .data-column-hdr,.data-column{
+    min-width: 55px;
+  }
   table circle-image {
     @media @mobile {
       display: none;
@@ -29,27 +29,41 @@
     }
   }
   th.image-column-column {
-
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       background-color: inherit;
       height: 40px;
       border-width: 0 5px 0 0;
       border-style: solid;
       border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
     }
-  }
-  .data-column-hdr:last-child, .data-column:last-child {
-    min-width: 51px;
-    @media @desktop-xl{
-      min-width: 83px;
+    .table-cell-image {
+      @media @mobile {
+        margin-top: 5px;
+      }
     }
   }
-
+  .image-column-hdr {
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      left: 10px;
+      .custom-table-header {
+        margin-right:0!important;
+      }
+    }
+    background-color: @white;
+    .custom-table-header {
+      margin-right:5px;
+    }
+  }
   .custom-table .spacer {
-    width: 155px;
-    display:block;
+    @media @mobile {
+      width: 155px;
+      display:block;
+    }
   }
   .pane {
     padding-top: 0;
@@ -61,6 +75,69 @@
 
     .standings-tab-section:first-child h4 {
       margin-top: 10px;
+    }
+  }
+  .tab-name {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .tab-name.no-0 {
+    margin-top: -28px;
+    margin-bottom: 10px;
+  }
+  .filters {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    .list-filter-heading {
+      position: absolute;
+      padding-top: 7px;
+      i {
+        color: @masterBrandColor;
+        vertical-align: top;
+      }
+      @media @tablet {
+        display:none;
+      }
+    }
+    h4 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+      @media @tablet {
+        display:none;
+      }
+    }
+    .sort-title {
+      margin-left: auto;
+      &-text {
+        //ie and firefox alignment fix
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (min--moz-device-pixel-ratio:0) {
+          vertical-align: 10px;
+        }
+        margin-right: 5px;
+        @media @mobile {
+          display: none;
+        }
+      }
+    }
+    .sort-title:last-of-type {
+      margin-left:20px;
+    }
+    dropdown {
+      display: inline-block;
+    }
+    .dropdown {
+      width: 117px;
+      display: inline-block;
+      .scrollable-item-wrapper {
+        overflow: hidden;
+      }
+      &-hdr {
+        height: 28px;
+      }
     }
   }
 }
