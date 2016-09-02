@@ -9,7 +9,7 @@ import {SyndicatedArticlePage} from "../../../../webpages/syndicated-article-pag
     templateUrl: './app/fe-core/components/articles/recommendations/recommendations.component.html',
     directives: [ROUTER_DIRECTIVES],
     pipes: [SanitizeHtml],
-    providers:[SyndicatedArticlePage],
+    //providers:[SyndicatedArticlePage],
 })
 
 export class RecommendationsComponent {
