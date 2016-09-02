@@ -15,8 +15,9 @@
     }
   }
   .custom-table .spacer {
+    display:none;
     @media @mobile {
-      width: 155px;
+      width: 160px;
       display:block;
     }
   }
@@ -45,10 +46,6 @@
       @media @tablet {
         margin-right: 20px;
       }
-      @media @desktop-m{
-        width:30%;
-      }
-
     }
     .scc-details-type1-desc{
       width:100%;
@@ -68,45 +65,35 @@
     }
   }
 
-  .data-column-hdr, .data-column {
-    min-width: 55px; //since it needs to include margin for padding
+  .image-column-hdr, .image-column {
+    width: 230px;
+    @media @mobile {
+      width: 150px;
+    }
+  }
+  .custom-table-sort  {
+    @media @mobile {
+      top: 8px;
+    }
+  }
+  .data-column-hdr,.data-column{
+    min-width: 55px;
   }
   table circle-image {
-    position: relative;
-    top: 7px;
     @media @mobile {
       display: none;
     }
   }
-
-  .image-column-hdr, .image-column {
-    @media @tablet {
-      min-width: 185px;
-      max-width: 300px;
-      width: 29%;
-      th{
-        width: 100%;
-      }
-    }
-
-    @media @mobile {
-      width: 150px !important;
-    }
-  }
-
   .table-cell-image span {
-    @media @tablet {
-      width: 60% !important;
-    }
     @media @mobile {
       margin-left: 10px;
-      width:100%;
     }
   }
   th.image-column-column {
     @media @mobile {
       position: absolute;
       z-index: 1;
+      left: 10px;
       background-color: inherit;
       height: 40px;
       border-width: 0 5px 0 0;
@@ -120,18 +107,24 @@
     }
   }
   .image-column-hdr {
-    position: absolute;
-    z-index: 1;
+    @media @mobile {
+      position: absolute;
+      z-index: 1;
+      left: 10px;
+      .custom-table-header {
+        margin-right:0!important;
+      }
+    }
     background-color: @white;
-  }
-  .custom-table .spacer {
-    width: 155px;
-    display:block;
+    .custom-table-header {
+      margin-right:5px;
+    }
   }
 
 
 
   &-table-title {
+    left:5px;
     height: 40px;
     margin:0px;
     padding:0px;
@@ -150,9 +143,8 @@
 
     }
     h4 {
-
       margin: 0px;
-
+      width: 62%;
       .globalDefaultFont(18px, 400);
       @media @mobile{
         .globalDefaultFont(16px, 400);
@@ -160,15 +152,6 @@
 
 
 
-      }
-      @media @tablet{
-        width: 57%;
-      }
-      @media @fluid{
-        width:68%;
-      }
-      @media @mobile{
-        width: 100%;
       }
     }
     //margin: 10px;
@@ -220,7 +203,6 @@
     &.pane-content {
       border-top: 1px solid @strokeGrey;
       padding-bottom: 10px;
-      margin-top: 0px;
     }
 
     &-title {
@@ -240,73 +222,3 @@
     }
   }
 }
-
-/*.stats {
-  &-car {
-    .scc-details-desc {
-      height: 170px;
-    }
-  }
-
-  .data-column-hdr, .data-column {
-    width: 50px; //since it needs to include margin for padding
-  }
-
-  .image-column-hdr, .image-column {
-    width: 205px;
-  }
-
-  .pane {
-    padding: 0px;
-
-    &-content {
-      padding: 0 15px 5px;
-    }
-  }
-
-  &-table-title {
-    .flexDisplay;
-    .flexAlignItems(center);
-    .flexJustify(space-between);
-    h4 {
-      margin: 0px;
-      .globalDefaultFont(18px, 400);
-    }
-    margin: 20px 15px;
-  }
-
-  &-season-dropdown {
-    margin: 0px;
-    float: right;
-    .flexDisplay;
-    .flexAlignItems(center);
-    .globalDefaultFont(12px, 400);
-    .dropdown {
-      margin-left: 10px;
-      width: 145px;
-    }
-  }
-
-  &-glossary {
-    &.pane-content {
-      padding-bottom: 10px;
-    }
-
-    &-title {
-      margin: 25px 15px 0px 15px;
-      .globalDefaultFont(16px, 700);
-    }
-
-    &-box {
-      background-color: @backgroundGrey;
-      border-top: 1px solid @strokeGrey;
-      padding: 14px 16px;
-      .globalDefaultFont(12px, 400);
-
-      li {
-        line-height: 15px;
-      }
-    }
-  }
-}
-*/
