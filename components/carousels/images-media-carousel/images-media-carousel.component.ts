@@ -33,7 +33,7 @@ export class ImagesMedia implements OnInit {
     @Input() isProfilePage:boolean;
 
     expand:boolean;
-
+    isSmall:boolean = false;
     expandText:string = 'Expand';
     expandIcon:string = 'fa-expand';
     modalButton:boolean = false;
@@ -145,15 +145,41 @@ export class ImagesMedia implements OnInit {
             this.changeMain(0);
             this.totalImageCount = this.imageData.length;
             if (this.isProfilePage) {
-                this.modHeadData = {
-                    moduleTitle: "Images &amp; Media - " + this.profHeader.profileName,
-                    hasIcon: false,
-                    iconClass: '',
-                };
+                if (!this.isSmall) {
+                    this.modHeadData = {
+                        moduleTitle: "Images &amp; Media - " + this.profHeader.profileName,
+                        hasIcon: false,
+                        iconClass: '',
+                    };
+                } else {
+                    this.modHeadData = {
+                        moduleTitle: "Images &amp; Media",
+                        hasIcon: false,
+                        iconClass: '',
+                    };
+                }
             }
         }
     }
 
     ngOnInit() {
+        this.isSmall = window.innerWidth <= 639;
+    }
+
+    onResize(event) {
+        this.isSmall = event.target.innerWidth <= 639;
+        if (!this.isSmall) {
+            this.modHeadData = {
+                moduleTitle: "Images &amp; Media - " + this.profHeader.profileName,
+                hasIcon: false,
+                iconClass: '',
+            };
+        } else {
+            this.modHeadData = {
+                moduleTitle: "Images &amp; Media",
+                hasIcon: false,
+                iconClass: '',
+            };
+        }
     }
 }
