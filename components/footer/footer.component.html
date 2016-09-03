@@ -1,7 +1,8 @@
 <footer class="footer container-fluid">
   <section class="footer-top">
     <div class="footer-top-container">
-      <a *ngIf="!partner" [routerLink]="['Home-page']"><img src="/app/public/Touchdown-Loyal_Logo_Outlined-W.svg" /></a>
+      <!-- <a *ngIf="!partner" [routerLink]="['Home-page']"><img src="/app/public/Touchdown-Loyal_Logo_Outlined-W.svg" /></a> -->
+      <a *ngIf="!partner"><img src="/app/public/Touchdown-Loyal_Logo_Outlined-W.svg" /></a>
       <div class="placeholderImg" *ngIf="partner"></div>
       <ul>
           <a href="{{_siteFacebookUrl}}" target="_blank"><li id="share-facebook"><i class="fa fa-facebook"></i></li></a>

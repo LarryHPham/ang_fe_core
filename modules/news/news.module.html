@@ -1,7 +1,7 @@
 <section *ngIf="displayData" class="module-container">
   <module-header [modHeadData]="headerInfo"></module-header>
   <div class="news">
-    <div class="news-placeholder">
+    <div class="news-placeholder" [style.background-image]="'url(' + displayData.backgroundImage + ')'">
       <circle-button (scrollRight)="right()" (scrollLeft)="left()"></circle-button>
       <div class="news-text">
         <div class='feature-btn articles'>
