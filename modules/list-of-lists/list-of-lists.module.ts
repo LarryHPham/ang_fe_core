@@ -64,6 +64,5 @@ export class ListOfListsModule{
       params["type"] = type;
     }
     this.footerData['url'] = origin+'/nfl/'+routeName+'/'+params.id+'/'+params.limit+'/'+params.pageNum;
-    console.log(this.footerData['url'])
   }
 }

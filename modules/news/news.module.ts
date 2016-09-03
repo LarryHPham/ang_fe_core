@@ -63,7 +63,6 @@ export class NewsModule implements OnInit, OnChanges {
     changeMain(num){
       if ( num < this.max ) {
         this.displayData = this.newsDataArray[num];
-        console.log(num,'DISPLAY DATA',this.displayData);
       };
     }
 
@@ -77,8 +76,9 @@ export class NewsModule implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-      let profileName = this.profileName ? this.profileName : "MLB";
-      this.headerInfo.moduleTitle = "Other Content You Will Love - " + profileName;
+      let profileName = this.profileName ? this.profileName : "NFL";
+      this.headerInfo.moduleTitle = "Other Content You Will Love";
+      this.headerInfo.moduleIdentifier = " - " + profileName;
     }
 
     ngOnInit(){

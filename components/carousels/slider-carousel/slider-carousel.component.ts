@@ -133,7 +133,6 @@ export class SliderCarousel implements OnInit {
     // if(typeof this.dataPoint['index'] != 'undefined'){
     //   this.indexNum.next(this.dataPoint.index);
     // }
-    console.log('this.datapoint',this.dataPoint);
   }
 
   ngOnChanges(){
