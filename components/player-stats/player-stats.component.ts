@@ -128,7 +128,6 @@ export class PlayerStatsComponent implements DoCheck {
 
     updateCarousel(sortedRows?) {
         var selectedTab = this.getSelectedTab();
-        console.log("selected tab", selectedTab);
         if ( !selectedTab || !selectedTab.tableData ) {
             this.iscarousel=false;
             return;
