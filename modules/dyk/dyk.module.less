@@ -19,8 +19,13 @@
       }
     }
     &-icon{
-      width:10%;
-      margin: auto;
+      margin: auto 15px;
+      @media @mobile{
+        margin-right: 15px;
+      }
+      @media @tablet{
+        margin: auto 30px;
+      }
       text-align: center;
       .st_sharethis_large{
         cursor: pointer;
@@ -32,12 +37,12 @@
       &:hover{
         color: @black;
       }
-      @media @mobile{
-        margin-right: 15px;
-      }
+
     }
-    &:hover{
-      border-left-color: @masterBrandColor;
+    @media @tablet{
+      &:hover{
+        border-left-color: @masterBrandColor;
+      }
     }
   }
 }
