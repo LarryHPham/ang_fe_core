@@ -9,6 +9,7 @@
   .nav-tabs li span{
     position:relative;
   }
+
   .custom-table-row .image-column .table-cell-image span{
     //width:100%;
     @media @tablet {
@@ -238,7 +239,7 @@
   }
 
   &-glossary {
-    &.pane-content {
+    &.g-content {
       //position: absolute;
       //z-index: 1;
       //border-top: 1px solid @strokeGrey;
@@ -272,6 +273,12 @@
 
       li {
         line-height: 15px;
+
+      }
+      li span{
+        @media @mobile{
+          position:relative;
+        }
       }
     }
   }
