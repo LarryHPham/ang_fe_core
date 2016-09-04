@@ -8,9 +8,18 @@
       width: 100%;
     }
   }
+
+  @media @mobile {
+    .expand-button {
+      &:hover {
+        color: @white;
+        background-color: @textEmphasisGrey;;
+      }
+    }
+  }
 }
 
-.carousel{
+.carousel {
   width: 100%;
   position: relative;
 }
@@ -115,6 +124,10 @@
   padding-left: 8px;
   font-size: 16px;
   color: @white;
+  &:hover {
+    color: @black;
+    background-color: @white;
+  }
 }
 
 .virtual {

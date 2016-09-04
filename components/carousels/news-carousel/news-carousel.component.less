@@ -40,42 +40,68 @@
     @media @mobile {
       background-color: transparent!important;
       border: none;
-      bottom: 0;
+    //  position: absolute;
+      top: 80%;
       left: 0;
-      right: auto;
-      top: auto;
+      width: 127px;
     }
   }
     &-placeholder{
       width: 100%;
       height: 350px;
       background-color: @textEmphasisGrey;
-      background-image: url('/app/public/baseball.png');
+    //  background-image: url('/app/public/.png');
+      background-size: conver;
+      background-repeat: no-repeat;
       position: relative;
+      &:before {
+        background-color: rgba(0,0,0,.65);
+        position: absolute;
+        height: 100%;
+        width:100%;
+        content: '';
+        top:0;
+        left:0;
+      }
       @media @mobile {
         height:240px;
+        display: table;
+
       }
     }
     &-text{
-      .flexDisplay;
-      .flexDirection(column);
-      width: 77%;
-      height: auto;
+    //  .flexDisplay;
+    //  .flexDirection(column);
+      width: 100%;
+    //  height: auto;
       margin:auto;
-      padding-top: 20%;
+      height: 350px;
+    //  padding-top: 127px;
+      position: relative;
+      padding-right: 85px;
+      padding-left: 85px;
+      display: table-cell;
+      vertical-align: middle;
       @media @mobile {
-        padding-top: 13%;
+        height: 100%;
+        padding-left: 35px;
+        padding-right: 35px;
+
+
+
       }
     }//.news-text ends
     &-headline{
-      overflow: hidden;
+//      overflow: hidden;
       max-height: 70px;
       line-height: 1.2em;
+      margin-top: 90px;
       // .line-clamp-2;
       // .line-clamp;
       .globalDefaultFont(28px, 800);
       @media @mobile {
         font-size:20px;
+        margin-top: 0px;
       }
     }
     &-preview{
