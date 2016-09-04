@@ -38,7 +38,6 @@ export class SyndicatedTrendingComponent {
             this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
 
             if (this.trendingLength <= 20) {
-                console.log("adrticle data", this.articleData);
             this.trendingLength = this.trendingLength + 10;
             }
           }
@@ -57,7 +56,7 @@ export class SyndicatedTrendingComponent {
       }
     formatDate(date) {
          //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
-        return moment.unix(date/1000).format("MMMM DD, YYYY at h:mm A") + " EST"
+        return moment(date).format("MMMM DD, YYYY | h:mm A")
 
     }
 }

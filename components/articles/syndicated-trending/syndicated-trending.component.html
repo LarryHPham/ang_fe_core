@@ -12,7 +12,7 @@
             </a>
             <div class="arpt">
                 <div class="arpt-author">By <b>{{item.author}}</b> - Reporter <b>{{item.publisher}}</b></div>
-                <div class="arpt-date">Posted: on {{formatDate(item.publishedDate)}}</div>
+                <div class="arpt-date">Posted: on {{formatDate(item.publishedDateFormatted)}}</div>
             </div>
             <div class="trending-article-image">
                 <img [src]="item.imagePath" onerror="this.src='/app/public/no-image.svg'"/>
