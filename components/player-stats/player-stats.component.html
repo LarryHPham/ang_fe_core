@@ -1,6 +1,6 @@
 <div *ngIf="tabs" class="stats">
     <div class="stats-car">
-        <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
+        <slider-carousel *ngIf="iscarousel" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
     </div>
     <tabs (tabSelected)="tabSelected($event)">
         <tab *ngFor="let tab of tabs" [tabTitle]="tab.tabTitle" [active]="tab.isActive">

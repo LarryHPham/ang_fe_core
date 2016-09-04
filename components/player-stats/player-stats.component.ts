@@ -46,6 +46,7 @@ export class PlayerStatsComponent implements DoCheck {
     private initialSeasonId: string;
     private noDataMessage = "Sorry, there is no data available.";
     private selectedSubTab:string;
+    private iscarousel:boolean;
 
     constructor() {}
 
@@ -127,26 +128,30 @@ export class PlayerStatsComponent implements DoCheck {
 
     updateCarousel(sortedRows?) {
         var selectedTab = this.getSelectedTab();
+        console.log("selected tab", selectedTab);
         if ( !selectedTab || !selectedTab.tableData ) {
+            this.iscarousel=false;
             return;
+        }else {
+            this.iscarousel = true;
+            let carouselData: Array<SliderCarouselInput> = [];
+            let index = 0;
+            let selectedIndex = -1;
+            selectedTab.tableData.rows.map((value) => {
+                let item = selectedTab.convertToCarouselItem(value, index);
+                if (selectedTab.tableData.isRowSelected(value, index)) {
+                    selectedIndex = index;
+                }
+                index++;
+                return item;
+            })
+                .forEach(value => {
+                    carouselData.push(value);
+                });
+
+            this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+
+            this.carouselData = carouselData;
         }
-
-        let carouselData: Array<SliderCarouselInput> = [];
-        let index = 0;
-        let selectedIndex = -1;
-        selectedTab.tableData.rows.map((value) => {
-            let item = selectedTab.convertToCarouselItem(value, index);
-            if ( selectedTab.tableData.isRowSelected(value, index) ) {
-                selectedIndex = index;
-            }
-            index++;
-            return item;
-        })
-            .forEach(value => {
-                carouselData.push(value);
-            });
-
-        this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-        this.carouselData = carouselData;
     }
 }
