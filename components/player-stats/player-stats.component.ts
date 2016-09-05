@@ -30,6 +30,7 @@ export interface StatsTableTabData<T> {
 })
 export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;
+    public GlossaryData;
 
     public carouselData: Array<SliderCarouselInput> = [];
     @Input() tabName;
@@ -46,7 +47,6 @@ export class PlayerStatsComponent implements DoCheck {
     private initialSeasonId: string;
     private noDataMessage = "Sorry, there is no data available.";
     private selectedSubTab:string;
-    private iscarousel:boolean;
 
     constructor() {}
 
@@ -81,6 +81,7 @@ export class PlayerStatsComponent implements DoCheck {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
             this.updateCarousel();
+            this.updateGlossary();
         }
     }
     dropdownChanged($event) {
@@ -90,6 +91,7 @@ export class PlayerStatsComponent implements DoCheck {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
             this.updateCarousel();
+
         }
     }
 
@@ -113,6 +115,7 @@ export class PlayerStatsComponent implements DoCheck {
 
         this.tabSelectedListener.next([this.getSelectedTab(), this.selectedSeasonId]);
         this.updateCarousel();
+        this.updateGlossary();
     }
 
     indexNum($event) {
@@ -129,28 +132,31 @@ export class PlayerStatsComponent implements DoCheck {
     updateCarousel(sortedRows?) {
         var selectedTab = this.getSelectedTab();
         if ( !selectedTab || !selectedTab.tableData ) {
-            this.iscarousel=false;
+            
             return;
-        }else {
-            this.iscarousel = true;
-            let carouselData: Array<SliderCarouselInput> = [];
-            let index = 0;
-            let selectedIndex = -1;
-            selectedTab.tableData.rows.map((value) => {
-                let item = selectedTab.convertToCarouselItem(value, index);
-                if (selectedTab.tableData.isRowSelected(value, index)) {
-                    selectedIndex = index;
-                }
-                index++;
-                return item;
-            })
-                .forEach(value => {
-                    carouselData.push(value);
-                });
-
-            this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-
-            this.carouselData = carouselData;
         }
+
+        let carouselData: Array<SliderCarouselInput> = [];
+        let index = 0;
+        let selectedIndex = -1;
+        selectedTab.tableData.rows.map((value) => {
+            let item = selectedTab.convertToCarouselItem(value, index);
+            if ( selectedTab.tableData.isRowSelected(value, index) ) {
+                selectedIndex = index;
+            }
+            index++;
+            return item;
+        })
+            .forEach(value => {
+                carouselData.push(value);
+            });
+
+        this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+        this.carouselData = carouselData;
+    }
+    updateGlossary(){
+        var tabchosen= this.getSelectedTab();
+        this.GlossaryData=tabchosen.glossary;
+        console.log("glossarydata", this.GlossaryData);
     }
 }
