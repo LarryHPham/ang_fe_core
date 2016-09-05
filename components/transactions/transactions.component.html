@@ -4,15 +4,15 @@
     <div *ngIf="tab.isLoaded" class="transactions-container">
       <div class="tab-inset"> <!-- due to tab having a default value of padding 1em for tab purposes so we just reverse it with margin -->
         <div *ngIf="tab.includeDropdown" class="transactions-page-title">
-          <h4><b></b>{{tab.tabDisplay}}</h4>
+          <h4><b>{{dropdownKey1}}</b> {{tab.tabDisplay}}</h4>
           <p class="transactions-page-dropdown">
             <span class="sort-title-text">
               {{tab.sortTitle}}
             </span>
-            <dropdown
+            <dropdown *ngIf="transactionFilter1"
               [list]="transactionFilter1"
               [selectedKey]="dropdownKey1"
-              (selectionChanged)="transactionDropdownChange({key:$event,value:'filter1'})">
+              (selectionChanged)="transactionDropdownChange($event)">
             </dropdown>
           </p>
         </div>

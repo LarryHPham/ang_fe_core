@@ -23,9 +23,9 @@ export class TransactionsModule {
   @Output() transactionKeyFilter =  new EventEmitter();
 
   @Input() data: TransactionModuleData;
-  @Input() transactionFilter1;
   @Input() dropdownKey1: string;
 
+  @Input() transactionFilter1: Array<any>;
   modHeadData: ModuleHeaderData;
   footerData: ModuleFooterData;
 
@@ -40,12 +40,6 @@ export class TransactionsModule {
       moduleIdentifier: " - "+this.data.profileName,
       hasIcon: false,
       iconClass: '',
-    }
-
-    if(this.transactionFilter1 != null){
-      if(this.transactionFilter1.length > 0 && this.dropdownKey1 == null){
-        this.dropdownKey1 = this.transactionFilter1[0];
-      }
     }
   } //ngOnChanges()
 
