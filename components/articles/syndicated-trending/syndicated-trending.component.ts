@@ -28,34 +28,34 @@ export class SyndicatedTrendingComponent {
     @Input() currentArticleId: any;
 
     constructor(
-      private _router:Router,
-      private _deepdiveservice:DeepDiveService
-      ){}
+        private _router:Router,
+        private _deepdiveservice:DeepDiveService
+    ){}
 
-      private getDeepDiveArticle(numItems, state, currentArticleId) {
+    private getDeepDiveArticle(numItems, state, currentArticleId) {
         this._deepdiveservice.getDeepDiveBatchService(numItems, 10, state).subscribe(
-          data => {
-            this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
+            data => {
+                this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
 
-            if (this.trendingLength <= 20) {
-            this.trendingLength = this.trendingLength + 10;
+                if (this.trendingLength <= 20) {
+                    this.trendingLength = this.trendingLength + 10;
+                }
             }
-          }
         )
-      }
+    }
 
-      ngOnInit(){
+    ngOnInit(){
         this.getDeepDiveArticle(2 , this.geoLocation, this.currentArticleId);
-      }
-      private onScroll(event) {
+    }
+    private onScroll(event) {
         if (jQuery(document).height() - window.innerHeight - jQuery("footer").height() <= jQuery(window).scrollTop() && this.trendingLength <= 20) {
-          jQuery('#loadingArticles').show();
-          this.getDeepDiveArticle(this.trendingLength, this.geoLocation, this.currentArticleId);
-          jQuery('#loadingArticles').hide();
+            jQuery('#loadingArticles').show();
+            this.getDeepDiveArticle(this.trendingLength, this.geoLocation, this.currentArticleId);
+            jQuery('#loadingArticles').hide();
         }
-      }
+    }
     formatDate(date) {
-         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
+        //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
         return moment(date).format("MMMM DD, YYYY | h:mm A")
 
     }
