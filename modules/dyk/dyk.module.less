@@ -12,12 +12,23 @@
       width: 90%;
       text-align: left;
       p{
-        margin: 15px 0 15px 15px;
+        margin: 20px;
+        @media @tablet{
+          margin:25px 0 25px 20px;
+        }
       }
     }
     &-icon{
-      width:25px;
-      margin: 25px 15px;
+      margin: auto 15px;
+      .flexDisplay;
+      .flexDirection(column);
+      .flexJustify(center);
+      @media @mobile{
+        margin-right: 15px;
+      }
+      @media @tablet{
+        margin: auto 30px;
+      }
       text-align: center;
       .st_sharethis_large{
         cursor: pointer;
@@ -29,12 +40,12 @@
       &:hover{
         color: @black;
       }
-      @media @tablet{
-        margin: 25px 35px;
-      }
+
     }
-    &:hover{
-      border-left-color: @masterBrandColor;
+    @media @tablet{
+      &:hover{
+        border-left-color: @masterBrandColor;
+      }
     }
   }
 }

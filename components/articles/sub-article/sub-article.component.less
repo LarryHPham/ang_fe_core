@@ -37,6 +37,7 @@
     background-repeat: no-repeat;
     display: inline-block;
     float: left;
+    border: 1px solid @bulletGrey;
     @media @mobile {
       height: 56px;
     }
@@ -68,7 +69,7 @@
   }
   &-hr {
     border-top: 1px solid @highlightGrey;
-    width: 300px;
+    width: 98%;
     height: 1px;
     position: relative;
     top: 5px;
@@ -78,8 +79,8 @@
       width: 97%;
     }
     @media @desktop-xl {
-      width: 435px;
       left: 0;
+      margin-right: 10px;
     }
   }
 }

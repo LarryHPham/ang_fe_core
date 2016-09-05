@@ -4,6 +4,7 @@ import {ShareLinksComponent} from "../shareLinks/shareLinks.component";
 import {SanitizeHtml} from "../../../pipes/safe.pipe";
 import {ResponsiveWidget} from '../../../components/responsive-widget/responsive-widget.component';
 import {DeepDiveService} from '../../../../services/deep-dive.service';
+import {ShareButtonComponent} from "../../share-button/share-button.component";
 
 declare var moment;
 declare var jQuery: any;
@@ -11,7 +12,7 @@ declare var jQuery: any;
 @Component({
     selector: 'syndicated-trending-component',
     templateUrl: './app/fe-core/components/articles/syndicated-trending/syndicated-trending.component.html',
-    directives: [ShareLinksComponent, ROUTER_DIRECTIVES, ResponsiveWidget],
+    directives: [ShareLinksComponent, ROUTER_DIRECTIVES, ResponsiveWidget,ShareButtonComponent],
     inputs: ['trendingData', 'trendingImages'],
     pipes: [SanitizeHtml],
     providers: [DeepDiveService]
@@ -32,9 +33,10 @@ export class SyndicatedTrendingComponent {
       ){}
 
       private getDeepDiveArticle(numItems, state, currentArticleId) {
-        this._deepdiveservice.getDeepDiveBatchService(numItems, 1, state).subscribe(
+        this._deepdiveservice.getDeepDiveBatchService(numItems, 10, state).subscribe(
           data => {
             this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
+
             if (this.trendingLength <= 20) {
             this.trendingLength = this.trendingLength + 10;
             }
@@ -52,4 +54,9 @@ export class SyndicatedTrendingComponent {
           jQuery('#loadingArticles').hide();
         }
       }
+    formatDate(date) {
+         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
+        return moment(date).format("MMMM DD, YYYY | h:mm A")
+
+    }
 }

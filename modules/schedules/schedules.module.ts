@@ -68,7 +68,7 @@ export class SchedulesModule implements OnInit{
         }
         if(this.filter2 != null){
           if(this.filter2.length > 0 && this.dropdownKey2 == null){
-            this.dropdownKey2 = this.filter1[0];
+            this.dropdownKey2 = this.filter2[0];
           }
         }
     }
