@@ -84,6 +84,7 @@ export class SearchPageModule implements OnChanges{
     }
 
     filterSwitch($event){
+      this.pageNumber = 1;
       this.selectedKey = $event;
       this.selectedKeyFilter.next({
           dropdownIndex: 0,

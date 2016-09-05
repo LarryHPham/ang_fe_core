@@ -1,6 +1,6 @@
 <div *ngIf="tabs" class="stats">
     <div class="stats-car">
-        <slider-carousel *ngIf="iscarousel" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
+        <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
     </div>
     <tabs (tabSelected)="tabSelected($event)">
         <tab *ngFor="let tab of tabs" [tabTitle]="tab.tabTitle" [active]="tab.isActive">
@@ -31,8 +31,8 @@
                 <no-data-box [data]="noDataMessage" [icon]="'fa fa-remove'"></no-data-box>
             </div>
 
-            <!--<glossary-component></glossary-component>-->
-            <div *ngIf="showGlossary" class="stats-glossary pane-content">
+            <!--<glossary-component [glossaryData]="GlossaryData"></glossary-component>-->
+            <!--<div *ngIf="showGlossary" class="stats-glossary pane-content ">
                 <div class="stats-glossary-title">Glossary</div>
                 <div class="stats-glossary-box row">
                     <ul>
@@ -41,10 +41,11 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
 
         </tab>
     </tabs>
+    <glossary-component [glossaryData]="GlossaryData"></glossary-component>
 </div>
 
 <!--<div *ngIf="tabs" class="stats">
