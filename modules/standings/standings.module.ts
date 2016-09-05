@@ -39,7 +39,6 @@ export class StandingsModule implements OnChanges {
     url: ['Standings-page']
   };
   constructor(){
-    this.getScope = this.scope;
   }
   ngOnChanges() {
     if ( !this.data ) {
