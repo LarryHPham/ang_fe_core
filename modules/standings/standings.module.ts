@@ -6,7 +6,7 @@ import {StandingsComponent, StandingsTableTabData} from '../../components/standi
 
 export interface StandingsModuleData {
   moduleTitle: string;
-
+  scope: string;
   /**
     * Used for the link in the footer button
     */
@@ -25,9 +25,8 @@ export interface StandingsModuleData {
 })
 export class StandingsModule implements OnChanges {
   @Input() data: StandingsModuleData;
-
+  @Input() scope: string;
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
-
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Standings",
     hasIcon: false,
@@ -39,7 +38,9 @@ export class StandingsModule implements OnChanges {
     text: "VIEW FULL STANDINGS",
     url: ['Standings-page']
   };
-
+  constructor(){
+    this.getScope = this.scope;
+  }
   ngOnChanges() {
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Standings";

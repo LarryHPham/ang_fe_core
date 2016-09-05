@@ -10,6 +10,9 @@ import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {DropdownComponent} from '../../../fe-core/components/dropdown/dropdown.component';
 
 export interface StandingsTableTabData<T> {
+  season: any;
+  conference: any;
+  division: any;
   title: string;
   isActive: boolean;
   isLoaded: boolean;
@@ -37,7 +40,6 @@ export class StandingsComponent implements DoCheck {
 
   @Input() tabs: Array<StandingsTableTabData<any>>;
   @Input() scope: string;
-
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
   @Output("filterSelected") filterSelectedListener = new EventEmitter();
 
@@ -55,7 +57,8 @@ export class StandingsComponent implements DoCheck {
   confFilterChanged: number = 0;
   seasFilterChanged: number = 0;
 
-  constructor() {}
+  constructor() {
+  }
   ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
