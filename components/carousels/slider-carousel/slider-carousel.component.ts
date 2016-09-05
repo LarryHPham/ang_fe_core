@@ -137,7 +137,7 @@ export class SliderCarousel implements OnInit {
 
   ngOnChanges(){
     // Don't set indexInput to 0 here, it resets anything the parent specifies
-     this.indexInput = 1;
+    //  this.indexInput = 1;
   }
 
   ngOnInit() {
