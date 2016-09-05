@@ -37,6 +37,7 @@ export class NewsModule implements OnInit, OnChanges {
       var counter = this.counter;
       counter--;
 
+
       //make a check to see if the array is below 0 change the array to the top level
       if(counter < 0){
         this.counter = (this.max - 1);
@@ -66,14 +67,18 @@ export class NewsModule implements OnInit, OnChanges {
     }
 
     private setupNewsData(){
-        // this.max = this.newsDataArray.length;
-        this.max = 10;
+      this.max = this.newsDataArray.length;
+         if (this.max >= 10) {
+           this.max = 10;
+         }
+      //  this.max = 10;
         this.changeMain(this.counter);
     }
 
     ngOnChanges() {
-      let profileName = this.profileName ? this.profileName : "MLB";
-      this.headerInfo.moduleTitle = "Other Content You Will Love - " + profileName;
+      let profileName = this.profileName ? this.profileName : "NFL";
+      this.headerInfo.moduleTitle = "Other Content You Will Love";
+      this.headerInfo.moduleIdentifier = " - " + profileName;
     }
 
     ngOnInit(){

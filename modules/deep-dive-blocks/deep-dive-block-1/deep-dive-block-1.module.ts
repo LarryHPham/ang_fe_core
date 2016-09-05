@@ -106,10 +106,10 @@ export class DeepDiveBlock1{
   checkSize(){
     var width = window.outerWidth;
     var height = window.outerHeight;
-    if(width <= 640){
+    if(width < 640){
       this.scroll = false;
       this.maxHeight = 'auto';
-    }else if(width > 640){
+    }else if(width >= 640){
       this.scroll = true;
       this.maxHeight = 650;
     }

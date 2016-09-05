@@ -9,15 +9,24 @@
   .nav-tabs li span{
     position:relative;
   }
+
   .custom-table-row .image-column .table-cell-image span{
     //width:100%;
-    transform: translateY(-23%);
-    -webkit-transform: translateY(-23%);
+    @media @tablet {
+      transform: translateY(-43%);
+      -webkit-transform: translateY(-43%);
+    }
+
+
     @media @mobile{
+     top:2px;
+      position: relative;
+     // transform: translateY(-23%);
+      //-webkit-transform: translateY(-23%);
       line-height: 14px;
-      //position: relative;
-      //top:-2px;
-      text-align:left;
+      text-align: left;
+      transform: translateY(-1%);
+      -webkit-transform: translateY(-1%);
     }
   }
   .custom-table-body-cell{
@@ -33,7 +42,7 @@
   .pane {
 
     @media @mobile{
-      padding: 10px 5px;
+      padding: 10px 5px 10px 10px;
       //padding: 70px 0 5px 5px;
       min-height: 165px !important;
 
@@ -46,7 +55,15 @@
     }
   }
   &-car {
+    .scc-details{
+      top:0px;
+    }
     .carousel{
+      @media @mobile {
+        height: 320px;
+      }
+    }
+    .scc-placeholder{
       @media @mobile {
         height: 320px;
       }
@@ -139,6 +156,9 @@
 
 
   &-table-title {
+    @media @mobile{
+      left:10px;
+    }
     left:5px;
     height: 40px;
     margin:0px;
@@ -173,7 +193,10 @@
   }
 
   &-season-dropdown {
-    margin: 0px 7.5px;
+    @media @mobile{
+      margin:0 7.5px 0 7.5px;
+    }
+    margin: 0px 0px 0px 7.5px;
     float: right;
     .flexDisplay;
     .flexAlignItems(center);
@@ -182,7 +205,7 @@
       .globalDefaultFont(0px, 400);
     }
     .dropdown {
-      margin-left: 10px;
+
       &:hover{
         @media @tablet {
           border: 1px solid @touchDownLoyalBlue ;
@@ -203,6 +226,7 @@
       }
       .dropdown-hdr{
         height: 30px;
+        line-height: 1.5em;
       }
       .dropdown-list{
         left:2px;
@@ -215,7 +239,7 @@
   }
 
   &-glossary {
-    &.pane-content {
+    &.g-content {
       //position: absolute;
       //z-index: 1;
       //border-top: 1px solid @strokeGrey;
@@ -227,7 +251,7 @@
     }
 
     &-title {
-      margin: 10px 0px;
+      margin: 0px 0px 10px 0px;
       .globalDefaultFont(16px, 700);
       @media @mobile {
         position: absolute;
@@ -249,6 +273,12 @@
 
       li {
         line-height: 15px;
+
+      }
+      li span{
+        @media @mobile{
+          position:relative;
+        }
       }
     }
   }
