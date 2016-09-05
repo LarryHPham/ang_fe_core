@@ -14,7 +14,9 @@
       }
     }
     .nav-tabs li{
-      width:50%;
+      width:50% !important;
+      margin:0;
+      padding:23px 10px 0 10px;
     }
     .dropdown-list-option{
       padding: 10px 9px;
@@ -27,6 +29,9 @@
       }
       .nav-tabs{
         width:100%;
+      }
+      .shader{
+        display:none;
       }
     }
   }
@@ -92,7 +97,7 @@
     &-item{
       line-height: 25px;
       padding: 20px 10px;
-      word-break: break-all;
+      word-break: break-word;
       @media @tablet{
         padding: 20px 0
       }
@@ -131,7 +136,7 @@
       &-description{
         line-height: normal;
         display: block;
-        max-width: 640px;
+        word-break: break-word;
       }
     }
     .no-results{
