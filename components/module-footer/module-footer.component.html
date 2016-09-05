@@ -1,4 +1,4 @@
-<div *ngIf="footerData && footerStyle && windowWidth > 640" class="module-footer {{footerStyle.ctaBoxClass}}">
+<div *ngIf="footerData && footerStyle && windowWidth >= 640" class="module-footer {{footerStyle.ctaBoxClass}}">
   <span class="mf-text">{{footerData.infoDesc}}</span>
   <span class="list-button">
     <!--button component goes here-->
@@ -20,7 +20,7 @@
   </span>
 </div>
 
-<div *ngIf="footerData && footerStyle && windowWidth <= 640" class="module-footer {{footerStyle.ctaBoxClass}}">
+<div *ngIf="footerData && footerStyle && windowWidth < 640" class="module-footer {{footerStyle.ctaBoxClass}}">
   <span class="mf-text">Want to see more?</span>
   <span class="list-button">
     <!--button component goes here-->
