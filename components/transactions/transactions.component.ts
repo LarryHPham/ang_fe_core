@@ -42,6 +42,7 @@ export class TransactionsComponent implements OnInit {
 
   carouselDataArray: Array<SliderCarouselInput>;
   pageName: string;
+
   public selectedFilter: string;
   public activeFilter: any;
   public newSelectionMade: boolean;
@@ -67,11 +68,9 @@ export class TransactionsComponent implements OnInit {
         let selectedTab = this.getSelectedTab();
         if ( selectedTab && selectedTab.dataArray && !this.tabsLoaded[selectedTab.tabDisplay] ) {
           this.updateCarousel();
-
           this.tabsLoaded[selectedTab.tabDisplay] = "1";
         }
       }
-      this.updateCarousel();
     }
   } //ngDoCheck()
 
@@ -79,9 +78,9 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     // //set years for dropdown
-    if ( this.transactionFilter1 != null && this.dropdownKey1 == null ) {
-      this.dropdownKey1 = this.transactionFilter1[0].key;
-    }
+    // if ( this.transactionFilter1 != null && this.dropdownKey1 == null ) {
+    //   this.dropdownKey1 = this.transactionFilter1[0].key;
+    // }
   }
 
   updateCarousel() {

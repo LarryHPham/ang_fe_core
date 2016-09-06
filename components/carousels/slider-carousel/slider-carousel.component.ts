@@ -130,14 +130,14 @@ export class SliderCarousel implements OnInit {
     }
     //sets the index of the dataPoint of its current position in the array
     // the '?' meaning if there is data to even receive
-    // if(typeof this.dataPoint['index'] != 'undefined'){
-    //   this.indexNum.next(this.dataPoint.index);
-    // }
+    if(typeof this.dataPoint['index'] != 'undefined'){
+      this.indexNum.next(this.dataPoint.index);
+    }
   }
 
   ngOnChanges(){
     // Don't set indexInput to 0 here, it resets anything the parent specifies
-     this.indexInput = 1;
+     //this.indexInput = 1;
   }
 
   ngOnInit() {
