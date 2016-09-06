@@ -1,6 +1,6 @@
 .module-container .stats .pane {
 
-  min-height: 80px;
+  min-height: 165px !important;
   @media @mobile {
     z-index: 0;
   }
@@ -13,24 +13,35 @@
   .custom-table-row .image-column .table-cell-image span{
     //width:100%;
     @media @tablet {
-      transform: translateY(-43%);
-      -webkit-transform: translateY(-43%);
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      top:-4px;
+      position: relative;
+      line-height: 14px;
+      text-align: left;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+
     }
 
 
     @media @mobile{
-     top:2px;
+      top:10px;
       position: relative;
-     // transform: translateY(-23%);
+      // transform: translateY(-23%);
       //-webkit-transform: translateY(-23%);
       line-height: 14px;
       text-align: left;
-      transform: translateY(-1%);
-      -webkit-transform: translateY(-1%);
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
     }
   }
   .custom-table-body-cell{
     line-height:17px;
+  }
+  .custom-table-row .image-column .image-round{
+    position: relative;
+    top: -6px;
   }
   .custom-table .spacer {
     display:none;
@@ -43,14 +54,13 @@
 
     @media @mobile{
       padding: 10px 5px 0px 10px;
-      //padding: 70px 0 5px 5px;
       min-height: 165px !important;
       border-bottom: 1px solid @strokeGrey;
 
     }
     .shader{
       top:74px;
-      min:height:80px;
+      //min-height:80px;
     }
 
   }
@@ -75,6 +85,7 @@
     }
     .scc-details-mainImg{
       @media @tablet {
+        width: ;
         .image-150{
           left: 20px;
         }
@@ -93,7 +104,7 @@
     .scc-details-desc {
       width: 100%;
       @media @tablet{
-        margin:9%;
+        margin-left:49px;
         display:inline-block;
         //position: relative;
         //left:15px;
@@ -214,7 +225,7 @@
       .globalDefaultFont(0px, 400);
     }
     .dropdown {
-        margin-left: 10px;
+      margin-left: 10px;
       &:hover{
         @media @tablet {
           border: 1px solid @touchDownLoyalBlue ;
