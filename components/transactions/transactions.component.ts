@@ -1,6 +1,7 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Injectable} from '@angular/core';
+import {TransactionsService} from '../../../services/transactions.service';
 
 import {TransactionsListItem, TransactionsListInput} from '../../components/transactions-list-item/transactions-list-item.component';
 import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
@@ -27,24 +28,36 @@ export interface TransactionTabData {
 @Component({
   selector: 'transactions',
   templateUrl: './app/fe-core/components/transactions/transactions.component.html',
-  directives: [NoDataBox, Tab, Tabs, SliderCarousel, DropdownComponent, TransactionsListItem, LoadingComponent]
+  directives: [NoDataBox, Tab, Tabs, SliderCarousel, DropdownComponent, TransactionsListItem, LoadingComponent],
+  providers: [TransactionsService]
 })
 
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit {
   @Output() tabSwitched = new EventEmitter();
-  @Output() dropdownSwitched = new EventEmitter();
+  @Output() transactionKeyFilter = new EventEmitter();
 
   @Input() tabs: Array<TransactionTabData>;
+  @Input() dropdownKey1: string;
+  @Input() transactionFilter1 : Array<{key:string, value:string}>;
 
   carouselDataArray: Array<SliderCarouselInput>;
   pageName: string;
 
+  public selectedFilter: string;
+  public activeFilter: any;
+  public newSelectionMade: boolean;
+
   private selectedTabTitle: string;
+  private selectedFilterTitle: string;
   private tabsLoaded: {[index:number]:string};
 
-  private selectedDropdownTitle: string;
+  constructor(private _transactionsService:TransactionsService) {}
 
   ngDoCheck() {
+    if ( this.newSelectionMade == true ) {
+      this.updateCarousel();
+    }
+
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
@@ -59,6 +72,15 @@ export class TransactionsComponent {
         }
       }
     }
+  } //ngDoCheck()
+
+  ngOnChanges() {}
+
+  ngOnInit() {
+    // //set years for dropdown
+    // if ( this.transactionFilter1 != null && this.dropdownKey1 == null ) {
+    //   this.dropdownKey1 = this.transactionFilter1[0].key;
+    // }
   }
 
   updateCarousel() {
@@ -84,7 +106,16 @@ export class TransactionsComponent {
     this.pageName = this.selectedTabTitle;
   }
 
-  dropdownChanged(event) {
-    this.dropdownSwitched.next(event);
-  }
+  transactionDropdownChange(event) {
+    this.transactionKeyFilter.next(event);
+    this.selectedFilter = event;
+
+    if ( this.activeFilter != this.selectedFilter ) {
+      this.newSelectionMade = true;
+      this.activeFilter = this.selectedFilter;
+    }
+    else {
+      this.newSelectionMade = false;
+    }
+  } //transactionDropdownChange
 }
