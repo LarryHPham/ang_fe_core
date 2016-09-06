@@ -16,10 +16,13 @@
   .sort-title.conferences {
     visibility: hidden;
   }
+  .sort-title{
+    .flexDisplay;
+    .flexJustify(space-between);
+    .flexAlignItems(center);
+  }
   @media @mobile{
     .sort-title{
-      .flexDisplay;
-      .flexJustify(space-between);
       width: 60%;
       &-conf{
         min-width: 107px;
@@ -37,9 +40,6 @@
   }
   @media @tablet{
     .sort-title{
-      .flexDisplay;
-      .flexJustify(space-between);
-      .flexAlignItems(center);
       &-conf{
         width: 87px;
         margin-right: 5px;
@@ -195,6 +195,11 @@
       &-hdr {
         height: 28px;
       }
+    }
+  }
+  @media @tablet{
+    .scc-details-mainImg{
+      padding: 0 20px;
     }
   }
 }
