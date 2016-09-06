@@ -63,7 +63,6 @@ export class SeasonStatsModule implements OnChanges {
 
   formatData(data: SeasonStatsModuleData) {
     this.carouselDataArray = [data.carouselDataItem];
-    console.log(this.carouselDataArray);
     this.footerData  = {
       infoDesc: 'Want to see full statistics for this player?',
       text: 'VIEW FULL STATISTICS',
