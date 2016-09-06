@@ -47,13 +47,28 @@
             <i class="fa fa-angle-left"></i>
           </a>
         </div>
-        <div class="pagination-centernav">
+        <div class="pagination-centernav desktop">
           <!-- Minimum Button -->
           <a *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}" [routerLink]="[paginationParameters.navigationPage, minButtonParameters]">
             1
           </a>
 
           <a *ngFor="let item of paginationButtonsPage" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item.index && item.index !== 1 && item.index !== paginationParameters.max}" [routerLink]="[item.page, item.params]">
+            {{item.index}}
+          </a>
+
+          <a (click)="indexClick($event)" *ngIf="paginationParameters.max > 1 && showMaxSkip" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == paginationParameters.max}" [routerLink]="[paginationParameters.navigationPage, maxButtonParameters]">
+            {{paginationParameters.max}}
+          </a>
+        </div>
+      
+        <div class="pagination-centernav mobile">
+          <!-- Minimum Button -->
+          <a *ngIf="showMinSkip" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == 1}" [routerLink]="[paginationParameters.navigationPage, minButtonParameters]">
+            1
+          </a>
+
+          <a *ngFor="let item of paginationButtonsPageForMobile" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item.index && item.index !== 1 && item.index !== paginationParameters.max}" [routerLink]="[item.page, item.params]">
             {{item.index}}
           </a>
 

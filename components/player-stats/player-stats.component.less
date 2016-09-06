@@ -46,16 +46,16 @@
   .custom-table .spacer {
     display:none;
     @media @mobile {
-      width: 160px;
+      width: 157px !important;
       display:block;
     }
   }
   .pane {
+    border-bottom: 1px solid @strokeGrey;
 
     @media @mobile{
       padding: 10px 5px 0px 10px;
       min-height: 165px !important;
-      border-bottom: 1px solid @strokeGrey;
 
     }
     .shader{
@@ -65,6 +65,7 @@
 
   }
   .pane-content{
+
     @media @mobile{
       margin-top:64px;
     }
@@ -85,7 +86,7 @@
     }
     .scc-details-mainImg{
       @media @tablet {
-        
+
         .image-150{
           left: 20px;
         }
@@ -113,7 +114,7 @@
   }
 
   .image-column-hdr, .image-column {
-    width: 200px;
+    width: 195px;
     @media @mobile {
       width: 150px;
     }
@@ -121,7 +122,7 @@
   .custom-table-sort  {
     @media @mobile {
       top: 8px;
-      right: 6%;
+      //right: 6%;
     }
   }
   .data-column-hdr,.data-column{
@@ -228,7 +229,11 @@
       margin-left: 10px;
       &:hover{
         @media @tablet {
-          border: 1px solid @touchDownLoyalBlue ;
+          box-sizing: border-box;
+          -moz-box-sizing:border-box;
+          -webkit-box-sizing:border-box;
+          border: 1px solid @masterBrandColor;
+          //box-shadow: inset 1px @masterBrandColor;
         }
       }
       //margin-left: 10px;
