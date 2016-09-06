@@ -184,14 +184,9 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     setupTile(player: PlayerData): ComparisonTileInput {
-        var playerRoute = null;
-        var teamRoute = null;
-        if ( this.profileType != "player" || this.profileId != player.playerId ) {
-            playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, player.playerName, player.playerId);
-        }
-        if ( this.profileType != "team" || this.profileId != player.teamId ) {
-            teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
-        }
+        var playerName = player.playerFirstName + ' ' + player.playerLastName;
+        var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
+        var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
         return {
             dropdownOneKey: player.teamId,
             dropdownTwoKey: player.playerId,
@@ -217,7 +212,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                 ],
             },
             titleUrl: playerRoute,
-            title: player.playerName,
+            title: playerName,
             description: ["Position: ",
                 { text: player.playerPosition, class: 'text-heavy' },
                 { text: "<br>", class: "line-break" },
@@ -230,24 +225,20 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             data: [
                 {
-                    // TODO data: player.height.split("-").join("'") + "\"",
-                    data: '6-0',
+                    data: player.height != null ? GlobalFunctions.inchesToFeet(Number(player.height)) : 'N/A',
                     key: 'Height'
                 },
                 {
-                    //TODO data: player.weight + "<sup>lbs</sup>",
-                    data: "<sup>200lbs</sup>",
+                    data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
                     key: 'Weight'
                 },
                 {
-                    // data: player.age.toString(),
-                    data: '25',
+                    data: player.age != null ? player.age : 'N/A',
                     key: 'Age'
                 },
                 {
-                    // data: player.yearsExperience + "<sup>" + GlobalFunctions.Suffix(player.yearsExperience) + "</sup>",
-                    data: "<sup>2016</sup>",
-                    key: 'Season'
+                    data: player.yearExperience != null ? player.yearExperience : 'N/A',
+                    key: player.yearExperience == '1' ? 'Year' : 'Years'
                 },
             ]
         }
