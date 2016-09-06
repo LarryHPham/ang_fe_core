@@ -2,7 +2,8 @@ import {Component,OnInit,Input} from '@angular/core';
 import {SanitizeHtml} from "../../pipes/safe.pipe";
 
 export interface GlossaryData{
-  terms: string;
+  key: string;
+  value: string;
 }
 
 @Component({
