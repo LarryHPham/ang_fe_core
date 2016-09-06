@@ -9,6 +9,7 @@ import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 import {LoadingComponent} from '../../components/loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {GlossaryComponent} from "../glossary/glossary.component";
+import {ResponsiveWidget} from "../responsive-widget/responsive-widget.component";
 
 
 
@@ -26,7 +27,7 @@ export interface StatsTableTabData<T> {
 @Component({
     selector: "player-stats-component",
     templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
-    directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent],
+    directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
 export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;

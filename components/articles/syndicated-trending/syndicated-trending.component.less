@@ -19,6 +19,9 @@
     width: 100%;
     height: 1px;
     margin: 0 auto;
+    @media @mobile{
+      margin: 18px auto;
+    }
   }
   &-container {
     margin-top: 25px;
@@ -31,6 +34,12 @@
     width: 240px;
     margin: 25px auto;
     padding-bottom: 3px;
+    @media @mobile{
+      .globalDefaultFont(18px, 800);
+      width:200px;
+      line-height:15px;
+      margin: 15px auto;
+    }
   }
   @media @mobile {
     .arpt {
@@ -38,12 +47,18 @@
     }
   }
   .arpt {
+    .globalDefaultFont(12px, 400);
     &-author {
       font-size: 16px;
       margin:30px 0;
+      @media @mobile{
+        .globalDefaultFont(12px, 400);
+        display: none;
+
+      }
       b {
         color: @masterBrandColor;
-        font-weight: 800;
+        .globalDefaultFont(12px, 400);
         display: inline-block;
         max-width: 250px;
         height:17px;
@@ -66,6 +81,10 @@
     text-align: left;
     margin-top: 20px;
     width: ~"calc(100% - 90px)";
+    @media @mobile{
+      .globalDefaultFont(20px, 800);
+      margin-left: -10px;
+    }
     &:hover {
       color:@touchDownLoyalBlue;
       cursor: pointer;
