@@ -69,7 +69,8 @@ export class DailyUpdateModule {
       this.comparisonCount = 0;
     }
     if(event.data['currentValue'] != null && event.data['currentValue'].postGameArticle != null && event.data['currentValue'].postGameArticle.img != null){
-      var img = event.data['currentValue'].postGameArticle.img.image;
+      // setting of value below supports both old and new way (HRL & TDL)
+      var img = event.data['currentValue'].postGameArticle.img.image != null ? event.data['currentValue'].postGameArticle.img.image : event.data['currentValue'].postGameArticle.img;
       this.imageConfig.mainImage.imageUrl = img != null ? img : GlobalSettings.getImageUrl(null);
     }
   }
