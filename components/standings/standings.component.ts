@@ -130,9 +130,9 @@ export class StandingsComponent implements DoCheck {
   }
 
   setSelectedCarouselIndex(tab: StandingsTableTabData<any>, index: number) {
+
     let offset = 0;
     if ( !tab.sections ) return;
-
     tab.sections.forEach((section, sectionIndex) => {
       if ( index >= offset && index < section.tableData.rows.length + offset ) {
         section.tableData.setRowSelected(index-offset);
@@ -142,7 +142,6 @@ export class StandingsComponent implements DoCheck {
       }
       offset += section.tableData.rows.length;
     });
-    this.setupDropdowns(this.getSelectedTab());
   }
 
   tabSelected(newTitle) {
@@ -200,6 +199,7 @@ export class StandingsComponent implements DoCheck {
 
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carouselData = carouselData;
+    this.setupDropdowns(this.getSelectedTab());
   }
   conferenceChanged(event) {
 
