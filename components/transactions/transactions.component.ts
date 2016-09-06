@@ -20,6 +20,7 @@ export interface TransactionTabData {
   selectedSort?: string;
   includeDropdown?: boolean;
   errorMessage?: string;
+  totalTransactions?: string;
   dataArray?: Array<TransactionsListInput>;//array of data for transactions list
   carData?: Array<SliderCarouselInput>;
 }
@@ -43,6 +44,7 @@ export class TransactionsComponent implements OnInit {
   carouselDataArray: Array<SliderCarouselInput>;
   pageName: string;
 
+  public selectedFilterSeason: string;
   public selectedFilter: string;
   public activeFilter: any;
   public newSelectionMade: boolean;
@@ -77,10 +79,9 @@ export class TransactionsComponent implements OnInit {
   ngOnChanges() {}
 
   ngOnInit() {
-    // //set years for dropdown
-    // if ( this.transactionFilter1 != null && this.dropdownKey1 == null ) {
-    //   this.dropdownKey1 = this.transactionFilter1[0].key;
-    // }
+    if ( this.selectedFilterSeason == null ) {
+      this.selectedFilterSeason = new Date().getFullYear() + "/" + (new Date().getFullYear()+1);
+    }
   }
 
   updateCarousel() {
@@ -109,6 +110,7 @@ export class TransactionsComponent implements OnInit {
   transactionDropdownChange(event) {
     this.transactionKeyFilter.next(event);
     this.selectedFilter = event;
+    this.selectedFilterSeason = (Number(event)).toString() + "/" + ((Number(event))+1).toString();
 
     if ( this.activeFilter != this.selectedFilter ) {
       this.newSelectionMade = true;
