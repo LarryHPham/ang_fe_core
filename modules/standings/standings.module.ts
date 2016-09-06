@@ -6,16 +6,16 @@ import {StandingsComponent, StandingsTableTabData} from '../../components/standi
 
 export interface StandingsModuleData {
   moduleTitle: string;
-  scope: string;
+  scope?: string;
   /**
     * Used for the link in the footer button
     */
-  pageRouterLink: Array<any>;
+  pageRouterLink?: Array<any>;
 
   /**
    * Sent to Standings component
    */
-  tabs: Array<StandingsTableTabData<any>>;
+  tabs?: Array<StandingsTableTabData<any>>;
 }
 
 @Component({
@@ -38,8 +38,7 @@ export class StandingsModule implements OnChanges {
     text: "VIEW FULL STANDINGS",
     url: ['Standings-page']
   };
-  constructor(){
-  }
+  constructor(){}
   ngOnChanges() {
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Standings";

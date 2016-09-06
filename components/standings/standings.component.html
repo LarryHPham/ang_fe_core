@@ -8,7 +8,7 @@
       <loading-component *ngIf="!tab.isLoaded && !tab.hasError"></loading-component>
       <div *ngIf="tab.isLoaded && tab.sections" class="inner-pane">
         <div class="filters">
-          <span class="list-filter-heading">
+          <span class="list-filter-heading" [class.heading-hidden]="scope != 'nfl'">
             <i class="fa fa-cog"></i> List Filters
           </span>
           <div class="sort-title conferences">
