@@ -57,7 +57,6 @@
       </scrollable-content>
     </template>
 
-
     <template [ngIf]="windowWidth < 640">
       <div class="box-scores-overlay"></div>
       <game-info   [ngClass]="{'float-left':1 % 2 == 0,'float-right':1 % 2 == 1}"[gameInfo]="boxScores.gameInfoSmall[currentPage - 1].game"></game-info>
