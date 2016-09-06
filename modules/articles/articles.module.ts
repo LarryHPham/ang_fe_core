@@ -29,13 +29,12 @@ declare var jQuery:any;
         HeadToHeadComponent,
         LoadingComponent
     ],
-    inputs: ['headlineError']
 })
 
 export class ArticlesModule implements OnInit {
     @Input() headlineData:Array<any>;
     @Input() isLeague:boolean;
-
+    @Input() headlineError:boolean;
     awayData:Array<any>;
     homeData:Array<any>;
     moduleData:Array<any>;
@@ -65,7 +64,7 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles(data) {
-        if (!this.isLeague) {
+        if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
@@ -76,10 +75,13 @@ export class ArticlesModule implements OnInit {
             }
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-        } else {
+        } else if (data.featuredReport != null && data.featuredReport.length > 0)  {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
+        }
+        else {
+          this.headlineError = true;
         }
     }
 

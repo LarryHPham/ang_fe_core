@@ -46,10 +46,13 @@ export class SchedulesModule implements OnInit{
                 url: ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName), year:2015, teamId:this.params.get('teamId'), pageNum:1}]
             };
         }else{
+          if(this.dropdownKey1 == null){
+            this.dropdownKey1 = new Date().getFullYear().toString();
+          }
             this.footerData = {
                 infoDesc: 'Want to see the full season schedule?',
                 text: 'VIEW SCHEDULE',
-                url: ['Schedules-page-league', {year:2015,pageNum:1}]
+                url: ['Schedules-page-league', {year:this.dropdownKey1,pageNum:1}]
             };
         }
     }
@@ -71,9 +74,18 @@ export class SchedulesModule implements OnInit{
             this.dropdownKey2 = this.filter2[0];
           }
         }
+        if(this.footerData){
+          if(this.dropdownKey1 == null){
+            this.dropdownKey1 = new Date().getFullYear().toString();
+          }
+          this.footerData.url = ['Schedules-page-league', {year:this.dropdownKey1,pageNum:1}]
+        }
     }
 
     filterSelected(event){
+      if(event.value == "filter1"){
+        this.footerData.url = ['Schedules-page-league', {year:event.key,pageNum:1}]
+      }
       this.selectedKeyFilter.next(event);
     }
 
