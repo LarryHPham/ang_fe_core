@@ -225,7 +225,7 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             data: [
                 {
-                    data: player.height != null ? GlobalFunctions.inchesToFeet(Number(player.height)) : 'N/A',
+                    data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
                     key: 'Height'
                 },
                 {
