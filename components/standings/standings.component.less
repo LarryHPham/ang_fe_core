@@ -49,6 +49,7 @@
       border-width: 0 5px 0 0;
       border-style: solid;
       border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+      background-clip: padding-box;
     }
     .table-cell-image {
       @media @mobile {
@@ -61,8 +62,14 @@
       position: absolute;
       z-index: 1;
       left: 10px;
+      border-width: 0 5px 0 0;
+      border-style: solid;
+      border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+      background-clip: padding-box;
+      box-sizing: content-box;
       .custom-table-header {
         margin-right:0!important;
+        border-right-color: transparent;
       }
     }
     background-color: @white;
