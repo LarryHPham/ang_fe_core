@@ -194,7 +194,7 @@
 
   &-season-dropdown {
     @media @mobile{
-      margin:0 7.5px 0 7.5px;
+      margin:0 2.5px 0 2.5px;
     }
     margin: 0px 0px 0px 7.5px;
     float: right;
@@ -205,7 +205,7 @@
       .globalDefaultFont(0px, 400);
     }
     .dropdown {
-
+        margin-left: 10px;
       &:hover{
         @media @tablet {
           border: 1px solid @touchDownLoyalBlue ;
@@ -229,7 +229,9 @@
         line-height: 1.5em;
       }
       .dropdown-list{
-        left:2px;
+        @media @mobile {
+          left: 2px;
+        }
       }
       .dropdown-list-option{
         width:75px;
