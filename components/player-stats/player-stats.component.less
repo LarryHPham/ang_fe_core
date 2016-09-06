@@ -42,10 +42,15 @@
   .pane {
 
     @media @mobile{
-      padding: 10px 5px 10px 10px;
+      padding: 10px 5px 0px 10px;
       //padding: 70px 0 5px 5px;
       min-height: 165px !important;
+      border-bottom: 1px solid @strokeGrey;
 
+    }
+    .shader{
+      top:74px;
+      min:height:80px;
     }
 
   }
@@ -143,6 +148,10 @@
       position: absolute;
       z-index: 1;
       left: 10px;
+      width: 155px;
+      border-width: 0 5px 0 0;
+      border-style: solid;
+      border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
       .custom-table-header {
         margin-right:0!important;
       }
@@ -219,7 +228,8 @@
         position: relative;
         float:left;
         top: 8px;
-        left: -10px;
+        //left: -10px;
+        margin-right: 14px;
         //margin-left:15px;
         .globalDefaultFont(12px, 400);
 
