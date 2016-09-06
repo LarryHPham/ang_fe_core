@@ -39,7 +39,7 @@ export class ArticleStacktopComponent implements OnInit{
         imageConfig: {
           imageClass: "image-610x420",
           imageUrl: sampleImage,
-          hoverText: "View Article",
+          /*hoverText: "View Article",*/
         }
       }//this.stackTopData ends
     }
