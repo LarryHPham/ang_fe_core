@@ -140,17 +140,31 @@
         background-image: url('/app/public/icons/Infinity_Icon.png');
       }
   }
+
+  &-centernav {
+    &.desktop {
+      display: block;
+      @media @mobile {
+        display: none;
+      }
+    }
+    &.mobile {
+      display: none;
+      @media @mobile {
+        display: block;
+      }
+    }
+  } //centernav
+
+
 }
-@media @mobile{
+@media @mobile {
   .pagination{
-    &-row{
-      height: 25px;
-    }
-    &-container{
-      min-width: 320px;
-    }
-    &-button-circle{
-      display:none;
-    }
+      &-row{
+        height: 25px;
+      }
+      &-container{
+        min-width: 320px;
+      }
   }
 }
