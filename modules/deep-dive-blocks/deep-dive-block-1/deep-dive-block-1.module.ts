@@ -38,13 +38,6 @@ export class DeepDiveBlock1{
   @Input() profileName: any;
   @Input() scope: string;
   constructor(private _router:Router, private _boxScores:BoxScoresService, private _deepDiveData: DeepDiveService){
-      var currentUnixDate = new Date().getTime();
-      //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
-      this.dateParam ={
-        profile:'league',//current profile page
-        teamId:null,
-        date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
-      }
       window.onresize = (e) =>
       {
         // current use is box scores
@@ -53,6 +46,13 @@ export class DeepDiveBlock1{
     }
 
   ngOnInit() {
+    var currentUnixDate = new Date().getTime();
+    //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
+    this.dateParam ={
+      profile:'league',//current profile page
+      teamId:this.scope,
+      date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
+    }
      this.callModules();
   }
   getFirstArticleStackData(){
@@ -81,6 +81,7 @@ export class DeepDiveBlock1{
             console.log("Error getting tile stack data");
         });
   }
+
   private getDeepDiveVideoBatch(scope, region, numItems, startNum){
     this._deepDiveData.getDeepDiveVideoBatchService(this.scope, numItems, startNum, region).subscribe(
       data => {
@@ -90,6 +91,7 @@ export class DeepDiveBlock1{
           console.log("Error getting video batch data");
       });
   }
+
   //api for BOX SCORES
   private getBoxScores(dateParams?) {
       if (dateParams != null) {
@@ -98,10 +100,7 @@ export class DeepDiveBlock1{
       this._boxScores.getBoxScores(this.boxScoresData, this.profileName, this.dateParam, (boxScoresData, currentBoxScores) => {
           this.boxScoresData = boxScoresData;
           this.currentBoxScores = currentBoxScores;
-      },
-      err => {
-          console.log("Error getting box score data");
-      });
+      })
   }
   checkSize(){
     var width = window.outerWidth;
