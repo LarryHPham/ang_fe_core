@@ -4,9 +4,6 @@
   &-container{
     width:100%;
 
-    .side-scroller {
-      min-height: 180px; //min-height set so enough room is available to see entire dropdown when no data
-    }
     .scrollable-item-wrapper {
       width: 118%;
     }
@@ -20,16 +17,42 @@
   } //&-title
 
   //carousel
-  .scc-details-type1-desc, .scc-details-type1-date {
+  .scc-details-desc {
+    @media @tablet {
+      min-height: 165px;
+      width: ~"calc(100% - 225px)";
+    }
+  }
+  .scc-details-type1-desc {
+    text-align: left;
+  }
+  .scc-details-type1-date {
     text-align: left;
   }
 
   .no-data {
-    height: 130px; //min-height set so enough room is available to see entire dropdown when no data
     &-message {
       @media @mobile {
         padding-left: 25px;
       }
     }
   } //no-data
+
+  //following attributes added so entire dropdown can be seen when there is no data to display
+  overflow: visible;
+  .side-scroller {
+    overflow: visible;
+  }
+  .pane {
+    overflow: visible;
+    padding: 5px 15px 0 15px;
+  }
+  .dropdown-caret-top {
+    z-index: 1001;
+  }
+  .dropdown-list {
+    z-index: 1000;
+  }
+  //END following attributes added so entire dropdown can be seen when there is no data to display
+
 } //.transactions

@@ -97,6 +97,7 @@ export class PaginationFooter implements OnChanges{
     public lastButtonParameters: Object;
     //Number to determine +- range of buttons. (ex. buttonRange of 2 with an index of 6 yields buttons, 4 5 6 7 8)
     public buttonRange: number = 9;
+    public buttonRangeMobile: number = 4;
 
     //Array of what indexes are displayed. paginationButtonsModule is used for paginationType module. paginationButtonsPage is used for paginationType page
     public paginationButtonsModule: Array<Number>;
@@ -104,6 +105,11 @@ export class PaginationFooter implements OnChanges{
         index: number,
         page: string;
         params: Object;
+    }>;
+    public paginationButtonsPageForMobile: Array<{
+      index: number,
+      page: string,
+      params: Object;
     }>;
     //Output event emitter
     public newIndex = new EventEmitter();
@@ -317,6 +323,130 @@ export class PaginationFooter implements OnChanges{
         this.lastButtonParameters = lastParams;
     }
 
+
+    //Build pagination page for mobile
+    buildPageButtonsMobile() {
+      var index = Number(this.paginationParameters.index);
+      var max = Number(this.paginationParameters.max);
+      var range = this.buttonRangeMobile;
+      this.paginationButtonsPageForMobile = [];
+
+      var navigationPage = this.paginationParameters.navigationPage;
+      var indexKey = this.paginationParameters.indexKey;
+      //Determine values before index that can be added to button array
+      var r = 0;
+      if(index < max-2 && index > 1){
+        r = 2;
+      } else {
+        r = max-index;
+      }
+
+      for(var p = range - r; p > 0; p--){
+          if(index - p > 1){
+            //Build routerLink params for index values
+            var params = this.copyDynamicParams();
+            params[indexKey] = index - p;
+            //Push button parameters to array
+            this.paginationButtonsPageForMobile.push({
+                index: (index - p),
+                page: navigationPage,
+                params: params
+            });
+          }
+      }
+      if(index != 1 && index != max) {
+          //Build routerLink params for inputted index value
+          var params = this.copyDynamicParams();
+          params[indexKey] = (index);
+          //Push button parameters to array
+          this.paginationButtonsPageForMobile.push({
+              index: index,
+              page: navigationPage,
+              params: params
+          });
+      }
+
+      //Determine values after index that can be added to button array
+      var i = 0;
+      if(index > 2){
+        i = 2;
+      } else {
+        i = range - (range - index) - 1;
+      }
+
+      for(var n = 1; n <= range - i; n++){
+          if(index + n < max){
+              //Build routerLink params for index values
+              var params = this.copyDynamicParams();
+              params[indexKey] = (index + n);
+              //Push button parameters to array
+              this.paginationButtonsPageForMobile.push({
+                  index: (index + n),
+                  page: navigationPage,
+                  params: params
+              });
+          }
+      }
+
+      //Build min button parameters
+      var params = this.copyDynamicParams();
+      params[indexKey] = 1;
+      this.minButtonParameters = params;
+
+      //Build max button parameters
+      var params = this.copyDynamicParams();
+      params[indexKey] = max;
+      this.maxButtonParameters = params;
+
+      //Determine if next/previous and last/first buttons should be inactive
+      if(max <= 1){
+        this.disabledMin = "pagDisabled";
+        this.disabledMax = "pagDisabled";
+      } else if(index == max){
+        this.disabledMax = "pagDisabled";
+      } else if(index == 1){
+        this.disabledMin = "pagDisabled";
+      }
+      //Determine if absolute first button should be shown (show ellipsis if first item in array is not 5)
+      if(index > 3 && range + 1 < max){
+          this.showMinSkip = false;
+      }else{
+          this.showMinSkip = true;
+      }
+
+      //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 1)
+      if((index < max - 2 && range + 1 < max) || max < 2){
+          this.showMaxSkip = false;
+      }else{
+          this.showMaxSkip = true;
+      }
+      var firstParams = this.copyDynamicParams();
+      firstParams[indexKey] = 1;
+      this.firstButtonParameters = firstParams;
+
+      //Build parameters of previous angle button
+      var prevParams = this.copyDynamicParams();
+      if (index - 1 >= 1) {
+          prevParams[indexKey] = index - 1;
+      } else {
+          prevParams[indexKey] = 1;
+      }
+      this.previousButtonParameters = prevParams;
+
+      //Build parameters of next angle button
+      var nextParams = this.copyDynamicParams();
+      if (index + 1 <= max) {
+          nextParams[indexKey] = index + 1;
+      } else {
+          nextParams[indexKey] = max;
+      }
+      this.nextButtonParameters = nextParams;
+
+      var lastParams = params;
+      lastParams[indexKey] = max;
+      this.lastButtonParameters = lastParams;
+    } //buildPageButtonsMobile()
+
     //Copy object of input navigationParameters
     copyDynamicParams(){
         var params = {};
@@ -381,6 +511,7 @@ export class PaginationFooter implements OnChanges{
             this.buildModuleButtons();
         }else if(this.paginationParameters.paginationType == 'page'){
             this.buildPageButtons();
+            this.buildPageButtonsMobile();
         }
     }
 }

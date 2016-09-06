@@ -120,7 +120,15 @@ slider-carousel{
           width: 100%;
           text-align: center;
         }
-      }
+
+        a {
+          @media @tablet {
+            &:hover {
+              color: @masterBrandColorLink;
+            }
+          }
+        } //a
+      } //&-hdr
 
       &-desc{
         max-height:182px;
