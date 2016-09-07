@@ -61,7 +61,7 @@ slider-carousel{
     .flexDisplay;
     .flexDirection(row);
     .flexAlignItems(center);
-    width: 80%;
+    width: 75%;
     height: auto;
     margin:auto;
     padding-top: 0px;
@@ -97,6 +97,16 @@ slider-carousel{
         width:35%;
       }
     }//.scc-details-mainImg ends
+    &-desc {
+      width: ~"calc( 100% - 150px)";
+      padding-left: 25px;
+      min-height: 150px;
+      @media @mobile {
+        width: 100%;
+        padding: 0;
+        min-height: 0px;
+      }
+    }
 
     &-type1 { //for most modules
       &-subhdr {
@@ -143,11 +153,6 @@ slider-carousel{
           height: auto !important;
           text-align: left;
           margin-top: 10px;
-        }
-        @media @tablet {
-          a:hover {
-            color: @masterBrandColorLink;
-          }
         }
 
         & p { //TODO: remove when not used by list-of-lists
