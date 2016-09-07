@@ -67,10 +67,10 @@ export class ListOfListsModule{
     var id = this.teamId;
 
     if (this.profileType == 'league') {
-      this.teamId = null;
+      id = null;
     }
     if (this.profileType == 'player') {
-      this.teamId = this.playerId;
+      id = this.playerId;
     }
 
 
@@ -82,7 +82,7 @@ export class ListOfListsModule{
     perPageCount: params.limit,
     pageNumber: params.pageNum
   }];
-  console.log(this.footerData['url']);
+  console.log('FOOTER URL',this.footerData['url']);
   }
 
 }
