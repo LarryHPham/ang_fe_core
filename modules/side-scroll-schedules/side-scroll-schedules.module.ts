@@ -14,6 +14,7 @@ declare var jQuery:any;
 export class SideScrollSchedule{
   @Input() sideScrollData: any;
   @Input() scrollLength: any;
+  @Input() scope:string;
   public count = new EventEmitter();
   public curCount = 0;
 
@@ -23,5 +24,6 @@ export class SideScrollSchedule{
   }
 
   ngOnChanges(){
+    this.scope = this.scope.toUpperCase();
   }
 }
