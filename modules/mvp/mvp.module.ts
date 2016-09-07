@@ -7,6 +7,7 @@ import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/mod
 import {MVPListComponent, MVPTabData} from '../../components/mvp-list/mvp-list.component';
 import {LoadingComponent} from '../../components/loading/loading.component';
 
+import {GlobalSettings} from "../../../global/global-settings";
 import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 
 @Component({
@@ -33,6 +34,11 @@ export class MVPModule implements OnInit {
 
   tabKey: string;
 
+  public scope: string;
+  public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
+  public collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
+  public collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
+
   ngOnChanges() {}
 
   ngOnInit() {
@@ -41,6 +47,10 @@ export class MVPModule implements OnInit {
 
   displayData(scope, position){
 
+    if ( scope == this.collegeDivisionAbbrv ) {
+      scope = this.collegeDivisionFullAbbrv;
+    }
+
     this.modHeadData = {
         moduleTitle: "Most Valuable Players - ",
         moduleIdentifier: scope.toUpperCase() + " " + position +"s",
@@ -48,8 +58,12 @@ export class MVPModule implements OnInit {
         iconClass: '',
     };
 
+    console.log(this.query);
+
     var type = this.query.statName.indexOf(position)>=0 ? position : "k";
     var url;
+
+
 
     if ( this.tabKey ) {
       url = ['MVP-list-tab-page', {
@@ -61,6 +75,7 @@ export class MVPModule implements OnInit {
     else {
       url = ['MVP-list-page', {
         type: type,
+        tab: this.query.statName,
         pageNum: "1"
       }];
     }
