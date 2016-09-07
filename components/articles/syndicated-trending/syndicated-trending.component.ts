@@ -38,6 +38,7 @@ export class SyndicatedTrendingComponent {
                 this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
 
                 if (this.trendingLength <= 20) {
+
                     this.trendingLength = this.trendingLength + 10;
                 }
             }

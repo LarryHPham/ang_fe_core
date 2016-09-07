@@ -28,10 +28,11 @@ slider-carousel{
     opacity: .5;
     filter:alpha(opacity=50);
     @media @mobile {
-      left: 0;
+      left: -40%;
       bottom: 0;
       margin: 0 auto auto auto;
       min-height: 100%;
+      width: auto;
     }
   }
   &-placeholder{
@@ -60,7 +61,7 @@ slider-carousel{
     .flexDisplay;
     .flexDirection(row);
     .flexAlignItems(center);
-    width: 80%;
+    width: 75%;
     height: auto;
     margin:auto;
     padding-top: 0px;
@@ -78,7 +79,7 @@ slider-carousel{
       }
     }
     &-mainImg{
-      width: 38%;
+      //width: 38%;
       max-width: 225px;
       .flexDisplay;
       .flexDirection(column);
@@ -96,6 +97,16 @@ slider-carousel{
         width:35%;
       }
     }//.scc-details-mainImg ends
+    &-desc {
+      width: ~"calc( 100% - 150px)";
+      padding-left: 25px;
+      min-height: 150px;
+      @media @mobile {
+        width: 100%;
+        padding: 0;
+        min-height: 0px;
+      }
+    }
 
     &-type1 { //for most modules
       &-subhdr {
@@ -120,7 +131,15 @@ slider-carousel{
           width: 100%;
           text-align: center;
         }
-      }
+
+        a {
+          @media @tablet {
+            &:hover {
+              color: @masterBrandColorLink;
+            }
+          }
+        } //a
+      } //&-hdr
 
       &-desc{
         max-height:182px;
@@ -134,11 +153,6 @@ slider-carousel{
           height: auto !important;
           text-align: left;
           margin-top: 10px;
-        }
-        @media @tablet {
-          a:hover {
-            color: @masterBrandColorLink;
-          }
         }
 
         & p { //TODO: remove when not used by list-of-lists

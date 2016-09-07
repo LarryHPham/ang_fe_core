@@ -18,7 +18,7 @@
     left: 57px;
   }
   @media @tablet {
-    left: 91px;
+    left: 112px;
   }
   .transactions-li-timeline-line {
     display: block;
@@ -65,7 +65,7 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
       a{
         &:hover{
           text-decoration: none;
-          color:@masterBrandColor;
+          color:@masterBrandColorLink;
           cursor: pointer;
         }
       }
@@ -77,7 +77,7 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
         left: 87px;
       }
       @media @tablet {
-        left: 125px;
+        left: 150px;
       }
     }
     &-text{
@@ -85,8 +85,12 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
         top: 18px;
         position: absolute;
         font-size: 12px;
-        width: 106px;
+        width: 90px;
         text-align: left;
+        @media @tablet {
+          width: 110px;
+          text-align: center;
+        }
         @media @mobile {
           left: 0;
           width: auto;
@@ -107,7 +111,6 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
       &-right{
         position: relative;
         left: 242px;
-        margin-top:5px;
         font-size: 16px;
         min-height: 60px;
         width: 375px;
@@ -121,11 +124,11 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
           width: ~"calc(100% - 144px)";
         }
         @media @tablet {
-          left: 188px;
-          width: ~"calc(100% - 188px)";
+          left: 215px;
+          width: ~"calc(100% - 215px)";
         }
         a:hover {
-          color: @masterBrandColor;
+          color:@masterBrandColorLink;
         }
       }
     }
