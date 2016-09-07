@@ -39,12 +39,15 @@
 -->
     <responsive-widget style="display:table-row;" colspan=50 *ngIf="(!((rowIndex + 1) % 10) && model.rows.length > 10)" embedPlace="widgetForPage"></responsive-widget>
   </tbody>
+
   <tfoot *ngIf="model.footer" class="custom-table-footer {{bodyClass}}">
     <tr>
       <td *ngFor="let hdr of model.columns" [innerHtml]="model.footer[hdr.key]" class="{{bodyClass}}-cell"></td>
     </tr>
   </tfoot>
 </table>
-<!-- <div *ngIf="model" class="no-results custom-table">
-  <no-data-box *ngIf="model.rows <= 0" [data]="error.data" [icon]="error.icon"></no-data-box>
-</div> -->
+<template [ngIf]="model">
+  <div *ngIf="model.rows.length <= 0" class="no-data-table">
+    <no-data-box [data]="error.data" [icon]="error.icon"></no-data-box>
+  </div>
+</template>

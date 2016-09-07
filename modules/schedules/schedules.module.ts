@@ -61,9 +61,7 @@ export class SchedulesModule{
 
     ngOnChanges(){
         if(typeof this.data != 'undefined'){
-            if(typeof this.tabData == 'undefined'){
-                this.tabData = this.data.tabs;
-            }
+            this.tabData = this.data.tabs;
         }
         if(this.filter1 != null){
           if(this.filter1.length > 0 && this.dropdownKey1 == null){
