@@ -28,11 +28,12 @@
         </div>
       </div>
     </div>
-    <div class="article-teaser container-fluid" *ngIf="data.postGameArticle && data.postGameArticle.text && data.postGameArticle.text.length > 0">
+    <div class="article-teaser container-fluid" *ngIf="data.postGameArticle && data.postGameArticle.text && data.postGameArticle.text.length > 0 && data.postGameArticle.text[0] != null">
       <circle-image class="pull-left" *ngIf="imageConfig" [data]="imageConfig"></circle-image>
       <div class="article-teaser-text pull-right">
         <h4 class="article-teaser-text-title">
-          <a *ngIf="data.postGameArticle.url" [routerLink]="data.postGameArticle.url">{{profileName | possessive}} Most Recent Game</a>
+          <a *ngIf="data.postGameArticle.url && data.type != 'Player'" [routerLink]="data.postGameArticle.url">{{profileName | possessive}} Most Recent Game</a>
+          <a *ngIf="data.postGameArticle.url && data.type == 'Player'" [routerLink]="data.postGameArticle.url">{{data.postGameArticle.headline}}</a>
         </h4>
         <p *ngIf="data.postGameArticle.pubDate" class="article-teaser-text-subtitle"><i class="fa fa-calendar-o"></i> {{data.postGameArticle.pubDate}}</p>
       </div>
