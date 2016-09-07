@@ -7,7 +7,7 @@
         <!-- <h4><b>{{data.tabTitle}}:</b> Draft History</h4> -->
         <div class="sort-title">
           <span class="sort-title-text">Position: </span>
-          <dropdown *ngIf="sortOptions" [list]="sortOptions" [selectedKey]="" (selectionChanged)="dropdownChanged($event)"></dropdown>
+          <dropdown *ngIf="sortOptions" [list]="sortOptions" [selectedKey]="dropdownSelectedKey" (selectionChanged)="dropdownChanged($event)"></dropdown>
         </div>
       </div>
       <div class="mvp-container-list">

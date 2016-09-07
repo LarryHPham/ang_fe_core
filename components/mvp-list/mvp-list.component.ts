@@ -45,6 +45,8 @@ export class MVPListComponent implements DoCheck, OnInit  {
 
   listType: string;
 
+  dropdownSelectedKey: string = 'cb';
+
   private sortOptions: Array<any> = [
     {key: 'cb', value: 'Cornerback'},
     {key: 'db', value: 'Defensive back'},
@@ -76,9 +78,15 @@ export class MVPListComponent implements DoCheck, OnInit  {
       else {
         let selectedTab = this.getSelectedTab();
 
-        if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle] ) {
+        //Only run update carousel on first run
+        if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle]) {
+          if (this.carouselDataArray != null && this.carouselDataArray[0].description[0].textData[0].text != selectedTab.getCarouselData()[0].description[0].textData[0].text) {
+            this.updateCarousel(selectedTab);
+          }
+          else if (this.carouselDataArray == null) {
+            this.updateCarousel(selectedTab);
+          }
           //this.tabsLoaded[selectedTab.tabDisplayTitle] = "qb";
-          this.updateCarousel(selectedTab);
         }
       }
     }
@@ -90,7 +98,7 @@ export class MVPListComponent implements DoCheck, OnInit  {
 
   ngOnInit(){
       if (this.listType == null ) {
-        this.position = this.position == null ? this.sortOptions[0]['key']:this.position;
+        this.position = this.position == null ? this.dropdownSelectedKey : this.position;
       }
       else {
         this.position = this.listType;
@@ -138,6 +146,8 @@ export class MVPListComponent implements DoCheck, OnInit  {
       this.carouselDataArray = tab.getCarouselData();
       this.detailedDataArray = tab.listData;
     }
+
+    this.dropdownSelectedKey = this.position == null ? this.dropdownSelectedKey  : this.position;
   } //updateCarousel
 
   ngOnChanges() {
@@ -152,13 +162,11 @@ export class MVPListComponent implements DoCheck, OnInit  {
   }
 
   dropdownChanged($event) {
-    if(this.dropDownFirstRun){
-      this.dropDownFirstRun = false;
-      this.position = $event;
-      this.dropdownPositionSelection.next({
-        tab: this.getSelectedTab(),
-        position: $event //position 'key' value
-      });
-    }
+    this.dropDownFirstRun = false;
+    this.position = $event;
+    this.dropdownPositionSelection.next({
+      tab: this.getSelectedTab(),
+      position: $event //position 'key' value
+    });
   }
 }
