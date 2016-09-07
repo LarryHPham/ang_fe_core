@@ -44,7 +44,6 @@ export class ListOfListsModule{
 
   ngOnChanges(event) {
     var origin = window.location.origin;
-    console.log('list DATA',this.listOfListsData);
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
@@ -62,7 +61,6 @@ export class ListOfListsModule{
       id: ''
     };
     // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
-    console.log('FOOTERDATA',this.footerData);
 
     var id = this.teamId;
 
@@ -82,7 +80,6 @@ export class ListOfListsModule{
     perPageCount: params.limit,
     pageNumber: params.pageNum
   }];
-  console.log('FOOTER URL',this.footerData['url']);
   }
 
 }
