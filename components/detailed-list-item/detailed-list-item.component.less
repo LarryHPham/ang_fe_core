@@ -63,7 +63,11 @@ tabs .dli-container{
         display: block;
         padding: 0;
       }
-
+      @media @tablet {
+        a:hover { //only <a> elements should have a hover style
+          color: @masterBrandColor
+        }
+      }
       &-mainLink {
         color: @black;
         text-decoration: none;

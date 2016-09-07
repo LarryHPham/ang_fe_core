@@ -28,10 +28,11 @@ slider-carousel{
     opacity: .5;
     filter:alpha(opacity=50);
     @media @mobile {
-      left: 0;
+      left: -40%;
       bottom: 0;
       margin: 0 auto auto auto;
       min-height: 100%;
+      width: auto;
     }
   }
   &-placeholder{
@@ -96,7 +97,11 @@ slider-carousel{
         width:35%;
       }
     }//.scc-details-mainImg ends
-
+    &-desc {
+      @media @tablet {
+        max-width: 60%;
+      }
+    }
     &-type1 { //for most modules
       &-subhdr {
         .globalDefaultModFont(10px, 400, @white);
@@ -134,11 +139,6 @@ slider-carousel{
           height: auto !important;
           text-align: left;
           margin-top: 10px;
-        }
-        @media @tablet {
-          a:hover {
-            color: @masterBrandColorLink;
-          }
         }
 
         & p { //TODO: remove when not used by list-of-lists
