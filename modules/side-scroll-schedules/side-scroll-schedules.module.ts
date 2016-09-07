@@ -16,6 +16,8 @@ export class SideScrollSchedule{
   @Input() sideScrollData: any;
   @Input() scrollLength: any;
   @Input() scope:string;
+  @Output() changeScope = new EventEmitter();
+
   public count = new EventEmitter();
   public curCount = 0;
 
