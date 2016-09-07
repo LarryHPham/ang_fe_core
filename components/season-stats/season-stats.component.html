@@ -6,7 +6,7 @@
     <tab *ngFor="let tab of tabs" [tabTitle]="tab.title" [active]="tab.isActive">
       <loading-component *ngIf="!tab.isLoaded && !tab.hasError"></loading-component>
       <div *ngIf="tab.isLoaded && tab.sections">
-        <h3 [innerHtml]="tab.tabName"></h3>
+        <h3 [innerHtml]="'<b>' + tab.title + ' : </b>' + 'Season Stats'"></h3>
         <div *ngFor="let section of tab.sections" class="season-stats-tab-section">
             <h4 [innerHtml]="section.groupName"></h4>
             <custom-table [model]="section.tableData" [isCompactStyle]="'true'" (sortChanged)="updateCarousel($event)"></custom-table>
