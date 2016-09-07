@@ -1,4 +1,8 @@
 .standings {
+  .nav-tabs li{
+    display: inherit;
+    padding-top: 0;
+  }
   .hidden-tabs {
     .nav.nav-tabs{
       display:none;
@@ -22,6 +26,9 @@
     .flexAlignItems(center);
   }
   @media @mobile{
+    .pane .shader{
+      box-shadow: inset -13px 0 5px -11px rgba(0, 0, 0, 0.1);
+    }
     .sort-title{
       width: 60%;
       &-conf{
@@ -133,23 +140,28 @@
     }
   }
   .tab-name {
+    @media @mobile{
+      font-size: 16px;
+      position: absolute;
+    }
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: -25px;
     margin-bottom: 10px;
     display: inline-block;
   }
   .tab-name.no-0 {
-    margin-top: -28px;
-    @media @mobile{
-      margin-top: -60px;
-    }
     margin-bottom: 10px;
+    position: absolute;
+  }
+  .standings-tab-section{
+    padding-top: 43px;
   }
   .filters {
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-bottom: -20px;
     @media @mobile{
-      padding-top: 35px;
+      padding-top: 5px;
     }
     .list-filter-heading {
       position: absolute;
@@ -157,9 +169,6 @@
       i {
         color: @masterBrandColor;
         vertical-align: top;
-      }
-      @media @tablet {
-        display:none;
       }
     }
     h4 {
@@ -188,6 +197,10 @@
     }
     .sort-title:nth-of-type(2) {
       width: 37%;
+      @media @mobile{
+        position: absolute;
+        right: 0;
+      }
       @media @tablet{
         margin-left:20px;
         width: auto;
