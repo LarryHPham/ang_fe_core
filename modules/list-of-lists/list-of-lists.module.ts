@@ -66,12 +66,12 @@ export class ListOfListsModule{
 
     var id = this.teamId;
 
-    // if (this.profileType == 'league') {
-    //   this.teamId = null;
-    // }
-    // if (this.profileType == 'player') {
-    //   this.teamId = this.playerId;
-    // }
+    if (this.profileType == 'league') {
+      this.teamId = null;
+    }
+    if (this.profileType == 'player') {
+      this.teamId = this.playerId;
+    }
 
 
   // path: '/list-of-lists/:target/:targetId/:perPageCount/:pageNumber',
