@@ -32,7 +32,8 @@ export interface StatsTableTabData<T> {
 export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;
     public GlossaryData;
-
+    public rowCount;
+    islessthanten:boolean;
     public carouselData: Array<SliderCarouselInput> = [];
     @Input() tabName;
 
@@ -140,6 +141,9 @@ export class PlayerStatsComponent implements DoCheck {
         let carouselData: Array<SliderCarouselInput> = [];
         let index = 0;
         let selectedIndex = -1;
+        this.rowCount=selectedTab.tableData.rows.length;
+        this.rowCount<10?this.islessthanten=true:this.islessthanten=false;
+        //console.log("row count =", this.rowCount);
         selectedTab.tableData.rows.map((value) => {
             let item = selectedTab.convertToCarouselItem(value, index);
             if ( selectedTab.tableData.isRowSelected(value, index) ) {
@@ -158,5 +162,6 @@ export class PlayerStatsComponent implements DoCheck {
     updateGlossary(){
         var tabchosen= this.getSelectedTab();
         this.GlossaryData=tabchosen.glossary;
+
     }
 }
