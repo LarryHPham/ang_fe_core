@@ -164,9 +164,14 @@ export class MVPListComponent implements DoCheck, OnInit  {
   dropdownChanged($event) {
     this.dropDownFirstRun = false;
     this.position = $event;
+    console.log({
+      tab: this.getSelectedTab(),
+      position: $event //position 'key' value
+    });
     this.dropdownPositionSelection.next({
       tab: this.getSelectedTab(),
       position: $event //position 'key' value
     });
+    this.dropdownSelectedKey = this.position == null ? this.dropdownSelectedKey  : this.position;
   }
 }
