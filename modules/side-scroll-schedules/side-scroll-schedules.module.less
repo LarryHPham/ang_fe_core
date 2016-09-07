@@ -9,15 +9,27 @@
   width: 100%;
   margin-left: 10px;
   &-1{
-    background-color: @black;
+    background-color: @white;
     border-radius: 3px;
     display: inline-block;
     height: 100%;
     line-height: 30px;
-    width: 60px;
+    width: auto;
     text-align: center;
-    .globalDefaultModFont(12px, 800, @white);
+    .globalDefaultModFont(12px, 800, @black);
     float:right;
+    margin-left: 5px;
+    padding: 0 10px;
+    border: 1px solid @black;
+  }
+  &-1:hover {
+    background-color: @black;
+    color: @white;
+    cursor: pointer;
+  }
+  .ss-title-active {
+    background-color: @black;
+    color: @white;
   }
   &-2{
     float:left;
@@ -35,9 +47,8 @@
     margin-left: 0;
     &-1{
       font-size: 18px;
-      line-height: 40px;
+      line-height: 30px;
       height: 100%;
-      width: 60px;
     }
     &-2{
       font-size: 24px;
