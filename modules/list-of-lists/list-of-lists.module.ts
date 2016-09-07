@@ -24,6 +24,11 @@ export interface ListOfListsData {
 export class ListOfListsModule{
   @Input() profileHeaderData : ProfileHeaderData;
   @Input() listOfListsData : ListOfListsData;
+  @Input() profileType : string;
+  @Input() teamId : string;
+  @Input() playerId : string;
+
+
   moduleHeader: ModuleHeaderData;
   displayData: Array<any>;
   footerData: Object;
@@ -33,11 +38,13 @@ export class ListOfListsModule{
       btn:'',
       text:'VIEW MORE LISTS',
       url:['Error-page'], // Gets updated in ngOnChanges
+      hasIcon: false
     }
   }
 
   ngOnChanges(event) {
     var origin = window.location.origin;
+    console.log('list DATA',this.listOfListsData);
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
@@ -47,22 +54,35 @@ export class ListOfListsModule{
       hasIcon: false,
       iconClass: "",
     }
-    var type = this.listOfListsData[0]['target'];
-    var routeName = type == "league" ? 'List-of-lists' : 'List-of-lists';
+  //  var type = this.listOfListsData[0]['target'];
+  //  var routeName = type == "league" ? 'list-of-lists' : 'list-of-lists';
     var params = {
       limit:10,
       pageNum:1,
       id: ''
     };
     // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
+    console.log('FOOTERDATA',this.footerData);
+
+    var id = this.teamId;
+
+    // if (this.profileType == 'league') {
+    //   this.teamId = null;
+    // }
+    // if (this.profileType == 'player') {
+    //   this.teamId = this.playerId;
+    // }
 
 
-    if ( this.listOfListsData[0]['id'] ) {
-      params["id"] = this.listOfListsData[0]['id'];
-    }
-    if ( type != "league" ) {
-      params["type"] = type;
-    }
-    this.footerData['url'] = origin+'/nfl/'+routeName+'/'+params.id+'/'+params.limit+'/'+params.pageNum;
+  // path: '/list-of-lists/:target/:targetId/:perPageCount/:pageNumber',
+  // name: 'List-of-lists-page-scoped',
+  this.footerData['url'] = ['List-of-lists-page-scoped',{
+    target: this.profileType,
+    targetId: id, //league and player id.
+    perPageCount: params.limit,
+    pageNumber: params.pageNum
+  }];
+  console.log(this.footerData['url']);
   }
+
 }
