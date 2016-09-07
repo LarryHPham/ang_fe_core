@@ -37,6 +37,7 @@ export class SyndicatedTrendingComponent {
         this._deepdiveservice.getDeepDiveBatchService(scope, numItems, 2, state).subscribe(
             data => {
                 this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
+                console.log("article data", this.articleData);
 
                 if (this.trendingLength <= 20) {
 
@@ -45,6 +46,7 @@ export class SyndicatedTrendingComponent {
             }
 
         )
+
     }
 
     ngOnInit(){
