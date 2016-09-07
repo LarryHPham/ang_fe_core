@@ -45,7 +45,10 @@
 
         </tab>
     </tabs>
-    <glossary-component [glossaryData]="GlossaryData"></glossary-component>
+    <glossary-component *ngIf="showGlossary" [glossaryData]="GlossaryData"></glossary-component>
+    <!--<responsive-widget style="display:table-row;" colspan=50 *ngIf="(!isLast && rowIndex != 10))" embedPlace="widgetForPage"></responsive-widget>-->
+    <responsive-widget style="display:table-row;" colspan=50 *ngIf="(isLast && tableData.rows.length <= 10)" embedPlace="widgetForPage"></responsive-widget>
+
 </div>
 
 <!--<div *ngIf="tabs" class="stats">
