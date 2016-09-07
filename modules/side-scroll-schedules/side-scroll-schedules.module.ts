@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ScheduleBox} from '../../components/schedule-box/schedule-box.component'
-import {SideScroll} from '../../components/carousels/side-scroll/side-scroll.component'
+import {ScheduleBox} from '../../components/schedule-box/schedule-box.component';
+import {SideScroll} from '../../components/carousels/side-scroll/side-scroll.component';
+import {GlobalSettings} from '../../../global/global-settings';
 
 declare var jQuery:any;
 
@@ -24,6 +25,5 @@ export class SideScrollSchedule{
   }
 
   ngOnChanges(){
-    this.scope = this.scope.toUpperCase();
   }
 }
