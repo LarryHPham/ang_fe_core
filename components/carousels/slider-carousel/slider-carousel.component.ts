@@ -9,6 +9,8 @@ import {ModuleFooter, ModuleFooterData} from '../../module-footer/module-footer.
 import {ComplexInnerHtml} from '../../complex-inner-html/complex-inner-html.component'
 import {Link, ParagraphItem} from '../../../../global/global-interface';
 
+import {VerticalGlobalFunctions} from '../../../../global/vertical-global-functions';
+
 /*
   index?: //(optional) parameter in case it is needed to know the position of the object in its current array
 
@@ -143,8 +145,10 @@ export class SliderCarousel implements OnInit {
   ngOnInit() {
     //incase there is no backgroundImage being return set the default background
     if(typeof this.backgroundImage == 'undefined'){
-      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/public/Image-Placeholder-1.jpg');
+      this.backgroundImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(this.backgroundImage);
     }
+
+
 
     //In case of errors display below
     if (typeof this.dataPoint == 'undefined') {
