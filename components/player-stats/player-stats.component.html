@@ -47,11 +47,12 @@
     </tabs>
     <glossary-component *ngIf="showGlossary" [glossaryData]="GlossaryData"></glossary-component>
     <!--<responsive-widget style="display:table-row;" colspan=50 *ngIf="(!isLast && rowIndex != 10))" embedPlace="widgetForPage"></responsive-widget>-->
-    <responsive-widget style="display:table-row;" colspan=50 *ngIf="(isLast && tableData.rows.length <= 10)" embedPlace="widgetForPage"></responsive-widget>
+    <responsive-widget style="display:table-row;" colspan=50 *ngIf="isLessThanTen" embedPlace="widgetForPage"></responsive-widget>
 
 </div>
 
-<!--<div *ngIf="tabs" class="stats">
+<!-- *ngIf="(isLast && tableData.rows.length <= 10)"
+<div *ngIf="tabs" class="stats">
   <div class="stats-car">
     <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
   </div>
