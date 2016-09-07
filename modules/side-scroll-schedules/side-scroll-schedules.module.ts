@@ -20,6 +20,9 @@ export class SideScrollSchedule{
 
   public count = new EventEmitter();
   public curCount = 0;
+  _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv();
+  _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv();
+  _collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
 
   counter(event){
     this.curCount = event;
@@ -27,5 +30,8 @@ export class SideScrollSchedule{
   }
 
   ngOnChanges(){
+  }
+  scopeChange(selection) {
+    this.changeScope.next(selection);
   }
 }
