@@ -33,7 +33,7 @@ export class PlayerStatsComponent implements DoCheck {
     public selectedIndex;
     public GlossaryData;
     public rowCount;
-    islessthanten:boolean;
+    isLessThanTen:boolean;
     public carouselData: Array<SliderCarouselInput> = [];
     @Input() tabName;
 
@@ -142,7 +142,7 @@ export class PlayerStatsComponent implements DoCheck {
         let index = 0;
         let selectedIndex = -1;
         this.rowCount=selectedTab.tableData.rows.length;
-        this.rowCount<10?this.islessthanten=true:this.islessthanten=false;
+        this.rowCount<10?this.isLessThanTen=true:this.isLessThanTen=false;
         //console.log("row count =", this.rowCount);
         selectedTab.tableData.rows.map((value) => {
             let item = selectedTab.convertToCarouselItem(value, index);
