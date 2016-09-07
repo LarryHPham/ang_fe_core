@@ -1,4 +1,4 @@
-<slider-carousel *ngIf="carouselDataArray" [carouselData]="carouselDataArray"></slider-carousel>
+<slider-carousel *ngIf="carouselDataArray && carouselDataArray[0].noData == false" [carouselData]="carouselDataArray"></slider-carousel>
 <tabs *ngIf="tabs" (tabSelected)='selectedTab($event)'>
   <tab *ngFor="let tab of tabs; let i = index" [active]="i == 0" [tabTitle]="tab.tabDisplay">
     <div *ngIf="tab.isLoaded" class="transactions-container">
