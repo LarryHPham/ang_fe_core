@@ -13,7 +13,7 @@ import {GlobalFunctions} from '../../../global/global-functions';
     inputs:['']
 })
 
-export class SchedulesModule implements OnInit{
+export class SchedulesModule{
     @Input() data;
     @Input() profHeader;
     @Input() error;
@@ -33,17 +33,19 @@ export class SchedulesModule implements OnInit{
     }
     modHeadData: ModuleHeaderData;
 
-    ngOnInit(){
+    getFooter(){
         this.modHeadData = {
           moduleTitle: "Weekly Schedules - " + this.profHeader.profileName,
           hasIcon: false,
           iconClass: '',
         }
-        if(typeof this.params.get('teamId') != 'undefined' && this.params.get('teamId') !== null){
+        if(this.params.get('teamId') != null){
             this.footerData = {
                 infoDesc: 'Want to see the full season schedule?',
                 text: 'VIEW SCHEDULE',
-                url: ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName), year:2015, teamId:this.params.get('teamId'), pageNum:1}]
+                url: ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName),
+                  year:this.dropdownKey1, teamId:this.params.get('teamId'),
+                pageNum:1}]
             };
         }else{
           if(this.dropdownKey1 == null){
@@ -63,15 +65,14 @@ export class SchedulesModule implements OnInit{
                 this.tabData = this.data.tabs;
             }
         }
-
         if(this.filter1 != null){
           if(this.filter1.length > 0 && this.dropdownKey1 == null){
-            this.dropdownKey1 = this.filter1[0];
+            this.dropdownKey1 = this.filter1[0].key;
           }
         }
         if(this.filter2 != null){
           if(this.filter2.length > 0 && this.dropdownKey2 == null){
-            this.dropdownKey2 = this.filter2[0];
+            this.dropdownKey2 = this.filter2[0].key;
           }
         }
         if(this.footerData){
@@ -80,6 +81,7 @@ export class SchedulesModule implements OnInit{
           }
           this.footerData.url = ['Schedules-page-league', {year:this.dropdownKey1,pageNum:1}]
         }
+        this.getFooter();
     }
 
     filterSelected(event){
