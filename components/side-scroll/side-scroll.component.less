@@ -115,7 +115,8 @@
     width:640px;
   }
   .carousel_scroll-box {
-    height: auto;
+    min-height: 240px;
+    height: 56vw;
     background-color:white;
   }
   .carousel_scroll-container {
@@ -125,7 +126,6 @@
     height: auto;
   }
   .video-item {
-    max-height: 220px;
     background-image: none !important;
     background-color: white;
     transition: max-height 0.5s;
@@ -137,7 +137,6 @@
     }
   }
   .story-item {
-    max-height:220px;
     background-color:white;
     transition: max-height 0.5s;
     .carousel-item {
@@ -166,6 +165,9 @@
 }
 
 @media @tablet{
+  .carousel_scroll-box {
+    height: auto;
+  }
   .side_scroll-transition{
     width:640px;
   }
