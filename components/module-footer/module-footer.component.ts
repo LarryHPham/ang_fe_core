@@ -33,7 +33,6 @@ export class ModuleFooter implements OnInit{
           ctaBtnClass: '',
           hasIcon: false,
         };
-        console.log(this.footerData);
       }
 
       if(typeof this.footerData == 'undefined'){
