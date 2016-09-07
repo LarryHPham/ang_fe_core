@@ -78,6 +78,7 @@ export class MVPListComponent implements DoCheck, OnInit  {
       else {
         let selectedTab = this.getSelectedTab();
 
+        //Only run update carousel on first run
         if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle]) {
           if (this.carouselDataArray != null && this.carouselDataArray[0].description[0].textData[0].text != selectedTab.getCarouselData()[0].description[0].textData[0].text) {
             this.updateCarousel(selectedTab);

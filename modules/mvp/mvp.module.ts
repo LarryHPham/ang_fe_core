@@ -47,7 +47,7 @@ export class MVPModule implements OnInit {
 
   displayData(scope, position){
 
-    if ( scope == this.collegeDivisionAbbrv ) {
+    if ( scope == this.collegeDivisionAbbrv.toLowerCase() ) {
       scope = this.collegeDivisionFullAbbrv;
     }
 
@@ -58,23 +58,18 @@ export class MVPModule implements OnInit {
         iconClass: '',
     };
 
-    console.log(this.query);
-
     var type = this.query.statName.indexOf(position)>=0 ? position : "k";
     var url;
 
-
-
     if ( this.tabKey ) {
-      url = ['MVP-list-tab-page', {
-        tab: this.tabKey,
-        type: type,
+      url = ['MVP-list-page', {
+        type: this.query.position,
         pageNum: "1"
       }];
     }
     else {
-      url = ['MVP-list-page', {
-        type: type,
+      url = ['MVP-list-tab-page', {
+        type: this.query.position,
         tab: this.query.statName,
         pageNum: "1"
       }];
