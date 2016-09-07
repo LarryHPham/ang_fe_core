@@ -10,19 +10,25 @@
         </div>
 
         <div class="schedules-heading-filter">
-          <div *ngIf="filter1" class="col-xs-6 filter-dropdown">
-            <dropdown
-              [list]="filter1"
+          <div *ngIf="filter1" class="filter-box">
+            <span>{{filter1.type}}</span>
+            <div  class="col-xs-6 filter-dropdown">
+              <dropdown
+              [list]="filter1.data"
               [selectedKey]="dropdownKey1"
               [icon]="'fa-caret-down'"
               (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
+            </div>
           </div>
-          <div *ngIf="filter2" class="col-xs-6 filter-dropdown">
-            <dropdown
-              [list]="filter2"
+          <div *ngIf="filter2" class="filter-box">
+            <span>{{filter2.type}}</span>
+            <div class="col-xs-6 filter-dropdown">
+              <dropdown
+              [list]="filter2.data"
               [selectedKey]="dropdownKey2"
               [icon]="'fa-caret-down'"
               (selectionChanged)="filterSwitch({key:$event,value:'filter2'})"></dropdown>
+            </div>
           </div>
         </div>
       </div>
@@ -30,11 +36,11 @@
         <div *ngFor="let section of tab.tabData.sections" class="schedules-section">
           <h4 *ngIf="section.groupName" [innerHtml]="section.groupName"></h4>
           <loading-component *ngIf="!section.tableData"></loading-component>
-          <custom-table *ngIf="section.tableData" [error]="error" [model]="section.tableData" (sortChanged)="updateCarousel($event)"></custom-table>
+          <custom-table *ngIf="section.tableData" [error]="tab.tabData.errorData" [model]="section.tableData" (sortChanged)="updateCarousel($event)"></custom-table>
         </div>
       </div>
       <!-- <div *ngIf="tab.tabData.sections.length <= 0" class="no-results">
-        <no-data-box [data]="error.data" [icon]="error.icon"></no-data-box>
+        <no-data-box [data]="tab.tabData.errorData.data" [icon]="tab.tabData.errorData.icon"></no-data-box>
       </div> -->
     </div>
   </tab>
