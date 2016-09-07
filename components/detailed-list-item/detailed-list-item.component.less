@@ -165,6 +165,18 @@ tabs .dli-container{
               font-weight: 400;
               line-height: 1.2em;
             }
+            .mobile-only {
+              display: none;
+              @media @mobile {
+                display: inline-block;
+              }
+            }
+            .not-mobile {
+              display: inline-block;
+              @media @mobile {
+                display: none;
+              }
+            }
           }
         }//END OF &-text
         &.detail-left {}
