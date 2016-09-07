@@ -65,6 +65,14 @@
     @media @mobile{
       margin-right: 20px;
     }
+    .filter-box{
+      width:auto;
+      height:30px;
+      margin-left: 20px;
+      .flexDisplay;
+      align-items: center;
+      float:right
+    }
     .filter-dropdown{
       width:117px;
       float:right;
@@ -102,9 +110,16 @@
     &:first-child{
       padding-left: 0;
     }
+    &:nth-of-type(2){
+      .custom-table-header{
+        maring-left:5px;
+      }
+    }
   }
+
   .location-column2, .location-column2-hdr {
     width:104px;
+
 
     @media @mobile{
       circle-image{
