@@ -163,20 +163,22 @@
     font-size: 60px;
   }
   .carousel-dive {
-    height: 220px;
+    height: 240px;
   }
   .carousel-item {
-    // width: 100%;
-    // padding: 0px 46px 0 41px;
-    height: 220px;
+    margin-top: 20px;
+    height: 240px;
+  }
+  .videoActive .carousel-item{
+    margin-top: 0;
   }
   .owl-carousel {
-    height: 220px;
+    height: 240px;
   }
   .owl-item {
-    height: 220px;
+    height: 240px;
     .story-item {
-      height: 220px;
+      height: 240px;
     }
     .video-item {
       height: 180px;
@@ -210,7 +212,7 @@
         &-title {
           .globalDefaultFont(16px, 800);
           >span {
-            .globalDefaultFont(12px, 400);
+            .globalDefaultFont(14px, 400);
             margin: 0 0 5px 0;
           }
           &-border {
@@ -224,7 +226,6 @@
           height: auto;
           padding: 2px 28px;
           margin-bottom: 12px;
-          margin-top: 16px;
           line-height: 20px;
           .globalDefaultFont(10px, 400);
         }
@@ -257,7 +258,7 @@
     }
   }
 }
-@media @tablet {
+@media @tablet{
   .carousel_scroll-button {
     font-size: 75px;
   }
@@ -291,9 +292,9 @@
           .globalDefaultFont(12px, 400);
         }
         &-title {
-          .globalDefaultFont(32px, 800);
+          .globalDefaultFont(24px, 800);
           >span {
-            .globalDefaultFont(28px, 400);
+            .globalDefaultFont(20px, 400);
           }
         }
         &-content {
@@ -324,28 +325,6 @@
     }
   }
 }
-
-// @media @desktop-m {
-//   .carousel_scroll-button {
-//     font-size: 100px;
-//   }
-//   .carousel-item {
-//     display: table;
-//     &-container {
-//       &-left {
-//         top: 25px;
-//         &-video {
-//           width: 650px;
-//           height: 366px;
-//           padding-bottom: 0px;
-//         }
-//       }
-//     }
-//   }
-//   #lrgcarousel-right {
-//     width: 100%;
-//   }
-// }
 
 @media @desktop-m {
   .carousel-item {
