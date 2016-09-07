@@ -82,6 +82,8 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
+            //
+            // console.log(selectedTab,$event,"selectedtAB");
             this.updateCarousel();
             this.updateGlossary();
         }
@@ -92,6 +94,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
+            //console.log(selectedTab,$event,"selectedtAB");
             this.updateCarousel();
 
         }
@@ -109,6 +112,7 @@ export class PlayerStatsComponent implements DoCheck {
 
     tabSelected(newTitle) {
         this.selectedTabTitle = newTitle;
+        //console.log(this.selectedTabTitle,"tab selected");
         this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
         this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
         //if ( this.initialSeasonId != this.selectedSeasonId ) {
