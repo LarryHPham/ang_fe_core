@@ -170,7 +170,7 @@ export class PlayerStatsComponent implements DoCheck {
     }
     updateGlossary(){
         var tabchosen= this.getSelectedTab();
-        console.log(tabchosen.tabN,"tabChosen");
+        //console.log(tabchosen.tabN,"tabChosen");
         //this._stats.getTab(tabchosen.tabN);
         this.GlossaryData=tabchosen.glossary;
 
