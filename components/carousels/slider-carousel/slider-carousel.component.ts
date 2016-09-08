@@ -27,6 +27,7 @@ export interface SliderCarouselInput {
   backgroundImage?: string;
   copyrightInfo?: string;
   imageConfig: CircleImageData;
+  noData?: boolean;
 
   /**
    * Could be strings or an array of Links
@@ -62,6 +63,9 @@ export interface Type1CarouselItem {
   rank?: string;
 
   rankClass?: string;
+
+  noData?: boolean;
+
 }
 
 export interface Type2CarouselItem {
@@ -144,10 +148,9 @@ export class SliderCarousel implements OnInit {
 
   ngOnInit() {
     //incase there is no backgroundImage being return set the default background
-    if(typeof this.backgroundImage == 'undefined'){
+    if(typeof this.backgroundImage == 'undefined' || this.backgroundImage == null || !this.backgroundImage){
       this.backgroundImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(this.backgroundImage);
     }
-
 
 
     //In case of errors display below
@@ -241,7 +244,8 @@ export class SliderCarousel implements OnInit {
           hoverText: "<p>View</p><p>Profile</p>"
         },
         subImages: subImages
-      }
+      },
+      noData: item.noData
     };
   }
 
@@ -331,7 +335,7 @@ export class SliderCarousel implements OnInit {
           hoverText: ""
         },
         subImages: []
-      }
+      },
     };
   }
 }
