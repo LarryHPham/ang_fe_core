@@ -23,16 +23,14 @@ export class MVPModule implements OnInit {
   @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() mvpData: Array<MVPTabData>;
-
   @Input() title: string;
-
   @Input() query: any;
 
   modHeadData: ModuleHeaderData;
-
   footerData: ModuleFooterData;
-
   tabKey: string;
+
+  positionNameDisplay: string;
 
   public scope: string;
   public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
@@ -42,7 +40,7 @@ export class MVPModule implements OnInit {
   ngOnChanges() {}
 
   ngOnInit() {
-    this.displayData(this.query.scope, VerticalGlobalFunctions.convertPositionAbbrv(this.query.position));
+    this.displayData(this.query.scope, this.query.position);
   }
 
   displayData(scope, position){
@@ -50,10 +48,15 @@ export class MVPModule implements OnInit {
     if ( scope == this.collegeDivisionAbbrv.toLowerCase() ) {
       scope = this.collegeDivisionFullAbbrv;
     }
+    if ( !position ) {
+      position = this.query.position;
+    }
+
+    this.positionNameDisplay = VerticalGlobalFunctions.convertPositionAbbrvToPlural(position);
 
     this.modHeadData = {
         moduleTitle: "Most Valuable Players",
-        moduleIdentifier: " - "+scope.toUpperCase() + " " + position +"s",
+        moduleIdentifier: " - "+scope.toUpperCase() + " " + this.positionNameDisplay,
         hasIcon: false,
         iconClass: '',
     };
@@ -66,7 +69,7 @@ export class MVPModule implements OnInit {
       tab: this.query.statName,
       pageNum: "1"
     }];
-    
+
     this.footerData = {
       infoDesc: 'Want to see everybody involved in this list?',
       text: 'VIEW THE LIST',
@@ -84,7 +87,7 @@ export class MVPModule implements OnInit {
   }
 
   dropdownChanged($event) {
-    this.displayData(this.query.scope, VerticalGlobalFunctions.convertPositionAbbrv($event.position) );
+    this.displayData(this.query.scope, $event.position );
     this.dropdownPositionSelection.next($event);
   }
 }
