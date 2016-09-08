@@ -51,7 +51,7 @@
       background: @touchDownLoyalImageHover;
       color: @white;
       font-size: 30px;
-      line-height:78px;
+      padding: 22px;
       @media @mobile {
         font-size:22px;
 
@@ -60,7 +60,6 @@
 
   }
   .stat-wrapper{
-    border-bottom: 1px solid @strokeGrey;
     .clearfix;
     &-table{
       display: block;
@@ -97,13 +96,10 @@
           font-size: 12px;
           line-height: 27px;
           margin: 0;
-          @media @desktop-l{
-            padding: 0;
-          }
           .fa{
             margin-right: 8px;
-            font-size: 15px;
-            vertical-align: middle;
+            font-size: 12px;
+            line-height: 27px;
           }
           b{
             font-weight: 800;
@@ -113,7 +109,6 @@
       @media @mobile {
         .datapoints:last-child {
           border-bottom: 1px solid #ccc;
-
         }
       }
     }
@@ -124,8 +119,12 @@
       border-left: 1px solid @strokeGrey;
       @media @mobile {
         width: 100%;
+        padding: 0 10px;
         clear: both;
         border-left-width: 0px;
+        bar-chart{
+          border-bottom: 1px solid @strokeGrey;
+        }
       }
       bar-chart{
         display: block;
@@ -216,13 +215,14 @@
         margin: 0px 10px 0px 0px;
         @media @mobile {
           width:100%;
-          padding: 0 15px 15px;
+          padding: 0 15px 0;
           margin: 0 0 0 0;
         }
       }
       &-title{
         .globalDefaultFont(18px, 800);
         margin: 0 0 6px 0;
+        text-transform: uppercase;
         a:hover{
           color: @masterBrandColor;
         }
@@ -241,7 +241,8 @@
         }
       }
       &-cta {
-        margin: 12px 10px 0 0;
+        margin: 10px 10px 0 0;
+        padding-bottom: 10px;
         width: ~"calc(100% - 180px)";
         text-align: left;
         .pull-right;
