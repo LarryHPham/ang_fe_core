@@ -22,7 +22,7 @@ declare var jQuery:any;
 })
 
 export class DailyUpdateModule {
-  @Input() profileName: string = "[Profile Name]";
+  @Input() profileName: string;
 
   @Input() data: DailyUpdateData;
 
@@ -33,9 +33,10 @@ export class DailyUpdateModule {
   public noDataMessage: string = 'Sorry, there is no daily update available for [Profile Name]';
 
   public headerInfo: ModuleHeaderData = {
-    moduleTitle: "Daily Update - [Profile Name]",
+    moduleTitle: "Daily Update",
     hasIcon: false,
-    iconClass: ""
+    iconClass: "",
+    moduleIdentifier: " - "+this.profileName,
   };
 
   public comparisonCount: number;
@@ -54,7 +55,7 @@ export class DailyUpdateModule {
   }
 
   ngOnChanges(event) {
-    this.headerInfo.moduleTitle = "Daily Update - " + this.profileName;
+    this.headerInfo.moduleIdentifier = " - "+this.profileName;
     this.noDataMessage = "Sorry, there is no daily update available for " + this.profileName;
     if ( this.data ) {
       this.drawChart();
