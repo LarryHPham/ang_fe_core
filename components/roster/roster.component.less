@@ -5,7 +5,8 @@
   .image-column-hdr, .image-column {
     width: 230px;
     @media @mobile {
-      width: 150px;
+      width: 30vw;
+      min-width:150px;
     }
   }
   .custom-table-sort  {
@@ -89,6 +90,23 @@
     @media @tablet {
     margin-left: 20px;
     }
+  }
+}
+roster-component.fbs {
+  .data-column.age-hdr , .data-column.age-column {
+    display:none;
+  }
+  .data-column.salary-hdr , .data-column.salary-column {
+    display:none;
+  }
+  .image-column-hdr, .image-column {
+    @media @mobile {
+      width: 41vw;
+      min-width:150px;
+    }
+  }
+  .nfl-only {
+    display:none;
   }
 }
 team-roster-page {
