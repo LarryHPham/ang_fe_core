@@ -6,7 +6,7 @@
     [innerHTML]="modHeadData.moduleTitle">
 
   </h3>
-    <span class="iv" [innerHTML]="modHeadData.moduleTitleProfile">
+    <span *ngIf="modHeadData.moduleTitleProfile" class="iv" [innerHTML]="modHeadData.moduleTitleProfile">
 
     </span>
 

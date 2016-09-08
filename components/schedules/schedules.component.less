@@ -28,6 +28,9 @@
       margin: 5px 0;
     }
   }
+  .pane{
+    padding:0;
+  }
 }
 .schedules-heading{
   width:100%;
@@ -81,7 +84,6 @@
       }
     }
     .filter-dropdown{
-      width:77px;
       float:right;
       .dropdown {
         &-hdr{
@@ -90,6 +92,9 @@
       }
       @media @mobile{
         width:117px;
+      }
+      @media @tablet{
+        width:121px;
       }
     }
   }
@@ -154,9 +159,7 @@
     }
     @media @tablet{
       width:153px;
-    }
-    @media @desktop-m{
-      width:218px;
+      max-width:218px;
     }
   }
   .results-column{
@@ -185,11 +188,15 @@
     margin:0 auto;
     text-align: center;
     font-size:12px;
+    @media @mobile{
+      width:54px;
+    }
     @media @tablet{
       width:69px;
     }
     @media @desktop-m{
-      width:98px;
+      min-width:54px;
+      max-width: 98px;
     }
   }
 

@@ -15,6 +15,10 @@
     .flexDisplay;
     .flexDirection(row);
     .flexJustify(space-between);
+    button{
+      padding:0;
+      outline: none;
+    }
   }
   &-dates{
     width:80%;
@@ -115,11 +119,12 @@
     margin:2px 0;
     z-index: 1;
     .no-select;
-
-    &:hover{
-      color: @white;
-      background-color: @hoverColor;
-      border-color: @hoverColor;
+    @media @tablet{
+      &:hover{
+        color: @white;
+        background-color: @hoverColor;
+        border-color: @hoverColor;
+      }
     }
   }
   @media @mobile {
