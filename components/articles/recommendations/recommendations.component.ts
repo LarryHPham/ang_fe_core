@@ -17,7 +17,7 @@ export class RecommendationsComponent{
     @Input() images:any;
     @Input() isDeepDive:boolean = false;
 
-    constructor(){console.log(this.randomHeadlines,"now")}
+  
 
     formatDate(date) {
         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
