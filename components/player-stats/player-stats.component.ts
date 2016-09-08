@@ -114,10 +114,9 @@ export class PlayerStatsComponent implements DoCheck {
 
     tabSelected(newTitle) {
         this.selectedTabTitle = newTitle;
-        console.log(this.selectedTabTitle,"tab selected");
         this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
         this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
-        console.log(this.initialSeasonId,">>>>>>>>>>>>>>>>>>",this.selectedSeasonId);
+    
         this.initialSeasonId="2015";
         if (this.selectedSeasonId != this.initialSeasonId) {
              this.selectedSeasonId=this.initialSeasonId;
@@ -151,7 +150,7 @@ export class PlayerStatsComponent implements DoCheck {
         let selectedIndex = -1;
         this.rowCount=selectedTab.tableData.rows.length;
         this.rowCount<10?this.isLessThanTen=true:this.isLessThanTen=false;
-        //console.log("row count =", this.rowCount);
+       
         selectedTab.tableData.rows.map((value) => {
             let item = selectedTab.convertToCarouselItem(value, index);
             if ( selectedTab.tableData.isRowSelected(value, index) ) {
