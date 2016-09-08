@@ -121,6 +121,9 @@
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: -30px;
+  @media @tablet{
+    margin-bottom: 0px;
+  }
   &-ai-articles {
     margin-bottom: 30px;
     &:hover {
@@ -277,11 +280,14 @@
       clear: both;
     }
     &-articles {
+      width: 32.3%;
       .col-xs-4;
       margin-right: 0;
       &-item {
-        width: 197px;
+        width: 190px;
+
         &-image {
+
           height: 17vw;
         }
         &-content {
