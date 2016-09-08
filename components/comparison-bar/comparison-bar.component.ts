@@ -41,7 +41,7 @@ export class ComparisonBar implements OnChanges, AfterViewChecked {
     @Input() comparisonBarInput: ComparisonBarInput;
     @Input() index: number;
     displayData: ComparisonBarInput;
-
+    statsHighCheck: string = "";
     isSelected(displayData){
       if(displayData.active === true){
         return false;
@@ -134,6 +134,10 @@ export class ComparisonBar implements OnChanges, AfterViewChecked {
         var barData = this.comparisonBarInput;
         var worstValue = Number(barData.minValue);
         var bestValue = Number(barData.maxValue);
+        if(worstValue == bestValue || barData.maxValue == null){
+          this.statsHighCheck = "hideMe";
+        }
+        // console.log(this.statsHighCheck, worstValue, bestValue);
         var adjustedMax = bestValue;
         var switchValues = false;
         if ( bestValue < worstValue ) {

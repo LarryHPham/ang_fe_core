@@ -8,6 +8,7 @@ import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {DropdownComponent} from '../../../fe-core/components/dropdown/dropdown.component';
+import {GlobalFunctions} from '../../../global/global-functions';
 
 export interface StandingsTableTabData<T> {
   season: any;

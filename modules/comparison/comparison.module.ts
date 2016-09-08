@@ -124,7 +124,12 @@ export class ComparisonModule implements OnInit, OnChanges {
             }
         }
         if ( this.profileName ) {
-            this.moduleHeaderData.moduleTitle = 'Comparison vs. Competition - ' + this.profileName;
+          this.moduleHeaderData = {
+            moduleTitle: "Comparison vs. Competition",
+            moduleIdentifier: " - " + this.profileName,
+            hasIcon: false,
+            iconClass: '',
+          }
         }
     }
 
