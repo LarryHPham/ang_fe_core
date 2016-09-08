@@ -27,6 +27,7 @@ export class StandingsModule implements OnChanges {
   @Input() data: StandingsModuleData;
   @Input() scope: string;
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
+  @Output("filterSelected") filterSelectedListener = new EventEmitter();
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Standings",
     hasIcon: false,
@@ -51,5 +52,9 @@ export class StandingsModule implements OnChanges {
 
   tabSelected(tabData) {
     this.tabSelectedListener.next(tabData);
+  }
+
+  private standingsFilterSelected(tabData: Array<any>) {
+    this.filterSelectedListener.next(tabData);
   }
 }

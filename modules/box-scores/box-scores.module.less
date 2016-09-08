@@ -48,7 +48,6 @@
     .float-right{
       float:right;
       padding-left:5px;
-      padding-right: 15px;
       width:50%;
       @media @mobile{
           width:100%;
@@ -85,14 +84,11 @@
       }
     }
     .rightPag {
-      background-color: @black;
+      background-color: @masterBrandColor;
       float:right;
     }
     .rightPag:hover {
-      background-color: @masterBrandColor;
-      .leftPag {
-        background-color: @black;
-      }
+      background-color: @black;
     }
     .leftPag {
       background-color: @masterBrandColor;
@@ -100,9 +96,6 @@
     }
     .leftPag:hover {
       background-color: @black;
-    }
-    .leftPag:hover.rightPag {
-      background-color: @masterBrandColor;
     }
     .pagButton.disabled {
       background-color: @strokeGrey;

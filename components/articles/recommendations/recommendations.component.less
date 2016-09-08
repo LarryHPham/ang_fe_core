@@ -1,3 +1,14 @@
+.sixteenNine{
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  img{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+  }
+}
 .recommendations {
   width: 610px;
   display: inline-block;
@@ -67,6 +78,10 @@
         position: relative;
         top: 15px;
         margin-bottom: 35px;
+        @media @mobile {
+          top: auto;
+          margin: 10px 0 14px 0;
+        }
         &-dateline {
           .globalDefaultFont(10px, 800);
           &-keyword {
@@ -98,7 +113,6 @@
   }
   @media @mobile {
     width: 100%;
-    height: 225px;
   }
 }
 
@@ -273,7 +287,11 @@
         width: 190px;
 
         &-image {
+<<<<<<< HEAD
           height: 120px;
+=======
+          height: 17vw;
+>>>>>>> 71f7e165771884586b7c06ed93079e29991c6299
         }
         &-content {
           .globalDefaultFont(14px, 400);
