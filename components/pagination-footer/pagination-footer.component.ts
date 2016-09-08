@@ -101,6 +101,7 @@ export class PaginationFooter implements OnChanges{
 
     //Array of what indexes are displayed. paginationButtonsModule is used for paginationType module. paginationButtonsPage is used for paginationType page
     public paginationButtonsModule: Array<Number>;
+    public paginationButtonsModuleMobile: Array<Number>;
     public paginationButtonsPage: Array<{
         index: number,
         page: string;
@@ -196,6 +197,52 @@ export class PaginationFooter implements OnChanges{
 
         //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 4)
         if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModule[this.paginationButtonsModule.length - 1] != (max - 4)){
+            this.showMaxSkip = true;
+        }else{
+            this.showMaxSkip = false;
+        }
+    }
+
+    //Build button structure for pagination Type module Mobile version
+    buildModuleButtonsMobile(){
+        var index = Number(this.paginationParameters.index);
+        var max = Number(this.paginationParameters.max);
+        var range = this.buttonRangeMobile;
+        var minRange, maxRange;
+        this.paginationButtonsModuleMobile = [];
+        //Determine values before index that can be added to button array
+        for(var p = range; p >= 0; p--){
+          let currentMin = index - p;
+            if(index - p > (index - 4) && index - p > 0){//only show if number is 2 below current index and above 0
+              minRange = index - p;
+                this.paginationButtonsModuleMobile.push(index - p);
+            }
+        }
+
+        //set the minimum number gonig to be shown that is in the array
+        minRange = Math.min.apply(null, this.paginationButtonsModuleMobile);
+        if(minRange + range < max){//only show the next 4 buttons if its less than the maximum otherwise let the maximum become the biggest
+          maxRange = minRange + range;
+        }else{
+          maxRange = max
+        }
+
+        //Determine values after index that can be added to button array
+        for(var n = 1; n <= range; n++){
+            if((index + n) <= maxRange){
+                this.paginationButtonsModuleMobile.push(index + n);
+            }
+        }
+
+        //Determine if absolute first button should be shown (show ellipsis if first item in array is not 3)
+        if(this.paginationButtonsPageForMobile.length != 0 && this.paginationButtonsModuleMobile[0] != (1 + 2)){
+            this.showMinSkip = true;
+        }else{
+            this.showMinSkip = false;
+        }
+
+        //Determine if absolute last button should be shown (show ellipsis if the last item in the array is not max - 2)
+        if(this.paginationButtonsModule.length != 0 && this.paginationButtonsModuleMobile[this.paginationButtonsModuleMobile.length - 1] != (max - 2)){
             this.showMaxSkip = true;
         }else{
             this.showMaxSkip = false;
@@ -463,6 +510,7 @@ export class PaginationFooter implements OnChanges{
       this.paginationParameters.index = newIndex;
       this.newIndex.next(newIndex);
       this.buildModuleButtons();
+      this.buildModuleButtonsMobile();
     }
 
     //Function to navigate angle left button for paginationType module
@@ -482,6 +530,7 @@ export class PaginationFooter implements OnChanges{
 
         this.paginationParameters.index = newIndex;
         this.buildModuleButtons();
+        this.buildModuleButtonsMobile();
     }
 
     //Function to navigate angle right button for paginationType module
@@ -501,6 +550,7 @@ export class PaginationFooter implements OnChanges{
 
         this.paginationParameters.index = newIndex;
         this.buildModuleButtons();
+        this.buildModuleButtonsMobile();
     }
 
     ngOnChanges(event){
@@ -509,6 +559,7 @@ export class PaginationFooter implements OnChanges{
         //Call button build function based on pagination Type
         if(this.paginationParameters.paginationType == 'module') {
             this.buildModuleButtons();
+            this.buildModuleButtonsMobile();
         }else if(this.paginationParameters.paginationType == 'page'){
             this.buildPageButtons();
             this.buildPageButtonsMobile();

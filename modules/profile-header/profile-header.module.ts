@@ -10,6 +10,8 @@ import {GlobalFunctions} from '../../../global/global-functions';
 import {GlobalSettings} from '../../../global/global-settings';
 import {NaValuePipe} from '../../pipes/na.pipe';
 
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
+
 export interface DataItem {
   label: string;
   labelCont?: string;
@@ -47,7 +49,7 @@ export class ProfileHeaderModule implements OnChanges {
       imageClass: "image-180",
       mainImage: {
         imageClass: "border-large",
-        placeholderImageUrl: "/app/public/profile_placeholder_large.png"
+        placeholderImageUrl: ""
       }
     };
 
@@ -66,13 +68,13 @@ export class ProfileHeaderModule implements OnChanges {
       var data = this.profileHeaderData;
       if ( data ) {
         if ( !data.backgroundImageUrl ) {
-          data.backgroundImageUrl = "/app/public/drk-linen.png";
+          VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data.backgroundImageUrl);
         }
         if ( !data.profileImageUrl ) {
           data.profileImageUrl = "/app/public/no-image.svg";
         }
         this.imageConfig.mainImage.imageUrl = data.profileImageUrl;
-        this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + data.backgroundImageUrl + ")");
+        this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url("+data.backgroundImageUrl+")");
         this.contentTitle = "Quick info about " + data.profileName;
         this.profileTitle = data.profileTitleFirstPart + "<span class='text-heavy'> " + data.profileTitleLastPart + "</span>";
         this.displayDate = GlobalFunctions.formatUpdatedDate(data.lastUpdatedDate);

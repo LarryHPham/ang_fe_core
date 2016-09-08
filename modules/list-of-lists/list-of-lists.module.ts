@@ -49,7 +49,7 @@ export class ListOfListsModule{
     }
 
     this.moduleHeader = {
-      moduleTitle: "Top Lists - " + this.profileHeaderData.profileName,
+      moduleTitle: "Top Lists<span class='mod-info'> - " + this.profileHeaderData.profileName + "</span>",
       hasIcon: false,
       iconClass: "",
     }
