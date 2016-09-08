@@ -8,8 +8,10 @@
                 <a class="recommendations-articles-six article-recommend"
                    [routerLink]="['Article-pages', {eventType: data.eventType, eventID: data.eventID}]"
                    title="{{data.title}}">
-                    <img class="recommendations-articles-six-image" src="{{data.images}}"
+                    <div class="sixteenNine">
+                        <img class="recommendations-articles-six-image" src="{{data.images}}"
                          onerror="this.src='/app/public/no-image.svg'"/>
+                    </div>
                     <div class="recommendations-articles-six-content">
                         <div class="recommendations-articles-six-content-dateline">
                             <span class="recommendations-articles-six-content-dateline-keyword">{{data.keyword}}</span>
