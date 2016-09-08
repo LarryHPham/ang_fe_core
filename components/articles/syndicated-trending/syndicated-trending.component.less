@@ -5,7 +5,10 @@
 }
 .syndicated-trending {
   margin-top: 30px;
-  width: 95.5%;
+  width: 100%;
+  @media @mobile{
+    width:95.5%;
+  }
   font-family: @globalFont;
   .stButton {
     display:none!important;
@@ -54,12 +57,19 @@
     &-author {
       font-size: 16px;
       margin:30px 0;
+      @media @tablet{
+        margin: 21px 0px 19px 0px;
+      }
       @media @mobile{
         .globalDefaultFont(12px, 400);
         display: none;
 
       }
       b {
+        @media @tablet{
+          .globalDefaultFont(16px, 400);
+
+        }
         color: @masterBrandColor;
         .globalDefaultFont(12px, 400);
         display: inline-block;
@@ -77,6 +87,9 @@
     &-date {
       font-size:12px;
       color: @bulletGrey;
+      @media @tablet{
+        margin: 0px 0px 20px 0px;
+      }
     }
   }
   &-article-title {
@@ -255,5 +268,10 @@
 
 
     }
+  }
+}
+.syndicated-trending .trending-article-image > img{
+  @media @tablet{
+    height:100%;
   }
 }
