@@ -11,6 +11,8 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 import {FooterStyle} from '../../components/module-footer/module-footer.component';
 import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
+
 export interface MVPTabData {
   tabDisplayTitle: string;
   tabDataKey: string;
@@ -44,24 +46,27 @@ export class MVPListComponent implements DoCheck, OnInit  {
   tabsLoaded: {[index:number]:string};
 
   listType: string;
+  displayTab: string;
+  displayPositionAbbrv: string;
+  displayTabTitle: string;
 
   dropdownSelectedKey: string = 'cb';
 
   private sortOptions: Array<any> = [
-    {key: 'cb', value: 'Cornerback'},
-    {key: 'db', value: 'Defensive back'},
-    {key: 'de', value: 'Defensive end'},
-    {key: 'dl', value: 'Defensive lineman'},
-    {key: 'dt', value: 'Defensive tackle'},
-    {key: 'k', value: 'Kicker'},
-    {key: 'lb', value: 'Linebacker'},
-    {key: 'p', value: 'Punter'},
-    {key: 'qb', value: 'Quarterback'},
-    {key: 'rb', value: 'Running Back'},
-    {key: 'rs', value: 'Return specialist'},
-    {key: 'saf', value: 'Safety'},
-    {key: 'te', value: 'Tight End'},
-    {key: 'wr', value: 'Wide Receiver'},
+    {key: 'cb', value: 'CB'},
+    {key: 'db', value: 'DB'},
+    {key: 'de', value: 'DE'},
+    {key: 'dl', value: 'DL'},
+    {key: 'dt', value: 'DT'},
+    {key: 'k', value: 'K'},
+    {key: 'lb', value: 'L'},
+    {key: 'p', value: 'P'},
+    {key: 'qb', value: 'QB'},
+    {key: 'rb', value: 'RB'},
+    {key: 'rs', value: 'RS'},
+    {key: 'saf', value: 'S'},
+    {key: 'te', value: 'TE'},
+    {key: 'wr', value: 'WR'},
   ];
 
 
@@ -94,6 +99,10 @@ export class MVPListComponent implements DoCheck, OnInit  {
 
   constructor(private _params: RouteParams) {
     this.listType = _params.get("type");
+    this.displayTab = _params.get("tab");
+
+    this.displayPositionAbbrv = this.listType.toUpperCase();
+    this.displayTabTitle = VerticalGlobalFunctions.formatStatName(this.displayTab);
   }
 
   ngOnInit(){
