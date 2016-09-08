@@ -35,7 +35,8 @@ export class SchedulesModule{
 
     getFooter(){
         this.modHeadData = {
-          moduleTitle: "Weekly Schedules - " + this.profHeader.profileName,
+          moduleTitle: "Weekly Schedules",
+          moduleIdentifier: " - " + this.profHeader.profileName,
           hasIcon: false,
           iconClass: '',
         }

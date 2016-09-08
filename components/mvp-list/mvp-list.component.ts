@@ -11,6 +11,8 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 import {FooterStyle} from '../../components/module-footer/module-footer.component';
 import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
+
 export interface MVPTabData {
   tabDisplayTitle: string;
   tabDataKey: string;
@@ -44,6 +46,9 @@ export class MVPListComponent implements DoCheck, OnInit  {
   tabsLoaded: {[index:number]:string};
 
   listType: string;
+  displayTab: string;
+  displayPositionAbbrv: string;
+  displayTabTitle: string;
 
   dropdownSelectedKey: string = 'cb';
 
@@ -94,6 +99,10 @@ export class MVPListComponent implements DoCheck, OnInit  {
 
   constructor(private _params: RouteParams) {
     this.listType = _params.get("type");
+    this.displayTab = _params.get("tab");
+
+    this.displayPositionAbbrv = this.listType.toUpperCase();
+    this.displayTabTitle = VerticalGlobalFunctions.formatStatName(this.displayTab);
   }
 
   ngOnInit(){
