@@ -13,7 +13,9 @@ import {ResponsiveWidget} from "../responsive-widget/responsive-widget.component
 
 
 
+
 export interface StatsTableTabData<T> {
+
     tabTitle: string;
     isActive: boolean;
     isLoaded: boolean;
@@ -30,6 +32,7 @@ export interface StatsTableTabData<T> {
     directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
 export class PlayerStatsComponent implements DoCheck {
+    private initialSeasonId: string;
     public selectedIndex;
     public GlossaryData;
     public rowCount;
@@ -82,8 +85,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-            //
-            // console.log(selectedTab,$event,"selectedtAB");
+
             this.updateCarousel();
             this.updateGlossary();
         }
@@ -94,7 +96,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-            //console.log(selectedTab,$event,"selectedtAB");
+
             this.updateCarousel();
 
         }
@@ -112,14 +114,15 @@ export class PlayerStatsComponent implements DoCheck {
 
     tabSelected(newTitle) {
         this.selectedTabTitle = newTitle;
-        //console.log(this.selectedTabTitle,"tab selected");
         this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
         this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
-        //if ( this.initialSeasonId != this.selectedSeasonId ) {
-          //  this.initialSeasonId = this.selectedSeasonId;
-        //}
 
-        this.tabSelectedListener.next([this.getSelectedTab(), this.selectedSeasonId]);
+        this.initialSeasonId="2015";
+        if (this.selectedSeasonId != this.initialSeasonId) {
+             this.selectedSeasonId=this.initialSeasonId;
+        }
+
+        this.tabSelectedListener.next([this.getSelectedTab(), this.initialSeasonId]);
         this.updateCarousel();
         this.updateGlossary();
     }
@@ -138,7 +141,7 @@ export class PlayerStatsComponent implements DoCheck {
     updateCarousel(sortedRows?) {
         var selectedTab = this.getSelectedTab();
         if ( !selectedTab || !selectedTab.tableData ) {
-            
+
             return;
         }
 
@@ -147,7 +150,7 @@ export class PlayerStatsComponent implements DoCheck {
         let selectedIndex = -1;
         this.rowCount=selectedTab.tableData.rows.length;
         this.rowCount<10?this.isLessThanTen=true:this.isLessThanTen=false;
-        //console.log("row count =", this.rowCount);
+
         selectedTab.tableData.rows.map((value) => {
             let item = selectedTab.convertToCarouselItem(value, index);
             if ( selectedTab.tableData.isRowSelected(value, index) ) {
@@ -166,6 +169,8 @@ export class PlayerStatsComponent implements DoCheck {
     updateGlossary(){
         var tabchosen= this.getSelectedTab();
         this.GlossaryData=tabchosen.glossary;
+
+
 
     }
 }

@@ -7,10 +7,13 @@ slider-carousel{
   height:auto;
   position: relative;
   .fa {
-    color: @masterBrandColorLink;
+    color: @white;
     padding-right: 6px;
     top: 2px;
     position: relative;
+    &.fa-circle {
+      color: @masterBrandColorLink;
+    }
   }
   .image-48-rank {
     display: block;
@@ -28,7 +31,7 @@ slider-carousel{
     opacity: .5;
     filter:alpha(opacity=50);
     @media @mobile {
-      left: -40%;
+      left: 0;
       bottom: 0;
       margin: 0 auto auto auto;
       min-height: 100%;
