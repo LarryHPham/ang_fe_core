@@ -53,20 +53,20 @@ export class MVPListComponent implements DoCheck, OnInit  {
   dropdownSelectedKey: string = 'cb';
 
   private sortOptions: Array<any> = [
-    {key: 'cb', value: 'Cornerback'},
-    {key: 'db', value: 'Defensive back'},
-    {key: 'de', value: 'Defensive end'},
-    {key: 'dl', value: 'Defensive lineman'},
-    {key: 'dt', value: 'Defensive tackle'},
-    {key: 'k', value: 'Kicker'},
-    {key: 'lb', value: 'Linebacker'},
-    {key: 'p', value: 'Punter'},
-    {key: 'qb', value: 'Quarterback'},
-    {key: 'rb', value: 'Running Back'},
-    {key: 'rs', value: 'Return specialist'},
-    {key: 'saf', value: 'Safety'},
-    {key: 'te', value: 'Tight End'},
-    {key: 'wr', value: 'Wide Receiver'},
+    {key: 'cb', value: 'CB'},
+    {key: 'db', value: 'DB'},
+    {key: 'de', value: 'DE'},
+    {key: 'dl', value: 'DL'},
+    {key: 'dt', value: 'DT'},
+    {key: 'k', value: 'K'},
+    {key: 'lb', value: 'L'},
+    {key: 'p', value: 'P'},
+    {key: 'qb', value: 'QB'},
+    {key: 'rb', value: 'RB'},
+    {key: 'rs', value: 'RS'},
+    {key: 'saf', value: 'S'},
+    {key: 'te', value: 'TE'},
+    {key: 'wr', value: 'WR'},
   ];
 
 
