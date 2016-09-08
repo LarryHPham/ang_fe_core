@@ -85,8 +85,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-            //
-            // console.log(selectedTab,$event,"selectedtAB");
+        
             this.updateCarousel();
             this.updateGlossary();
         }
@@ -97,7 +96,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-            //console.log(selectedTab,$event,"selectedtAB");
+        
             this.updateCarousel();
 
         }
@@ -170,8 +169,6 @@ export class PlayerStatsComponent implements DoCheck {
     }
     updateGlossary(){
         var tabchosen= this.getSelectedTab();
-        //console.log(tabchosen.tabN,"tabChosen");
-        //this._stats.getTab(tabchosen.tabN);
         this.GlossaryData=tabchosen.glossary;
 
 
