@@ -47,10 +47,9 @@ export class MVPListComponent implements DoCheck, OnInit  {
 
   listType: string;
   displayTab: string;
-  displayPositionAbbrv: string;
-  displayTabTitle: string;
 
   dropdownSelectedKey: string = 'cb';
+
 
   private sortOptions: Array<any> = [
     {key: 'cb', value: 'CB'},
@@ -101,9 +100,6 @@ export class MVPListComponent implements DoCheck, OnInit  {
     if ( _params.get("type") &&  _params.get("tab") ) {
       this.listType = _params.get("type");
       this.displayTab = _params.get("tab");
-
-      this.displayPositionAbbrv = this.listType.toUpperCase();
-      this.displayTabTitle = VerticalGlobalFunctions.formatStatName(this.displayTab);
     }
   }
 
