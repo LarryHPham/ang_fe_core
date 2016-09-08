@@ -98,11 +98,13 @@ export class MVPListComponent implements DoCheck, OnInit  {
   } //ngDoCheck()
 
   constructor(private _params: RouteParams) {
-    this.listType = _params.get("type");
-    this.displayTab = _params.get("tab");
+    if ( _params.get("type") &&  _params.get("tab") ) {
+      this.listType = _params.get("type");
+      this.displayTab = _params.get("tab");
 
-    this.displayPositionAbbrv = this.listType.toUpperCase();
-    this.displayTabTitle = VerticalGlobalFunctions.formatStatName(this.displayTab);
+      this.displayPositionAbbrv = this.listType.toUpperCase();
+      this.displayTabTitle = VerticalGlobalFunctions.formatStatName(this.displayTab);
+    }
   }
 
   ngOnInit(){
