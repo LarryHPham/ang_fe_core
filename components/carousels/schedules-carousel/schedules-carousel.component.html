@@ -1,7 +1,7 @@
 <carousel *ngIf="carouselData" [carouselData]="carouselData" (carouselDataPoint)="response($event)" [indexInput]="indexInput">
   <div class="schedules-display" *ngIf="dataPoint" [ngStyle]="dataPoint.backgroundGradient">
     <div class="schedules-display-next"><span>{{dataPoint.displayNext}}</span> {{dataPoint.displayTime}}</div>
-    <div class="schedules-display-detail">{{dataPoint.detail1Data}} {{dataPoint.detail1Value}}<span class="pipe-seperator">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{dataPoint.detail2Value}}</div>
+    <div class="schedules-display-detail">{{dataPoint.detail1Data}} {{dataPoint.detail1Value}} <span class="pipe-seperator"> | </span><i class="fa fa-map-marker"></i> {{dataPoint.detail2Value}}</div>
     <div class="schedules-display-competitors">
       <!---->
       <div class="competitors competitors-left">
@@ -17,7 +17,7 @@
             </span>
             <span *ngIf="!dataPoint.teamUrl1" class="competitors-stats-team">{{dataPoint.teamName1}}</span>
             <span class="competitors-stats-details">
-              <i class="fa fa-map-marker"></i>{{dataPoint.teamLocation1}}<span class="pipe-seperator">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>{{dataPoint.teamRecord1}}
+              <i class="fa fa-map-marker"></i>{{dataPoint.teamLocation1}} <span class="pipe-seperator">|</span> {{dataPoint.teamRecord1}}
             </span>
           </div>
         </div>
