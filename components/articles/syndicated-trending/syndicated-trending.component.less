@@ -42,7 +42,7 @@
     padding-bottom: 3px;
     @media @mobile{
       .globalDefaultFont(18px, 800);
-      width:200px;
+      width:178px;
       line-height:15px;
       margin: 15px auto;
     }
@@ -67,7 +67,7 @@
       }
       b {
         @media @tablet{
-          .globalDefaultFont(16px, 400);
+          .globalDefaultFont(16px, 800);
 
         }
         color: @masterBrandColor;
@@ -188,10 +188,7 @@
     border-radius:3px;
     padding: 5px 15px;
     margin-right: 8px;
-    @media @mobile {
-      position: relative;
-      top: -7px;
-    }
+
     &-large {
       i {
         font-size: 28px;
@@ -206,6 +203,14 @@
       width: 80px;
       height: 100px;
       box-shadow: inset 1.5px 2.6px 0 0 rgba(0, 0, 0, 0.08);
+
+      @media @tablet{
+        display: block !important;
+        margin-right:16px;
+      }
+      @media (min-width:1023px ){
+        margin-right: 0px !important;
+      }
     }
     &-large .vr {
       height: 128px;
