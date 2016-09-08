@@ -41,7 +41,7 @@ export class SchedulesComponent implements OnInit{
 
   tabTitle: string;
   private tabsLoaded: {[index:number]:string};
-
+  windowWidth: number;
 
   ngDoCheck() { // checks and runs everytime a dependency has changed
     if ( this.tabs && this.tabs.length > 0 && this.carouselData && this.data != null && !this.tabsLoaded && this.getSelectedTab()) {
@@ -73,6 +73,10 @@ export class SchedulesComponent implements OnInit{
       let selectedTab = matchingTabs[0].tabData;
       this.setSelectedCarouselIndex(selectedTab, selectedIndex);
     }
+  }
+
+  private onWindowLoadOrResize(event) {
+    this.windowWidth = event.target.innerWidth;
   }
 
   setSelectedCarouselIndex(tab: TableTabData<any>, index: number) {

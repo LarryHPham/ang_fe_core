@@ -11,7 +11,7 @@
       font-weight: 800;
       color:@black;
       font-size: 16px;
-      margin:0 0 5px 0;
+      margin:5px 0;
       padding-bottom: 9px;
       border-bottom:1px solid @strokeGrey;
     }
@@ -46,7 +46,7 @@
     }
     & > p {
       line-height:0.8em;
-      margin:0;
+      margin:1px 0;
     }
     &-timestamp{
       width:100%;
@@ -58,7 +58,7 @@
   }
   &-filter{
     width:auto;
-    color:@bulletGrey;
+    color:@black;
     font-size: 12px;
     font-weight: 400;
     float: right;
@@ -71,16 +71,25 @@
       margin-left: 20px;
       .flexDisplay;
       align-items: center;
-      float:right
+      float:right;
+      &-sort{
+        margin-right:5px;
+        display:block;
+        @media @mobile{
+          display:none;
+        }
+      }
     }
     .filter-dropdown{
-      width:117px;
+      width:77px;
       float:right;
-      margin-left:10px;
       .dropdown {
         &-hdr{
           height:30px;
         }
+      }
+      @media @mobile{
+        width:117px;
       }
     }
   }
@@ -89,6 +98,20 @@
 .schedules-table {
   @media @mobile{
     padding-top: 45px;
+    .schedule-date-320{
+      display:block;
+    }
+    .schedule-date-640{
+      display:none;
+    }
+  }
+  @media @tablet{
+    .schedule-date-320{
+      display:none;
+    }
+    .schedule-date-640{
+      display:block;
+    }
   }
   &-padding{
     @media @mobile{
@@ -96,13 +119,17 @@
     }
   }
   .location-column, .location-column-hdr {
-    width:155px;
     @media @mobile{
+      width:110px;
       circle-image{
         display:none;
       }
     }
+    @media @tablet{
+      width:155px;
+    }
   }
+
   .location-column2-hdr{
     th + th{
       padding-left: 5px;
@@ -112,14 +139,13 @@
     }
     &:nth-of-type(2){
       .custom-table-header{
-        maring-left:5px;
+        margin-left:5px;
       }
     }
   }
 
   .location-column2, .location-column2-hdr {
-    width:104px;
-
+    min-width: 130px;
 
     @media @mobile{
       circle-image{
@@ -156,7 +182,8 @@
     }
   }
   .date-column, .date-column-hdr {
-    width:53px;
+    margin:0 auto;
+    text-align: center;
     font-size:12px;
     @media @tablet{
       width:69px;
@@ -195,6 +222,7 @@
 }
 .results-column, .results-column-hdr{
   min-width: 130px;
+  width:20%;
 }
 .summary-column {
     font-size: 14px;
@@ -202,7 +230,8 @@
     font-weight: 800;
     text-align: center;
     width: 100%;
-    padding: 0 0 0 10px;
+    min-width: 130px;
+    padding: 0;
     i{
         margin-left: 5px;
         font-weight: 400;
@@ -212,5 +241,9 @@
     a:hover{
       color: @black;
     }
+  }
+  .summary-column-hdr{
+    min-width:170px;
+    width:24%;
   }
 }

@@ -18,7 +18,7 @@
         </div>
         <div *ngIf="data.chart" class="stat-wrapper-charts" [ngStyle]="data.wrapperStyle">
           <div class="stat-wrapper-charts-key">
-            <h4 class="pull-left" style="width:90%;">Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
+            <h4 class="pull-left" style="width:50%;">Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
             <div id="foragainst">
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-secondary">{{data.chart.dataSeries[1].name}}</span>
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-primary">{{data.chart.dataSeries[0].name}}</span>
