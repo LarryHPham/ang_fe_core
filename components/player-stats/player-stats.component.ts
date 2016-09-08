@@ -10,12 +10,12 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {GlossaryComponent} from "../glossary/glossary.component";
 import {ResponsiveWidget} from "../responsive-widget/responsive-widget.component";
-import {MLBPlayerStatsTableData} from "../../../services/player-stats.data";
+
 
 
 
 export interface StatsTableTabData<T> {
-    tabN:string;
+
     tabTitle: string;
     isActive: boolean;
     isLoaded: boolean;
@@ -29,7 +29,7 @@ export interface StatsTableTabData<T> {
 @Component({
     selector: "player-stats-component",
     templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
-    directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget,MLBPlayerStatsTableData],
+    directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
 export class PlayerStatsComponent implements DoCheck {
     private initialSeasonId: string;
@@ -53,7 +53,7 @@ export class PlayerStatsComponent implements DoCheck {
     private noDataMessage = "Sorry, there is no data available.";
     private selectedSubTab:string;
 
-    constructor(private _stats:MLBPlayerStatsTableData) {}
+    constructor() {}
 
     ngDoCheck() {
         if ( this.tabs && this.tabs.length > 0 ) {
@@ -85,7 +85,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-        
+
             this.updateCarousel();
             this.updateGlossary();
         }
@@ -96,7 +96,7 @@ export class PlayerStatsComponent implements DoCheck {
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
             let selectedTab = matchingTabs[0];
             this.tabSelectedListener.next([selectedTab, $event]);
-        
+
             this.updateCarousel();
 
         }
@@ -116,7 +116,7 @@ export class PlayerStatsComponent implements DoCheck {
         this.selectedTabTitle = newTitle;
         this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
         this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
-    
+
         this.initialSeasonId="2015";
         if (this.selectedSeasonId != this.initialSeasonId) {
              this.selectedSeasonId=this.initialSeasonId;
@@ -150,7 +150,7 @@ export class PlayerStatsComponent implements DoCheck {
         let selectedIndex = -1;
         this.rowCount=selectedTab.tableData.rows.length;
         this.rowCount<10?this.isLessThanTen=true:this.isLessThanTen=false;
-       
+
         selectedTab.tableData.rows.map((value) => {
             let item = selectedTab.convertToCarouselItem(value, index);
             if ( selectedTab.tableData.isRowSelected(value, index) ) {
