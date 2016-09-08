@@ -59,7 +59,7 @@ export class MVPListComponent implements DoCheck, OnInit  {
     {key: 'dl', value: 'DL'},
     {key: 'dt', value: 'DT'},
     {key: 'k', value: 'K'},
-    {key: 'lb', value: 'L'},
+    {key: 'lb', value: 'LB'},
     {key: 'p', value: 'P'},
     {key: 'qb', value: 'QB'},
     {key: 'rb', value: 'RB'},
