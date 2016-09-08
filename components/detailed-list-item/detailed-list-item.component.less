@@ -8,6 +8,7 @@
   width:100%;
   //margin-left: 15px;
   position: relative;
+  border-bottom: 1px solid @strokeGrey;
 }
 .separator {
   padding: 0 5px;
@@ -21,7 +22,6 @@ tabs .dli-container{
 .dli-container{
   width:100%;
   height:155px;
-  border-bottom: 1px solid @highlightGrey;
   padding: 15px;
   @media @mobile {
     height: 165px;
@@ -30,6 +30,8 @@ tabs .dli-container{
     background-color: @white;
   }
   &.even{
+    border-top: 1px solid @strokeGrey;
+    border-bottom: 1px solid @strokeGrey;
     background-color: @backgroundGrey;
   }
   &-left{
@@ -130,6 +132,7 @@ tabs .dli-container{
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-size: 12px;
           &-right{
             display: inline;
             width:22%;
@@ -211,7 +214,7 @@ tabs .dli-container{
         font-size: 14px;
         text-align: left;
         float: left;
-        margin: 3px 0 3px 5px;
+        margin: 3px 0 3px 0px;
         @media @mobile {
           display:none;
         }

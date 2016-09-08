@@ -54,13 +54,16 @@
       padding: 22px;
       @media @mobile {
         font-size:22px;
-
+        padding: 27px 20px;
       }
     }
 
   }
   .stat-wrapper{
     .clearfix;
+    @media @tablet {
+      border-bottom: 1px solid @strokeGrey;
+    }
     &-table{
       display: block;
       width: 280px;
@@ -140,8 +143,9 @@
         @media @mobile {
           padding: 10px 10px 10px 10px;
         }
-        h4{
+        .chart-title{
           margin: 0;
+          width: 166px;
           .globalDefaultModFont(14px, 400, @textEmphasisGrey);
           @media @mobile {
             font-size: 12px;
@@ -222,7 +226,7 @@
       &-title{
         .globalDefaultFont(18px, 800);
         margin: 0 0 6px 0;
-        text-transform: uppercase;
+        text-transform: titlecase;
         a:hover{
           color: @masterBrandColor;
         }
