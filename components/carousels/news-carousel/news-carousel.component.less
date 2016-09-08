@@ -5,7 +5,7 @@
   border-color: @colorImages;
   border-radius: 5px;
   font-weight: 400;
-  right: 25px;
+  right: 15px;
   top: 10px;
   span:first-child{
     padding-right: 5px;
@@ -28,12 +28,12 @@
   }
   .circles-left {
     @media @mobile {
-      left:  -5px;
+      left:  -8px;
     }
   }
   .circles-right {
     @media @mobile {
-      right:  -5px;
+      right:  -8px;
     }
   }
   .feature-btn.articles {
@@ -42,8 +42,11 @@
       border: none;
     //  position: absolute;
       top: 88%;
-      left: -10;
-      width: 145px;
+      left: -20px;
+      width: 150px;
+      span i {
+        display: none;
+      }
     }
   }
     &-placeholder{
@@ -51,7 +54,7 @@
       height: 350px;
       background-color: @textEmphasisGrey;
     //  background-image: url('/app/public/.png');
-      background-size: conver;
+      background-size: cover;
       background-repeat: no-repeat;
       position: relative;
       &:before {
@@ -77,9 +80,8 @@
       margin:auto;
       height: 350px;
     //  padding-top: 127px;
-      position: relative;
-      padding-right: 85px;
-      padding-left: 85px;
+      padding-right: 80px;
+      padding-left: 80px;
       display: table-cell;
       vertical-align: middle;
       @media @mobile {
@@ -99,6 +101,7 @@
       // .line-clamp-2;
       // .line-clamp;
       .globalDefaultFont(28px, 800);
+      position: relative;
       @media @mobile {
         font-size:20px;
         margin-top: 0px;
@@ -113,6 +116,7 @@
       .globalDefaultFont(16px, 400);
     }
     &-footer{
+      position: relative;
       .flexDisplay;
       .flexJustify(space-between);
       .flexAlignItems(baseline);
@@ -144,8 +148,13 @@
       }
     }
     .st_sharethis_large{
-      .flexDisplay;
-      .flexAlignItems(center);
+      // .flexDisplay;
+      // .flexAlignItems(center);
+      >i {
+        font-size: 12px;
+        position: relative;
+        top: 2px;
+      }
       &:hover{
         color: @masterBrandColor;
       }

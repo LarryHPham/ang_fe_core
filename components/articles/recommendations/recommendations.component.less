@@ -1,3 +1,14 @@
+.sixteenNine{
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  img{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+  }
+}
 .recommendations {
   width: 610px;
   display: inline-block;
@@ -68,7 +79,8 @@
         top: 15px;
         margin-bottom: 35px;
         @media @mobile {
-          top: 10px;
+          top: auto;
+          margin: 10px 0 14px 0;
         }
         &-dateline {
           .globalDefaultFont(10px, 800);
@@ -101,7 +113,6 @@
   }
   @media @mobile {
     width: 100%;
-    height: 225px;
   }
 }
 
@@ -271,7 +282,7 @@
       &-item {
         width: 197px;
         &-image {
-          height: 12vw;
+          height: 17vw;
         }
         &-content {
           .globalDefaultFont(14px, 400);
