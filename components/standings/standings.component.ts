@@ -216,7 +216,9 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: event, division: undefined, season: priorTab.season};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
 
   }
   divisionChanged(event) {
@@ -230,7 +232,10 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: priorTab.conference, division: event, season: priorTab.season};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
+
 
   }
   seasonChanged(event) {
@@ -244,7 +249,9 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: priorTab.conference, division: priorTab.division, season: event};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings" || newTab.title != "Division Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
 
   }
 }
