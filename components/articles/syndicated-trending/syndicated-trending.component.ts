@@ -34,7 +34,9 @@ export class SyndicatedTrendingComponent {
     ){}
 
     private getDeepDiveArticle(scope, numItems, state, currentArticleId) {
-        this._deepdiveservice.getDeepDiveBatchService(scope, numItems, 2, state).subscribe(
+        var startNum=Math.floor((Math.random() * 29) + 1);
+
+        this._deepdiveservice.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
             data => {
                 this.articleData = this._deepdiveservice.transformTrending(data.data, currentArticleId);
 
