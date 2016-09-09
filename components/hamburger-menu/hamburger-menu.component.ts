@@ -29,7 +29,6 @@ export class HamburgerMenuComponent implements OnInit {
     this.isHome = GlobalSettings.getHomeInfo().isHome;
   }
   ngOnInit(){
-    console.log(this.scope);
     this.scope = this.scope.toUpperCase();
     if (this.scope == this._collegeDivisionAbbrv) {this.scope = this._collegeDivisionFullAbbrv;}
     this.changeActiveLeague(this.scope);
