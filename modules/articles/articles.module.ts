@@ -77,7 +77,6 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles(data) {
-
       //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
       let objNotEmpty : boolean;
       for ( var prop in data.featuredReport ) {
