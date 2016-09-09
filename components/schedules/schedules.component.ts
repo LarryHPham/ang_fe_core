@@ -112,7 +112,6 @@ export class SchedulesComponent implements OnInit{
   }
 
   ngOnChanges(){
-    console.log(this.carouselData);
     if(this.getSelectedTab() != null){
       this.getSelectedTab()['tabData'].sections = this.data;
     }
