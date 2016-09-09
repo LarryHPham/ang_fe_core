@@ -170,7 +170,6 @@ export class CalendarCarousel implements OnInit{
 
   //whatever is clicked on gets emitted and highlight on the carousel
   setActive(event){
-    if(!event.active){//only work if the active && clickable date is not already active
       var resetState = this.weeklyDates;
       resetState.forEach(function(val,i){
         val.active = false;
@@ -178,7 +177,6 @@ export class CalendarCarousel implements OnInit{
       event.active = true;
       this.chosenParam.date = event.fullDate;
       this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
-    }
   }
 
   //makes weekly api call and sets reactive variables
