@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {GlobalSettings} from "../../../../global/global-settings";
 
 declare var DISQUS: any;
 
@@ -25,7 +26,7 @@ export class DisqusComponent implements OnInit{
                 });
             }else{
                 js = d.createElement(s); js.id = id;
-                js.src = "//homerunloyal.disqus.com/embed.js";
+                js.src = "//"+GlobalSettings.getHomePageLinkName()+".disqus.com/embed.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }
         }(document, 'script', 'disqusJS'));
