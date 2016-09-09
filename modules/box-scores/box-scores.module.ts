@@ -79,7 +79,7 @@ export class BoxScoresModule implements OnChanges, OnInit{
     this.windowWidth = window.innerWidth;
     if(this.scroll){
       if(this.boxScores != null){
-        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? this.boxScores.gameInfo.length * 200: 650;
+        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{
         this.maxHeight = 650;
@@ -91,7 +91,7 @@ export class BoxScoresModule implements OnChanges, OnInit{
   ngOnChanges(){
     if(this.scroll){
       if(this.boxScores != null){
-        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 180)+50: 650;
+        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{
         this.maxHeight = 650;

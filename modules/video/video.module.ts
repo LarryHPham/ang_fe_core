@@ -45,8 +45,7 @@ export class VideoModule implements OnInit,OnChanges{
     ngOnChanges(){
         if(this.isProfilePage){
             this.modHeadData = {
-                moduleTitle: "Videos",
-                moduleTitleProfile:" - " + this.profileHeader.profileName,
+                moduleTitle: "Videos<span class='mod-info'> -"+this.profileHeader.profileName+" </span>",
                 hasIcon: false,
                 iconClass: '',
             };

@@ -103,7 +103,7 @@
       .table-cell-image {
         .flexDisplay;
         .flexAlignItems(center);
-
+        padding-left: 5px;
         span {
           min-height: 1.2em;
           max-height: 2.5em; //approx 2x line-height
@@ -112,6 +112,9 @@
           @media @mobile{
             width:100%;
             display:block;
+            text-align: center;
+          }
+          @media @tablet{
             text-align: left;
           }
         }
