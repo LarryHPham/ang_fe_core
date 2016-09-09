@@ -53,18 +53,28 @@ export class ArticlesModule implements OnInit {
     mainEventID:number;
     isSmall:boolean = false;
     league:boolean = false;
+
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
         iconClass: ""
     };
 
+    public hasProperties: boolean;
+
     constructor(private _params:RouteParams) {
         this.teamID = _params.get('teamId');
     }
 
     getArticles(data) {
-        if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0) {
+
+      //Checks to see if data.featuredReport is empty
+      let notEmpty : boolean;
+      for ( var prop in data.featuredReport ) {
+        notEmpty = true;
+      }
+
+        if (!this.isLeague && data != null && data.featuredReport != null && notEmpty == true ) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
@@ -75,7 +85,7 @@ export class ArticlesModule implements OnInit {
             }
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-        } else if (data.featuredReport != null && data.featuredReport.length > 0)  {
+        } else if (data.featuredReport != null && notEmpty == true )  {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
@@ -202,14 +212,14 @@ export class ArticlesModule implements OnInit {
             var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            this.mainImage = GlobalSettings.getImageUrl(headlineData['featuredReport'][pageIndex].image);
+            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['featuredReport'][pageIndex].image);
         } else {
             this.keyword = "PREGAME";
             this.mainTitle = headlineData['data'][0].title;
             this.eventType = "pregame-report";
             this.mainEventID = headlineData['data'][0].event_id;
             var articleContent = headlineData['data'][0].teaser;
-            this.mainImage = GlobalSettings.getImageUrl(headlineData['data'][0].image_url);
+            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['data'][0].image_url);
             var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
@@ -225,7 +235,7 @@ export class ArticlesModule implements OnInit {
                     title: data['otherReports'][val].displayHeadline,
                     eventType: val,
                     eventID: eventID,
-                    images: GlobalSettings.getImageUrl(data['otherReports'][val].image)
+                    images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data['otherReports'][val].image)
                 };
                 articleArr.push(articles);
             });
@@ -236,7 +246,7 @@ export class ArticlesModule implements OnInit {
                         title: val.title,
                         eventType: "pregame-report",
                         eventID: val.event_id,
-                        images: GlobalSettings.getImageUrl(val.image_url)
+                        images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(val.image_url)
                     };
                     articleArr.push(articles);
                 }
