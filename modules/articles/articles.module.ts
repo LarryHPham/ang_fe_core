@@ -54,27 +54,39 @@ export class ArticlesModule implements OnInit {
     isSmall:boolean = false;
     league:boolean = false;
 
+    public scope: string;
+    public leagueModTitle: string;
+    public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
+    public collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
+
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
         iconClass: ""
-    };
+    }
 
     public hasProperties: boolean;
 
-    constructor(private _params:RouteParams) {
+    constructor(private _params:RouteParams, private _router:Router) {
         this.teamID = _params.get('teamId');
+
+        GlobalSettings.getParentParams(this._router, parentParams => {
+            this.scope = parentParams.scope;
+        });
+
     }
 
     getArticles(data) {
 
-      //Checks to see if data.featuredReport is empty
-      let notEmpty : boolean;
+      //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
+      let objNotEmpty : boolean;
       for ( var prop in data.featuredReport ) {
-        notEmpty = true;
+        objNotEmpty = true;
       }
-
-        if (!this.isLeague && data != null && data.featuredReport != null && notEmpty == true ) {
+        //////
+        ///if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0)
+        ////// ^^ old condition for displaying AI on team pages
+        if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true ) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
@@ -85,17 +97,22 @@ export class ArticlesModule implements OnInit {
             }
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-        } else if (data.featuredReport != null && notEmpty == true )  {
+        //////
+        ///else if (data.featuredReport != null && data.featuredReport.length > 0)
+        ////// ^^ old condition for displaying AI on league pages
+        } else if (this.isLeague)  {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
         }
         else {
+          console.log('error, not league or team?');
           this.headlineError = true;
         }
     }
 
     getHeaderData(header) {
+
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
             this.timeStamp = moment(header.timestamp).format("MMMM DD YYYY");
@@ -116,9 +133,12 @@ export class ArticlesModule implements OnInit {
                 }
             }
         } else {
-            this.headerInfo.moduleTitle = "Headlines";
+          if ( header.data[0].affiliation ) {
+            this.leagueModTitle = header.data[0].affiliation == 'ncaa' ? this.collegeDivisionFullAbbrv : header.data[0].affiliation;
+          }
+            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - "+this.leagueModTitle.toUpperCase()+"</span>";
         }
-    }
+    } //getHeaderData(header)
 
     getSchedule(homeData, awayData) {
         var homeArr = [];
