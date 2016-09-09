@@ -79,7 +79,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges {
         }
     }
     dropdown2Changed($event) {
-        console.log(this.tabName,"is this work");
+        
         this.selectedSubTab = $event;
         //this.tabSelectedListener.emit(this.selectedSubTab);
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
@@ -93,7 +93,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges {
         }
     }
     dropdownChanged($event) {
-        console.log(this.tabName,"is this work");
+        
         this.selectedSeasonId = $event;
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
