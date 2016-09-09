@@ -18,7 +18,7 @@
     @media @tablet {
       transform: translateY(-50%);
       -webkit-transform: translateY(-50%);
-      top:-6px;
+      top:-8px;
       position: relative;
       line-height: 13px;
       text-align: left;
@@ -65,7 +65,10 @@
       top:74px;
       //min-height:80px;
     }
-
+  //hide the last table row's widget only on player stats page, so it can be desplayed after glossary instead
+  .table-widget-true {
+    display:none!important;
+  }
   }
   .pane-content{
 

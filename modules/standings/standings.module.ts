@@ -3,6 +3,7 @@ import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angula
 import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
 import {StandingsComponent, StandingsTableTabData} from '../../components/standings/standings.component';
+import {SanitizeHtml} from "../../pipes/safe.pipe";
 
 export interface StandingsModuleData {
   moduleTitle: string;

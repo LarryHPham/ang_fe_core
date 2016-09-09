@@ -102,12 +102,18 @@ export class CalendarCarousel implements OnInit{
       //take parameters and convert using moment to add a week from it and recall the week api
       var curParams = this.curDateView;
       curParams.date = moment(curParams.date).subtract(1, 'days').format('YYYY-MM-DD');
-      var dayNum = moment(curParams.date).format('d');
+      var dayNum = 0;
+      this.weeklyDates.forEach(function(val,index){
+        if(val.fullDate == curParams.date){
+          dayNum = index;
+        }
+      })
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
-        // this.curDateView.date = curParams.date;
+        this.curDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
-          this.curDateView.date = moment(curParams.date).add(1, 'days').format('YYYY-MM-DD');
+          this.failSafe++;
           this.leftDay();
+          return;
         });
       }else{
         if(this.weeklyDates[dayNum].clickable){
@@ -129,14 +135,21 @@ export class CalendarCarousel implements OnInit{
   rightDay(){
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
+
       var curParams = this.curDateView;
       curParams.date = moment(curParams.date).add(1, 'days').format('YYYY-MM-DD');
-      var dayNum = moment(curParams.date).format('d');
+      var dayNum = 0;
+      this.weeklyDates.forEach(function(val,index){
+        if(val.fullDate == curParams.date){
+          dayNum = index;
+        }
+      })
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
-        // this.curDateView.date = curParams.date;
+        this.curDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
-          this.curDateView.date = moment(curParams.date).subtract(1, 'days').format('YYYY-MM-DD');
+          this.failSafe++;
           this.rightDay();
+          return;
         });
       }else{
         if(this.weeklyDates[dayNum].clickable){
@@ -157,7 +170,6 @@ export class CalendarCarousel implements OnInit{
 
   //whatever is clicked on gets emitted and highlight on the carousel
   setActive(event){
-    if(!event.active){//only work if the active && clickable date is not already active
       var resetState = this.weeklyDates;
       resetState.forEach(function(val,i){
         val.active = false;
@@ -165,7 +177,6 @@ export class CalendarCarousel implements OnInit{
       event.active = true;
       this.chosenParam.date = event.fullDate;
       this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
-    }
   }
 
   //makes weekly api call and sets reactive variables

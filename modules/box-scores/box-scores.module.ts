@@ -79,6 +79,9 @@ export class BoxScoresModule implements OnChanges, OnInit{
     this.windowWidth = window.innerWidth;
     if(this.scroll){
       if(this.boxScores != null){
+        if (this.currentPage == this.boxScores.gameInfoSmall.length) {
+          this.rightDisabled = "disabled";
+        }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{
@@ -89,8 +92,16 @@ export class BoxScoresModule implements OnChanges, OnInit{
   }
 
   ngOnChanges(){
+    if(this.boxScores != null){
+      if (this.currentPage == this.boxScores.gameInfoSmall.length) {
+        this.rightDisabled = "disabled";
+      }
+    }
     if(this.scroll){
       if(this.boxScores != null){
+        if (this.currentPage == this.boxScores.gameInfoSmall.length) {
+          this.rightDisabled = "disabled";
+        }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{

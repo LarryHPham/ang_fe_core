@@ -9,6 +9,10 @@
     }
     .sort-title.conferences {
       visibility: visible;
+      @media @mobile{
+        position: absolute;
+        padding-right: 5px;
+      }
     }
     .list-filter-heading{
       display: block;
@@ -26,9 +30,6 @@
     .flexAlignItems(center);
   }
   @media @mobile{
-    .pane .shader{
-      box-shadow: inset -13px 0 5px -11px rgba(0, 0, 0, 0.1);
-    }
     .sort-title{
       width: 60%;
       &-conf{
@@ -60,7 +61,7 @@
     }
   }
   .image-column-hdr, .image-column {
-    width: 170px;
+    width: 169px;
     @media @mobile {
       width: 150px;
     }
@@ -78,9 +79,10 @@
       display: none;
     }
   }
-  .table-cell-image span {
+  .image-column .table-cell-image span {
     @media @mobile {
       margin-left: 10px;
+      text-align: left;
     }
   }
   th.image-column-column {
@@ -170,6 +172,7 @@
       i {
         color: @masterBrandColor;
         vertical-align: top;
+        margin-right: 2px;
       }
     }
     h4 {
@@ -221,6 +224,11 @@
   @media @tablet{
     .scc-details-mainImg{
       padding: 0 20px;
+    }
+  }
+  .filters-type2{
+    @media @mobile{
+      margin-bottom: 10px;
     }
   }
 }
