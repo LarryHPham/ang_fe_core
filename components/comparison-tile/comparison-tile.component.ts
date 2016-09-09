@@ -29,6 +29,8 @@ export interface ComparisonTileInput {
 export class ComparisonTile {
     @Input() comparisonTileInput: ComparisonTileInput;
 
+    @Input() scope: string;
+
     @Input() dropdownList1: Array<{key: string, value: string}> = []
 
     @Input() dropdownList2: Array<{key: string, value: string}> = []
