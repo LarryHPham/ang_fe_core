@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, DoCheck, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, DoCheck, Output, EventEmitter} from '@angular/core';
 
 import {SliderCarousel, SliderCarouselInput} from '../carousels/slider-carousel/slider-carousel.component';
 import {Tabs} from '../tabs/tabs.component';
@@ -31,7 +31,7 @@ export interface StatsTableTabData<T> {
     templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
     directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
-export class PlayerStatsComponent implements DoCheck,OnChanges {
+export class PlayerStatsComponent implements DoCheck{
     private initialSeasonId: string;
     public selectedIndex;
     public GlossaryData;
@@ -177,7 +177,5 @@ export class PlayerStatsComponent implements DoCheck,OnChanges {
 
 
     }
-    ngOnChanges(){
-       // console.log(this.tabName,"updated??");
-    }
+
 }
