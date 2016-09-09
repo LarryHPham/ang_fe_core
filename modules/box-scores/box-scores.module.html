@@ -40,7 +40,6 @@
     </template>
     <!-- box-score scroll -->
     <template [ngIf]="scroll" *ngIf="windowWidth >= 640">
-      <div class="box-scores-overlay"></div>
       <scrollable-content *ngIf="heightStyle" class="box-scores-scroll"
       (reloadScroller)="_reloadScroller" [style.height]="heightStyle">
         <div *ngFor="let gameBox of boxScores.gameInfo; let i = odd" class="box-scores-info-container" [class.odd]="i" [class.even]="!i">
@@ -58,7 +57,6 @@
     </template>
 
     <template [ngIf]="windowWidth < 640">
-      <div class="box-scores-overlay"></div>
       <game-info   [ngClass]="{'float-left':1 % 2 == 0,'float-right':1 % 2 == 1}"[gameInfo]="boxScores.gameInfoSmall[currentPage - 1].game"></game-info>
       <!--game info that affects only how team box scores are displayed-->
       <div class='box-scores-leagueNav'>
