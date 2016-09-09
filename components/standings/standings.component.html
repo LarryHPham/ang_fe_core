@@ -7,7 +7,7 @@
     <tab *ngFor="let tab of tabs" [tabTitle]="tab.title" [active]="tab.isActive">
       <loading-component *ngIf="!tab.isLoaded && !tab.hasError"></loading-component>
       <div *ngIf="tab.isLoaded && tab.sections" class="inner-pane">
-        <div class="filters">
+        <div class="filters" [class.filters-type2]="scope != 'nfl'">
           <span class="list-filter-heading" [class.heading-hidden]="scope != 'nfl'">
             <i class="fa fa-cog"></i> List Filters
           </span>
