@@ -108,7 +108,7 @@ export class ArticlesModule implements OnInit {
 
     getHeaderData(header) {
         let leagueDisplay = header.data[0].affiliation;
-        if (leagueDisplay = 'ncaa') {
+        if (leagueDisplay == 'ncaa') {
           leagueDisplay = this.collegeDivisionFullAbbrv;
         }
 
