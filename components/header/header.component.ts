@@ -15,7 +15,7 @@ declare var jQuery:any;
 export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
-  public scope: string;
+  public scope: string = "nfl";
   public logoUrl:string;
   public partnerLogoUrl: string;
   private _stickyHeader: string;
@@ -91,6 +91,10 @@ export class HeaderComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges() {
-
+    GlobalSettings.getParentParams(this._router, parentParams =>
+      {
+        this.scope = parentParams.scope;
+      }
+    );
   }
 }

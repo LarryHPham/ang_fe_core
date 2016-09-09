@@ -13,7 +13,7 @@
         <i *ngIf="!isOpened" class="fa fa-bars"></i>
         <i *ngIf="isOpened" class="fa fa-remove menucheck"></i>
         <div *ngIf="isOpened" class="header-hamburger-dropDown">
-          <hamburger-menu-component [partnerID]="partnerID" [scope]="scope"></hamburger-menu-component>
+          <hamburger-menu-component [partnerID]="partnerID" *ngIf="scope" [scope]="scope"></hamburger-menu-component>
         </div>
       </div>
     </div>
