@@ -31,7 +31,7 @@ export interface StatsTableTabData<T> {
     templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
     directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
-export class PlayerStatsComponent implements DoCheck {
+export class PlayerStatsComponent implements DoCheck{
     private initialSeasonId: string;
     public selectedIndex;
     public GlossaryData;
@@ -55,6 +55,7 @@ export class PlayerStatsComponent implements DoCheck {
     constructor() {}
 
     ngDoCheck() {
+
         if ( this.tabs && this.tabs.length > 0 ) {
             if ( !this.tabsLoaded  ) {
                 this.tabsLoaded = {};
@@ -77,6 +78,7 @@ export class PlayerStatsComponent implements DoCheck {
         }
     }
     dropdown2Changed($event) {
+        
         this.selectedSubTab = $event;
         //this.tabSelectedListener.emit(this.selectedSubTab);
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
@@ -90,6 +92,7 @@ export class PlayerStatsComponent implements DoCheck {
         }
     }
     dropdownChanged($event) {
+        
         this.selectedSeasonId = $event;
         let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
@@ -167,9 +170,11 @@ export class PlayerStatsComponent implements DoCheck {
     }
     updateGlossary(){
         var tabchosen= this.getSelectedTab();
+
         this.GlossaryData=tabchosen.glossary;
 
 
 
     }
+
 }

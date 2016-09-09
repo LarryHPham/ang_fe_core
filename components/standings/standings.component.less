@@ -9,6 +9,10 @@
     }
     .sort-title.conferences {
       visibility: visible;
+      @media @mobile{
+        position: absolute;
+        padding-right: 5px;
+      }
     }
     .list-filter-heading{
       display: block;
@@ -78,9 +82,10 @@
       display: none;
     }
   }
-  .table-cell-image span {
+  .image-column .table-cell-image span {
     @media @mobile {
       margin-left: 10px;
+      text-align: left;
     }
   }
   th.image-column-column {
@@ -222,6 +227,11 @@
   @media @tablet{
     .scc-details-mainImg{
       padding: 0 20px;
+    }
+  }
+  .filters-type2{
+    @media @mobile{
+      margin-bottom: 10px;
     }
   }
 }
