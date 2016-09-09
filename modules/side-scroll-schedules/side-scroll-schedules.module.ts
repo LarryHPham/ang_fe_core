@@ -29,8 +29,6 @@ export class SideScrollSchedule{
     this.count.emit(event);
   }
 
-  ngOnChanges(){
-  }
   scopeChange(selection) {
     this.changeScope.next(selection);
   }

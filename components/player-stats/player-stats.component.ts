@@ -188,7 +188,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
         Rushing:[
                 {key: "ATT", value: "Rushing Attempts"},
                 {key: "YDS", value: "Yards Per Rush Attempt"},
-                {key: "AVG", value: "Average"},
+                {key: "AVG", value: "Average Yards Per Rush Attempt"},
                 {key: "TD", value: "Rushing Touchdowns"},
                 {key: "YDS/G", value: "Yards per Game"},
                 {key: "FUM", value: "Rushing Fumbles"},
@@ -199,7 +199,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
                 {key: "REC", value: "Receptions"},
                 {key: "TAR", value: "Receiving Targets"},
                 {key: "YDS", value: "Average Yards Per Reception"},
-                {key: "AVG", value: "Average"},
+                {key: "AVG", value: "Average Yards Per Reception"},
                 {key: "TD", value: "Receiving Touchdowns"},
                 {key: "YDS/G", value: "Receiving Yards Per Game"},
                 {key: "1DN", value: "Receiving First Downs"}
@@ -233,7 +233,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
                 {key: "P.ATT", value: "Punt Return Attempts"},
                 {key: "P.YDS", value: "Total Punt Return Yards"},
                 {key: "P.AVG", value: "Punt Return Average"},
-                {key: "TD", value: "Run Average"}
+                {key: "TD", value: "Total Kickoff and Punt Return Touchdowns"}
             ],
 
 
