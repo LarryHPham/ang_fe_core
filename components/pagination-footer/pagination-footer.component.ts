@@ -235,7 +235,7 @@ export class PaginationFooter implements OnChanges{
         }
 
         //Determine if absolute first button should be shown (show ellipsis if first item in array is not 3)
-        if(this.paginationButtonsPageForMobile.length != 0 && this.paginationButtonsModuleMobile[0] != (1 + 2)){
+        if(this.paginationButtonsModuleMobile.length != 0 && this.paginationButtonsModuleMobile[0] != (1 + 2)){
             this.showMinSkip = true;
         }else{
             this.showMinSkip = false;
