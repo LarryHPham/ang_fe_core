@@ -55,6 +55,7 @@ export class ArticlesModule implements OnInit {
     league:boolean = false;
 
     public scope: string;
+    public leagueModTitle: string;
     public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
     public collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
 
@@ -68,6 +69,11 @@ export class ArticlesModule implements OnInit {
 
     constructor(private _params:RouteParams, private _router:Router) {
         this.teamID = _params.get('teamId');
+
+        GlobalSettings.getParentParams(this._router, parentParams => {
+            this.scope = parentParams.scope;
+        });
+
     }
 
     getArticles(data) {
@@ -77,7 +83,6 @@ export class ArticlesModule implements OnInit {
       for ( var prop in data.featuredReport ) {
         objNotEmpty = true;
       }
-
         //////
         ///if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0)
         ////// ^^ old condition for displaying AI on team pages
@@ -107,10 +112,6 @@ export class ArticlesModule implements OnInit {
     }
 
     getHeaderData(header) {
-        let leagueDisplay = header.data[0].affiliation;
-        if (leagueDisplay == 'ncaa') {
-          leagueDisplay = this.collegeDivisionFullAbbrv;
-        }
 
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
@@ -132,7 +133,10 @@ export class ArticlesModule implements OnInit {
                 }
             }
         } else {
-            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - "+leagueDisplay.toUpperCase()+"</span>";
+          if ( header.data[0].affiliation ) {
+            this.leagueModTitle = header.data[0].affiliation == 'ncaa' ? this.collegeDivisionFullAbbrv : header.data[0].affiliation;
+          }
+            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - "+this.leagueModTitle.toUpperCase()+"</span>";
         }
     } //getHeaderData(header)
 
