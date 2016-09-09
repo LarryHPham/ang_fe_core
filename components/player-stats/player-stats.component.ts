@@ -188,7 +188,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
         Rushing:[
                 {key: "ATT", value: "Rushing Attempts"},
                 {key: "YDS", value: "Yards Per Rush Attempt"},
-                {key: "AVG", value: "Average Yards Per Rush Attemot"},
+                {key: "AVG", value: "Average Yards Per Rush Attempt"},
                 {key: "TD", value: "Rushing Touchdowns"},
                 {key: "YDS/G", value: "Yards per Game"},
                 {key: "FUM", value: "Rushing Fumbles"},
