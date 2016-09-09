@@ -29,6 +29,7 @@ export class PlayerStatsModule implements OnChanges {
   @Input() isProfilePage:boolean;
     @Input() profileData;
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
+    @Input() tabName;
     //headerInfo: ModuleHeaderData;
  public headerInfo: ModuleHeaderData = {
      moduleTitle: "Player Stats",
@@ -44,7 +45,9 @@ export class PlayerStatsModule implements OnChanges {
 
   public tabs: Array<StatsTableTabData<any>>;
 
+
   ngOnChanges() {
+
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Player Stats";
     }
@@ -62,6 +65,7 @@ export class PlayerStatsModule implements OnChanges {
 
   tabSelected(tabData) {
     this.tabSelectedListener.next(tabData);
+
 
   }
 }
