@@ -57,6 +57,11 @@ export class SchedulesModule{
               year:this.dropdownKey1, tab: matches,teamId:this.params.get('teamId'),
               pageNum:1}]
           }
+          this.footerData = {
+            infoDesc: 'Want to see the full season schedule?',
+            text: 'VIEW SCHEDULE',
+            url: url
+          };
         }else{
           if(this.dropdownKey1 == null){
             this.dropdownKey1 = new Date().getFullYear().toString();
@@ -72,12 +77,6 @@ export class SchedulesModule{
             url: url
           };
         }
-
-
-        if(this.footerData == null)[
-
-        ]
-        console.log(this.footerData);
     }
 
     ngOnChanges(){
