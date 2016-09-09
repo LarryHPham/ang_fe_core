@@ -112,6 +112,7 @@ export class SchedulesComponent implements OnInit{
   }
 
   ngOnChanges(){
+    console.log(this.carouselData);
     if(this.getSelectedTab() != null){
       this.getSelectedTab()['tabData'].sections = this.data;
     }
@@ -142,7 +143,7 @@ export class SchedulesComponent implements OnInit{
 
   ngOnInit(){//on view load set default data
     if(this.filter1 != null){
-      this.dropdownKey1 = this.filter1[0].key;
+      this.dropdownKey1 = this.filter1['data'][0].key;
     }
     var selectedTab = this.tabs.filter(value => value.tabData.isActive == true)[0];
     this.tabTitle = selectedTab.display;

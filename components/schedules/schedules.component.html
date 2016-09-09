@@ -44,9 +44,6 @@
           <custom-table [ngClass]="{'table-schedule':tab.display == 'Previous Games'}" *ngIf="section.tableData" [error]="tab.tabData.errorData" [model]="section.tableData" (sortChanged)="updateCarousel($event)"></custom-table>
         </div>
       </div>
-      <!-- <div *ngIf="tab.tabData.sections.length <= 0" class="no-results">
-        <no-data-box [data]="tab.tabData.errorData.data" [icon]="tab.tabData.errorData.icon"></no-data-box>
-      </div> -->
     </div>
   </tab>
 </tabs>

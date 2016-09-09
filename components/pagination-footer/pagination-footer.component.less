@@ -109,6 +109,18 @@
         background-color: @masterBrandColor;
         color: @white;
       }
+      &.desktop{
+        display:inline-block;
+        @media @mobile{
+          display:none;
+        }
+      }
+      &.mobile{
+        display:none;
+        @media @mobile{
+          display:inline-block;
+        }
+      }
     }
 
     &-ellipsis {
@@ -117,6 +129,7 @@
       display: inline-block;
       font-size: 16px;
     }
+
   }
 
   &-view-all{
