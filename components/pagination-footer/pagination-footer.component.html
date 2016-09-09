@@ -17,10 +17,10 @@
             1
           </button> -->
 
-          <button *ngFor="let item of paginationButtonsModule"  (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item}">
+          <button *ngFor="let item of paginationButtonsModule"  (click)="indexClick($event)" class="pagination-button-circle desktop" [ngClass]="{active: paginationParameters.index == item}">
             {{item}}
           </button>
-          <button *ngFor="let item of paginationButtonsPageForMobile" class="mobile" (click)="indexClick($event)" class="pagination-button-circle" [ngClass]="{active: paginationParameters.index == item}">
+          <button *ngFor="let item of paginationButtonsModuleMobile" (click)="indexClick($event)" class="pagination-button-circle mobile" [ngClass]="{active: paginationParameters.index == item}">
             {{item}}
           </button>
 
