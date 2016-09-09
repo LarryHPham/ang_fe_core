@@ -92,7 +92,6 @@ export class BoxScoresModule implements OnChanges, OnInit{
   }
 
   ngOnChanges(){
-    console.log(this.boxScores);
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfoSmall.length) {
         this.rightDisabled = "disabled";
@@ -100,8 +99,6 @@ export class BoxScoresModule implements OnChanges, OnInit{
     }
     if(this.scroll){
       if(this.boxScores != null){
-        console.log(this.currentPage);
-        console.log(this.boxScores.gameInfoSmall.length);
         if (this.currentPage == this.boxScores.gameInfoSmall.length) {
           this.rightDisabled = "disabled";
         }

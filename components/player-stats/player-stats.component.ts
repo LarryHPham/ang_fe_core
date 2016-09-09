@@ -50,7 +50,6 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
     private selectedTabTitle: string;
     private tabsLoaded: {[key: string]: string};
     private selectedSeasonId: string;
-    private initialSeasonId: string;
     private noDataMessage = "Sorry, there is no data available.";
     private selectedSubTab:string;
 
