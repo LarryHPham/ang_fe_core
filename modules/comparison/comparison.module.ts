@@ -52,6 +52,7 @@ export class ComparisonModule implements OnInit, OnChanges {
 
     @Input() profileType: string;
 
+    @Input() scope: string;
     teamOnePlayerList: Array<{key: string, value: string}>;
 
     teamTwoPlayerList: Array<{key: string, value: string}>;
@@ -192,6 +193,42 @@ export class ComparisonModule implements OnInit, OnChanges {
         var playerName = player.playerFirstName + ' ' + player.playerLastName;
         var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
         var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
+        var playerInfo = [];
+        if(this.scope == 'nfl'){
+          playerInfo = [
+              {
+                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
+                  key: 'Height'
+              },
+              {
+                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
+                  key: 'Weight'
+              },
+              {
+                  data: player.age != null ? player.age : 'N/A',
+                  key: 'Age'
+              },
+              {
+                  data: player.yearExperience != null ? player.yearExperience : 'N/A',
+                  key: player.yearExperience == '1' ? 'Year' : 'Years'
+              },
+          ];
+        } else {
+          playerInfo = [
+              {
+                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
+                  key: 'Height'
+              },
+              {
+                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
+                  key: 'Weight'
+              },
+              {
+                  data: player.age != null ? player.age : 'N/A',
+                  key: 'Class'
+              }
+          ];
+        }
         return {
             dropdownOneKey: player.teamId,
             dropdownTwoKey: player.playerId,
@@ -228,24 +265,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                     class: 'text-heavy'
                 }
             ],
-            data: [
-                {
-                    data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
-                    key: 'Height'
-                },
-                {
-                    data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
-                    key: 'Weight'
-                },
-                {
-                    data: player.age != null ? player.age : 'N/A',
-                    key: 'Age'
-                },
-                {
-                    data: player.yearExperience != null ? player.yearExperience : 'N/A',
-                    key: player.yearExperience == '1' ? 'Year' : 'Years'
-                },
-            ]
+            data: playerInfo
         }
     }
 
