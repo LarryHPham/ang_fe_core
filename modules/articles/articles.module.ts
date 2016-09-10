@@ -77,8 +77,8 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles(data) {
-
       //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
+      this.headlineError = false;
       let objNotEmpty : boolean;
       for ( var prop in data.featuredReport ) {
         objNotEmpty = true;
@@ -106,8 +106,8 @@ export class ArticlesModule implements OnInit {
             this.getSubArticles(data, this.eventID);
         }
         else {
-          console.log('error, not league or team?');
           this.headlineError = true;
+          console.log('headline error');
         }
     }
 
