@@ -11,10 +11,14 @@ declare var jQuery:any;
 export class WidgetModule {
     @Input() aiSidekick:boolean;
     @Input() syndicated:boolean;
+    @Input() scope:string;
     sidekickHeight:number = 0;
     headerHeight:string;
+    isProSport:boolean = true;
 
     ngOnInit() {
+
+        this.isProSport = this.scope == 'nfl' ? true: false;
         var titleHeight = jQuery('.articles-page-title').height();
         var padding = document.getElementById('pageHeader').offsetHeight;
 
