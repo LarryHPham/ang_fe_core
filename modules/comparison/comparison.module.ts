@@ -194,7 +194,22 @@ export class ComparisonModule implements OnInit, OnChanges {
         var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
         var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
         var playerInfo = [];
-        if(this.scope == 'nfl'){
+        if(this.scope == 'fbs'){
+          playerInfo = [
+              {
+                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
+                  key: 'Height'
+              },
+              {
+                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
+                  key: 'Weight'
+              },
+              {
+                  data: player.class != null ? player.class : 'N/A',
+                  key: 'Class'
+              }
+          ];
+        } else {
           playerInfo = [
               {
                   data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
@@ -212,21 +227,6 @@ export class ComparisonModule implements OnInit, OnChanges {
                   data: player.yearExperience != null ? player.yearExperience : 'N/A',
                   key: player.yearExperience == '1' ? 'Year' : 'Years'
               },
-          ];
-        } else {
-          playerInfo = [
-              {
-                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
-                  key: 'Height'
-              },
-              {
-                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
-                  key: 'Weight'
-              },
-              {
-                  data: player.age != null ? player.age : 'N/A',
-                  key: 'Class'
-              }
           ];
         }
         return {
@@ -260,7 +260,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                 { text: "<br>", class: "line-break" },
                 "Team: ",
                 {
-                    text: player.teamName,
+                    text: player.teamAbbreviation + ' ' + player.teamName,
                     route: teamRoute,
                     class: 'text-heavy'
                 }
