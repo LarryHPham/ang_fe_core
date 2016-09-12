@@ -172,12 +172,12 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             legendValues: [
                 {
-                    title: data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName,
+                    title: data.playerOne.playerFirstName != null && data.playerOne.playerLastName != null ? data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName : 'N/A',
                     // color: data.playerOne.mainTeamColor
                     color: '#2D3E50'
                 },
                 {
-                    title: data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName,
+                    title: data.playerTwo.playerFirstName != null && data.playerTwo.playerLastName != null ? data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName : 'N/A',
                     // color: data.playerTwo.mainTeamColor
                     color: '#999999'
                 },
@@ -190,7 +190,7 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     setupTile(player: PlayerData): ComparisonTileInput {
-        var playerName = player.playerFirstName + ' ' + player.playerLastName;
+        var playerName = player.playerFirstName != null && player.playerLastName != null ? player.playerFirstName + ' ' + player.playerLastName : 'N/A';
         var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
         var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
         var playerInfo = [];
@@ -248,7 +248,7 @@ export class ComparisonModule implements OnInit, OnChanges {
                         // imageClass: "image-50-sub image-round-lower-right"
                     // },
                     {
-                        text: "#" + player.jerseyNumber,
+                        text: player.jerseyNumber ? "#" + player.jerseyNumber : 'N/A',
                         imageClass: "image-48-rank image-round-upper-left image-round-sub-text"
                     }
                 ],
@@ -256,11 +256,11 @@ export class ComparisonModule implements OnInit, OnChanges {
             titleUrl: playerRoute,
             title: playerName,
             description: ["Position: ",
-                { text: player.playerPosition, class: 'text-heavy' },
+                { text: player.playerPosition ? player.playerPosition : 'N/A', class: 'text-heavy' },
                 { text: "<br>", class: "line-break" },
                 "Team: ",
                 {
-                    text: player.teamAbbreviation + ' ' + player.teamName,
+                    text: player.teamAbbreviation != null && player.teamName != null ? player.teamAbbreviation + ' ' + player.teamName : 'N/A',
                     route: teamRoute,
                     class: 'text-heavy'
                 }
