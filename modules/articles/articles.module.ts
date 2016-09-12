@@ -305,7 +305,9 @@ export class ArticlesModule implements OnInit {
     onResize(event) {
         this.isSmall = event.target.innerWidth <= 639;
         this.fitText();
-        this.getHeaderData(this.moduleData);
+        if ( this.moduleData != null ) {
+          this.getHeaderData(this.moduleData);          
+        }
     }
 
     ngOnInit() {
