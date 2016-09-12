@@ -1,8 +1,6 @@
 <div class="dropdown">
   <div class="dropdown-hdr" (keydown)="searchKeydown($event)" tabindex="0" >
-    <span class="dropdown-hdr-value">
-      {{selectedItem.value}}
-    </span>
+    <span class="dropdown-hdr-value" [innerHtml]="selectedItem.value"></span>
     <span class="dropdown-hdr-button">
       <i class="fa {{dropdownHiddenIcon}}"></i>
     </span>
