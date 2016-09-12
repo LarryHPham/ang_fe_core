@@ -5,7 +5,7 @@ import {WidgetModule} from "../../modules/widget/widget.module";
     selector: 'sidekick-wrapper-ai',
     templateUrl: './app/fe-core/components/sidekick-wrapper-ai/sidekick-wrapper-ai.component.html',
     directives: [WidgetModule],
-    inputs: ['aiSidekick', 'syndicated']
+    inputs: ['aiSidekick', 'syndicated', 'scope']
 })
 
 export class SidekickWrapperAI {}
