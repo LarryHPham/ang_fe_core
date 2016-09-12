@@ -44,9 +44,15 @@ export class DraftHistoryModule implements OnInit {
       text: 'VIEW THE FULL LIST',
       url: pageRoute
     };
+    var title = '';
+    if(this.profileData.profileType == 'league'){
+      title = this.profileData['headerData'].leagueAbbreviatedName;
+    }else{
+      title = this.profileData['headerData'].teamMarket;
+    }
     this.modHeadData = {
         moduleTitle: "Draft History",
-        moduleIdentifier: " - " + this.profileData.headerData.teamMarket + " " + this.profileData.profileName,
+        moduleIdentifier: " - " + title + " " + this.profileData.profileName,
         hasIcon: false,
         iconClass: '',
     }
