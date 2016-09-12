@@ -63,9 +63,9 @@ export class DeepDiveBlock1{
         err => {
               console.log("Error getting first article stack data");
         });
-    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'postgame-report', 1, this.callLimit, this.geoLocation)
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, this.callLimit, this.geoLocation)
         .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'postgame-report');
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');
         },
         err => {
             console.log("Error getting first AI article batch data");
