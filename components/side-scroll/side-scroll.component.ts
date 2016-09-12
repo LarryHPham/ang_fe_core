@@ -164,16 +164,21 @@ export class SideScroll{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
+    //console.log(this.displayedItems,"carousel array");
 
   }
   adjustSizeVideo() {
-    if (this.currentItem.type == "video") {
-      jQuery(".carousel_scroll-item").addClass("videoActive");
+        if (this.currentItem.type == "video") {
+            jQuery(".carousel_scroll-item").addClass("videoActive");
+            jQuery(".carousel_scroll-box").css('min-height','180px');
+            jQuery(".carWrapper").css('min-height','180px');
+        }
+        else {
+            jQuery(".carousel_scroll-item").removeClass("videoActive");
+            jQuery(".carWrapper").css('min-height','240px');
+            jQuery(".carousel_scroll-box").css('min-height','240px');
+        }
     }
-    else {
-      jQuery(".carousel_scroll-item").removeClass("videoActive");
-    }
-  }
 
   left(event) {
     //moves the current scroll over the item size
