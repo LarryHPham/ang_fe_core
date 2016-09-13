@@ -100,13 +100,12 @@ export class ComparisonModule implements OnInit, OnChanges {
         }
         this.tabs.push({
             tabTitle: "Career Stats",
-            seasonId: "careerStats",
+            seasonId: "career",
             barData: []
         });
     }
 
-    ngOnInit(){
-    }
+    ngOnInit(){}
 
     ngOnChanges() {
         if ( this.modelData ) {
@@ -191,8 +190,9 @@ export class ComparisonModule implements OnInit, OnChanges {
 
     setupTile(player: PlayerData): ComparisonTileInput {
         var playerName = player.playerFirstName != null && player.playerLastName != null ? player.playerFirstName + ' ' + player.playerLastName : 'N/A';
+        var teamName = player.teamMarket + ' ' + player.teamName;
         var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
-        var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
+        var teamRoute = VerticalGlobalFunctions.formatTeamRoute(teamName, player.teamId);
         var playerInfo = [];
         if(this.scope == 'fbs'){
           playerInfo = [
