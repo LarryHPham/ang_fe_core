@@ -10,7 +10,7 @@ import {Component, Input, Output, ChangeDetectorRef, OnInit} from '@angular/core
 export class ResponsiveWidget implements OnInit {
   @Input() embedPlace: string;
   @Input() displayAtRes: string;
-
+  @Input() scope: string;
   windowWidth: number = 10;
   widgetMed:boolean=false;
   widgetSml:boolean=false;
