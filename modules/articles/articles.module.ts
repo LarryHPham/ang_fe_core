@@ -29,13 +29,12 @@ declare var jQuery:any;
         HeadToHeadComponent,
         LoadingComponent
     ],
-    inputs: ['headlineError']
 })
 
 export class ArticlesModule implements OnInit {
     @Input() headlineData:Array<any>;
     @Input() isLeague:boolean;
-
+    @Input() headlineError:boolean;
     awayData:Array<any>;
     homeData:Array<any>;
     moduleData:Array<any>;
@@ -54,18 +53,40 @@ export class ArticlesModule implements OnInit {
     mainEventID:number;
     isSmall:boolean = false;
     league:boolean = false;
+
+    public scope: string;
+    public leagueModTitle: string;
+    public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
+    public collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
+
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
         hasIcon: false,
         iconClass: ""
-    };
+    }
 
-    constructor(private _params:RouteParams) {
+    public hasProperties: boolean;
+
+    constructor(private _params:RouteParams, private _router:Router) {
         this.teamID = _params.get('teamId');
+
+        GlobalSettings.getParentParams(this._router, parentParams => {
+            this.scope = parentParams.scope;
+        });
+
     }
 
     getArticles(data) {
-        if (!this.isLeague) {
+      //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
+      this.headlineError = false;
+      let objNotEmpty : boolean;
+      for ( var prop in data.featuredReport ) {
+        objNotEmpty = true;
+      }
+        //////
+        ///if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0)
+        ////// ^^ old condition for displaying AI on team pages
+        if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true ) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
@@ -76,14 +97,22 @@ export class ArticlesModule implements OnInit {
             }
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-        } else {
+        //////
+        ///else if (data.featuredReport != null && data.featuredReport.length > 0)
+        ////// ^^ old condition for displaying AI on league pages
+        } else if (this.isLeague)  {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
         }
+        else {
+          this.headlineError = true;
+          console.log('headline error');
+        }
     }
 
     getHeaderData(header) {
+
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
             this.timeStamp = moment(header.timestamp).format("MMMM DD YYYY");
@@ -104,9 +133,12 @@ export class ArticlesModule implements OnInit {
                 }
             }
         } else {
-            this.headerInfo.moduleTitle = "Headlines";
+          if ( header.data[0].affiliation ) {
+            this.leagueModTitle = header.data[0].affiliation == 'ncaa' ? this.collegeDivisionFullAbbrv : header.data[0].affiliation;
+          }
+            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - "+this.leagueModTitle.toUpperCase()+"</span>";
         }
-    }
+    } //getHeaderData(header)
 
     getSchedule(homeData, awayData) {
         var homeArr = [];
@@ -200,14 +232,14 @@ export class ArticlesModule implements OnInit {
             var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            this.mainImage = GlobalSettings.getImageUrl(headlineData['featuredReport'][pageIndex].image);
+            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['featuredReport'][pageIndex].image);
         } else {
             this.keyword = "PREGAME";
             this.mainTitle = headlineData['data'][0].title;
             this.eventType = "pregame-report";
             this.mainEventID = headlineData['data'][0].event_id;
             var articleContent = headlineData['data'][0].teaser;
-            this.mainImage = GlobalSettings.getImageUrl(headlineData['data'][0].image_url);
+            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['data'][0].image_url);
             var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
@@ -223,7 +255,7 @@ export class ArticlesModule implements OnInit {
                     title: data['otherReports'][val].displayHeadline,
                     eventType: val,
                     eventID: eventID,
-                    images: GlobalSettings.getImageUrl(data['otherReports'][val].image)
+                    images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data['otherReports'][val].image)
                 };
                 articleArr.push(articles);
             });
@@ -234,7 +266,7 @@ export class ArticlesModule implements OnInit {
                         title: val.title,
                         eventType: "pregame-report",
                         eventID: val.event_id,
-                        images: GlobalSettings.getImageUrl(val.image_url)
+                        images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(val.image_url)
                     };
                     articleArr.push(articles);
                 }
@@ -273,7 +305,9 @@ export class ArticlesModule implements OnInit {
     onResize(event) {
         this.isSmall = event.target.innerWidth <= 639;
         this.fitText();
-        this.getHeaderData(this.moduleData);
+        if ( this.moduleData != null ) {
+          this.getHeaderData(this.moduleData);          
+        }
     }
 
     ngOnInit() {

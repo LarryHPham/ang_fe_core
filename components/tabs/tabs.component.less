@@ -45,8 +45,8 @@
   width: 100%;
   display: block;
   @media @mobile {
-    white-space: nowrap;
-    width: 10%;
+    .flexAlignItems(center);
+    .flexDisplay;
   }
   @media @tablet {
     .flexAlignItems(center);
@@ -65,7 +65,7 @@
       z-index: 1;
       //fix for ie and firefox
       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (min--moz-device-pixel-ratio:0) {
-        margin-top:-30px;
+        //margin-top:-30px;
       }
     }
   }
@@ -82,8 +82,6 @@
     position: relative;
     @media @mobile {
       display: inline-block;
-      padding-top: 23px;
-      width: auto!important;
     }
     @media @tablet {
       padding: 0;
@@ -91,7 +89,9 @@
     }
     span {
       @media @mobile {
-        position: relative;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         text-align: center;
         width: 100%;
         left:0;

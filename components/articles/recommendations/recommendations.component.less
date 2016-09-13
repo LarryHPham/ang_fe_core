@@ -1,3 +1,14 @@
+.sixteenNine{
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  img{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+  }
+}
 .recommendations {
   width: 610px;
   display: inline-block;
@@ -24,7 +35,7 @@
       .globalDefaultFont(22px, 400);
       text-align: left;
       @media @mobile {
-        .globalDefaultFont(20px, 400);
+        font-size: 20px;
       }
     }
   }
@@ -44,7 +55,7 @@
         color: @masterBrandColor;
       }
       &-image {
-        width: 190px;
+        width: 197px;
         height: 120px;
         background-position: top center;
         background-size: cover;
@@ -67,6 +78,10 @@
         position: relative;
         top: 15px;
         margin-bottom: 35px;
+        @media @mobile {
+          top: auto;
+          margin: 10px 0 14px 0;
+        }
         &-dateline {
           .globalDefaultFont(10px, 800);
           &-keyword {
@@ -98,7 +113,6 @@
   }
   @media @mobile {
     width: 100%;
-    height: 225px;
   }
 }
 
@@ -107,6 +121,9 @@
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: -30px;
+  @media @tablet{
+    margin-bottom: 0px;
+  }
   &-ai-articles {
     margin-bottom: 30px;
     &:hover {
@@ -127,7 +144,6 @@
         background-position: top center;
         position: relative;
         display: inline-block;
-        line-height: 120px;
       }
       &-content {
         margin-top: 10px;
@@ -157,7 +173,7 @@
     }
   }
   &-articles {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     &:hover {
       color: @masterBrandColor;
       .deep_recs-articles-item-content-dateline-keyword {
@@ -174,7 +190,6 @@
         background-position: top center;
         position: relative;
         display: inline-block;
-        line-height: 120px;
       }
       &-content {
         margin-top: 10px;
@@ -183,7 +198,7 @@
         height: auto;
         width: 100%;
         &-dateline {
-          .globalDefaultFont(12px, 800);
+          .globalDefaultFont(10px, 800);
           &-keyword {
             margin-right: 3px;
           }
@@ -265,17 +280,20 @@
       clear: both;
     }
     &-articles {
+      width: 32.3%;
       .col-xs-4;
       margin-right: 0;
       &-item {
-        width: 197px;
+        width: 190px;
+
         &-image {
-          height: 123px;
+          max-height: 107px;
+          height: 17.29vw;
         }
         &-content {
           .globalDefaultFont(14px, 400);
           line-height: 18px;
-          margin-top: 14px;
+          margin-top: 10px;
           width: 196px;
           &-dateline {
             display: block;
@@ -284,6 +302,7 @@
             }
           }
           &-teaser {
+            margin-top: 2px;
           }
         }
       }
@@ -305,7 +324,8 @@
       &-item {
         width: 216px;
         &-image {
-          height: 136px;
+          height: 122px;
+          max-height: 122px;
         }
       }
     }
@@ -334,7 +354,6 @@
 
   .deep_recs {
     &-articles {
-      //    width: 32.24%;
       &-item {
         &-content {
           margin-top: 10px;
@@ -365,7 +384,8 @@
       &-item {
         width: 348px;
         &-image {
-          height: 220px;
+          height: 197px;
+          max-height: 197px;
         }
       }
     }

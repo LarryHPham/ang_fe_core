@@ -24,13 +24,13 @@
 
         &-left{
           float:left;
-          width: 140px;
+          width: 136px;
           padding-top: 2px;
         }
 
         &-right{
           float:right;
-          width: ~"calc(100% - 145px)";
+          width: ~"calc(100% - 136px)";
           height: 125px;
           .clearfix;
           position: relative;
@@ -65,6 +65,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
+            height: 45px;
 
             &-text {
               display: inline-block;
@@ -75,11 +76,15 @@
             &-button {
               float: right;
               .mod-page-btn(35px, 160px, 25px, 14px, 400);
+              .flexJustify(inherit);
+              >i {
+                margin-left: 4px;
+              }
             }
-            #loli-icon {
-              position: relative;
-              top: 50%;
-              transform: translate(0,-50%);
+            .loli-icon {
+              line-height: 25px;
+              padding-top: 0px;
+              margin-right: 10px;
             }
           }
         }
@@ -91,12 +96,20 @@
         padding: 0;
         background-color: inherit;
         border: none;
+        width:160px;
       }
         #container-loli-text {
           display: none;
         }
-        #loli-icon {
-          margin-left: 20px;
+        #container-loli-button {
+          float: left;
+          clear: right;
+          &:hover {
+            background-color: @touchDownLoyalBlue;
+          }
+          &:active {
+            background-color: @black;
+          }
         }
         .dataBox {
           h2 {
@@ -104,4 +117,20 @@
             font-size: 16px;
           }
         }
+        .mod-info {
+          display: none;
+        }
+        .atborder {
+          border-top: 1px solid @strokeGrey;
+        }
+      }
+
+
+
+      .image-38-rank { //fix for a rank above 3 number characters.
+        min-width:38px;
+        width: auto;
+      }
+      .image-121 > .image-round-sub-text {
+        border-radius:19px;
       }

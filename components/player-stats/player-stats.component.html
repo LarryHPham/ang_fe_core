@@ -31,8 +31,8 @@
                 <no-data-box [data]="noDataMessage" [icon]="'fa fa-remove'"></no-data-box>
             </div>
 
-            <!--<glossary-component></glossary-component>-->
-            <div *ngIf="showGlossary" class="stats-glossary pane-content ">
+            <!--<glossary-component [glossaryData]="GlossaryData"></glossary-component>-->
+            <!--<div *ngIf="showGlossary" class="stats-glossary pane-content ">
                 <div class="stats-glossary-title">Glossary</div>
                 <div class="stats-glossary-box row">
                     <ul>
@@ -41,13 +41,18 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
 
         </tab>
     </tabs>
+    <glossary-component *ngIf="showGlossary" [glossaryData]="GlossaryData"></glossary-component>
+    <!--<responsive-widget style="display:table-row;" colspan=50 *ngIf="(!isLast && rowIndex != 10))" embedPlace="widgetForPage"></responsive-widget>-->
+    <responsive-widget style="display:table-row;" colspan=50 *ngIf="isLessThanTen" embedPlace="widgetForPage"></responsive-widget>
+
 </div>
 
-<!--<div *ngIf="tabs" class="stats">
+<!-- *ngIf="(isLast && tableData.rows.length <= 10)"
+<div *ngIf="tabs" class="stats">
   <div class="stats-car">
     <slider-carousel *ngIf="carouselData" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
   </div>

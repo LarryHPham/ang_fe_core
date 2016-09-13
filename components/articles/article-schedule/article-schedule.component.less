@@ -37,21 +37,15 @@
       top: 15px;
       z-index: 1;
       &-left {
-        left: 223px;
-        @media @desktop-xl {
-          left: 330px;
-        }
-        @media @fluid {
-          left: ~"calc(38% - 25px)";
+        left: 34%;
+        @media @desktop-m {
+          left: 31%;
         }
       }
       &-right {
-        right: 223px;
-        @media @desktop-xl {
-          right: 337px;
-        }
-        @media @fluid {
-          right: ~"calc(38% - 25px)";
+        right: 34%;
+        @media @desktop-m {
+          right: 31%;
         }
       }
       @media @mobile {
@@ -61,21 +55,13 @@
     &-team {
       font-size: 1em;
       position: absolute;
-      width: 215px;
       height: 55px;
       line-height: 14px;
       text-overflow: ellipsis;
       overflow: hidden;
       color: @white;
-      @media @desktop-xl {
-        width: 300px;
-      }
-      @media @fluid {
-        width: ~"calc(36% - 25px)";
-      }
-      @media @mobile {
-        width: ~"calc(50% - 25px)";
-      }
+      width: 32%;
+
       &-left {
         left: 0px;
         text-align: right;
@@ -104,11 +90,10 @@
       }
       &-name {
         .globalDefaultFont(16px, 400);
-        line-height: 22px;
+        line-height: 18px;
         width: 125px;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
         @media @mobile {
           font-size: 14px;
         }
@@ -142,5 +127,16 @@
         top: 25px;
       }
     }
+  }
+}
+
+.schedule-next-team.schedule-next-team-left {
+  @media @desktop-m {
+    padding-right: 25px;
+  }
+}
+.schedule-next-team.schedule-next-team-right {
+  @media @desktop-m {
+    padding-left: 25px;
   }
 }

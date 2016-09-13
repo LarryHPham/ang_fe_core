@@ -112,10 +112,11 @@
 
 @media @mobile{
   .side_scroll-transition{
-    width:640px;
+    width: 640px;
   }
   .carousel_scroll-box {
-    height: auto;
+    min-height: 180px;
+    height: 56vw;
     background-color:white;
   }
   .carousel_scroll-container {
@@ -125,7 +126,6 @@
     height: auto;
   }
   .video-item {
-    max-height: 220px;
     background-image: none !important;
     background-color: white;
     transition: max-height 0.5s;
@@ -137,12 +137,11 @@
     }
   }
   .story-item {
-    max-height:220px;
     background-color:white;
     transition: max-height 0.5s;
     .carousel-item {
       vertical-align: middle;
-      height:220px;
+      // height:220px;
     }
   }
   .carousel_scroll-left {
@@ -166,6 +165,9 @@
 }
 
 @media @tablet{
+  .carousel_scroll-box {
+    height: auto;
+  }
   .side_scroll-transition{
     width:640px;
   }
@@ -185,5 +187,8 @@
 @media @desktop-xl{
   .side_scroll-transition{
     width:1280px;
+  }
+  #lrgvidcarousel-right{
+    margin: 0 70px 0 30px;
   }
 }

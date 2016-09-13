@@ -81,8 +81,9 @@
     color:@black;
     position: relative;
     .inlineFlexDisplay;
-    left:33%;
+    left:32%;
     z-index: 1;
+    width:36%;
     &-arrows{
       position: absolute;
       font-size: 30px;
@@ -100,7 +101,7 @@
       }
     }
     &-labels{
-      min-width:43%;
+      width: calc(~'100% - 150px');
       height:100%;
       border: 1px solid @strokeGrey;
       font-size: 10px;
@@ -121,7 +122,7 @@
 
     &-display{
       height:100%;
-      width:55%;
+      width: 150px;
       overflow: hidden;
     }
     &-max{
@@ -135,7 +136,7 @@
     &-container{
       //need width of the containers to stay at 27px width
       min-width: 27px;
-      width: 11%;
+      width: 30px;
       height:100%;
       font-size: 14px;
       border-top: 1px solid @strokeGrey;

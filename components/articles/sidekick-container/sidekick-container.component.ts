@@ -8,11 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class SidekickContainerComponent implements OnInit{
     isSmall:boolean = false;
+    @Input() scope: string;
+    isProSport = true;
 
     onResize(event) {
-      this.isSmall = event.target.innerWidth <= 640;
+      this.isSmall = event.target.innerWidth < 640;
     }
     ngOnInit() {
-      this.isSmall = window.innerWidth <= 640;
+      this.isProSport = this.scope == 'nfl' ? true : false;
+      this.isSmall = window.innerWidth < 640;
     }
 }

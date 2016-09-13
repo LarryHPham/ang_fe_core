@@ -9,6 +9,8 @@ import {ModuleFooter, ModuleFooterData} from '../../module-footer/module-footer.
 import {ComplexInnerHtml} from '../../complex-inner-html/complex-inner-html.component'
 import {Link, ParagraphItem} from '../../../../global/global-interface';
 
+import {VerticalGlobalFunctions} from '../../../../global/vertical-global-functions';
+
 /*
   index?: //(optional) parameter in case it is needed to know the position of the object in its current array
 
@@ -25,6 +27,7 @@ export interface SliderCarouselInput {
   backgroundImage?: string;
   copyrightInfo?: string;
   imageConfig: CircleImageData;
+  noData?: boolean;
 
   /**
    * Could be strings or an array of Links
@@ -60,6 +63,9 @@ export interface Type1CarouselItem {
   rank?: string;
 
   rankClass?: string;
+
+  noData?: boolean;
+
 }
 
 export interface Type2CarouselItem {
@@ -137,14 +143,15 @@ export class SliderCarousel implements OnInit {
 
   ngOnChanges(){
     // Don't set indexInput to 0 here, it resets anything the parent specifies
-    // this.indexInput = 0;
+     //this.indexInput = 1;
   }
 
   ngOnInit() {
     //incase there is no backgroundImage being return set the default background
-    if(typeof this.backgroundImage == 'undefined'){
-      this.backgroundImage = this._sanitizer.bypassSecurityTrustUrl('/app/public/Image-Placeholder-1.jpg');
+    if(typeof this.backgroundImage == 'undefined' || this.backgroundImage == null || !this.backgroundImage){
+      this.backgroundImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(this.backgroundImage);
     }
+
 
     //In case of errors display below
     if (typeof this.dataPoint == 'undefined') {
@@ -237,7 +244,8 @@ export class SliderCarousel implements OnInit {
           hoverText: "<p>View</p><p>Profile</p>"
         },
         subImages: subImages
-      }
+      },
+      noData: item.noData
     };
   }
 
@@ -327,7 +335,7 @@ export class SliderCarousel implements OnInit {
           hoverText: ""
         },
         subImages: []
-      }
+      },
     };
   }
 }

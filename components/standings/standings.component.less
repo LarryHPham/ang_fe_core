@@ -1,22 +1,67 @@
 .standings {
+  .nav-tabs li{
+    display: inherit;
+    padding-top: 0;
+  }
   .hidden-tabs {
-    .nav.nav-tabs {
+    .nav.nav-tabs{
       display:none;
     }
     .sort-title.conferences {
       visibility: visible;
+      @media @mobile{
+        position: absolute;
+        padding-right: 5px;
+      }
+    }
+    .list-filter-heading{
+      display: block;
+      .heading-hidden{
+        display: none;
+      }
     }
   }
   .sort-title.conferences {
     visibility: hidden;
   }
-  &-car {
-    .scc-details-desc {
-      height: 170px;
+  .sort-title{
+    .flexDisplay;
+    .flexJustify(space-between);
+    .flexAlignItems(center);
+  }
+  @media @mobile{
+    .sort-title{
+      width: 60%;
+      &-conf{
+        min-width: 107px;
+        width: 59%;
+      }
+      &-div{
+        min-width: 70px;
+        width: 39%;
+      }
+      &-season{
+        min-width: 108px;
+        width: 95%;
+      }
+    }
+  }
+  @media @tablet{
+    .sort-title{
+      &-conf{
+        width: 87px;
+        margin-right: 5px;
+      }
+      &-div{
+        width: 75px;
+      }
+      &-season{
+        width: 100px;
+      }
     }
   }
   .image-column-hdr, .image-column {
-    width: 230px;
+    width: 169px;
     @media @mobile {
       width: 150px;
     }
@@ -34,9 +79,10 @@
       display: none;
     }
   }
-  .table-cell-image span {
+  .image-column .table-cell-image span {
     @media @mobile {
       margin-left: 10px;
+      text-align: left;
     }
   }
   th.image-column-column {
@@ -49,6 +95,7 @@
       border-width: 0 5px 0 0;
       border-style: solid;
       border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+      background-clip: padding-box;
     }
     .table-cell-image {
       @media @mobile {
@@ -61,8 +108,14 @@
       position: absolute;
       z-index: 1;
       left: 10px;
+      border-width: 0 5px 0 0;
+      border-style: solid;
+      border-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+      background-clip: padding-box;
+      box-sizing: content-box;
       .custom-table-header {
         margin-right:0!important;
+        border-right-color: transparent;
       }
     }
     background-color: @white;
@@ -89,27 +142,37 @@
     }
   }
   .tab-name {
+    @media @mobile{
+      font-size: 16px;
+      position: absolute;
+    }
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: -25px;
     margin-bottom: 10px;
     display: inline-block;
   }
   .tab-name.no-0 {
-    margin-top: -28px;
     margin-bottom: 10px;
+    position: absolute;
+  }
+  .standings-tab-section{
+    padding-top: 43px;
   }
   .filters {
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-bottom: -20px;
+    @media @mobile{
+      padding-top: 5px;
+    }
     .list-filter-heading {
       position: absolute;
       padding-top: 7px;
+      font-size: 12px;
       i {
         color: @masterBrandColor;
         vertical-align: top;
-      }
-      @media @tablet {
-        display:none;
+        margin-right: 2px;
       }
     }
     h4 {
@@ -122,7 +185,9 @@
       }
     }
     .sort-title {
-      margin-left: auto;
+      @media @tablet{
+        margin-left: auto;
+      }
       &-text {
         //ie and firefox alignment fix
         @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none), (min--moz-device-pixel-ratio:0) {
@@ -135,20 +200,35 @@
       }
     }
     .sort-title:nth-of-type(2) {
-      margin-left:20px;
-    }
-    dropdown {
-      display: inline-block;
+      width: 37%;
+      @media @mobile{
+        position: absolute;
+        right: 0;
+      }
+      @media @tablet{
+        margin-left:20px;
+        width: auto;
+      }
+      .flexDisplay;
+      .flexAlignItems(center);
     }
     .dropdown {
-      width: 117px;
-      display: inline-block;
       .scrollable-item-wrapper {
         overflow: hidden;
       }
       &-hdr {
         height: 28px;
       }
+    }
+  }
+  @media @tablet{
+    .scc-details-mainImg{
+      padding: 0 20px;
+    }
+  }
+  .filters-type2{
+    @media @mobile{
+      margin-bottom: 10px;
     }
   }
 }

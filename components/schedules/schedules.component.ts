@@ -41,7 +41,7 @@ export class SchedulesComponent implements OnInit{
 
   tabTitle: string;
   private tabsLoaded: {[index:number]:string};
-
+  windowWidth: number;
 
   ngDoCheck() { // checks and runs everytime a dependency has changed
     if ( this.tabs && this.tabs.length > 0 && this.carouselData && this.data != null && !this.tabsLoaded && this.getSelectedTab()) {
@@ -73,6 +73,10 @@ export class SchedulesComponent implements OnInit{
       let selectedTab = matchingTabs[0].tabData;
       this.setSelectedCarouselIndex(selectedTab, selectedIndex);
     }
+  }
+
+  private onWindowLoadOrResize(event) {
+    this.windowWidth = event.target.innerWidth;
   }
 
   setSelectedCarouselIndex(tab: TableTabData<any>, index: number) {
@@ -138,7 +142,7 @@ export class SchedulesComponent implements OnInit{
 
   ngOnInit(){//on view load set default data
     if(this.filter1 != null){
-      this.dropdownKey1 = this.filter1[0].key;
+      this.dropdownKey1 = this.filter1['data'][0].key;
     }
     var selectedTab = this.tabs.filter(value => value.tabData.isActive == true)[0];
     this.tabTitle = selectedTab.display;

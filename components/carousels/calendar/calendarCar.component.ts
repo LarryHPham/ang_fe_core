@@ -46,11 +46,13 @@ export class CalendarCarousel implements OnInit{
   //datepicker that chooses the monthly calendar and update all the necessary functions for the rest of the components
   datePicker(event){
     this.chosenParam.date = moment(event).tz('America/New_York').format('YYYY-MM-DD');
+    var params = this.chosenParam;
+    this.curDateView = {profile: params.profile, teamId: params.teamId, date: params.date};
     this.callWeeklyApi(this.chosenParam)
     .subscribe( data => {
       this.validateDate(this.chosenParam.date, this.weeklyDates);
     })
-    this.dateEmit.next(this.chosenParam);//sends through output so date can be used outside of component
+    this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
   }
   ngOnInit(){
     this.windowWidth = window.innerWidth;
@@ -96,40 +98,85 @@ export class CalendarCarousel implements OnInit{
   }
 
   leftDay(){
-    //take parameters and convert using moment to subtract a week from it and recall the week api
-    var curParams = this.curDateView;
-    curParams.date = moment(curParams.date).subtract(1, 'days').format('YYYY-MM-DD');
-    var dayNum = moment(curParams.date).format('d');
-    this.callWeeklyApi(curParams).subscribe(data=>{
-      this.validateDate(this.chosenParam.date, this.weeklyDates);
-      this.curDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
-      this.setActive(this.weeklyDates[dayNum]);
-    });
+    if(this.failSafe <= 12){
+      //take parameters and convert using moment to add a week from it and recall the week api
+      var curParams = this.curDateView;
+      curParams.date = moment(curParams.date).subtract(1, 'days').format('YYYY-MM-DD');
+      var dayNum = 0;
+      this.weeklyDates.forEach(function(val,index){
+        if(val.fullDate == curParams.date){
+          dayNum = index;
+        }
+      })
+      if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
+        this.curDateView.date = curParams.date;
+        this.callWeeklyApi(curParams).subscribe(data=>{
+          this.failSafe++;
+          this.leftDay();
+          return;
+        });
+      }else{
+        if(this.weeklyDates[dayNum].clickable){
+          this.failSafe = 0;
+          this.callWeeklyApi(curParams).subscribe(data=>{
+            this.validateDate(this.chosenParam.date, this.weeklyDates);
+            this.curDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
+            this.setActive(this.weeklyDates[dayNum]);
+            return;
+          });
+        }else{
+          this.failSafe++;
+          this.leftDay();
+        }
+      }
+    }
   }
 
   rightDay(){
-    //take parameters and convert using moment to add a week from it and recall the week api
-    var curParams = this.curDateView;
-    curParams.date = moment(curParams.date).add(1, 'days').format('YYYY-MM-DD');
-    var dayNum = moment(curParams.date).format('d');
-    this.callWeeklyApi(curParams).subscribe(data=>{
-      this.validateDate(this.chosenParam.date, this.weeklyDates);
-      this.curDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
-      this.setActive(this.weeklyDates[dayNum]);
-    });
+    if(this.failSafe <= 12){
+      //take parameters and convert using moment to add a week from it and recall the week api
+
+      var curParams = this.curDateView;
+      curParams.date = moment(curParams.date).add(1, 'days').format('YYYY-MM-DD');
+      var dayNum = 0;
+      this.weeklyDates.forEach(function(val,index){
+        if(val.fullDate == curParams.date){
+          dayNum = index;
+        }
+      })
+      if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
+        this.curDateView.date = curParams.date;
+        this.callWeeklyApi(curParams).subscribe(data=>{
+          this.failSafe++;
+          this.rightDay();
+          return;
+        });
+      }else{
+        if(this.weeklyDates[dayNum].clickable){
+          this.failSafe = 0;
+          this.callWeeklyApi(curParams).subscribe(data=>{
+            this.validateDate(this.chosenParam.date, this.weeklyDates);
+            this.curDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
+            this.setActive(this.weeklyDates[dayNum]);
+            return;
+          });
+        }else{
+          this.failSafe++;
+          this.rightDay();
+        }
+      }
+    }
   }
 
   //whatever is clicked on gets emitted and highlight on the carousel
   setActive(event){
-    if(!event.active){//only work if the active && clickable date is not already active
       var resetState = this.weeklyDates;
       resetState.forEach(function(val,i){
         val.active = false;
       })
       event.active = true;
       this.chosenParam.date = event.fullDate;
-      this.dateEmit.next(this.chosenParam);//sends through output so date can be used outside of component
-    }
+      this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
   }
 
   //makes weekly api call and sets reactive variables
@@ -207,6 +254,7 @@ export class CalendarCarousel implements OnInit{
       //FIRST RUN
       if(firstRun != null){
         if( (selectedDate == date.fullDate) && date.clickable){
+          mostRecent = dateUnix;
           validatedDate = dateUnix;
           activeIndex = i;//SETS POSITION IN ARRAY THAT CURRENT DATE IS SET TO if the curUnix date exists within the current dateArray
         }else{
@@ -225,7 +273,7 @@ export class CalendarCarousel implements OnInit{
         }
       }
     });
-    if(firstRun != null){
+    if(firstRun != null && dateArray.length > 0 && this.failSafe <= 12){
       // run a loop 12 times(12 weeks) to try to grab the nearest most recently played game
       //if no clickable date has been found and the 12 week check still works
       if(mostRecent == null && validatedDate == 0 && this.failSafe < 12){
@@ -242,27 +290,37 @@ export class CalendarCarousel implements OnInit{
         this.callWeeklyApi(this.chosenParam)
         .subscribe( data => {
           this.validateDate(this.chosenParam.date, this.weeklyDates, true);
+          return;
         })
       }else{
-        //reset failsafe
-        this.failSafe = 0;
-        //make sure to only set new params if new number has been validatedDated
-        //otherwise set the new chosenParam to the mostRecent date that has been found
-        if(validatedDate != 0){
-          validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
-          this.chosenParam.date = validatedDate;
-          dateArray[activeIndex].active = true;
-        }else{
-          validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
-          this.chosenParam.date = validatedDate;
-          dateArray[activeIndex].active = true;
-        }
+        if(activeIndex != null){
+          //reset failsafe
+          this.failSafe = 0;
+          //make sure to only set new params if new number has been validatedDated
+          //otherwise set the new chosenParam to the mostRecent date that has been found
+          if(validatedDate != 0){
+            validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
+            this.chosenParam.date = validatedDate;
+            dateArray[activeIndex].active = true;
+          }else{
+            validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
+            this.chosenParam.date = validatedDate;
+            dateArray[activeIndex].active = true;
+          }
 
-        //sets new params and emit the date
-        let params = this.chosenParam;
-        this.curDateView = {profile: params.profile, teamId: params.teamId, date: params.date};
-        this.dateEmit.next({profile: params.profile, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+          //sets new params and emit the date
+          let params = this.chosenParam;
+          this.curDateView = {profile: params.profile, teamId: params.teamId, date: params.date};
+          this.dateEmit.emit({profile: params.profile, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+          this.setActive(this.weeklyDates[activeIndex]);
+          return;
+        }else{
+          this.failSafe = 0;
+          return;
+        }
       }
+    }else{
+      return;
     }
     //change validatedDate back into format for dateArray;
   }

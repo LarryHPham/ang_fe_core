@@ -3,19 +3,20 @@ import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angula
 import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
 import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
 import {StandingsComponent, StandingsTableTabData} from '../../components/standings/standings.component';
+import {SanitizeHtml} from "../../pipes/safe.pipe";
 
 export interface StandingsModuleData {
   moduleTitle: string;
-
+  scope?: string;
   /**
     * Used for the link in the footer button
     */
-  pageRouterLink: Array<any>;
+  pageRouterLink?: Array<any>;
 
   /**
    * Sent to Standings component
    */
-  tabs: Array<StandingsTableTabData<any>>;
+  tabs?: Array<StandingsTableTabData<any>>;
 }
 
 @Component({
@@ -25,9 +26,9 @@ export interface StandingsModuleData {
 })
 export class StandingsModule implements OnChanges {
   @Input() data: StandingsModuleData;
-
+  @Input() scope: string;
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
-
+  @Output("filterSelected") filterSelectedListener = new EventEmitter();
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Standings",
     hasIcon: false,
@@ -39,7 +40,7 @@ export class StandingsModule implements OnChanges {
     text: "VIEW FULL STANDINGS",
     url: ['Standings-page']
   };
-
+  constructor(){}
   ngOnChanges() {
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Standings";
@@ -52,5 +53,9 @@ export class StandingsModule implements OnChanges {
 
   tabSelected(tabData) {
     this.tabSelectedListener.next(tabData);
+  }
+
+  private standingsFilterSelected(tabData: Array<any>) {
+    this.filterSelectedListener.next(tabData);
   }
 }

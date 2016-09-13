@@ -18,7 +18,7 @@
         </div>
         <div *ngIf="data.chart" class="stat-wrapper-charts" [ngStyle]="data.wrapperStyle">
           <div class="stat-wrapper-charts-key">
-            <h4 class="pull-left" style="width:100%;">{{data.type | possessive}} Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
+            <h4 class="pull-left chart-title">Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
             <div id="foragainst">
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-secondary">{{data.chart.dataSeries[1].name}}</span>
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-primary">{{data.chart.dataSeries[0].name}}</span>
@@ -28,16 +28,16 @@
         </div>
       </div>
     </div>
-    <div class="article-teaser container-fluid" *ngIf="data.type != 'Player' && data.postGameArticle && data.postGameArticle.text && data.postGameArticle.text.length > 0">
+    <div class="article-teaser container-fluid" *ngIf="data.postGameArticle && data.postGameArticle.text && data.postGameArticle.text.length > 0 && data.postGameArticle.text[0] != null">
       <circle-image class="pull-left" *ngIf="imageConfig" [data]="imageConfig"></circle-image>
       <div class="article-teaser-text pull-right">
         <h4 class="article-teaser-text-title">
           <a *ngIf="data.postGameArticle.url && data.type != 'Player'" [routerLink]="data.postGameArticle.url">{{profileName | possessive}} Most Recent Game</a>
-          <span *ngIf="data.type == 'Player'">{{profileName | possessive}} Most Recent Game</span>
+          <a *ngIf="data.postGameArticle.url && data.type == 'Player'" [routerLink]="data.postGameArticle.url">{{data.postGameArticle.headline}}</a>
         </h4>
         <p *ngIf="data.postGameArticle.pubDate" class="article-teaser-text-subtitle"><i class="fa fa-calendar-o"></i> {{data.postGameArticle.pubDate}}</p>
       </div>
-      <p *ngIf="data.postGameArticle.text.length > 0 && data.type != 'Player'" class="article-teaser-text-body pull-right" [innerHtml]="data.postGameArticle.text[0] | safeHtml"></p>
-      <p class="article-teaser-text-cta"><a *ngIf="data.postGameArticle.url" class="article-teaser-text-cta-link" [routerLink]="data.postGameArticle.url">Continue Reading <i class="fa fa-angle-right"></i></a></p>
+      <p *ngIf="data.postGameArticle.text.length > 0" class="article-teaser-text-body pull-right" [innerHtml]="data.postGameArticle.text[0] | safeHtml"></p>
+      <p *ngIf="data.postGameArticle.url" class="article-teaser-text-cta"><a  class="article-teaser-text-cta-link" [routerLink]="data.postGameArticle.url">Continue Reading <i class="fa fa-angle-right"></i></a></p>
     </div>
 </section>

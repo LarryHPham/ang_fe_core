@@ -52,6 +52,7 @@ export class ComparisonModule implements OnInit, OnChanges {
 
     @Input() profileType: string;
 
+    @Input() scope: string;
     teamOnePlayerList: Array<{key: string, value: string}>;
 
     teamTwoPlayerList: Array<{key: string, value: string}>;
@@ -124,7 +125,12 @@ export class ComparisonModule implements OnInit, OnChanges {
             }
         }
         if ( this.profileName ) {
-            this.moduleHeaderData.moduleTitle = 'Comparison vs. Competition - ' + this.profileName;
+          this.moduleHeaderData = {
+            moduleTitle: "Comparison vs. Competition",
+            moduleIdentifier: " - " + this.profileName,
+            hasIcon: false,
+            iconClass: '',
+          }
         }
     }
 
@@ -166,12 +172,12 @@ export class ComparisonModule implements OnInit, OnChanges {
             ],
             legendValues: [
                 {
-                    title: data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName,
+                    title: data.playerOne.playerFirstName != null && data.playerOne.playerLastName != null ? data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName : 'N/A',
                     // color: data.playerOne.mainTeamColor
                     color: '#2D3E50'
                 },
                 {
-                    title: data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName,
+                    title: data.playerTwo.playerFirstName != null && data.playerTwo.playerLastName != null ? data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName : 'N/A',
                     // color: data.playerTwo.mainTeamColor
                     color: '#999999'
                 },
@@ -184,13 +190,44 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     setupTile(player: PlayerData): ComparisonTileInput {
-        var playerRoute = null;
-        var teamRoute = null;
-        if ( this.profileType != "player" || this.profileId != player.playerId ) {
-            playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, player.playerName, player.playerId);
-        }
-        if ( this.profileType != "team" || this.profileId != player.teamId ) {
-            teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
+        var playerName = player.playerFirstName != null && player.playerLastName != null ? player.playerFirstName + ' ' + player.playerLastName : 'N/A';
+        var playerRoute = VerticalGlobalFunctions.formatPlayerRoute(player.teamName, playerName, player.playerId);
+        var teamRoute = VerticalGlobalFunctions.formatTeamRoute(player.teamName, player.teamId);
+        var playerInfo = [];
+        if(this.scope == 'fbs'){
+          playerInfo = [
+              {
+                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
+                  key: 'Height'
+              },
+              {
+                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
+                  key: 'Weight'
+              },
+              {
+                  data: player.class != null ? player.class : 'N/A',
+                  key: 'Class'
+              }
+          ];
+        } else {
+          playerInfo = [
+              {
+                  data: player.height != null ? GlobalFunctions.inchesToFeet(player.height) : 'N/A',
+                  key: 'Height'
+              },
+              {
+                  data: player.weight != null ? player.weight + "<sup>lbs</sup>" : 'N/A',
+                  key: 'Weight'
+              },
+              {
+                  data: player.age != null ? player.age : 'N/A',
+                  key: 'Age'
+              },
+              {
+                  data: player.yearExperience != null ? player.yearExperience : 'N/A',
+                  key: player.yearExperience == '1' ? 'Year' : 'Years'
+              },
+          ];
         }
         return {
             dropdownOneKey: player.teamId,
@@ -211,45 +248,24 @@ export class ComparisonModule implements OnInit, OnChanges {
                         // imageClass: "image-50-sub image-round-lower-right"
                     // },
                     {
-                        text: "#" + player.jerseyNumber,
+                        text: player.jerseyNumber ? "#" + player.jerseyNumber : 'N/A',
                         imageClass: "image-48-rank image-round-upper-left image-round-sub-text"
                     }
                 ],
             },
             titleUrl: playerRoute,
-            title: player.playerName,
+            title: playerName,
             description: ["Position: ",
-                { text: player.playerPosition, class: 'text-heavy' },
+                { text: player.playerPosition ? player.playerPosition : 'N/A', class: 'text-heavy' },
                 { text: "<br>", class: "line-break" },
                 "Team: ",
                 {
-                    text: player.teamName,
+                    text: player.teamAbbreviation != null && player.teamName != null ? player.teamAbbreviation + ' ' + player.teamName : 'N/A',
                     route: teamRoute,
                     class: 'text-heavy'
                 }
             ],
-            data: [
-                {
-                    // TODO data: player.height.split("-").join("'") + "\"",
-                    data: '6-0',
-                    key: 'Height'
-                },
-                {
-                    //TODO data: player.weight + "<sup>lbs</sup>",
-                    data: "<sup>200lbs</sup>",
-                    key: 'Weight'
-                },
-                {
-                    // data: player.age.toString(),
-                    data: '25',
-                    key: 'Age'
-                },
-                {
-                    // data: player.yearsExperience + "<sup>" + GlobalFunctions.Suffix(player.yearsExperience) + "</sup>",
-                    data: "<sup>2016</sup>",
-                    key: 'Season'
-                },
-            ]
+            data: playerInfo
         }
     }
 

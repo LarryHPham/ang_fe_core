@@ -22,7 +22,7 @@ declare var jQuery:any;
 })
 
 export class DailyUpdateModule {
-  @Input() profileName: string = "[Profile Name]";
+  @Input() profileName: string;
 
   @Input() data: DailyUpdateData;
 
@@ -33,9 +33,10 @@ export class DailyUpdateModule {
   public noDataMessage: string = 'Sorry, there is no daily update available for [Profile Name]';
 
   public headerInfo: ModuleHeaderData = {
-    moduleTitle: "Daily Update - [Profile Name]",
+    moduleTitle: "Daily Update",
     hasIcon: false,
-    iconClass: ""
+    iconClass: "",
+    moduleIdentifier: " - "+this.profileName,
   };
 
   public comparisonCount: number;
@@ -54,7 +55,7 @@ export class DailyUpdateModule {
   }
 
   ngOnChanges(event) {
-    this.headerInfo.moduleTitle = "Daily Update - " + this.profileName;
+    this.headerInfo.moduleIdentifier = " - "+this.profileName;
     this.noDataMessage = "Sorry, there is no daily update available for " + this.profileName;
     if ( this.data ) {
       this.drawChart();
@@ -69,7 +70,8 @@ export class DailyUpdateModule {
       this.comparisonCount = 0;
     }
     if(event.data['currentValue'] != null && event.data['currentValue'].postGameArticle != null && event.data['currentValue'].postGameArticle.img != null){
-      var img = event.data['currentValue'].postGameArticle.img.image;
+      // setting of value below supports both old and new way (HRL & TDL)
+      var img = event.data['currentValue'].postGameArticle.img.image != null ? event.data['currentValue'].postGameArticle.img.image : event.data['currentValue'].postGameArticle.img;
       this.imageConfig.mainImage.imageUrl = img != null ? img : GlobalSettings.getImageUrl(null);
     }
   }
@@ -90,7 +92,8 @@ export class DailyUpdateModule {
             data: item.values,
             dataLabels: {
               style: {
-                color: '#999999'
+                color: '#999999',
+                textShadow: false
               }
             }
           };
@@ -135,7 +138,8 @@ export class DailyUpdateModule {
         },
         labels: {
           style: {
-            color: "#999999"
+            color: "#999999",
+            textShadow: false
           }
         },
         gridLineColor: "rgba(225, 225, 225, 0.5)"
@@ -148,6 +152,7 @@ export class DailyUpdateModule {
           minPointLength: 3,
           dataLabels: {
             enabled: true,
+            textShadow: false,
             inside: false,
             allowOverlap: true,
             crop: false,

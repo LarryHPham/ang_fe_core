@@ -4,7 +4,7 @@
   <span [innerHtml]="cell.display"></span>
 
 </a>
-<div class="bottomStats" *ngIf="cell.bottomStat || cell.bottomStat2" [innerHtml]="cell.bottomStat + ' : '+ cell.bottomStat2"></div>
+<div class="bottomStats" *ngIf="cell.bottomStat || cell.bottomStat2" [innerHtml]="cell.bottomStat + ': '+ cell.bottomStat2"></div>
 <span *ngIf="!cell.routerLink && cell.image" class="table-cell-image">
   <circle-image *ngIf="cell.image" [data]="cell.image"></circle-image>
   <span [innerHtml]="cell.display"></span>

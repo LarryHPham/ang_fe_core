@@ -32,7 +32,7 @@
   }
   &-image {
     min-width: 320px;
-    height: 56vw;
+    height: 61.649vw;
     overflow: hidden;
   }
   &-desc {
@@ -77,7 +77,7 @@
     }
     &-image {
       width: 610px;
-      height: 421px;
+      height: 343px;
     }
     &-desc {
       display: block;
@@ -85,11 +85,11 @@
     }
   }
 }
-@media @desktop-m { // up to 787px
+@media @desktop-m {
   .stacktop {
     &-image {
       width: 670px;
-      height: 421px;
+      height: 377px;
     }
     &-desc{
       font-size: 14px;
@@ -98,11 +98,18 @@
   }
 }
 
-@media @desktop-l { // up to 1024px
+@media @desktop-l {
   .stacktop {
     min-width: 768px;
     &-image {
       width: 768px;
+    }
+  }
+}
+@media @desktop-xl {
+  .stacktop {
+    &-image {
+      height: 432px;
     }
   }
 }

@@ -36,7 +36,7 @@
                   <a class="search-page-results-item-link" [routerLink]="innerItem.url" [innerHtml]="innerItem.urlText"></a>
                   <span class="search-page-results-item-description" [innerHtml]="innerItem.description"></span>
                 </li>
-                <div *ngIf="!((i + 1) % 5) && ((i + 1) % 10)" class="search-widget">
+                <div *ngIf="!((i + 1) % 5) && ((i + 1) % 10) && (outerItem.results[pageNumber-1].length > 5)" class="search-widget">
                   <responsive-widget  embedPlace="widgetForPage"></responsive-widget>
                 </div>
               </template>

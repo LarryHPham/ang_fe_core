@@ -8,13 +8,11 @@
     width:100%;
     height:auto;
     .pane{
-      padding: 0 15px;
-      @media @mobile{
-        padding:0;
-      }
+      padding: 0;
     }
     .nav-tabs li{
-      width:50%;
+      width:50% !important;
+      margin:0;
     }
     .dropdown-list-option{
       padding: 10px 9px;
@@ -27,6 +25,9 @@
       }
       .nav-tabs{
         width:100%;
+      }
+      .shader{
+        display:none;
       }
     }
   }
@@ -81,7 +82,7 @@
     .flexWrap(wrap);
     padding:10px 10px 0;
     @media @tablet{
-      padding: 20px 0 0;
+      padding: 20px 15px 0 15px;
     }
   }
   &-results{
@@ -92,9 +93,10 @@
     &-item{
       line-height: 25px;
       padding: 20px 10px;
-      word-break: break-all;
+      word-break: break-word;
       @media @tablet{
-        padding: 20px 0
+        padding: 20px 0;
+        margin: 0 15px;
       }
       &:first-child{
         border-top: none;
@@ -131,7 +133,7 @@
       &-description{
         line-height: normal;
         display: block;
-        max-width: 640px;
+        word-break: break-word;
       }
     }
     .no-results{

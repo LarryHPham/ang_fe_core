@@ -7,10 +7,13 @@ slider-carousel{
   height:auto;
   position: relative;
   .fa {
-    color: @masterBrandColorLink;
+    color: @white;
     padding-right: 6px;
     top: 2px;
     position: relative;
+    &.fa-circle {
+      color: @masterBrandColorLink;
+    }
   }
   .image-48-rank {
     display: block;
@@ -32,6 +35,7 @@ slider-carousel{
       bottom: 0;
       margin: 0 auto auto auto;
       min-height: 100%;
+      width: auto;
     }
   }
   &-placeholder{
@@ -60,7 +64,7 @@ slider-carousel{
     .flexDisplay;
     .flexDirection(row);
     .flexAlignItems(center);
-    width: 80%;
+    width: 75%;
     height: auto;
     margin:auto;
     padding-top: 0px;
@@ -78,7 +82,7 @@ slider-carousel{
       }
     }
     &-mainImg{
-      width: 38%;
+      //width: 38%;
       max-width: 225px;
       .flexDisplay;
       .flexDirection(column);
@@ -96,6 +100,16 @@ slider-carousel{
         width:35%;
       }
     }//.scc-details-mainImg ends
+    &-desc {
+      width: ~"calc( 100% - 150px)";
+      padding-left: 25px;
+      min-height: 150px;
+      @media @mobile {
+        width: 100%;
+        padding: 0;
+        min-height: 0px;
+      }
+    }
 
     &-type1 { //for most modules
       &-subhdr {
@@ -107,13 +121,12 @@ slider-carousel{
           top: 15px;
           width: 100%;
           text-align: center;
-
         }
       }
 
       &-hdr {
         .globalDefaultModFont(20px, 800, @white);
-        margin-top: 10px;
+        margin-top: 12px;
         @media @mobile {
           margin-top: 0;
           position: absolute;
@@ -121,10 +134,17 @@ slider-carousel{
           width: 100%;
           text-align: center;
         }
-      }
+
+        a {
+          @media @tablet {
+            &:hover {
+              color: @masterBrandColorLink;
+            }
+          }
+        } //a
+      } //&-hdr
 
       &-desc{
-        width:60%;
         max-height:182px;
         .flexAlignItems(flex-start);
         .globalDefaultModFont(14px, 400, @white);
@@ -136,11 +156,6 @@ slider-carousel{
           height: auto !important;
           text-align: left;
           margin-top: 10px;
-        }
-        @media @tablet {
-          a:hover {
-            color: @masterBrandColorLink;
-          }
         }
 
         & p { //TODO: remove when not used by list-of-lists

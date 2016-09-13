@@ -11,6 +11,8 @@ import {LoadingComponent} from '../../components/loading/loading.component';
 import {FooterStyle} from '../../components/module-footer/module-footer.component';
 import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 
+import {VerticalGlobalFunctions} from '../../../global/vertical-global-functions';
+
 export interface MVPTabData {
   tabDisplayTitle: string;
   tabDataKey: string;
@@ -44,22 +46,26 @@ export class MVPListComponent implements DoCheck, OnInit  {
   tabsLoaded: {[index:number]:string};
 
   listType: string;
+  displayTab: string;
+
+  dropdownSelectedKey: string = 'cb';
+
 
   private sortOptions: Array<any> = [
-    {key: 'cb', value: 'Cornerback'},
-    {key: 'db', value: 'Defensive back'},
-    {key: 'de', value: 'Defensive end'},
-    {key: 'dl', value: 'Defensive lineman'},
-    {key: 'dt', value: 'Defensive tackle'},
-    {key: 'k', value: 'Kicker'},
-    {key: 'lb', value: 'Linebacker'},
-    {key: 'p', value: 'Punter'},
-    {key: 'qb', value: 'Quarterback'},
-    {key: 'rb', value: 'Running Back'},
-    {key: 'rs', value: 'Return specialist'},
-    {key: 'saf', value: 'Safety'},
-    {key: 'te', value: 'Tight End'},
-    {key: 'wr', value: 'Wide Receiver'},
+    {key: 'cb', value: 'CB'},
+    {key: 'db', value: 'DB'},
+    {key: 'de', value: 'DE'},
+    {key: 'dl', value: 'DL'},
+    {key: 'dt', value: 'DT'},
+    {key: 'k', value: 'K'},
+    {key: 'lb', value: 'LB'},
+    {key: 'p', value: 'P'},
+    {key: 'qb', value: 'QB'},
+    {key: 'rb', value: 'RB'},
+    {key: 'rs', value: 'RS'},
+    {key: 'saf', value: 'S'},
+    {key: 'te', value: 'TE'},
+    {key: 'wr', value: 'WR'},
   ];
 
 
@@ -76,21 +82,30 @@ export class MVPListComponent implements DoCheck, OnInit  {
       else {
         let selectedTab = this.getSelectedTab();
 
-        if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle] ) {
+        //Only run update carousel on first run
+        if ( selectedTab && selectedTab.listData && selectedTab.listData.length > 0 && !this.tabsLoaded[selectedTab.tabDisplayTitle]) {
+          if (this.carouselDataArray != null && this.carouselDataArray[0].description[0].textData[0].text != selectedTab.getCarouselData()[0].description[0].textData[0].text) {
+            this.updateCarousel(selectedTab);
+          }
+          else if (this.carouselDataArray == null) {
+            this.updateCarousel(selectedTab);
+          }
           //this.tabsLoaded[selectedTab.tabDisplayTitle] = "qb";
-          this.updateCarousel(selectedTab);
         }
       }
     }
   } //ngDoCheck()
 
   constructor(private _params: RouteParams) {
-    this.listType = _params.get("type");
+    if ( _params.get("type") &&  _params.get("tab") ) {
+      this.listType = _params.get("type");
+      this.displayTab = _params.get("tab");
+    }
   }
 
   ngOnInit(){
       if (this.listType == null ) {
-        this.position = this.position == null ? this.sortOptions[0]['key']:this.position;
+        this.position = this.position == null ? this.dropdownSelectedKey : this.position;
       }
       else {
         this.position = this.listType;
@@ -138,6 +153,8 @@ export class MVPListComponent implements DoCheck, OnInit  {
       this.carouselDataArray = tab.getCarouselData();
       this.detailedDataArray = tab.listData;
     }
+
+    this.dropdownSelectedKey = this.position == null ? this.dropdownSelectedKey  : this.position;
   } //updateCarousel
 
   ngOnChanges() {
@@ -152,13 +169,12 @@ export class MVPListComponent implements DoCheck, OnInit  {
   }
 
   dropdownChanged($event) {
-    if(this.dropDownFirstRun){
-      this.dropDownFirstRun = false;
-      this.position = $event;
-      this.dropdownPositionSelection.next({
-        tab: this.getSelectedTab(),
-        position: $event //position 'key' value
-      });
-    }
+    this.dropDownFirstRun = false;
+    this.position = $event;
+    this.dropdownPositionSelection.next({
+      tab: this.getSelectedTab(),
+      position: $event //position 'key' value
+    });
+    this.dropdownSelectedKey = this.position == null ? this.dropdownSelectedKey  : this.position;
   }
 }

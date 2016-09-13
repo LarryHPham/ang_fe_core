@@ -8,8 +8,12 @@ import {TableModel} from '../custom-table/table-data.component';
 import {LoadingComponent} from '../loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {DropdownComponent} from '../../../fe-core/components/dropdown/dropdown.component';
+import {GlobalFunctions} from '../../../global/global-functions';
 
 export interface StandingsTableTabData<T> {
+  season: any;
+  conference: any;
+  division: any;
   title: string;
   isActive: boolean;
   isLoaded: boolean;
@@ -37,7 +41,6 @@ export class StandingsComponent implements DoCheck {
 
   @Input() tabs: Array<StandingsTableTabData<any>>;
   @Input() scope: string;
-
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
   @Output("filterSelected") filterSelectedListener = new EventEmitter();
 
@@ -55,7 +58,8 @@ export class StandingsComponent implements DoCheck {
   confFilterChanged: number = 0;
   seasFilterChanged: number = 0;
 
-  constructor() {}
+  constructor() {
+  }
   ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
@@ -130,9 +134,9 @@ export class StandingsComponent implements DoCheck {
   }
 
   setSelectedCarouselIndex(tab: StandingsTableTabData<any>, index: number) {
+
     let offset = 0;
     if ( !tab.sections ) return;
-
     tab.sections.forEach((section, sectionIndex) => {
       if ( index >= offset && index < section.tableData.rows.length + offset ) {
         section.tableData.setRowSelected(index-offset);
@@ -142,7 +146,6 @@ export class StandingsComponent implements DoCheck {
       }
       offset += section.tableData.rows.length;
     });
-    this.setupDropdowns(this.getSelectedTab());
   }
 
   tabSelected(newTitle) {
@@ -200,6 +203,7 @@ export class StandingsComponent implements DoCheck {
 
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carouselData = carouselData;
+    this.setupDropdowns(this.getSelectedTab());
   }
   conferenceChanged(event) {
 
@@ -212,7 +216,9 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: event, division: undefined, season: priorTab.season};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
 
   }
   divisionChanged(event) {
@@ -226,7 +232,10 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: priorTab.conference, division: event, season: priorTab.season};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
+
 
   }
   seasonChanged(event) {
@@ -240,7 +249,9 @@ export class StandingsComponent implements DoCheck {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: priorTab.conference, division: priorTab.division, season: event};
-    this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    if (newTab.title != "Conference Standings" || newTab.title != "Division Standings") {
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
+    }
 
   }
 }

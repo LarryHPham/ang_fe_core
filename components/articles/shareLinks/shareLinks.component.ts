@@ -5,11 +5,12 @@ declare var stButtons:any;
     selector: 'shareLinks-component',
     templateUrl: './app/fe-core/components/articles/shareLinks/shareLinks.component.html',
     directives: [],
-    inputs: ['isMain']
+
 })
 
 export class ShareLinksComponent implements OnInit {
     @Input() shareUrl:string;
+    @Input() isMain:boolean;
     shareLinks:Array<any>;
 
     getLinks() {
