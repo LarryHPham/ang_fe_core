@@ -91,7 +91,7 @@ export class BoxScoresModule implements OnChanges, OnInit{
     this.checkHeight();
   }
 
-  ngOnChanges(){
+  ngOnChanges(){    
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfoSmall.length) {
         this.rightDisabled = "disabled";
