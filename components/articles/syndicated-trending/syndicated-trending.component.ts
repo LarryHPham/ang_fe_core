@@ -27,6 +27,7 @@ export class SyndicatedTrendingComponent {
     @Input() geoLocation: string;
     @Input() currentArticleId: any;
     @Input() scope;
+    
 
     constructor(
         private _router:Router,
@@ -51,6 +52,7 @@ export class SyndicatedTrendingComponent {
     }
 
     ngOnInit(){
+
         this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
     }
     private onScroll(event) {
