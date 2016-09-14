@@ -27,7 +27,7 @@ export class SyndicatedTrendingComponent {
     @Input() geoLocation: string;
     @Input() currentArticleId: any;
     @Input() scope;
-    @Input() location:Location;
+    
 
     constructor(
         private _router:Router,
