@@ -29,12 +29,14 @@
       <div *ngFor="let gameBox of boxScores.gameInfo; let i = odd" class="box-scores-info-container" [class.odd]="i" [class.even]="!i">
         <!--game info that affects only how league box scores are displayed-->
         <div *ngIf=" calendarParams.profile == 'league' " >
-          <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}"[gameInfo]="game.game"></game-info>
+          <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}" [gameInfo]="game.game"></game-info>
         </div>
         <!--game info that affects only how team box scores are displayed-->
         <div *ngIf=" calendarParams.profile != 'league' " >
           <game-info *ngIf=" calendarParams.profile != 'league' " class="float-left" [gameInfo]="gameBox[gameNum].game"></game-info>
-          <game-article  *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+          <template [ngIf]="gameBox[gameNum].aiContent > 1">
+            <game-article  *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+          </template>
         </div>
       </div>
     </template>
@@ -50,7 +52,9 @@
           <!--game info that affects only how team box scores are displayed-->
           <template [ngIf]=" calendarParams.profile != 'league' " >
             <game-info *ngIf=" calendarParams.profile != 'league' " class="float-left" [gameInfo]="gameBox[gameNum].game"></game-info>
-            <game-article  *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+            <template [ngIf]="gameBox[gameNum].aiContent > 1">
+              <game-article  *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+            </template>
           </template>
         </div>
       </scrollable-content>
@@ -65,7 +69,9 @@
         <span class="pagButton rightPag {{rightDisabled}}" (click)="advancePage()">Next Game <i class="fa fa-angle-right"></i></span>
       </div>
       <template ngFor let-gameBox [ngForOf]="boxScores.gameInfo">
-        <game-article  *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+        <template [ngIf]="gameBox[gameNum].aiContent > 1">
+          <game-article *ngIf=" calendarParams.profile != 'league' " class="float-right" [gameArticle]="gameBox[gameNum].aiContent"></game-article>
+        </template>
       </template>
     </template>
 

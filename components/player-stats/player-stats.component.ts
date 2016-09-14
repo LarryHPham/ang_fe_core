@@ -20,6 +20,7 @@ export interface StatsTableTabData<T> {
     isActive: boolean;
     isLoaded: boolean;
     hasError: boolean;
+
     tableData: TableModel<T>;
     seasonIds: Array<{key: string, value: string}>;
     glossary: Array<{key: string, value: string}>;
@@ -32,9 +33,10 @@ export interface StatsTableTabData<T> {
     directives: [SliderCarousel, Tabs, Tab, CustomTable, DropdownComponent, LoadingComponent, NoDataBox, GlossaryComponent,ResponsiveWidget],
 })
 export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
-    private initialSeasonId: string;
+    private initialSeasonId: string=new Date().getFullYear().toString();
     public selectedIndex;
     public GlossaryData;
+    isCarousel: boolean;
     public rowCount;
     isLessThanTen:boolean;
 
@@ -104,7 +106,9 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
 
             this.updateCarousel();
 
+
         }
+        //this.initialSeasonId=new Date().getFullYear().toString();
     }
 
     getSelectedTab(): StatsTableTabData<any> {
@@ -118,17 +122,21 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
     }
 
     tabSelected(newTitle) {
+        this.initialSeasonId= new Date().getFullYear().toString();
         this.selectedTabTitle = newTitle;
         this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
         this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
 
-        this.initialSeasonId="2015";
-        if (this.selectedSeasonId != this.initialSeasonId) {
-             this.selectedSeasonId=this.initialSeasonId;
-        }
 
+        if (this.selectedSeasonId != this.initialSeasonId) {
+            this.selectedSeasonId=this.initialSeasonId;
+            //this.initialSeasonId=this.selectedSeasonId;
+        }
         this.tabSelectedListener.next([this.getSelectedTab(), this.initialSeasonId]);
+
         this.updateCarousel();
+        //console.log(this.initialSeasonId,"initial seasonID")
+        //this.initialSeasonId=new Date().getFullYear().toString();
 
     }
 
@@ -146,31 +154,33 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
     updateCarousel(sortedRows?) {
         var selectedTab = this.getSelectedTab();
         if ( !selectedTab || !selectedTab.tableData ) {
-
+            this.isCarousel=false;
             return;
+        }else {
+
+            let carouselData: Array<SliderCarouselInput> = [];
+            let index = 0;
+            let selectedIndex = -1;
+            this.rowCount = selectedTab.tableData.rows.length;
+            this.rowCount < 10 ? this.isLessThanTen = true : this.isLessThanTen = false;
+
+            selectedTab.tableData.rows.map((value) => {
+                let item = selectedTab.convertToCarouselItem(value, index, this.tabName);
+
+                if (selectedTab.tableData.isRowSelected(value, index)) {
+                    selectedIndex = index;
+                }
+                index++;
+                return item;
+            })
+                .forEach(value => {
+                    carouselData.push(value);
+                });
+
+            this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+            this.carouselData = carouselData;
+            this.isCarousel=true;
         }
-
-        let carouselData: Array<SliderCarouselInput> = [];
-        let index = 0;
-        let selectedIndex = -1;
-        this.rowCount=selectedTab.tableData.rows.length;
-        this.rowCount<10?this.isLessThanTen=true:this.isLessThanTen=false;
-
-        selectedTab.tableData.rows.map((value) => {
-            let item = selectedTab.convertToCarouselItem(value, index,this.tabName);
-
-            if ( selectedTab.tableData.isRowSelected(value, index) ) {
-                selectedIndex = index;
-            }
-            index++;
-            return item;
-        })
-            .forEach(value => {
-                carouselData.push(value);
-            });
-
-        this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-        this.carouselData = carouselData;
     }
 
     getGlossary(tabName){
