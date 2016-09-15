@@ -11,6 +11,10 @@
     .flexDisplay;
     .flexJustify(space-between);
   }//header-top ends
+  &-bottom {
+    .flexDisplay;
+    .flexJustify(space-between);
+  }
   &-partner {
     background-color: @textEmphasisGrey;
     .header-share {
@@ -26,8 +30,9 @@
     .flexJustify(space-between);
   }
   &-hamburger{
+    margin-left:10px;
     width: 45px;
-    height: 45px;
+    height: 35px;
     cursor: pointer;
     position: relative;
     .globalDefaultModFont(20px, 400, @highlightGrey);
@@ -35,8 +40,28 @@
     .flexDirection(column);
     .flexJustify(flex-end);
     .flexAlignItems(flex-start);
+    .parallelogram {
+      position: absolute;
+      top:0;
+      width: 90px;
+      height: 35px;
+      border: none;
+      background: @masterBrandColor;
+      -webkit-transform:    skewX(-25deg);
+      transform:    skewX(-25deg);
+      z-index: 1
+    }
+    &-title {
+      font-size: 14px;
+      margin-left: 35px;
+      position: absolute;
+      top:12px;
+      z-index: 2;
+    }
     .fa-bars{
-      margin: 12.5px;
+      margin: 7px;
+      padding-left: 5px;
+      z-index: 2;
     }
     .fa-remove{
       height: 100%;
@@ -62,7 +87,7 @@
     .flexAlignItems(center);
     img{
       width: 140px;
-      height: 27px;
+      height: 25px;
     }
   }
   &-right{
@@ -71,28 +96,32 @@
   // modify search style begins
   &-search{
     &-searchBox{
-      background-color: darken(@masterBrandColor, 10%);
+      background-color: @black;
       display: none;
-      height: 60px;
-      width: 320px;
+      height: 35px;
+      width: 260px;
       z-index: 99;
       .search-large{
         box-shadow: none;
-        height: 35px;
+        height: 25px;
         padding-right: 0;
-        width: 300px;
-        margin: 12px auto auto 10px;
+        width: 242px;
+        margin: 5px auto auto 10px;
         .search-input-container{
-          width: 250px;
+          width: 190px;
           font-size: 14px;
         }
         .search-input{
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
           &:focus{
             border: 1px solid transparent;
             box-shadow: 0 3px 7px 0 transparent;
           }
         }
         .search-button{
+          border-top-right-radius: 25px;
+          border-bottom-right-radius: 25px;
           font-size: 20px;
           width: 52px;
           background-color: @highlightGrey;
@@ -107,7 +136,7 @@
     .flexDisplay;
     .flexDirection(column);
     .flexAlignItems(flex-end);
-    height: 45px;
+    height: 35px;
     &.active, &:focus, &:active{
       height: 125px;
       .header-search-searchBox{
@@ -117,7 +146,7 @@
         .header-search-searchBox{
           display: block;
         }
-        background-color: darken(@masterBrandColor, 10%);
+        background-color: @black;
       }
     }
     @media @desktop-m {
@@ -130,7 +159,7 @@
           .header-search-searchBox{
             display: block;
           }
-          background-color: @masterBrandColor;
+          background-color: @black;
         }
       }
     }
@@ -148,7 +177,7 @@
       .header-search-searchBox{
         display: block;
       }
-      background-color: darken(@masterBrandColor, 10%);
+      background-color: @black;
     }
   }//header-search ends
   &-share{
@@ -168,6 +197,9 @@
       }
     }
   }
+  &-bottom {
+    background-color: @black;
+  }
 }
 
 @media @mobile {
@@ -178,21 +210,21 @@
 @media @tablet{
   .header{
     &-top{
-      height: 65px;
+      height: 45px;
     }
     &-logo{
-      left: ~"calc(50% - 92px)";
-      top: 15px;
+      left: ~"calc(50% - 70px)";
+      top: 10px;
       img{
-        width: 184px;
-        height: 35px;
+        width: 140px;
+        height: 25px;
       }
     }
     &-hamburger{
-      width: 65px;
-      height: 65px;
+      width: 107px;
+      height: 35px;
       .fa-bars{
-        margin: 22px;
+        margin: 7px;
       }
     }
     &-share{
@@ -201,8 +233,8 @@
           display: none;
       }
       background-color: @masterBrandColor;
-      height: 65px;
-      width: 65px;
+      height: 45px;
+      width: 45px;
       text-align: center;
       .globalDefaultModFont(20px, 400, @highlightGrey);
       .flexDisplay;
@@ -213,7 +245,7 @@
       }
     }//header-share ends
     &-search {
-      height: 65px;
+      height: 35px;
       &-searchBtn{
         height: 65px;
         width: 65px;
@@ -224,14 +256,14 @@
 @media @desktop-m{
   .header{
     &-search{
-      height: 65px;
+      height: 35px;
       .flexJustify(center);
       &-searchBtn{
         display: none;
       }
       &-searchBox{
         display: block;
-        background-color: @masterBrandColor;
+        background-color: @black;
       }
     }//header-search ends
     &-search {
