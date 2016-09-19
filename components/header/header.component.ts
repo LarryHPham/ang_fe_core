@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit,OnChanges {
         this.isSearchOpened = false;
       }
     });
-    this.logoUrl = 'app/public/tcx_Logo_Outlined-W.svg';
+    this.logoUrl = 'app/public/TCX_Logo_Outlined.svg';
     this.partnerLogoUrl = 'app/public/Football-DeepDive_Logo_Outlined-W.svg';
   }
 
