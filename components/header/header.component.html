@@ -17,10 +17,9 @@
       <!-- <div class="header-hamburger" tabindex="999"> -->
       <!-- menucheck class is for the document click funtion to determine to close it when in view -->
       <div class="header-hamburger menucheck" (click)="getMenu($event)">
-        <i *ngIf="!isOpened" class="fa fa-bars"></i>
-        <i *ngIf="isOpened" class="fa fa-remove menucheck"></i>
+        <i class="fa fa-bars menucheck"></i>
         <span class="header-hamburger-title menucheck">MENU</span>
-        <div class="parallelogram menucheck"></div>
+        <div class="parallelogram menucheck" [class.menuOpened]="isOpened"></div>
         <div *ngIf="isOpened" class="header-hamburger-dropDown">
           <hamburger-menu-component [partnerID]="partnerID" *ngIf="scope" [scope]="scope"></hamburger-menu-component>
         </div>

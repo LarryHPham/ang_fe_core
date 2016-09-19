@@ -46,10 +46,13 @@
       width: 90px;
       height: 35px;
       border: none;
-      background: @masterBrandColor;
+      background: darken(@masterBrandColor, 5%);
       -webkit-transform:    skewX(-25deg);
       transform:    skewX(-25deg);
       z-index: 1
+    }
+    .parallelogram.menuOpened {
+      background: @fontIconGrey;
     }
     &-title {
       font-size: 14px;
@@ -71,7 +74,9 @@
       .flexAlignItems(center);
       background-color: darken(@masterBrandColor, 10%);
     }
-
+    .header-hamburger-dropDown {
+      margin-left: -10px;
+    }
     &.active, &:hover, &:focus, &:active{
       .header-hamburger-dropDown{
         display: inline-block;
