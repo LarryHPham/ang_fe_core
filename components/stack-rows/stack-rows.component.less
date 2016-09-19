@@ -1,21 +1,38 @@
+.stackRows{
+  overflow: hidden;
+  padding: 0 10px;
+  div:last-of-type {
+    .stacksmall {
+      margin-bottom:0;
+    }
+    .stackSmall-breakLine {
+      display:none;
+    }
+  }
+}
+
+@media @mobile{
+  //Remove the last 2 item, because we only want 6 items at mobile bp
+  .stackRow:nth-last-child(-n+2) {
+    display: none;
+  }
+}
+
 .stackSmall {
-    margin: 0 0 10px;
     float:left;
-    height: 56px;
+    margin: 0 0 10px;
     .flexDisplay;
     &-image {
-      width: 100px;
       background-color: @masterBackgroundColor;
       margin-right: 10px;
-      height: 56px;
+      min-width: 85px;
     }
     &-text {
-      line-height: 1.2em;
       text-align: left;
       width: auto;
       overflow: hidden;
-      text-overflow: ellipsis;
-      height: 3.7em;
+      .line-clamp;
+      .line-clamp-3;//limit to 3 lines
       &-keyword {
          text-transform: uppercase;
          margin-bottom: 5px;
@@ -44,19 +61,6 @@
       }
     }
 }
-.stackRows{
-  height: 385px;
-  overflow: hidden;
-  padding: 0 10px;
-  div:last-of-type {
-    .stacksmall {
-      margin-bottom:0;
-    }
-    .stackSmall-breakLine {
-      display:none;
-    }
-  }
-}
 
 @media @tablet {
   .stackSmall {
@@ -72,7 +76,6 @@
     }
   }
   .stackRows{
-    height: 200px;
     padding: 0;
   }
 }
