@@ -59,25 +59,7 @@
     }
   }
 }
-@media @small-grid {
-  .stackSmall {
-    .col-xs-6;
-    &-image{
-      margin-right: 5px;
-    }
-    &-text{
-      width: 155px;
-      height: 74px;
-      &-keyword{
-        height: auto;
-        overflow: visible;
-      }
-    }
-  }
-  .stackRows {
-    height: 190px;
-  }
-}
+
 @media @tablet {
   .stackSmall {
     .col-xs-6;
@@ -112,32 +94,4 @@
       }
     }
   }
-}
-
-@media @desktop-xl {
-  .stackRows{
-    height: auto;
-    overflow: visible;
-  }
-  .stackSmall {
-    margin: 20px 0;
-    width: 313px;
-    height: auto;
-    .col-xs-12;
-
-    &-image {
-      display: none;
-    }
-    &-text {
-      height: auto;
-      width: 313px;
-      max-width: 313px;
-    }
-    &-breakLine {
-      display: inline-block;
-      width: 315px;
-      height: 1px;
-      background-color: @highlightGrey;
-    }
-  }//stackSmall ends
 }
