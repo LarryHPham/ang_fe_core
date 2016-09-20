@@ -1,8 +1,7 @@
 .article-stack-container {
   min-width: 320px;
   margin: 0 auto;
-  .flexDisplay;
-  .flexDirection(column);
+  display: block;
   &-subs{
     margin: 15px 0 0;
   }
@@ -13,15 +12,14 @@
 
 @media @tablet {
   .article-stack-container {
-    width: 610px;
     &-main{
       max-width: 750px;
     }
   }
 }//tablet ends
 
-@media @desktop-m {
+@media @desktop-m{
   .article-stack-container {
-    width:670px;
+    .flexDisplay;
   }
-}//desktop-m ends
+}
