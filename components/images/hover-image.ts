@@ -10,8 +10,9 @@ export class HoverImage {
     @Input() imageData: any;
     @Input() textOnly: boolean;
     errorIMG:any;
+    imageUrl:string;
 
-    onError(event){
+    onError(event: any){
       event.src = this.errorIMG;
     }
     // ngOnChanges() {

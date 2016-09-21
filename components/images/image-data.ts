@@ -8,7 +8,7 @@ export interface ImageData {
    *
    *  If this is not included, no hover overlay will be displayed
    */
-  urlRouteArray?: Array<any>;
+  urlRouteArray: Array<any>;
 
   /**
    *  The URL location to the image to display.
@@ -17,7 +17,7 @@ export interface ImageData {
    *  If this is not included, the [text] field will be displayed
    *  instead.
    */
-  imageUrl?: string;
+  imageUrl: string;
 
   /**
    * The URL location of the image to display if the

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { ImageData } from '../image-data';
 
 /**
  *
@@ -91,17 +90,17 @@ export class CircleImage implements OnInit {
     @Input() data: CircleImageData;
 
     ngOnInit() {
-      var sampleImage = "/app/public/placeholder_XL.png";
-      if ( typeof this.data === undefined ) {
-        this.data = {
-          imageClass: "image-150",
-          mainImage: {
-            urlRouteArray: ['syndicated-article'],
-            hoverText: "<p>View</p> Profile",
-            imageClass: "border-large",
-            imageUrl: "/app/public/profile_placeholder.png"
-          }
-        }
-      }
+      // var sampleImage = "/app/public/placeholder_XL.png";
+      // if ( typeof this.data === undefined ) {
+      //   this.data = {
+      //     imageClass: "image-150",
+      //     mainImage: {
+      //       urlRouteArray: ['syndicated-article'],
+      //       hoverText: "<p>View</p> Profile",
+      //       imageClass: "border-large",
+      //       imageUrl: "/app/public/profile_placeholder.png"
+      //     }
+      //   }
+      // }
     }
 }
