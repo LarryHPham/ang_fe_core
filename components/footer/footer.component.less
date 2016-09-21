@@ -1,0 +1,112 @@
+.footer{
+  height: auto;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  &-main{
+    background-color: @textEmphasisGrey;
+    height: auto;
+    padding: 0 15px 15px;
+    border-top: 3px solid @masterBrandColor;
+    .globalDefaultModFont(10px, 400, @strokeGrey);
+    .flexAlignItems(center);
+    .flexDisplay;
+    .flexDirection(column);
+    @media @desktop-l{
+      padding: 0 ~"calc(50% - 395px)" 15px ~"calc(50% - 395px)";
+      font-size: 12px;
+    }
+    ul{
+      .flexDisplay;
+      .flexWrap(wrap);
+      .flexJustify(center);
+      .flexAlignItems(baseline);
+      li{
+        line-height: 1em;
+        .flexDisplay;
+        i{
+          padding: 0 5px;
+        }
+        span{
+          color: @strokeGrey;
+        }
+        &:hover{
+          a{
+            color: @white;
+          }
+        }
+        &:last-child{
+          span{
+            visibility: hidden;
+          }
+        }
+      }//li ends
+    }// ul ends
+    hr{
+      width: 70%;
+    }
+    &-cit{
+      .flexDisplay;
+      .flexDirection(column);
+      .flexAlignItems(center);
+      @media @tablet{
+        width: 100%;
+        .flexDirection(row);
+        .flexJustify(space-between);
+      }
+      @media @desktop-l{
+        margin-top: 10px;
+      }
+    }
+    &-citation{
+      margin-bottom: 0;
+      line-height: 1em;
+      .globalDefaultFont(10px, 400);
+      i{
+        font-size: 9px;
+      }
+    }
+  }// footer-main ends
+  &-text1{
+    a{
+      .globalDefaultFont(12px, 800);
+      margin-bottom:12px;
+      @media @desktop-l{
+        font-size: 14px;
+      }
+    }
+  }//footer-text1 ends
+  &-line3{
+    width: 70%;
+  }
+  @media @mobile {
+    #mlb-teams-dropdown {
+      display:none;
+    }
+  }
+}//footer ENDS
+#share-facebook{
+  &:hover, &:active{
+    .fa{
+      color: @white;
+    }
+  }
+}
+#share-twitter{
+  &:hover, &:active{
+    .fa{
+      color: @white;
+    }
+  }
+}
+
+#share-google{
+  &:hover, &:active{
+    .fa{
+      color: @white;
+    }
+  }
+}
+#set-width70{
+  width: 70%;
+}
