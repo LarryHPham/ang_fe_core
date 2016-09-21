@@ -3,7 +3,7 @@
 
 <!--image (with hover link)-->
 <a *ngIf="imageData.urlRouteArray && !textOnly" [routerLink]="imageData.urlRouteArray" class="image-round-hover">
-  <img [src]="imageData.imageUrl" (error)="onError($event)" />
+  <img [src]="imageData.imageUrl" [alt]="imageData.imageDesc" (error)="onError($event)" />
   <div [innerHtml]="imageData.hoverText"></div>
 </a>
 
