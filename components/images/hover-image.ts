@@ -10,8 +10,6 @@ export class HoverImage {
     @Input() imageData: any;
     @Input() textOnly: boolean;
     errorIMG: string = "/app/public/profile_placeholder.png";
-    imageUrl:string;
-
     onError(event: any){
       event.src = this.errorIMG;
     }

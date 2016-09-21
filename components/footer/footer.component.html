@@ -1,0 +1,23 @@
+<footer class="footer container-fluid">
+    <!-- <div class="footer-top-container">
+      <a *ngIf="!partner"><img src="/app/public/Touchdown-Loyal_Logo_Outlined-W.svg" /></a>
+      <div class="placeholderImg" *ngIf="partner"></div>
+      <ul>
+          <a href="{{_siteFacebookUrl}}" target="_blank"><li id="share-facebook"><i class="fa fa-facebook"></i></li></a>
+          <a href="{{_siteTwitterUrl}}" target="_blank"><li id="share-twitter"><i class="fa fa-twitter"></i></li></a>
+          <a href="{{_siteGoogleUrl}}" target="_blank"><li id="share-google"><i class="fa fa-fontawesome-webfont"></i></li></a>
+      </ul>
+    </div> -->
+
+  <section class="footer-main col-xs">
+    <ul>
+      <li><a [routerLink]="['About-us-page']"><b>{{au}}</b></a> | </li>
+      <li><a [routerLink]="['Disclaimer-page']"><b>{{service}}</b></a> | </li>
+      <li><a [routerLink]="['Contact-us-page']"><b>{{privacy}}</b></a></li>
+    </ul>
+    <div class="footer-main-cit">
+      <p class="footer-main-citation"><i class="fa fa-copyright"></i>{{_lastUpdated}} </p>
+    </div>
+  </section>
+
+</footer>
