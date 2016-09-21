@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 /**
  *
@@ -86,21 +86,6 @@ export interface CircleImageData {
     templateUrl: './app/fe-core/components/images/circle-image/circle-image.html',
 })
 
-export class CircleImage implements OnInit {
+export class CircleImage {
     @Input() data: CircleImageData;
-
-    ngOnInit() {
-      // var sampleImage = "/app/public/placeholder_XL.png";
-      // if ( typeof this.data === undefined ) {
-      //   this.data = {
-      //     imageClass: "image-150",
-      //     mainImage: {
-      //       urlRouteArray: ['syndicated-article'],
-      //       hoverText: "<p>View</p> Profile",
-      //       imageClass: "border-large",
-      //       imageUrl: "/app/public/profile_placeholder.png"
-      //     }
-      //   }
-      // }
-    }
 }

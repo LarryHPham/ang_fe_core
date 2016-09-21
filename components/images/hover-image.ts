@@ -9,7 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HoverImage {
     @Input() imageData: any;
     @Input() textOnly: boolean;
-    errorIMG:any;
+    errorIMG: string = "/app/public/profile_placeholder.png";
     imageUrl:string;
 
     onError(event: any){
