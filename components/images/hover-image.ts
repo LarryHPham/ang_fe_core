@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 // import {DomSanitizationService} from '@angular/platform-browser';
 
 @Component({
@@ -13,6 +13,7 @@ export class HoverImage {
     onError(event: any){
       event.src = this.errorIMG;
     }
+
     // ngOnChanges() {
     //   if ( this.imageData && this.imageData.imageUrl ) {
     //       this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(this.imageData.imageUrl);

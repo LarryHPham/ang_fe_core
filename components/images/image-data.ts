@@ -8,7 +8,7 @@ export interface ImageData {
    *
    *  If this is not included, no hover overlay will be displayed
    */
-  urlRouteArray: Array<any>;
+  urlRouteArray?: Array<any>;
 
   /**
    *  The URL location to the image to display.
@@ -17,8 +17,14 @@ export interface ImageData {
    *  If this is not included, the [text] field will be displayed
    *  instead.
    */
-  imageUrl: string;
+  imageUrl?: any;
 
+  /**
+   * The list of classes to use to style the image. If it's a main image, then
+   * the style typically just specifies the border style. If it's a sub element,
+   * then the style specifies the size, border style, and location.
+   */
+  imageClass: string;
   /**
    * The URL location of the image to display if the
    * imageUrl could not be found.
@@ -26,6 +32,7 @@ export interface ImageData {
    * If this is not included, then placeholder image will default
    * to '/app/public/placeholder-location.png'
    */
+
   placeholderImageUrl?: string;
 
   /**
@@ -44,19 +51,6 @@ export interface ImageData {
    */
   text?: string;
 
-  /**
-   * The list of classes to use to style the image. If it's a main image, then
-   * the style typically just specifies the border style. If it's a sub element,
-   * then the style specifies the size, border style, and location.
-   */
-  imageClass: string;
-}
+  imageDesc?: string;
 
-//
-//
-// export interface RectangleImageData{
-//   imageUrl: any;//TODO
-//   imageClass?: string;
-//   urlRouteArray?: Array<any>;
-//   /*hoverText?: string;*/
-// }
+}
