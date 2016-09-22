@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
 import {GlobalSettings} from "../../../global/global-settings";
 
+
 declare var stButtons: any;
 declare var jQuery:any;
 
