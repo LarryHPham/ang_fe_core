@@ -1,2 +1,13 @@
-<div>Box Scores</div>
-<module-header></module-header>
+<div class="module-container box-scores">
+  <module-header *ngIf="boxScores" [modHeadData]="boxScores.moduleTitle"></module-header>
+  <!-- <calendar-carousel *ngIf="calendarParams" [chosenParam]="calendarParams" (dateEmit)="dateTransfer($event)"></calendar-carousel> -->
+</div>
+
+<!--box-scores info-->
+  <div *ngIf="boxScores" class="box-scores-info">
+
+    <div *ngFor="let gameBox of boxScores.gameInfo; let i = odd" class="box-scores-info-container" [class.odd]="i" [class.even]="!i">
+      <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}" [gameInfo]="game.game"></game-info>
+    </div>
+
+  </div>
