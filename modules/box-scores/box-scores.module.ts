@@ -9,6 +9,5 @@ export class BoxScoresModule implements OnInit {
   @Input() boxScores:any;
 
   ngOnInit() {
-    console.log('box-scores.module - ngOnInit - boxScores - ',this.boxScores);
   }
 }

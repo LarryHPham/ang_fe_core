@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GlobalSettings} from "../../../global/global-settings";
-// import {HamburgerDeliveryService} from '../../../services/hamburger-delivery.service';
+import {HamburgerDeliveryService} from '../../../services/hamburger-delivery.service';
 
 export interface MenuData{
   menuTitle: string,
@@ -10,7 +10,7 @@ export interface MenuData{
 @Component({
     selector: 'hamburger-menu-component',
     templateUrl: './app/fe-core/components/hamburger-menu/hamburger-menu.component.html',
-    // providers: [HamburgerDeliveryService],
+    providers: [HamburgerDeliveryService],
 })
 
 export class HamburgerMenuComponent implements OnInit {
@@ -26,14 +26,25 @@ export class HamburgerMenuComponent implements OnInit {
     this.isHome = GlobalSettings.getHomeInfo().isHome;
   }
   ngOnInit(){
+    this.loadData();
     // this.scope = this.scope.toUpperCase();
     // if (this.scope == this._collegeDivisionAbbrv) {this.scope = this._collegeDivisionFullAbbrv;}
     // this.changeActiveLeague(this.scope);
   }//ngOnInit ends
-  loadData(division) {
-    // var data = HamburgerDeliveryService.createMenu(division, this.partnerID);
-    // this.menuData = data.menuData;
-    // this.menuInfo = data.menuInfo;
+  loadData() {
+    var data = HamburgerDeliveryService.createMenu();
+    this.menuData = data.menuData;
+    this.menuInfo = data.menuInfo;
   }//loadData ends
+  toggleNest(event) {
+    if (event.target.innerHTML == "+") {
+      event.target.parentElement.classList.add('open');
+      event.target.innerHTML = "x"
+    }
+    else {
+      event.target.parentElement.classList.remove('open');
+      event.target.innerHTML = "+"
+    }
 
+  }
 }

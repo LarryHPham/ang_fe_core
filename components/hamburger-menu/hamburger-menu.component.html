@@ -2,12 +2,33 @@
   <div class="hamburger">
     <ul class="hamburger-topics-list">
       <!-- hardcoded links remove please -->
-      <span><a routerLink="/deep-dive"><li>Deep Dive</li></a></span>
-      <span><a routerLink="/syndicated-article"><li>Syndicated Article</li></a></span>
+      <span><a routerLink="/deep-dive"><li>//temp Deep Dive</li></a></span>
+      <span><a routerLink="/syndicated-article"><li>//temp Syndicated Article</li></a></span>
+
+      <span>
+        <li class="nester-parent">
+          <a routerLink="/syndicated-article">//temp Nesting Test</a>
+          <div class="toggle-nest menucheck" onclick="event.stopPropagation();" (click)="toggleNest($event)">+</div>
+          <ul>
+            <li class="nester-child">//temp Nesting Test Inner</li>
+            <li class="nester-child">//temp Nesting Test Inner</li>
+            <li class="nester-child">//temp Nesting Test Inner</li>
+          </ul>
+        </li>
+      </span>
 
       <span  *ngFor="let menuData of menuData">
-        <a *ngIf="menuData.menuTitle == 'Home' && isHome" class="disabled"><li class="hamburger-topics-list-item">{{menuData.menuTitle}}</li></a>
-        <a *ngIf="menuData.menuTitle != 'Home' || !isHome" [routerLink]="menuData.url"><li class="hamburger-topics-list-item">{{menuData.menuTitle}}</li></a>
+        <a *ngIf="(menuData.menuTitle == 'Home' && isHome) && menuData.nesterChildren == null" class="disabled"><li class="hamburger-topics-list-item">{{menuData.menuTitle}}</li></a>
+        <a *ngIf="(menuData.menuTitle != 'Home' || !isHome) && menuData.nesterChildren == null" [routerLink]="menuData.url"><li class="hamburger-topics-list-item">{{menuData.menuTitle}}</li></a>
+
+        <li *ngIf="menuData.nesterChildren != null" class="nester-parent">
+          <a routerLink="/syndicated-article">{{menuData.menuTitle}}</a>
+          <div class="toggle-nest menucheck" onclick="event.stopPropagation();" (click)="toggleNest($event)">+</div>
+          <ul>
+            <li class="nester-child" *ngFor="let nesterChild of menuData.nesterChildren"><a [routerLink]="nesterChild.url">{{nesterChild.menuTitle}}</a></li>
+          </ul>
+        </li>
+
       </span>
     </ul>
   </div>

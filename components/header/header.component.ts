@@ -14,14 +14,13 @@ declare var jQuery:any;
 export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
-  public scope: string = "nfl";
   public logoUrl:string;
   public partnerLogoUrl: string;
   private _stickyHeader: string;
-  // public searchInput: SearchInput = {
-  //      placeholderText: "Search for a topic...",
-  //      hasSuggestions: true
-  // };
+  public searchInput: any = {
+       placeholderText: "Search for a topic...",
+       hasSuggestions: true
+  };
   public hamburgerMenuData: Array<any>;
   public hamburgerMenuInfo: Array<any>;
   public headerLinks: Array<any> = HeaderLinksService.createMenu();
