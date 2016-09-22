@@ -7,7 +7,6 @@
   <div *ngIf="boxScores" class="box-scores-info">
 
     <div *ngFor="let gameBox of boxScores.gameInfo; let i = odd" class="box-scores-info-container" [class.odd]="i" [class.even]="!i">
-      <p>{{boxScores.gameInfo[0][0].game | json}}</p>
       <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}" [gameInfo]="game.game"></game-info>
     </div>
 
