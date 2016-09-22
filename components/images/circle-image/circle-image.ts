@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
+import {ImageData, CircleImageData} from '../image-data';
 /**
  *
  * Description:
@@ -53,33 +53,7 @@ import {Component, Input, OnInit} from '@angular/core';
  *       background-color: @hoverColor;
  *    }
  */
-export interface CircleImageData {
- /**
-  * The main image in the center of the component.
-  * Required.
-  */
- mainImage: ImageData;
 
- /**
-  * The sub images to display in one of the corners.
-  * The user is expected to specify a location, and only one
-  * element per location. Listing no location or multiple
-  * elements for one location is undefined behavior.
-  *
-  * Possible locations:
- *    .image-round-upper-left
- *    .image-round-upper-right
- *    .image-round-lower-left
- *    .image-round-lower-right
-  */
- subImages?: Array<ImageData>;
-
- /**
-  * The style to use for the entire component. It should
-  * specify the width/height of the component.
-  */
- imageClass: string;
-}
 
 @Component({
     selector: 'circle-image',
