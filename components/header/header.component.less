@@ -186,13 +186,25 @@
     }
   }//header-search ends
   &-share{
-    display: none;
+    cursor: pointer;
+    background-color: @masterBrandColor;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    .globalDefaultModFont(20px, 400, @highlightGrey);
+    .flexDisplay;
+    .flexDirection(column);
+    .flexJustify(center);
+    &:hover{
+      background-color: darken(@masterBrandColor, 10%);
+    }
+    span:first-child{
+        display: none;
+    }
+
   }//header-share ends
   .st_sharethis_large{
-    display:none;
-    @media @desktop-m {
       display:flex;
-    }
     span:first-child{
       span:first-child{
         height: 65px;
@@ -233,21 +245,7 @@
       }
     }
     &-share{
-      cursor: pointer;
-      span:first-child{
-          display: none;
-      }
-      background-color: @masterBrandColor;
-      height: 45px;
-      width: 45px;
-      text-align: center;
-      .globalDefaultModFont(20px, 400, @highlightGrey);
-      .flexDisplay;
-      .flexDirection(column);
-      .flexJustify(center);
-      &:hover{
-        background-color: darken(@masterBrandColor, 10%);
-      }
+
     }//header-share ends
     &-search {
       height: 35px;
