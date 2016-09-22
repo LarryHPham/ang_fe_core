@@ -36,5 +36,15 @@ export class HamburgerMenuComponent implements OnInit {
     this.menuData = data.menuData;
     this.menuInfo = data.menuInfo;
   }//loadData ends
+  toggleNest(event) {
+    if (event.target.innerHTML == "+") {
+      event.target.parentElement.classList.add('open');
+      event.target.innerHTML = "x"
+    }
+    else {
+      event.target.parentElement.classList.remove('open');
+      event.target.innerHTML = "+"
+    }
 
+  }
 }
