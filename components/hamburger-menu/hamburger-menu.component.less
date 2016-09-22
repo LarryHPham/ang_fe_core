@@ -37,12 +37,38 @@
   }
   li {
     cursor: pointer;
-    padding: 12px 30px;
+    padding: 12px 15px;
     position: relative;
     text-indent: 0px;
     &:hover, &:focus, &:active{
       background-color: @masterBrandColor;
     }
+  }
+  .nester-parent {
+    height: 40px;
+    overflow: hidden;
+    padding: 12px 15px 0px 15px;
+    .toggle-nest {
+      position: absolute;
+      right: 30px;
+      top: 9px;
+      font-size: 20px;
+    }
+  }
+  .nester-parent.open {
+    height: auto;
+    background-color: #555555;
+  }
+  .nester-parent:hover.open{
+    background-color: #555555;
+  }
+  .nester-child {
+    margin-left: -15px;
+    padding-left: 30px;
+    width: ~'calc(100% + 30px)';
+  }
+  .nester-child:first-of-type {
+    margin-top: 12px;
   }
 
   &-topics-list {
