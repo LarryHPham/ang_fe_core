@@ -12,3 +12,11 @@ export interface SyndicateArticleData{
     provider:string,//provider information
 }
 
+export interface RecommendArticleData{
+    keyword:string;
+    publishedDate:string,
+    headLine:string,
+    imagePath:string,
+
+}
+
