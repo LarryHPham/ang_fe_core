@@ -28,6 +28,19 @@
     max-width: 320px;
     .flexDisplay;
     .flexJustify(space-between);
+    .main-links {
+      height: 35px;
+      div {
+        font-size: 14px;
+        display: inline-block;
+        height: 100%;
+        color: @white;
+        padding: 10px 12px;
+      }
+      div:first-of-type {
+        padding-left: 0px;
+      }
+    }
   }
   &-hamburger{
     margin-left:10px;
@@ -43,6 +56,7 @@
     .parallelogram {
       position: absolute;
       top:0;
+      left:-2px;
       width: 90px;
       height: 35px;
       border: none;
@@ -58,7 +72,7 @@
       font-size: 14px;
       margin-left: 35px;
       position: absolute;
-      top:12px;
+      top:10px;
       z-index: 2;
     }
     .fa-bars{
@@ -225,6 +239,9 @@
   }
 }
 @media @tablet{
+  .header-left {
+    max-width: 655px;
+  }
   .header{
     &-top{
       height: 45px;
