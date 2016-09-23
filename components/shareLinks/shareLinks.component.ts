@@ -3,7 +3,7 @@ declare var stButtons:any;
 
 @Component({
     selector: 'shareLinks-component',
-    templateUrl: './app/fe-core/components/syndicate-components/shareLinks/shareLinks.component.html',
+    templateUrl: './app/fe-core/components/shareLinks/shareLinks.component.html',
 
 })
 
