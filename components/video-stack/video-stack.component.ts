@@ -1,5 +1,6 @@
-import {Component,OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 // import {SanitizeHtml} from "../../pipes/safe.pipe";
+import { VideoStackData } from "../../interfaces/deep-dive.data";
 
 declare var moment;
 
@@ -9,16 +10,10 @@ declare var moment;
   // pipes: [SanitizeHtml]
 })
 
-export class VideoStackComponent implements OnInit{
-  public articleData: any;
-  @Input() state: any;
-  @Input() page: number;
-  @Input() videoData: any;
-  @Input() isProfilePage:boolean;
+export class VideoStackComponent{
+  @Input() videoData: Array<VideoStackData>;
 
-  formatDate(date, isProfilePage) {
-    return isProfilePage ? moment(date, "YYYY-MM-Do").format("MM DD, YYYY | HH:MM") : moment(date, "YYYY-MM-Do").format("MMMM DD, YYYY");
-  }
-  ngOnInit() {
-  }
+  // formatDate(date, isProfilePage) {
+  //   return isProfilePage ? moment(date, "YYYY-MM-Do").format("MM DD, YYYY | HH:MM") : moment(date, "YYYY-MM-Do").format("MMMM DD, YYYY");
+  // }
 }
