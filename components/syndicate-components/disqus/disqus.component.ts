@@ -11,7 +11,9 @@ declare var DISQUS: any;
 })
 
 export class DisqusComponent implements OnInit{
-    constructor(@Inject(GlobalSettings) private GlobalSettings:GlobalSettings){
+
+    constructor(){
+
 
     }
     ngOnInit(){

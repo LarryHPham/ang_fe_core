@@ -28,6 +28,19 @@
     max-width: 320px;
     .flexDisplay;
     .flexJustify(space-between);
+    .main-links {
+      height: 35px;
+      div {
+        font-size: 14px;
+        display: inline-block;
+        height: 100%;
+        color: @white;
+        padding: 10px 12px;
+      }
+      div:first-of-type {
+        padding-left: 0px;
+      }
+    }
   }
   &-hamburger{
     margin-left:10px;
@@ -43,6 +56,7 @@
     .parallelogram {
       position: absolute;
       top:0;
+      left:-2px;
       width: 90px;
       height: 35px;
       border: none;
@@ -58,7 +72,7 @@
       font-size: 14px;
       margin-left: 35px;
       position: absolute;
-      top:12px;
+      top:10px;
       z-index: 2;
     }
     .fa-bars{
@@ -143,9 +157,11 @@
     .flexAlignItems(flex-end);
     height: 35px;
     &.active, &:focus, &:active{
-      height: 125px;
+      // height: 125px;
       .header-search-searchBox{
         display: inline-block;
+        position: absolute;
+        right:0;
       }
       .header-search-searchBtn{
         .header-search-searchBox{
@@ -186,13 +202,25 @@
     }
   }//header-search ends
   &-share{
-    display: none;
+    cursor: pointer;
+    background-color: @masterBrandColor;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    .globalDefaultModFont(20px, 400, @highlightGrey);
+    .flexDisplay;
+    .flexDirection(column);
+    .flexJustify(center);
+    &:hover{
+      background-color: darken(@masterBrandColor, 10%);
+    }
+    span:first-child{
+        display: none;
+    }
+
   }//header-share ends
   .st_sharethis_large{
-    display:none;
-    @media @desktop-m {
       display:flex;
-    }
     span:first-child{
       span:first-child{
         height: 65px;
@@ -213,6 +241,9 @@
   }
 }
 @media @tablet{
+  .header-left {
+    max-width: 655px;
+  }
   .header{
     &-top{
       height: 45px;
@@ -233,21 +264,7 @@
       }
     }
     &-share{
-      cursor: pointer;
-      span:first-child{
-          display: none;
-      }
-      background-color: @masterBrandColor;
-      height: 45px;
-      width: 45px;
-      text-align: center;
-      .globalDefaultModFont(20px, 400, @highlightGrey);
-      .flexDisplay;
-      .flexDirection(column);
-      .flexJustify(center);
-      &:hover{
-        background-color: darken(@masterBrandColor, 10%);
-      }
+
     }//header-share ends
     &-search {
       height: 35px;
