@@ -1,8 +1,9 @@
 <div class="main-article">
 <div class="main-article-title" [innerHTML]="title"></div>
-<div class="main-article-carousel">
-    <img src="{{imageData}}">
-</div>
+<!--<div class="main-article-carousel">-->
+    <!--<img src="{{imageData}}">-->
+    <images-media-carousel [imageData]="imageData" [copyright]="copyright" [imageTitle]="test-image" [isProfilePage]="false"></images-media-carousel>
+<!--</div>-->
 <div class="row">
     <div class="col-md-6">Written By: <b> {{author}}, {{publisher}} </b></div>
     <div class="col-md-6">Posted on: <b>{{articleDate}} </b></div>
