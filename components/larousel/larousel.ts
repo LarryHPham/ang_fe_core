@@ -1,19 +1,18 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 // import {ScheduleBox} from '../schedule-box/schedule-box.component'
-// import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 declare var jQuery:any;
 declare var moment:any;
 
 @Component({
-    selector: 'side-scroll-test',
-    templateUrl: './app/fe-core/components/side-scroll/side-scroll.component.html',
+    selector: 'larousel',
+    templateUrl: './app/fe-core/components/larousel/larousel.html',
     // directives: [ScheduleBox, ROUTER_DIRECTIVES],
     outputs: ['carouselCount'],
     // pipes:[SanitizeStyle, SanitizeHtml, SanitizeRUrl]
 })
 
-export class SideScroll{
+export class Larousel{
   @Input() maxLength:any;
   @Input() current:any;
   @Input() carData: any;
