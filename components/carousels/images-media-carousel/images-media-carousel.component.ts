@@ -136,7 +136,6 @@ export class ImagesMedia implements OnInit {
             this.mediaImages = this.modifyMedia(this.imageData, this.copyright, this.imageTitle);
             this.changeMain(0);
             this.totalImageCount = this.imageData.length;
-            console.log(this.totalImageCount);
           /*  if (this.isProfilePage) {
                 if (!this.isSmall) {
                     this.modHeadData = {
