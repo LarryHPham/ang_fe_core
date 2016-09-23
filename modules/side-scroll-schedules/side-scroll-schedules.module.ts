@@ -15,9 +15,9 @@ export class SideScrollSchedule{
 
   public count = new EventEmitter();
   public curCount = 0;
-  _sportLeagueAbbrv: string = "league";
-  _collegeDivisionAbbrv: string = "coldiv";
-  _collegeDivisionFullAbbrv: string = "coldivfull";
+  _sportLeagueAbbrv: string = "pro_div";
+  _collegeDivisionAbbrv: string = "col_div";
+  _collegeDivisionFullAbbrv: string = "col_div_full";
 
   counter(event){
     this.curCount = event;
