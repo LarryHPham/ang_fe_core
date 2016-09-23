@@ -30,6 +30,11 @@
     .flexJustify(space-between);
     .main-links {
       height: 35px;
+      overflow: hidden;
+      display: none;
+      @media @tablet {
+        display: block;
+      }
       div {
         font-size: 14px;
         display: inline-block;
@@ -80,13 +85,11 @@
       padding-left: 5px;
       z-index: 2;
     }
-    .fa-remove{
-      height: 100%;
-      width: 100%;
-      .flexDisplay;
-      .flexJustify(center);
-      .flexAlignItems(center);
-      background-color: darken(@masterBrandColor, 10%);
+    .remove{
+      margin:  0px 7px 9px 7px;
+      font-size: 20px;
+      padding-left: 5px;
+      z-index: 2;
     }
     .header-hamburger-dropDown {
       margin-left: -10px;
@@ -111,23 +114,117 @@
   }
   &-right{
     .flexDisplay;
+    .breaking-parallelogram {
+      display: none;
+      margin-right:10px;
+      width: 415px;
+      height: 35px;
+      border: none;
+      background: #444444;
+      -webkit-transform:    skewX(-25deg);
+      transform:    skewX(-25deg);
+      z-index: 0;
+      padding: 10px 20px;
+      @media @desktop-l {
+        display: block;
+      }
+      .breaking-title {
+        position: absolute;
+        display: inline-block;
+        -webkit-transform:    skewX(25deg);
+        transform:    skewX(25deg);
+        color: @white;
+        font-size: 12px;
+        height: 15px;
+        border-bottom: 2px solid @masterBrandColor;
+      }
+      .breaking-scroller {
+        display: inline-block;
+        -webkit-transform:    skewX(25deg);
+        transform:    skewX(25deg);
+        color: @white;
+        font-size: 12px;
+        width: 264px;
+        margin-left: 105px;
+        overflow: hidden;
+        height: 15px;
+        position: relative;
+        .breaking-fader {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          height: 100%;
+          background: linear-gradient(to right, rgba(68, 68, 68, 1) 0%,rgba(68, 68, 68, 0) 10%,rgba(68, 68, 68, 0) 90%, rgba(68, 68, 68, 1) 100%);
+          z-index: 1;
+        }
+        .breaking-text {
+          position: absolute;
+          white-space: nowrap;
+          width: auto;
+          height: 15px;
+          animation-name: scroll;
+          animation-duration: 20s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        @keyframes scroll {
+          from {margin-left:100%}
+          to {margin-left: -230%}
+        }
+      }
+    }
   }
   // modify search style begins
   &-search{
-    &-searchBox{
-      background-color: @black;
-      display: none;
+    position: relative;
+    .header-search-searchBtn i {
+      z-index: 1;
+      margin-left: -30px;
+    }
+    .parallelogram {
+      position: absolute;
+      top:0;
+      left:-10px;
+      width: 55px;
       height: 35px;
-      width: 260px;
+      border: none;
+      background: #444444;
+      -webkit-transform:    skewX(-25deg);
+      transform:    skewX(-25deg);
+      z-index: 0;
+      @media @mobile {
+        left:-20px;
+      }
+    }
+    &-searchBox{
+      background-color: #444444;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: none;
+      height: 55px;
+      top: 35px;
+      @media @desktop-m {
+        top: 0;
+        height: 35px;
+        width: 260px;
+        padding: 0;
+      }
+      width: 300px;
       z-index: 99;
       .search-large{
         box-shadow: none;
         height: 25px;
         padding-right: 0;
-        width: 242px;
+        width: 280px;
+        @media @desktop-m {
+          width: 242px;
+        }
         margin: 5px auto auto 10px;
         .search-input-container{
-          width: 190px;
+          width: 228px;
+          @media @desktop-m {
+            width: 190px;
+          }
           font-size: 14px;
         }
         .search-input{
