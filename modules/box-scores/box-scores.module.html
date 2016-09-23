@@ -1,15 +1,21 @@
-<div class="module-container box-scores col-lg-8">
-  <module-header *ngIf="boxScores" [modHeadData]="boxScores.moduleTitle"></module-header>
-  <calendar-carousel [chosenParam]="calendarParams"></calendar-carousel>
+<div class="module-container box-scores col-lg-8" *ngIf="calendarParams">
 
+  <div id="box-header">
+    <module-header *ngIf="boxScores" [modHeadData]="boxScores.moduleTitle"></module-header>
+    <!--for calendar-->
+    <calendar-carousel *ngIf="calendarParams" [chosenParam]="calendarParams" (dateEmit)="dateTransfer($event)"></calendar-carousel>
+    <!--for calendar-->
 
-<!--box-scores info-->
-  <div *ngIf="boxScores" class="box-scores-info">
-
-    <div
-      *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
-      class="box-scores-info-container col-xs-12 col-md-6" [class.odd]="i" [class.even]="!i">
-      <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}" [gameInfo]="game.game"></game-info>
-    </div>
+    <!--for team profile-->
+    <!-- <article-schedule-component *ngIf=" calendarParams.profile != 'league' && boxScores" [homeData]="boxScores.schedule.home" [awayData]="boxScores.schedule.away"></article-schedule-component> -->
   </div>
+
+  <!--box-scores info-->
+    <div *ngIf="boxScores" class="box-scores-info">
+      <div
+        *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
+        class="box-scores-info-container col-xs-12 col-md-6" [class.odd]="i" [class.even]="!i">
+        <game-info *ngFor="let game of gameBox; let g = index" [ngClass]="{'float-left':g % 2 == 0,'float-right':g % 2 == 1}" [gameInfo]="game.game"></game-info>
+      </div>
+    </div>
 </div>
