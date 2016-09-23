@@ -38,12 +38,11 @@ export class CalendarCarousel implements OnInit {
     this.windowWidth = window.innerWidth;
     //on load grab the input chosenParam and set new variable for currently viewing dates that is used for any changes without changing initial input while it goes through validation
     var params = this.chosenParam;
-    this.currDateView = {profile: params.scope, teamId: params.teamId, date: params.date};
+    this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
 
     //make call to week api to grab to see if any games are available (true/false)
     this.callWeeklyApi(this.chosenParam)
     .subscribe( data => {
-
       //then run through validation and set firstRun? option parameter to true
       //validateDate(selectedDate, dateArray, firstRun?)
       this.validateDate(this.chosenParam.date, this.weeklyDates, true);
@@ -60,10 +59,21 @@ export class CalendarCarousel implements OnInit {
     }
   }
 
-  private onWindowLoadOrResize(event) {}
+  private onWindowLoadOrResize(event) {
+    this.windowWidth = event.target.innerWidth;
+  }
 
   //datepicker that chooses the monthly calendar and update all the necessary functions for the rest of the components
-  datePicker(event) {}
+  datePicker(event) {
+    this.chosenParam.date = moment(event).tz('America/New_York').format('YYYY-MM-DD');
+    var params = this.chosenParam;
+    this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+    this.callWeeklyApi(this.chosenParam)
+    .subscribe( data => {
+      this.validateDate(this.chosenParam.date, this.weeklyDates);
+    })
+    this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
+  }
 
   left(){
     //take parameters and convert using moment to subtract a week from it and recall the week api
@@ -165,12 +175,12 @@ export class CalendarCarousel implements OnInit {
 
   //makes weekly api call and sets reactive variables
   callWeeklyApi(params){
+    // // console.log('4. calendar-carousel - callWeeklyApi - params - ',params);
     // this.weeklyApi = null;// resets call to load loading Gif as it waits for data
     return this._boxScores.weekCarousel(params.scope, params.date, params.teamId)
     .map(data=>{
       this.weeklyApi = data.data;
       this.weeklyDates = this.weekFormat(params.date, this.weeklyApi);
-
     });
   }
 
@@ -206,6 +216,7 @@ export class CalendarCarousel implements OnInit {
   }
 
   validateDate(selectedDate, dateArray, firstRun?) {
+    // console.log('5. calendar-carousel - validateDate - dateArray - ', dateArray);
     var curUnix = moment(selectedDate,"YYYY-MM-DD").unix()*1000;
     var validatedDate = 0;
     var minDateUnix =  Number(dateArray[0].unixDate);
@@ -245,6 +256,7 @@ export class CalendarCarousel implements OnInit {
       }
     });
     if(firstRun != null && dateArray.length > 0 && this.failSafe <= 12){
+
       // run a loop 12 times(12 weeks) to try to grab the nearest most recently played game
       //if no clickable date has been found and the 12 week check still works
       if(mostRecent == null && validatedDate == 0 && this.failSafe < 12){
@@ -255,7 +267,7 @@ export class CalendarCarousel implements OnInit {
         this.chosenParam.date = curDate;
 
         var params = this.chosenParam;
-        this.currDateView = {profile: params.profile, teamId: params.teamId, date: params.date};
+        this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
 
         //recall function with same chosenParam for validating
         this.callWeeklyApi(this.chosenParam)
@@ -281,8 +293,8 @@ export class CalendarCarousel implements OnInit {
 
           //sets new params and emit the date
           let params = this.chosenParam;
-          this.currDateView = {profile: params.profile, teamId: params.teamId, date: params.date};
-          this.dateEmit.emit({profile: params.profile, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+          this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+          this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
           this.setActive(this.weeklyDates[activeIndex]);
           return;
         }else{
@@ -293,5 +305,5 @@ export class CalendarCarousel implements OnInit {
     }else{
       return;
     }
-  }
+   }
 }
