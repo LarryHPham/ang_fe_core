@@ -6,6 +6,7 @@
   border: 1px solid @highlightGrey;
   background-color: @white;
   float:left;
+  font-family: Lato;
   &-date{
     width:100%;
     height:20px;
@@ -174,5 +175,27 @@
 
   .schedule-tag{
     min-width: 205px;//on safari it breaks
+  }
+}
+
+.schedule_box.weather{
+  padding: 7px 10px;
+  .weather-date {
+    font-size: 12px;
+	  text-align: right;
+  }
+  .condition-image {
+    margin-top: 10px;
+    width:60px;
+  }
+  .condition {
+    margin-top: 5px;
+    font-size: 18px;
+	  text-align: center;
+  }
+  .temp {
+    margin-top: 5px;
+    font-size: 28px;
+	  font-weight: 900;
   }
 }

@@ -1,4 +1,4 @@
-<div class="schedule_box {{boxData.isLive}}"><!--become a component <schedule-box>-->
+<div *ngIf="scope=='football'" class="schedule_box {{boxData.isLive}} football"><!--become a component <schedule-box>-->
   <div class="schedule_box-date" *ngIf="boxData.isLive != 'schedule-live'" [innerHTML]="boxData.date">
   </div>
   <div class="schedule_box-date live" *ngIf="boxData.isLive == 'schedule-live'">
@@ -36,4 +36,11 @@
       </div>
     </a>
   </div>
-</div><!--</schedule-box>-->
+</div><!--</schedule-box-football>-->
+
+<div class="schedule_box weather"><!--become a component <schedule-box>-->
+  <div class="weather-date">5:00 PM CT</div>
+  <img class="condition-image" src="http://images.synapsys.us/weather/icons/sharknado_d.svg">
+  <div class="condition">Sharknado</div>
+  <div class="temp">84&deg;</div>
+</div><!--</schedule-box-weather>-->
