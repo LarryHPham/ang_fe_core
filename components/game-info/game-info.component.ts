@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CircleImage} from '../images/circle-image/circle-image';
 
 @Component({
     selector: 'game-info',
