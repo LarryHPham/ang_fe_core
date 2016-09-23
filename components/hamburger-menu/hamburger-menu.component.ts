@@ -39,7 +39,7 @@ export class HamburgerMenuComponent implements OnInit {
   toggleNest(event) {
     if (event.target.innerHTML == "+") {
       event.target.parentElement.classList.add('open');
-      event.target.innerHTML = "x"
+      event.target.innerHTML = "&times;"
     }
     else {
       event.target.parentElement.classList.remove('open');

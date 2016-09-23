@@ -1,12 +1,12 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {GlobalSettings} from "../../../../global/global-settings";
+
 
 
 declare var DISQUS: any;
 
 @Component({
     selector: 'disqus-component',
-    templateUrl: './app/fe-core/components/syndicate-components/disqus/disqus.component.html',
+    templateUrl: './app/fe-core/components/disqus/disqus.component.html',
     inputs: ["comment"]
 })
 
