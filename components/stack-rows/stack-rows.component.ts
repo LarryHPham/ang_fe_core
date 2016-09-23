@@ -1,5 +1,5 @@
 import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImageData} from "../images/rectangle-image/rectangle-image";
+import {RectangleImageData} from "../images/image-data";
 
 export interface StackRowsInput {
   stackRowsRoute: any;
