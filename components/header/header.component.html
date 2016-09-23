@@ -35,9 +35,20 @@
 
     </div>
     <div class="header-right">
+      <div class="breaking-parallelogram">
+        <div class="breaking-title">BREAKING</div>
+        <div class="breaking-scroller">
+          <div class="breaking-fader"></div>
+          <div class="breaking-text">
+            <!-- placeholder text please remove -->
+            Kirk Cousins is the best QB in the NFL&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Glider Will Attempt Record-Breaking Flight to Edge of Space
+          </div>
+        </div>
+      </div>
       <div class="header-search searchcheck" [class.active]="isSearchOpened">
         <div class="header-search-searchBtn searchcheck" [class.active]="isSearchOpened" (keydown)="searchKeydown($event)" (click)="openSearch($event)">
           <i class="fa fa-search searchcheck"></i>
+          <div class="parallelogram searchcheck" [class.searchOpened]="isSearchOpened"></div>
         </div>
         <div class="header-search-searchBox searchcheck">
           <search [searchInput]="searchInput"></search>
