@@ -1,12 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-export interface RectangleImageData{
-  imageUrl: any;
-  imageClass?: string;
-  urlRouteArray?: Array<any>;
-  imageDesc?: string;
-  /*hoverText?: string;*/
-}
+import {RectangleImageData} from '../image-data';
 
 @Component({
     selector: 'rectangle-image',

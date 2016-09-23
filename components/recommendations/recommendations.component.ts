@@ -4,7 +4,7 @@ import {Component, Input,OnInit} from '@angular/core';
 declare var moment;
 @Component({
     selector: 'recommendations-component',
-    templateUrl: './app/fe-core/components/syndicate-components/recommendations/recommendations.component.html',
+    templateUrl: './app/fe-core/components/recommendations/recommendations.component.html',
 
 })
 

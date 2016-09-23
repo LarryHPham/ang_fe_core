@@ -1,0 +1,22 @@
+<div class="video-stack-container row">
+  <div class="video-stack col-sm-12 col-md-5" *ngFor="let item of videoData; let rowIndex = index">
+    <a [routerLink]='item.videoUrl'>
+      <div class="video-stack-video" [ngStyle]="{'background-image': 'url(' + item.videoThumbnail + ')'}">
+        <div class="greyout">
+          <div class="playCircle">
+            <i class="fa fa-play"></i>
+          </div>
+        </div>
+      </div>
+    <div class="video-stack-right">
+      <div class="video-stack-right-title">
+        <span class="video-title-top">
+          <span class="video-title-top-key" [innerHTML]="item.keyword"></span>
+          <span class="video-title-top-date" [innerHTML]="item.timeStamp"></span>
+        </span>
+        <span class="video-title-mid" [innerHTML]="item.title"></span>
+      </div>
+    </div>
+    </a>
+  </div>
+</div>
