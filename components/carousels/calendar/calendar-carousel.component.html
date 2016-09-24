@@ -2,7 +2,7 @@
 <div class="calendar-picker" *ngIf="chosenParam && weeklyApi" (window:resize)="onWindowLoadOrResize($event)">
 
   <div class="calendar-picker-carousel" *ngIf="windowWidth >= 640">
-    <div class="calendar-picker-circles" (click)="left()"><i class="fa fa-angle-left"></i></div>
+    <div class="calendar-picker-circles left" (click)="left()"><i class="fa fa-angle-left"></i></div>
     <div class="calendar-picker-dates">
       <span *ngFor="let dates of weeklyDates">
         <div class="calendar-picker-dates-select" *ngIf="dates.clickable" [class.active]="dates.active == true" [class.hover]="dates.clickable == true && dates.active == false" (click)="setActive(dates)">
@@ -17,11 +17,11 @@
         </div>
       </span>
     </div>
-    <div class="calendar-picker-circles" (click)="right()"><i class="fa fa-angle-right"></i></div>
+    <div class="calendar-picker-circles right" (click)="right()"><i class="fa fa-angle-right"></i></div>
   </div>
 
   <div class="calendar-picker-carousel" *ngIf="windowWidth < 640">
-    <div class="calendar-picker-circles" (click)="leftDay()"><i class="fa fa-angle-left"></i></div>
+    <div class="calendar-picker-circles left" (click)="leftDay()"><i class="fa fa-angle-left"></i></div>
     <div class="calendar-picker-dates">
       <span *ngFor="let dates of weeklyDates">
         <div class="calendar-picker-dates-select" *ngIf="dates.clickable" [class.active]="dates.active == true" [class.hover]="dates.clickable == true && dates.active == false" (click)="setActive(dates)">
@@ -32,11 +32,11 @@
         </div>
       </span>
     </div>
-    <div class="calendar-picker-circles" (click)="rightDay()"><i class="fa fa-angle-right"></i></div>
+    <div class="calendar-picker-circles right" (click)="rightDay()"><i class="fa fa-angle-right"></i></div>
   </div>
 
 
   <!-- <div class="calendar-selection"><i class="fa fa-calendar"></i></div> -->
-  <!-- <datepicker *ngIf="chosenParam" (changed)="datePicker($event)" [(ngModel)]="chosenParam.date" [chosenParam]="chosenParam"></datepicker> -->
+  <datepicker></datepicker>
 </div>
 <!--for calendar-picker-->
