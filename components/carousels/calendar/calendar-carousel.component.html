@@ -37,6 +37,6 @@
 
 
   <!-- <div class="calendar-selection"><i class="fa fa-calendar"></i></div> -->
-  <datepicker></datepicker>
+  <datepicker *ngIf="chosenParam" (changed)="datePicker($event)" [(ngModel)]="chosenParam.date" [chosenParam]="chosenParam"></datepicker>
 </div>
 <!--for calendar-picker-->
