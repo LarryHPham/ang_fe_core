@@ -1,6 +1,5 @@
 import {Component, Input,OnInit} from '@angular/core';
 
-
 declare var moment;
 @Component({
     selector: 'recommendations-component',
@@ -9,11 +8,11 @@ declare var moment;
 })
 
 export class RecommendationsComponent{
-    @Input() recommendedData:any;
-    //@Input() images:any;
-    isDeepDive:boolean = false;
+    @Input() randomHeadlines:any;
+    @Input() images:any;
+    @Input() isDeepDive:boolean = false;
 
-
+  
 
     formatDate(date) {
         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");

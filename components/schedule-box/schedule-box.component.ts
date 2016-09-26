@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CircleImageData} from '../images/image-data';
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+
 
 export interface scheduleBoxInput{
   date:string;

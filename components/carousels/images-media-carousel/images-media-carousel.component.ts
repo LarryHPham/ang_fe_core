@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-
-
+import {SafeStyle, DomSanitizer} from "@angular/platform-browser";
+import {ModuleHeaderData} from "../../module-header/module-header.component";
 
 
 declare var jQuery:any;
@@ -15,7 +15,6 @@ export interface MediaImageItem {
 @Component({
     selector: 'images-media-carousel',
     templateUrl: './app/fe-core/components/carousels/images-media-carousel/images-media-carousel.component.html',
-
 })
 
 export class ImagesMedia implements OnInit {
@@ -34,7 +33,7 @@ export class ImagesMedia implements OnInit {
     // smallImage: MediaImageItem;
 
     smallObjCounter:number = 0;
-   /*backgroundImage:SafeStyle;*/
+    backgroundImage:SafeStyle;
     totalImageCount:number = 0;
     imageCounter:number = 0;
     imagesTitle:string = "Image";
@@ -45,9 +44,10 @@ export class ImagesMedia implements OnInit {
     description:string;
     profHeader:any;
     arraySize:number = 5;
-    /*modHeadData:ModuleHeaderData;*/
+    modHeadData:ModuleHeaderData;
 
-    constructor(/*private _sanitizer:DomSanitizationService*/) {
+
+    constructor(private _sanitizer:DomSanitizer) {
     }
 
     modalExpand() {
@@ -87,7 +87,7 @@ export class ImagesMedia implements OnInit {
         this.displayCounter = this.imageCounter + 1;
         // this.smallImage = this.mediaImages;
         if (this.mediaImages && this.smallObjCounter < this.mediaImages.length) {
-            /*this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + this.mediaImages[this.smallObjCounter].image + ")");*/
+            this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + this.mediaImages[this.smallObjCounter].image + ")");
             this.imageCredit = this.mediaImages[this.smallObjCounter].copyData;
             this.description = this.mediaImages[this.smallObjCounter].title;
         }
@@ -110,7 +110,7 @@ export class ImagesMedia implements OnInit {
                 newImageArray.push({
                     id: index,
                     image: images[index],
-                    /*backgroundImage: this._sanitizer.bypassSecurityTrustStyle("url(" + images[index] + ")"),*/
+                    backgroundImage: this._sanitizer.bypassSecurityTrustStyle("url(" + images[index] + ")"),
                     copyData: copyright[index],
                     title: imageTitle[index]
                 });
@@ -136,7 +136,7 @@ export class ImagesMedia implements OnInit {
             this.mediaImages = this.modifyMedia(this.imageData, this.copyright, this.imageTitle);
             this.changeMain(0);
             this.totalImageCount = this.imageData.length;
-          /*  if (this.isProfilePage) {
+            if (this.isProfilePage) {
                 if (!this.isSmall) {
                     this.modHeadData = {
                         moduleTitle: "Images &amp; Media - " + this.profHeader.profileName,
@@ -150,7 +150,7 @@ export class ImagesMedia implements OnInit {
                         iconClass: '',
                     };
                 }
-            }*/
+            }
         }
     }
 
@@ -161,7 +161,7 @@ export class ImagesMedia implements OnInit {
     onResize(event) {
         if (this.isProfilePage) {
             this.isSmall = event.target.innerWidth <= 639;
-           /* if (!this.isSmall) {
+            if (!this.isSmall) {
                 this.modHeadData = {
                     moduleTitle: "Images &amp; Media - " + this.profHeader.profileName,
                     hasIcon: false,
@@ -173,7 +173,7 @@ export class ImagesMedia implements OnInit {
                     hasIcon: false,
                     iconClass: '',
                 };
-            }*/
+            }
         }
     }
 }
