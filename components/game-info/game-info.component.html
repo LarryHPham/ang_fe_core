@@ -8,7 +8,7 @@
 <div class="game-title game-cat">
   <div class="game-title-headeCategory1"></div>
   <div class="game-title-headeCategory2">
-    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}  </span>
+    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}</span>
   </div>
 </div>
 
@@ -24,15 +24,16 @@
     </div>
   </div>
   <div class="game-box-values">
-    <span>{{awayInfo.DP1 | statHyphenValue}}</span>
-    <span>{{awayInfo.DP2 | statHyphenValue}}</span>
-    <span>{{awayInfo.DP3 | statHyphenValue}}</span>
+    <span>{{awayInfo.dataPoint1 | statHyphenValue}}</span>
+    <span>{{awayInfo.dataPoint2 | statHyphenValue}}</span>
+    <span>{{awayInfo.dataPoint3 | statHyphenValue}}</span>
   </div>
 </div><!--AWAY END-->
 
 <div class="game-box"> <!--HOME-->
     <div class="game-box-main">
       <div class="game-box-main-image">
+        <!-- <circle-image [data]="awayInfo.awayImageConfig"></circle-image> -->
       </div>
       <div class="game-box-main-details">
         <span *ngIf="homeInfo.homeLink" class="link">{{homeInfo.homeTeamName}}</span>
@@ -41,8 +42,8 @@
       </div>
     </div>
     <div class="game-box-values">
-      <span>{{homeInfo.DP1 | statHyphenValue}}</span>
-      <span>{{homeInfo.DP2 | statHyphenValue}}</span>
-      <span>{{homeInfo.DP3 | statHyphenValue}}</span>
+      <span>{{homeInfo.dataPoint1 | statHyphenValue}}</span>
+      <span>{{homeInfo.dataPoint2 | statHyphenValue}}</span>
+      <span>{{homeInfo.dataPoint3 | statHyphenValue}}</span>
     </div><!--HOME END-->
 </div>
