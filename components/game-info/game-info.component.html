@@ -1,7 +1,12 @@
 <div class="game" *ngIf="gameInfo">
   <div class="game-title">
     <span [class.gameAfter]="gameInfo.gameHappened" [class.gameBefore]="!gameInfo.gameHappened" [innerHTML]="gameInfo.inning"></span>
-    <span class='game-verticalContent'>{{gameInfo.verticalContent}}</span>
+    <span class='game-verticalContent'>
+      {{gameInfo.verticalContent.teamInPossesion}}
+      {{gameInfo.verticalContent.timeLeft}}
+      {{gameInfo.verticalContent.liveYardLine}}
+      {{gameInfo.verticalContent.overTime}}
+    </span>
   </div>
 </div>
 
