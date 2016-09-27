@@ -58,6 +58,7 @@ export class BoxScoresModule implements OnInit {
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{
+        console.log('max height is 650');
         this.maxHeight = 650;
       }
     }
@@ -72,9 +73,15 @@ export class BoxScoresModule implements OnInit {
       if(this.maxHeight != 'auto'){
         this.maxHeight -= boxHeader;
         this.heightStyle = this.maxHeight + "px";
+        console.log('this.maxHeight != auto');
+        console.log('this.maxHeight - ',this.maxHeight);
+        console.log('this.heightStyle - ',this.heightStyle);
       }else{
+        console.log('this.scroll = false');
         this.scroll = false;
         this.heightStyle = 'auto';
+        console.log('this.scroll - ',this.scroll);
+        console.log('this.heightStyle - ',this.heightStyle);
       }
     }
   }
