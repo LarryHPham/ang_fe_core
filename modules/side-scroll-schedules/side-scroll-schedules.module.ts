@@ -10,8 +10,12 @@ declare var jQuery:any;
 export class SideScrollSchedule{
   @Input() sideScrollData: any;
   @Input() scrollLength: any;
+  @Input() topScope:string;
   @Input() scope:string;
+  @Input() scopeList:string;
   @Output() changeScope = new EventEmitter();
+  titleText:string = "";
+  titleIcon:string = "";
 
   public count = new EventEmitter();
   public curCount = 0;
@@ -26,5 +30,26 @@ export class SideScrollSchedule{
 
   scopeChange(selection) {
     this.changeScope.next(selection);
+  }
+  ngOnInit() {
+    switch(this.topScope) {
+    case "weather":
+      this.titleText = "84° | Chicago, IL"
+      this.titleIcon = "http://images.synapsys.us/weather/icons/sharknado_d.svg";
+        break;
+    case "finance":
+      this.titleText = "Market Movers: All Exchanges"
+      this.titleIcon = "fa-briefcase";
+        break;
+    case "football":
+    case "sports":
+    case "basketball":
+    case "baseball":
+      this.titleIcon = "fa-calendar";
+      this.titleText = "Upcoming Games"
+        break;
+    default:
+
+}
   }
 }

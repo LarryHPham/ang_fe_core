@@ -141,7 +141,7 @@
   .schedule_box{
     min-width:200px;
     max-width:200px;
-    height:160px;
+    height:185px;
     &-date{
       height:30px;
       font-size: 12px;
@@ -186,7 +186,7 @@
   }
   .condition-image {
     margin-top: 10px;
-    width:60px;
+    width:70px;
   }
   .condition {
     margin-top: 5px;
@@ -197,5 +197,49 @@
     margin-top: 5px;
     font-size: 28px;
 	  font-weight: 900;
+  }
+}
+.schedule_box.finance{
+  padding: 7px 10px;
+  .company-logo {
+    margin-top: 8px;
+    width:70px;
+    height:70px;
+  }
+  .company-name {
+    font-size: 14px;
+	  font-weight: 900;
+  }
+  .exchange {
+    margin-top: 2px;
+    font-size: 12px;
+	  text-align: center;
+  }
+  .stock-value {
+    margin-top: 5px;
+    .current-value {
+      font-size: 14px;
+  	  font-weight: 900;
+    }
+    .value-change {
+      font-size: 12px;
+      vertical-align: 1px;
+    }
+    .value-change.positive {
+      color: #269800;
+    }
+    .value-change.negative {
+      color: #ff3131;
+    }
+  }
+  .view-profile {
+    margin-top: 15px;
+    padding-top: 6px;
+    border: 1px solid @bulletGrey;
+    font-size: 12px;
+    width: 157px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
