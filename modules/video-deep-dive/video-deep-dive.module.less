@@ -59,8 +59,13 @@
 
 @media @desktop-l{
   .videoStackBatch{
-    .video-stack-thumbnail{
-      width: 91px;
+    .video-stack{
+      &-thumbnail{
+        width: 91px;
+      }
+      &-info{
+        width: ~"calc(100% - 91px)";
+      }
     }
   }
 }//@media @desktop-l Ends
