@@ -9,7 +9,7 @@
     <span class="ss_title-1" *ngFor="let scopeItem of scopeList" [class.ss-title-active]="false" >{{scopeItem}}</span>
   </div>
   <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
-    <template ngFor let-item [ngForOf]="sideScrollData">
+    <template ngFor let-item [ngForOf]="sideScrollData.blocks">
       <schedule-box *ngIf="item" [topScope]="topScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
   </side-scroll>
