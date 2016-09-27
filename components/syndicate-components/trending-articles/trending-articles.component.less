@@ -7,7 +7,7 @@
   margin-top: 30px;
   width: 100%;
   @media @mobile{
-    width:95.5%;
+    //width:93.75%;
   }
   font-family: @globalFont;
   .stButton {
@@ -48,9 +48,7 @@
     }
   }
   @media @mobile {
-    .arpt {
-      display: none;
-    }
+
   }
   .arpt {
     .globalDefaultFont(12px, 400);
@@ -62,13 +60,17 @@
       }
       @media @mobile{
         .globalDefaultFont(12px, 400);
-        display: none;
+         margin:0 0 15px 0;
+
 
       }
       b {
         @media @tablet{
           .globalDefaultFont(16px, 800);
 
+        }
+        @media @mobile{
+          max-width: 235px;
         }
         color: @masterBrandColor;
         .globalDefaultFont(12px, 400);
@@ -80,15 +82,16 @@
         text-overflow: ellipsis;
         vertical-align: top;
       }
-      b:last-of-type {
-        margin-left:20px;
-      }
+
     }
     &-date {
       font-size:12px;
       color: @bulletGrey;
       @media @tablet{
         margin: 0px 0px 20px 0px;
+      }
+      @media @mobile{
+        display:none;
       }
     }
   }
@@ -126,6 +129,7 @@
     margin: 25px 0 25px;
     @media @mobile{
       margin: 25px 0 0 0;
+      .globalDefaultModFont(14px, 800, @masterBrandColor);
     }
     i{
       vertical-align: top;
@@ -133,6 +137,9 @@
   }
   &-read-more:hover {
     .globalDefaultModFont(16px, 800, @black);
+    @media @mobile{
+      .globalDefaultModFont(14px, 800, @black);
+    }
   }
   &-load-more {
     i {
@@ -158,17 +165,15 @@
       display:none;
     }
     .syndicated-trending-article-title {
-      font-size: 18px;
+      .globalDefaultFont(20px, 900);
       width:100%;
-      margin:10px 0 10px;
+      margin:10px 0 5px;
       line-height: 1.2;
-      @media @mobile{
-        width: 95.5%;
-      }
+
     }
     .trending-article-image {
-      height: 56px!important;
-      width: 100px!important;
+      height: 58px!important;
+      width: 104px!important;
       //margin-top:0px !important;
     }
     .syndicated-trending-article-content {
@@ -233,7 +238,7 @@
       font-size: 15px!important;
     }
     span {
-      display:none;
+      //display:none;
     }
     .st_sharethis_large {
       display:inline;
