@@ -1,5 +1,6 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 // import {ScheduleBox} from '../schedule-box/schedule-box.component'
+import {SanitizeScript, SanitizeHtml, SanitizeRUrl, SanitizeStyle} from "../../pipes/safe.pipe";
 
 declare var jQuery:any;
 declare var moment:any;
@@ -7,9 +8,7 @@ declare var moment:any;
 @Component({
     selector: 'larousel',
     templateUrl: './app/fe-core/components/larousel/larousel.html',
-    // directives: [ScheduleBox, ROUTER_DIRECTIVES],
     outputs: ['carouselCount'],
-    // pipes:[SanitizeStyle, SanitizeHtml, SanitizeRUrl]
 })
 
 export class Larousel{
