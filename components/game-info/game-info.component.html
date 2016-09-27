@@ -1,12 +1,33 @@
 <div class="game" *ngIf="gameInfo">
   <div class="game-title">
-    <span [class.gameAfter]="gameInfo.gameHappened" [class.gameBefore]="!gameInfo.gameHappened" [innerHTML]="gameInfo.inning"></span>
-    <span class='game-verticalContent'>
-      {{gameInfo.verticalContent.teamInPossesion}}
+
+    <span
+      *ngIf="!gameInfo.liveStatus"
+      [class.gameAfter]="gameInfo.gameHappened"
+      [class.gameBefore]="!gameInfo.gameHappened"
+      [innerHTML]="gameInfo.segment">
+    </span>
+
+    <div
+      *ngIf="gameInfo.liveStatus"
+      class='game-verticalContent'>
+      <span class="live-stat-1">
+        {{gameInfo.liveStat1}}
+      </span>
+      <span class="live-stat-2">
+        {{gameInfo.liveStat2}}
+      </span>
+      <span class="live-stat-3">
+        {{gameInfo.liveStat3}}
+      </span>
+      <span class="live-stat-4t">
+        {{gameInfo.liveStat4}}
+      </span>
+      <!-- {{gameInfo.verticalContent.teamInPossesion}}
       {{gameInfo.verticalContent.timeLeft}}
       {{gameInfo.verticalContent.liveYardLine}}
-      {{gameInfo.verticalContent.overTime}}
-    </span>
+      {{gameInfo.verticalContent.overTime}} -->
+    </div>
   </div>
 </div>
 
