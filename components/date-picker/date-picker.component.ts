@@ -49,7 +49,36 @@ export class DatePicker implements AfterViewInit {
     this.init();
   }
 
-  //makes weekly api call and sets reactive variables
+  ngAfterViewInit() {
+    this.curDateView = {scope: this.chosenParam.scope, teamId:this.chosenParam.teamId, date:this.chosenParam.date}
+    this.callMonthApi(this.chosenParam)
+    .subscribe( data => {
+      this.generateDayNames();
+      this.generateCalendar(this.date);
+      this.initValue();
+    })
+  }
+
+  private init(): void {
+    this.isOpened = false;
+    this.date = moment().tz('America/New_York');
+    this.today = moment().tz('America/New_York').format('YYYY-MM-DD');
+    this.firstWeekDaySunday = true;
+    this.initMouseEvents();
+  } // private init
+
+  private initMouseEvents(): void {
+    let body = document.getElementsByTagName('body')[0];
+
+    body.addEventListener('click', (e) => {
+      if (!this.isOpened || !e.target) return;
+      if (this.el !== e.target && !this.el.contains(e.target)) {
+        this.closeDatepicker();
+      }
+    }, false);
+  } // initMouseEvents
+
+  //makes mothly api call and sets reactive variables
   callMonthApi(params){
     // this.weeklyApi = null;// resets call to load loading Gif as it waits for data
     return this._boxScores.validateMonth(params.scope, params.date, params.teamId)
@@ -70,6 +99,7 @@ export class DatePicker implements AfterViewInit {
     return dateObj;
   }
 
+  // write the days for calendar
   private generateDayNames(): void {
     this.dayNames = [];
     let date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
@@ -79,6 +109,7 @@ export class DatePicker implements AfterViewInit {
     }
   }
 
+  // build calendar
   private generateCalendar(date): void {
     let lastDayOfMonth = date.endOf('month').date();
     let month = date.month();
@@ -118,16 +149,6 @@ export class DatePicker implements AfterViewInit {
     }
   } // generateCalendar
 
-  ngAfterViewInit() {
-    this.curDateView = {profile: this.chosenParam.profile, teamId:this.chosenParam.teamId, date:this.chosenParam.date}
-    this.callMonthApi(this.chosenParam)
-    .subscribe( data => {
-      this.generateDayNames();
-      this.generateCalendar(this.date);
-      this.initValue();
-    })
-  }
-
   private initValue(): void {
     setTimeout(() => {
       if (!this.initDate) {
@@ -141,11 +162,6 @@ export class DatePicker implements AfterViewInit {
   writeValue(value: string): void {
     if (!value) return;
     this.setValue(value);
-  }
-
-  isSelected(date) {
-    let selectedDate = moment(date.year + '-' + date.month + '-' + date.day, 'YYYY-MM-DD');
-    return selectedDate.toDate().getTime() === this.cannonical;
   }
 
   private setValue(value: any): void {
@@ -163,25 +179,6 @@ export class DatePicker implements AfterViewInit {
     this.onTouched = fn;
   }
 
-  private init(): void {
-    this.isOpened = false;
-    this.date = moment().tz('America/New_York');
-    this.today = moment().tz('America/New_York').format('YYYY-MM-DD');
-    this.firstWeekDaySunday = true;
-    this.initMouseEvents();
-  } // private init
-
-  private initMouseEvents(): void {
-    let body = document.getElementsByTagName('body')[0];
-
-    body.addEventListener('click', (e) => {
-      if (!this.isOpened || !e.target) return;
-      if (this.el !== e.target && !this.el.contains(e.target)) {
-        this.closeDatepicker();
-      }
-    }, false);
-  } // initMouseEvents
-
   public openDatepicker(): void {
     if(this.isOpened == null || this.isOpened == false){
       this.isOpened = true;
@@ -194,11 +191,27 @@ export class DatePicker implements AfterViewInit {
     this.isOpened = false;
   } //closeDatepicker
 
+  // functions to navigate between years on calendar
   public prevYear(): void {
     this.date.subtract(1, 'Y');
     this.generateCalendar(this.date);
   }
+  public nextYear(): void {
+    this.date.add(1, 'Y');
+    this.generateCalendar(this.date);
+  }
 
+  // functions to navigate between months on calendar
+  public nextMonth(): void {
+    this.date.add(1, 'M');
+    this.curDateView.date = this.date.tz('America/New_York').format('YYYY-MM-DD');
+    this.callMonthApi(this.curDateView)
+    .subscribe( data => {
+      this.generateDayNames();
+      this.generateCalendar(this.date);
+    })
+    this.generateCalendar(this.date);
+  }
   public prevMonth(): void {
     this.date.subtract(1, 'M');
     this.curDateView.date = this.date.tz('America/New_York').format('YYYY-MM-DD');
@@ -210,20 +223,21 @@ export class DatePicker implements AfterViewInit {
     this.generateCalendar(this.date);
   }
 
-  public nextYear(): void {
-    this.date.add(1, 'Y');
-    this.generateCalendar(this.date);
+  // selecting date on calendar
+  public selectDate(e, date): void {
+    e.preventDefault();
+    if (this.isSelected(date)) return;
+
+    let selectedDate = moment(date.year + '-' + date.month + '-' + date.day, 'YYYY-MM-DD');
+    this.setValue(selectedDate);
+    // this.closeDatepicker();
+    this.changed.emit(selectedDate.toDate());
+    this.closeDatepicker();
   }
 
-  public nextMonth(): void {
-    this.date.add(1, 'M');
-    this.curDateView.date = this.date.tz('America/New_York').format('YYYY-MM-DD');
-    this.callMonthApi(this.curDateView)
-    .subscribe( data => {
-      this.generateDayNames();
-      this.generateCalendar(this.date);
-    })
-    this.generateCalendar(this.date);
+  isSelected(date) {
+    let selectedDate = moment(date.year + '-' + date.month + '-' + date.day, 'YYYY-MM-DD');
+    return selectedDate.toDate().getTime() === this.cannonical;
   }
 
 

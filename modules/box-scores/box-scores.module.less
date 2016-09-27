@@ -6,12 +6,20 @@
     }
   }
 }
-.box-scores{// BOX-SCORES CONTAINER
+.box-scores {// BOX-SCORES CONTAINER
   width: 100%;
   height:auto;
   overflow: visible;
-  margin: 0 auto 10px;
-  &-leagueNav{
+  margin: 0 auto;
+  padding: 15px 0;
+  &-container {
+    //max-height: 550px;
+    //overflow: scroll;
+    @media @desktop-m {
+      padding-right: 15px;
+    }
+  }
+  &-leagueNav {
     width:100%;
   }
   &-overlay{
@@ -35,7 +43,7 @@
     overflow:hidden;
     &-container{
       @media @mobile {
-        padding: 15px 10px 0;        
+        padding: 15px 10px 0;
       }
       width:100%;
       height:auto;

@@ -1,18 +1,19 @@
-<section *ngIf="totalImageCount > 0"
+<section *ngIf="totalImageCount > 0" [class.module-container]="isProfilePage"
+         [class.images-media-module]="isProfilePage && arraySize > 1"
+         [class.images-media-module-small]="isProfilePage && arraySize == 1"
          (window:resize)="onResize($event)">
-    <!--<module-header *ngIf="isProfilePage" [modHeadData]="modHeadData"></module-header>-->
+    <module-header *ngIf="isProfilePage" [modHeadData]="modHeadData"></module-header>
     <div class="carousel">
         <loading-component *ngIf="!imageData"></loading-component>
-        <div *ngIf="imageData" class="container-fluid">
-
+        <div *ngIf="imageData" class="container">
             <a class='expand-button' (click)="modalExpand()">
                 <i class='fa {{expandIcon}}'></i>
             </a>
-            <span [style.background-image]="backgroundImage"
-                  class="img-fluid">
+            <div [style.background-image]="backgroundImage"
+                  class="container-img">
                 <circle-button *ngIf="arraySize > 1" class="container-img-navigation" (scrollLeft)="left()"
                                (scrollRight)="right()"></circle-button>
-            </span>
+            </div>
             <div class="grey-bar">
                 <span class='grey-bar-counter'>
                     <i class='fa fa-file-image-o'></i>
