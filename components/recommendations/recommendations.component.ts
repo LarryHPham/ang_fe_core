@@ -19,6 +19,9 @@ export class RecommendationsComponent{
         return moment(date).format("MMMM DD, YYYY | h:mm A")
 
     }
+    ngOnInit(){
+
+}
 
 
 }
