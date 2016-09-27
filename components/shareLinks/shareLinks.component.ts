@@ -1,15 +1,15 @@
 import {Component, OnInit, Input} from '@angular/core';
-//declare var stButtons:any;
+declare var stButtons:any;
 
 @Component({
     selector: 'shareLinks-component',
-    templateUrl: './app/fe-core/components/syndicate-components/shareLinks/shareLinks.component.html',
+    templateUrl: './app/fe-core/components/shareLinks/shareLinks.component.html',
 
 })
 
 export class ShareLinksComponent implements OnInit {
     @Input() shareUrl:string;
-    @Input() isMain:boolean;
+    //@Input() isMain:boolean;
     shareLinks:Array<any>;
 
     getLinks() {
@@ -21,6 +21,7 @@ export class ShareLinksComponent implements OnInit {
             {
                 link: "https://www.facebook.com/sharer/sharer.php?u=" + this.shareUrl,
                 fontAwesome: "facebook"
+
             },
             {
                 link: "https://twitter.com/home?status=" + this.shareUrl,
@@ -38,8 +39,8 @@ export class ShareLinksComponent implements OnInit {
     }
 
     ngOnInit() {
-        //stButtons.locateElements();
-        console.log(this.isMain);
+        stButtons.locateElements();
+
     }
 
     ngOnChanges() {

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
 import {GlobalSettings} from "../../../global/global-settings";
+import {HeaderLinksService} from '../../../services/header-links.service';
+
 
 declare var stButtons: any;
 declare var jQuery:any;
@@ -7,20 +9,21 @@ declare var jQuery:any;
 @Component({
     selector: 'header-component',
     templateUrl: './app/fe-core/components/header/header.component.html',
+    providers: [HeaderLinksService]
 })
 export class HeaderComponent implements OnInit,OnChanges {
   @Input('partner') partnerID:string;
   @Output() tabSelected = new EventEmitter();
-  public scope: string = "nfl";
   public logoUrl:string;
   public partnerLogoUrl: string;
   private _stickyHeader: string;
-  // public searchInput: SearchInput = {
-  //      placeholderText: "Search for a topic...",
-  //      hasSuggestions: true
-  // };
+  public searchInput: any = {
+       placeholderText: "Search for a topic...",
+       hasSuggestions: true
+  };
   public hamburgerMenuData: Array<any>;
   public hamburgerMenuInfo: Array<any>;
+  public headerLinks: Array<any> = HeaderLinksService.createMenu();
   public titleHeader: string;
   public isOpened: boolean = false;
   public isSearchOpened: boolean = false;

@@ -1,61 +1,65 @@
+/**
+ * Created by navyaeetaram on 9/26/16.
+ */
 import {Pipe, PipeTransform} from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from "@angular/platform-browser";
+
 
 //sanitize html and innerHtml
 @Pipe({
-  name: 'safeHtml'
+    name: 'safeHtml'
 })
 export class SanitizeHtml implements PipeTransform {
-  constructor(private sanitizer:DomSanitizer){}
-  transform(html) {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
-  }
+    constructor(private sanitizer:DomSanitizer){}
+    transform(html) {
+        return this.sanitizer.bypassSecurityTrustHtml(html);
+    }
 }
 
 
 //sanitize scripts
 @Pipe({
-  name: 'safeScript'
+    name: 'safeScript'
 })
 export class SanitizeScript implements PipeTransform {
-  constructor(private sanitizer:DomSanitizer){}
-  transform(script) {
-    return this.sanitizer.bypassSecurityTrustScript(script);
-  }
+    constructor(private sanitizer:DomSanitizer){}
+    transform(script) {
+        return this.sanitizer.bypassSecurityTrustScript(script);
+    }
 }
 
 
 //sanitize styles
 @Pipe({
-  name: 'safeStyle'
+    name: 'safeStyle'
 })
 export class SanitizeStyle implements PipeTransform {
-  constructor(private sanitizer:DomSanitizer){}
-  transform(style) {
-    return this.sanitizer.bypassSecurityTrustStyle(style);
-  }
+    constructor(private sanitizer:DomSanitizer){}
+    transform(style) {
+        return this.sanitizer.bypassSecurityTrustStyle(style);
+    }
 }
 
 
 //sanitize url src
 @Pipe({
-  name: 'safeUrl'
+    name: 'safeUrl'
 })
 export class SanitizeUrl implements PipeTransform {
-  constructor(private sanitizer:DomSanitizer){}
-  transform(url) {
-    return this.sanitizer.bypassSecurityTrustUrl(url);
-  }
+    constructor(private sanitizer:DomSanitizer){}
+    transform(url) {
+        return this.sanitizer.bypassSecurityTrustUrl(url);
+    }
 }
 
 
 //sanitize url that returns videos
 @Pipe({
-  name: 'safeRUrl'
+    name: 'safeRUrl'
 })
 export class SanitizeRUrl implements PipeTransform {
-  constructor(private sanitizer:DomSanitizer){}
-  transform(rurl) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(rurl);
-  }
+    constructor(private sanitizer:DomSanitizer){}
+    transform(rurl) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(rurl);
+    }
 }

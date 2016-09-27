@@ -1,0 +1,54 @@
+<div class="game" *ngIf="gameInfo">
+  <div class="game-title">
+    <span [class.gameAfter]="gameInfo.gameHappened" [class.gameBefore]="!gameInfo.gameHappened" [innerHTML]="gameInfo.inning"></span>
+    <span class='game-verticalContent'>
+      {{gameInfo.verticalContent.teamInPossesion}}
+      {{gameInfo.verticalContent.timeLeft}}
+      {{gameInfo.verticalContent.liveYardLine}}
+      {{gameInfo.verticalContent.overTime}}
+    </span>
+  </div>
+</div>
+
+<div class="game-title game-cat">
+  <div class="game-title-headeCategory1"></div>
+  <div class="game-title-headeCategory2">
+    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}</span>
+  </div>
+</div>
+
+<div class="game-box"><!--AWAY-->
+  <div class="game-box-main">
+    <div class="game-box-main-image">
+      <!-- <circle-image [data]="awayInfo.awayImageConfig"></circle-image> -->
+    </div>
+    <div class="game-box-main-details">
+      <span *ngIf="awayInfo.awayLink" class="link">{{awayInfo.awayTeamName}}</span>
+      <span *ngIf="!awayInfo.awayLink">{{awayInfo.awayTeamName}}</span>
+      <span>Away {{awayInfo.awayRecord}}</span>
+    </div>
+  </div>
+  <div class="game-box-values">
+    <span>{{awayInfo.dataPoint1 | statHyphenValue}}</span>
+    <span>{{awayInfo.dataPoint2 | statHyphenValue}}</span>
+    <span>{{awayInfo.dataPoint3 | statHyphenValue}}</span>
+  </div>
+</div><!--AWAY END-->
+
+<div class="game-box"> <!--HOME-->
+    <div class="game-box-main">
+      <div class="game-box-main-image">
+        <!-- <circle-image [data]="awayInfo.awayImageConfig"></circle-image> -->
+      </div>
+      <div class="game-box-main-details">
+        <span *ngIf="homeInfo.homeLink" class="link">{{homeInfo.homeTeamName}}</span>
+        <span *ngIf="!homeInfo.homeLink">{{homeInfo.homeTeamName}}</span>
+        <span>Home {{homeInfo.homeRecord}}</span>
+      </div>
+    </div>
+    <div class="game-box-values">
+      <span>{{homeInfo.dataPoint1 | statHyphenValue}}</span>
+      <span>{{homeInfo.dataPoint2 | statHyphenValue}}</span>
+      <span>{{homeInfo.dataPoint3 | statHyphenValue}}</span>
+    </div><!--HOME END-->
+</div>

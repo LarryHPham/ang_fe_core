@@ -1,9 +1,9 @@
 <header class="header container-fluid fixedHeader" id="pageHeader" (window:scroll)="onScrollStick($event)" [style.top]="_stickyHeader">
   <div *ngIf="!partnerID" class="header-logo">
-    <a [routerLink]="['Home-page']"><img src={{logoUrl}}/></a>
+    <a routerLink="/deep-dive"><img src={{logoUrl}}/></a>
   </div>
   <div *ngIf="partnerID" class="header-logo">
-    <a [routerLink]="['Home-page']"><img src={{partnerLogoUrl}}/></a>
+    <a routerLink="/deep-dive"><img src={{partnerLogoUrl}}/></a>
   </div>
   <section class="header-top" [class.header-partner]="partnerID">
     <div class="header-left">
@@ -17,21 +17,42 @@
       <!-- <div class="header-hamburger" tabindex="999"> -->
       <!-- menucheck class is for the document click funtion to determine to close it when in view -->
       <div class="header-hamburger menucheck" (click)="getMenu($event)">
-        <i class="fa fa-bars menucheck"></i>
+        <i class="fa fa-bars menucheck" *ngIf="!isOpened"></i>
+        <span class="remove menucheck" *ngIf="isOpened">&times;</span>
         <span class="header-hamburger-title menucheck">MENU</span>
         <div class="parallelogram menucheck" [class.menuOpened]="isOpened"></div>
         <div *ngIf="isOpened" class="header-hamburger-dropDown">
-          <!-- <hamburger-menu-component [partnerID]="partnerID" *ngIf="scope" [scope]="scope"></hamburger-menu-component> -->
+          <hamburger-menu-component ></hamburger-menu-component>
         </div>
       </div>
+
+      <div class="main-links" *ngIf="headerLinks">
+        <div *ngFor="let menuData of headerLinks">
+          <a routerLink="{{menuData.url}}">
+            {{menuData.menuTitle}}
+          </a>
+        </div>
+      </div>
+
     </div>
     <div class="header-right">
+      <div class="breaking-parallelogram">
+        <div class="breaking-title">BREAKING</div>
+        <div class="breaking-scroller">
+          <div class="breaking-fader"></div>
+          <div class="breaking-text">
+            <!-- placeholder text please remove -->
+            Kirk Cousins is the best QB in the NFL&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Glider Will Attempt Record-Breaking Flight to Edge of Space
+          </div>
+        </div>
+      </div>
       <div class="header-search searchcheck" [class.active]="isSearchOpened">
         <div class="header-search-searchBtn searchcheck" [class.active]="isSearchOpened" (keydown)="searchKeydown($event)" (click)="openSearch($event)">
           <i class="fa fa-search searchcheck"></i>
+          <div class="parallelogram searchcheck" [class.searchOpened]="isSearchOpened"></div>
         </div>
         <div class="header-search-searchBox searchcheck">
-          <!-- <search [searchInput]="searchInput"></search> -->
+          <search [searchInput]="searchInput"></search>
         </div>
       </div>
     </div>

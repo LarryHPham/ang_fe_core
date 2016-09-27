@@ -1,8 +1,129 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, Output, Input, EventEmitter, ElementRef, OnInit } from '@angular/core';
+import {ScrollerFunctions} from '../../../global/scroller-functions';
 
 @Component({
   selector: 'box-scores',
-  templateUrl: './app/fe-core/modules/box-scores/box-scores.module.html'
+  templateUrl: './app/fe-core/modules/box-scores/box-scores.module.html',
+  outputs: ['dateEmit']
 })
 
-export class BoxScoresModule {}
+export class BoxScoresModule implements OnInit {
+  @Input() boxScores:any;
+  @Input() calendarParams:any;
+  @Input() scroll:boolean;
+  @Input() maxHeight:any;
+
+  // private moduleHeight: string;
+  public dateEmit = new EventEmitter();
+  public liveArray = new EventEmitter();
+  public heightStyle: string;
+  private gameNum:number = 0;
+  public currentPage:number = 1;
+  public windowWidth: number = 10;
+  public rightDisabled = "";
+  public leftDisabled = "disabled";
+
+  constructor(
+    private _elementRef:ElementRef,
+    private _scroller:ScrollerFunctions
+  ){}
+
+  ngOnInit(){
+    this.windowWidth = window.innerWidth;
+    if(this.scroll){
+      if(this.boxScores != null){
+        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+          this.rightDisabled = "disabled";
+        }
+        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
+        this.maxHeight = gameinfoHeight;
+      }else{
+        this.maxHeight = 650;
+      }
+    }
+    this.checkHeight();
+  }
+
+  ngOnChanges(){
+    if(this.boxScores != null){
+      if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+        this.rightDisabled = "disabled";
+      }
+    }
+    if(this.scroll){
+      if(this.boxScores != null){
+        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+          this.rightDisabled = "disabled";
+        }
+        let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
+        this.maxHeight = gameinfoHeight;
+      }else{
+        console.log('max height is 650');
+        this.maxHeight = 650;
+      }
+    }
+    this.checkHeight();
+  }
+
+  checkHeight(){
+    ScrollerFunctions.initializeScroller(this._elementRef.nativeElement, document);
+    if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
+      var boxHeader = document.getElementById('box-header').offsetHeight;
+      //only for mlb page but subtract the mod title and calendar height from what was sent in
+      if(this.maxHeight != 'auto'){
+        this.maxHeight -= boxHeader;
+        this.heightStyle = this.maxHeight + "px";
+        console.log('this.maxHeight != auto');
+        console.log('this.maxHeight - ',this.maxHeight);
+        console.log('this.heightStyle - ',this.heightStyle);
+      }else{
+        console.log('this.scroll = false');
+        this.scroll = false;
+        this.heightStyle = 'auto';
+        console.log('this.scroll - ',this.scroll);
+        console.log('this.heightStyle - ',this.heightStyle);
+      }
+    }
+  }
+
+  private onWindowLoadOrResize(event) {
+    this.windowWidth = event.target.innerWidth;
+  }
+
+  dateTransfer(event){
+    this.dateEmit.next(event);
+    this.currentPage = 1;
+    this.leftDisabled = "disabled";
+    this.rightDisabled = "";
+  }
+
+  changeGame(num){
+    this.gameNum = num;
+  }
+
+  // Functions to scan through games on the same day for mobile
+  advancePage(){
+    if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+      this.currentPage = this.currentPage + 1;
+      this.leftDisabled = "";
+      if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+        this.rightDisabled = "";
+      }
+      else {
+        this.rightDisabled = "disabled";
+      }
+    }
+  }
+  retreatPage(){
+    if (this.currentPage != 1) {
+      this.currentPage = this.currentPage - 1;
+      this.rightDisabled = "";
+      if (this.currentPage != 1) {
+        this.leftDisabled = "";
+      }
+      else {
+        this.leftDisabled = "disabled";
+      }
+    }
+  }
+}
