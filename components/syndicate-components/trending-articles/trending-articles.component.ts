@@ -48,9 +48,11 @@ export class SyndicatedTrendingComponent {
         this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
 
 
+
     }
     ngDoCheck(){
         //this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
+
     }
     private onScroll(event) {
         if (jQuery(document).height() - window.innerHeight - jQuery("footer").height() <= jQuery(window).scrollTop() && this.trendingLength <= 20) {
