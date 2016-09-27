@@ -20,12 +20,22 @@
 }
 
 .carousel {
+
   width: 100%;
   position: relative;
+  .img-fluid{
+    @media @mobile{
+
+    }
+  }
+
 }
 
 .container {
-  height: 380px;
+  @media @mobile{
+    margin: 10px 0px;
+    padding: 0px;
+  }
   width: 100%;
   position: relative;
   &-img {
