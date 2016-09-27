@@ -23,6 +23,8 @@ export interface scheduleBoxInput{
 
 export class ScheduleBox{
   @Input() boxData: Array<scheduleBoxInput>;
+  @Input() scope: string;
+  @Input() topScope: string;
     constructor() {
     }
 
