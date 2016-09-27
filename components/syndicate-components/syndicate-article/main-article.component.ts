@@ -13,7 +13,7 @@ export class MainArticle implements OnInit{
     @Input() teaser:string;
     @Input() imageData;
     ngOnInit(){
-      console.log(this.imageData);
+    
     }
     constructor(private activatedRoute: ActivatedRoute){
     }
