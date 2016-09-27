@@ -34,35 +34,26 @@
         width: 70px;
         padding: 20px 22px;
         .fa-play {
-          &:before {
-            font-size: 30px;
-          }
+          &:before {font-size: 30px;}
         }
         .globalDefaultModFont(20px, 400, @white);
       }
     }
   }
-
-  &-info {
-    .video-title {
-      &-top {
-        display: block;
-        line-height: 1.2em;
-        text-transform: uppercase;
-        .globalDefaultFont(10px, 800);
-        &-key {
-          margin-right: 5px;
-        }
-        &-date {
-          color: @strokeGrey;
-        }
-      }
-      .video-title-mid {
-        display: block;
-        font-size: 14px;
-        line-height: 1.2em;
-        word-wrap: break-word;
-      }
+  .video-title {
+    &-top {
+      display: block;
+      line-height: 1.5em;
+      text-transform: uppercase;
+      .globalDefaultFont(10px, 800);
+      &-key {margin-right: 5px;}
+      &-date {color: @strokeGrey;}
     }
+  }
+  .video-title-mid {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2em;
+    word-wrap: break-word;
   }
 }

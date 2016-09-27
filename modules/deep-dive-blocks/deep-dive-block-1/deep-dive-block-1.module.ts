@@ -6,11 +6,11 @@ declare var moment;
 
 @Component({
   selector: 'deep-dive-block-1',
-  templateUrl: './app/fe-core/components/video-stack/video-stack.component.html',
+  templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-1/deep-dive-block-1.module.html',
 })
 
 export class DeepDiveBlock1 implements OnInit {
-  videoDataTop: Array<VideoStackData>;
+  videoDataTop:  Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   constructor(private _deepDiveData: DeepDiveService){}
 
@@ -19,9 +19,8 @@ export class DeepDiveBlock1 implements OnInit {
         data => {
           let videoOne = [data.data[0]];
           let videoBatch = data.data.splice(1,5);
-          this.videoDataTop = videoOne;
-          this.videoDataBatch = videoBatch;
-          // console.log(this.videoDataTop, this.videoDataBatch);
+          this.videoDataTop = this._deepDiveData.transformDeepDiveVideoBatchData(videoOne);
+          this.videoDataBatch = this._deepDiveData.transformDeepDiveVideoBatchData(videoBatch);
         },
         err => {
           console.log("Error getting video batch data");
