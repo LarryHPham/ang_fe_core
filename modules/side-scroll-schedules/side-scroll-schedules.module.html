@@ -6,7 +6,7 @@
       <div class="weather-search" *ngIf="topScope == 'weather'">
         <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city...">
       </div>
-    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" [class.ss-title-active]="false" >{{scopeItem}}</span>
+    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem.charAt(0).toUpperCase() + scopeItem.slice(1)}}</span>
   </div>
   <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="sideScrollData.blocks">
