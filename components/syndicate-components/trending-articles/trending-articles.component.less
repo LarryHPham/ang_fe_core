@@ -7,7 +7,7 @@
   margin-top: 30px;
   width: 100%;
   @media @mobile{
-    width:95.5%;
+    //width:93.75%;
   }
   font-family: @globalFont;
   .stButton {
@@ -48,27 +48,28 @@
     }
   }
   @media @mobile {
-    .arpt {
-      display: none;
-    }
+
   }
   .arpt {
     .globalDefaultFont(12px, 400);
     &-author {
-      font-size: 16px;
-      margin:30px 0;
+
       @media @tablet{
-        margin: 21px 0px 19px 0px;
+        margin: 10px 0px 5px 0px;
       }
       @media @mobile{
         .globalDefaultFont(12px, 400);
-        display: none;
+         margin:0 0 15px 0;
+
 
       }
       b {
         @media @tablet{
           .globalDefaultFont(16px, 800);
-
+          max-width: 600px;
+        }
+        @media @mobile{
+          max-width: 235px;
         }
         color: @masterBrandColor;
         .globalDefaultFont(12px, 400);
@@ -80,15 +81,16 @@
         text-overflow: ellipsis;
         vertical-align: top;
       }
-      b:last-of-type {
-        margin-left:20px;
-      }
+
     }
     &-date {
       font-size:12px;
       color: @bulletGrey;
       @media @tablet{
-        margin: 0px 0px 20px 0px;
+        margin: 0px 0px 15px 0px;
+      }
+      @media @mobile{
+        display:none;
       }
     }
   }
@@ -96,10 +98,14 @@
     .globalDefaultFont(32px, 800);
     text-align: left;
     margin-top: 20px;
-    width: ~"calc(100% - 90px)";
+    width: calc(96vw);
     @media @mobile{
       .globalDefaultFont(20px, 800);
       margin-left: -10px;
+    }
+    @media @tablet{
+      .globalDefaultFont(28px, 800);
+      margin-top: 12px;
     }
     &:hover {
       color:@touchDownLoyalBlue;
@@ -108,6 +114,9 @@
   }
 
   &-article-content {
+    @media @tablet{
+      .globalDefaultFont(14px, 400);
+    }
     .globalDefaultFont(16px, 400);
     text-align: left;
     height:100px;
@@ -126,6 +135,7 @@
     margin: 25px 0 25px;
     @media @mobile{
       margin: 25px 0 0 0;
+      .globalDefaultModFont(14px, 800, @masterBrandColor);
     }
     i{
       vertical-align: top;
@@ -133,6 +143,9 @@
   }
   &-read-more:hover {
     .globalDefaultModFont(16px, 800, @black);
+    @media @mobile{
+      .globalDefaultModFont(14px, 800, @black);
+    }
   }
   &-load-more {
     i {
@@ -158,17 +171,15 @@
       display:none;
     }
     .syndicated-trending-article-title {
-      font-size: 18px;
+      .globalDefaultFont(20px, 900);
       width:100%;
-      margin:10px 0 10px;
+      margin:10px 0 5px;
       line-height: 1.2;
-      @media @mobile{
-        width: 95.5%;
-      }
+
     }
     .trending-article-image {
-      height: 56px!important;
-      width: 100px!important;
+      height: 58px!important;
+      width: 104px!important;
       //margin-top:0px !important;
     }
     .syndicated-trending-article-content {
@@ -193,6 +204,9 @@
       i {
         font-size: 28px;
         margin: 25px 25px 2px;
+        @media @tablet{
+          margin: 15px 25px 2px;
+        }
       }
       font-size: 12px;
       text-align: center;
@@ -207,12 +221,16 @@
       @media @tablet{
         display: block !important;
         margin-right:16px;
+        height:90px;
       }
       @media (min-width:1023px ){
         margin-right: 0px !important;
       }
     }
     &-large .vr {
+      @media @tablet{
+        height: 118px;
+      }
       height: 128px;
       width: 10px;
       top: -15px;
@@ -233,7 +251,7 @@
       font-size: 15px!important;
     }
     span {
-      display:none;
+      //display:none;
     }
     .st_sharethis_large {
       display:inline;

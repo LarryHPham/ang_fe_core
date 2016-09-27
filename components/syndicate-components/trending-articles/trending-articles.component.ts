@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {SyndicateArticleService} from "../../../../services/syndicate-article.service";
 
 
 declare var moment;
@@ -23,13 +24,34 @@ export class SyndicatedTrendingComponent {
     @Input() trendingData:any;
 
 
-    constructor(
+    constructor(private _synService:SyndicateArticleService){}
 
-    ){}
+    private getDeepDiveArticle(scope, numItems, state, currentArticleId) {
+        var startNum=Math.floor((Math.random() * 29) + 1);
+
+        this._synService.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
+            data => {
+                this.articleData = this._synService.transformTrending(data.data, currentArticleId);
+                
+                if (this.trendingLength <= 20) {
+
+                    this.trendingLength = this.trendingLength + 10;
+                }
+            }
+
+        )
 
 
+    }
 
     ngOnInit(){
+        this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
+
+
+
+    }
+    ngDoCheck(){
+        //this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
 
     }
     private onScroll(event) {
@@ -40,7 +62,7 @@ export class SyndicatedTrendingComponent {
         }
     }
     formatDate(date) {
-        //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
+
         return moment(date).format("MMMM DD, YYYY | h:mm A")
 
     }

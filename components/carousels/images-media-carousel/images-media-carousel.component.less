@@ -11,6 +11,7 @@
 
   @media @mobile {
     .expand-button {
+
       &:hover {
         color: @white;
         background-color: @textEmphasisGrey;;
@@ -20,12 +21,22 @@
 }
 
 .carousel {
+
   width: 100%;
   position: relative;
+  .img-fluid{
+    @media @mobile{
+
+    }
+  }
+
 }
 
 .container {
-  height: 100%;
+  @media @mobile{
+    margin: 10px 0px;
+    padding: 0px;
+  }
   width: 100%;
   position: relative;
   &-img {
@@ -123,7 +134,7 @@
   padding-top: 8px;
   padding-left: 8px;
   font-size: 16px;
-  color: @white;
+  color: @white !important;
   &:hover {
     color: @black;
     background-color: @white;

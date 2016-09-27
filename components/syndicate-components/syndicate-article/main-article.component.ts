@@ -1,5 +1,6 @@
 
 import {Component, Input, OnInit} from "@angular/core";
+import {ActivatedRoute} from '@angular/router';
 @Component({
     selector:'syndicate-article',
     templateUrl:'./app/fe-core/components/syndicate-components/syndicate-article/main-article.component.html',
@@ -12,6 +13,8 @@ export class MainArticle implements OnInit{
     @Input() teaser:string;
     @Input() imageData;
     ngOnInit(){
-      console.log(this.imageData);
+    
+    }
+    constructor(private activatedRoute: ActivatedRoute){
     }
 }

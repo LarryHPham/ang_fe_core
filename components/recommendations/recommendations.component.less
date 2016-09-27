@@ -12,15 +12,21 @@
 .recommendations {
   width: 610px;
   display: inline-block;
-  overflow: hidden;
+  //overflow: hidden;
   @media @fluid {
-    width: 100%;
-    padding-top: 10px;
+    width: 104%;
+    //padding-top: 10px;
+    margin-left: -10px;
   }
   &-header {
+    width: 100%;
     .flexDisplay;
     .flexAlignItems(center);
     text-align: left;
+    @media @mobile{
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
     &-icon {
       color: #ff3131;
       .globalDefaultFont(22px, 400);
@@ -80,7 +86,7 @@
         margin-bottom: 35px;
         @media @mobile {
           top: auto;
-          margin: 10px 0 14px 0;
+          margin: 10px 10px 14px;
         }
         &-dateline {
           .globalDefaultFont(10px, 800);
@@ -173,6 +179,9 @@
     }
   }
   &-articles {
+    @media @mobile{
+      max-width: 100%;
+    }
     margin-bottom: 15px;
     &:hover {
       color: @masterBrandColor;
@@ -181,6 +190,9 @@
       }
     }
     &-item {
+      @media @mobile{
+        min-width: 320px;
+      }
       &-image {
         //this is the minimum value
         width: 100%;
@@ -373,31 +385,31 @@
   }
 }
 
-@media @desktop-xl {
-  .deep_recs {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .deep-dive-container .deep_recs {
-    &-articles {
-      &-item {
-        width: 348px;
-        &-image {
-          height: 197px;
-          max-height: 197px;
-        }
-      }
-    }
-    &-articles-item {
-      &-content {
-        margin-top: 10px;
-        width: 348px;
-        font-size: 14px;
-      }
-    }
-  }
-}
+// @media @desktop-xl {
+//   .deep_recs {
+//     padding-left: 0;
+//     padding-right: 0;
+//   }
+//
+//   .deep-dive-container .deep_recs {
+//     &-articles {
+//       &-item {
+//         width: 348px;
+//         &-image {
+//           height: 197px;
+//           max-height: 197px;
+//         }
+//       }
+//     }
+//     &-articles-item {
+//       &-content {
+//         margin-top: 10px;
+//         width: 348px;
+//         font-size: 14px;
+//       }
+//     }
+//   }
+// }
 
 @media @mobile {
   .news-headline {
