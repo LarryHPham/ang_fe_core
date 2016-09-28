@@ -11,6 +11,7 @@ export class RecommendationsComponent{
     @Input() randomHeadlines:any;
     @Input() images:any;
     @Input() isDeepDive:boolean = false;
+    @Input() hasKeyword:boolean;
 
   
 
