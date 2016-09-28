@@ -1,6 +1,5 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-// import {ScheduleBox} from '../schedule-box/schedule-box.component'
-import {SanitizeScript, SanitizeHtml, SanitizeRUrl, SanitizeStyle} from "../../pipes/safe.pipe";
+import {ScheduleBox} from '../schedule-box/schedule-box.component'
 
 declare var jQuery:any;
 declare var moment:any;
@@ -51,23 +50,27 @@ export class Larousel{
 
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
-    this.videoData.forEach(function(val, index){
-      ssItems.push({
-        id: startLength + index,
-        data:val,
-        type:'video'
-      })
-    });
+    if(this.videoData != null){
+      this.videoData.forEach(function(val, index){
+        ssItems.push({
+          id: startLength + index,
+          data:val,
+          type:'video'
+        })
+      });
+    }
 
     //push in carousels items next this can probably handle arguments in future
     startLength = ssItems.length;
-    this.carData.forEach(function(val, index){
-      ssItems.push({
-        id:startLength + index,
-        data:val,
-        type:'carousel'
-      })
-    });
+    if(this.carData != null){
+      this.carData.forEach(function(val, index){
+        ssItems.push({
+          id:startLength + index,
+          data:val,
+          type:'carousel'
+        })
+      });
+    }
 
     startLength = ssItems.length; //get total valid items
     for(var c = 1; c <= this.clones; c++){
