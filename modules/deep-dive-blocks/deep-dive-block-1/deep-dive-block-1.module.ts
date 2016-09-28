@@ -12,8 +12,8 @@ declare var moment;
 export class DeepDiveBlock1 implements OnInit {
   videoDataTop:  Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
-  firstStackTop: ArticleStackData;
-  firstStackRow: any
+  firstStackTop: Array<ArticleStackData>;
+  firstStackRow: Array<ArticleStackData>
   scope: string = "nfl";//TODO
   geoLocation: string = "ks";//TODO
   callLimit:number = 8;
@@ -22,17 +22,13 @@ export class DeepDiveBlock1 implements OnInit {
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
         .subscribe(data => {
-          this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
+          let stackTop = [data.data[0]];
+          let stackRow = data.data.splice(1,8);
+          this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
+          this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
         },
         err => {
             console.log("Error getting first article stack data");
-        });
-    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, this.callLimit, this.geoLocation)
-        .subscribe(data => {
-          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');
-        },
-        err => {
-            console.log("Error getting first AI article batch data");
         });
   }
 
