@@ -14,10 +14,10 @@
     <div class="video-stack-info">
       <div class="video-stack-info-title">
         <span class="video-title-top">
-          <span class="video-title-top-key" [innerHTML]="item.keyword"></span>
-          <span class="video-title-top-date" [innerHTML]="item.timeStamp"></span>
+          <span class="video-title-top-key" [innerHTML]="item.keyword | safeHtml"></span>
+          <span class="video-title-top-date" [innerHTML]="item.timeStamp | safeHtml"></span>
         </span>
-        <span class="video-title-mid" [innerHTML]="item.title"></span>
+        <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
       </div>
     </div>
   </a>

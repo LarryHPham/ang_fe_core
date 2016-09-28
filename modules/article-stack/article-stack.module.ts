@@ -1,7 +1,5 @@
-import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImageData} from '../../components/images/image-data';
-import {StackRowsInput} from '../../components/stack-rows/stack-rows.component';
-import {StackTopInput} from '../../components/article-stacktop/article-stacktop.component';
+import { Component,OnInit,Input } from '@angular/core';
+import { ArticleStackData } from "../../interfaces/deep-dive.data";
 
 @Component({
   selector: 'article-stack-module',
@@ -9,8 +7,8 @@ import {StackTopInput} from '../../components/article-stacktop/article-stacktop.
 })
 
 export class ArticleStackModule implements OnInit {
-  @Input() stackTop: StackTopInput;
-  @Input() stackRow: Array<StackRowsInput>;
+  @Input() stackTop: ArticleStackData;
+  @Input() stackRow: Array<ArticleStackData>;
 
   ngOnInit() {}
 }
