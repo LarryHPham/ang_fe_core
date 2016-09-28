@@ -17,9 +17,13 @@
     margin-bottom: 15px;
     padding-bottom: 5px;
   }
+  .stackRow:nth-child(6){
+    border-bottom: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
   //Hide the last 2 item, because we only want 6 items at mobile bp
   .stackRow:nth-last-child(-n+2) {
-    border-bottom: none;
     display: none;
   }
 }
@@ -84,6 +88,13 @@
       }
     }
   }
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
+    margin-bottom: 15px;
+    .stackRow:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
   .stackRows{
     padding: 0;
   }
@@ -94,6 +105,11 @@
       height: auto;
       overflow: visible;
       margin-left: 15px;
+  }
+  .stackRow:last-child{
+    border: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   .stackSmall {
     margin: 20px 0;
