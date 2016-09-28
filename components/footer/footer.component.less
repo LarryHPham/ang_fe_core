@@ -1,20 +1,33 @@
 .footer{
   height: auto;
+  min-width: 320px;
   width: 100%;
   position: absolute;
   z-index: 999;
+  &-logo{
+    @media @tablet{
+      height: 33px;
+    }
+  }
+  &-separator{
+    margin: 0 5px;
+  }
   &-main{
     background-color: @textEmphasisGrey;
-    height: auto;
-    padding: 0 15px 15px;
     border-top: 3px solid @masterBrandColor;
+    height: auto;
     .globalDefaultModFont(10px, 400, @strokeGrey);
     .flexAlignItems(center);
     .flexDisplay;
     .flexDirection(column);
-    @media @desktop-l{
-      padding: 0 ~"calc(50% - 395px)" 15px ~"calc(50% - 395px)";
-      font-size: 12px;
+    @media @mobile{
+      height: 148px;
+      padding: 30px 20px;
+    }
+    @media @tablet{
+      height: 120px;
+      padding: 43px 20px;
+      .flexDirection(column-reverse);
     }
     ul{
       .flexDisplay;
@@ -25,7 +38,7 @@
         line-height: 1em;
         .flexDisplay;
         i{
-          padding: 0 5px;
+          padding: 0 10px;
         }
         span{
           color: @strokeGrey;
@@ -45,28 +58,48 @@
     hr{
       width: 70%;
     }
-    &-cit{
-      .flexDisplay;
-      .flexDirection(column);
-      .flexAlignItems(center);
-      @media @tablet{
-        width: 100%;
-        .flexDirection(row);
-        .flexJustify(space-between);
+  }// footer-main ends
+  &-top{
+    display: block;
+    margin-bottom: 20px;
+    &-right{
+      font-size: 14px;
+      ul{
+        height: 100%;
+        .flexAlignItems(center);
+        .flexJustify(flex-end);
       }
+    }
+    @media @tablet{
+      margin-bottom: 0;
+      width: 100%;
+    }
+    &-left{
       @media @desktop-l{
-        margin-top: 10px;
+        .flexDisplay;
       }
+    }
+  }
+  &-bottom{
+    .globalDefaultFont(12px, 400);
+    ul{
+      margin-bottom: 0;
+      @media @tablet{
+        margin-top: 15px;
+      }
+    }
+    &-cit{
+      text-align: center;
     }
     &-citation{
       margin-bottom: 0;
-      line-height: 1em;
-      .globalDefaultFont(10px, 400);
+      line-height: 2em;
+      font-size: 10px;
       i{
         font-size: 9px;
       }
     }
-  }// footer-main ends
+  }
   &-text1{
     a{
       .globalDefaultFont(12px, 800);
