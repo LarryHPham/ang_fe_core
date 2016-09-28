@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
-import { VideoStackData } from "../../../interfaces/deep-dive.data";
+import { VideoStackData, ArticleStackData } from "../../../interfaces/deep-dive.data";
 
 declare var moment;
 
@@ -12,7 +12,29 @@ declare var moment;
 export class DeepDiveBlock1 implements OnInit {
   videoDataTop:  Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
+  firstStackTop: ArticleStackData;
+  firstStackRow: any
+  scope: string = "nfl";//TODO
+  geoLocation: string = "ks";//TODO
+  callLimit:number = 8;
+
   constructor(private _deepDiveData: DeepDiveService){}
+  getFirstArticleStackData(){
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
+        .subscribe(data => {
+          this.firstStackTop = this._deepDiveData.transformToArticleStack(data);
+        },
+        err => {
+            console.log("Error getting first article stack data");
+        });
+    this._deepDiveData.getDeepDiveAiBatchService(this.scope, 'pregame-report', 1, this.callLimit, this.geoLocation)
+        .subscribe(data => {
+          this.firstStackRow = this._deepDiveData.transformToAiArticleRow(data, 'pregame-report');
+        },
+        err => {
+            console.log("Error getting first AI article batch data");
+        });
+  }
 
   getDeepDiveVideo(){
       this._deepDiveData.getDeepDiveVideoBatchService('fbs', 5, 1).subscribe(
@@ -29,6 +51,7 @@ export class DeepDiveBlock1 implements OnInit {
 
   callModules(){
     this.getDeepDiveVideo();
+    this.getFirstArticleStackData();
   }
 
   ngOnInit() {
