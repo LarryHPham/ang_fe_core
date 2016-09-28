@@ -1,8 +1,8 @@
 <div id="deep-dive-block-1" class="deep-dive-block">
   <div class="deep-dive-module">
-    <!-- <video-stack-component *ngIf="videoData" [state]="geoLocation" [page]="1" [videoData]="videoData"></video-stack-component> -->
-    <video-stack-component [videoData]="videoData"></video-stack-component>
-
-    <deep-dive-video-module [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
+    <article-stack-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-module>
+  </div>
+  <div class="deep-dive-module">
+    <deep-dive-video-module *ngIf="videoDataTop" [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
   </div>
 </div>

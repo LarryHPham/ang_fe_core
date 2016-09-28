@@ -1,13 +1,5 @@
 import {Component,OnInit,Input} from '@angular/core';
-import {RectangleImageData} from "../images/image-data";
-
-export interface StackRowsInput {
-  stackRowsRoute: any;
-  keyword: string;
-  description: string;
-  publishedDate: string;
-  imageConfig: RectangleImageData;
-}
+import { ArticleStackData } from "../../interfaces/deep-dive.data";
 
 @Component({
   selector: 'stack-rows-component',
@@ -15,7 +7,7 @@ export interface StackRowsInput {
 })
 
 export class StackRowsComponent implements OnInit {
-  @Input() stackRow: Array<StackRowsInput>;
+  @Input() stackRowData: Array<ArticleStackData>;
   public width: number;
   public gridStackCol: string;
 

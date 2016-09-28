@@ -12,6 +12,16 @@
 }
 
 @media @mobile{
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+  }
+  .stackRow:nth-child(6){
+    border-bottom: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
   //Hide the last 2 item, because we only want 6 items at mobile bp
   .stackRow:nth-last-child(-n+2) {
     display: none;
@@ -31,8 +41,8 @@
       text-align: left;
       width: auto;
       overflow: hidden;
-      .line-clamp;
-      .line-clamp-3;//limit to 3 lines
+      //.line-clamp;
+      //.line-clamp-3;//limit to 3 lines
       &-keyword {
          text-transform: uppercase;
          margin-bottom: 5px;
@@ -47,7 +57,7 @@
          }
       }
       &-subHeadline {
-         .globalDefaultFont(12px, 400);
+         .globalDefaultFont(14px, 400);
          line-height: 1em;
          p{
            line-height: 1em;
@@ -70,12 +80,19 @@
     }
     &-text {
       width: 180px;
-      height: 4.2em;
+      // height: 4.2em;
       &-keyword {
          > span:last-child{
            height: 50px;
          }
       }
+    }
+  }
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
+    margin-bottom: 15px;
+    .stackRow:nth-last-child(-n+2) {
+      border-bottom: none;
     }
   }
   .stackRows{
@@ -87,9 +104,12 @@
   .stackRows{
       height: auto;
       overflow: visible;
+      margin-left: 15px;
+  }
+  .stackRow:last-child{
+    margin-bottom: 0;
   }
   .stackSmall {
-    margin: 20px 0;
     width: 313px;
     height: auto;
     .col-xs-12;
@@ -100,12 +120,6 @@
       height: auto;
       width: 313px;
       max-width: 313px;
-    }
-    &-breakLine {
-      display: inline-block;
-      width: 315px;
-      height: 1px;
-      background-color: @highlightGrey;
     }
   }//stackSmall ends
 }
