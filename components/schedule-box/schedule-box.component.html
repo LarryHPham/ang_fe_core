@@ -46,9 +46,9 @@
 </div><!--</schedule-box-weather>-->
 
 <div *ngIf="topScope=='finance'" class="schedule_box finance"><!--become a component <schedule-box>-->
-  <img class="company-logo" src="http://images.synapsys.us/weather/icons/sharknado_d.svg">
-  <div class="company-name">Apple inc</div>
-  <div class="exchange">Exchange: tickerid</div>
-  <div class="stock-value"><span class="current-value">$500.00</span> <span class="value-change positive"><i class="fa fa-arrow-up"></i> $5.00 1.00%</span></div>
+  <img class="company-logo" src="{{boxData.logoUrl}}">
+  <div class="company-name">{{boxData.fullCompanyName}}</div>
+  <div class="exchange">{{boxData.exchangeName}}: {{boxData.companySymbol}}</div>
+  <div class="stock-value"><span class="current-value">${{boxData.currentStockValue}}</span> <span class="value-change" [class.positive]="boxData.stockChangeGain == '1'" [class.negative]="boxData.stockChangeGain == '0'"><i class="fa" [class.fa-arrow-up]="boxData.stockChangeGain == '1'" [class.fa-arrow-down]="boxData.stockChangeGain == '0'"></i> ${{boxData.stockChangeAmount}} {{boxData.stockChangePercent}}%</span></div>
   <div class="view-profile">VIEW PROFILE</div>
 </div><!--</schedule-box-finance>-->

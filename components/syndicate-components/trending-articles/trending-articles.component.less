@@ -53,10 +53,9 @@
   .arpt {
     .globalDefaultFont(12px, 400);
     &-author {
-      font-size: 16px;
-      margin:30px 0;
+
       @media @tablet{
-        margin: 21px 0px 19px 0px;
+        margin: 10px 0px 5px 0px;
       }
       @media @mobile{
         .globalDefaultFont(12px, 400);
@@ -67,7 +66,7 @@
       b {
         @media @tablet{
           .globalDefaultFont(16px, 800);
-
+          max-width: 600px;
         }
         @media @mobile{
           max-width: 235px;
@@ -88,7 +87,7 @@
       font-size:12px;
       color: @bulletGrey;
       @media @tablet{
-        margin: 0px 0px 20px 0px;
+        margin: 0px 0px 15px 0px;
       }
       @media @mobile{
         display:none;
@@ -99,10 +98,14 @@
     .globalDefaultFont(32px, 800);
     text-align: left;
     margin-top: 20px;
-    width: ~"calc(100% - 90px)";
+    width: calc(96vw);
     @media @mobile{
       .globalDefaultFont(20px, 800);
       margin-left: -10px;
+    }
+    @media @tablet{
+      .globalDefaultFont(28px, 800);
+      margin-top: 12px;
     }
     &:hover {
       color:@touchDownLoyalBlue;
@@ -111,6 +114,9 @@
   }
 
   &-article-content {
+    @media @tablet{
+      .globalDefaultFont(14px, 400);
+    }
     .globalDefaultFont(16px, 400);
     text-align: left;
     height:100px;
@@ -198,6 +204,9 @@
       i {
         font-size: 28px;
         margin: 25px 25px 2px;
+        @media @tablet{
+          margin: 15px 25px 2px;
+        }
       }
       font-size: 12px;
       text-align: center;
@@ -212,12 +221,16 @@
       @media @tablet{
         display: block !important;
         margin-right:16px;
+        height:90px;
       }
       @media (min-width:1023px ){
         margin-right: 0px !important;
       }
     }
     &-large .vr {
+      @media @tablet{
+        height: 118px;
+      }
       height: 128px;
       width: 10px;
       top: -15px;
