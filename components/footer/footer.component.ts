@@ -14,21 +14,21 @@ export class FooterComponent implements OnInit {
     public _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
     public _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl();
     public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
-    public _lastUpdated: string = GlobalSettings.getEstYear();
+    public _lastUpdated: string = " Copyright 2016, TCX. Inc.";
     public advertise: string = "Advertise with ";
     public au: string = "About Us";
     public service: string = "Terms of Service";
     public privacy: string = "Privacy Policy";
-
+    public logoUrl: string = 'app/public/TCX_Logo_Outlined.svg';
     loadData(partner: string) {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
           this.pageName = GlobalSettings.getBaseTitle();
-          this._lastUpdated += " Copyright " + this._lastUpdated + " " + GlobalSettings.getBaseTitle() + ", Inc.";
+          // this._lastUpdated = " Copyright " + GlobalSettings.getEstYear() + " " + GlobalSettings.getBaseTitle() + ", Inc.";
           this.advertise += this.pageName;
      } else {
           this.pageName = GlobalSettings.getBasePartnerTitle();
-          this._lastUpdated += " " + GlobalSettings.getBasePartnerTitle();
+          // this._lastUpdated += " " + GlobalSettings.getBasePartnerTitle();
       }
     }
 
