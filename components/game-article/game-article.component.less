@@ -49,6 +49,7 @@
 
   &-image {
     width: 100%;
+    background-size: 100%;
     img {
       width: 100%;
     }
@@ -62,7 +63,10 @@
     }
 
     &-caption {
-      padding: 3px 10px 5px 10px;
+      padding: 3px 0px 5px 0px;
+      @media @mobile {
+        padding: 3px 10px 5px 10px;
+      }
       .game-article-keyword {
         padding-right: 5px;
         font-size: 10px;
@@ -82,10 +86,11 @@
   &-headlineBox {
     width: 100%;
     height:auto;
-    padding:0 10px;
+    padding:0;
     text-align: left;
     @media @mobile{
       width:100%;
+      padding:0 10px;
     }
   } //&-headlineBox
   &-headline{
