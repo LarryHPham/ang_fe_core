@@ -1,12 +1,12 @@
 <section class="stackRows row">
   <div class="stackRow col-sm-12 col-md-6 col-lg-12" *ngFor="let stackRow of stackRowData;">
-    <a class="stackSmall" routerLink='/syndicated-article'>
+    <a class="stackSmall" [routerLink]="stackRow.articleUrl">
         <div class="stackSmall-image">
           <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
         </div>
         <div class="stackSmall-text">
-          <div class="stackSmall-text-keyword"><span [innerHTML]="stackRow.keyword"></span><span [innerHTML]="stackRow.publishedDate"></span></div>
-          <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.description"></div>
+          <div class="stackSmall-text-keyword"><span [innerHTML]="stackRow.keyword"></span><span [innerHTML]="stackRow.timeStamp"></span></div>
+          <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.teaser"></div>
         </div>
     </a>
     <!-- <div class="stackSmall-breakLine"></div> -->
