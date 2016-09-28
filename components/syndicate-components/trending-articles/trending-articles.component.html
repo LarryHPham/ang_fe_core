@@ -10,6 +10,7 @@
             <a [routerLink] ="item.newsRoute">
                 <div class="syndicated-trending-article-title">{{item.title}}</div>
             </a>
+            <router-outlet></router-outlet>
             <div class="arpt">
                 <div class="arpt-author">Written By: <b>{{item.author}}, {{item.publisher}}</b></div>
                 <div class="arpt-date">Posted: on {{formatDate(item.publishedDateFormatted)}}</div>

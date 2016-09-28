@@ -10,13 +10,16 @@
   }
 }
 .recommendations {
-  width: 610px;
+  //width: 610px;
   display: inline-block;
   //overflow: hidden;
   @media @fluid {
-    width: 104%;
+    width: 101.5%;
     //padding-top: 10px;
-    margin-left: -10px;
+    //margin-left: -10px;
+  }
+  @media @desktop-m{
+    width:100.8%;
   }
   &-header {
     width: 100%;
@@ -24,7 +27,7 @@
     .flexAlignItems(center);
     text-align: left;
     @media @mobile{
-      margin-left: 20px;
+      //margin-left: 10px;
       margin-bottom: 15px;
     }
     &-icon {
@@ -52,11 +55,14 @@
     margin: 24px 0 0 -9px;
     @media @mobile {
       display: block;
-      margin-top: 15px;
+      margin: 15px 0 0 0;
     }
     &-six {
       color: @black;
       margin: 0 9px;
+      @media @desktop-m{
+        margin: 0 7px;
+      }
       &:hover {
         color: @masterBrandColor;
       }
@@ -111,14 +117,18 @@
 
 .article-recommend {
   float: left;
-  width: 190px;
-  height: 210px;
+  //width: 190px;
+  //height: 210px;
   @media @fluid {
-    width: calc(6vw * 5.1);;
+   //width: calc(6vw * 5.1);;
     height: auto;
   }
   @media @mobile {
-    width: 100%;
+    width: 104%;
+    margin-left: -10px ;
+  }
+  @media @tablet{
+    //width: calc(29.6vw);
   }
 }
 

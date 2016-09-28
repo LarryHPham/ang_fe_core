@@ -1,0 +1,24 @@
+<div class="search-box-module-container" [ngStyle]="{'background-image': 'url(' + searchBoxBackground + ')'}">
+  <h4 class="search-box-module-header">
+    Discover the Latest In {{scope}}
+  </h4>
+  <p class="search-box-module-desc">
+    {{searchBoxDescription}}
+  </p>
+
+  <div class="search-box-container">
+    <div class="search-input-container">
+        <input
+        (keyup)="onKey($event)"
+        (keyup.enter)="navigateSearch()"
+        placeholder="{{searchPlaceHolderText}}"
+        class="search-input main searchcheck" />
+    </div>
+    <a
+      href="{{fullSearchUrl}}"
+      target="_blank"
+      class="search-button searchcheck">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+</div>
