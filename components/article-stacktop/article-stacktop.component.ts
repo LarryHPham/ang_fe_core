@@ -7,5 +7,5 @@ import { ArticleStackData } from "../../interfaces/deep-dive.data";
 })
 
 export class ArticleStacktopComponent{
-  @Input() stackTopData: ArticleStackData;
+  @Input() stackTopData: Array<ArticleStackData>;
 }
