@@ -32,6 +32,7 @@ export class SyndicatedTrendingComponent {
         this._synService.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
             data => {
                 this.articleData = this._synService.transformTrending(data.data, currentArticleId);
+
                 
                 if (this.trendingLength <= 20) {
 
@@ -46,6 +47,7 @@ export class SyndicatedTrendingComponent {
 
     ngOnInit(){
         this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
+
 
 
 
