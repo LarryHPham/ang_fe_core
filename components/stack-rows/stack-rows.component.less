@@ -12,8 +12,14 @@
 }
 
 @media @mobile{
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+  }
   //Hide the last 2 item, because we only want 6 items at mobile bp
   .stackRow:nth-last-child(-n+2) {
+    border-bottom: none;
     display: none;
   }
 }
@@ -70,7 +76,7 @@
     }
     &-text {
       width: 180px;
-      height: 4.2em;
+      // height: 4.2em;
       &-keyword {
          > span:last-child{
            height: 50px;
