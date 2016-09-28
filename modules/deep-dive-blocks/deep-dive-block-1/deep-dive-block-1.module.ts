@@ -22,12 +22,10 @@ export class DeepDiveBlock1 implements OnInit {
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
         .subscribe(data => {
-          console.log(data);
           let stackTop = [data.data[0]];
           let stackRow = data.data.splice(1,8);
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
-          console.log("stackTop", this.firstStackTop, "stackRow", this.firstStackRow);
         },
         err => {
             console.log("Error getting first article stack data");
