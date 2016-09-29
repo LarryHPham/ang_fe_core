@@ -1,5 +1,4 @@
 import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-import {ScheduleBox} from '../schedule-box/schedule-box.component'
 
 declare var jQuery:any;
 declare var moment:any;
@@ -36,6 +35,7 @@ export class Larousel{
   @Input('loop') loop:boolean;
   @Input('fade') fade:boolean;
   @Input('button-class') buttonClass: string;
+  @Output() displayedData = new EventEmitter();//outputs and array of objects for other components to use
   private startIndex:number = 0;
   private endIndex:number = 1;
   private originalData: any;
@@ -164,7 +164,7 @@ export class Larousel{
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
     //console.log(this.displayedItems,"carousel array");
-
+    this.displayedData.emit(this.displayedItems);
   }
   adjustSizeVideo() {
         if (this.currentItem.type == "video") {
@@ -271,7 +271,7 @@ export class Larousel{
     //if pos (position) is between then round to nearest  whole number and move carousel
     this.currentScroll = Math.round(pos) * this.itemSize;
     this.currentItem = this.originalData[(Math.round(pos))];
-    this.carouselCount.next(Math.round(pos));
+    this.carouselCount.emit(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 
     //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
@@ -287,10 +287,6 @@ export class Larousel{
         self.rightText = self.currentScroll+'px';
       }
     },200);
-  }
-
-  formatDate(date) {
-    return moment(date, "YYYY-MM-Do, h:mm:ss").format("MMMM Do, YYYY h:mm:ss a");
   }
 
 }
