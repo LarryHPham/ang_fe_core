@@ -5,9 +5,7 @@
   position: absolute;
   z-index: 999;
   &-logo{
-    @media @tablet{
-      height: 33px;
-    }
+    height: 33px;
   }
   &-separator{
     margin: 0 5px;
@@ -62,19 +60,29 @@
   &-top{
     display: block;
     margin-bottom: 20px;
+    width: 100%;
+    @media @mobile{
+      height: 40%;
+    }
     &-right{
       font-size: 14px;
+      .flexDisplay;
+      .flexJustify(flex-end);
+      .flexAlignItems(center);
       ul{
         height: 100%;
+        margin-bottom: 0;
         .flexAlignItems(center);
         .flexJustify(flex-end);
       }
     }
     @media @tablet{
       margin-bottom: 0;
-      width: 100%;
     }
     &-left{
+      a{
+        display: inline-block;
+      }
       @media @desktop-l{
         .flexDisplay;
       }
