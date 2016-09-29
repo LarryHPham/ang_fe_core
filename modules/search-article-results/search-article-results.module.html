@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="s-module">
+    <div class="s-module_page-num">
+         <div class="s-module_page-num_view"> Now Viewing <b>1 - 10</b> of 100 articles matching UserInput</div>
+         <div class="s-module_page-num_right">
+             <div class="s-module_page-num_right_arrow"></div>
+             <div class="s-module_page-num_right_txt"> page 1 of 10 </div>
+             <div class="s-module_page-num_right_arrow"></div>
+         </div>
+    </div>
+    <search-results-component *ngFor="let item of searchArticlesData; let i = index" [singleArticleData]="item"></search-results-component>
+</div>
