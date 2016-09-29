@@ -1,8 +1,8 @@
 import {Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef} from '@angular/core';
-// import {SearchService} from '../../../services/search.service';
+/* import {SearchService} from '../../../services/search.service';
 import {Observable} from 'rxjs/Rx';
 import {CircleImage} from '../images/circle-image/circle-image';
-import {ImageData} from '../images/image-data';
+import {ImageData} from '../images/image-data';*/
 /*
  * Search Component
  * Lutz Lai - 05/13/2016
