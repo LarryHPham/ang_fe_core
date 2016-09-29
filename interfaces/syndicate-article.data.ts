@@ -1,5 +1,6 @@
 
 export interface SyndicateArticleData{
+    isStockPhoto:boolean,
     articleId: number,
     title: string,
     keyword: string,
