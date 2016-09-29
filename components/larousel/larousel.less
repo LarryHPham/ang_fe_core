@@ -184,79 +184,7 @@
     width:640px;
   }
 }
-// @media @desktop-xl{
-//   .side_scroll-transition{
-//     width:1280px;
-//   }
-//   #lrgvidcarousel-right{
-//     margin: 0 70px 0 30px;
-//   }
-// }
 
-
-
-
-
-
-
-////ITEMS INSIDE LAROUSEL
-.carousel-dive {
-  height: 420px;
-  width: 100%;
-  position: relative;
-  &-right {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: auto;
-    display: table;
-    z-index: 2;
-    color:@white;
-    >i {
-      position: relative;
-      text-align: center;
-      font-size:60px;
-      display: table-cell;
-      vertical-align: middle;
-      cursor:pointer;
-      &:hover {
-        color:@masterBrandColor;
-      }
-    }
-  }
-  &-left {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: auto;
-    display: table;
-    z-index: 2;
-    color:@white;
-    >i {
-      position: relative;
-      text-align: center;
-      font-size:60px;
-      display: table-cell;
-      vertical-align: middle;
-      cursor:pointer;
-      &:hover {
-        color:@masterBrandColor;
-      }
-    }
-  }
-}
-.owl-item {
-  height: 420px;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.owl-carousel {
-  height: 420px;
-}
 .carousel-item {
   width: 80%;
   height: 420px;
@@ -364,9 +292,6 @@
   .carousel_scroll-button {
     font-size: 60px;
   }
-  .carousel-dive {
-    height: 240px;
-  }
   .carousel-item {
     margin-top: 30px;
     // height: 240px;
@@ -452,16 +377,6 @@
           .globalDefaultFont(14px, 800);
         }
       }
-    }
-  }
-  .carousel-dive-left {
-    >i {
-      font-size: 40px;
-    }
-  }
-  .carousel-dive-right {
-    >i {
-      font-size: 40px;
     }
   }
 }
@@ -571,51 +486,3 @@
     }
   }
 }
-
-// @media @desktop-xl {
-//   .video-item {
-//     .carousel-item {
-//       max-width: none;
-//       margin: 0 auto;
-//     }
-//   }
-//   .story-item {
-//     .carousel-item {
-//       max-width: 700px;
-//       margin: 0 auto 0 15%;
-//     }
-//   }
-//   .carousel-item-container-left-video{
-//     margin-left: 70px;
-//   }
-//   #lrgvidcarousel-right {
-//     display: inline-block!important;
-//     top:45px;
-//     width: ~"calc(100% - 860px)";
-//     .carousel-item {
-//       &-container {
-//         &-right {
-//           &-title {
-//             > span {
-//               margin: 0 0 10px 0;
-//               .globalDefaultFont(20px, 400);
-//             }
-//             &-border {
-//               margin: 10px 0 0 0;
-//             }
-//           }
-//           &-content {
-//             span.cardescription {
-//               margin: 0;
-//               .globalDefaultFont(16px, 400);
-//             }
-//             span {
-//               margin-top: 20px;
-//               .globalDefaultFont(12px, 400);
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
