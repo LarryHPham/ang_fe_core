@@ -5,7 +5,10 @@
           <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
         </div>
         <div class="stackSmall-text">
-          <div class="stackSmall-text-keyword"><span [innerHTML]="stackRow.keyword"></span><span [innerHTML]="stackRow.timeStamp"></span></div>
+          <div class="stackSmall-text-keyword">
+            <span [innerHTML]="stackRow.keyword"></span>
+            <span class="font-weight-normal" [innerHTML]="stackRow.timeStamp"></span>
+          </div>
           <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.teaser"></div>
         </div>
     </a>
