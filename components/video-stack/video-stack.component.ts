@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { VideoStackData } from "../../interfaces/deep-dive.data";
 
 declare var moment;
@@ -8,9 +8,6 @@ declare var moment;
   templateUrl: './app/fe-core/components/video-stack/video-stack.component.html',
 })
 
-export class VideoStackComponent implements OnInit{
+export class VideoStackComponent{
   @Input() videoData: Array<VideoStackData>;
-  ngOnInit() {
-    // console.log("component", this.videoData);
-  }
 }

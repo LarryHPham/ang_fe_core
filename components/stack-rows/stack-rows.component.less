@@ -5,9 +5,6 @@
     .stacksmall {
       margin-bottom:0;
     }
-    .stackSmall-breakLine {
-      display:none;
-    }
   }
 }
 
@@ -91,9 +88,12 @@
   .stackRow{
     border-bottom: 1px solid @strokeGrey;
     margin-bottom: 15px;
-    .stackRow:nth-last-child(-n+2) {
-      border-bottom: none;
-    }
+    margin-right: 15px;
+    max-width: 47.5%;
+  }
+  .stackRow:nth-child(even){
+    max-width: 50%;
+    margin-right: 0;
   }
   .stackRows{
     padding: 0;
@@ -101,12 +101,15 @@
 }
 
 @media @desktop-m {
-  .stackRows{
+  .stackRows {
       height: auto;
       overflow: visible;
       margin-left: 15px;
   }
-  .stackRow:last-child{
+  .stackRow{
+    max-width: 100%;
+  }
+  .stackRow:last-child {
     margin-bottom: 0;
   }
   .stackSmall {
