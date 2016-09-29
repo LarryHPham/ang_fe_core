@@ -31,6 +31,10 @@ export class SideScrollSchedule{
   scopeChange(selection) {
     this.changeScope.next(selection);
   }
+  selectCity(event) {
+    //return the zip code for the clicked on city
+    console.log("Zip Code:", event.target.id);
+  }
   ngOnInit() {
     switch(this.topScope) {
     case "weather":
