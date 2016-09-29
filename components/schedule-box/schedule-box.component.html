@@ -10,7 +10,7 @@
       <div class="schedule_box-image">
         <circle-image [data]="boxData.awayImageConfig"></circle-image>
       </div>
-      <a [routerLink]="boxData.awayLink">
+      <a href="{{boxData.awayLink}}">
         <span class="schedule_box-text">
           {{boxData.awayTeamName}}
         </span>
@@ -21,7 +21,7 @@
       <div class="schedule_box-image">
         <circle-image [data]="boxData.homeImageConfig"></circle-image>
       </div>
-      <a [routerLink]="boxData.homeLink">
+      <a href="{{boxData.homeLink}}">
         <span class="schedule_box-text">
           {{boxData.homeTeamName}}
         </span>
