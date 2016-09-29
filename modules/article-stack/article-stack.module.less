@@ -2,24 +2,26 @@
   min-width: 320px;
   margin: 0 auto;
   display: block;
-  &-subs{
-    margin: 15px 0 0;
-  }
   &-main{
     width: 100%;
   }
-}
-
-@media @tablet {
-  .article-stack-container {
-    &-main{
-      // max-width: 750px;
+  @media @mobile {
+    .stacktop-desc{
+      margin-bottom: 15px;
     }
   }
-}//tablet ends
+  @media @tablet{
+    .stacktop-desc{
+      margin-bottom: 15px;
+    }
+  }
+}
 
 @media @desktop-m{
   .article-stack-container {
     .flexDisplay;
+    .stacktop-desc{
+      margin-bottom: 0;
+    }
   }
 }

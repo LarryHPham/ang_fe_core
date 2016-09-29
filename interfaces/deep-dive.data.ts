@@ -1,5 +1,17 @@
 import { RectangleImageData } from '../components/images/image-data';
 
+export interface ArticleStackData{
+    id: string,
+    timeStamp: string,
+    keyword: string,
+    title: string,
+    imageConfig: RectangleImageData,
+    author?: string,
+    articleUrl?: any,
+    publisher?: string,
+    teaser?: string,
+}
+
 export interface VideoStackData{
     id: string,
     timeStamp: number,
@@ -12,14 +24,7 @@ export interface VideoStackData{
     thumbnailWidth?: string
 }
 
-export interface ArticleStackData{
-    id: string,
-    timeStamp: string,
-    keyword: string,
-    title: string,
-    imageConfig: RectangleImageData,
-    author?: string,
-    articleUrl?: any,
-    publisher?: string,
-    teaser?: string,
+export interface SectionNameData{
+  icon: string,
+  sectionName: string
 }
