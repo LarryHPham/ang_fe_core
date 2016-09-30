@@ -26,7 +26,7 @@
     width:100%;
     height:100%;
     overflow: hidden;
-
+    background-color:white;
   }
 
   &-button{
@@ -42,9 +42,17 @@
     outline: none;
     border:none;
     background-color: transparent;
+    outline: none;
     .globalDefaultModFont(60px, 400, @white);
     &:hover{
       color:@masterBrandColor;
+    }
+    @media @mobile{
+      .globalDefaultModFont(20px, 400, @white);
+      height:50px;
+      width:20px;
+      background-color: @masterBrandColor;
+      color: @white;
     }
   }
 
@@ -54,7 +62,7 @@
     .flexWrap(nowrap);
     .flexJustify(space-between);
     width:100%;
-    height:100%;
+    height:auto;
     position: relative;
     text-align: left;
       //target safari only
@@ -66,23 +74,22 @@
         margin-left:210px;
       }
   }
-  &-transition{
-    .flexDisplay;
-    .flexDirection(row);
-    .flexWrap(nowrap);
-    height:100%;
-  }
+
   &-left{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     left:0;
-   & > i {
-     line-height: 105px;// same as height of button
-    }
+  //  & > i {
+  //    line-height: 105px;// same as height of button
+  //   }
   }
   &-right{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     right:0;
-    & > i {
-      line-height: 105px;// same as height of button
-     }
+    // & > i {
+    //   line-height: 105px;// same as height of button
+    //  }
   }
   .disabled{
     cursor: default;
@@ -107,56 +114,5 @@
     top:0;
     left:0;
     z-index:1;
-  }
-}
-
-@media @mobile{
-  .carousel_scroll-box {
-    min-height: 180px;
-    height: 56vw;
-    background-color:white;
-  }
-  .carousel_scroll-container {
-    height: auto;
-  }
-  .carousel_scroll-item {
-    height: auto;
-  }
-  .video-item {
-    background-image: none !important;
-    background-color: white;
-    transition: max-height 0.5s;
-    .carousel-item-container {
-      vertical-align: top;
-    }
-    .carousel-item {
-      padding:0;
-    }
-  }
-  .story-item {
-    background-color:white;
-    transition: max-height 0.5s;
-    .carousel-item {
-      vertical-align: middle;
-      // height:220px;
-    }
-  }
-  .carousel_scroll-left {
-    left: -10px;
-  }
-  .carousel_scroll-right {
-    right: -10px;
-  }
-  .story-item.videoActive {
-    max-height:180px;
-  }
-  .video-item.videoActive {
-    height:auto;
-    max-height: 999px;
-  }
-  .videoActive {
-    .carousel-item {
-      height:auto;
-    }
   }
 }
