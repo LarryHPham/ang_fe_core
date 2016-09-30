@@ -89,7 +89,7 @@
       z-index: 2;
     }
     .fa-bars{
-      margin: 7px;
+      margin: 5px;
       padding-left: 5px;
       z-index: 2;
     }
@@ -267,6 +267,10 @@
         display: inline-block;
         position: absolute;
         right:0;
+        @media @desktop-m {
+          display: flex;
+          position: relative;
+        }
       }
       .header-search-searchBtn{
         .header-search-searchBox{
@@ -365,7 +369,7 @@
       width: 107px;
       height: 35px;
       .fa-bars{
-        margin: 7px;
+        margin: 5px;
       }
     }
     &-share{
