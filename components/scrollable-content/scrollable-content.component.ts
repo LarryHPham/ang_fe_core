@@ -9,6 +9,9 @@ export class ScrollableContent implements AfterViewInit, OnChanges {
   private _elementRef: ElementRef;
   private _afterViewInit: boolean = false;
 
+  //change this input to fire a refresh of the scroller's size
+  @Input() refreshVar: string = "";
+
   constructor(@Inject(ElementRef) elementRef: ElementRef) {
     this._elementRef = elementRef;
   }

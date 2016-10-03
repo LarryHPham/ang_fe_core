@@ -18,6 +18,7 @@ export class HamburgerMenuComponent implements OnInit {
   @Input() scope: string;
   public menuData: any;
   public menuInfo: any;
+  public refreshScroller: string;
   // public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toUpperCase();
   // public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv().toUpperCase();
   // public _collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv().toUpperCase();
@@ -57,6 +58,7 @@ export class HamburgerMenuComponent implements OnInit {
       event.target.parentElement.classList.remove('open');
       event.target.src = "app/public/icon-+.svg"
     }
-
+    //change a data binding on scollable content to trigger the resize function
+    this.refreshScroller += " ";
   }
 }
