@@ -37,7 +37,6 @@ export class HamburgerMenuComponent implements OnInit {
     this.menuInfo = data.menuInfo;
   }//loadData ends
   toggleNest(event) {
-    console.log(event);
     if (event.target.src.includes("app/public/icon-+.svg")) { //if parent is currently closed
       //collapse all other open parents if any
       var parents = document.getElementById("hamburger-list").getElementsByClassName("nester-parent");
