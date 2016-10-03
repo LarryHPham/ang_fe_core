@@ -7,8 +7,9 @@
   </p>
 
   <div class="search-box-container">
-   <!-- <search [searchInput]="searchInput"></search>-->
-    <div class="search-input-container">
+    <search [searchInput]="searchInput"></search>
+    <!--<div class="search-input-container">
+        <dropdown [list]="sportsList" [selectedKey]="MLB" (selectionChanged)="e($event)"></dropdown>
         <input
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
@@ -20,6 +21,6 @@
       target="_blank"
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
-    </a>
+    </a>-->
   </div>
 </div>

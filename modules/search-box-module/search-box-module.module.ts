@@ -8,6 +8,15 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class SearchBoxModule {
   @Input() scope: string;
+  sportsList=[{
+      MLB:"MLB",
+  },
+      {
+          NFL:'NFL',
+      },
+      {
+          NBA:'NBA',
+      }]
   searchBoxDescription: string = 'Find the players and teams you love.';
   searchPlaceHolderText: string = 'Search for a Team or Player...';
   searchBoxBackground: string = '/app/public/header_texture.png';
@@ -26,6 +35,9 @@ export class SearchBoxModule {
 
   navigateSearch(){
     window.location.assign(this.fullSearchUrl);
+  }
+  e(eve){
+      console.log(eve,"this is event");
   }
 
 }
