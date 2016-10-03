@@ -1,16 +1,18 @@
 <section class="stackRows row">
   <div class="stackRow col-sm-12 col-md-6 col-lg-12" *ngFor="let stackRow of stackRowData;">
+    <div class="stackSmall-text">
+      <div class="stackSmall-text-keyword">
+        <span><a [routerLink]="stackRow.articleUrl" [innerHTML]="stackRow.keyword"></a></span>
+        <span class="font-weight-normal" [innerHTML]="stackRow.timeStamp"></span>
+      </div>
+    </div>
     <a class="stackSmall" [routerLink]="stackRow.articleUrl">
-        <div class="stackSmall-image">
-          <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
-        </div>
-        <div class="stackSmall-text">
-          <div class="stackSmall-text-keyword">
-            <span [innerHTML]="stackRow.keyword"></span>
-            <span class="font-weight-normal" [innerHTML]="stackRow.timeStamp"></span>
-          </div>
-          <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.teaser"></div>
-        </div>
+      <div class="stackSmall-image">
+        <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
+      </div>
+      <div class="stackSmall-text">
+        <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.teaser"></div>
+      </div>
     </a>
     <!-- <div class="stackSmall-breakLine"></div> -->
   </div>

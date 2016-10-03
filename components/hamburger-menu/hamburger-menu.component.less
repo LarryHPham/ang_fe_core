@@ -2,6 +2,9 @@
   position: absolute;
   width: 320px;
   z-index: 9999;
+  .scrollable-item-wrapper {
+    max-height: ~"calc(100vh - 80px)";
+  }
 }
 .hamburger {
   .disabled, .router-link-active {
@@ -45,14 +48,15 @@
     }
   }
   .nester-parent {
-    height: 40px;
+    height: 30px;
     overflow: hidden;
     padding: 12px 15px 0px 15px;
     .toggle-nest {
       position: absolute;
       right: 30px;
-      top: 9px;
-      font-size: 20px;
+      top: 14px;
+      width: 13px;
+      height: 13px;
     }
   }
   .nester-parent.open {

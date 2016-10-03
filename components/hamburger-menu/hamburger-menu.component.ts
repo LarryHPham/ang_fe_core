@@ -18,6 +18,7 @@ export class HamburgerMenuComponent implements OnInit {
   @Input() scope: string;
   public menuData: any;
   public menuInfo: any;
+  public refreshScroller: string;
   // public _sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toUpperCase();
   // public _collegeDivisionAbbrv: string = GlobalSettings.getCollegeDivisionAbbrv().toUpperCase();
   // public _collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv().toUpperCase();
@@ -37,14 +38,27 @@ export class HamburgerMenuComponent implements OnInit {
     this.menuInfo = data.menuInfo;
   }//loadData ends
   toggleNest(event) {
-    if (event.target.innerHTML == "+") {
-      event.target.parentElement.classList.add('open');
-      event.target.innerHTML = "&times;"
-    }
-    else {
-      event.target.parentElement.classList.remove('open');
-      event.target.innerHTML = "+"
-    }
+    if (event.target.src.includes("app/public/icon-+.svg")) { //if parent is currently closed
+      //collapse all other open parents if any
+      var parents = document.getElementById("hamburger-list").getElementsByClassName("nester-parent");
+      for (var i = 0; i < parents.length; i++) {
+        parents[i].classList.remove('open');
+        var closeX = parents[i].getElementsByClassName("toggle-nest");
+        for (var u = 0; u < closeX.length; u++) {
+          closeX[u].src = "app/public/icon-+.svg";
+        }
+      }
 
+      //open this parent
+      event.target.parentElement.classList.add('open');
+      event.target.src = "app/public/icon-x.svg"
+    }
+    else { //if parent is currently open
+      //close this parent
+      event.target.parentElement.classList.remove('open');
+      event.target.src = "app/public/icon-+.svg"
+    }
+    //change a data binding on scollable content to trigger the resize function
+    this.refreshScroller += " ";
   }
 }
