@@ -6,15 +6,17 @@
   z-index: 999;
   &-logo{
     height: 33px;
+    max-width: 80px;
   }
   &-separator{
     margin: 0 5px;
   }
+
   &-main{
     background-color: @textEmphasisGrey;
     border-top: 3px solid @masterBrandColor;
     height: auto;
-    .globalDefaultModFont(10px, 400, @strokeGrey);
+    .globalDefaultModFont(10px, 400, @white);
     .flexAlignItems(center);
     .flexDisplay;
     .flexDirection(column);
@@ -26,6 +28,7 @@
       height: 120px;
       padding: 43px 20px;
       .flexDirection(column-reverse);
+      .flexJustify(center);
     }
     ul{
       .flexDisplay;
@@ -41,9 +44,11 @@
         span{
           color: @strokeGrey;
         }
-        &:hover{
-          a{
-            color: @white;
+        @media @desktop-m{
+          &:hover{
+            a{
+              color: @masterBrandColor;
+            }
           }
         }
         &:last-child{
@@ -97,6 +102,7 @@
       }
     }
     &-cit{
+      color: @strokeGrey;
       text-align: center;
     }
     &-citation{
@@ -126,25 +132,13 @@
     }
   }
 }//footer ENDS
-#share-facebook{
-  &:hover, &:active{
-    .fa{
-      color: @white;
-    }
-  }
-}
-#share-twitter{
-  &:hover, &:active{
-    .fa{
-      color: @white;
-    }
-  }
-}
 
-#share-google{
-  &:hover, &:active{
-    .fa{
-      color: @white;
+#share-google, #share-twitter, #share-facebook{
+  @media @desktop-m{
+    &:hover, &:active{
+      .fa{
+        color: @masterBrandColor;
+      }
     }
   }
 }
