@@ -37,13 +37,26 @@ export class HamburgerMenuComponent implements OnInit {
     this.menuInfo = data.menuInfo;
   }//loadData ends
   toggleNest(event) {
-    if (event.target.innerHTML == "+") {
+    console.log(event);
+    if (event.target.src.includes("app/public/icon-+.svg")) { //if parent is currently closed
+      //collapse all other open parents if any
+      var parents = document.getElementById("hamburger-list").getElementsByClassName("nester-parent");
+      for (var i = 0; i < parents.length; i++) {
+        parents[i].classList.remove('open');
+        var closeX = parents[i].getElementsByClassName("toggle-nest");
+        for (var u = 0; u < closeX.length; u++) {
+          closeX[u].src = "app/public/icon-+.svg";
+        }
+      }
+
+      //open this parent
       event.target.parentElement.classList.add('open');
-      event.target.innerHTML = "&times;"
+      event.target.src = "app/public/icon-x.svg"
     }
-    else {
+    else { //if parent is currently open
+      //close this parent
       event.target.parentElement.classList.remove('open');
-      event.target.innerHTML = "+"
+      event.target.src = "app/public/icon-+.svg"
     }
 
   }
