@@ -18,8 +18,9 @@ export interface VideoStackData{
     timeStamp: number,
     keyword: string,
     title: string,
-    teaser?: string,
     videoThumbnail: string,
+    keyUrl?: any,
+    teaser?: string,
     videoUrl?: any,
     thumbnailHeight?: string,
     thumbnailWidth?: string

@@ -1,16 +1,5 @@
 .video-stack {
   position: relative;
-  @media @tablet{
-    &:hover {
-      .video-title-mid {
-        color: @masterBrandColor!important;
-      }
-      .playCircle{
-        color: rgba(30, 185, 227, 0.9)!important;
-        background-color: @white!important;
-      }
-    }
-  }
   &-video {
     background-color: @strokeGrey;
     background-size: cover;
@@ -42,12 +31,13 @@
   }
   .video-title {
     &-top {
+      position: absolute;
       display: block;
       line-height: 1em;
-      margin-top: 5px;
       text-transform: uppercase;
+      z-index: 1;
       .globalDefaultFont(10px, 800);
-      &-key {margin-right: 5px;}
+      &-key {margin-right: 5px; z-index: 1;}
       &-date {color: @strokeGrey; font-weight: 400;}
     }
   }
@@ -57,5 +47,20 @@
     font-size: 14px;
     line-height: 1em;
     word-wrap: break-word;
+  }
+
+  @media @tablet{
+    .video-stack-block:hover {
+      .video-title-mid {
+        color: @masterBrandColor!important;
+      }
+      .playCircle{
+        color: rgba(30, 185, 227, 0.9)!important;
+        background-color: @white!important;
+      }
+    }
+    .video-title-top-key:hover{
+      color: @masterBrandColor;
+    }
   }
 }
