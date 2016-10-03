@@ -18,7 +18,7 @@
               <div class="newsbox-item-container-right-title-border"></div>
               <div class="newsbox-item-container-right-content">
                 <span class="cardescription" [innerHTML]="item.data.description | safeHtml"></span>
-                <span>Published on {{formatDate(item.data.pubDate)}}</span>
+                <span>Published on {{item.data.timeStamp}}</span>
               </div>
             </div>
           </div>

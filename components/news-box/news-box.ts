@@ -55,7 +55,4 @@ export class NewsBox{
     }
   }
 
- formatDate(date) {
-   return moment(date, "YYYY-MM-Do, h:mm:ss").format("MMMM Do, YYYY h:mm:ss a");
- }
 }
