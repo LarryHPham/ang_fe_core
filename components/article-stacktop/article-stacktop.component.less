@@ -4,7 +4,13 @@
     height: auto;
     line-height: 1.2;
     margin-left: 10px;
-    .globalDefaultModFont(16px, 800, @black);
+    &-headline{
+      margin: 5px 0 0 10px;
+      .globalDefaultFont(16px, 800);
+    }
+    &-keyword{
+      .globalDefaultFont(10px, 800);
+    }
     &-date{
       text-transform: uppercase;
       font-size: 10px;
@@ -13,12 +19,9 @@
         color: @bulletGrey;
       }
     }//stacktop-title-date ends
-    &-headline{
-      margin: 5px 0 0;
-    }
   }//stacktop-title ends
   &-titleinfo {
-    .globalDefaultModFont(12px, 800, @strokeGrey);
+    .globalDefaultFont(12px, 800);
     margin: 5px 0 5px 10px;
     &-provider{
       max-width: 200px;
@@ -57,8 +60,14 @@
   .stacktop{
     width: 640px;
     &-title {
-      font-size: 32px;
       margin-left: 0;
+      &-headline{
+        margin-left: 0;
+        font-size: 32px;
+      }
+      &-keyword:hover{
+        color: @masterBrandColor;
+      }
     }//stacktop-title ends
     &-titleinfo {
       margin: 10px 0;
