@@ -59,7 +59,7 @@ export interface SearchInput {
       '(document:click)': 'handleClick($event)'
     },
     templateUrl: './app/fe-core/components/search/search.component.html',
-    providers: [SearchService]
+
 })
 
 export class Search{

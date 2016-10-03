@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'search-box-module',
@@ -7,14 +7,18 @@ import {Router} from '@angular/router';
 })
 
 export class SearchBoxModule {
-  scope: string = 'NFL';
+  @Input() scope: string;
   searchBoxDescription: string = 'Find the players and teams you love.';
   searchPlaceHolderText: string = 'Search for a Team or Player...';
   searchBoxBackground: string = '/app/public/header_texture.png';
   baseSearchUrl: string = 'http://touchdownloyal.com/nfl/search/';
+  public searchInput: any = {
+    placeholderText: "Search for a topic...",
+    hasSuggestions: true
+  };
   fullSearchUrl: string;
 
-  constructor() {}
+  constructor(private activeRoute:ActivatedRoute) {}
 
   onKey(event:any) {
     this.fullSearchUrl = this.baseSearchUrl + event.target.value;
