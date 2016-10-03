@@ -1,8 +1,10 @@
 import {Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef} from '@angular/core';
-/* import {SearchService} from '../../../services/search.service';
+import { Router } from '@angular/router';
+import {SearchService} from '../../../services/search.service';
 import {Observable} from 'rxjs/Rx';
+import {FormControl} from '@angular/forms';
 import {CircleImage} from '../images/circle-image/circle-image';
-import {ImageData} from '../images/image-data';*/
+import {ImageData} from '../images/image-data';
 /*
  * Search Component
  * Lutz Lai - 05/13/2016
@@ -57,14 +59,14 @@ export interface SearchInput {
       '(document:click)': 'handleClick($event)'
     },
     templateUrl: './app/fe-core/components/search/search.component.html',
-    providers: []
+    providers: [SearchService]
 })
 
 export class Search{
     @Input() searchInput: SearchInput;
 
     //NgControl of input
-    public term: any;
+    public term:any = new FormControl();
     //Array of suggestions dropdown
     public dropdownList: Array<SearchComponentResult> = [];
     public elementRef;
@@ -83,7 +85,7 @@ export class Search{
     //Boolean used to determine if input has text and results have been searched for
     public hasInputText: boolean;
 
-    constructor(_elementRef: ElementRef){
+    constructor(_elementRef: ElementRef, private _searchService: SearchService, private _router: Router){
         this.elementRef = _elementRef;
     }
 
@@ -252,34 +254,33 @@ export class Search{
         if(typeof input.initialText !== 'undefined'){
             this.term.updateValue(input.initialText);
         }
-
         //Subscription for function call to service
-        // this.subscription = this.term.valueChanges
-        //     .map(data => {
-        //         //Check every keystroke to determine if autocomplete text should be displayed
-        //         self.compareAutoComplete(data);
-        //         return data;
-        //     })
-        //     //Only continue stream if 400 milliseconds have passed since the last iteration
-        //     .debounceTime(400)
-        //     //If search is not suppressed, continue rxjs stream
-        //     .filter(data => !self.isSuppressed)
-        //     //Only continue stream if the input value has changed from the last iteration
-        //     .distinctUntilChanged()
-            //Cancel any previous iterations if they have not completed their cycle. Also used to empty dropdown list if input is blank
-            // .switchMap((term: string) => term.length > 0 ? self._searchService.getSearchDropdownData(this._router, term) : Observable.of({term: term, searchResults: []}))
-            // .subscribe(data => {
-            //     let term = data.term;
-            //     let searchResults = data.searchResults;
-            //     self.hasInputText = term.length > 0 ? true : false;
-            //     //Reset dropdown item that is selected
-            //     self.resetSelected();
-            //     //Assign data to dropdown
-            //     self.dropdownList = searchResults;
-            //     //Store input value for arrow keys dropdown
-            //     self.storedSearchTerm = term;
-            //     self.compareAutoComplete(term);
-            // });
+        this.subscription = this.term.valueChanges
+            .map(data => {
+                //Check every keystroke to determine if autocomplete text should be displayed
+                self.compareAutoComplete(data);
+                return data;
+            })
+            //Only continue stream if 400 milliseconds have passed since the last iteration
+            .debounceTime(400)
+            //If search is not suppressed, continue rxjs stream
+            .filter(data => !self.isSuppressed)
+            //Only continue stream if the input value has changed from the last iteration
+            .distinctUntilChanged()
+            // Cancel any previous iterations if they have not completed their cycle. Also used to empty dropdown list if input is blank
+            .switchMap((term: string) => term.length > 0 ? self._searchService.getSearchDropdownData(this._router, term) : Observable.of({term: term, searchResults: []}))
+            .subscribe(data => {
+                let term = data.term;
+                let searchResults = data.searchResults;
+                self.hasInputText = term.length > 0 ? true : false;
+                //Reset dropdown item that is selected
+                self.resetSelected();
+                //Assign data to dropdown
+                self.dropdownList = searchResults;
+                //Store input value for arrow keys dropdown
+                self.storedSearchTerm = term;
+                self.compareAutoComplete(term);
+            });
 
     }
 
