@@ -1,5 +1,5 @@
 <div  class="hamburger-component">
-  <scrollable-content>
+  <scrollable-content id="hamburger-scroller" [refreshVar]="refreshScroller">
   <div class="hamburger">
     <ul id="hamburger-list" class="hamburger-topics-list">
       <span  *ngFor="let menuData of menuData">
