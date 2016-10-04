@@ -6,6 +6,7 @@ export interface ArticleStackData{
     keyword: string,
     title: string,
     imageConfig: RectangleImageData,
+    publishedDate?: string,
     keyUrl?: any,
     author?: string,
     articleUrl?: any,
@@ -18,8 +19,9 @@ export interface VideoStackData{
     timeStamp: number,
     keyword: string,
     title: string,
-    teaser?: string,
     videoThumbnail: string,
+    keyUrl?: any,
+    teaser?: string,
     videoUrl?: any,
     thumbnailHeight?: string,
     thumbnailWidth?: string
@@ -27,5 +29,5 @@ export interface VideoStackData{
 
 export interface SectionNameData{
   icon: string,
-  sectionName: string
+  title: string
 }
