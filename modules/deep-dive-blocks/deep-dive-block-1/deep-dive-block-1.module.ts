@@ -20,8 +20,9 @@ export class DeepDiveBlock1 implements OnInit {
     title: "Section Name One"
   };
   recData: Array<ArticleStackData>;//TODO
+  articleStack2Data: Array<ArticleStackData>;//TODO
   geoLocation: string = "ks";//TODO
-  articleCallLimit:number = 16;
+  articleCallLimit:number = 21;
   videoCallLimit:number = 9;
   batchNum: number = 1;
   constructor(private _deepDiveData: DeepDiveService){}
@@ -31,9 +32,11 @@ export class DeepDiveBlock1 implements OnInit {
           let stackTop = [data.data[0]];
           let stackRow = data.data.splice(1,9);
           let recInfo = data.data.splice(1, 7);//TODO
+          let articleStack = data.data.splice(1, 6);//TODO
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
           this.recData = this._deepDiveData.transformToArticleStack(recInfo);//TODO
+          this.articleStack2Data = this._deepDiveData.transformToArticleStack(articleStack);//TODO
         },
         err => {
             console.log("Error getting first article stack data");

@@ -8,4 +8,5 @@ import { ArticleStackData } from "../../interfaces/deep-dive.data";
 
 export class ArticleBlockComponent{
   @Input() articleBlockData: Array<ArticleStackData>;
+  @Input() bootstrapGrid: string;
 }

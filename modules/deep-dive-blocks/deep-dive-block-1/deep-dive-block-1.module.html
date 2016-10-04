@@ -3,7 +3,10 @@
     <section-name-component *ngIf="sectionName" [secName]="sectionName"></section-name-component>
   </div>
   <div class="deep-dive-module">
-    <article-stack-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-module>
+    <article-stack-1-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
+  </div>
+  <div class="deep-dive-module">
+    <article-stack-2-module *ngIf="articleStack2Data" [articleStack2Data]="articleStack2Data"></article-stack-2-module>
   </div>
   <div class="deep-dive-module">
     <deep-dive-video-module *ngIf="videoDataTop" [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
