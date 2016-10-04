@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
-import { VideoStackData, ArticleStackData } from "../../../interfaces/deep-dive.data";
+import { VideoStackData, ArticleStackData, SectionNameData } from "../../../interfaces/deep-dive.data";
 
 declare var moment;
 
@@ -14,19 +14,28 @@ export class DeepDiveBlock1 implements OnInit {
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
-  firstStackRow: Array<ArticleStackData>
+  firstStackRow: Array<ArticleStackData>;
+  sectionName: SectionNameData = {
+    icon: "fa-calendar",
+    title: "Section Name One"
+  };
+  recData: Array<ArticleStackData>;//TODO
   geoLocation: string = "ks";//TODO
-  articleCallLimit:number = 9;
+  articleCallLimit:number = 16;
   videoCallLimit:number = 9;
   batchNum: number = 1;
   constructor(private _deepDiveData: DeepDiveService){}
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
+          console.log("data", data);
           let stackTop = [data.data[0]];
           let stackRow = data.data.splice(1,9);
+          let recInfo = data.data.splice(1, 7);//TODO
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
+          this.recData = this._deepDiveData.transformToArticleStack(recInfo);//TODO
+          console.log("recData",data, recInfo, this.recData);
         },
         err => {
             console.log("Error getting first article stack data");
