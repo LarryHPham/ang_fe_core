@@ -6,6 +6,7 @@ export interface ArticleStackData{
     keyword: string,
     title: string,
     imageConfig: RectangleImageData,
+    publishedDate?: string,
     keyUrl?: any,
     author?: string,
     articleUrl?: any,

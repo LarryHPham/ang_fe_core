@@ -10,17 +10,18 @@ declare var moment;
 })
 
 export class DeepDiveBlock1 implements OnInit {
-  @Input() topScope: string;
+  @Input() scope: string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
   firstStackRow: Array<ArticleStackData>
   geoLocation: string = "ks";//TODO
-  callLimit:number = 9;
-
+  articleCallLimit:number = 9;
+  videoCallLimit:number = 9;
+  batchNum: number = 1;
   constructor(private _deepDiveData: DeepDiveService){}
   getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.topScope, this.callLimit, 1, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
           let stackTop = [data.data[0]];
           let stackRow = data.data.splice(1,9);
@@ -33,7 +34,7 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService(this.topScope, 5, 1).subscribe(
+      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum).subscribe(
         data => {
           let videoOne = [data.data[0]];
           let videoBatch = data.data.splice(1,5);
