@@ -1,5 +1,5 @@
 <section class="row">
-  <div class="video-stack col-sm-6 col-md-4" *ngFor="let item of articleBlockData;">
+  <div class="video-stack {{bootstrapGrid}}" *ngFor="let item of articleBlockData;">
     <div class="video-stack-block">
       <a class="video-stack-thumbnail" [routerLink]='item.articleUrl'>
         <div class="stacktop-image">

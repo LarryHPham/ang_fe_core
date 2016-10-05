@@ -11,8 +11,8 @@ export interface ArticleStackData{
     author?: string,
     articleUrl?: any,
     publisher?: string,
-    teaser?: string,
-}
+    teaser?: string
+  }
 
 export interface VideoStackData{
     id: string,
