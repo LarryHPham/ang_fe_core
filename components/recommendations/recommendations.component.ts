@@ -4,7 +4,6 @@ declare var moment;
 @Component({
     selector: 'recommendations-component',
     templateUrl: './app/fe-core/components/recommendations/recommendations.component.html',
-
 })
 
 export class RecommendationsComponent{
@@ -13,16 +12,10 @@ export class RecommendationsComponent{
     @Input() isDeepDive:boolean = false;
     @Input() hasKeyword:boolean;
 
-  
-
     formatDate(date) {
         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
         return moment(date).format("MMMM DD, YYYY | h:mm A")
-
     }
-    ngOnInit(){
-
-}
-
+    ngOnInit(){}
 
 }

@@ -25,6 +25,7 @@ import {ImageData} from '../images/image-data';
 
 //Interface for single search result item
 export interface SearchComponentResult {
+
     //Html string that is displayed in the dropdown
     title: string;
     //Value to compare against for autocomplete text
@@ -59,11 +60,13 @@ export interface SearchInput {
       '(document:click)': 'handleClick($event)'
     },
     templateUrl: './app/fe-core/components/search/search.component.html',
-    providers: [SearchService]
+
 })
 
 export class Search{
     @Input() searchInput: SearchInput;
+    @Input() isModule:boolean =false;
+    @Input() DDarray:Array<any>;
 
     //NgControl of input
     public term:any = new FormControl();
@@ -282,6 +285,9 @@ export class Search{
                 self.compareAutoComplete(term);
             });
 
+    }
+    e(eve){
+        console.log(eve,"this is event");
     }
 
     ngOnDestroy(){
