@@ -16,7 +16,7 @@ export class DeepDiveBlock1 implements OnInit {
   firstStackTop: Array<ArticleStackData>;
   firstStackRow: Array<ArticleStackData>;
   sectionName: SectionNameData = {
-    icon: "fa-calendar",
+    icon: "fa-calendar-1-times-o",
     title: "Section Name One"
   };
   recData: Array<ArticleStackData>;//TODO
