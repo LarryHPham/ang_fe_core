@@ -7,5 +7,6 @@ import { ArticleStackData } from "../../interfaces/deep-dive.data";
 })
 
 export class ArticleStack2Module {
-  @Input() articleStack2Data: Array<ArticleStackData>;
+  @Input() articleStack2DataTop: Array<ArticleStackData>;
+  @Input() articleStack2DataBatch: Array<ArticleStackData>;
 }
