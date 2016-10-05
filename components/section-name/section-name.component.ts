@@ -7,5 +7,5 @@ import { SectionNameData } from "../../interfaces/deep-dive.data";
 })
 
 export class SectionNameComponent{
-  @Input() sectionName: SectionNameData;
+  @Input() secName: SectionNameData;
 }

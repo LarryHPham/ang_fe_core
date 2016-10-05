@@ -47,10 +47,12 @@
          }
       }
     }
-    &:hover{
-      color: @masterBrandColor;
-      .image-rectangle-hover div{
-        .flexDisplay;
+    @media @tablet{
+      &:hover{
+        color: @masterBrandColor;
+        .image-rectangle-hover div{
+          .flexDisplay;
+        }
       }
     }
 }

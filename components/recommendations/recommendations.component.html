@@ -45,31 +45,3 @@
         </span>
     </div>
 </div>
-
-<div class="deep_recs" *ngIf="isDeepDive">
-    <div class="row">
-        <a class="deep_recs-articles" *ngFor="let item of randomHeadlines; let i = even;" [class.clearfix]="i"
-           [routerLink]="item.urlRouteArray"
-           title="{{item.displayHeadline}}">
-            <div class="deep_recs-articles-item">
-                <div class="deep_recs-articles-item-image" [style.background-image]="'url(' + item.bg_image_var + ')'">
-
-                </div>
-                <div class="deep_recs-articles-item-content">
-                    <div class="deep_recs-articles-item-content-dateline">
-                        <span class="deep_recs-articles-item-content-dateline-keyword"
-                              [innerHTML]="item.keyword | safeHtml"></span>
-                        <span class="deep_recs-articles-item-content-dateline-date"
-                              [innerHTML]="item.new_date | safeHtml"></span>
-                    </div>
-                    <div class="deep_recs-articles-item-content-dateline-below">
-                        <span class="deep_recs-articles-item-content-dateline-below-date"
-                              [innerHTML]="item.new_date"></span>
-                    </div>
-                    <div class="deep_recs-articles-item-content-teaser"
-                         [innerHTML]="item.displayHeadline | safeHtml"></div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
