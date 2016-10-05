@@ -171,11 +171,14 @@
     }
     &-item{
       font-size: 16px;
-      padding: 7px 5px;
+      padding: 13px 20px;
       position: relative;
       .flexDisplay;
       .flexAlignItems(center);
       .flexJustify(flex-start);
+      @media @tablet {
+        padding: 7px 5px;
+      }
       &.active{
         color: @white;
         background-color: @masterBrandColor;
