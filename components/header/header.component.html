@@ -48,7 +48,8 @@
       </div>
       <div class="header-search searchcheck" [class.active]="isSearchOpened">
         <div class="header-search-searchBtn searchcheck" [class.active]="isSearchOpened" (keydown)="searchKeydown($event)" (click)="openSearch($event)">
-          <i class="fa fa-search searchcheck"></i>
+          <i class="fa fa-search searchcheck" *ngIf="!isSearchOpened"></i>
+          <div class="remove searchcheck" *ngIf="isSearchOpened"><img src="app/public/icon-x.svg"></div>
           <div class="parallelogram searchcheck" [class.searchOpened]="isSearchOpened"></div>
         </div>
         <div class="header-search-searchBox searchcheck">

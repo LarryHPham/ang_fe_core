@@ -60,7 +60,6 @@
     }
     &.main{
       z-index: 2;
-      background: transparent;
       hr{
         display: none;
       }
@@ -80,6 +79,9 @@
     bottom: 0px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    .fa {
+      font-size: 15px;
+    }
     @media @mobile{
       font-size: 20px;
     }
@@ -97,40 +99,84 @@
     left: -10px;
     background-color: @white;
     list-style-type: none;
-    border-top: 3px solid darken(@masterBrandColor, 10%);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.35);
+    border: 1px solid @strokeGrey;
     z-index: 5;
-    border-radius: 5px;
-    .fa-angle-right-1 {
+    border-radius: 0px;
+    @media @tablet {
+      width: 100%;
+      left:0;
+      border-radius: 2px;
+    }
+    ul {
+      margin-bottom: 0;
+    }
+    .fa-angle-right {
       font-size: 25px;
       margin: 0 0 0 auto;
     }
     &-caret{
       content: '';
       position: absolute;
-      top: -10px;
+      top: -7px;
       left: 48%;
-      border-bottom: 10px solid @white;
+      border-bottom: 10px solid @backgroundGrey;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
+      display:none;
+      @media @tablet {
+        display: block;
+      }
+    }
+    &-caret:after{
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -10px;
+      z-index: -1;
+      border-bottom: 12px solid @strokeGrey;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+    &-title {
+      width: 100%;
+      font-style: italic;
+	  globalDefaultModFont(10px, 400, @fontIconGrey);
+      height: 21px;
+      rder-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    	background-color: @backgroundGrey;
+      padding-left: 5px;
+      padding-top: 4px;
+      border-bottom: 1px solid @strokeGrey;
+      display:none;
+      @media @tablet {
+        display: block;
+      }
     }
     &-items{
       border-bottom: 1px solid @highlightGrey;
       &:last-child{
         border-bottom: 0;
         .search-dropdown-item{
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+          @media @tablet {
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+          }
         }
       }
     }
     &-item{
       font-size: 16px;
-      padding: 7px 17px;
+      padding: 13px 20px;
       position: relative;
       .flexDisplay;
       .flexAlignItems(center);
       .flexJustify(flex-start);
+      @media @tablet {
+        padding: 7px 5px;
+      }
       &.active{
         color: @white;
         background-color: @masterBrandColor;
@@ -145,7 +191,8 @@
       }
 
       &-title{
-        padding: 0 19px;
+        padding: 0;
+        font-size: 14px;
         font-style: normal;
       }
     }

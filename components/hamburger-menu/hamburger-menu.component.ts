@@ -26,6 +26,9 @@ export class HamburgerMenuComponent implements OnInit {
   constructor(){
     this.isHome = GlobalSettings.getHomeInfo().isHome;
   }
+  onWindowResize(event) {
+    this.refreshScroller += " ";
+  }
   ngOnInit(){
     this.loadData();
     // this.scope = this.scope.toUpperCase();

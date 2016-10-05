@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit,OnChanges {
    }
   ngOnInit(){
     stButtons.locateElements();
-    this._renderer.listenGlobal('document', 'click', (event) => {
+    this._renderer.listenGlobal('document', 'mousedown', (event) => {
       var element = document.elementFromPoint(event.clientX, event.clientY);
       let menuCheck = element.className.indexOf("menucheck");
       let searchCheck = element.className.indexOf("searchcheck");
