@@ -7,7 +7,8 @@
   </p>
 
   <div class="search-box-container">
-    <search [searchInput]="searchInput"></search>
+
+    <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
     <!--<div class="search-input-container">
         <dropdown [list]="sportsList" [selectedKey]="MLB" (selectionChanged)="e($event)"></dropdown>
         <input
