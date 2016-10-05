@@ -7,8 +7,9 @@
         <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city...">
         <i class="fa fa-arrow-right"></i>
         <div class="autocomplete-dropdown">
+          <div class="arrow-up"></div>
+          <div class="autocomplete-dropdown-title">Suggestions</div>
           <div class="dropdown-item" id="67235" (click)="selectCity($event)">
-            <div class="arrow-up"></div>
             Wichita, KS
           </div>
           <div class="dropdown-item">
@@ -25,7 +26,7 @@
           </div>
         </div>
       </div>
-    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem.charAt(0).toUpperCase() + scopeItem.slice(1)}}</span>
+    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem.toUpperCase()}}</span>
   </div>
   <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="sideScrollData.blocks">
