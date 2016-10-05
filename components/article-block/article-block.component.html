@@ -1,4 +1,4 @@
-<section class="row">
+<section class="articleBlock row">
   <div class="video-stack {{bootstrapGrid}}" *ngFor="let item of articleBlockData;">
     <div class="video-stack-block">
       <a class="video-stack-thumbnail" [routerLink]='item.articleUrl'>
@@ -7,14 +7,14 @@
         </div>
       </a>
       <div class="video-title-top">
-        <span class="video-title-top-key"><a [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a></span>
+        <a class="video-title-top-key" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a>
         <span class="video-title-top-date" [innerHTML]="item.timeStamp | safeHtml"></span>
       </div>
-      <div class="video-stack-info">
-        <a class="video-stack-info-title" [routerLink]='item.articleUrl'>
+      <a class="video-stack-info" [routerLink]='item.articleUrl'>
+        <div class="video-stack-info-title">
           <span class="video-title-mid" [innerHTML]="item.teaser | safeHtml"></span>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
