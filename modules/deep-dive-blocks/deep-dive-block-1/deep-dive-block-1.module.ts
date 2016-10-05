@@ -34,7 +34,7 @@ export class DeepDiveBlock1 implements OnInit {
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
           let stackRow = data.data.splice(1,8);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
-          let recInfo = data.data.splice(1, 7);//TODO
+          let recInfo = data.data.splice(1, 6);//TODO
           this.recData = this._deepDiveData.transformToArticleStack(recInfo);//TODO
           let articleStack2Top = [data.data[0]];//TODO
           this.articleStack2DataTop = this._deepDiveData.transformToArticleStack(articleStack2Top);//TODO
