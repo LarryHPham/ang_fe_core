@@ -1,4 +1,4 @@
-<div  class="hamburger-component">
+<div  class="hamburger-component" (window:resize)="onWindowResize($event)">
   <scrollable-content id="hamburger-scroller" [refreshVar]="refreshScroller">
   <div class="hamburger">
     <ul id="hamburger-list" class="hamburger-topics-list">

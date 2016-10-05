@@ -49,6 +49,9 @@
         height: 100%;
         color: @white;
         padding: 10px 12px;
+        a {
+          font-family: lato;
+        }
       }
       div:first-of-type {
         padding-left: 0px;
@@ -56,7 +59,7 @@
     }
   }
   &-hamburger{
-    margin-left:10px;
+    margin-left:20px;
     width: 45px;
     height: 35px;
     cursor: pointer;
@@ -123,7 +126,7 @@
     .breaking-parallelogram {
       display: none;
       margin-right:10px;
-      width: 415px;
+      width: 395px;
       height: 35px;
       border: none;
       background: #444444;
@@ -141,8 +144,10 @@
         transform:    skewX(25deg);
         color: @white;
         font-size: 12px;
+        font-family: lato;
+        font-weight: 800;
         height: 15px;
-        border-bottom: 2px solid @masterBrandColor;
+        border-bottom: 2px solid @joyfulHomeGreen;
       }
       .breaking-scroller {
         display: inline-block;
@@ -150,8 +155,9 @@
         transform:    skewX(25deg);
         color: @white;
         font-size: 12px;
+        font-family: lato;
         width: 264px;
-        margin-left: 105px;
+        margin-left: 90px;
         overflow: hidden;
         height: 15px;
         position: relative;
@@ -186,6 +192,12 @@
     .header-search-searchBtn i {
       z-index: 1;
       margin-left: -30px;
+      font-size: 15px;
+    }
+    .header-search-searchBtn .remove {
+      z-index: 1;
+      margin-right: 30px;
+      margin-bottom: 5px;
     }
     .parallelogram {
       position: absolute;
@@ -203,33 +215,39 @@
       }
     }
     &-searchBox{
-      background-color: #444444;
       padding-top: 10px;
       padding-bottom: 10px;
       display: none;
       height: 55px;
       top: 35px;
+      @media @mobile {
+        background-color: #444444;
+      }
+      @media @tablet {
+        background-color: #444444;
+      }
       @media @desktop-m {
+        background-color: @textEmphasisGrey;
         top: 0;
         height: 35px;
-        width: 260px;
+        width: 208px;
         padding: 0;
       }
-      width: 300px;
+      width: 320px;
       z-index: 99;
       .search-large{
         box-shadow: none;
         height: 25px;
         padding-right: 0;
-        width: 280px;
+        width: 300px;
         @media @desktop-m {
-          width: 242px;
+          width: 190px;
         }
         margin: 5px auto auto 10px;
         .search-input-container{
-          width: 228px;
+          width: 248px;
           @media @desktop-m {
-            width: 190px;
+            width: 138px;
           }
           font-size: 14px;
         }
@@ -274,7 +292,6 @@
         .header-search-searchBox{
           display: block;
         }
-        background-color: @black;
       }
     }
     @media @desktop-m {
@@ -287,7 +304,6 @@
           .header-search-searchBox{
             display: block;
           }
-          background-color: @black;
         }
       }
     }
@@ -305,7 +321,6 @@
       .header-search-searchBox{
         display: block;
       }
-      background-color: @black;
     }
   }//header-search ends
   &-share{
@@ -314,7 +329,7 @@
     height: 45px;
     width: 45px;
     text-align: center;
-    .globalDefaultModFont(20px, 400, @highlightGrey);
+    .globalDefaultModFont(20px, 400, @white);
     .flexDisplay;
     .flexDirection(column);
     .flexJustify(center);
@@ -338,7 +353,7 @@
     }
   }
   &-bottom {
-    background-color: @black;
+    background-color: @textEmphasisGrey;
   }
 }
 
@@ -392,7 +407,6 @@
       }
       &-searchBox{
         display: block;
-        background-color: @black;
       }
     }//header-search ends
     &-search {
