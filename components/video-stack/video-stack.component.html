@@ -13,12 +13,12 @@
     </div>
     <div class="video-stack-info">
       <div class="video-stack-info-title">
-        <span class="video-title-top">
-          <span class="video-title-top-key" [innerHTML]="item.keyword | safeHtml"></span>
-          <span class="video-title-top-date" [innerHTML]="item.timeStamp | safeHtml"></span>
-        </span>
         <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
       </div>
     </div>
   </a>
+  <div class="video-title-top">
+    <span class="video-title-top-key"><a [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a></span>
+    <span class="video-title-top-date" [innerHTML]="item.timeStamp | safeHtml"></span>
+  </div>
 </div>

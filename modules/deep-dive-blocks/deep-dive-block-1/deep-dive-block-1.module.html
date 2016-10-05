@@ -1,8 +1,17 @@
 <div id="deep-dive-block-1" class="deep-dive-block">
   <div class="deep-dive-module">
-    <article-stack-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-module>
+    <section-name-component *ngIf="sectionName" [secName]="sectionName"></section-name-component>
+  </div>
+  <div class="deep-dive-module">
+    <article-stack-1-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
+  </div>
+  <div class="deep-dive-module">
+    <article-stack-2-module *ngIf="articleStack2DataTop" [articleStack2DataTop]="articleStack2DataTop" [articleStack2DataBatch]="articleStack2DataBatch"></article-stack-2-module>
   </div>
   <div class="deep-dive-module">
     <deep-dive-video-module *ngIf="videoDataTop" [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
+  </div>
+  <div class="deep-dive-module">
+    <deep-dive-recommendation *ngIf="recData" [recData]="recData"></deep-dive-recommendation>
   </div>
 </div>

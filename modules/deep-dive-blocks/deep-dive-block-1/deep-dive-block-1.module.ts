@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
-import { VideoStackData, ArticleStackData } from "../../../interfaces/deep-dive.data";
+import { VideoStackData, ArticleStackData, SectionNameData } from "../../../interfaces/deep-dive.data";
 
 declare var moment;
 
@@ -10,22 +10,36 @@ declare var moment;
 })
 
 export class DeepDiveBlock1 implements OnInit {
+  @Input() scope: string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
-  firstStackRow: Array<ArticleStackData>
-  scope: string = "nfl";//TODO
+  firstStackRow: Array<ArticleStackData>;
+  sectionName: SectionNameData = {
+    icon: "fa-calendar",
+    title: "Section Name One"
+  };
+  recData: Array<ArticleStackData>;//TODO
+  articleStack2DataTop: Array<ArticleStackData>;//TODO
+  articleStack2DataBatch: Array<ArticleStackData>;//TODO
   geoLocation: string = "ks";//TODO
-  callLimit:number = 9;
-
+  articleCallLimit:number = 23;
+  videoCallLimit:number = 9;
+  batchNum: number = 1;
   constructor(private _deepDiveData: DeepDiveService){}
   getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.callLimit, 1, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
           let stackTop = [data.data[0]];
-          let stackRow = data.data.splice(1,9);
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
+          let stackRow = data.data.splice(1,8);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
+          let recInfo = data.data.splice(1, 7);//TODO
+          this.recData = this._deepDiveData.transformToArticleStack(recInfo);//TODO
+          let articleStack2Top = [data.data[0]];//TODO
+          this.articleStack2DataTop = this._deepDiveData.transformToArticleStack(articleStack2Top);//TODO
+          let articleStack2 = data.data.splice(1,4);//TODO
+          this.articleStack2DataBatch = this._deepDiveData.transformToArticleStack(articleStack2);//TODO
         },
         err => {
             console.log("Error getting first article stack data");
@@ -33,7 +47,7 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService('fbs', 5, 1).subscribe(
+      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum).subscribe(
         data => {
           let videoOne = [data.data[0]];
           let videoBatch = data.data.splice(1,5);

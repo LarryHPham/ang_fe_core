@@ -47,10 +47,12 @@
          }
       }
     }
-    &:hover{
-      color: @masterBrandColor;
-      .image-rectangle-hover div{
-        .flexDisplay;
+    @media @tablet{
+      &:hover{
+        color: @masterBrandColor;
+        .image-rectangle-hover div{
+          .flexDisplay;
+        }
       }
     }
 }
@@ -66,8 +68,8 @@
     padding-bottom: 0;
     margin-bottom: 0;
   }
-  //Hide the last 2 item, because we only want 6 items at mobile bp
-  .stackRow:nth-last-child(-n+2) {
+  //Select all but the first six
+  .stackRow:nth-child(n+7) {
     display: none;
   }
   .stackRows{
@@ -108,8 +110,11 @@
     max-width: 50%;
     margin-right: 0;
   }
-  .stackRow:nth-last-child(-n+2){
+  .stackRow:nth-child(n+7){//select all but the first 6
     margin-bottom: 0;
+  }
+  .stackRow:nth-child(n+9){//FALL BACK - select all but the first 8
+    display: none;
   }
   .stackRows{
     padding: 0;
@@ -129,7 +134,7 @@
     max-width: 100%;
     margin-right: 0;
   }
-  .stackRow:nth-last-child(2){
+  .stackRow:nth-child(n+7){//overwriting tablet style
     margin-bottom: 15px;
   }
   .stackRow:last-child {

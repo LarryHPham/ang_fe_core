@@ -80,6 +80,9 @@
     bottom: 0px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    .fa {
+      font-size: 15px;
+    }
     @media @mobile{
       font-size: 20px;
     }
@@ -89,18 +92,19 @@
   }
 
   .search-dropdown{
-    width: ~"calc(100% + 20px)";
+    width: 100%;
     min-height: 25px;
     height: auto;
     position: absolute;
     top: 135%;
-    left: -10px;
     background-color: @white;
     list-style-type: none;
-    border-top: 3px solid darken(@masterBrandColor, 10%);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.35);
+    border: 1px solid #cccccc;
     z-index: 5;
-    border-radius: 5px;
+    border-radius: 2px;
+    ul {
+      margin-bottom: 0;
+    }
     .fa-angle-right {
       font-size: 25px;
       margin: 0 0 0 auto;
@@ -108,25 +112,49 @@
     &-caret{
       content: '';
       position: absolute;
-      top: -10px;
+      top: -7px;
       left: 48%;
-      border-bottom: 10px solid @white;
+      border-bottom: 10px solid #f2f2f2;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
+    }
+    &-caret:after{
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -10px;
+      z-index: -1;
+      border-bottom: 12px solid #cccccc;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+    &-title {
+      width: 100%;
+      font-family: Lato;
+    	font-size: 10px;
+    	font-style: italic;
+    	color: #444444;
+      height: 21px;
+    	border-top-left-radius: : 2px;
+      border-top-right-radius: : 2px;
+    	background-color: #f2f2f2;
+      padding-left: 5px;
+      padding-top: 4px;
+      border-bottom: 1px solid #cccccc;
     }
     &-items{
       border-bottom: 1px solid @highlightGrey;
       &:last-child{
         border-bottom: 0;
         .search-dropdown-item{
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
         }
       }
     }
     &-item{
       font-size: 16px;
-      padding: 7px 17px;
+      padding: 7px 5px;
       position: relative;
       .flexDisplay;
       .flexAlignItems(center);
@@ -145,7 +173,8 @@
       }
 
       &-title{
-        padding: 0 19px;
+        padding: 0;
+        font-size: 14px;
         font-style: normal;
       }
     }

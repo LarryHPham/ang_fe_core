@@ -12,11 +12,27 @@
   .videoStackTop{
     display: block;
     margin-bottom: 15px;
+    .video-stack{
+      &-thumbnail{
+        margin-bottom: 20px;
+      }
+    }
+    .video-title-top{
+      bottom: 20px;
+      margin-left: 10px;
+    }
   }
   .videoStackBatch{
     margin-bottom: -15px;
     .video-stack{
       margin-bottom: 15px;
+      &-thumbnail{
+        margin-bottom: 20px;
+      }
+    }
+    .video-title-top{
+      bottom: 20px;
+      margin-left: 10px;
     }
     .video-stack:nth-last-child(-n+2){
       display: none;
@@ -28,6 +44,28 @@
 }//@media @mobile Ends
 
 @media @tablet{
+  .videoStackTop{
+    .video-stack{
+      &-thumbnail{
+        margin-bottom: 20px;
+      }
+    }
+    .video-title-top{
+      bottom: 20px;
+    }
+    .video-stack-block:hover {
+      .video-title-mid {
+        color: @masterBrandColor!important;
+      }
+      .playCircle{
+        color: rgba(30, 185, 227, 0.9)!important;
+        background-color: @white!important;
+      }
+    }
+    .video-title-top-key:hover{
+      color: @masterBrandColor;
+    }
+  }
   .videoStackBatch{
     padding-left: 15px;
     margin-bottom: -15px;
@@ -56,12 +94,29 @@
         }
       }
     }//.video-stack ends
-    .video-title-top{
-      line-height: 0.75em;
-      margin-bottom: 5px;
-      margin-top: 0;
+    .video-stack-block:hover {
+      .video-title-mid {
+        color: @masterBrandColor!important;
+      }
+      .playCircle{
+        color: rgba(30, 185, 227, 0.9)!important;
+        background-color: @white!important;
+      }
     }
-  }
+    .video-title-top-key:hover{
+      color: @masterBrandColor;
+    }
+    .video-title{
+      &-top{
+        top: 0;
+        left: 92px;
+        line-height: 0.75em;
+      }
+      &-mid{
+        margin-top: 15px!important;
+      }
+    }
+  }//videoStackBatch Ends
 }//@media @tablet Ends
 
 @media @desktop-l{
@@ -72,6 +127,11 @@
       }
       &-info{
         width: ~"calc(100% - 91px)";
+      }
+      .video-title{
+        &-top{
+          left: 101px;
+        }
       }
     }
   }
