@@ -49,7 +49,7 @@ export class SideScrollSchedule{
     case "sports":
     case "basketball":
     case "baseball":
-      this.titleIcon = "fa-calendar";
+      this.titleIcon = "fa-calendar-1";
       this.titleText = "Upcoming Games"
         break;
     default:
