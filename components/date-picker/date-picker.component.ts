@@ -12,7 +12,7 @@ declare var moment;
 
 /**
 * Input tag is needed to create create this component
-* Input tag has been turned transparent but above the fa-calendar
+* Input tag has been turned transparent but above the fa-calendar-1
 */
 export class DatePicker implements AfterViewInit {
   public isOpened: boolean;
