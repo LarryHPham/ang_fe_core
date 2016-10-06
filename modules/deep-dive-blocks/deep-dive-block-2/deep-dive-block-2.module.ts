@@ -13,10 +13,6 @@ export class DeepDiveBlock2 implements OnInit {
   @Input() scope: string;
   firstStackTop: Array<ArticleStackData>;
   firstStackRow: Array<ArticleStackData>;
-  sectionName: SectionNameData = {
-    icon: "fa-calendar-1-times-o",
-    title: "Section Name One"
-  };
   recData: Array<ArticleStackData>;//TODO
   articleStack2DataTop: Array<ArticleStackData>;//TODO
   articleStack2DataBatch: Array<ArticleStackData>;//TODO

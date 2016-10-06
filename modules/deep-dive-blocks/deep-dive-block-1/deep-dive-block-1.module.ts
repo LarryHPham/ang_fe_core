@@ -16,10 +16,6 @@ export class DeepDiveBlock1 implements OnInit {
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
   firstStackRow: Array<ArticleStackData>;
-  sectionName: SectionNameData = {
-    icon: "fa-calendar-1-times-o",
-    title: "Section Name One"
-  };
   recData: Array<ArticleStackData>;//TODO
   articleStack2DataTop: Array<ArticleStackData>;//TODO
   articleStack2DataBatch: Array<ArticleStackData>;//TODO
@@ -45,7 +41,7 @@ export class DeepDiveBlock1 implements OnInit {
     }
   }
   getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
           let stackTop = [data.data[0]];
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);
