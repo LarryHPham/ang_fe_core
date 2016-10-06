@@ -1,16 +1,15 @@
 <div id="deep-dive-block-1" class="deep-dive-block">
   <!-- ARTICLE STACK TYPE 1 -->
-  <div class="deep-dive-module">
-    <article-stack-1-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
+  <div *ngIf="firstStackTop && firstStackRow" class="deep-dive-module">
+    <article-stack-1-module [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
   </div>
   <!-- VIDEO STACK -->
-  <div class="deep-dive-module">
-    <deep-dive-video-module *ngIf="videoDataTop" [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
+  <div *ngIf="videoDataTop" class="deep-dive-module">
+    <deep-dive-video-module [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
   </div>
   <!-- BOX SCORE -->
-  <div class="deep-dive-module">
+  <div *ngIf="dateParam" class="deep-dive-module">
     <box-scores
-      *ngIf="dateParam"
       [boxScores]="currentBoxScores"
       [calendarParams]="dateParam"
       [maxHeight]="maxHeight"
@@ -23,23 +22,23 @@
     BILL BOARD MODULE HERE
   </div>
   <!-- SIX PACKS -->
-  <div class="deep-dive-module">
-    <deep-dive-recommendation *ngIf="recData" [recData]="recData"></deep-dive-recommendation>
+  <div *ngIf="recData" class="deep-dive-module">
+    <deep-dive-recommendation [recData]="recData"></deep-dive-recommendation>
   </div>
   <!-- SEARCH BOX -->
   <div class="deep-dive-module">
     <search-box-module [scope]="scope"></search-box-module>
   </div>
   <!-- ARTICLE STACK TYPE 1 -->
-  <div class="deep-dive-module">
-    <article-stack-1-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
+  <div *ngIf="firstStackTop && firstStackRow" class="deep-dive-module">
+    <article-stack-1-module [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
   </div>
   <!-- ARTICLE STACK TYPE 2 -->
-  <div class="deep-dive-module">
-    <article-stack-2-module *ngIf="articleStack2DataTop" [articleStack2DataTop]="articleStack2DataTop" [articleStack2DataBatch]="articleStack2DataBatch"></article-stack-2-module>
+  <div *ngIf="articleStack2DataTop && articleStack2DataBatch" class="deep-dive-module">
+    <article-stack-2-module [articleStack2DataTop]="articleStack2DataTop" [articleStack2DataBatch]="articleStack2DataBatch"></article-stack-2-module>
   </div>
   <!-- SIX PACKS -->
-  <div class="deep-dive-module">
-    <deep-dive-recommendation *ngIf="recData" [recData]="recData"></deep-dive-recommendation>
+  <div *ngIf="recData" class="deep-dive-module">
+    <deep-dive-recommendation [recData]="recData"></deep-dive-recommendation>
   </div>
 </div>

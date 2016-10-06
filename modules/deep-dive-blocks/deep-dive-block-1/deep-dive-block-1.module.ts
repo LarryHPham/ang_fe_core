@@ -48,15 +48,15 @@ export class DeepDiveBlock1 implements OnInit {
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
           let stackTop = [data.data[0]];
-          this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop);
+          this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);
           let stackRow = data.data.splice(1,8);
-          this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow);
+          this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow, this.scope);
           let recInfo = data.data.splice(1, 6);//TODO
-          this.recData = this._deepDiveData.transformToArticleStack(recInfo);//TODO
+          this.recData = this._deepDiveData.transformToArticleStack(recInfo, this.scope);//TODO
           let articleStack2Top = [data.data[0]];//TODO
-          this.articleStack2DataTop = this._deepDiveData.transformToArticleStack(articleStack2Top);//TODO
+          this.articleStack2DataTop = this._deepDiveData.transformToArticleStack(articleStack2Top, this.scope);//TODO
           let articleStack2 = data.data.splice(1,4);//TODO
-          this.articleStack2DataBatch = this._deepDiveData.transformToArticleStack(articleStack2);//TODO
+          this.articleStack2DataBatch = this._deepDiveData.transformToArticleStack(articleStack2, this.scope);//TODO
         },
         err => {
             console.log("Error getting first article stack data");
