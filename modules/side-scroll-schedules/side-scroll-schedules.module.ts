@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { SchedulesService } from '../../../services/schedules.service';
 declare var jQuery:any;
 
 @Component({
@@ -14,14 +15,16 @@ export class SideScrollSchedule{
   @Input() scope:string;
   @Input() scopeList:string;
   @Output() changeScope = new EventEmitter();
+  @Output() changeLocation = new EventEmitter();
   titleText:string = "";
   titleIcon:string = "";
 
   public count = new EventEmitter();
   public curCount = 0;
-  _sportLeagueAbbrv: string = "pro_div";
-  _collegeDivisionAbbrv: string = "col_div";
-  _collegeDivisionFullAbbrv: string = "col_div_full";
+  keyPressReady: boolean = true;
+  autocompleteItems: Array<any> = [];
+
+  constructor(private _schedulesService:SchedulesService) {}
 
   counter(event){
     this.curCount = event;
@@ -31,25 +34,42 @@ export class SideScrollSchedule{
   scopeChange(selection) {
     this.changeScope.next(selection);
   }
+  keypress(event) {
+    if (this.keyPressReady == true && event.target.value != "") {
+      this.keyPressReady = false;
+      // call api now
+      this._schedulesService.getLocationAutocomplete(event.target.value, (data) => {
+        console.log(data);
+        this.autocompleteItems = data.data;
+      })
+      setTimeout(() => {
+        this.keyPressReady = true;
+      }, 500);
+    }
+    if (event.target.value == "") {
+      this.autocompleteItems = [];
+    }
+  }
   selectCity(event) {
     //return the zip code for the clicked on city
-    console.log("Zip Code:", event.target.id);
+    this.changeLocation.next(event.target.id);
+    this.autocompleteItems = [];
   }
-  ngOnInit() {
+  ngOnChanges() {
     switch(this.topScope) {
     case "weather":
-      this.titleText = "84° | Chicago, IL"
-      this.titleIcon = "http://images.synapsys.us/weather/icons/sharknado_d.svg";
+      this.titleText = this.sideScrollData.current.currentTemperature + "° <span class='weather-divider'>|</span> " + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
+      this.titleIcon = "http://images.synapsys.us" + this.sideScrollData.current.currentIcon;
         break;
     case "finance":
-      this.titleText = "Market Movers: All Exchanges"
-      this.titleIcon = "fa-briefcase";
+      this.titleText = "Market Movers: <span class='hide-mobile'>All Exchanges</span>"
+      this.titleIcon = "fa-briefcase-case-two";
         break;
     case "football":
     case "sports":
     case "basketball":
     case "baseball":
-      this.titleIcon = "fa-calendar";
+      this.titleIcon = "fa-calendar-1";
       this.titleText = "Upcoming Games"
         break;
     default:

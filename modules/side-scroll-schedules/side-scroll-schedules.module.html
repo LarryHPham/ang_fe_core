@@ -2,30 +2,19 @@
   <div class="ss_title">
     <span class="ss_title-2">
       <i class="fa {{titleIcon}}" *ngIf="topScope != 'weather'"></i>
-      <img *ngIf="topScope == 'weather'" width="25px" src="{{titleIcon}}"> {{titleText}}</span>
+      <img *ngIf="topScope == 'weather'" width="25px" src="{{titleIcon}}"> <span [innerHTML]="titleText"></span></span>
       <div class="weather-search" *ngIf="topScope == 'weather'">
-        <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city...">
-        <i class="fa fa-arrow-right"></i>
-        <div class="autocomplete-dropdown">
-          <div class="dropdown-item" id="67235" (click)="selectCity($event)">
-            <div class="arrow-up"></div>
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
+        <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city..." (keyup)="keypress($event)">
+        <i class="fa fa-arrow-right-1"></i>
+        <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0">
+          <div class="arrow-up"></div>
+          <div class="autocomplete-dropdown-title">Suggestions</div>
+          <div class="dropdown-item" id="{{item.city}}-{{item.state}}" (click)="selectCity($event)" *ngFor="let item of autocompleteItems">
+            {{item.city}}, {{item.state}}
           </div>
         </div>
       </div>
-    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem.charAt(0).toUpperCase() + scopeItem.slice(1)}}</span>
+    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem.toUpperCase()}}</span>
   </div>
   <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="sideScrollData.blocks">
