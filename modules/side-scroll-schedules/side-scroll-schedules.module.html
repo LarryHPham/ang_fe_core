@@ -4,25 +4,13 @@
       <i class="fa {{titleIcon}}" *ngIf="topScope != 'weather'"></i>
       <img *ngIf="topScope == 'weather'" width="25px" src="{{titleIcon}}"> <span [innerHTML]="titleText"></span></span>
       <div class="weather-search" *ngIf="topScope == 'weather'">
-        <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city...">
+        <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city..." (keyup)="keypress($event)">
         <i class="fa fa-arrow-right-1"></i>
-        <div class="autocomplete-dropdown">
+        <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0">
           <div class="arrow-up"></div>
           <div class="autocomplete-dropdown-title">Suggestions</div>
-          <div class="dropdown-item" id="67235" (click)="selectCity($event)">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
-          </div>
-          <div class="dropdown-item">
-            Wichita, KS
+          <div class="dropdown-item" id="{{item.city}}-{{item.state}}" (click)="selectCity($event)" *ngFor="let item of autocompleteItems">
+            {{item.city}}, {{item.state}}
           </div>
         </div>
       </div>
