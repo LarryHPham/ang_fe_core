@@ -1,4 +1,4 @@
-<div id="deep-dive-block-1" class="deep-dive-block">
+<div id="deep-dive-block-3" class="deep-dive-block">
   <!-- ARTICLE STACK TYPE 1 -->
   <div class="deep-dive-module">
     <article-stack-1-module *ngIf="firstStackTop" [stackTop]="firstStackTop" [stackRow]="firstStackRow"></article-stack-1-module>
@@ -7,17 +7,6 @@
   <div class="deep-dive-module">
     <deep-dive-video-module *ngIf="videoDataTop" [videoDataTop]="videoDataTop" [videoDataBatch]="videoDataBatch"></deep-dive-video-module>
   </div>
-  <!-- BOX SCORE -->
-  <div class="deep-dive-module">
-    <box-scores
-      *ngIf="dateParam"
-      [boxScores]="currentBoxScores"
-      [calendarParams]="dateParam"
-      [maxHeight]="maxHeight"
-      [scroll]="scroll"
-      (dateEmit)="getBoxScores($event)">
-    </box-scores>
-  </div>
   <!-- BILL BOARD -->
   <div class="deep-dive-module">
     BILL BOARD MODULE HERE
@@ -25,10 +14,6 @@
   <!-- SIX PACKS -->
   <div class="deep-dive-module">
     <deep-dive-recommendation *ngIf="recData" [recData]="recData"></deep-dive-recommendation>
-  </div>
-  <!-- SEARCH BOX -->
-  <div class="deep-dive-module">
-    <search-box-module [scope]="scope"></search-box-module>
   </div>
   <!-- ARTICLE STACK TYPE 1 -->
   <div class="deep-dive-module">

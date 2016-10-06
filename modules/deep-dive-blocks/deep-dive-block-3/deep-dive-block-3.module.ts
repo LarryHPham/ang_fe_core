@@ -1,16 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
 import { VideoStackData, ArticleStackData, SectionNameData } from "../../../interfaces/deep-dive.data";
-import { BoxScoresService } from '../../../../services/box-scores.service';
 
 declare var moment;
 
 @Component({
-  selector: 'deep-dive-block-1',
-  templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-1/deep-dive-block-1.module.html',
+  selector: 'deep-dive-block-3',
+  templateUrl: './app/fe-core/modules/deep-dive-blocks/deep-dive-block-3/deep-dive-block-3.module.html',
 })
 
-export class DeepDiveBlock1 implements OnInit {
+export class DeepDiveBlock3 implements OnInit {
   @Input() scope: string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
@@ -27,23 +26,8 @@ export class DeepDiveBlock1 implements OnInit {
   articleCallLimit:number = 23;
   videoCallLimit:number = 9;
   batchNum: number = 1;
-  //Box Scores
-  boxScoresData: any;
-  currentBoxScores: any;
-  dateParam: any;
-  boxScoresTempVar: string = "nfl";
 
-  constructor(private _boxScoresService: BoxScoresService, private _deepDiveData: DeepDiveService){
-    //Box Scores
-    var currentUnixDate = new Date().getTime();
-    //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
-    this.dateParam ={
-      scope: this.boxScoresTempVar,//current profile page
-      teamId: '',
-      //date: '2016-09-22'
-      date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
-    }
-  }
+  constructor(private _deepDiveData: DeepDiveService){}
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
@@ -76,22 +60,9 @@ export class DeepDiveBlock1 implements OnInit {
       });
   }
 
-  //API for Box Scores
-  private getBoxScores(dateParams?) {
-    // console.log('1. deep-dive-page, getBoxScores - dateParams - ',dateParams);
-    if ( dateParams != null ) {
-      this.dateParam = dateParams;
-    }
-    this._boxScoresService.getBoxScores(this.boxScoresData, this.boxScoresTempVar, this.dateParam, (boxScoresData, currentBoxScores) => {
-        this.boxScoresData = boxScoresData;
-        this.currentBoxScores = currentBoxScores;
-    });
-  }
-
   callModules(){
     this.getDeepDiveVideo();
     this.getFirstArticleStackData();
-    this.getBoxScores(this.dateParam);
   }
 
   ngOnInit() {
