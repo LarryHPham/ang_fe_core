@@ -15,7 +15,7 @@ export class SideScroll{
   public carouselCount = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
-  private itemSize:number = 205;
+  private itemSize:number = 230;
   private maxScroll:boolean = false;
 
   private isMouseDown: boolean = false;
@@ -27,6 +27,16 @@ export class SideScroll{
   private transition:any = null;
   constructor(){
 
+  }
+
+  ngOnChanges(event) {
+    if (event.data) { //if we get new data from the api, reset to the first item on scroller
+      setTimeout(() => {
+        this.currentScroll = 0;
+        this.checkCurrent(this.currentScroll);
+      }, 10);
+
+    }
   }
 
   scrollX(event){
