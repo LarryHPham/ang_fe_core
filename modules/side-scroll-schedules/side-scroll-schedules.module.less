@@ -3,6 +3,14 @@
   height: auto;
   width: 100%;
   padding: 10px 0 0;
+  .hide-mobile {
+    @media @mobile {
+      display: none;
+    }
+    @media @tablet {
+      display: initial;
+    }
+  }
   .autocomplete-dropdown {
     position: absolute;
     margin-top: 10px;
@@ -124,6 +132,23 @@
       color:@bulletGrey;
     }
   }
+}
+.top-scope-weather {
+  .ss_title-1 {
+    @media @mobile {
+      margin-bottom: 15px;
+      width: ~"calc(33.3% - 4px)";
+    }
+  }
+  .ss_title .ss_title-1:last-of-type {
+    @media @mobile {
+      margin-left: 0;
+    }
+  }
+
+}
+.weather-divider{
+  color: @bulletGrey;
 }
 .weather-search {
   margin-left: 15px;

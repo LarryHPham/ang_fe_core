@@ -38,12 +38,12 @@ export class SideScrollSchedule{
   ngOnInit() {
     switch(this.topScope) {
     case "weather":
-      this.titleText = "84° | Chicago, IL"
+      this.titleText = "84° <span class='weather-divider'>|</span> Chicago, IL"
       this.titleIcon = "http://images.synapsys.us/weather/icons/sharknado_d.svg";
         break;
     case "finance":
-      this.titleText = "Market Movers: All Exchanges"
-      this.titleIcon = "fa-briefcase";
+      this.titleText = "Market Movers: <span class='hide-mobile'>All Exchanges</span>"
+      this.titleIcon = "fa-briefcase-case-two";
         break;
     case "football":
     case "sports":
