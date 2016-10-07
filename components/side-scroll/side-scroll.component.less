@@ -5,6 +5,14 @@
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+.top-scope-weather {
+  .side_scroll {
+    @media @mobile {
+      max-height: 185px;
+      margin-top: 65px;
+    }
+  }
+}
 .side_scroll{
   width:100%;
   height:auto;
@@ -12,10 +20,6 @@
   margin: 20px auto 0;
   text-align: center;
   .no-select;
-  @media @mobile {
-    max-height: 185px;
-    margin-top: 65px;
-  }
   &-box{
     width:100%;
     height: 185px;
