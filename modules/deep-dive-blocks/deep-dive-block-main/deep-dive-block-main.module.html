@@ -1,92 +1,31 @@
 <div id="deep-dive-block-main" class="deep-dive-block">
-  <!-- BREAKING NEWS -->
-  <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="newsStackTop && newsStackRow" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameNews"></section-name-component>
-    <article-stack-1-module [stackTop]="newsStackTop" [stackRow]="newsStackRow"></article-stack-1-module>
+  <!-- ARTICLE STACK TYPE 1 1-->
+  <div *ngIf="stackTop1 && stackRow1" class="deep-dive-module">
+    <section-name-component [secName]="sectionName1"></section-name-component>
+    <article-stack-1-module [stackTop]="stackTop1" [stackRow]="stackRow1"></article-stack-1-module>
   </div>
-  <!-- RANDOM VIDEO -->
   <!-- VIDEO STACK -->
-  <div *ngIf="videoDataTop1 && videoDataBatch1" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameVideo"></section-name-component>
-    <deep-dive-video-module [videoDataTop]="videoDataTop1" [videoDataBatch]="videoDataBatch1"></deep-dive-video-module>
+  <div *ngIf="videoDataTopMain && videoDataBatchMain" class="deep-dive-module">
+    <section-name-component [secName]="sectionName2"></section-name-component>
+    <deep-dive-video-module [videoDataTop]="videoDataTopMain" [videoDataBatch]="videoDataBatchMain"></deep-dive-video-module>
   </div>
-  <!-- SPORTS -->
-  <!-- SIX PACKS -->
-  <div *ngIf="recDataSports && sectionNameSports" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameSports"></section-name-component>
-    <deep-dive-recommendation [recData]="recDataSports"></deep-dive-recommendation>
+  <!-- SIX PACKS 1-->
+  <div *ngIf="recData1 && sectionNameSports" class="deep-dive-module">
+    <section-name-component [secName]="sectionName3"></section-name-component>
+    <deep-dive-recommendation [recData]="recData1"></deep-dive-recommendation>
   </div>
-  <!-- BUSINESS -->
-  <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="businessStackTop && firstStackRowBusiness" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameBusiness"></section-name-component>
-    <article-stack-1-module [stackTop]="businessStackTop" [stackRow]="businessStackRow"></article-stack-1-module>
+  <!-- ARTICLE STACK TYPE 1 2-->
+  <div *ngIf="stackTop2 && stackRow2" class="deep-dive-module">
+    <section-name-component [secName]="sectionName4"></section-name-component>
+    <article-stack-1-module [stackTop]="stackTop2" [stackRow]="stackRow2"></article-stack-1-module>
   </div>
-  <!-- POLITICS -->
   <!-- ARTICLE STACK TYPE 2 -->
-  <div *ngIf="politicsStackTop && politicsStackBatch" class="deep-dive-module">
-    <section-name-component [secName]="sectionNamePolitics"></section-name-component>
-    <article-stack-2-module [articleStack2DataTop]="politicsStackTop" [articleStack2DataBatch]="politicsStackBatch"></article-stack-2-module>
+  <div *ngIf="stackTop3 && stackRow3" class="deep-dive-module">
+    <section-name-component [secName]="sectionName5"></section-name-component>
+    <article-stack-2-module [articleStack2DataTop]="stackTop3" [articleStack2DataBatch]="stackRow3"></article-stack-2-module>
   </div>
-  <!-- ENTERTAINMENT -->
-  <!-- SIX PACKS -->
-  <div *ngIf="recDataEntertain" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameEntertain"></section-name-component>
-    <deep-dive-recommendation [recData]="recDataEntertain"></deep-dive-recommendation>
+  <!-- SIX PACKS 2-->
+  <div *ngIf="recData2" class="deep-dive-module">
+    <section-name-component [secName]="sectionName6"></section-name-component>
+    <deep-dive-recommendation [recData]="recData2"></deep-dive-recommendation>
   </div>
-  <!-- FOOD -->
-  <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="foodStackTop && foodStackRow" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameFood"></section-name-component>
-    <article-stack-1-module [stackTop]="foodStackTop" [stackRow]="foodStackRow"></article-stack-1-module>
-  </div>
-  <!-- RANDOM VIDEO -->
-  <!-- VIDEO STACK -->
-  <div *ngIf="videoDataTop2 && videoDataBatch2" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameVideo"></section-name-component>
-    <deep-dive-video-module [videoDataTop]="videoDataTop2" [videoDataBatch]="videoDataBatch2"></deep-dive-video-module>
-  </div>
-  <!-- HEALTH -->
-  <!-- SIX PACKS -->
-  <div *ngIf="recDataHealth" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameHealth"></section-name-component>
-    <deep-dive-recommendation [recData]="recDataHealth"></deep-dive-recommendation>
-  </div>
-  <!-- LIFESTYLE -->
-  <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="lifestyleStackTop && lifestyleStackRow" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameLifestyle"></section-name-component>
-    <article-stack-1-module [stackTop]="lifestyleStackTop" [stackRow]="lifestyleStackRow"></article-stack-1-module>
-  </div>
-  <!-- REAL ESTATE -->
-  <!-- ARTICLE STACK TYPE 2 -->
-  <div *ngIf="estateStackTop && estateStackBatch" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameEstate"></section-name-component>
-    <article-stack-2-module [articleStack2DataTop]="estateStackTop" [articleStack2DataBatch]="estateStackBatch"></article-stack-2-module>
-  </div>
-  <!-- TRAVEL -->
-  <!-- SIX PACKS -->
-  <div *ngIf="recDataTravel" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameTravel"></section-name-component>
-    <deep-dive-recommendation [recData]="recDataTravel"></deep-dive-recommendation>
-  </div>
-  <!-- WEATHER -->
-  <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="weatherStackTop && weatherStackRow" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameWeather"></section-name-component>
-    <article-stack-1-module [stackTop]="weatherStackTop" [stackRow]="weatherStackRow"></article-stack-1-module>
-  </div>
-  <!-- RANDOM VIDEO -->
-  <!-- VIDEO STACK -->
-  <div *ngIf="videoDataTop3 && videoDataBatch3" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameVideo"></section-name-component>
-    <deep-dive-video-module [videoDataTop]="videoDataTop3" [videoDataBatch]="videoDataBatch3"></deep-dive-video-module>
-  </div>
-  <!-- AUTOMOTIVE -->
-  <!-- SIX PACKS -->
-  <div *ngIf="recDataAuto" class="deep-dive-module">
-    <section-name-component [secName]="sectionNameAuto"></section-name-component>
-    <deep-dive-recommendation [recData]="recDataAuto"></deep-dive-recommendation>
-  </div>
-</div>
