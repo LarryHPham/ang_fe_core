@@ -22,6 +22,7 @@ export class BoxScoresModule implements OnInit {
   public windowWidth: number = 10;
   public rightDisabled = "";
   public leftDisabled = "disabled";
+  private refreshBoxScores = "";
 
   constructor(
     private _elementRef:ElementRef,
@@ -61,6 +62,11 @@ export class BoxScoresModule implements OnInit {
         console.log('max height is 650');
         this.maxHeight = 650;
       }
+    }
+    if(this.refreshBoxScores.length > 10){
+      this.refreshBoxScores = "";
+    }else{
+      this.refreshBoxScores += " ";
     }
     this.checkHeight();
   }
