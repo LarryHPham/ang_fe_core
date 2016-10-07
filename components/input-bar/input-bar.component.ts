@@ -12,7 +12,7 @@ export class InputBar{
 
 
     onsubmit(){
-        console.log(this.searchControl.value);
+        //console.log(this.searchControl.value);
 
        /* this.searchControl.valueChanges.subscribe(value => {
 
