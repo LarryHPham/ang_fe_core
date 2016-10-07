@@ -214,17 +214,19 @@ export class Larousel{
   scrollX(event){
     let currentClick = event.clientX;
     let mouseType = event.type;
-    if(mouseType == 'mousedown'){
-      this.mouseDown = event.clientX;
-    }
-    if(mouseType == 'mouseup'){
-      if(this.drag >= 0){//this is for quick fix but not final version
-        this.right('right');
-      }else{
-        this.left('left');
+    if (event.which == 1) { //if left click only
+      if(mouseType == 'mousedown'){
+        this.mouseDown = event.clientX;
       }
-      this.mouseUp = event.clientX;
-      this.checkCurrent(this.currentScroll);
+      if(mouseType == 'mouseup'){
+        if(this.drag >= 0){//this is for quick fix but not final version
+          this.right('right');
+        }else{
+          this.left('left');
+        }
+        this.mouseUp = event.clientX;
+        this.checkCurrent(this.currentScroll);
+      }
     }
   }
 
