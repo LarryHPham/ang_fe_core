@@ -243,6 +243,7 @@ export class Search{
         //Clear out autocomplete text and close dropdown when search occurs
         this.dropdownIsFocused = false;
         this.autoCompleteText = '';
+
     }
 
     unFocus(){
@@ -286,9 +287,7 @@ export class Search{
             });
 
     }
-    e(eve){
-        console.log(eve,"this is event");
-    }
+
 
     ngOnDestroy(){
         //Unsubscribe to observable to avoid memory leak

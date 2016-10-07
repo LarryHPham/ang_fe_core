@@ -23,6 +23,7 @@ export class SideScrollSchedule{
   public curCount = 0;
   keyPressReady: boolean = true;
   autocompleteItems: Array<any> = [];
+  showError: boolean = false;
 
   constructor(private _schedulesService:SchedulesService) {}
 
@@ -39,14 +40,22 @@ export class SideScrollSchedule{
       this.keyPressReady = false;
       // call api now
       this._schedulesService.getLocationAutocomplete(event.target.value, (data) => {
-        console.log(data);
-        this.autocompleteItems = data.data;
+
+        if (data.success == true) {
+          this.showError = false;
+          this.autocompleteItems = data.data;
+        }
+        else {
+          this.autocompleteItems = [];
+          this.showError = true;
+        }
       })
       setTimeout(() => {
         this.keyPressReady = true;
       }, 500);
     }
     if (event.target.value == "") {
+      this.showError = false;
       this.autocompleteItems = [];
     }
   }
