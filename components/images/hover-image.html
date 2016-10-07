@@ -7,7 +7,7 @@
   <div [innerHtml]="imageData.hoverText"></div>
 </a>
 <!-- image with offsite url not router link -->
-<a *ngIf="imageData.url && !textOnly" href="{{imageData.url}}" class="image-round-hover">
+<a *ngIf="imageData.url && !textOnly" href="{{imageData.url}}" target="_blank" class="image-round-hover">
   <img [src]="imageData.imageUrl" [alt]="imageData.imageDesc" (error)="onError($event)" />
   <div [innerHtml]="imageData.hoverText"></div>
 </a>
