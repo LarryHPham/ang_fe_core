@@ -53,18 +53,6 @@
     .video-title-top{
       bottom: 20px;
     }
-    .video-stack-block:hover {
-      .video-title-mid {
-        color: @masterBrandColor!important;
-      }
-      .playCircle{
-        color: rgba(30, 185, 227, 0.9)!important;
-        background-color: @white!important;
-      }
-    }
-    .video-title-top-key:hover{
-      color: @masterBrandColor;
-    }
   }
   .videoStackBatch{
     padding-left: 15px;
@@ -94,18 +82,7 @@
         }
       }
     }//.video-stack ends
-    .video-stack-block:hover {
-      .video-title-mid {
-        color: @masterBrandColor!important;
-      }
-      .playCircle{
-        color: rgba(30, 185, 227, 0.9)!important;
-        background-color: @white!important;
-      }
-    }
-    .video-title-top-key:hover{
-      color: @masterBrandColor;
-    }
+
     .video-title{
       &-top{
         top: 0;
@@ -118,6 +95,23 @@
     }
   }//videoStackBatch Ends
 }//@media @tablet Ends
+
+@media @desktop-m{
+  .videoStackTop, .videoStackBatch{
+    .video-stack-block:hover {
+      .video-title-mid {
+        color: @masterBrandColor!important;
+      }
+      .playCircle{
+        color: rgba(30, 185, 227, 0.9)!important;
+        background-color: @white!important;
+      }
+    }
+    .video-title-top-key:hover{
+      color: @masterBrandColor;
+    }
+  }
+}
 
 @media @desktop-l{
   .videoStackBatch{
