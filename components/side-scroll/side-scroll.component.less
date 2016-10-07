@@ -5,6 +5,14 @@
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+.top-scope-weather {
+  .side_scroll {
+    @media @mobile {
+      max-height: 185px;
+      margin-top: 65px;
+    }
+  }
+}
 .side_scroll{
   width:100%;
   height:auto;
@@ -49,8 +57,8 @@
     height:100%;
   }
   &-left{
-    width: 30px;
-    height: 80px;
+    width: 40px;
+    height: 105px;
     background-color: @black;
     position: absolute;
     left:0;
@@ -60,16 +68,16 @@
     .globalDefaultModFont(24px, 400, @white);
     cursor: pointer;
     z-index: 10;
-   & > i {
-     line-height: 80px;// same as height of button
-    }
+    & > i {
+      line-height: 105px;// same as height of button
+     }
     &:hover{
       background-color: @masterBrandColor;
     }
   }
   &-right{
-    width: 30px;
-    height: 80px;
+    width: 40px;
+    height: 105px;
     background-color: @black;
     position: absolute;
     right:0;
@@ -80,7 +88,7 @@
     cursor: pointer;
     z-index: 10;
     & > i {
-      line-height: 80px;// same as height of button
+      line-height: 105px;// same as height of button
      }
      &:hover{
        background-color: @masterBrandColor;

@@ -8,9 +8,11 @@
 
   <div class="search-box-container">
 
+<!--
     <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
-    <!--<div class="search-input-container">
-        <dropdown [list]="sportsList" [selectedKey]="MLB" (selectionChanged)="e($event)"></dropdown>
+-->
+    <div class="search-input-container">
+
         <input
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
@@ -22,6 +24,6 @@
       target="_blank"
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
-    </a>-->
+    </a>
   </div>
 </div>
