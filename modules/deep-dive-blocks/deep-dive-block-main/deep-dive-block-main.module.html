@@ -10,7 +10,7 @@
     <deep-dive-video-module [videoDataTop]="videoDataTopMain" [videoDataBatch]="videoDataBatchMain"></deep-dive-video-module>
   </div>
   <!-- SIX PACKS 1-->
-  <div *ngIf="recData1 && sectionNameSports" class="deep-dive-module">
+  <div *ngIf="recData1" class="deep-dive-module">
     <section-name-component [secName]="sectionName3"></section-name-component>
     <deep-dive-recommendation [recData]="recData1"></deep-dive-recommendation>
   </div>
@@ -29,3 +29,4 @@
     <section-name-component [secName]="sectionName6"></section-name-component>
     <deep-dive-recommendation [recData]="recData2"></deep-dive-recommendation>
   </div>
+</div>

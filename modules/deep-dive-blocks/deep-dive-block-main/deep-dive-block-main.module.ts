@@ -22,27 +22,27 @@ export class DeepDiveBlockMain implements OnInit {
   videoDataTopMain: Array<VideoStackData>;
   videoDataBatchMain: Array<VideoStackData>;
 
-  sectionNameNews: SectionNameData =  {
+  sectionName1: SectionNameData =  {
      icon: "fa-clock",
      title: "Breaking News"
    }
-  sectionNameVideo: SectionNameData =  {
+  sectionName2: SectionNameData =  {
      icon: "fa-play-circle",
      title: "Video"
    }
-  sectionNameSports: SectionNameData =  {
+  sectionName3: SectionNameData =  {
      icon: "fa-futbol-o",
      title: "Sports"
    }
-  sectionNameBusiness: SectionNameData =  {
+  sectionName4: SectionNameData =  {
      icon: "fa-fontawesome-webfont-3",
      title: "Business"
    }
-  sectionNamePolitics: SectionNameData =  {
+  sectionName5: SectionNameData =  {
      icon: "fa-university",
      title: "Politics"
    }
-  sectionNameEntertain: SectionNameData =  {
+  sectionName6: SectionNameData =  {
      icon: "fa-film",
      title: "Entertainment"
    }
