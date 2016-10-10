@@ -10,7 +10,9 @@
           <a [routerLink]="menuData.url" class="menucheck">{{menuData.menuTitle}}</a>
           <img class="toggle-nest menucheck" onclick="event.stopPropagation();" (click)="toggleNest($event)" src="app/public/icon-+.svg">
           <ul>
-            <li class="nester-child menucheck" *ngFor="let nesterChild of menuData.nesterChildren"><a class="menucheck" [routerLink]="nesterChild.url">{{nesterChild.menuTitle}}</a></li>
+            <a class="menucheck" *ngFor="let nesterChild of menuData.nesterChildren" [routerLink]="nesterChild.url">
+            <li class="nester-child menucheck" >{{nesterChild.menuTitle}}</li>
+            </a>
           </ul>
         </li>
 

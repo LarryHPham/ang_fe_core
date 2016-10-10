@@ -59,6 +59,14 @@
       width: 13px;
       height: 13px;
     }
+    a .nester-child {
+      margin-left: -15px;
+      padding-left: 30px;
+      width: ~'calc(100% + 30px)';
+    }
+    a:first-of-type .nester-child {
+      margin-top: 12px;
+    }
   }
   .nester-parent.open {
     height: auto;
@@ -67,15 +75,6 @@
   .nester-parent:hover.open{
     background-color: #555555;
   }
-  .nester-child {
-    margin-left: -15px;
-    padding-left: 30px;
-    width: ~'calc(100% + 30px)';
-  }
-  .nester-child:first-of-type {
-    margin-top: 12px;
-  }
-
   &-topics-list {
     background-color: @fontIconGrey;
     .globalDefaultModFont(16px, 400, @white);
