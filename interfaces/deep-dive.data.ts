@@ -29,5 +29,6 @@ export interface VideoStackData{
 
 export interface SectionNameData{
   icon: string,
-  title: string
+  title: string,
+  route?: any
 }
