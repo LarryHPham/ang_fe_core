@@ -28,8 +28,8 @@
     </span>
 
     <span *ngIf="topScope == 'baseball' || topScope == 'football' || topScope == 'basketball'">
-      <a *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
-      <span class="ss_title-1"   [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem}}</span>
+      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
+        {{scopeItem}}
       </a>
     </span>
   </div>
