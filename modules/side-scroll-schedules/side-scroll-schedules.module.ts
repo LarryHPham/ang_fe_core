@@ -65,7 +65,6 @@ export class SideScrollSchedule{
     this.autocompleteItems = [];
   }
   ngOnChanges(event) {
-    console.log(event);
     switch(this.topScope) {
     case "weather":
       this.titleText = this.sideScrollData.current.currentTemperature + "° <span class='weather-divider'>|</span> " + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
