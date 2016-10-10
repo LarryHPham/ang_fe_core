@@ -2,9 +2,7 @@
   overflow: hidden;
   padding: 0 10px;
   div:last-of-type {
-    .stacksmall {
-      margin-bottom:0;
-    }
+    .stacksmall {margin-bottom:0;}
   }
 }
 
@@ -32,20 +30,15 @@
            overflow: hidden;
            height: 20px;
          }
-        &-subHeadline {
-           .globalDefaultFont(14px, 400);
-           line-height: 1em;
-           p{
-             line-height: 1em;
-           }
-        }
+      }
+      &-subHeadline {
+        .globalDefaultFont(14px, 400);
+        line-height: 1em;
+        p{line-height: 1em;}
       }
     }
 }
-.stackRow{
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
+.stackRow{padding-bottom: 15px; margin-bottom: 15px}
 @media @mobile{
   .stackRow{
     border-bottom: 1px solid @strokeGrey;
@@ -57,22 +50,13 @@
     margin-bottom: 0;
   }
   //Select all but the first six
-  .stackRow:nth-child(n+7) {
-    display: none;
-  }
-  .stackRows{
-    margin-bottom: -8px;
-  }
+  .stackRow:nth-child(n+7){display: none}
 }
 @media @tablet {
   .stackSmall {
-    &-image{
-      min-width: 82px;
-    }
+    &-image{min-width: 82px}
     &-text {
-      &-keyword {
-        z-index: 1;
-      }
+      &-keyword {z-index: 1}
     }
   }
   .stackRow{
@@ -80,19 +64,16 @@
     margin-bottom: 15px;
     margin-right: 15px;
     max-width: 47.5%;
-    &:nth-child(8){
-      margin-bottom: 0;
-    }
   }
   .stackRow:nth-child(even){
     max-width: 50%;
     margin-right: 0;
   }
-  .stackRow:nth-child(n+9){//FALL BACK - select all but the first 8
-    display: none;
-  }
+  //FALL BACK - select all but the first 8
+  .stackRow:nth-child(n+9){display: none}
   .stackRows{
     padding: 0;
+    margin-bottom: -15px;
   }
 }
 
@@ -102,9 +83,7 @@
       overflow: visible;
       margin-left: 15px;
   }
-  .stackRow{
-    max-width: 100%;
-  }
+  .stackRow{max-width: 100%}
   .stackRow:nth-child(even){
     max-width: 100%;
     margin-right: 0;
@@ -113,16 +92,12 @@
     width: 313px;
     height: auto;
     .col-xs-12;
-    &-image {
-      display: none;
-    }
+    &-image {display: none}
     &-text {
       height: auto;
       width: 313px;
       max-width: 313px;
-      &-keyword{
-        margin-left: 0;
-      }
+      &-keyword{margin-left: 0}
     }
   }//stackSmall ends
 }
