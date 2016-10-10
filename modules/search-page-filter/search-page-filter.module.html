@@ -1,9 +1,9 @@
 <div class="user-search-input"> <i class="fa fa-list-ul" aria-hidden="true"></i> <div class="user-search-input_res">Results for <b>User Input</b></div></div>
 <div class="s-filter container-fluid">
-    <span class="floatLeft">
+    <span class="filter-Left">
         Applied Filters & Sorts
     </span>
-    <span class="floatRight">
+    <span class="filter-Right">
     <dropdown [list]="keywords" [selectedKey]="Business" (selectionChanged)="keywordClick($event)"></dropdown>
     <dropdown [list]="Sorting" [selectedKey]="MostRecent" (selectionChanged)="sortingClick($event)"></dropdown>
 
