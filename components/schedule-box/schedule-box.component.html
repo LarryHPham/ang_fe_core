@@ -46,7 +46,7 @@
 </div><!--</schedule-box-weather>-->
 
 <div *ngIf="topScope=='finance'" class="schedule_box finance"><!--become a component <schedule-box>-->
-  <a href="{{boxData.profileUrl}}">
+  <a class="masterHover" href="{{boxData.profileUrl}}">
   <!-- <img class="company-logo" src="{{boxData.logoUrl}}"> -->
   <circle-image [data]="boxData.imageConfig"></circle-image>
   <div class="company-name">{{boxData.fullCompanyName}}</div></a>
