@@ -22,7 +22,16 @@
           </div>
         </div>
       </div>
-    <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem}}</span>
+
+    <span *ngIf="topScope != 'baseball' && topScope != 'football' && topScope != 'basketball'">
+      <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem}}</span>
+    </span>
+
+    <span *ngIf="topScope == 'baseball' || topScope == 'football' || topScope == 'basketball'">
+      <a *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
+      <span class="ss_title-1"   [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem}}</span>
+      </a>
+    </span>
   </div>
   <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="sideScrollData.blocks">
