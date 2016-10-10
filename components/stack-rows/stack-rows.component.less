@@ -2,32 +2,25 @@
   overflow: hidden;
   padding: 0 10px;
   div:last-of-type {
-    .stacksmall {
-      margin-bottom:0;
-    }
+    .stacksmall {margin-bottom:0;}
   }
 }
 
 .stackSmall {
     float:left;
-    margin: 0 0 10px;
     .flexDisplay;
     &-image {
       background-color: @white;
       margin-right: 10px;
       min-width: 85px;
     }
-    &-text {
-      text-align: left;
-      width: auto;
-      overflow: hidden;
-      //.line-clamp;
-      //.line-clamp-3;//limit to 3 lines
+    &-text{
+      .flexDisplay;
+      .flexDirection(column);
       &-keyword {
+        display: inline-block;
          margin-bottom: 5px;
-         margin-left: 92px;
          overflow: hidden;
-         position: absolute;
          text-overflow: ellipsis;
          text-transform: uppercase;
          .globalDefaultModFont(10px, 800, @black);
@@ -39,29 +32,17 @@
          }
       }
       &-subHeadline {
-         .globalDefaultFont(14px, 400);
-         line-height: 1em;
-         margin-top: 15px;
-         p{
-           line-height: 1em;
-         }
-      }
-    }
-    @media @tablet{
-      &:hover{
-        color: @masterBrandColor;
-        .image-rectangle-hover div{
-          .flexDisplay;
-        }
+        .globalDefaultFont(14px, 400);
+        line-height: 1em;
+        p{line-height: 1em;}
       }
     }
 }
-
+.stackRow{padding-bottom: 15px; margin-bottom: 15px}
 @media @mobile{
   .stackRow{
     border-bottom: 1px solid @strokeGrey;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
+    .flexDisplay;
   }
   .stackRow:nth-child(6){
     border-bottom: transparent;
@@ -69,35 +50,13 @@
     margin-bottom: 0;
   }
   //Select all but the first six
-  .stackRow:nth-child(n+7) {
-    display: none;
-  }
-  .stackRows{
-    margin-bottom: -8px;
-  }
-  .stackSmall-text-keyword{
-    margin-left: 95px;
-  }
+  .stackRow:nth-child(n+7){display: none}
 }
 @media @tablet {
   .stackSmall {
-    margin-bottom: 15px;
-    &-image{
-      min-width: 82px;
-    }
+    &-image{min-width: 82px}
     &-text {
-      // height: 4.2em;
-      &-keyword {
-        z-index: 1;
-        > span:first-child{
-          &:hover{
-            color: @masterBrandColor;
-          }
-        }
-         > span:last-child{
-           height: 50px;
-         }
-      }
+      &-keyword {z-index: 1}
     }
   }
   .stackRow{
@@ -110,14 +69,11 @@
     max-width: 50%;
     margin-right: 0;
   }
-  .stackRow:nth-child(n+7){//select all but the first 6
-    margin-bottom: 0;
-  }
-  .stackRow:nth-child(n+9){//FALL BACK - select all but the first 8
-    display: none;
-  }
+  //FALL BACK - select all but the first 8
+  .stackRow:nth-child(n+9){display: none}
   .stackRows{
     padding: 0;
+    margin-bottom: -15px;
   }
 }
 
@@ -127,33 +83,21 @@
       overflow: visible;
       margin-left: 15px;
   }
-  .stackRow{
-    max-width: 100%;
-  }
+  .stackRow{max-width: 100%}
   .stackRow:nth-child(even){
     max-width: 100%;
     margin-right: 0;
-  }
-  .stackRow:nth-child(n+7){//overwriting tablet style
-    margin-bottom: 15px;
-  }
-  .stackRow:last-child {
-    margin-bottom: 0;
   }
   .stackSmall {
     width: 313px;
     height: auto;
     .col-xs-12;
-    &-image {
-      display: none;
-    }
+    &-image {display: none}
     &-text {
       height: auto;
       width: 313px;
       max-width: 313px;
-      &-keyword{
-        margin-left: 0;
-      }
+      &-keyword{margin-left: 0}
     }
   }//stackSmall ends
 }

@@ -24,7 +24,8 @@ export class DeepDiveBlockMain implements OnInit {
 
   sectionName1: SectionNameData =  {
      icon: "fa-clock",
-     title: "Breaking News"
+     title: "Breaking News",
+     route: ['deep-dive']//TODO TEST
    }
   sectionName2: SectionNameData =  {
      icon: "fa-play-circle",
