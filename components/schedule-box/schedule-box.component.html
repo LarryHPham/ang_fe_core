@@ -46,11 +46,11 @@
 </div><!--</schedule-box-weather>-->
 
 <div *ngIf="topScope=='finance'" class="schedule_box finance"><!--become a component <schedule-box>-->
-  <a href="{{boxData.profileUrl}}">
+  <a class="masterHover" href="{{boxData.profileUrl}}">
   <!-- <img class="company-logo" src="{{boxData.logoUrl}}"> -->
   <circle-image [data]="boxData.imageConfig"></circle-image>
   <div class="company-name">{{boxData.fullCompanyName}}</div></a>
   <div class="exchange">{{boxData.exchangeName}}: {{boxData.companySymbol}}</div>
-  <div class="stock-value"><span class="current-value">${{boxData.currentStockValue}}</span> <span class="value-change" [class.positive]="boxData.stockChangeGain == '1'" [class.negative]="boxData.stockChangeGain == '0'"><i class="fa" [class.fa-arrow-up]="boxData.stockChangeGain == '1'" [class.fa-arrow-down]="boxData.stockChangeGain == '0'"></i> ${{boxData.stockChangeAmount}} {{boxData.stockChangePercent}}%</span></div>
+  <div class="stock-value"><span class="current-value">${{boxData.currentStockValue}}</span> <span class="value-change" [class.positive]="boxData.stockChangeGain == '1'" [class.negative]="boxData.stockChangeGain == '0'"><i class="fa" [class.fa-arrow-up]="boxData.stockChangeGain == '1'" [class.fa-arrow-down]="boxData.stockChangeGain == '0'"></i> {{boxData.stockChangeAmount}} ({{boxData.stockChangePercent}}%)</span></div>
   <a target="_blank" href="{{boxData.profileUrl}}"><div class="view-profile">VIEW PROFILE</div></a>
 </div><!--</schedule-box-finance>-->
