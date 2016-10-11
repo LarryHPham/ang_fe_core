@@ -36,10 +36,12 @@ export class SideScrollSchedule{
     this.changeScope.next(selection);
   }
   keypress(event) {
+    var textEntered = event.target.value.replace(/ /g, "%20");
+
     if (this.keyPressReady == true && event.target.value != "") {
       this.keyPressReady = false;
       // call api now
-      this._schedulesService.getLocationAutocomplete(event.target.value, (data) => {
+      this._schedulesService.getLocationAutocomplete(textEntered, (data) => {
 
         if (data.success == true) {
           this.showError = false;
@@ -64,10 +66,10 @@ export class SideScrollSchedule{
     this.changeLocation.next(event.target.id);
     this.autocompleteItems = [];
   }
-  ngOnChanges() {
+  ngOnChanges(event) {
     switch(this.topScope) {
     case "weather":
-      this.titleText = this.sideScrollData.current.currentTemperature + "° <span class='weather-divider'>|</span> " + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
+      this.titleText = "<span class='hide-mobile'>" + this.sideScrollData.current.currentTemperature + "°<span class='weather-divider'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></span>" + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
       this.titleIcon = "http://images.synapsys.us" + this.sideScrollData.current.currentIcon;
         break;
     case "finance":
