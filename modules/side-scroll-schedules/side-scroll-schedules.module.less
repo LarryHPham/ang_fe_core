@@ -19,14 +19,6 @@
     background-color: @white;
     border-radius: 3px;
     z-index: 99;
-    @media @tablet {
-      right: 0;
-      width: 300px;
-    }
-    @media @desktop-m {
-      right: 0;
-      width: 100%;
-    }
     .arrow-up {
       width: 0;
       height: 0;
@@ -39,12 +31,6 @@
       left: 0;
       margin-right: auto;
       margin-left: auto;
-      @media @tablet {
-        left: 100px;
-      }
-      @media @desktop-m {
-        left: 0;
-      }
     }
     .arrow-up:after {
       content: '';
@@ -143,7 +129,6 @@
       padding-bottom: 10px;
     }
     @media @tablet {
-      margin-top: -40px;
       height: auto;
       padding-bottom: 15px;
     }
@@ -179,6 +164,14 @@
   }
 }
 .top-scope-weather {
+  .ss_title-2 {
+    @media @tablet {
+      margin-top: -40px;
+    }
+    @media @desktop-m {
+      margin-top: 0;
+    }
+  }
   .ss_title-1 {
     @media @mobile {
       margin-bottom: 15px;
@@ -248,7 +241,7 @@
   @media @desktop-m {
     margin-top: 0;
   }
-  .fa-arrow-right-1 {
+  .fa-arrow-right-thin {
     position: absolute;
     right: 15px;
     top: 6px;
@@ -266,10 +259,10 @@
     margin-top: -5px;
     outline: 0px!important;
     @media @tablet {
-      width: 200px;
+      width: 250px;
     }
     @media @desktop-m {
-      width: 300px;
+      width: 250px;
     }
   }
   .inputPlaceholder(italic, @bulletGrey);
