@@ -5,7 +5,7 @@
       <img *ngIf="topScope == 'weather'" class="hide-mobile" width="25px" src="{{titleIcon}}"><span [innerHTML]="titleText"></span></span>
       <div class="weather-search" *ngIf="topScope == 'weather'">
         <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city..." (keyup)="keypress($event)">
-        <i class="fa fa-arrow-right-1"></i>
+        <i class="fa fa-arrow-right-thin"></i>
         <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0 || showError">
           <div class="arrow-up"></div>
           <div class="autocomplete-dropdown-title">Suggestions</div>

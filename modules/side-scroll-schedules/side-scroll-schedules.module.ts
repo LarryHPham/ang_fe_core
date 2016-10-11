@@ -87,4 +87,25 @@ export class SideScrollSchedule{
 
 }
   }
+
+  ngOnInit() {
+    //Shhhh easter egg here. To activate: type "window.createSharknado()" in your browser console
+    if (this.topScope == "weather") {
+      window['createSharknado'] = function() {
+          console.log("Preparing your sharknado...");
+          var image = document.getElementsByClassName("condition-image");
+          for (var i = 0; i < image.length; i++) {
+            image[i]['src'] = "http://images.synapsys.us/weather/icons/sharknado_n.svg";
+          }
+          var condition = document.getElementsByClassName("condition");
+          for (var u = 0; u < condition.length; u++) {
+            condition[u]['innerHTML'] = "Sharknado!";
+          }
+          var temp = document.getElementsByClassName("temp");
+          for (var v = 0; v < temp.length; v++) {
+            temp[v]['innerHTML'] = "9001&#176;";
+          }
+      };
+    }
+  }
 }
