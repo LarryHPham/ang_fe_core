@@ -2,12 +2,13 @@
 <div class="s-filter container-fluid">
     <span class="filter-left">
         <i class="fa fa-sliders"></i>
-        Applied Filters & Sorts:
+       <span><p>Applied Filters & Sorts:</p></span>
     </span>
     <span class="filter-right">
    <span class="s-filter_fil-hline"> Filter: </span><dropdown [list]="keywords" [selectedKey]="Business" (selectionChanged)="keywordClick($event)"></dropdown>
      <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="Sorting" [selectedKey]="MostRecent" (selectionChanged)="sortingClick($event)"></dropdown>
 
 </span>
+
 
 </div>
