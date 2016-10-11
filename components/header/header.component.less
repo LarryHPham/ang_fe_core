@@ -166,6 +166,7 @@
           width: 100%;
           left: 0;
           height: 100%;
+          pointer-events: none;
           background: linear-gradient(to right, rgba(68, 68, 68, 1) 0%,rgba(68, 68, 68, 0) 10%,rgba(68, 68, 68, 0) 90%, rgba(68, 68, 68, 1) 100%);
           z-index: 1;
         }
@@ -174,15 +175,25 @@
           white-space: nowrap;
           width: auto;
           height: 15px;
+          cursor: pointer;
           animation-name: scroll;
           animation-duration: 20s;
           animation-timing-function: linear;
           animation-iteration-count: infinite;
         }
+        .breaking-text a:hover {
+          text-decoration: underline;
+        }
         @keyframes scroll {
           from {margin-left:100%}
           to {margin-left: -230%}
         }
+      }
+      .breaking-scroller:hover .breaking-text {
+        -webkit-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+        -o-animation-play-state: paused;
+         animation-play-state: paused;
       }
     }
   }
