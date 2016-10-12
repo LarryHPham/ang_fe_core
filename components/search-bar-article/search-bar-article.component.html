@@ -1,7 +1,7 @@
 <div class="search-article-container" [ngStyle]="{'background-image': 'url(' + searchBoxBackground + ')'}">
-    <div class="search-article-title"> Stay Current With The Latest News</div>
-    <div class="search-article-sub_title"> Search for a Topic or keyword that interests you</div>
+    <div class="search-article-title"> {{searchTitle}}</div>
+    <div class="search-article-sub_title"> {{searchSubTitle}}</div>
     <div>
-    <input-bar></input-bar>
+    <input-bar [subCategories]="subCategoryList"></input-bar>
     </div>
 </div>
