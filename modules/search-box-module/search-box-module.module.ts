@@ -8,22 +8,40 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class SearchBoxModule {
   @Input() scope: string;
+  modSearchTitle:string;
+  modSearchSubTitle:string;
+
   sportsList=[{
-      key:'MLB',
-      value:"MLB",
+      key:'NFL',
+      value:"NFL",
         },
       {
-          key:'NFL',
-          value:"NFL",
+          key:'NCAAF',
+          value:"NCAAF",
       },
       {
           key:'NBA',
           value:"NBA",
       },
       {
-          key:'NCAAF',
-          value:"NCAAF",
-      }]
+          key:'NCAAM',
+          value:"NCAAM",
+      },
+      {
+          key:'MLB',
+          value:"MLB",
+      },
+      {
+          key:'NHL',
+          value:"NHL",
+      },
+      ]
+  ngOnInit(){
+      this.modSearchTitle="Discover The Latest In " + " " + this.scope;
+      this.modSearchSubTitle="Find the players and teams you love";
+
+
+  }
   searchBoxDescription: string = 'Find the players and teams you love.';
   searchPlaceHolderText: string = 'Search for a Team or Player...';
   searchBoxBackground: string = '/app/public/header_texture.png';

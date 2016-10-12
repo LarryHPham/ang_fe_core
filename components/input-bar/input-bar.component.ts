@@ -8,19 +8,24 @@ declare var moment;
 })
 
 export class InputBar{
+    ddIcon="caret-down";
     searchControl= new FormControl();
-
+    @Input() subCategories:Array<any>;
 
     onsubmit(){
         //console.log(this.searchControl.value);
 
        /* this.searchControl.valueChanges.subscribe(value => {
-
+s
         });*/
     }
     public searchInput: any = {
         placeholderText: "Search by keyword, topic or article name",
         hasSuggestions: true
     };
+    selectedSport(e){
+        //console.log(e);
+    }
+
 
 }
