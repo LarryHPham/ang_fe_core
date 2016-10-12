@@ -18,6 +18,7 @@ export class SideScrollSchedule{
   @Output() changeLocation = new EventEmitter();
   titleText:string = "";
   titleIcon:string = "";
+  localTopScope: string;
 
   public count = new EventEmitter();
   public curCount = 0;
@@ -33,7 +34,7 @@ export class SideScrollSchedule{
   }
 
   scopeChange(selection) {
-    this.changeScope.next(selection);
+    this.changeScope.next(selection.replace(/ /g, "-").toLowerCase());
   }
   keypress(event) {
     var textEntered = event.target.value.replace(/ /g, "%20"); // handle spaces in the text for URL safe entry
@@ -76,7 +77,8 @@ export class SideScrollSchedule{
     this.autocompleteItems = [];
   }
   ngOnChanges(event) {
-    if (event.sideScrollData) { // only fire this if the actual data is changing
+    if (event.sideScrollData || this.topScope == "sports") { // only fire this if the actual data is changing
+      this.localTopScope = this.topScope;
       switch(this.topScope) {
       case "weather":
         this.titleText = "<span class='hide-mobile'>" + this.sideScrollData.current.currentTemperature + "°<span class='weather-divider'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></span>" + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
@@ -90,6 +92,7 @@ export class SideScrollSchedule{
       case "sports":
       case "basketball":
       case "baseball":
+      case "sports":
         this.titleIcon = "fa-calendar-1";
         this.titleText = "Upcoming Games"
           break;

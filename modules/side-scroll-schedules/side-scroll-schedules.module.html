@@ -1,9 +1,9 @@
-<section class="ss_container top-scope-{{topScope}}" *ngIf="topScope != null">
+<section class="ss_container top-scope-{{localTopScope}}" *ngIf="localTopScope != null">
   <div class="ss_title">
     <span class="ss_title-2">
-      <i class="fa {{titleIcon}}" *ngIf="topScope != 'weather'"></i>
-      <img *ngIf="topScope == 'weather'" class="hide-mobile" width="25px" src="{{titleIcon}}"><span [innerHTML]="titleText"></span></span>
-      <div id="weather-search" class="weather-search" *ngIf="topScope == 'weather'">
+      <i class="fa {{titleIcon}}" *ngIf="localTopScope != 'weather'"></i>
+      <img *ngIf="localTopScope == 'weather'" class="hide-mobile" width="25px" src="{{titleIcon}}"><span [innerHTML]="titleText"></span></span>
+      <div id="weather-search" class="weather-search" *ngIf="localTopScope == 'weather'">
         <input type="text" name="fname" class="weather-search-input" placeholder="Search for a city..." (keyup)="keypress($event)">
         <i class="fa fa-arrow-right-thin"></i>
         <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0 || showError">
@@ -23,19 +23,19 @@
         </div>
       </div>
 
-    <span *ngIf="topScope != 'baseball' && topScope != 'football' && topScope != 'basketball'">
-      <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" >{{scopeItem}}</span>
+    <span *ngIf="localTopScope != 'baseball' && localTopScope != 'football' && localTopScope != 'basketball' && localTopScope != 'sports'">
+      <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.replace(' ', '-').toUpperCase() == scopeItem.replace(' ', '-').toUpperCase()" >{{scopeItem}}</span>
     </span>
 
-    <span *ngIf="topScope == 'baseball' || topScope == 'football' || topScope == 'basketball'">
+    <span *ngIf="localTopScope == 'baseball' || localTopScope == 'football' || localTopScope == 'basketball' || localTopScope == 'sports'">
       <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
         {{scopeItem}}
       </a>
     </span>
   </div>
-  <side-scroll *ngIf="sideScrollData" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
+  <side-scroll *ngIf="sideScrollData && localTopScope != 'sports'" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="sideScrollData.blocks">
-      <schedule-box *ngIf="item" [topScope]="topScope" [scope]="scope" [boxData]="item"></schedule-box>
+      <schedule-box *ngIf="item" [topScope]="localTopScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
   </side-scroll>
 </section>
