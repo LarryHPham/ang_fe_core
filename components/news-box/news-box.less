@@ -6,16 +6,20 @@
   background-position-x: center;
   background-repeat: no-repeat;
   min-width:100%;
-  height:auto;
+  height:100%;
   max-height:240px;
   @media @tablet{
     max-height: 420px;
   }
   &-item {
     width: 80%;
-    height: auto;
+    max-width: 1030px;
+    height: 100%;
     margin: 15px auto;
     position: relative;
+    @media @tablet{
+      margin: 40px auto;
+    }
     &-container{
       vertical-align: middle;
       width: 100%;
@@ -28,7 +32,7 @@
         display: inline-block;
         font-size: 12px;
         font-weight: 800;
-        padding: 0px 10px;
+        padding: 0px 15px;
         border-radius: 3px;
         background-color: @masterBrandColor;
         text-align: center;
@@ -58,20 +62,22 @@
           line-height: 1.4em;
           max-height: 48px;
           display:inline-block;
-          overflow: hidden;
           @media @tablet{
             font-size: 32px;
+            line-height: 1.2em;
           }
           @media @desktop-m{
             font-size: 44px;
             padding-bottom: 5px;
-            line-height: 1em;
           }
         }
         &-border {
           border-bottom: 1px solid @white;
           width: 100%;
           margin: 5px 0px;
+          @media @tablet{
+            margin: 15px 0px;
+          }
         }
       }
       &-content {
@@ -95,7 +101,7 @@
         margin-top: 15px;
         margin-bottom: 20px;
         @media @tablet{
-          margin-top: 30px;
+          margin-top: 25px;
           margin-bottom: 55px;
         }
         i{
