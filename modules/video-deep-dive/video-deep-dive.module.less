@@ -3,7 +3,10 @@
     .video-stack-info{padding-left: 10px}
   }
 }//videoStackTop Ends
-.videoStackBatch{display: block}//videoStackBatch Ends
+.videoStackBatch{
+  display: block;
+  .video-stack:nth-child(n+5){display: none}//fallback
+}//videoStackBatch Ends
 @media @mobile{
   .videoStackTop{
     display: block;
@@ -26,7 +29,6 @@
       bottom: 20px;
       margin-left: 10px;
     }
-    .video-stack:nth-child(n+3){display: none}
     .video-stack-info{padding-left: 10px}
   }//videoStackBatch Ends
 }//@media @mobile Ends
@@ -64,7 +66,6 @@
         }
       }
     }//.video-stack ends
-
     .video-title{
       &-top{
         top: 0;
