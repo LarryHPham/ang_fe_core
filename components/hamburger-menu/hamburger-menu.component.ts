@@ -48,7 +48,7 @@ export class HamburgerMenuComponent implements OnInit {
         parents[i].classList.remove('open');
         var closeX = parents[i].getElementsByClassName("toggle-nest");
         for (var u = 0; u < closeX.length; u++) {
-          closeX[u].src = "app/public/icon-+.svg";
+          closeX[u]['src'] = "app/public/icon-+.svg";
         }
       }
 
