@@ -93,7 +93,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
 
   ngOnChanges() {
     if ( !this.icon ) {
-      
+
       this.dropdownVisibleIcon = "fa-sort";
       this.dropdownHiddenIcon = "fa-sort";
     }
@@ -101,6 +101,11 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
        
       this.dropdownVisibleIcon = "fa-caret-up";
       this.dropdownHiddenIcon = "fa-caret-down";
+    }
+    else if (this.icon == "caret-down") {
+        this.icon="fa-caret-down";
+        this.dropdownVisibleIcon = "fa-caret-down";
+        this.dropdownHiddenIcon = "fa-caret-down";
     }
     else {
       this.dropdownVisibleIcon = this.icon;

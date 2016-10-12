@@ -1,5 +1,6 @@
-<div class="search-box-module-container" [ngStyle]="{'background-image': 'url(' + searchBoxBackground + ')'}">
-  <h4 class="search-box-module-header">
+<div class="search-box-module container-fluid">
+  <article-search-bar [searchTitle]="modSearchTitle" [searchSubTitle]="modSearchSubTitle" [subCategoryList]="sportsList"></article-search-bar>
+  <!--<h4 class="search-box-module-header">
     Discover the Latest In {{scope}}
   </h4>
   <p class="search-box-module-desc">
@@ -8,9 +9,9 @@
 
   <div class="search-box-container">
 
-<!--
+&lt;!&ndash;
     <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
--->
+&ndash;&gt;
     <div class="search-input-container">
 
         <input
@@ -25,5 +26,5 @@
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
     </a>
-  </div>
+  </div>-->
 </div>
