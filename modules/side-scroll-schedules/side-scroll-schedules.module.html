@@ -9,7 +9,7 @@
         <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0 || showError">
           <div class="arrow-up"></div>
           <div class="autocomplete-dropdown-title">Suggestions</div>
-          <scrollable-content>
+          <scrollable-content [refreshVar]="scrollerRefresh">
             <div class="dropdown-item" id="{{item.city}}-{{item.state}}" (click)="selectCity($event)" *ngFor="let item of autocompleteItems">
               {{item.city}}, {{item.state}}
             </div>
