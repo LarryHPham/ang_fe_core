@@ -33,7 +33,7 @@ export class BoxScoresModule implements OnInit {
     this.windowWidth = window.innerWidth;
     if(this.scroll){
       if(this.boxScores != null){
-        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+        if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
@@ -47,13 +47,13 @@ export class BoxScoresModule implements OnInit {
 
   ngOnChanges(){
     if(this.boxScores != null){
-      if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+      if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
     }
     if(this.scroll){
       if(this.boxScores != null){
-        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+        if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
@@ -102,10 +102,10 @@ export class BoxScoresModule implements OnInit {
 
   // Functions to scan through games on the same day for mobile
   advancePage(){
-    if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+    if (this.currentPage != this.boxScores.gameInfo.length) {
       this.currentPage = this.currentPage + 1;
       this.leftDisabled = "";
-      if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+      if (this.currentPage != this.boxScores.gameInfo.length) {
         this.rightDisabled = "";
       }
       else {
