@@ -11,6 +11,7 @@ export class InputBar{
     ddIcon="caret-down";
     searchControl= new FormControl();
     @Input() subCategories:Array<any>;
+    @Input() isSearchModule:boolean;
 
     onsubmit(){
         //console.log(this.searchControl.value);
