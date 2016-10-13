@@ -21,13 +21,26 @@ keywords=[
     {
         key:'Sports',
         value:"Sports",
+    },
+    {
+        key:'Politics',
+        value:"Politics",
+    },
+    {
+        key:'Entertainment',
+        value:"Entertainment",
+    },
+    {
+        key:'Food',
+        value:"Food",
+    },
+    {
+        key:'Lifestyle',
+        value:"Lifestyle",
     }];
 
     Sorting=[
-        {
-            key:"none",
-            value:"none",
-        },
+
         {
             key:"MostRecent",
             value:"Most Recent",
