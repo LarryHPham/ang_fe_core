@@ -1,3 +1,4 @@
+<div *ngIf="boxData.eos != 'true'">
 <div *ngIf="topScope=='football' || topScope == 'basketball' || topScope == 'baseball' || topScope == 'sports'" class="schedule_box {{boxData.isLive}} football"><!--become a component <schedule-box>-->
   <div class="schedule_box-date" *ngIf="boxData.isLive != 'schedule-live'" [innerHTML]="boxData.date">
   </div>
@@ -60,3 +61,9 @@
   <div class="stock-value"><span class="current-value">${{boxData.currentStockValue}}</span> <span class="value-change" [class.positive]="boxData.stockChangeGain == '1'" [class.negative]="boxData.stockChangeGain == '0'"><i class="fa" [class.fa-arrow-up]="boxData.stockChangeGain == '1'" [class.fa-arrow-down]="boxData.stockChangeGain == '0'"></i> {{boxData.stockChangeAmount}} ({{boxData.stockChangePercent}}%)</span></div>
   <a *ngIf="boxData.exchangeName != 'OTC'" target="_blank" href="{{boxData.profileUrl}}"><div class="view-profile">VIEW PROFILE</div></a>
 </div><!--</schedule-box-finance>-->
+</div>
+<div *ngIf="boxData.eos == 'true'" class="schedule_box eos">
+    <img class="icon" src="{{boxData.icon}}">
+    <div class="mainMessage">{{boxData.mainMessage}}</div>
+    <div class="subMessage">{{boxData.subMessage}}</div>
+<div>

@@ -33,8 +33,8 @@
       </a>
     </span>
   </div>
-  <side-scroll *ngIf="sideScrollData && localTopScope != 'sports'" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
-    <template ngFor let-item [ngForOf]="sideScrollData.blocks">
+  <side-scroll *ngIf="usableData && localTopScope != 'sports'" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
+    <template ngFor let-item [ngForOf]="usableData.blocks">
       <schedule-box *ngIf="item" [topScope]="localTopScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
   </side-scroll>
