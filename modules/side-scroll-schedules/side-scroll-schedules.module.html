@@ -9,7 +9,7 @@
         <div class="autocomplete-dropdown" *ngIf="autocompleteItems.length > 0 || showError">
           <div class="arrow-up"></div>
           <div class="autocomplete-dropdown-title">Suggestions</div>
-          <scrollable-content>
+          <scrollable-content [refreshVar]="scrollerRefresh">
             <div class="dropdown-item" id="{{item.city}}-{{item.state}}" (click)="selectCity($event)" *ngFor="let item of autocompleteItems">
               {{item.city}}, {{item.state}}
             </div>
@@ -28,13 +28,13 @@
     </span>
 
     <span *ngIf="localTopScope == 'baseball' || localTopScope == 'football' || localTopScope == 'basketball' || localTopScope == 'sports'">
-      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
+      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase().replace('ALL','SPORTS')" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase().replace('all','')">
         {{scopeItem}}
       </a>
     </span>
   </div>
-  <side-scroll *ngIf="sideScrollData && localTopScope != 'sports'" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
-    <template ngFor let-item [ngForOf]="sideScrollData.blocks">
+  <side-scroll *ngIf="usableData && localTopScope != 'sports'" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
+    <template ngFor let-item [ngForOf]="usableData.blocks">
       <schedule-box *ngIf="item" [topScope]="localTopScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
   </side-scroll>

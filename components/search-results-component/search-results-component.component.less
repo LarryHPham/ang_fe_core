@@ -42,7 +42,7 @@
     width:54.86%;
     float:right;
     //height: 100%;
-    padding: 5px 10px;
+    padding: 5px 15px;
     .flexDisplay;
     .flexDirection(column);
     //.flexAlignItems(center);
@@ -56,10 +56,13 @@
       @media @tablet{
         .globalDefaultFont(20px,800);
         max-height: 51px;
+        line-height: 23px;
+        padding: 5px 0;
       }
       @media @desktop-m{
         .globalDefaultFont(26px,800);
          max-height: 65px;
+         line-height: 30px;
       }
       width:100%;
       padding:10px 0;
@@ -72,9 +75,9 @@
         display: none;
       }
       @media @tablet{
-        padding: 5px 0 ;
+        padding: 5px 0 0 0;
       }
-      padding: 10px 0 0 0;
+
       .globalDefaultFont(12px,400);
       b{
         color:@masterBrandColor;
@@ -84,7 +87,7 @@
       @media @mobile{
         display: none;
       }
-      padding: 5px 0 0 0;
+      padding: 2px 0 0 0;
       .globalDefaultFont(10px,400);
       color:@bulletGrey;
     }
@@ -100,7 +103,7 @@
       }
       @media @desktop-m{
         .globalDefaultFont(14px,400);
-        height:65px;
+        height:64px;
       }
       padding: 10px 0;
 

@@ -4,7 +4,7 @@
 
             <input class="search-input autocomplete" disabled [value]="autoCompleteText" />
             <dropdown *ngIf="isModule" [list]="DDarray" [selectedKey]="MLB" (selectionChanged)="e($event)"></dropdown>
-            <input class="search-input main searchcheck" [formControl]="term" [class.search-empty]="!hasInputText" (keydown)="searchKeydown($event)"  autocomplete="off" placeholder="{{searchInput.placeholderText}}"/>
+            <input class="search-input main searchcheck" [formControl]="term" [class.search-empty]="!hasInputText" (keydown)="searchKeydown($event)"  autocomplete="off" placeholder="{{searchInput.placeholderText}}" />
         </div>
         <button type="submit" class="search-button searchcheck">
             <i class="fa fa-search"></i>
@@ -13,8 +13,11 @@
     <div *ngIf="searchInput.hasSuggestions && dropdownIsFocused && hasInputText" class="search-dropdown searchcheck">
         <div class="search-dropdown-caret"></div>
         <div class="search-dropdown-title">Suggestions</div>
-        <div *ngIf="dropdownList.length === 0" class="search-no-results">
-            No Results Found
+        <div *ngIf="dropdownList.length === 0" class="autocomplete-error">
+          <i class="fa fa-search-icon-01"></i>
+          <span class="error-text">
+            Sorry we can’t find any results matching your search request.
+          </span>
         </div>
         <ul *ngIf="dropdownList.length > 0" (click)="unFocus()" (mouseout)="resetSelected()">
           <li class="search-dropdown-items searchcheck" *ngFor="let item of dropdownList; let i = index;" (mouseover)="itemHovered(i)">
