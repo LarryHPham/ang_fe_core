@@ -62,16 +62,10 @@ export class BoxScoresModule implements OnInit {
         this.maxHeight = 650;
       }
     }
-    if(this.refreshBoxScores.length > 10){
-      this.refreshBoxScores = "";
-    }else{
-      this.refreshBoxScores += " ";
-    }
     this.checkHeight();
   }
 
   checkHeight(){
-    ScrollerFunctions.initializeScroller(this._elementRef.nativeElement, document);
     if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
       var boxHeader = document.getElementById('box-header').offsetHeight;
       //only for mlb page but subtract the mod title and calendar height from what was sent in
@@ -83,6 +77,12 @@ export class BoxScoresModule implements OnInit {
         this.heightStyle = 'auto';
       }
     }
+    if(this.refreshBoxScores.length > 10){
+      this.refreshBoxScores = "";
+    }else{
+      this.refreshBoxScores += " ";
+    }
+    ScrollerFunctions.initializeScroller(this._elementRef.nativeElement, document);
   }
 
   private onWindowLoadOrResize(event) {

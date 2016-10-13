@@ -1,9 +1,9 @@
 <div
   *ngIf="calendarParams"
   (window:resize)="onWindowLoadOrResize($event)"
-  class="module-container box-scores row">
+  class="box-scores row">
 
-  <div class="box-scores-container col-lg-8">
+  <div class="module-container box-scores-container col-lg-8">
     <div id="box-header">
       <module-header *ngIf="boxScores" [modHeadData]="boxScores.moduleTitle"></module-header>
       <!--for calendar-->
@@ -116,12 +116,4 @@
 
     </div> <!-- END *ngIf="boxScores" -->
   </div> <!--END box-scores-container -->
-
-  <!-- AiContent -->
-  <game-article
-    *ngIf="boxScores && boxScores.aiContent"
-    [gameArticle]="boxScores.aiContent"
-    class="col-lg-4">
-  </game-article>
-
 </div>

@@ -12,13 +12,6 @@
   overflow: visible;
   margin: 0 auto;
   padding: 15px 0;
-  &-container {
-    //max-height: 550px;
-    //overflow: scroll;
-    @media @desktop-m {
-      padding-right: 15px;
-    }
-  }
   &-leagueNav {
     width:100%;
   }
@@ -169,6 +162,7 @@
     }
   }
   .scrollable-item-wrapper{
+    max-height:555px;
     width:102.%;
     padding-right:2000px;
   }
@@ -178,7 +172,6 @@
   }
   .scrollable-item.showScroll::after{
     width:5px;
-    right:2px;
-    background-color:@highlightGrey;
+    right:3px;
   }
 } // END .box-scores-scroll

@@ -16,6 +16,12 @@
       [scroll]="boxScoresScroll"
       (dateEmit)="getBoxScores($event)">
     </box-scores>
+    <!-- AiContent for BoxScores-->
+    <game-article
+      *ngIf="currentBoxScores && currentBoxScores.aiContent"
+      [gameArticle]="boxScores.aiContent"
+      class="col-lg-4">
+    </game-article>
   </div>
   <!-- BILL BOARD -->
   <div class="deep-dive-module">

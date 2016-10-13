@@ -62,10 +62,14 @@ export class DeepDiveBlock1 implements OnInit {
   getDeepDiveVideo(){
       this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum).subscribe(
         data => {
-          let videoOne = [data.data[0]];
-          let videoBatch = data.data.splice(1,5);
-          this.videoDataTop = this._deepDiveData.transformDeepDiveVideoBatchData(videoOne);
-          this.videoDataBatch = this._deepDiveData.transformDeepDiveVideoBatchData(videoBatch);
+          if(data.data != null){
+            var videoOne = [data.data[0]];
+            if(data.data.length > 5){
+              var videoBatch = data.data.splice(1,5);
+              this.videoDataBatch = this._deepDiveData.transformDeepDiveVideoBatchData(videoBatch);
+            }
+            this.videoDataTop = this._deepDiveData.transformDeepDiveVideoBatchData(videoOne);
+          }
         },
         err => {
           console.log("Error getting video batch data");
