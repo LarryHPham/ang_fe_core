@@ -20,6 +20,8 @@ export class SideScrollSchedule{
   titleIcon:string = "";
   localTopScope: string;
   scrollerRefresh: string = "";
+  originalBlocks: any;
+  usableData:any;
 
   public count = new EventEmitter();
   public curCount = 0;
@@ -28,7 +30,14 @@ export class SideScrollSchedule{
   showError: boolean = false;
 
   constructor(private _schedulesService:SchedulesService) {}
-
+  reloadSame() {
+    let usableData = Object.assign({},this.usableData);
+    for (var i = 0; i < this.originalBlocks.length; i++) {
+      usableData.blocks.push(this.originalBlocks[i]);
+    }
+    this.usableData = Object.assign({},usableData);
+    this.scrollLength = this.usableData.blocks.length;
+  }
   counter(event){
     this.curCount = event;
     this.count.emit(event);
@@ -80,6 +89,8 @@ export class SideScrollSchedule{
   }
   ngOnChanges(event) {
     if (event.sideScrollData || this.topScope == "sports") { // only fire this if the actual data is changing
+      this.originalBlocks = this.sideScrollData.blocks.slice(0);
+      this.usableData = Object.assign({},this.sideScrollData);
       this.localTopScope = this.topScope;
       switch(this.topScope) {
       case "weather":
@@ -91,13 +102,15 @@ export class SideScrollSchedule{
         this.titleIcon = "fa-briefcase-case-two";
           break;
       case "football":
-      case "sports":
       case "basketball":
       case "baseball":
-      case "sports":
         this.titleIcon = "fa-calendar-1";
-        this.titleText = "Upcoming Games"
-          break;
+        this.titleText = "Upcoming Games";
+        break;
+      case "sports":
+        this.titleIcon = "";
+        this.titleText = "";
+        break;
       default:
       }
     }
