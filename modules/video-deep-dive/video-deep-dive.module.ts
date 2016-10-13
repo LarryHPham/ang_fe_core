@@ -9,7 +9,6 @@ declare var moment;
 })
 
 export class DeepDiveVideoModule implements OnInit{
-  @Input() videoDataTop: Array<VideoStackData>;
-  @Input() videoDataBatch: Array<VideoStackData>;
+  @Input() videoData: Array<VideoStackData>;
   ngOnInit() {}
 }
