@@ -1,5 +1,8 @@
 
 <form class="input-bar" (ngSubmit)="onsubmit()">
+    <span class="category-dropdown">
+        <dropdown [list]="subCategories" [selectedKey]="NFL" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
+    </span>
    <!-- <input class="input-bar-type" type="search" [formControl]="searchControl" >-->
     <search [searchInput]="searchInput"></search>
 
