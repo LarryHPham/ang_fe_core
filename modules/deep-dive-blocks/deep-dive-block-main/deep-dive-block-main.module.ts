@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
 import { ArticleStackData, VideoStackData, SectionNameData } from "../../../interfaces/deep-dive.data";
+import { GlobalSettings } from "../../../../global/global-settings";
+import { GlobalFunctions } from "../../../../global/global-functions";
+import { VerticalGlobalFunctions } from "../../../../global/vertical-global-functions";
 
 declare var moment;
 
@@ -10,70 +13,71 @@ declare var moment;
 })
 
 export class DeepDiveBlockMain implements OnInit {
-  stackTop1: Array<ArticleStackData>;
-  stackRow1: Array<ArticleStackData>;
-  stackTop2: Array<ArticleStackData>;
-  stackRow2: Array<ArticleStackData>;
-  stackTop3: Array<ArticleStackData>;
-  stackRow3: Array<ArticleStackData>;
-  recData1: Array<ArticleStackData>;
-  recData2: Array<ArticleStackData>;
+  @Input() geoLocation: string;
+  breakingStack: Array<ArticleStackData>;
+  recDataSports: Array<ArticleStackData>;
+  businessStack: Array<ArticleStackData>;
+  politicsStack: Array<ArticleStackData>;
+  recDataEntertain: Array<ArticleStackData>;
+  foodStack: Array<ArticleStackData>;
+  recDataHealth: Array<ArticleStackData>;
+  lifestyleStack: Array<ArticleStackData>;
+  estateStack: Array<ArticleStackData>;
+  recDataTravel: Array<ArticleStackData>;
+  weatherStack: Array<ArticleStackData>;
+  recDataAuto: Array<ArticleStackData>;
 
-  videoDataTopMain: Array<VideoStackData>;
-  videoDataBatchMain: Array<VideoStackData>;
+  videoDataBatch1: Array<VideoStackData>;
+  videoDataBatch2: Array<VideoStackData>;
+  videoDataBatch3: Array<VideoStackData>;
 
-  sectionName1: SectionNameData =  {
-     icon: "fa-clock",
-     title: "Breaking News",
-     route: ['deep-dive']//TODO TEST
-   }
-  sectionName2: SectionNameData =  {
-     icon: "fa-play-circle",
-     title: "Video"
-   }
-  sectionName3: SectionNameData =  {
-     icon: "fa-futbol-o",
-     title: "Sports"
-   }
-  sectionName4: SectionNameData =  {
-     icon: "fa-fontawesome-webfont-3",
-     title: "Business"
-   }
-  sectionName5: SectionNameData =  {
-     icon: "fa-university",
-     title: "Politics"
-   }
-  sectionName6: SectionNameData =  {
-     icon: "fa-film",
-     title: "Entertainment"
-   }
-
-  geoLocation: string = "ks";//TODO
+  secName: Array<SectionNameData>;
   articleCallLimit:number = 50;
   batchNum: number = 1;
- constructor(private _deepDiveData: DeepDiveService){}
+  homePageBlocks = ["breaking", "video", "sports", "business", "politics", "entertainment", "food", "video", "health", "lifestyle", "realestate", "travel", "weather", "video", "automotive"];
+ constructor(private _deepDiveData: DeepDiveService){
+ }
+
+ getSectionNameData(){
+   var sectionNameArray = [];
+   this.homePageBlocks.forEach(function(val, index){
+     var d = {
+       icon: val != 'video' ? GlobalSettings.getTCXscope(val).icon : 'fa-play-circle',
+       title: val != 'video' ? GlobalFunctions.toTitleCase(GlobalSettings.getTCXscope(val).displayName) : 'Video',
+       route: val != 'video' ? VerticalGlobalFunctions.formatSectionFrontRoute(GlobalSettings.getTCXscope(val).scope) : null
+     }
+     sectionNameArray.push(d);
+   });
+   return sectionNameArray;
+ }
+
   getArticlesData(){
     this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {//TODO TESTING
-          let article1 = data.data.splice(1,1);
-          let article4 = data.data.splice(1,4);
-          let article6 = data.data.splice(1,6);
-          let article8 = data.data.splice(1,8);
-          this.stackTop1 = this._deepDiveData.transformToArticleStack(article1, "Breaking News");
-          this.stackRow1  = this._deepDiveData.transformToArticleStack(article8, "Breaking News");
-          this.recData1 = this._deepDiveData.transformToArticleStack(article6, "Sports");
+          this.breakingStack  = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "breaking");
+          this.recDataSports = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "sports");
+          this.businessStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "business");
+          this.politicsStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "politics");
+          this.recDataEntertain = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "entertain");
+          this.foodStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "food");
+          this.recDataHealth = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "health");
+          this.lifestyleStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "lifestyle");
+          this.estateStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "realestate");
+          this.recDataTravel = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "travel");
+          this.weatherStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "weather");
+          this.recDataAuto = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "automotive");
         },
         err => {
             console.log("Error getting Breaking News data");
         });
   }
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService("nfl", 18, 1).subscribe(
+      this._deepDiveData.getDeepDiveVideoBatchService("nfl", 15, 1).subscribe(
         data => {
-          let videoOne = [data.data[0]];
-          let videoBatch = data.data.splice(1,5);
-          this.videoDataTopMain = this._deepDiveData.transformDeepDiveVideoBatchData(videoOne);
-          this.videoDataBatchMain = this._deepDiveData.transformDeepDiveVideoBatchData(videoBatch);
+          let videoBatch = data.data.splice(0, 5);
+          this.videoDataBatch1 = this._deepDiveData.transformSportVideoBatchData(videoBatch, "nfl");
+          this.videoDataBatch2 = this._deepDiveData.transformSportVideoBatchData(videoBatch, "nfl");
+          this.videoDataBatch3 = this._deepDiveData.transformSportVideoBatchData(videoBatch, "nfl");
         },
         err => {
           console.log("Error getting video batch data");
@@ -85,6 +89,7 @@ export class DeepDiveBlockMain implements OnInit {
   }
 
   ngOnInit() {
+    this.secName = this.getSectionNameData();
     this.callModules();
   }
 }

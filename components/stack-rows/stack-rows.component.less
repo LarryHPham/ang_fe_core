@@ -23,12 +23,13 @@
          overflow: hidden;
          text-overflow: ellipsis;
          text-transform: uppercase;
+         margin-right: 5px;
          .globalDefaultModFont(10px, 800, @black);
          > span:last-child{
-           margin-left: 5px;
            color: @bulletGrey;
            overflow: hidden;
            height: 20px;
+           white-space: no-wrap;
          }
       }
       &-subHeadline {
@@ -39,6 +40,7 @@
     }
 }
 .stackRow{padding-bottom: 15px; margin-bottom: 15px}
+.stackRow:nth-child(n+7){display: none}
 @media @mobile{
   .stackRow{
     border-bottom: 1px solid @strokeGrey;
@@ -50,7 +52,6 @@
     margin-bottom: 0;
   }
   //Select all but the first six
-  .stackRow:nth-child(n+7){display: none}
 }
 @media @tablet {
   .stackSmall {
@@ -69,8 +70,6 @@
     max-width: 50%;
     margin-right: 0;
   }
-  //FALL BACK - select all but the first 8
-  .stackRow:nth-child(n+9){display: none}
   .stackRows{
     padding: 0;
     margin-bottom: -15px;
