@@ -50,7 +50,11 @@
         color: @white;
         padding: 10px 12px;
         a {
+          color: @highlightGrey;
           font-family: lato;
+        }
+        a:hover {
+          color: @white;
         }
       }
       div:first-of-type {
@@ -69,6 +73,9 @@
     .flexDirection(column);
     .flexJustify(flex-end);
     .flexAlignItems(flex-start);
+    @media @mobile {
+      margin-left: 10px;
+    }
     .parallelogram {
       position: absolute;
       top:0;
@@ -79,7 +86,10 @@
       background: darken(@masterBrandColor, 5%);
       -webkit-transform:    skewX(-25deg);
       transform:    skewX(-25deg);
-      z-index: 1
+      z-index: 1;
+      @media @mobile {
+        width: 53px;
+      }
     }
     .parallelogram.menuOpened {
       background: @fontIconGrey;
@@ -90,15 +100,24 @@
       position: absolute;
       top:10px;
       z-index: 2;
+      @media @mobile {
+        display:none;
+      }
     }
     .fa-bars{
       margin: 5px 5px 4px 5px;
       padding-left: 5px;
       z-index: 2;
+      @media @mobile {
+        padding-left: 10px;
+      }
     }
     .remove{
       margin:  0px 7px 11px 13px;
       z-index: 2;
+      @media @mobile {
+        margin:  0px 7px 11px 20px;
+      }
     }
     .header-hamburger-dropDown {
       margin-left: -10px;
@@ -186,7 +205,7 @@
         }
         @keyframes scroll {
           from {margin-left:100%}
-          to {margin-left: -230%}
+          to {margin-left: -200%}
         }
       }
       .breaking-scroller:hover .breaking-text {
@@ -233,6 +252,7 @@
       top: 35px;
       @media @mobile {
         background-color: #444444;
+        width:100vw;
       }
       @media @tablet {
         background-color: #444444;
@@ -251,12 +271,18 @@
         height: 25px;
         padding-right: 0;
         width: 300px;
+        @media @mobile {
+          width: ~"calc(100% - 20px)";
+        }
         @media @desktop-m {
           width: 190px;
         }
         margin: 5px auto auto 10px;
         .search-input-container{
           width: 248px;
+          @media @mobile {
+            width: ~"calc(100% - 50px)"
+          }
           @media @desktop-m {
             width: 138px;
           }

@@ -44,6 +44,7 @@
     transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
     -webkit-transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
     color: @black;
+    font-size: 12px;
     background-color: @white;
     @media @tablet{
       padding: 0px 10px;
@@ -67,6 +68,7 @@
   }
 
   .search-button{
+    text-align: right;
     width: 16.7%;
     max-width: 100px;
     background-color: @masterBrandColor;
@@ -81,6 +83,7 @@
     border-bottom-right-radius: 5px;
     .fa {
       font-size: 15px;
+      margin-right: 5px;
     }
     @media @mobile{
       font-size: 20px;
@@ -91,21 +94,36 @@
   }
 
   .search-dropdown{
-    width: ~"calc(100% + 20px)";
+    width: 100%;
     min-height: 25px;
     height: auto;
     position: absolute;
     top: 135%;
-    left: -10px;
     background-color: @white;
     list-style-type: none;
     border: 1px solid @strokeGrey;
     z-index: 5;
-    border-radius: 0px;
-    @media @tablet {
-      width: 100%;
-      left:0;
-      border-radius: 2px;
+    border-radius: 2px;
+    @media @desktop-m {
+      width: 300px;
+      right:0;
+    }
+    .autocomplete-error {
+      i {
+        font-size: 28px;
+        display: inline-block;
+        margin: 10px 10px 5px 10px;
+        float: left;
+        color: @masterBrandColor;
+      }
+      .error-text {
+        font-size: 12px;
+        float: right;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: ~"calc(100% - 50px)";
+      }
     }
     ul {
       margin-bottom: 0;
@@ -122,9 +140,9 @@
       border-bottom: 10px solid @backgroundGrey;
       border-left: 8px solid transparent;
       border-right: 8px solid transparent;
-      display:none;
-      @media @tablet {
-        display: block;
+      display: block;
+      @media @desktop-m {
+        left: 195px;
       }
     }
     &-caret:after{
@@ -148,35 +166,24 @@
       padding-left: 5px;
       padding-top: 4px;
       border-bottom: 1px solid @strokeGrey;
-      display:none;
-      @media @tablet {
-        display: block;
-      }
     }
     &-items{
       border-bottom: 1px solid @highlightGrey;
       &:last-child{
         border-bottom: 0;
         .search-dropdown-item{
-          border-bottom-left-radius: 0px;
-          border-bottom-right-radius: 0px;
-          @media @tablet {
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-          }
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
         }
       }
     }
     &-item{
       font-size: 16px;
-      padding: 13px 20px;
       position: relative;
       .flexDisplay;
       .flexAlignItems(center);
       .flexJustify(flex-start);
-      @media @tablet {
-        padding: 7px 5px;
-      }
+      padding: 7px 5px;
       &.active{
         color: @white;
         background-color: @masterBrandColor;
