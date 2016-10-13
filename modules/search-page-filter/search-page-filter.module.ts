@@ -4,21 +4,41 @@ import {Component} from "@angular/core";
     templateUrl:'./app/fe-core/modules/search-page-filter/search-page-filter.module.html'
 })
 export class SearchPageFilter{
-keywords=[{
-    key:"Business",
-    value:"Business",
-},
+    icon="caret-down";
+keywords=[
+    {
+        key:"All",
+        value:"All Keywords",
+    },
+    {
+        key:"Automative",
+        value:"Automative",
+    },
+    {
+        key:"Business",
+        value:"Business",
+    },
     {
         key:'Sports',
         value:"Sports",
     }];
-    Sorting=[{
-        key:"MostRecent",
-        value:"Most Recent",
-    },
+
+    Sorting=[
         {
-            key:'Older',
-            value:"Older",
+            key:"MostRecent",
+            value:"Most Recent",
+        },
+        {
+            key:'Oldest',
+            value:"Oldest",
+        },
+        {
+            key:'24Hours',
+            value:"Last 24 Hours",
+        },
+        {
+            key:'pastWeek',
+            value:"Past Week",
         }];
     keywordClick(e){
         //console.log(e);
