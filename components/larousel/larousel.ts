@@ -80,12 +80,14 @@ export class Larousel{
         data:ssItems[startLength-1].data,
         type:ssItems[startLength-1].type
       })
-      //unshift pushes clones before array
-      ssItems.push({
-        id: ssItems[1].id,
-        data:ssItems[1].data,
-        type:ssItems[1].type
-      })
+      //unshift pushes clones before array only if we have that extra carousel in front
+      if(this.videoData != null){
+        ssItems.push({
+          id: ssItems[1].id,
+          data:ssItems[1].data,
+          type:ssItems[1].type
+        })
+      }
     }
 
     //set all inputed data into a single originalData variable to be used

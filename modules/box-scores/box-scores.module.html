@@ -17,35 +17,34 @@
     <!--box-scores info-->
     <div *ngIf="boxScores">
       <template [ngIf]="!scroll" *ngIf="windowWidth >= 768">
-        <div class="box-scores-info row">
-          <div
+        <div class="box-scores-info">
+          <div class="row">
+            <div
             *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
             class="box-scores-info-container col-md-6"
             [class.odd]="i" [class.even]="!i">
             <!--game info that affects only how league box scores are displayed-->
-            <div *ngIf="calendarParams.profile == 'league'">
-              <game-info
+              <div *ngIf="calendarParams.profile == 'league'" class="box-scores-info-padding">
+                <game-info
                 *ngFor="let game of gameBox; let g = index"
-                [gameInfo]="game.game">
-              </game-info>
-            </div>
+                [gameInfo]="game.game"></game-info>
+              </div>
 
-            <!--game info that affects only how team box scores are displayed-->
-            <div *ngIf="calendarParams.profile != 'league'">
-              <game-info
+              <!--game info that affects only how team box scores are displayed-->
+              <div *ngIf="calendarParams.profile != 'league'" class="box-scores-info-padding">
+                <game-info
                 *ngIf=" calendarParams.profile != 'league' "
                 [gameInfo]="gameBox[gameNum].game"
-                class="float-left">
-              </game-info>
-              <template [ngIf]="gameBox[gameNum].aiContent > 1">
-                <game-article
+                class="float-left"></game-info>
+                <template [ngIf]="gameBox[gameNum].aiContent > 1">
+                  <game-article
                   *ngIf=" calendarParams.profile != 'league' "
                   [gameArticle]="gameBox[gameNum].aiContent"
-                  class="float-right">
-                </game-article>
-              </template>
-            </div>
-          </div> <!-- *ngFor="let gameBox of boxScores.gameInfo -->
+                  class="float-right"></game-article>
+                </template>
+              </div>
+            </div> <!-- *ngFor="let gameBox of boxScores.gameInfo -->
+          </div>
         </div> <!-- box-scores-info -->
       </template>
 
@@ -56,47 +55,48 @@
           [style.height]="heightStyle"
           [refreshVar]="refreshBoxScores"
           class="box-scores-scroll">
-          <div class="box-scores-info row">
-            <div
+          <div class="box-scores-info">
+            <div class="row">
+              <div
               *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
               class="box-scores-info-container col-md-6"
               [class.odd]="i" [class.even]="!i">
               <!--game info that affects only how league box scores are displayed-->
-              <div *ngIf="calendarParams.profile == 'league'">
-                <game-info
+                <div *ngIf="calendarParams.profile == 'league'" class="box-scores-info-padding">
+                  <game-info
                   *ngFor="let game of gameBox; let g = index"
-                  [gameInfo]="game.game">
-                </game-info>
-              </div>
+                  [gameInfo]="game.game"></game-info>
+                </div>
 
-              <!--game info that affects only how team box scores are displayed-->
-              <div *ngIf="calendarParams.profile != 'league'">
-                <game-info
+                <!--game info that affects only how team box scores are displayed-->
+                <div *ngIf="calendarParams.profile != 'league'" class="box-scores-info-padding">
+                  <game-info
                   *ngIf=" calendarParams.profile != 'league' "
                   [gameInfo]="gameBox[gameNum].game"
-                  class="float-left">
-                </game-info>
-                <template [ngIf]="gameBox[gameNum].aiContent > 1">
-                  <game-article
+                  class="float-left"></game-info>
+                  <template [ngIf]="gameBox[gameNum].aiContent > 1">
+                    <game-article
                     *ngIf=" calendarParams.profile != 'league' "
                     [gameArticle]="gameBox[gameNum].aiContent"
-                    class="float-right">
-                  </game-article>
-                </template>
-              </div>
-            </div> <!-- *ngFor="let gameBox of boxScores.gameInfo -->
+                    class="float-right"></game-article>
+                  </template>
+                </div>
+              </div> <!-- *ngFor="let gameBox of boxScores.gameInfo -->
+            </div>
           </div> <!-- box-scores-info -->
         </scrollable-content>
       </template>
 
       <!--box-scores info-->
       <template [ngIf]="windowWidth < 768">
-        <div class="box-scores-info row">
-          <div
+        <div class="box-scores-info">
+          <div class="row">
+            <div
             *ngIf="boxScores"
-            class="box-scores-info-container col-md-6">
+            class="box-scores-info-container box-scores-info-padding">
             <!--game info-->
-            <game-info [gameInfo]="boxScores.gameInfoMobile[currentPage - 1][0].game"></game-info>
+              <game-info [gameInfo]="boxScores.gameInfoMobile[currentPage - 1][0].game"></game-info>
+            </div>
           </div>
 
           <!--multi game navigation for mobile-->
