@@ -9,6 +9,7 @@ export class ArticleSearchBar{
     @Input() searchTitle:string;
     @Input() searchSubTitle:string;
     @Input() subCategoryList:Array<any>;
+    @Input() isSearchModule;
     searchBoxBackground: string = '/app/public/header_texture.png';
     public searchInput:FormGroup;
     public isSubmitted:boolean;
