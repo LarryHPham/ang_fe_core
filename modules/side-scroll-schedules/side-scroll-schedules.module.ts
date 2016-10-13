@@ -19,6 +19,7 @@ export class SideScrollSchedule{
   titleText:string = "";
   titleIcon:string = "";
   localTopScope: string;
+  scrollerRefresh: string = "";
 
   public count = new EventEmitter();
   public curCount = 0;
@@ -55,6 +56,7 @@ export class SideScrollSchedule{
         })
         setTimeout(() => {
           this.keyPressReady = true;
+          this.scrollerRefresh += " ";
         }, 500); // sets the timout to fire within n miliseconds
       }
     }
