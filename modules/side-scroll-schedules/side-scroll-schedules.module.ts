@@ -91,13 +91,15 @@ export class SideScrollSchedule{
         this.titleIcon = "fa-briefcase-case-two";
           break;
       case "football":
-      case "sports":
       case "basketball":
       case "baseball":
-      case "sports":
         this.titleIcon = "fa-calendar-1";
-        this.titleText = "Upcoming Games"
-          break;
+        this.titleText = "Upcoming Games";
+        break;
+      case "sports":
+        this.titleIcon = "";
+        this.titleText = "";
+        break;
       default:
       }
     }

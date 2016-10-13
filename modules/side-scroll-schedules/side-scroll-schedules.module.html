@@ -28,7 +28,7 @@
     </span>
 
     <span *ngIf="localTopScope == 'baseball' || localTopScope == 'football' || localTopScope == 'basketball' || localTopScope == 'sports'">
-      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase()">
+      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase().replace('ALL','SPORTS')" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase().replace('all','')">
         {{scopeItem}}
       </a>
     </span>

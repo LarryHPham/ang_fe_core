@@ -111,7 +111,9 @@
     border-radius: 3px;
     .globalDefaultModFont(10px, 800, @black);
     &:hover{
-      color:@masterBrandColor;
+      color:@white;
+      background-color: @masterBrandColor;
+      border: 1px solid @masterBrandColor;
       & > .schedule_box-versus{
         background-color: black;
       }
@@ -293,7 +295,8 @@
   .view-profile {
     margin-top: 15px;
     padding-top: 6px;
-    border: 1px solid @bulletGrey;
+    border: 1px solid @highlightGrey;
+    border-radius: 3px;
     font-size: 12px;
     font-weight: 800;
     width: 157px;
@@ -304,6 +307,7 @@
   .view-profile:hover {
     color: @white;
     background-color: @masterBrandColor;
+    border: 1px solid @masterBrandColor;
     cursor: pointer;
   }
 }
