@@ -5,7 +5,7 @@ declare var jQuery:any;
 @Component({
     selector: 'side-scroll',
     templateUrl: './app/fe-core/components/side-scroll/side-scroll.component.html',
-    outputs: ['carouselCount']
+    outputs: ['carouselCount', 'reloadSame']
 })
 
 export class SideScroll{
@@ -13,6 +13,7 @@ export class SideScroll{
   @Input() current:any;
   @Input() data: any;
   public carouselCount = new EventEmitter();
+  public reloadSame = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
   private itemSize:number = 230;
@@ -87,6 +88,10 @@ export class SideScroll{
     if((this.maxLength-1) > Math.round(this.currentScroll/this.itemSize)){
       this.currentScroll += this.itemSize;
       this.checkCurrent(this.currentScroll);
+    }
+
+    if ((this.maxLength-5) == Math.round(this.currentScroll/this.itemSize)) { // append current data to end of scroller if reached near the end
+      this.reloadSame.next(null);
     }
   }
 

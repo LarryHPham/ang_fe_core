@@ -2,7 +2,6 @@
   background-color: @white;
   height: auto;
   width: 100%;
-  padding: 10px 0 0;
   .hide-mobile {
     @media @mobile {
       display: none;
@@ -174,6 +173,12 @@
   }
 }
 .top-scope-weather {
+  @media @tablet {
+    padding: 10px 0 0;
+  }
+  @media @desktop-m {
+    padding: 5px 0 0;
+  }
   .ss_title-2 {
     @media @mobile {
       font-size: 20px;
@@ -286,9 +291,6 @@
   }
 }
 @media @tablet {
-  .ss_container{
-    padding: 10px 0 0 0;
-  }
   .ss_container.top-scope-weather {
     margin-top: 40px;
   }
