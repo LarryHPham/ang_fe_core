@@ -44,7 +44,7 @@ export class DeepDiveBlockMain implements OnInit {
      var d = {
        icon: val != 'video' ? GlobalSettings.getTCXscope(val).icon : 'fa-play-circle',
        title: val != 'video' ? GlobalFunctions.toTitleCase(GlobalSettings.getTCXscope(val).displayName) : 'Video',
-       route: val != 'video' ? VerticalGlobalFunctions.formatSectionFrontRoute(GlobalSettings.getTCXscope(val).scope) : null
+       route: val != 'video' ? VerticalGlobalFunctions.formatSectionFrontRoute(GlobalSettings.getTCXscope(val).topScope) : null
      }
      sectionNameArray.push(d);
    });
