@@ -41,7 +41,7 @@
 
 <div *ngIf="topScope=='weather'" class="schedule_box weather"><!--become a component <schedule-box>-->
   <div class="weather-date">{{boxData.unixTimestamp}}</div>
-  <img class="condition-image" src="http://images.synapsys.us{{boxData.icon}}">
+  <img class="condition-image" src="{{boxData.icon}}">
   <div class="condition">{{boxData.condition}}</div>
   <div class="temp" [innerHTML]="boxData.temperature"></div>
 </div><!--</schedule-box-weather>-->
