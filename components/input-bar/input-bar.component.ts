@@ -12,6 +12,7 @@ export class InputBar{
     searchControl= new FormControl();
     @Input() subCategories:Array<any>;
     @Input() isSearchModule:boolean;
+    @Input() scope;
 
     onsubmit(){
         //console.log(this.searchControl.value);
@@ -27,6 +28,7 @@ s
     selectedSport(e){
         //console.log(e);
     }
+
 
 
 }

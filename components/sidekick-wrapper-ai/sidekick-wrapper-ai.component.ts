@@ -9,5 +9,5 @@ import {Component, Input} from '@angular/core';
 
 export class SidekickWrapperAI {
     @Input() aiSidekick;
-    @Input() syndicated:boolean;
+
 }
