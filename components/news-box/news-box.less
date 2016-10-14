@@ -1,18 +1,23 @@
 .videoActive{
   max-height: none !important;
-  .newsbox-item-container{
-    .flexDisplay;
-    .flexDirection(row);
-    .flexJustify(space-between);
-    &-left{
-      width:55%;
-    }
-    &-right{
-      width:45%;
-    }
-  }
   @media @desktop-l{
     max-height:420px !important;
+    .newsbox-item{
+      max-width: none;
+      padding: 30px 67px;
+      &-container{
+        .flexDisplay;
+        .flexDirection(row);
+        .flexJustify(space-between);
+        &-left{
+          width:50%;
+        }
+        &-right{
+          width:50%;
+          margin:10px 45px;
+        }
+      }
+    }
   }
 }
 
@@ -37,12 +42,14 @@
 
     &-item {
         width: 80%;
-        max-width: 1030px;
         height: 100%;
         margin: 15px auto;
         position: relative;
         @media @tablet {
             margin: 40px auto;
+        }
+        @media @desktop-l {
+          max-width: 1030px;
         }
 
         &-container {
