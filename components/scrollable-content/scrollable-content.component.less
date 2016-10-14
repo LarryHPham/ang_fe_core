@@ -1,13 +1,14 @@
 scrollable-content {
+  // the importants are to override any component specific styling that may be in use on top of this component's default style
   .hide-scroll {
-    background-color: transparent;
-    background: transparent;
-    border: none;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
   }
   .scrollable-item.hide-scroll::after {
-    background-color: transparent;
-    background: transparent;
-    border: none;
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
   }
 
 }
