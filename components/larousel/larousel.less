@@ -44,9 +44,6 @@
     background-color: transparent;
     outline: none;
     .globalDefaultModFont(75px, 400, @white);
-    &:hover{
-      color:@masterBrandColor;
-    }
     @media @mobile{
       .globalDefaultModFont(20px, 400, @white);
       height:50px;
@@ -56,6 +53,11 @@
       &:hover{
         background-color: @black;
         color:@white;
+      }
+    }
+    @media @tablet{
+      &:hover{
+        color:@masterBrandColor;
       }
     }
   }

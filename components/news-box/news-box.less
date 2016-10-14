@@ -1,327 +1,182 @@
-.video-width{
-  width: 100%;
-}
-.newsbox{
-  background-size: cover;
-  background-position-x: center;
-  background-repeat: no-repeat;
-  min-width:100%;
-  height:100%;
-  max-height:240px;
-  @media @tablet{
-    max-height: 420px;
+.videoActive{
+  max-height: none !important;
+  .newsbox-item-container{
+    .flexDisplay;
+    .flexDirection(row);
+    .flexJustify(space-between);
+    &-left{
+      width:55%;
+    }
+    &-right{
+      width:45%;
+    }
   }
-  &-item {
-    width: 80%;
-    max-width: 1030px;
-    height: 100%;
-    margin: 15px auto;
-    position: relative;
-    @media @tablet{
-      margin: 40px auto;
-    }
-    &-container{
-      vertical-align: middle;
-      width: 100%;
-      height: 100%;
-      text-align: left;
-    &-right {
-      display: none;
-      position: relative;
-      &-key {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 800;
-        padding: 0px 15px;
-        border-radius: 3px;
-        background-color: @masterBrandColor;
-        text-align: center;
-        color:@white;
-        line-height: 25px;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-      }
-      &-title {
-        width: 100%;
-        margin-top:5px;
-        @media @tablet{
-          margin-top:15px;
-        }
-        &-span{
-          margin-bottom:5px;
-          line-height: 1em;
-          display: block;
-          .globalDefaultModFont(12px, 400, @white);
-          @media @tablet{
-            margin-bottom:10px;
-            font-size: 20px;
-          }
-        }
-        &-headline{
-          .globalDefaultModFont(18px, 800, @white);
-          line-height: 1.4em;
-          max-height: 48px;
-          display:inline-block;
-          @media @tablet{
-            font-size: 32px;
-            line-height: 1.2em;
-          }
-          @media @desktop-m{
-            font-size: 44px;
-            padding-bottom: 5px;
-          }
-        }
-        &-border {
-          border-bottom: 1px solid @white;
-          width: 100%;
-          margin: 5px 0px;
-          @media @tablet{
-            margin: 15px 0px;
-          }
-        }
-      }
-      &-content {
-        line-height: 1.2em;
-        overflow:hidden;
-        width: 100%;
-        .globalDefaultModFont(16px, 400, @white);
-        max-height: 2.4em;
-        @media @tablet{
-          max-height:4.8em;
-        }
-      }
-      &-fullstory {
-        padding:10px 25px;
-        border-radius: 3px;
-        background-color: @masterBrandColor;
-        .globalDefaultModFont(14px, 800, @white);
-        text-align: center;
-        display: inline-block;
-        cursor: pointer;
-        margin-top: 15px;
-        margin-bottom: 20px;
-        @media @tablet{
-          margin-top: 25px;
-          margin-bottom: 55px;
-        }
-        i{
-          padding-left: 5px;
-          position: relative;
-          top: 3px;
-        }
-        &:hover {
-          background-color:@black;
-        }
-      }
-    }
-    &-video {
-      width:auto ;
-      padding-bottom: 56.25%;
-      height: 0;
-      position: relative;
-      background-color: none;
-      >iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    #lrgvidcarousel-right {
-      display: none;
-    }
-    &-left {
-      //margin-right: 33px;
-      &-video {
-        width: 500px;
-        height: 280px;
-        margin: auto;
-        }
-      }
-    }
+  @media @desktop-l{
+    max-height:420px !important;
   }
 }
 
-//
-// @media @mobile {
-//   .carousel_scroll-button {
-//     font-size: 60px;
-//   }
-//   .carousel-item {
-//     margin-top: 30px;
-//     // height: 240px;
-//     .flexDisplay;
-//     .flexAlignItems(flex-start);
-//     @media @small-grid{
-//       margin-top: 50px;
-//     }
-//   }
-//   .videoActive .carousel-item{
-//     margin-top: 0;
-//   }
-//   .carousel-item {
-//     display: table;
-//     &-container {
-//       &-left {
-//         &-video {
-//           width:auto ;
-//           padding-bottom: 56.25%;
-//           height: 0;
-//           position: relative;
-//           background-color: none;
-//           >iframe {
-//             position: absolute;
-//             top: 0;
-//             left: 0;
-//             width: 100%;
-//             height: 100%;
-//           }
-//         }
-//       }
-//       &-right {
-//         &-title {
-//           .globalDefaultFont(16px, 800);
-//           >span {
-//             .globalDefaultFont(14px, 400);
-//             margin: 0 0 5px 0;
-//           }
-//           &-border {
-//             border-bottom: 1px solid @white;
-//             margin: 5px 0 0 0;
-//           }
-//         }
-//         &-key {
-//           display: inline-block;
-//           width: auto;
-//           height: auto;
-//           padding: 2px 28px;
-//           margin-bottom: 12px;
-//           line-height: 20px;
-//           .globalDefaultFont(10px, 400);
-//         }
-//         &-content {
-//           height: 28px;
-//           margin-top: 10px;
-//           .globalDefaultFont(12px, 400);
-//           overflow: hidden;
-//         }
-//         &-fullstory {
-//           display: inline-block;
-//           height: auto;
-//           width: auto;
-//           line-height: 30px;
-//           padding: 0 16px;
-//           margin-top: 20px;
-//           .globalDefaultFont(14px, 800);
-//         }
-//       }
-//     }
-//   }
-// }
-// @media @tablet{
-//   .carousel_scroll-button {
-//     font-size: 75px;
-//   }
-//   .carousel-item {
-//     display: table;
-//     &-container {
-//       &-left {
-//         margin: 0 auto;
-//         &-video {
-//           width:auto;
-//           padding-bottom: 56.25%;
-//           height: 0;
-//           position: relative;
-//           background-color: none;
-//           >iframe {
-//             position: absolute;
-//             top: 0;
-//             left: 0;
-//             width: 100%;
-//             height: 100%;
-//           }
-//         }
-//       }
-//       &-right {
-//         padding-top: 50px;
-//         &-key {
-//           width: 125px;
-//           height: 25px;
-//           margin-bottom: 20px;
-//           line-height: 25px;
-//           .globalDefaultFont(12px, 400);
-//         }
-//         &-title {
-//           .globalDefaultFont(24px, 800);
-//           >span {
-//             .globalDefaultFont(20px, 400);
-//           }
-//         }
-//         &-content {
-//           margin-top: 10px;
-//           .globalDefaultFont(16px, 400);
-//           overflow: auto;
-//           text-overflow: initial;
-//           white-space: normal;
-//         }
-//         &-fullstory {
-//           display: block;
-//           width: 200px;
-//           height: 40px;
-//           padding: 0px;
-//           margin-top: 30px;
-//           line-height: 40px;
-//           .globalDefaultFont(16px, 800);
-//         }
-//         &-title {
-//           > span {
-//             margin-bottom: 5px;
-//           }
-//           &-border {
-//             margin: 10px 0 0 0;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-//
-// @media @desktop-m {
-//   .carousel-item {
-//     display: block;
-//     &-container {
-//       .flexDisplay;
-//       &-right {
-//         display: block;
-//         position: relative;
-//         &-title {
-//           .globalDefaultFont(32px, 800);
-//           &-border {
-//             margin: 5px 0 0 0;
-//           }
-//           >span {
-//             .globalDefaultFont(20px, 400);
-//           }
-//         }
-//         &-content {
-//           margin: 20px 0 0 0;
-//         }
-//         &-fullstory {
-//           margin: 25px 0 0 0;
-//         }
-//       }
-//       &-left {
-//         top:25px;
-//         position: relative;
-//         margin: 0 auto;
-//         &-video {
-//           width: 650px;
-//           height: 366px;
-//           padding-bottom: 0px;
-//           margin: 0 0 30px;
-//         }
-//       }
-//     }
-//   }
-// }
+.newsbox {
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    min-width: 100%;
+    min-height: 240px;
+    max-height: 240px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .video-width {
+        width: 100%;
+        margin: auto;
+    }
+    @media @tablet {
+        max-height: 420px;
+    }
+
+    &-item {
+        width: 80%;
+        max-width: 1030px;
+        height: 100%;
+        margin: 15px auto;
+        position: relative;
+        @media @tablet {
+            margin: 40px auto;
+        }
+
+        &-container {
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+
+            &-right {
+                display: none;
+                position: relative;
+                @media @desktop-l{
+                  display:block;
+                }
+                &-key {
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: 800;
+                    padding: 0 15px;
+                    border-radius: 3px;
+                    background-color: @masterBrandColor;
+                    text-align: center;
+                    color: @white;
+                    line-height: 25px;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+                &-title {
+                    width: 100%;
+                    margin-top: 5px;
+                    @media @tablet {
+                        margin-top: 15px;
+                    }
+
+                    &-span {
+                        margin-bottom: 5px;
+                        line-height: 1em;
+                        display: block;
+                        .globalDefaultModFont(12px, 400, @white);
+                        @media @tablet {
+                            margin-bottom: 10px;
+                            font-size: 20px;
+                        }
+                    }
+
+                    &-headline {
+                        .globalDefaultModFont(18px, 800, @white);
+                        line-height: 1.4em;
+                        max-height: 48px;
+                        display: inline-block;
+                        @media @mobile {
+                            overflow: hidden;
+                        }
+                        @media @tablet {
+                            font-size: 32px;
+                            line-height: 1.2em;
+                        }
+                        @media @desktop-m {
+                            font-size: 44px;
+                            padding-bottom: 5px;
+                        }
+                    }
+
+                    &-border {
+                        border-bottom: 1px solid @white;
+                        width: 100%;
+                        margin: 5px 0;
+                        @media @tablet {
+                            margin: 15px 0;
+                        }
+                    }
+                }
+
+                &-content {
+                    line-height: 1.2em;
+                    overflow: hidden;
+                    width: 100%;
+                    .globalDefaultModFont(16px, 400, @white);
+                    max-height: 2.4em;
+                    @media @tablet {
+                        max-height: 4.8em;
+                    }
+                }
+
+                &-fullstory {
+                    padding: 10px 25px;
+                    border-radius: 3px;
+                    background-color: @masterBrandColor;
+                    .globalDefaultModFont(14px, 800, @white);
+                    text-align: center;
+                    display: inline-block;
+                    cursor: pointer;
+                    margin-top: 15px;
+                    margin-bottom: 20px;
+                    @media @tablet {
+                        margin-top: 25px;
+                        margin-bottom: 55px;
+                    }
+
+                    i {
+                        padding-left: 5px;
+                        position: relative;
+                        top: 3px;
+                    }
+
+                    &:hover {
+                        background-color: @black;
+                    }
+                }
+            }
+
+            // #lrgvidcarousel-right {
+            //     display: none;
+            // }
+
+            &-left {
+                //margin-right: 33px;
+                &-video {
+                    width: auto;
+                    padding-bottom: 56.25%;
+                    height: 0;
+                    position: relative;
+                    background-color: none;
+
+                    > iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -46,7 +46,7 @@ export class Larousel{
 
   }
   ngOnInit(){
-    var ssItems = [];
+    var ssItems = [];//side scroll item
 
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
@@ -90,6 +90,7 @@ export class Larousel{
       }
     }
 
+    console.log(ssItems);
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
 
@@ -130,7 +131,7 @@ export class Larousel{
       this.minScroll = this.currentScroll < this.itemSize * this.clones;
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
-    // this.adjustSizeVideo();
+    this.videoCheck();
   }
 
   // ngDoCheck(){
@@ -168,18 +169,14 @@ export class Larousel{
     //console.log(this.displayedItems,"carousel array");
     this.displayedData.emit(this.displayedItems);
   }
-  // adjustSizeVideo() {
-  //       if (this.currentItem.type == "video") {
-  //           jQuery(".carousel_scroll-item").addClass("videoActive");
-  //           jQuery(".carousel_scroll-box").css('min-height','180px');
-  //           jQuery(".carWrapper").css('min-height','180px');
-  //       }
-  //       else {
-  //           jQuery(".carousel_scroll-item").removeClass("videoActive");
-  //           jQuery(".carWrapper").css('min-height','240px');
-  //           jQuery(".carousel_scroll-box").css('min-height','240px');
-  //       }
-  //   }
+
+  videoCheck() {
+      if (this.currentItem.type == "video") {
+        jQuery(".newsbox").addClass("videoActive");
+      }else{
+        jQuery(".newsbox").removeClass("videoActive");
+      }
+    }
 
   left(event) {
     //moves the current scroll over the item size
@@ -188,7 +185,7 @@ export class Larousel{
       this.currentScroll = (this.itemSize * this.maxLength-1);
     }
     this.checkCurrent(this.currentScroll);
-    // this.adjustSizeVideo();
+    this.videoCheck();
   }
   right(event) {
     this.currentScroll += this.itemSize;
@@ -198,7 +195,7 @@ export class Larousel{
       this.currentScroll = 0;
       this.checkCurrent(this.currentScroll);
     }
-    // this.adjustSizeVideo();
+    this.videoCheck();
   }
 
   //For mobile screen swiping events
@@ -210,7 +207,7 @@ export class Larousel{
       this.right('right');
     }
     this.checkCurrent(this.currentScroll);
-    // this.adjustSizeVideo();
+    this.videoCheck();
   }
 
   scrollX(event){
