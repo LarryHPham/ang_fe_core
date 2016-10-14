@@ -39,6 +39,7 @@ export class SearchBoxModule {
   ngOnInit(){
       this.modSearchTitle="Discover The Latest In " + " " + this.scope;
       this.modSearchSubTitle="Find the players and teams you love";
+      console.log(this.scope);
 
 
   }
