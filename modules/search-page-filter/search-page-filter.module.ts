@@ -21,20 +21,41 @@ keywords=[
     {
         key:'Sports',
         value:"Sports",
+    },
+    {
+        key:'Politics',
+        value:"Politics",
+    },
+    {
+        key:'Entertainment',
+        value:"Entertainment",
+    },
+    {
+        key:'Food',
+        value:"Food",
+    },
+    {
+        key:'Lifestyle',
+        value:"Lifestyle",
     }];
 
     Sorting=[
+
         {
-            key:"MostRecent",
+            key:"Date-MostRecent",
             value:"Most Recent",
         },
         {
-            key:'Oldest',
+            key:'Date-Oldest',
             value:"Oldest",
         },
         {
             key:'24Hours',
             value:"Last 24 Hours",
+        },
+        {
+            key:'pastWeek',
+            value:"Past Week",
         },
         {
             key:'pastWeek',
