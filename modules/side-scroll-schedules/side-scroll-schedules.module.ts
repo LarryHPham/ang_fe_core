@@ -95,7 +95,7 @@ export class SideScrollSchedule{
       switch(this.topScope) {
       case "weather":
         this.titleText = "<span class='hide-mobile'>" + this.sideScrollData.current.currentTemperature + "°<span class='weather-divider'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></span>" + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
-        this.titleIcon = "http://images.synapsys.us" + this.sideScrollData.current.currentIcon;
+        this.titleIcon = this.sideScrollData.current.currentIcon;
           break;
       case "finance":
         this.titleText = "Market Movers: <span class='hide-mobile'>All Exchanges</span>"
