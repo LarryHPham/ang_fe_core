@@ -10,10 +10,11 @@ export class ArticleSearchBar{
     @Input() searchSubTitle:string;
     @Input() subCategoryList:Array<any>;
     @Input() isSearchModule;
+    @Input() scope;
     searchBoxBackground: string = 'http://www.wallpapersxl.com/wallpapers/1366x768/dark-green/149216/dark-green-free-hd-leaves-field-windows-149216.jpg';
     public searchInput:FormGroup;
     public isSubmitted:boolean;
-    /*controlType='textbpx'*/
+
 
 
 

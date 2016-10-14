@@ -19,7 +19,8 @@ export class FooterComponent implements OnInit {
     public au: string = "About Us";
     public service: string = "Terms of Service";
     public privacy: string = "Privacy Policy";
-    public logoUrl: string = 'app/public/TCX_Logo_Outlined.svg';
+    public logoUrl: string = 'app/public/TCX_Logo_Outlined_White.svg';
+    public copyRight: string;
     loadData(partner: string) {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
@@ -31,8 +32,8 @@ export class FooterComponent implements OnInit {
           // this._lastUpdated += " " + GlobalSettings.getBasePartnerTitle();
       }
     }
-
     ngOnInit() {
+        this.copyRight = "Copyright " + GlobalSettings.getEstYear() + ", TCX. Inc."
         this.loadData(this.partner);
     }
 }

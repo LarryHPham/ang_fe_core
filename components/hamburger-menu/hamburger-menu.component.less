@@ -48,9 +48,15 @@
     }
   }
   .nester-parent {
-    height: 30px;
+    height: 42px;
     overflow: hidden;
-    padding: 12px 15px 0px 15px;
+    padding: 0px 15px 0px 15px;
+    .nester-parent-title {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 0 12px 0;
+      cursor: pointer;
+    }
     .toggle-nest {
       position: absolute;
       padding: 10px;
@@ -63,9 +69,6 @@
       margin-left: -15px;
       padding-left: 30px;
       width: ~'calc(100% + 30px)';
-    }
-    a:first-of-type .nester-child {
-      margin-top: 12px;
     }
   }
   .nester-parent.open {

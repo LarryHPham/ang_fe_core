@@ -7,7 +7,7 @@
         <a *ngIf="(menuData.menuTitle != 'Home' || !isHome) && menuData.nesterChildren == null" [routerLink]="menuData.url"><li class="hamburger-topics-list-item menucheck">{{menuData.menuTitle}}</li></a>
 
         <li *ngIf="menuData.nesterChildren != null" class="nester-parent menucheck">
-          <a [routerLink]="menuData.url" class="menucheck">{{menuData.menuTitle}}</a>
+          <a [routerLink]="menuData.url" class="nester-parent-title menucheck">{{menuData.menuTitle}}</a>
           <img class="toggle-nest menucheck" onclick="event.stopPropagation();" (click)="toggleNest($event)" src="app/public/icon-+.svg">
           <ul>
             <a class="menucheck" *ngFor="let nesterChild of menuData.nesterChildren" [routerLink]="nesterChild.url">
