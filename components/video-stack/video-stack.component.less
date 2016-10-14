@@ -33,16 +33,19 @@
       }
     }
   }
+  &-thumbnail{
+    cursor: pointer;
+  }
   .video-title {
     &-top {
-      position: absolute;
+      // position: absolute;
       display: block;
       line-height: 1em;
       text-transform: uppercase;
       z-index: 1;
       .globalDefaultFont(10px, 800);
       &-key {margin-right: 5px; z-index: 1}
-      &-date {color: @bulletGrey; font-weight: 400}
+      &-date {color: @bulletGrey; font-weight: 400; white-space: nowrap}
     }
   }
   .video-title-mid {
