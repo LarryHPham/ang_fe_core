@@ -3,7 +3,7 @@
     <div class="footer-top">
     <div class="row">
       <div class="footer-top-left col-xs-6 col-md-4">
-        <a class="col-xs-12" routerLink="/deep-dive"><img class="footer-logo col-xs-6 col-md-4 col-xl-2" src={{logoUrl}}/></a>
+        <a class="col-xs-12" routerLink="/deep-dive"><img class="footer-logo col-xs-6 col-md-4 col-xl-2" onload="fillcolor()" src={{logoUrl}}/></a>
       </div>
       <!-- <section *ngIf="partnerID" class="footer-top-left col-sm-6 col-lg-4">
         <a [routerLink]="/deep-dive"><img src={{partnerLogoUrl}}/></a>
@@ -12,19 +12,19 @@
         <ul>
             <a href="{{_sitefacebookurl}}" target="_blank"><li id="share-facebook"><i class="fa fa-facebook-1"></i></li></a>
             <a href="{{_sitetwitterurl}}" target="_blank"><li id="share-twitter"><i class="fa fa-twitter"></i></li></a>
-            <a href="{{_sitegoogleurl}}" target="_blank"><li id="share-google"><i class="fa fa-fontawesome-webfont-1"></i></li></a>
+            <a href="{{_sitegoogleurl}}" target="_blank"><li id="share-google"><i class="fa fa-g-plus"></i></li></a>
         </ul>
       </div>
      </div>
     </div>
     <section class="footer-bottom col-md-4">
       <ul>
-        <li><a [routerLink]="['About-us-page']">{{au}}</a><span class="footer-separator">|</span></li>
-        <li><a [routerLink]="['Disclaimer-page']">{{service}}</a><span class="footer-separator">|</span></li>
-        <li><a [routerLink]="['Contact-us-page']">{{privacy}}</a></li>
+        <li><a [routerLink]="['About-us-page']" [innerHTML]="au | safeHtml"></a><span class="footer-separator">|</span></li>
+        <li><a [routerLink]="['Disclaimer-page']" [innerHTML]="service | safeHtml"></a><span class="footer-separator">|</span></li>
+        <li><a [routerLink]="['Contact-us-page']" [innerHTML]="privacy | safeHtml"></a></li>
       </ul>
       <div class="footer-bottom-cit">
-        <p class="footer-bottom-citation"><i class="fa fa-copyright"></i> Copyright 2016, TCX. Inc. </p>
+        <p class="footer-bottom-citation"><i class="fa fa-copyright"></i><span [innerHTML]="copyRight | safeHtml"></span></p>
       </div>
     </section>
 

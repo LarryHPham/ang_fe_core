@@ -23,13 +23,15 @@
          overflow: hidden;
          text-overflow: ellipsis;
          text-transform: uppercase;
-         margin-right: 5px;
          .globalDefaultModFont(10px, 800, @black);
+         > a{
+           margin-right: 5px;
+         }
          > span:last-child{
            color: @bulletGrey;
            overflow: hidden;
            height: 20px;
-           white-space: no-wrap;
+           white-space: nowrap;
          }
       }
       &-subHeadline {
