@@ -12,6 +12,7 @@ declare var moment;
 
 export class DeepDiveBlock1 implements OnInit {
   @Input() scope: string;
+  @Input() category:string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
