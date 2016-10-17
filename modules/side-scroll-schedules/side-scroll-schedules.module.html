@@ -1,4 +1,4 @@
-<section class="ss_container top-scope-{{localTopScope}}" *ngIf="localTopScope != null">
+<section class="ss_container top-scope-{{localTopScope}} page-scope-{{pageScope}}" *ngIf="localTopScope != null">
   <div class="ss_title">
     <span class="ss_title-2">
       <i class="fa {{titleIcon}}" *ngIf="localTopScope != 'weather'"></i>
@@ -23,17 +23,12 @@
         </div>
       </div>
 
-    <span *ngIf="localTopScope != 'baseball' && localTopScope != 'football' && localTopScope != 'basketball' && localTopScope != 'sports'">
+    <span *ngIf="localTopScope != 'baseball' && localTopScope != 'football' && localTopScope != 'basketball' && localTopScope != 'sports' && localTopScope != 'entertainment'">
       <span class="ss_title-1" *ngFor="let scopeItem of scopeList" (click)="scopeChange(scopeItem)" [class.ss-title-active]="scope.replace(' ', '-').toUpperCase() == scopeItem.replace(' ', '-').toUpperCase()" >{{scopeItem}}</span>
     </span>
 
-    <span *ngIf="localTopScope == 'baseball' || localTopScope == 'football' || localTopScope == 'basketball' || localTopScope == 'sports'">
-      <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase().replace('ALL','SPORTS')" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase().replace('all','')">
-        {{scopeItem}}
-      </a>
-    </span>
   </div>
-  <side-scroll *ngIf="usableData && localTopScope != 'sports'" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
+  <side-scroll *ngIf="usableData && localTopScope != 'sports' && localTopScope != 'entertainment'" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="usableData.blocks">
       <schedule-box *ngIf="item" [topScope]="localTopScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
