@@ -1,17 +1,19 @@
-<div class="search-box-module container-fluid">
+<div class="search-box-module-container container-fluid">
+<!--
   <article-search-bar [searchTitle]="modSearchTitle" [searchSubTitle]="modSearchSubTitle" [subCategoryList]="sportsList" [isSearchModule]="true" [scope]="scope"></article-search-bar>
-  <!--<h4 class="search-box-module-header">
-    Discover the Latest In {{scope}}
+-->
+  <h4 class="search-box-module-header">
+    {{modSearchTitle}}
   </h4>
   <p class="search-box-module-desc">
-    {{searchBoxDescription}}
+    {{modSearchSubTitle}}
   </p>
 
   <div class="search-box-container">
 
-&lt;!&ndash;
+<!--
     <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
-&ndash;&gt;
+-->
     <div class="search-input-container">
 
         <input
@@ -26,5 +28,5 @@
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
     </a>
-  </div>-->
+  </div>
 </div>
