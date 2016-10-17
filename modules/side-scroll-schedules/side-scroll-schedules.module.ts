@@ -12,6 +12,7 @@ export class SideScrollSchedule{
   @Input() sideScrollData: any;
   @Input() scrollLength: any;
   @Input() topScope:string;
+  @Input() topNav:string;
   @Input() pageScope:string;
   @Input() scope:string;
   @Input() scopeList:string;

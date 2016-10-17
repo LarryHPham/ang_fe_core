@@ -1,12 +1,6 @@
-<div class="section-front-top-nav" *ngIf="topScope == 'baseball' || topScope == 'football' || topScope == 'basketball' || topScope == 'sports' || topScope == 'entertainment'" >
-  <span *ngIf="topScope == 'baseball' || topScope == 'football' || topScope == 'basketball' || topScope == 'sports'">
-    <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase().replace('ALL','SPORTS')" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/sports/' + scopeItem.toLowerCase().replace('all','')">
-      {{scopeItem}}
-    </a>
-  </span>
-
-  <span *ngIf="topScope == 'entertainment'">
-    <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase()" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/entertainment/' + scopeItem.toLowerCase().replace('all','')">
+<div class="section-front-top-nav">
+  <span>
+    <a class="ss_title-1" [class.ss-title-active]="scope.toUpperCase() == scopeItem.toUpperCase().replace('ALL','SPORTS')" *ngFor="let scopeItem of scopeList" [routerLink]="'/deep-dive/' + pageScope + '/' + scopeItem.toLowerCase().replace('all','')">
       {{scopeItem}}
     </a>
   </span>
