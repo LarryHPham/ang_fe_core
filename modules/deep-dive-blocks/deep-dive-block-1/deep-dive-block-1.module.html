@@ -26,8 +26,8 @@
     <deep-dive-recommendation [recData]="recData"></deep-dive-recommendation>
   </div>
   <!-- SEARCH BOX -->
-  <div class="deep-dive-module">
-    <search-box-module [scope]="scope"></search-box-module>
+  <div class="deep-dive-module" *ngIf="scope!='sports'">
+    <search-box-module [category]="category" [scope]="scope" ></search-box-module>
   </div>
   <!-- ARTICLE STACK TYPE 1 -->
   <div *ngIf="firstStackTop && firstStackRow" class="deep-dive-module">
