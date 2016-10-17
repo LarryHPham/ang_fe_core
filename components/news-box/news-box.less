@@ -3,6 +3,7 @@
   @media @desktop-l{
     max-height:420px !important;
     .newsbox-item{
+      height:420px;
       max-width: none;
       padding: 30px 67px;
       &-container{
@@ -10,7 +11,9 @@
         .flexDirection(row);
         .flexJustify(space-between);
         &-left{
-          width:50%;
+          max-width: 640px;
+          width:100%;
+          margin:auto;
         }
         &-right{
           width:50%;
@@ -19,6 +22,12 @@
       }
     }
   }
+}
+
+.carousel-graph{
+  width:100%;
+  height:100%;
+  background-color: #000;
 }
 
 .newsbox {

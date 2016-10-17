@@ -14,6 +14,7 @@ export class Larousel{
   @Input() current:any;
   @Input() carData: any;
   @Input() videoData: any;
+  @Input() graphData: any;
   public carouselCount = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
@@ -56,6 +57,16 @@ export class Larousel{
           id: startLength + index,
           data:val,
           type:'video'
+        })
+      });
+    }
+
+    if(this.graphData != null){
+      this.graphData.forEach(function(val, index){
+        ssItems.push({
+          id: startLength + index,
+          data:val,
+          type:'graph'
         })
       });
     }

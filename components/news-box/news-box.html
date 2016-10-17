@@ -1,6 +1,7 @@
 <larousel *ngIf="carData" [videoData]="videoData" [carData]="carData" (displayedData)="displayArray($event)">
   <template  [ngIf]="displayedItems">
     <template  ngFor let-item [ngForOf]="displayedItems">
+      <!-- BELOW VIDEO CAROUSEL -->
       <div class="newsbox" *ngIf="item.type == 'video' || item.type == 'clone'" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.videoThumbnail + ')'}" [ngClass]="{'clone': item.type == 'clone'}">
         <div class="newsbox-item video-width" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">
@@ -24,6 +25,19 @@
           </div>
         </div>
       </div>
+      <!-- ABOVE VIDEO CAROUSEL -->
+      <!-- BELOW GRAPH CAROUSEL -->
+      <div class="newsbox" *ngIf="item.type == 'graph' || item.type == 'clone'" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%)'}" [ngClass]="{'clone': item.type == 'clone'}">
+        <div class="newsbox-item video-width" [ngStyle]="{'cursor':'default'}">
+          <div class="newsbox-item-container">
+
+            <div class="carousel-graph"></div>
+
+          </div>
+        </div>
+      </div>
+      <!-- ABOVE GRAPH CAROUSEL -->
+      <!-- BELOW NEWS CAROUSEL -->
       <div class="newsbox story-item"  *ngIf="item.type == 'carousel'" [routerLink]="item.data.articlelink" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.image_url + ')', 'cursor': 'pointer'}" [ngClass]="{'clone': item.type == 'clone'}">
         <div class="newsbox-item">
           <div class="newsbox-item-container">
@@ -43,6 +57,7 @@
           </div>
         </div>
       </div>
+      <!-- ABOVE NEWS CAROUSEL -->
     </template>
   </template>
 </larousel>
