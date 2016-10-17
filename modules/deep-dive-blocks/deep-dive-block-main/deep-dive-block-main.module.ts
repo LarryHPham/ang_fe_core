@@ -88,6 +88,11 @@ export class DeepDiveBlockMain implements OnInit {
     this.getDeepDiveVideo();
   }
 
+  ngOnChanges() {
+    this.secName = this.getSectionNameData();
+    this.callModules();
+  }
+
   ngOnInit() {
     this.secName = this.getSectionNameData();
     this.callModules();
