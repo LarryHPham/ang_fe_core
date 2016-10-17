@@ -1,5 +1,7 @@
 import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {GlobalSettings} from "../../../global/global-settings";
+import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 
 @Component({
   selector: 'search-box-module',
@@ -10,8 +12,9 @@ export class SearchBoxModule {
   @Input() scope: string;
   modSearchTitle:string;
   modSearchSubTitle:string;
+    searchPlaceHolderText: string
 
-  sportsList=[{
+    sportsList=[{
       key:'NFL',
       value:"NFL",
         },
@@ -37,23 +40,21 @@ export class SearchBoxModule {
       },
       ]
   ngOnInit(){
-      this.modSearchTitle="Discover The Latest In " + " " + this.scope;
-      this.modSearchSubTitle="Find the players and teams you love";
+      this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + this.scope.toUpperCase();
+      this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
+      this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
   }
-  searchBoxDescription: string = 'Find the players and teams you love.';
-  searchPlaceHolderText: string = 'Search for a Team or Player...';
+  //ssearchBoxDescription: string = 'Find the players and teams you love.';
+  //searchPlaceHolderText: string = 'Search for a Team or Player...';
   searchBoxBackground: string = '/app/public/header_texture.png';
-  baseSearchUrl: string = 'http://touchdownloyal.com/nfl/search/';
-  public searchInput: any = {
-    placeholderText: "Search for a topic...",
-    hasSuggestions: true
-  };
+
   fullSearchUrl: string;
 
   constructor(private activeRoute:ActivatedRoute) {}
 
   onKey(event:any) {
-    this.fullSearchUrl = this.baseSearchUrl + event.target.value;
+      var rel_url= VerticalGlobalFunctions.createSearchLink(this.scope)+ event.target.value;
+      this.fullSearchUrl = GlobalSettings.getOffsiteLink(this.scope,rel_url);
   }
 
   navigateSearch(){
