@@ -44,6 +44,10 @@ export class DeepDiveBlock3 implements OnInit {
     this.getFirstArticleStackData();
   }
 
+  ngOnChanges() {
+    this.callModules();
+  }
+
   ngOnInit() {
     this.callModules();
   }

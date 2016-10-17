@@ -91,6 +91,10 @@ export class DeepDiveBlock1 implements OnInit {
     this.getBoxScores(this.dateParam);
   }
 
+  ngOnChanges() {
+    this.callModules();
+  }
+
   ngOnInit() {
     this.callModules();
   }
