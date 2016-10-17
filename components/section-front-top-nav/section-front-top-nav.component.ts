@@ -10,6 +10,7 @@ export class SectionFrontTopNav{
   @Input() scope: string;
   @Input() topScope: string;
   @Input() scopeList:string;
+  @Input() pageScope: string;
 
     // ngOnChanges(){
     //   console.log("scope", this.scope);

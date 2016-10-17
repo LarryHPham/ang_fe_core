@@ -10,5 +10,7 @@ export class SectionNameComponent{
   @Input() secName: SectionNameData;
   @Input() scope: string;
   @Input() topScope: string;
+  @Input() pageScope: string;
+  @Input() topNav: string;
   @Input() scopeList:string;
 }
