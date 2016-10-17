@@ -1,0 +1,39 @@
+.section-front-top-nav {
+  width: auto;
+  height: 30px;
+  margin-bottom: 10px;
+  @media @mobile {
+    width: 100%;
+  }
+  .ss_title{
+    &-1{
+      background-color: @white;
+      border-radius: 3px;
+      display: inline-block;
+      height: 100%;
+      line-height: 28px;
+      width: auto;
+      text-align: center;
+      .globalDefaultModFont(13px, 800, @black);
+      float:right;
+      padding: 0 6px;
+      border: 1px solid @black;
+      margin-left: 5px;
+    }
+    &-1:hover {
+      background-color: @black;
+      color: @white;
+      cursor: pointer;
+    }
+    .ss-title-active {
+      background-color: @black;
+      color: @white;
+    }
+  }
+  .ss_title-1:last-of-type {
+    @media @mobile {
+      margin-left: 0;
+    }
+  }
+
+}
