@@ -93,7 +93,6 @@ export class SideScrollSchedule{
   }
   ngOnChanges(event) {
     if (event.sideScrollData) { // only fire this if the actual data is changing
-      console.log("changes data", event.sideScrollData);
       this.originalBlocks = this.sideScrollData.blocks.slice(0);
       this.usableData = Object.assign({},this.sideScrollData);
       this.localTopScope = this.topScope;
