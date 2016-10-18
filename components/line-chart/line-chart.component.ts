@@ -22,7 +22,6 @@ export class LineChartComponent implements AfterViewInit {
 
   drawChart() {
     if ( this.options ) {
-      console.log(this.options);
       jQuery(this._elementRef.nativeElement)
         .find('.line-chart')
         .highcharts(this.options);

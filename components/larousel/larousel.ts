@@ -48,9 +48,6 @@ export class Larousel{
   }
   ngOnChanges(){
     var ssItems = [];//side scroll item
-    console.log('carData',this.carData);
-    console.log('videoData',this.videoData);
-    console.log('graphData',this.graphData);
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
@@ -102,7 +99,6 @@ export class Larousel{
       }
     }
 
-    console.log(ssItems);
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
 
