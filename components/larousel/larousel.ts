@@ -12,9 +12,9 @@ declare var moment:any;
 export class Larousel{
   @Input() maxLength:any;
   @Input() current:any;
-  @Input() carData: any;
-  @Input() videoData: any;
   @Input() graphData: any;
+  @Input() videoData: any;
+  @Input() carData: any;
   public carouselCount = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
@@ -46,27 +46,28 @@ export class Larousel{
   constructor(private _elRef: ElementRef){
 
   }
-  ngOnInit(){
+  ngOnChanges(){
     var ssItems = [];//side scroll item
-
+    console.log('carData',this.carData);
+    console.log('videoData',this.videoData);
+    console.log('graphData',this.graphData);
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
+
+    if(this.graphData != null){
+      ssItems.push({
+        id: startLength,
+        data:this.graphData,
+        type:'graph'
+      })
+    }
+
     if(this.videoData != null){
       this.videoData.forEach(function(val, index){
         ssItems.push({
           id: startLength + index,
           data:val,
           type:'video'
-        })
-      });
-    }
-
-    if(this.graphData != null){
-      this.graphData.forEach(function(val, index){
-        ssItems.push({
-          id: startLength + index,
-          data:val,
-          type:'graph'
         })
       });
     }
@@ -92,7 +93,7 @@ export class Larousel{
         type:ssItems[startLength-1].type
       })
       //unshift pushes clones before array only if we have that extra carousel in front
-      if(this.videoData != null){
+      if(this.videoData != null || this.graphData){
         ssItems.push({
           id: ssItems[1].id,
           data:ssItems[1].data,

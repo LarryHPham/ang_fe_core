@@ -24,10 +24,114 @@
   }
 }
 
-.carousel-graph{
+.weather-graph{
   width:100%;
-  height:100%;
-  background-color: #000;
+  height:240px;
+  @media @tablet{
+    height:420px;
+  }
+  &-container1{
+    width:100%;
+    height:40.5%;
+    position: relative;
+  }
+  &-border1{
+    display:none;
+    @media @mobile{
+      display:block;
+      border-bottom: 1px solid @white;
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+  &-border2{
+    display:none;
+    @media @tablet{
+      display:block;
+      border-bottom: 1px solid @white;
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+  &-info{
+    width:100%;
+    height:auto;
+    padding-top:25px;
+    color:@white;
+    .flexDisplay;
+    .flexDirection(row);
+    .flexJustify(space-around);
+    @media @tablet{
+      width:50%;
+      float:right;
+      position: absolute;
+      right:0;
+      bottom:0;
+    }
+    &-image{
+      width:70px;
+      color:inherit;
+      @media @tablet{
+        width:80px;
+      }
+    }
+    &-data{
+      font-size: 64px;
+      color:inherit;
+    }
+    &-subdata{
+      font-size: 36px;
+      position: relative;
+      right: 6px;
+      color:@strokeGrey;
+    }
+  }
+  &-content{
+    width:100%;
+    height:auto;
+    color:@white;
+    @media @mobile{
+      .flexDisplay;
+      .flexDirection(column);
+    }
+    @media @tablet{
+      width:50%;
+      float:left;
+      position: absolute;
+      left:0;
+      bottom:0;
+    }
+    &-text1{
+      font-family: @globalFont;
+      padding-top:3px;
+      font-size:20px;
+      line-height: 1.2em;
+      color:inherit;
+      @media @tablet{
+        font-size: 30px;
+      }
+    }
+    &-text2{
+      font-family: @globalFont;
+      padding-top:5px;
+      font-size:24px;
+      line-height: 1.2em;
+      color:inherit;
+      @media @tablet{
+        font-size: 36px;
+      }
+    }
+    &-text3{
+      font-family: @globalFont;
+      padding-top:7px;
+      font-size:14px;
+      line-height: 1.2em;
+      color:inherit;
+      @media @tablet{
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .newsbox {
