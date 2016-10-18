@@ -15,12 +15,15 @@
     <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
 -->
     <div class="search-input-container">
-
+        <span *ngIf=" category == 'sports' " class="category-dropdown">
+            <dropdown [list]="sportsList" [selectedKey]="scope" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
+        </span>
         <input
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
         placeholder="{{searchPlaceHolderText}}"
-        class="search-input main searchcheck" />
+        class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'125px'}:{'padding-left':'25px'}" />
+
     </div>
     <a
       href="{{fullSearchUrl}}"

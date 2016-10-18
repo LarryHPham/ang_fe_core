@@ -13,6 +13,7 @@ declare var moment;
 export class DeepDiveBlock1 implements OnInit {
   @Input() scope: string;
   @Input() geoLocation: string;
+  @Input() category:string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
@@ -90,6 +91,10 @@ export class DeepDiveBlock1 implements OnInit {
     this.getDeepDiveVideo();
     this.getFirstArticleStackData();
     this.getBoxScores(this.dateParam);
+  }
+
+  ngOnChanges() {
+    this.callModules();
   }
 
   ngOnInit() {
