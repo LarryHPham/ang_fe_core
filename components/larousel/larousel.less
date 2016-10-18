@@ -12,7 +12,7 @@
 }
 .carousel_scroll{
   width:100%;
-  height:auto;
+  height:100%;
   position: relative;
   .no-select;
   &-item{
@@ -44,9 +44,6 @@
     background-color: transparent;
     outline: none;
     .globalDefaultModFont(75px, 400, @white);
-    &:hover{
-      color:@masterBrandColor;
-    }
     @media @mobile{
       .globalDefaultModFont(20px, 400, @white);
       height:50px;
@@ -58,6 +55,11 @@
         color:@white;
       }
     }
+    @media @tablet{
+      &:hover{
+        color:@masterBrandColor;
+      }
+    }
   }
 
   &-container{
@@ -66,7 +68,7 @@
     .flexWrap(nowrap);
     .flexJustify(space-between);
     width:100%;
-    height:auto;
+    height:100%;
     position: relative;
     text-align: left;
       //target safari only

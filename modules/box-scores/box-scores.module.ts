@@ -33,7 +33,7 @@ export class BoxScoresModule implements OnInit {
     this.windowWidth = window.innerWidth;
     if(this.scroll){
       if(this.boxScores != null){
-        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+        if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
@@ -47,20 +47,34 @@ export class BoxScoresModule implements OnInit {
 
   ngOnChanges(){
     if(this.boxScores != null){
-      if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+      if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
     }
     if(this.scroll){
       if(this.boxScores != null){
-        if (this.currentPage == this.boxScores.gameInfoMobile.length) {
+        if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
       }else{
-        console.log('max height is 650');
         this.maxHeight = 650;
+      }
+    }
+    this.checkHeight();
+  }
+
+  checkHeight(){
+    if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
+      var boxHeader = document.getElementById('box-header').offsetHeight;
+      //only for mlb page but subtract the mod title and calendar height from what was sent in
+      if(this.maxHeight != 'auto'){
+        this.maxHeight -= boxHeader;
+        this.heightStyle = this.maxHeight + "px";
+      }else{
+        this.scroll = false;
+        this.heightStyle = 'auto';
       }
     }
     if(this.refreshBoxScores.length > 10){
@@ -68,28 +82,7 @@ export class BoxScoresModule implements OnInit {
     }else{
       this.refreshBoxScores += " ";
     }
-    this.checkHeight();
-  }
-
-  checkHeight(){
     ScrollerFunctions.initializeScroller(this._elementRef.nativeElement, document);
-    if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
-      var boxHeader = document.getElementById('box-header').offsetHeight;
-      //only for mlb page but subtract the mod title and calendar height from what was sent in
-      if(this.maxHeight != 'auto'){
-        this.maxHeight -= boxHeader;
-        this.heightStyle = this.maxHeight + "px";
-        console.log('this.maxHeight != auto');
-        console.log('this.maxHeight - ',this.maxHeight);
-        console.log('this.heightStyle - ',this.heightStyle);
-      }else{
-        console.log('this.scroll = false');
-        this.scroll = false;
-        this.heightStyle = 'auto';
-        console.log('this.scroll - ',this.scroll);
-        console.log('this.heightStyle - ',this.heightStyle);
-      }
-    }
   }
 
   private onWindowLoadOrResize(event) {
@@ -109,10 +102,10 @@ export class BoxScoresModule implements OnInit {
 
   // Functions to scan through games on the same day for mobile
   advancePage(){
-    if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+    if (this.currentPage != this.boxScores.gameInfo.length) {
       this.currentPage = this.currentPage + 1;
       this.leftDisabled = "";
-      if (this.currentPage != this.boxScores.gameInfoMobile.length) {
+      if (this.currentPage != this.boxScores.gameInfo.length) {
         this.rightDisabled = "";
       }
       else {

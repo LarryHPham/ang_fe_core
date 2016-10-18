@@ -49,7 +49,7 @@
       .dropdown-list-option {
         padding: 10px 9px;
         box-sizing: content-box;
-        width: 100%;
+        width:100%;
       }
 
       &-scroller {
@@ -59,7 +59,7 @@
 
       &.showScroll::after {
         right: 5px;
-        background-color: @highlightGrey;
+        background-color: @backgroundGrey;
       }
     }
 
@@ -70,14 +70,17 @@
       padding: 10px 8px;
       border-bottom: 1px solid @strokeGrey;
 
+
       &:last-child {
         border-bottom: none;
       }
 
       &.active, &:hover {
         cursor: pointer;
+        width:100% !important;
         background-color: @masterBrandColor;
         color: @white;
+        border: none;
 
         &.dropdown-grp-lbl {
           cursor: default;

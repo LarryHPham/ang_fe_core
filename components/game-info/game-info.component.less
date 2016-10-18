@@ -1,5 +1,5 @@
+
 .game{//start of the game styles
-  width:100%;
   margin: 0 0 2px 0;
   &-cat{
     width:100%;
@@ -72,28 +72,29 @@
   }//end of &-title
 
   &-box{//game-box
-    width:100%;
     height:55px;
     background-color: @white;
-    .flexDisplay;
     border-left: 1px solid @strokeGrey;
     border-right: 1px solid @strokeGrey;
     border-bottom: 1px solid @strokeGrey;
     &-main{
-      width:51%;
+      height:100%;
       text-align: left;
       border:none;
-      padding:4px 0 4px 4px;
+      // padding:4px 0 4px 4px;
       &-image{
         width:45px;
         height:45px;
         float:left;
+        margin: 5px 5px;
       }
       &-details{
-        width:~"calc(100% - 50px)";
+        .flexDisplay;
+        .flexDirection(column);
+        .flexJustify(center);
+        width:~"calc(100% - 55px)";
         height: 100%;
         float:left;
-        padding:5px 0 5px 15px;
         overflow: hidden;
         & > span{
           width:100%;
@@ -122,19 +123,28 @@
       }//game-box-details end
     }//game-box-main END
     &-values{
-      width: 49%;
-      height: auto;
-      & > span{
-        display: block;
-        float: left;
-        width: 33.3%;
+      height: 100%;
+      .dataPoint{
+        .flexDisplay;
+        .flexDirection(column);
         height: 100%;
         font-size: 14px;
         color:@black;
         text-align: center;
         font-weight: 400;
-        border-left: 1px solid @strokeGrey;
-        padding:18px 0;
+      }
+      .borders{
+        height:100%;
+        & div{
+          border:0;
+          & span{
+            .flexDisplay;
+            .flexDirection(column);
+            .flexJustify(center);
+            height:100%;
+            border-left: 1px solid @strokeGrey;
+          }
+        }
       }
     }//game-box-values END
   }//end .game-box

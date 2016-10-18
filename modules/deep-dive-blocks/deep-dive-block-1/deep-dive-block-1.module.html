@@ -8,15 +8,21 @@
     <deep-dive-video-module [videoData]="videoDataBatch"></deep-dive-video-module>
   </div>
   <!-- BOX SCORE -->
-  <!-- <div *ngIf="dateParam" class="deep-dive-module">
+  <div *ngIf="dateParam" class="deep-dive-module">
     <box-scores
       [boxScores]="currentBoxScores"
       [calendarParams]="dateParam"
       [maxHeight]="maxHeight"
-      [scroll]="scroll"
+      [scroll]="boxScoresScroll"
       (dateEmit)="getBoxScores($event)">
     </box-scores>
-  </div> -->
+    <!-- AiContent for BoxScores-->
+    <game-article
+      *ngIf="currentBoxScores && currentBoxScores.aiContent"
+      [gameArticle]="boxScores.aiContent"
+      class="col-lg-4">
+    </game-article>
+  </div>
   <!-- BILL BOARD -->
   <div class="deep-dive-module">
     BILL BOARD MODULE HERE

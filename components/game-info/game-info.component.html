@@ -38,10 +38,10 @@
   </div>
 </div>
 
-<div class="game-box"><!--AWAY-->
-  <div class="game-box-main">
+<div class="game-box row"><!--AWAY-->
+  <div class="game-box-main col-sm-6">
     <div class="game-box-main-image">
-      <!-- <circle-image [data]="awayInfo.awayImageConfig"></circle-image> -->
+      <circle-image [data]="awayInfo.awayImageConfig"></circle-image>
     </div>
     <div class="game-box-main-details">
       <span *ngIf="awayInfo.awayLink" class="link">{{awayInfo.awayTeamName}}</span>
@@ -49,17 +49,19 @@
       <span>Away {{awayInfo.awayRecord}}</span>
     </div>
   </div>
-  <div class="game-box-values">
-    <span>{{awayInfo.dataPoint1 | statHyphenValue}}</span>
-    <span>{{awayInfo.dataPoint2 | statHyphenValue}}</span>
-    <span>{{awayInfo.dataPoint3 | statHyphenValue}}</span>
+  <div class="game-box-values col-sm-6 container-fluid">
+    <div class="row borders">
+      <div class="col-sm-4 dataPoint"><span>{{awayInfo.dataPoint1 | statHyphenValue}}</span></div>
+      <div class="col-sm-4 dataPoint"><span>{{awayInfo.dataPoint2 | statHyphenValue}}</span></div>
+      <div class="col-sm-4 dataPoint"><span>{{awayInfo.dataPoint3 | statHyphenValue}}</span></div>
+    </div>
   </div>
 </div><!--AWAY END-->
 
-<div class="game-box"> <!--HOME-->
-    <div class="game-box-main">
+<div class="game-box row"> <!--HOME-->
+    <div class="game-box-main col-sm-6">
       <div class="game-box-main-image">
-        <!-- <circle-image [data]="awayInfo.awayImageConfig"></circle-image> -->
+        <circle-image [data]="homeInfo.homeImageConfig"></circle-image>
       </div>
       <div class="game-box-main-details">
         <span *ngIf="homeInfo.homeLink" class="link">{{homeInfo.homeTeamName}}</span>
@@ -67,9 +69,11 @@
         <span>Home {{homeInfo.homeRecord}}</span>
       </div>
     </div>
-    <div class="game-box-values">
-      <span>{{homeInfo.dataPoint1 | statHyphenValue}}</span>
-      <span>{{homeInfo.dataPoint2 | statHyphenValue}}</span>
-      <span>{{homeInfo.dataPoint3 | statHyphenValue}}</span>
+    <div class="game-box-values col-sm-6 container-fluid">
+      <div class="row borders">
+        <div class="col-sm-4 dataPoint"><span>{{homeInfo.dataPoint1 | statHyphenValue}}</span></div>
+        <div class="col-sm-4 dataPoint"><span>{{homeInfo.dataPoint2 | statHyphenValue}}</span></div>
+        <div class="col-sm-4 dataPoint"><span>{{homeInfo.dataPoint3 | statHyphenValue}}</span></div>
+      </div>
     </div><!--HOME END-->
 </div>
