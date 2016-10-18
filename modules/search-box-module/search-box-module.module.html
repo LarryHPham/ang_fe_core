@@ -16,7 +16,7 @@
 -->
     <div class="search-input-container">
         <span *ngIf=" category == 'sports' " class="category-dropdown">
-            <dropdown [list]="sportsList" [selectedKey]="scope" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
+            <dropdown [list]="sportsList" [selectedKey]="scope.toUpperCase()" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
         </span>
         <input
         (keyup)="onKey($event)"
