@@ -45,7 +45,6 @@ export class SearchBoxModule {
       ]
   ngOnChanges(){
       this.category=="sports"?   this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + this.scope.toUpperCase():this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle;
-
       this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
       this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
       this.searchBoxBackground=GlobalSettings.getTCXscope(this.scope).searchBackground;
