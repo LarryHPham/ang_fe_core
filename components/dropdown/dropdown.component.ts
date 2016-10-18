@@ -119,7 +119,6 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
         }
       });
       if ( !this.selectedItem && this.list.length > 0 ) {
-          console.log("not match");
         this.setSelected(this.list[0]);
       }
     }
