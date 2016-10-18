@@ -46,8 +46,14 @@ export class Larousel{
   constructor(private _elRef: ElementRef){
 
   }
-  ngOnChanges(){
+  ngOnChanges(event){
     var ssItems = [];//side scroll item
+    if(event.videoData != null){
+      this.graphData = null;
+    }
+    if(event.graphData != null){
+      this.videoData = null;
+    }
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
@@ -90,7 +96,7 @@ export class Larousel{
         type:ssItems[startLength-1].type
       })
       //unshift pushes clones before array only if we have that extra carousel in front
-      if(this.videoData != null || this.graphData){
+      if(this.videoData != null || this.graphData != null){
         ssItems.push({
           id: ssItems[1].id,
           data:ssItems[1].data,
@@ -101,6 +107,14 @@ export class Larousel{
 
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
+    this.currentScroll = this.itemSize * this.clones;
+    this.currentItem = this.originalData[this.clones];
+    if(event.videoData != null){
+      this.currentItem = this.originalData[this.clones];
+    }
+    if(event.graphData != null){
+      this.currentItem = this.originalData[this.clones];
+    }
 
     //delete below when done testing
     // this.carData.length = 2;
@@ -124,7 +138,10 @@ export class Larousel{
     if(this.maxLength == null){
       this.maxLength = this.originalData.length;
     }
+
     this.generateArray();
+    this.videoCheck();
+    this.onResize(window);
   }
 
   ngAfterViewInit(){
@@ -140,6 +157,7 @@ export class Larousel{
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
     this.videoCheck();
+    this.onResize(window);
   }
 
   // ngDoCheck(){
@@ -160,9 +178,14 @@ export class Larousel{
       }
       this.rightText = this.currentScroll+'px';
     }
-      this.numResizes = this.numResizes + 1;
+    this.videoCheck();
+    this.numResizes = this.numResizes + 1;
   }
 
+  ngOnDestroy(){
+    this.videoCheck();
+  }
+s
   generateArray(){
     var self = this;
     var originalData = this.originalData;
@@ -174,7 +197,6 @@ export class Larousel{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
-    //console.log(this.displayedItems,"carousel array");
     this.displayedData.emit(this.displayedItems);
   }
 
