@@ -32,7 +32,6 @@ export class DeepDiveBlockMain implements OnInit {
   private videoDataBatch3: Array<VideoStackData>;
 
   private secName: Array<SectionNameData>;
-  private articleCallLimit:number = 50;
   private batchNum: number = 1;
   private homePageBlocks = ["breaking", "video", "sports", "business", "politics", "entertainment", "food", "video", "health", "lifestyle", "real-estate", "travel", "weather", "video", "automotive"];
  constructor(private _deepDiveData: DeepDiveService){}
@@ -51,7 +50,7 @@ export class DeepDiveBlockMain implements OnInit {
  }
 
   getBreakingData(){
-    this._deepDiveData.getDeepDiveBatchService("breaking", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("breaking", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.breakingStack  = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "breaking");
         },
@@ -60,7 +59,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getSportsData(){
-    this._deepDiveData.getDeepDiveBatchService("sports", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("sports", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.recDataSports = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "sports");
         },
@@ -69,7 +68,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getBusinessData(){
-    this._deepDiveData.getDeepDiveBatchService("business", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("business", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.businessStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "business");
         },
@@ -78,7 +77,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getPoliticsData(){
-    this._deepDiveData.getDeepDiveBatchService("politics", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("politics", 5, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.politicsStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "politics");
         },
@@ -87,7 +86,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getEtertainData(){
-    this._deepDiveData.getDeepDiveBatchService("entertain", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("entertainment", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.recDataEntertain = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "entertain");
         },
@@ -96,7 +95,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getHealthData(){
-    this._deepDiveData.getDeepDiveBatchService("health", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("health", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.recDataHealth = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "health");
         },
@@ -105,7 +104,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getLifeStyleData(){
-    this._deepDiveData.getDeepDiveBatchService("lifestyle", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("lifestyle", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.lifestyleStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "lifestyle");
         },
@@ -114,7 +113,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getRealEstateData(){
-    this._deepDiveData.getDeepDiveBatchService("realestate", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("real-estate", 5, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.estateStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "realestate");
         },
@@ -123,7 +122,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getTravelData(){
-    this._deepDiveData.getDeepDiveBatchService("travel", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("travel", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.recDataTravel = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "travel");
         },
@@ -132,7 +131,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getWeatherData(){
-    this._deepDiveData.getDeepDiveBatchService("weather", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("weather", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.weatherStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "weather");
         },
@@ -141,7 +140,7 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getAutomotiveData(){
-    this._deepDiveData.getDeepDiveBatchService("automotive", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService("automotive", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
           this.recDataAuto = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "automotive");
         },
