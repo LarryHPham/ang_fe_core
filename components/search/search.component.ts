@@ -65,8 +65,6 @@ export interface SearchInput {
 
 export class Search{
     @Input() searchInput: SearchInput;
-    @Input() isModule:boolean =false;
-    @Input() DDarray:Array<any>;
 
     //NgControl of input
     public term:any = new FormControl();
