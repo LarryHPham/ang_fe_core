@@ -27,7 +27,7 @@
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
         placeholder="{{searchPlaceHolderText}}"
-        class="search-input main searchcheck" ngclass="lef-pad-dd"  />
+        class="search-input main searchcheck"  [ngClass]="category =='sports'? 'left-pad-dd':''" />
 
 
     </div>
