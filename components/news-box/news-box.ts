@@ -1,5 +1,6 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import { Larousel } from '../larousel/larousel';
+import { LineChartComponent } from '../line-chart/line-chart.component';
 
 declare var moment:any;
 

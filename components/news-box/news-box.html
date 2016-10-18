@@ -40,17 +40,20 @@
               <div class="weather-graph-container1">
                 <div class="weather-graph-info">
                   <div class="weather-graph-info-image"><img src="{{item.data.current.currentIcon}}" alt='Weather Icon'/></div>
-                  <div class="weather-graph-info-data">{{item.data.current.currentTemperature}}&deg;<span class="weather-graph-info-subdata">/79&deg;</span></div>
+                  <div class="weather-graph-info-data">{{item.data.current.currentTemperature}}&deg;<span *ngIf="item.data.current.currentLow" class="weather-graph-info-subdata">/{{item.data.current.currentLow}}&deg;</span></div>
                 </div>
                 <div class="weather-graph-border1"></div>
                 <div class="weather-graph-content">
-                  <div class="weather-graph-content-text1">City, ST</div>
-                  <div class="weather-graph-content-text2 text-heavy">Friday 8:00 AM</div>
-                  <div class="weather-graph-content-text3"><span class="text-heavy">Partly cloudy</span> with a chance of rain until 12PM CT.</div>
+                  <div class="weather-graph-content-text1">{{item.data.current.location}}</div>
+                  <div class="weather-graph-content-text2 text-heavy">{{item.data.current.currentTime}}</div>
+                  <div class="weather-graph-content-text3" [innerHTML]="item.data.current.description"></div>
                 </div>
               </div>
               <div class="weather-graph-border2"></div>
-              <div class="weather-graph-chart"></div>
+              <div class="weather-graph-container2">
+                <div class="weather-graph-subtitle">Daily Forecast</div>
+                <line-chart *ngIf="item.data.current.options" [options]="item.data.current.options"></line-chart>
+              </div>
             </div>
           </div>
         </div>
