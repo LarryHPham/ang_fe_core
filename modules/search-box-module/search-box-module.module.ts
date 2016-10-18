@@ -14,7 +14,8 @@ export class SearchBoxModule {
   modSearchTitle:string;
   modSearchSubTitle:string;
     ddIcon="caret-down";
-    searchPlaceHolderText: string
+    searchPlaceHolderText: string;
+    searchBoxBackground:string;
 
     sportsList=[
        {
@@ -43,13 +44,15 @@ export class SearchBoxModule {
       },
       ]
   ngOnChanges(){
-      this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + this.scope.toUpperCase();
+      this.category=="sports"?   this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + this.scope.toUpperCase():this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle;
+
       this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
       this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
+      this.searchBoxBackground=GlobalSettings.getTCXscope(this.scope).searchBackground;
   }
   //ssearchBoxDescription: string = 'Find the players and teams you love.';
   //searchPlaceHolderText: string = 'Search for a Team or Player...';
-  searchBoxBackground: string = '/app/public/header_texture.png';
+  /*searchBoxBackground: string = '/app/public/header_texture.png';*/
 
   fullSearchUrl: string;
 
