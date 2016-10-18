@@ -34,7 +34,7 @@ export class DeepDiveBlockMain implements OnInit {
   private secName: Array<SectionNameData>;
   private articleCallLimit:number = 50;
   private batchNum: number = 1;
-  private homePageBlocks = ["breaking", "video", "sports", "business", "politics", "entertainment", "food", "video", "health", "lifestyle", "realestate", "travel", "weather", "video", "automotive"];
+  private homePageBlocks = ["breaking", "video", "sports", "business", "politics", "entertainment", "food", "video", "health", "lifestyle", "real-estate", "travel", "weather", "video", "automotive"];
  constructor(private _deepDiveData: DeepDiveService){}
 
  getSectionNameData(){
@@ -150,14 +150,15 @@ export class DeepDiveBlockMain implements OnInit {
         });
   }
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService("sports", 15, 1).subscribe(
-        data => {
-          let videoBatch1 = data.data.splice(0, 5);
-          let videoBatch2 = data.data.splice(0, 5);
-          let videoBatch3 = data.data.splice(0, 5);
-          this.videoDataBatch1 = videoBatch1 ? this._deepDiveData.transformSportVideoBatchData(videoBatch1, "sports") : null;
-          this.videoDataBatch2 = videoBatch2 ? this._deepDiveData.transformSportVideoBatchData(videoBatch2, "sports") : null;
-          this.videoDataBatch3 = videoBatch3 ? this._deepDiveData.transformSportVideoBatchData(videoBatch3, "sports") : null;
+      this._deepDiveData.getDeepDiveVideoBatchService("sports", 15, 1, this.geoLocation)
+      .subscribe(data => {
+          console.log(data);
+          // let videoBatch1 = data.data.splice(0, 5);
+          // let videoBatch2 = data.data.splice(0, 5);
+          // let videoBatch3 = data.data.splice(0, 5);
+          // this.videoDataBatch1 = videoBatch1 ? this._deepDiveData.transformSportVideoBatchData(videoBatch1, "sports") : null;
+          // this.videoDataBatch2 = videoBatch2 ? this._deepDiveData.transformSportVideoBatchData(videoBatch2, "sports") : null;
+          // this.videoDataBatch3 = videoBatch3 ? this._deepDiveData.transformSportVideoBatchData(videoBatch3, "sports") : null;
         },
         err => {
           console.log("Error getting video batch data");
