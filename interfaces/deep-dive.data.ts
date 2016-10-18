@@ -2,12 +2,11 @@ import { RectangleImageData } from '../components/images/image-data';
 
 export interface ArticleStackData{
     article_id: string,
-    source: string, //AI
-    report_type: string, //AI
+    source: string,
+    report_type: string,
     time_stamp: string,
     keywords: Array<string>,
     title: string,
-    // imageConfig: RectangleImageData,
     image_url: string,
     last_updated?: string,
     keyUrl?: any,
