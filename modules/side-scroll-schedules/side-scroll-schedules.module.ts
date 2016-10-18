@@ -92,7 +92,7 @@ export class SideScrollSchedule{
     document.getElementsByClassName("weather-search-input")[0]["value"] = "";
   }
   ngOnChanges(event) {
-    if (event.sideScrollData || this.topScope == "sports") { // only fire this if the actual data is changing
+    if (event.sideScrollData && event.sideScrollData.currentValue.blocks.length > 0) { // only fire this if the actual data is changing
       this.originalBlocks = this.sideScrollData.blocks.slice(0);
       this.usableData = Object.assign({},this.sideScrollData);
       this.localTopScope = this.topScope;
@@ -110,14 +110,6 @@ export class SideScrollSchedule{
       case "baseball":
         this.titleIcon = "fa-calendar-1";
         this.titleText = "Upcoming Games";
-        break;
-      case "sports":
-        this.titleIcon = "";
-        this.titleText = "";
-        break;
-      case "entertainment":
-        this.titleIcon = "";
-        this.titleText = "";
         break;
       default:
       }
