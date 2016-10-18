@@ -12,13 +12,6 @@
   overflow: visible;
   margin: 0 auto;
   padding: 15px 0;
-  &-container {
-    //max-height: 550px;
-    //overflow: scroll;
-    @media @desktop-m {
-      padding-right: 15px;
-    }
-  }
   &-leagueNav {
     width:100%;
   }
@@ -36,10 +29,6 @@
   &-info{
     width:100%;
     height:auto;
-    // .flexDisplay;
-    // .flexDirection(row);
-    // .flexJustify(space-between);
-    // .flexWrap(wrap);
     overflow:hidden;
     &-container{
       @media @mobile {
@@ -47,12 +36,10 @@
       }
       width:100%;
       height:auto;
-      padding: 10px;
-      // & > div:last-child{
-      //   margin-right:10px;
-      // }
     }
-
+    &-padding{
+      padding: 10px;
+    }
     .pageIndicator {
       display:block;
       width:100%;
@@ -175,6 +162,7 @@
     }
   }
   .scrollable-item-wrapper{
+    max-height:555px;
     width:102.%;
     padding-right:2000px;
   }
@@ -184,7 +172,6 @@
   }
   .scrollable-item.showScroll::after{
     width:5px;
-    right:2px;
-    background-color:@highlightGrey;
+    right:3px;
   }
 } // END .box-scores-scroll
