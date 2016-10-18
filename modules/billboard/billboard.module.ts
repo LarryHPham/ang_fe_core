@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 declare var jQuery:any;
 
@@ -7,6 +7,14 @@ declare var jQuery:any;
     templateUrl: './app/fe-core/modules/billboard/billboard.module.html',
 })
 
-export class BillboardModule {
+export class BillboardModule implements OnInit{
+    isSmall:boolean = false;
 
+    ngOnInit() {
+        this.isSmall = window.innerWidth <= 814;
+    }
+
+    onResize(event) {
+            this.isSmall = event.target.innerWidth <= 814;
+    }
 }

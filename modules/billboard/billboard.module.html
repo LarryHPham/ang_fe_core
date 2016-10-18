@@ -1,1 +1,10 @@
-<iframe frameborder="0" scrolling="no" allowtransparency="true" src="/app/ads/billboard.html" [ngStyle]="{'display': 'block', 'height': '100%','width': '100%','margin': '0px','border': '0px','overflow': 'hidden','z-index': '0'}" ></iframe>
+<section (window:resize)="onResize($event)">
+    <div *ngIf="!isSmall">
+        <iframe frameborder="0" scrolling="no" allowtransparency="true" src="/app/ads/billboard.html"
+                [ngStyle]="{'display': 'block','width': '100%', 'height': '450px', 'margin': '0px','border': '0px','overflow': 'hidden','z-index': '0'}"></iframe>
+    </div>
+    <div *ngIf="isSmall">
+        <iframe frameborder="0" scrolling="no" allowtransparency="true" src="/app/ads/billboard.html"
+                [ngStyle]="{'display': 'block','width': '100%', 'height': '855px', 'margin': '0px','border': '0px','overflow': 'hidden','z-index': '0'}"></iframe>
+    </div>
+</section>
