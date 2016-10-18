@@ -18,11 +18,16 @@
         <span *ngIf=" category == 'sports' " class="category-dropdown">
             <dropdown [list]="sportsList" [selectedKey]="scope.toUpperCase()" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
         </span>
+        <!--<input
+        (keyup)="onKey($event)"
+        (keyup.enter)="navigateSearch()"
+        placeholder="{{searchPlaceHolderText}}"
+        class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />-->
         <input
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
         placeholder="{{searchPlaceHolderText}}"
-        class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />
+        class="search-input main searchcheck" ngclass="lef-pad-dd"  />
 
 
     </div>
