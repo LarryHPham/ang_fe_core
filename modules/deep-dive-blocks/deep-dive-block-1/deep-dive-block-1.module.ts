@@ -12,6 +12,7 @@ declare var moment;
 
 export class DeepDiveBlock1 implements OnInit {
   @Input() scope: string;
+  @Input() geoLocation: string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
   firstStackTop: Array<ArticleStackData>;
@@ -19,7 +20,6 @@ export class DeepDiveBlock1 implements OnInit {
   recData: Array<ArticleStackData>;//TODO
   articleStack2DataTop: Array<ArticleStackData>;//TODO
   articleStack2DataBatch: Array<ArticleStackData>;//TODO
-  geoLocation: string = "ks";//TODO
   articleCallLimit:number = 23;
   videoCallLimit:number = 5;
   batchNum: number = 1;
