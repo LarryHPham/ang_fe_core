@@ -29,7 +29,7 @@ export class DeepDiveBlock1 implements OnInit {
   currentBoxScores: any;
   dateParam: any;
   boxScoresTempVar: string = "nfl";
-
+  boxScoresScroll: boolean= true;
   constructor(private _boxScoresService: BoxScoresService, private _deepDiveData: DeepDiveService){
     //Box Scores
     var currentUnixDate = new Date().getTime();
