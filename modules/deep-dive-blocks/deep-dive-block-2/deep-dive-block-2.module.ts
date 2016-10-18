@@ -43,7 +43,9 @@ export class DeepDiveBlock2 implements OnInit {
   callModules(){
     this.getFirstArticleStackData();
   }
-
+  ngOnChanges() {
+    this.callModules();
+  }
   ngOnInit() {
     this.callModules();
   }

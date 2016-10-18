@@ -12,6 +12,8 @@ export class SideScrollSchedule{
   @Input() sideScrollData: any;
   @Input() scrollLength: any;
   @Input() topScope:string;
+  @Input() topNav:string;
+  @Input() pageScope:string;
   @Input() scope:string;
   @Input() scopeList:string;
   @Output() changeScope = new EventEmitter();
@@ -76,6 +78,7 @@ export class SideScrollSchedule{
         this.changeLocation.next(searchResults[0].id);
         this.autocompleteItems = [];
       }
+      event.target.value = "";
     }
     if (event.target.value == "") { // if nothing entered in searchbox, clear the dropdown and hide it
       this.showError = false;
@@ -86,9 +89,10 @@ export class SideScrollSchedule{
     //return the zip code for the clicked on city
     this.changeLocation.next(event.target.id);
     this.autocompleteItems = [];
+    document.getElementsByClassName("weather-search-input")[0]["value"] = "";
   }
   ngOnChanges(event) {
-    if (event.sideScrollData || this.topScope == "sports") { // only fire this if the actual data is changing
+    if (event.sideScrollData && event.sideScrollData.currentValue.blocks.length > 0) { // only fire this if the actual data is changing
       this.originalBlocks = this.sideScrollData.blocks.slice(0);
       this.usableData = Object.assign({},this.sideScrollData);
       this.localTopScope = this.topScope;
@@ -106,10 +110,6 @@ export class SideScrollSchedule{
       case "baseball":
         this.titleIcon = "fa-calendar-1";
         this.titleText = "Upcoming Games";
-        break;
-      case "sports":
-        this.titleIcon = "";
-        this.titleText = "";
         break;
       default:
       }
