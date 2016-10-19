@@ -12,8 +12,9 @@ declare var moment:any;
 export class Larousel{
   @Input() maxLength:any;
   @Input() current:any;
-  @Input() carData: any;
+  @Input() graphData: any;
   @Input() videoData: any;
+  @Input() carData: any;
   public carouselCount = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
@@ -45,11 +46,25 @@ export class Larousel{
   constructor(private _elRef: ElementRef){
 
   }
-  ngOnInit(){
-    var ssItems = [];
-
+  ngOnChanges(event){
+    var ssItems = [];//side scroll item
+    if(event.videoData != null){
+      this.graphData = null;
+    }
+    if(event.graphData != null){
+      this.videoData = null;
+    }
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
+
+    if(this.graphData != null){
+      ssItems.push({
+        id: startLength,
+        data:this.graphData,
+        type:'graph'
+      })
+    }
+
     if(this.videoData != null){
       this.videoData.forEach(function(val, index){
         ssItems.push({
@@ -80,16 +95,26 @@ export class Larousel{
         data:ssItems[startLength-1].data,
         type:ssItems[startLength-1].type
       })
-      //unshift pushes clones before array
-      ssItems.push({
-        id: ssItems[1].id,
-        data:ssItems[1].data,
-        type:ssItems[1].type
-      })
+      //unshift pushes clones before array only if we have that extra carousel in front
+      if(this.videoData != null || this.graphData != null){
+        ssItems.push({
+          id: ssItems[1].id,
+          data:ssItems[1].data,
+          type:ssItems[1].type
+        })
+      }
     }
 
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
+    this.currentScroll = this.itemSize * this.clones;
+    this.currentItem = this.originalData[this.clones];
+    if(event.videoData != null){
+      this.currentItem = this.originalData[this.clones];
+    }
+    if(event.graphData != null){
+      this.currentItem = this.originalData[this.clones];
+    }
 
     //delete below when done testing
     // this.carData.length = 2;
@@ -113,7 +138,10 @@ export class Larousel{
     if(this.maxLength == null){
       this.maxLength = this.originalData.length;
     }
+
     this.generateArray();
+    this.videoCheck();
+    this.onResize(window);
   }
 
   ngAfterViewInit(){
@@ -128,7 +156,8 @@ export class Larousel{
       this.minScroll = this.currentScroll < this.itemSize * this.clones;
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
-    this.adjustSizeVideo();
+    this.videoCheck();
+    this.onResize(window);
   }
 
   // ngDoCheck(){
@@ -149,9 +178,14 @@ export class Larousel{
       }
       this.rightText = this.currentScroll+'px';
     }
-      this.numResizes = this.numResizes + 1;
+    this.videoCheck();
+    this.numResizes = this.numResizes + 1;
   }
 
+  ngOnDestroy(){
+    this.videoCheck();
+  }
+s
   generateArray(){
     var self = this;
     var originalData = this.originalData;
@@ -163,20 +197,15 @@ export class Larousel{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
-    //console.log(this.displayedItems,"carousel array");
     this.displayedData.emit(this.displayedItems);
   }
-  adjustSizeVideo() {
-        if (this.currentItem.type == "video") {
-            jQuery(".carousel_scroll-item").addClass("videoActive");
-            jQuery(".carousel_scroll-box").css('min-height','180px');
-            jQuery(".carWrapper").css('min-height','180px');
-        }
-        else {
-            jQuery(".carousel_scroll-item").removeClass("videoActive");
-            jQuery(".carWrapper").css('min-height','240px');
-            jQuery(".carousel_scroll-box").css('min-height','240px');
-        }
+
+  videoCheck() {
+      if (this.currentItem.type == "video") {
+        jQuery(".newsbox").addClass("videoActive");
+      }else{
+        jQuery(".newsbox").removeClass("videoActive");
+      }
     }
 
   left(event) {
@@ -186,7 +215,7 @@ export class Larousel{
       this.currentScroll = (this.itemSize * this.maxLength-1);
     }
     this.checkCurrent(this.currentScroll);
-    this.adjustSizeVideo();
+    this.videoCheck();
   }
   right(event) {
     this.currentScroll += this.itemSize;
@@ -196,7 +225,7 @@ export class Larousel{
       this.currentScroll = 0;
       this.checkCurrent(this.currentScroll);
     }
-    this.adjustSizeVideo();
+    this.videoCheck();
   }
 
   //For mobile screen swiping events
@@ -208,7 +237,7 @@ export class Larousel{
       this.right('right');
     }
     this.checkCurrent(this.currentScroll);
-    this.adjustSizeVideo();
+    this.videoCheck();
   }
 
   scrollX(event){

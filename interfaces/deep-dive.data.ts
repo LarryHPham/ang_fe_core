@@ -1,30 +1,31 @@
 import { RectangleImageData } from '../components/images/image-data';
 
 export interface ArticleStackData{
-    id: string,
-    timeStamp: string,
-    keyword: string,
+    article_id: string,
+    source: string,
+    report_type: string,
+    time_stamp: string,
+    keywords: Array<string>,
     title: string,
-    imageConfig: RectangleImageData,
-    publishedDate?: string,
+    image_url: string,
+    last_updated?: string,
     keyUrl?: any,
     author?: string,
-    articleUrl?: any,
     publisher?: string,
     teaser?: string
   }
 
 export interface VideoStackData{
     id: string,
-    timeStamp: number,
+    time_stamp: number,
     keyword: string,
     title: string,
-    videoThumbnail: string,
+    video_thumbnail: string,
     keyUrl?: any,
     teaser?: string,
-    videoUrl?: any,
-    thumbnailHeight?: string,
-    thumbnailWidth?: string
+    video_url?: any,
+    thumbnail_height?: string,
+    thumbnail_width?: string
 }
 
 export interface SectionNameData{

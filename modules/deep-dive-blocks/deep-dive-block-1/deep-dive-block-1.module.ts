@@ -12,6 +12,7 @@ declare var moment;
 
 export class DeepDiveBlock1 implements OnInit {
   @Input() scope: string;
+  @Input() geoLocation: string;
   @Input() category:string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
@@ -20,16 +21,15 @@ export class DeepDiveBlock1 implements OnInit {
   recData: Array<ArticleStackData>;//TODO
   articleStack2DataTop: Array<ArticleStackData>;//TODO
   articleStack2DataBatch: Array<ArticleStackData>;//TODO
-  geoLocation: string = "ks";//TODO
   articleCallLimit:number = 23;
-  videoCallLimit:number = 9;
+  videoCallLimit:number = 5;
   batchNum: number = 1;
   //Box Scores
   boxScoresData: any;
   currentBoxScores: any;
   dateParam: any;
   boxScoresTempVar: string = "nfl";
-
+  boxScoresScroll: boolean= true;
   constructor(private _boxScoresService: BoxScoresService, private _deepDiveData: DeepDiveService){
     //Box Scores
     var currentUnixDate = new Date().getTime();
@@ -61,12 +61,14 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum).subscribe(
+      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum, this.geoLocation).subscribe(
         data => {
-          let videoOne = [data.data[0]];
-          let videoBatch = data.data.splice(1,4);
-          this.videoDataTop = this._deepDiveData.transformSportVideoBatchData(videoOne, this.scope);
-          this.videoDataBatch = this._deepDiveData.transformSportVideoBatchData(videoBatch, this.scope);
+          if(this.scope == "nba"){
+            data = data.data.data;
+          } else {
+            data = data.data;
+          }
+          this.videoDataBatch = this._deepDiveData.transformSportVideoBatchData(data, this.scope);//TODO
         },
         err => {
           console.log("Error getting video batch data");
@@ -89,6 +91,10 @@ export class DeepDiveBlock1 implements OnInit {
     this.getDeepDiveVideo();
     this.getFirstArticleStackData();
     this.getBoxScores(this.dateParam);
+  }
+
+  ngOnChanges() {
+    this.callModules();
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import { Larousel } from '../larousel/larousel';
+import { LineChartComponent } from '../line-chart/line-chart.component';
 
 declare var moment:any;
 
@@ -10,6 +11,7 @@ declare var moment:any;
 })
 
 export class NewsBox{
+  @Input() graphData: any;
   @Input() videoData: any;
   @Input() carData: any;
   private displayedItems: any;

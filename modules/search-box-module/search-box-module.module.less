@@ -137,25 +137,67 @@
     }
   }*/
   &-container {
+    .flexDisplay;
+    .flexDirection(column);
+    .flexAlignItems(center);
+    .flexJustify(center);
     position: relative;
     width: 100%;
-    padding: 15px 10px 40px 15px;
+    min-height: 180px;
+    padding: 0 10px;
     text-align: center;
     color: @white;
-    background: @black;
+    min-width: 300px;
+    background-size: cover;
+    @media @tablet{
+      min-height: 300px;
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgba(39, 39, 39, 0.6);
+    }
     .dropdown{
-      width:100px;
+      @media @mobile{
+        width: 85px;
+        margin-left: 0;
+        margin-top: 0;
+      }
+      width:108px;
       color:@black;
       z-index: 10;
-      margin-top: 8px;
+      margin-top: 6px;
       margin-left: 4%;
       background-color: @white;
-      .dropdown-hdr{
-        background-color: @white;
+      .dropdown-list-scroll .scrollable-item .dropdown-list-option{
+        @media @mobile{
+          width:59%;
+        }
+        width: 68%;
       }
+      .dropdown-hdr{
+        @media @mobile{
+          height: 25px;
+        }
+        @media @tablet{
+          font-size:18px;
+          padding: 3px 5px 0
+        }
+        background-color: @white;
+
+        }
+
       .dropdown-hdr-button{
         i{
           color: @masterBrandColor;
+          @media @tablet{
+            position: relative;
+            top: 3px;
+          }
         }
       }
       .scrollable-item-scroller{
@@ -192,6 +234,7 @@
           color: @black;
           border-radius: 17px;
           background-color: @white;
+          text-overflow: ellipsis;
           border: none;
           transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
           -webkit-transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
@@ -243,14 +286,17 @@
     .globalDefaultFont(22px, 800);
     line-height: 24px;
     margin-bottom: 3px;
+    position: relative;
+    padding: 0 10px;
     @media @tablet {
       .globalDefaultFont(40px, 800);
       line-height: 42px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
   } //&-header
 
   &-desc {
+    position: relative;
     .globalDefaultFont(14px, 400);
     line-height: 16px;
     margin-bottom: 0;
@@ -259,4 +305,11 @@
       line-height: 22px;
     }
   } // &-desc
+}
+
+input.search-input.main.searchcheck.left-pad-dd{
+  padding-left: 140px;
+  @media @mobile{
+    padding-left: 110px
+  }
 }

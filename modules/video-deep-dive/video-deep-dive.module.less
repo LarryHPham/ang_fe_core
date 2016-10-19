@@ -74,13 +74,7 @@
 
 @media @desktop-m{
   .videoStackTop, .videoStackBatch{
-    .video-stack-block:hover {
-      .video-title-mid {color: @masterBrandColor!important}
-      .playCircle{
-        color: rgba(30, 185, 227, 0.9)!important;
-        background-color: @white!important;
-      }
-    }
+    .video-stack-thumbnail:hover ~ .video-stack-info .video-title-mid, .video-title-mid:hover{color: @masterBrandColor!important}
   }
 }
 
