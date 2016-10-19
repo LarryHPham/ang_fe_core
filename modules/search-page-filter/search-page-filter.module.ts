@@ -1,10 +1,15 @@
-import {Component} from "@angular/core";
+import {Component,Input} from "@angular/core";
+import {Router} from "@angular/router";
 @Component({
     selector:"search-filter",
     templateUrl:'./app/fe-core/modules/search-page-filter/search-page-filter.module.html'
 })
 export class SearchPageFilter{
+    @Input() userInput:string;
     icon="caret-down";
+    constructor(private router:Router){
+
+    }
 keywords=[
     {
         key:"All",
@@ -103,25 +108,26 @@ keywords=[
 
         {
             key:"Date-MostRecent",
-            value:"Date - MostRecent",
+            value:"Date - Most Recent",
         },
         {
             key:'Date-Oldest',
             value:"Date - Oldest",
         },
         {
-            key:'last24Hours',
-            value:"Last 24 Hours",
+            key:'Time-last24Hours',
+            value:"Time - Last 24 Hours",
         },
         {
-            key:'pastWeek',
-            value:"Past Week",
+            key:'Time-pastWeek',
+            value:"Time - Past Week",
         },
         ];
     keywordClick(e){
-        //console.log(e);
+        e=e.toLowerCase();
+            /*this.router.navigate(['/deep-dive','search','articles', e ]);*/
     }
     sortingClick(e){
-        //console.log(e);
+
     }
 }
