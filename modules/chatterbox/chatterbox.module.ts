@@ -8,16 +8,11 @@ declare var jQuery:any;
 })
 
 export class ChatterboxModule implements OnInit {
-    isSmall:boolean = false;
-
     ngOnInit() {
-        this.resizeIframe('chatterbox');
+        window.addEventListener("message", this.receiveSize, false);
     }
 
-    onResize(event) {
-        this.resizeIframe('chatterbox');
-    }
-
-    resizeIframe(iframeID) {
+    receiveSize(e) {
+        document.getElementById("chatterbox-section").style.height = e.data;
     }
 }
