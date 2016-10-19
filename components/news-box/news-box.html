@@ -32,7 +32,7 @@
       <!-- BELOW GRAPH CAROUSEL -->
       <div class="newsbox"
       *ngIf="item.type == 'graph' || item.type == 'clone'"
-      [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%)'}"
+      [ngStyle]="{'background-image': item.data.current.background}"
       [ngClass]="{'clone': item.type == 'clone'}">
         <div class="newsbox-item graph-item" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">

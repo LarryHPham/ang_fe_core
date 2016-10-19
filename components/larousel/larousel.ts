@@ -211,7 +211,7 @@ s
   left(event) {
     //moves the current scroll over the item size
     this.currentScroll -= (this.itemSize);
-    if(this.currentScroll < 0){
+    if(this.currentScroll < this.clones){
       this.currentScroll = (this.itemSize * this.maxLength-1);
     }
     this.checkCurrent(this.currentScroll);
@@ -222,7 +222,7 @@ s
     if(this.maxLength >= Math.round(this.currentScroll/this.itemSize)){
       this.checkCurrent(this.currentScroll);
     }else{
-      this.currentScroll = 0;
+      this.currentScroll = (this.clones*this.itemSize);
       this.checkCurrent(this.currentScroll);
     }
     this.videoCheck();
@@ -289,11 +289,11 @@ s
       this.minScroll = this.currentScroll < (this.itemSize * this.clones);
       this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
     }
-    let pos = (currentScroll / this.itemSize);
+    let pos = Math.round(currentScroll / this.itemSize);
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
-    if(pos > this.maxLength){
+    if(pos > (this.maxLength - (this.clones*2))){
       currentScroll = 0;
-    }else if (pos < 0){
+    }else if (pos < this.clones){
       currentScroll = this.itemSize * (this.maxLength-1);
     }else{
       this.transition = "score-transition2";
@@ -307,12 +307,12 @@ s
 
     //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
     setTimeout(function(){
-      if(pos <= 0){
+      if(pos <= this.clones){
         self.transition = "";
         self.currentScroll = (self.maxLength-2) * self.itemSize;
         self.rightText = self.currentScroll+'px';
       }
-      if(pos >= self.maxLength - 1){
+      if(pos >= self.maxLength - this.clones){
         self.transition = "";
         self.currentScroll = self.itemSize;
         self.rightText = self.currentScroll+'px';
