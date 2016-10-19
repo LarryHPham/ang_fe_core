@@ -19,12 +19,8 @@ keywords=[
         value:"Business",
     },
     {
-        key:'Sports',
-        value:"Sports",
-    },
-    {
-        key:'Politics',
-        value:"Politics",
+        key:'Celebreties',
+        value:"Celebreties",
     },
     {
         key:'Entertainment',
@@ -35,8 +31,68 @@ keywords=[
         value:"Food",
     },
     {
+        key:'Health',
+        value:"Health",
+    },
+    {
         key:'Lifestyle',
         value:"Lifestyle",
+    },
+    {
+        key:'MLB',
+        value:"MLB",
+    },
+    {
+        key:'Movies',
+        value:"Movies",
+    },
+    {
+        key:'Music',
+        value:"Music",
+    },
+    {
+        key:'NBA',
+        value:"NBA",
+    },
+    {
+        key:'NCAAF',
+        value:"NCAAF",
+    },
+    {
+        key:'NCAAM',
+        value:"NCAAM",
+    },
+    {
+        key:'NFL',
+        value:"NFL",
+    },
+    {
+        key:'Politics',
+        value:"Politics",
+    },
+    {
+        key:'Real Estate',
+        value:"Real Estate",
+    },
+    {
+        key:'Sports',
+        value:"Sports",
+    },
+    {
+        key:'Travel',
+        value:"Travel",
+    },
+    {
+        key:'Trending',
+        value:"Trending",
+    },
+    {
+        key:'TV Shows',
+        value:"TV Shows",
+    },
+    {
+        key:'Weather',
+        value:"Weather",
     }];
 
     Sorting=[
