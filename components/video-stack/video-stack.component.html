@@ -13,8 +13,7 @@
     </a>
     <div class="video-stack-info">
       <div class="video-title-top">
-        <!-- <a class="video-title-top-key masterHover" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a> -->
-        <span class="video-title-top-key" [innerHTML]="item.keyword | safeHtml"></span>
+        <a class="video-title-top-key masterHover" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a>
         <span class="video-title-top-date" [innerHTML]="item.time_stamp | safeHtml"></span>
       </div>
       <a class="video-title-mid" [innerHTML]="item.title | safeHtml" [routerLink]='item.video_url'></a>

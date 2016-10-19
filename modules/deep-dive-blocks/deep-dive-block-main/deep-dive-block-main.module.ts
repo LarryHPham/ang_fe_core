@@ -52,7 +52,7 @@ export class DeepDiveBlockMain implements OnInit {
   getBreakingData(){
     this._deepDiveData.getDeepDiveBatchService("breaking", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.breakingStack  = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "breaking");
+          this.breakingStack  = this._deepDiveData.transformToArticleStack(data, "breaking");
         },
         err => {
             console.log("Error getting Breaking News data");
@@ -61,7 +61,7 @@ export class DeepDiveBlockMain implements OnInit {
   getSportsData(){
     this._deepDiveData.getDeepDiveBatchService("sports", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.recDataSports = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "sports");
+          this.recDataSports = this._deepDiveData.transformToArticleStack(data, "sports");
         },
         err => {
             console.log("Error getting Sports News data");
@@ -70,7 +70,7 @@ export class DeepDiveBlockMain implements OnInit {
   getBusinessData(){
     this._deepDiveData.getDeepDiveBatchService("business", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.businessStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "business");
+          this.businessStack = this._deepDiveData.transformToArticleStack(data, "business");
         },
         err => {
             console.log("Error getting Business News data");
@@ -79,7 +79,7 @@ export class DeepDiveBlockMain implements OnInit {
   getPoliticsData(){
     this._deepDiveData.getDeepDiveBatchService("politics", 5, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.politicsStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "politics");
+          this.politicsStack = this._deepDiveData.transformToArticleStack(data, "politics");
         },
         err => {
             console.log("Error getting Politics News data");
@@ -88,16 +88,16 @@ export class DeepDiveBlockMain implements OnInit {
   getEtertainData(){
     this._deepDiveData.getDeepDiveBatchService("entertainment", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.recDataEntertain = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "entertain");
+          this.recDataEntertain = this._deepDiveData.transformToArticleStack(data, "entertainment");
         },
         err => {
-            console.log("Error getting Entertain News data");
+            console.log("Error getting Entertainment News data");
         });
   }
   getHealthData(){
     this._deepDiveData.getDeepDiveBatchService("health", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.recDataHealth = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "health");
+          this.recDataHealth = this._deepDiveData.transformToArticleStack(data, "health");
         },
         err => {
             console.log("Error getting Health News data");
@@ -106,7 +106,7 @@ export class DeepDiveBlockMain implements OnInit {
   getLifeStyleData(){
     this._deepDiveData.getDeepDiveBatchService("lifestyle", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.lifestyleStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "lifestyle");
+          this.lifestyleStack = this._deepDiveData.transformToArticleStack(data, "lifestyle");
         },
         err => {
             console.log("Error getting Lifestyle News data");
@@ -115,7 +115,7 @@ export class DeepDiveBlockMain implements OnInit {
   getRealEstateData(){
     this._deepDiveData.getDeepDiveBatchService("real-estate", 5, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.estateStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,5), "realestate");
+          this.estateStack = this._deepDiveData.transformToArticleStack(data, "real-estate");
         },
         err => {
             console.log("Error getting Real Estate News data");
@@ -124,7 +124,7 @@ export class DeepDiveBlockMain implements OnInit {
   getTravelData(){
     this._deepDiveData.getDeepDiveBatchService("travel", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.recDataTravel = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "travel");
+          this.recDataTravel = this._deepDiveData.transformToArticleStack(data, "travel");
         },
         err => {
             console.log("Error getting Travel News data");
@@ -133,7 +133,7 @@ export class DeepDiveBlockMain implements OnInit {
   getWeatherData(){
     this._deepDiveData.getDeepDiveBatchService("weather", 7, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.weatherStack = this._deepDiveData.transformToArticleStack(data.data.slice(0,7), "weather");
+          this.weatherStack = this._deepDiveData.transformToArticleStack(data, "weather");
         },
         err => {
             console.log("Error getting Weather News data");
@@ -142,7 +142,7 @@ export class DeepDiveBlockMain implements OnInit {
   getAutomotiveData(){
     this._deepDiveData.getDeepDiveBatchService("automotive", 6, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          this.recDataAuto = this._deepDiveData.transformToArticleStack(data.data.slice(0,6), "automotive");
+          this.recDataAuto = this._deepDiveData.transformToArticleStack(data, "automotive");
         },
         err => {
             console.log("Error getting Automotive News data");
@@ -151,13 +151,12 @@ export class DeepDiveBlockMain implements OnInit {
   getDeepDiveVideo(){
       this._deepDiveData.getDeepDiveVideoBatchService("sports", 15, 1, this.geoLocation)
       .subscribe(data => {
-          console.log(data);
-          // let videoBatch1 = data.data.splice(0, 5);
-          // let videoBatch2 = data.data.splice(0, 5);
-          // let videoBatch3 = data.data.splice(0, 5);
-          // this.videoDataBatch1 = videoBatch1 ? this._deepDiveData.transformSportVideoBatchData(videoBatch1, "sports") : null;
-          // this.videoDataBatch2 = videoBatch2 ? this._deepDiveData.transformSportVideoBatchData(videoBatch2, "sports") : null;
-          // this.videoDataBatch3 = videoBatch3 ? this._deepDiveData.transformSportVideoBatchData(videoBatch3, "sports") : null;
+          let videoBatch1 = data.data.splice(0, 5);
+          let videoBatch2 = data.data.splice(0, 5);
+          let videoBatch3 = data.data.splice(0, 5);
+          this.videoDataBatch1 = videoBatch1 ? this._deepDiveData.transformSportVideoBatchData(videoBatch1, "sports") : null;
+          this.videoDataBatch2 = videoBatch2 ? this._deepDiveData.transformSportVideoBatchData(videoBatch2, "sports") : null;
+          this.videoDataBatch3 = videoBatch3 ? this._deepDiveData.transformSportVideoBatchData(videoBatch3, "sports") : null;
         },
         err => {
           console.log("Error getting video batch data");
