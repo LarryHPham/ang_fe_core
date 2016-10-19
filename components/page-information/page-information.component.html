@@ -1,0 +1,19 @@
+<section *ngIf="infoData" class="info-contain container-fluid">
+  <section class="info-title row">
+    <div class="info-title-share col-xs-12">
+      <ul>
+          <a href="{{_sitefacebookurl}}" target="_blank"><li><i class="fa fa-facebook-1"></i></li></a>
+          <a href="{{_sitetwitterurl}}" target="_blank"><li><i class="fa fa-twitter"></i></li></a>
+          <a href="{{_sitegoogleurl}}" target="_blank"><li><i class="fa fa-g-plus"></i></li></a>
+      </ul>
+    </div>
+    <div class="info-title-main col-xs-12" [innerHtml]="infoData.title | safeHtml"></div>
+    <div class="info-title-update col-xs-12" [innerHtml]="infoData.lastUpdated | safeHtml"></div>
+  </section>
+  <section class="info-paragraph">
+    <div *ngFor="let item of infoData.paragraph" class="info-paragraph-sub row">
+      <div class="info-paragraph-sub-title col-xs-12" [innerHtml]="item.subHeader | safeHtml"></div>
+      <div *ngFor="let info of item.info" class="info-paragraph-sub-info col-xs-12" [innerHtml]="info | safeHtml"></div>
+    </div>
+  </section>
+</section>
