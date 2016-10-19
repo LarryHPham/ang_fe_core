@@ -20,6 +20,7 @@ export interface VideoStackData{
     keyword: string,
     title: string,
     videoThumbnail: string,
+    embedUrl?:any,
     keyUrl?: any,
     teaser?: string,
     videoUrl?: any,
