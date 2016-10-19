@@ -1,7 +1,8 @@
 <div *ngFor="let item of stackTopData;">
   <div class="stacktop-title">
     <div class="stacktop-title-date">
-      <span><a class="stacktop-title-keyword" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a></span>
+      <!-- <span><a class="stacktop-title-keyword" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a></span> -->
+      <span class="stacktop-title-keyword" [innerHTML]="item.keyword | safeHtml"></span>
       <span class="font-weight-normal" [innerHTML]="item.timeStamp | safeHtml"></span>
     </div>
   </div>
