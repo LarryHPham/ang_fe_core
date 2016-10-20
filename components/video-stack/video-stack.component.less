@@ -43,7 +43,7 @@
       line-height: 1em;
       text-transform: uppercase;
       z-index: 1;
-      .globalDefaultFont(10px, 800);
+      .globalDefaultModFont(10px, 800, @black);
       &-key {margin-right: 5px; z-index: 1}
       &-date {color: @bulletGrey; font-weight: 400; white-space: nowrap}
     }
@@ -51,8 +51,8 @@
   .video-title-mid {
     margin-top: 5px;
     display: block;
-    font-size: 14px;
     line-height: 1em;
     word-wrap: break-word;
+    .globalDefaultModFont(14px, 400, @black);
   }
 }
