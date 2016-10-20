@@ -2,9 +2,11 @@
   <section class="info-title row">
     <div class="info-title-share col-xs-12">
       <ul>
-          <a href="{{_sitefacebookurl}}" target="_blank"><li><i class="fa fa-facebook-1"></i></li></a>
-          <a href="{{_sitetwitterurl}}" target="_blank"><li><i class="fa fa-twitter"></i></li></a>
-          <a href="{{_sitegoogleurl}}" target="_blank"><li><i class="fa fa-g-plus"></i></li></a>
+          <div class='st_sharethis_large' (mouseover)="locateShareThis()" data-toggle="tooltip title="><i class='fa fa-share-alt'></i></div>
+          <a href="{{_siteFacebookUrl}}" target="_blank"><li><i class="fa fa-facebook-1"></i></li></a>
+          <a href="{{_siteTwitterUrl}}" target="_blank"><li><i class="fa fa-twitter"></i></li></a>
+          <a href="{{_siteLinkedinUrl}}" target="_blank"><li><i class="fa fa-linkedin-1"></i></li></a>
+          <a href="{{_siteGoogleUrl}}" target="_blank"><li><i class="fa fa-g-plus"></i></li></a>
       </ul>
     </div>
     <div class="info-title-main col-xs-12" [innerHtml]="infoData.title | safeHtml"></div>
