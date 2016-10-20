@@ -58,6 +58,9 @@ export class Larousel{
       this.videoData = null;
       this.maxLength = null;
     }
+    console.log(this.carData);
+    console.log(this.videoData);
+    console.log(this.graphData);
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
@@ -134,7 +137,6 @@ export class Larousel{
     }
 
     this.generateArray();
-    this.videoCheck();
     this.onResize(window);
   }
 
@@ -151,7 +153,6 @@ export class Larousel{
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
     this.generateArray();
-    this.videoCheck();
     this.onResize(window);
   }
 
@@ -170,14 +171,10 @@ export class Larousel{
         this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
       }
       this.rightText = this.currentScroll+'px';
-      this.videoCheck();
     }
     this.numResizes = this.numResizes + 1;
   }
 
-  ngOnDestroy(){
-    this.videoCheck();
-  }
   generateArray(){
     var self = this;
     var originalData = this.originalData;
@@ -189,20 +186,9 @@ export class Larousel{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
+    console.log(this.displayedItems);
     this.displayedData.emit(this.displayedItems);
   }
-
-  videoCheck() {
-    // console.log('HALLO');
-    // console.log(this._elRef.nativeElement.getElementsByClassName('newsbox'));
-    // // this._elRef.nativeElement.getElementsByClassName('newsbox')[0].addClass('videoActive');
-    // console.log('HALLO AGAIN');
-    //   if (this.currentItem.type == "video") {
-    //     jQuery(".newsbox").addClass("videoActive");
-    //   }else{
-    //     jQuery(".newsbox").removeClass("videoActive");
-    //   }
-    }
 
   left(event) {
     //moves the current scroll over the item size
@@ -305,6 +291,5 @@ export class Larousel{
         self.rightText = self.currentScroll+'px';
       }
     },200);
-    this.videoCheck();
   }
 }

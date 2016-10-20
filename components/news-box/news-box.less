@@ -21,6 +21,17 @@
         }
       }
     }
+
+    .newsbox-item-container-right{
+      &-key{
+        font-size: 18px;
+      }
+      &-title{
+        &-headline{
+          font-size:28px;
+        }
+      }
+    }
   }
 }
 .weather-graph{
@@ -211,6 +222,12 @@
                     line-height: 25px;
                     margin-bottom: 5px;
                     text-transform: uppercase;
+                    margin-right:10px;
+                    &:hover{
+                      @media @tablet{
+                          background-color: @black;
+                      }
+                    }
                 }
 
                 &-title {
