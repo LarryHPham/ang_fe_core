@@ -118,6 +118,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
           this.selectedIndex = index;
         }
       });
+
       if ( !this.selectedItem && this.list.length > 0 ) {
         this.setSelected(this.list[0]);
       }
@@ -126,6 +127,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       this.selectedItem = {key: "", value: " "};
       this.selectedIndex = -1;
     }
+
   }
 
   //TODO-CJP: setup multiple sort types

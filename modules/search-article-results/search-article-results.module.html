@@ -1,21 +1,21 @@
 <div class="s-module">
     <div class="s-module_page-num">
-         <div class="s-module_page-num_view"> Now Viewing <b>1 - 10</b> of 100 articles <span class="s-module_page-num_view_match">matching UserInput</span></div>
+         <div class="s-module_page-num_view"> Now Viewing <b>1 - 10</b> of 100 articles <span class="s-module_page-num_view_match">matching {{userInput}}</span></div>
          <div class="s-module_page-num_right container-fluid">
-             <div class="s-module_page-num_right_arrow"><i class="fa fa-angle-left-1"></i></div>
-             <div class="s-module_page-num_right_txt"> Page 1 of 10 </div>
-             <div class="s-module_page-num_right_arrow" [ngStyle]="{background: '#00b9e3', border:'none'}"><i class="fa fa-angle-right-1" [ngStyle]="{color:'#fff'}"></i></div>
+             <div class="s-module_page-num_right_arrow" [ngStyle]="{opacity:0.2}" (click)="previousPage($event)"><i class="fa fa-angle-left-1"></i></div>
+             <div class="s-module_page-num_right_txt"> Page {{pageNum}} of {{totalPages}} </div>
+             <div class="s-module_page-num_right_arrow-r" [ngStyle]="{background: '#00b9e3', border:'none'}" (click)="nextPage($event)"><i class="fa fa-angle-right-1" [ngStyle]="{color:'#fff'}"></i></div>
          </div>
     </div>
     <div class="com-list">
     <search-results-component *ngFor="let item of searchArticlesData; let i = index" [singleArticleData]="item"></search-results-component>
     </div>
         <div class="s-module_page-num">
-        <div class="s-module_page-num_view"> Now Viewing <b>1 - 10</b> of 100 articles <span class="s-module_page-num_view_match">matching UserInput</span></div>
+        <div class="s-module_page-num_view"> Now Viewing <b>1 - 10</b> of 100 articles <span class="s-module_page-num_view_match">matching {{userInput}}</span></div>
         <div class="s-module_page-num_right">
-            <div class="s-module_page-num_right_arrow"><i class="fa fa-angle-left-1"></i></div>
-            <div class="s-module_page-num_right_txt"> Page 1 of 10 </div>
-            <div class="s-module_page-num_right_arrow" [ngStyle]="{background: '#00b9e3', border:'none'}"><i class="fa fa-angle-right-1" [ngStyle]="{color:'#fff'}"></i></div>
+            <div class="s-module_page-num_right_arrow" [ngStyle]="{opacity:0.2}" (click)="previousPage($event)"><i class="fa fa-angle-left-1"></i></div>
+            <div class="s-module_page-num_right_txt"> Page {{pageNum}} of {{totalPages}} </div>
+            <div class="s-module_page-num_right_arrow-r" [ngStyle]="{background: '#00b9e3', border:'none'}" (click)="nextPage($event)"><i class="fa fa-angle-right-1" [ngStyle]="{color:'#fff'}"></i></div>
         </div>
     </div>
 </div>
