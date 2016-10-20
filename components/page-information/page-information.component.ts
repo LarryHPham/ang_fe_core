@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {GlobalSettings} from "../../../global/global-settings";
+
 export interface infoData {
   title: string;
   lastUpdated: string;
@@ -8,14 +10,21 @@ export interface subInfoData {
   subHeader: string;
   info: Array<string>;
 }
+declare var stButtons: any;
+
 @Component({
   selector: 'information-component',
   templateUrl: './app/fe-core/components/page-information/page-information.component.html',
 })
 
-export class InfoComponent implements OnInit{
+export class InfoComponent{
   @Input() infoData: infoData;
-  ngOnInit(){
-
-  }
+  currentUrl: string = window.location.href;
+  _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl(this.currentUrl);
+  _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl(this.currentUrl);
+  _siteLinkedinUrl: string = GlobalSettings.getLinkedInUrl(this.currentUrl);
+  _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.currentUrl);
+  public locateShareThis = function(){
+    stButtons.locateElements();
+  };
 }
