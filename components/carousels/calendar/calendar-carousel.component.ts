@@ -50,8 +50,6 @@ export class CalendarCarousel implements OnInit {
   } //ngOnInit
 
   ngOnChanges(event){
-    console.log(event);
-    console.log(this.chosenParam);
     //any changes made to the input from outside will cause the fuction to rerun
     if(this.chosenParam != null){
       this.callWeeklyApi(this.chosenParam)

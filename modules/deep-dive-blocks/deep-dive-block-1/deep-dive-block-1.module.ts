@@ -34,7 +34,6 @@ export class DeepDiveBlock1 implements OnInit {
     //Box Scores
     var currentUnixDate = new Date().getTime();
     //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
-    console.log(this.scope);
     this.dateParam ={
       scope: this.scope,//current profile page
       teamId: '',
@@ -102,7 +101,6 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   ngOnChanges(event) {
-    console.log(event);
     this.scope = event.scope ? event.scope.currentValue: null;
     this.geoLocation = event.geoLocation ? event.geoLocation.currentValue: null;
     this.category = event.category ? event.category.currentValue: null;
