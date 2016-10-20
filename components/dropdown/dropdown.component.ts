@@ -61,6 +61,8 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
 
   @Input() icon: string;
   @Input() ddtitle:string;
+  @Input() dropdownhdr:string;
+  prefixString:string = "Date";
 
   dropdownVisibleIcon: string;
 
@@ -93,6 +95,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
   }
 
   ngOnChanges() {
+
     if ( !this.icon ) {
 
       this.dropdownVisibleIcon = "fa-sort";
@@ -113,10 +116,12 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       this.dropdownHiddenIcon = this.icon;
     }
     if ( this.list ) {
+
       this.list.forEach((value, index) => {
         if ( value.key == this.selectedKey ) {
           this.selectedItem = value;
           this.selectedIndex = index;
+
         }
       });
 
@@ -129,10 +134,22 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       this.selectedIndex = -1;
     }
 
+
+
   }
 
   //TODO-CJP: setup multiple sort types
   setSelected($item) {
+      function findPrefix(a) {
+          return{
+              'None': '',
+              'Most Recent': 'Date',
+              'Oldest':'Date',
+              'Last 24 Hours': 'Time',
+              'Past 7 Days':'Time',
+          }[a];
+      }
+
     this.selectedItem = $item;
     this.selectedKey = $item.key;
     if ( this.list ) {
@@ -145,6 +162,9 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       this.selectedIndex = tempIndex;
     }
     this.dropdownChangedListener.next($item.key); //item.key must always be emitted, item.value is for DISPLAY ONLY!
+      this.prefixString= findPrefix(this.selectedItem.value);
+      //console.log(this._elementRef.nativeElement.querySelector('div').lastElementChild.lastElementChild.querySelector('p').find('active'), "border");
+      //this._renderer.setElementStyle(this._elementRef.nativeElement.querySelector('div'))
   }
 
   ngOnDestroy() {
