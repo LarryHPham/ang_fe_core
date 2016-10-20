@@ -7,29 +7,22 @@ import {GlobalSettings} from "../../../global/global-settings";
 })
 export class FooterComponent implements OnInit {
     @Input() partner: string;
-    public pageName: string;
-    public homePageLinkName: string;
-    public linkName: string;
-    public currentUrl: string = window.location.href;
-    public _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
-    public _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl();
-    public _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.partner);
-    public _lastUpdated: string = " Copyright 2016, TCX. Inc.";
-    public advertise: string = "Advertise with ";
-    public au: string = "About Us";
-    public service: string = "Terms of Service";
-    public privacy: string = "Privacy Policy";
-    public logoUrl: string = 'app/public/TCX_Logo_Outlined_White.svg';
-    public copyRight: string;
+    pageName: string;
+    currentUrl: string = window.location.href;
+    _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl(this.currentUrl);
+    _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl(this.currentUrl);
+    _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.currentUrl);
+    au: string = "About Us";
+    service: string = "Terms of Service";
+    privacy: string = "Privacy Policy";
+    logoUrl: string = 'app/public/TCX_Logo_Outlined_White.svg';
+    copyRight: string;
     loadData(partner: string) {
       var checkPartner = GlobalSettings.getHomeInfo().isPartner;
       if(!partner && !checkPartner) {
           this.pageName = GlobalSettings.getBaseTitle();
-          // this._lastUpdated = " Copyright " + GlobalSettings.getEstYear() + " " + GlobalSettings.getBaseTitle() + ", Inc.";
-          this.advertise += this.pageName;
      } else {
           this.pageName = GlobalSettings.getBasePartnerTitle();
-          // this._lastUpdated += " " + GlobalSettings.getBasePartnerTitle();
       }
     }
     ngOnInit() {
