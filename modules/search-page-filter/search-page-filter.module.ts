@@ -107,29 +107,29 @@ keywords=[
         },
 
         {
-            key:"Date-MostRecent",
-            value:"Date - Most Recent",
+            key:"MostRecent",
+            value:"Most Recent",
         },
         {
-            key:'Date-Oldest',
-            value:"Date - Oldest",
+            key:'Oldest',
+            value:"Oldest",
         },
         {
-            key:'Time-last24Hours',
-            value:"Time - Last 24 Hours",
+            key:'last24Hours',
+            value:"Last 24 Hours",
         },
         {
-            key:'Time-pastWeek',
-            value:"Time - Past Week",
+            key:'past7days',
+            value:"Past 7 Days",
+        },
+        /*{
+            key:'MostShares',
+            value:"Most Shares",
         },
         {
-            key:'Trending-MostShares',
-            value:"Trending - MostShares",
-        },
-        {
-            key:'Trending-MostViews',
-            value:"Trending - MostViews",
-        },
+            key:'MostViews',
+            value:"Most Views",
+        },*/
         ];
     keywordClick(e){
 /*
