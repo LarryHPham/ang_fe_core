@@ -96,27 +96,28 @@ keywords=[
     }];
 
     Sorting=[
+        {
+            key:'None',
+            value:"None",
+        },
 
         {
             key:"Date-MostRecent",
-            value:"Most Recent",
+            value:"Date - MostRecent",
         },
         {
             key:'Date-Oldest',
-            value:"Oldest",
+            value:"Date - Oldest",
         },
         {
-            key:'24Hours',
+            key:'last24Hours',
             value:"Last 24 Hours",
         },
         {
             key:'pastWeek',
             value:"Past Week",
         },
-        {
-            key:'pastWeek',
-            value:"Past Week",
-        }];
+        ];
     keywordClick(e){
         //console.log(e);
     }

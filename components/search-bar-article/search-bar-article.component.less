@@ -11,14 +11,27 @@
     text-align: center;
     color: @white;
     background: @black;
+    background-size: cover;
     @media @mobile{
       height: 180px;
     }
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgba(39, 39, 39, 0.6);
+    }
   }
   &-title{
+    position: relative;
     @media @mobile{
+
       height: auto;
       .globalDefaultFont(22px,800);
+
     }
     @media @tablet{
       height: 48px;
@@ -36,6 +49,7 @@
     color: @white;
   }
   &-sub_title{
+    position: relative;
     @media @mobile{
       height: 17px;
       .globalDefaultFont(14px,400);

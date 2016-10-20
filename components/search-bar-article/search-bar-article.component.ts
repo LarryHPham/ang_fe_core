@@ -9,7 +9,7 @@ export class ArticleSearchBar{
     @Input() searchTitle:string;
     @Input() searchSubTitle:string;
     @Input() scope;
-    searchBoxBackground: string = 'http://www.wallpapersxl.com/wallpapers/1366x768/dark-green/149216/dark-green-free-hd-leaves-field-windows-149216.jpg';
+    searchBoxBackground: string = '../app/public/photo-1473773508845-188df298d2d1.jpeg';
     public searchInput:FormGroup;
     public isSubmitted:boolean;
 

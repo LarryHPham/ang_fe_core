@@ -1,7 +1,12 @@
 <section class="articleBlock row">
   <div class="video-stack {{bootstrapGrid}}" *ngFor="let item of articleBlockData;">
     <div class="video-stack-block">
-      <a class="video-stack-thumbnail" [routerLink]='item.articleUrl'>
+      <a *ngIf="item.articleUrl" class="video-stack-thumbnail" [routerLink]='item.articleUrl'>
+        <div class="stacktop-image">
+          <rectangle-image [data]="item.imageConfig"></rectangle-image>
+        </div>
+      </a>
+      <a *ngIf="item.extUrl" class="video-stack-thumbnail" href='item.extUrl'>
         <div class="stacktop-image">
           <rectangle-image [data]="item.imageConfig"></rectangle-image>
         </div>
@@ -9,9 +14,14 @@
       <div class="video-title-top">
         <a class="video-title-top-key" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a>
         <span class="video-title-top-date" [innerHTML]="item.timeStamp | safeHtml"></span>
-        <a class="video-stack-info" [routerLink]='item.articleUrl'>
+        <a *ngIf="item.articleUrl" class="video-stack-info" [routerLink]='item.articleUrl'>
           <div class="video-stack-info-title">
-            <span class="video-title-mid" [innerHTML]="item.teaser | safeHtml"></span>
+            <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
+          </div>
+        </a>
+        <a *ngIf="item.extUrl" class="video-stack-info" href='item.extUrl'>
+          <div class="video-stack-info-title">
+            <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
           </div>
         </a>
       </div>

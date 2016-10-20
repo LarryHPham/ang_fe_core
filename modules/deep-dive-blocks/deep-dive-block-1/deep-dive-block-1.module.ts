@@ -12,6 +12,7 @@ declare var moment;
 
 export class DeepDiveBlock1 implements OnInit {
   @Input() scope: string;
+  @Input() geoLocation: string;
   @Input() category:string;
   videoDataTop: Array<VideoStackData>;
   videoDataBatch: Array<VideoStackData>;
@@ -20,9 +21,8 @@ export class DeepDiveBlock1 implements OnInit {
   recData: Array<ArticleStackData>;//TODO
   articleStack2DataTop: Array<ArticleStackData>;//TODO
   articleStack2DataBatch: Array<ArticleStackData>;//TODO
-  geoLocation: string = "ks";//TODO
   articleCallLimit:number = 23;
-  videoCallLimit:number = 9;
+  videoCallLimit:number = 5;
   batchNum: number = 1;
   //Box Scores
   boxScoresData: any;
@@ -44,15 +44,15 @@ export class DeepDiveBlock1 implements OnInit {
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          let stackTop = [data.data[0]];
+          let stackTop = [data[0]];
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);
-          let stackRow = data.data.splice(1,8);
+          let stackRow = data.splice(1,8);
           this.firstStackRow  = this._deepDiveData.transformToArticleStack(stackRow, this.scope);
-          let recInfo = data.data.splice(1, 6);//TODO
+          let recInfo = data.splice(1, 6);//TODO
           this.recData = this._deepDiveData.transformToArticleStack(recInfo, this.scope);//TODO
-          let articleStack2Top = [data.data[0]];//TODO
+          let articleStack2Top = [data[0]];//TODO
           this.articleStack2DataTop = this._deepDiveData.transformToArticleStack(articleStack2Top, this.scope);//TODO
-          let articleStack2 = data.data.splice(1,4);//TODO
+          let articleStack2 = data.splice(1,4);//TODO
           this.articleStack2DataBatch = this._deepDiveData.transformToArticleStack(articleStack2, this.scope);//TODO
         },
         err => {
@@ -61,12 +61,14 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   getDeepDiveVideo(){
-      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum).subscribe(
+      this._deepDiveData.getDeepDiveVideoBatchService(this.scope, this.videoCallLimit, this.batchNum, this.geoLocation).subscribe(
         data => {
-          let videoOne = [data.data[0]];
-          let videoBatch = data.data.splice(1,4);
-          this.videoDataTop = this._deepDiveData.transformSportVideoBatchData(videoOne, this.scope);
-          this.videoDataBatch = this._deepDiveData.transformSportVideoBatchData(videoBatch, this.scope);
+          if(this.scope == "nba"){
+            data = data.data.data;
+          } else {
+            data = data.data;
+          }
+          this.videoDataBatch = this._deepDiveData.transformSportVideoBatchData(data, this.scope);//TODO
         },
         err => {
           console.log("Error getting video batch data");

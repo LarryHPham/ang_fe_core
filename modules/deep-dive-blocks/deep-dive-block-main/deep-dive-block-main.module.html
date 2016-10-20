@@ -12,6 +12,10 @@
     <deep-dive-video-module [videoData]="videoDataBatch1"></deep-dive-video-module>
   </div>
   <!-- SPORTS -->
+  <!-- WIDGET -->
+  <div *ngIf="videoDataBatch1" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
+  </div>
   <!-- SIX PACKS -->
   <div *ngIf="recDataSports" class="deep-dive-module">
     <section-name-component [secName]="secName[2]"></section-name-component>
@@ -22,6 +26,10 @@
   <div *ngIf="businessStack" class="deep-dive-module">
     <section-name-component [secName]="secName[3]"></section-name-component>
     <article-stack-1-module [stackTop]="[businessStack[0]]" [stackRow]="businessStack.slice(1,7)"></article-stack-1-module>
+  </div>
+  <!-- WIDGET -->
+  <div *ngIf="businessStack" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
   </div>
   <!-- POLITICS -->
   <!-- ARTICLE STACK TYPE 2 -->
@@ -35,6 +43,10 @@
     <section-name-component [secName]="secName[5]"></section-name-component>
     <deep-dive-recommendation [recData]="recDataEntertain"></deep-dive-recommendation>
   </div>
+  <!-- WIDGET -->
+  <div *ngIf="recDataEntertain" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
+  </div>
   <!-- FOOD -->
   <!-- ARTICLE STACK TYPE 1 -->
   <div *ngIf="foodStack" class="deep-dive-module">
@@ -46,6 +58,10 @@
   <div *ngIf="videoDataBatch2" class="deep-dive-module">
     <section-name-component [secName]="secName[7]"></section-name-component>
     <deep-dive-video-module [videoData]="videoDataBatch2"></deep-dive-video-module>
+  </div>
+  <!-- WIDGET -->
+  <div *ngIf="videoDataBatch2" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
   </div>
   <!-- HEALTH -->
   <!-- SIX PACKS -->
@@ -59,6 +75,10 @@
     <section-name-component [secName]="secName[9]"></section-name-component>
     <article-stack-1-module [stackTop]="[lifestyleStack[0]]" [stackRow]="lifestyleStack.slice(1,7)"></article-stack-1-module>
   </div>
+  <!-- WIDGET -->
+  <div *ngIf="lifestyleStack" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
+  </div>
   <!-- REAL ESTATE -->
   <!-- ARTICLE STACK TYPE 2 -->
   <div *ngIf="estateStack" class="deep-dive-module">
@@ -71,6 +91,10 @@
     <section-name-component [secName]="secName[11]"></section-name-component>
     <deep-dive-recommendation [recData]="recDataTravel"></deep-dive-recommendation>
   </div>
+  <!-- WIDGET -->
+  <div *ngIf="recDataTravel" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
+  </div>
   <!-- WEATHER -->
   <!-- ARTICLE STACK TYPE 1 -->
   <div *ngIf="weatherStack" class="deep-dive-module">
@@ -82,6 +106,10 @@
   <div *ngIf="videoDataBatch3" class="deep-dive-module">
     <section-name-component [secName]="secName[13]"></section-name-component>
     <deep-dive-video-module [videoData]="videoDataBatch3"></deep-dive-video-module>
+  </div>
+  <!-- WIDGET -->
+  <div *ngIf="videoDataBatch3" class="deep-dive-module">
+    <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
   </div>
   <!-- AUTOMOTIVE -->
   <!-- SIX PACKS -->
