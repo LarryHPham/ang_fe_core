@@ -100,7 +100,7 @@ keywords=[
         value:"Weather",
     }];
 
-    Sorting=[
+    sorting=[
         {
             key:'None',
             value:"None",
@@ -121,6 +121,14 @@ keywords=[
         {
             key:'Time-pastWeek',
             value:"Time - Past Week",
+        },
+        {
+            key:'Trending-MostShares',
+            value:"Trending - MostShares",
+        },
+        {
+            key:'Trending-MostViews',
+            value:"Trending - MostViews",
         },
         ];
     keywordClick(e){
