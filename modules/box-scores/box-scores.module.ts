@@ -45,7 +45,10 @@ export class BoxScoresModule implements OnInit {
     this.checkHeight();
   }
 
-  ngOnChanges(){
+  ngOnChanges(event){
+    if(event.calendarParams != null){
+      this.calendarParams = event.calendarParams.currentValue;
+    }
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";

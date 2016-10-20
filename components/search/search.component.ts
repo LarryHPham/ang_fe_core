@@ -233,9 +233,11 @@ export class Search{
         }else if(this.dropdownList.length == 1 ){// if there is a selected dropdown and only one item available to to that route
           searchRoute = this.dropdownList[0].routerLink;
         }else{
-          let dropdownLink = this.dropdownList[this.selectedIndex].routerLink;
-          searchRoute = dropdownLink;
+          /*let dropdownLink = this.dropdownList[this.selectedIndex].routerLink;
+          searchRoute = dropdownLink;*/
+
         }
+        this._router.navigate(['/deep-dive','search','articles',term ]);
         // this._router.navigate(searchRoute);
 
         //Clear out autocomplete text and close dropdown when search occurs
