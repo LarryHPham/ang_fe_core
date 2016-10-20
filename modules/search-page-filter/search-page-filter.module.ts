@@ -1,4 +1,4 @@
-import {Component,Input} from "@angular/core";
+import {Component, Input, Renderer, ElementRef} from "@angular/core";
 import {Router} from "@angular/router";
 @Component({
     selector:"search-filter",
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 export class SearchPageFilter{
     @Input() userInput:string;
     icon="caret-down";
-    constructor(private router:Router){
+    constructor(private router:Router, private _keywordRender:Renderer, private _keyRef:ElementRef){
 
     }
 keywords=[
@@ -124,10 +124,18 @@ keywords=[
         },
         ];
     keywordClick(e){
-        e=e.toLowerCase();
-            /*this.router.navigate(['/deep-dive','search','articles', e ]);*/
+/*
+        console.log(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[0].innerHTML);
+*/
+
+/*
+        this._keywordRender.setElementStyle(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[0],'font-weight','bold')
+*/
     }
     sortingClick(e){
+
+     //   this._keywordRender.setElementStyle(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[1],'font-weight','bold')
+
 
     }
 }
