@@ -34,11 +34,12 @@ export class DeepDiveBlock1 implements OnInit {
     //Box Scores
     var currentUnixDate = new Date().getTime();
     //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
+    console.log(this.scope);
     this.dateParam ={
-      scope: this.boxScoresTempVar,//current profile page
+      scope: this.scope,//current profile page
       teamId: '',
-      //date: '2016-09-22'
-      date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
+      date: '2016-10-22'
+      // date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
     }
   }
   getFirstArticleStackData(){
@@ -84,6 +85,13 @@ export class DeepDiveBlock1 implements OnInit {
     this._boxScoresService.getBoxScores(this.boxScoresData, this.boxScoresTempVar, this.dateParam, (boxScoresData, currentBoxScores) => {
         this.boxScoresData = boxScoresData;
         this.currentBoxScores = currentBoxScores;
+        if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
+          if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
+            this.dateParam.date = boxScoresData.previousGameDate.event_date;
+            this.getBoxScores(this.dateParam);
+          }
+          return;
+        }
     });
   }
 
@@ -93,7 +101,12 @@ export class DeepDiveBlock1 implements OnInit {
     this.getBoxScores(this.dateParam);
   }
 
-  ngOnChanges() {
+  ngOnChanges(event) {
+    console.log(event);
+    this.scope = event.scope ? event.scope.currentValue: null;
+    this.geoLocation = event.geoLocation ? event.geoLocation.currentValue: null;
+    this.category = event.category ? event.category.currentValue: null;
+    this.dateParam.scope = this.scope;
     this.callModules();
   }
 
