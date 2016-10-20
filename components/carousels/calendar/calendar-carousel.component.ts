@@ -40,6 +40,7 @@ export class CalendarCarousel implements OnInit {
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
 
+    console.log(this.chosenParam);
     //make call to week api to grab to see if any games are available (true/false)
     this.callWeeklyApi(this.chosenParam)
     .subscribe( data => {
@@ -51,6 +52,7 @@ export class CalendarCarousel implements OnInit {
 
   ngOnChanges(event){
     //any changes made to the input from outside will cause the fuction to rerun
+    console.log(this.chosenParam);
     if(this.chosenParam != null){
       this.callWeeklyApi(this.chosenParam)
       .subscribe( data => {
@@ -216,94 +218,94 @@ export class CalendarCarousel implements OnInit {
   }
 
   validateDate(selectedDate, dateArray, firstRun?) {
-    // // console.log('5. calendar-carousel - validateDate - dateArray - ', dateArray);
-    // var curUnix = moment(selectedDate,"YYYY-MM-DD").unix()*1000;
-    // var validatedDate = 0;
-    // var minDateUnix =  Number(dateArray[0].unixDate);
-    // var maxDateUnix = Number(dateArray[dateArray.length - 1].unixDate);
-    // var activeIndex;
-    // var mostRecent;
-    // dateArray.forEach(function(date, i){
-    //   var dateUnix = Number(date.unixDate);//converts chosen date to unix (in seconds) for comparison
-    //   var dateTime = moment(dateUnix).tz('America/New_York').format('YYYY-MM-DD');
-    //   //grab highest and lowest number in the array to know the beginning and end of the week
-    //   if((minDateUnix > dateUnix)){//get lowest number in dateArray
-    //     minDateUnix = dateUnix;
-    //   }else if(dateUnix > maxDateUnix){//get highest number in dateArray
-    //     maxDateUnix = dateUnix;
-    //   }
-    //
-    //   //FIRST RUN
-    //   if(firstRun != null){
-    //     if( (selectedDate == date.fullDate) && date.clickable){
-    //       mostRecent = dateUnix;
-    //       validatedDate = dateUnix;
-    //       activeIndex = i;//SETS POSITION IN ARRAY THAT CURRENT DATE IS SET TO if the curUnix date exists within the current dateArray
-    //     }else{
-    //       //sets most recent game before the curUnix date and index if they havent been found, while the validatedDate and clickability still hasn't been found
-    //       if( ((mostRecent < date.unixDate && date.unixDate <= curUnix) && activeIndex == null) || (date.unixDate <= curUnix && date.clickable && validatedDate == 0)){
-    //         mostRecent = date.unixDate;
-    //         activeIndex = i;
-    //       }
-    //     }
-    //   }else{//NOT FIRST RUN
-    //     //run through the array and set the valid date that has a game as the active key in the dateArray (attached to weeklyDates)
-    //     if( (selectedDate == date.fullDate) && date.clickable){
-    //       validatedDate = dateUnix;
-    //       activeIndex = i;
-    //       dateArray[activeIndex].active = true;
-    //     }
-    //   }
-    // });
-    // if(firstRun != null && dateArray.length > 0 && this.failSafe <= 12){
-    //
-    //   // run a loop 12 times(12 weeks) to try to grab the nearest most recently played game
-    //   //if no clickable date has been found and the 12 week check still works
-    //   if(mostRecent == null && validatedDate == 0 && this.failSafe < 12){
-    //     this.failSafe++;
-    //
-    //     //set new curent date and chosent parameter to the last day of previous week and make that as the new view
-    //     var curDate = moment(minDateUnix).subtract(1, 'days').tz('America/New_York').format('YYYY-MM-DD');
-    //     this.chosenParam.date = curDate;
-    //
-    //     var params = this.chosenParam;
-    //     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-    //
-    //     //recall function with same chosenParam for validating
-    //     this.callWeeklyApi(this.chosenParam)
-    //     .subscribe( data => {
-    //       this.validateDate(this.chosenParam.date, this.weeklyDates, true);
-    //       return;
-    //     })
-    //   }else{
-    //     if(activeIndex != null){
-    //       //reset failsafe
-    //       this.failSafe = 0;
-    //       //make sure to only set new params if new number has been validatedDated
-    //       //otherwise set the new chosenParam to the mostRecent date that has been found
-    //       if(validatedDate != 0){
-    //         validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
-    //         this.chosenParam.date = validatedDate;
-    //         dateArray[activeIndex].active = true;
-    //       }else{
-    //         validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
-    //         this.chosenParam.date = validatedDate;
-    //         dateArray[activeIndex].active = true;
-    //       }
-    //
-    //       //sets new params and emit the date
-    //       let params = this.chosenParam;
-    //       this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-    //       this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
-    //       this.setActive(this.weeklyDates[activeIndex]);
-    //       return;
-    //     }else{
-    //       this.failSafe = 0;
-    //       return;
-    //     }
-    //   }
-    // }else{
-    //   return;
-    // }
+    // console.log('5. calendar-carousel - validateDate - dateArray - ', dateArray);
+    var curUnix = moment(selectedDate,"YYYY-MM-DD").unix()*1000;
+    var validatedDate = 0;
+    var minDateUnix =  Number(dateArray[0].unixDate);
+    var maxDateUnix = Number(dateArray[dateArray.length - 1].unixDate);
+    var activeIndex;
+    var mostRecent;
+    dateArray.forEach(function(date, i){
+      var dateUnix = Number(date.unixDate);//converts chosen date to unix (in seconds) for comparison
+      var dateTime = moment(dateUnix).tz('America/New_York').format('YYYY-MM-DD');
+      //grab highest and lowest number in the array to know the beginning and end of the week
+      if((minDateUnix > dateUnix)){//get lowest number in dateArray
+        minDateUnix = dateUnix;
+      }else if(dateUnix > maxDateUnix){//get highest number in dateArray
+        maxDateUnix = dateUnix;
+      }
+
+      //FIRST RUN
+      if(firstRun != null){
+        if( (selectedDate == date.fullDate) && date.clickable){
+          mostRecent = dateUnix;
+          validatedDate = dateUnix;
+          activeIndex = i;//SETS POSITION IN ARRAY THAT CURRENT DATE IS SET TO if the curUnix date exists within the current dateArray
+        }else{
+          //sets most recent game before the curUnix date and index if they havent been found, while the validatedDate and clickability still hasn't been found
+          if( ((mostRecent < date.unixDate && date.unixDate <= curUnix) && activeIndex == null) || (date.unixDate <= curUnix && date.clickable && validatedDate == 0)){
+            mostRecent = date.unixDate;
+            activeIndex = i;
+          }
+        }
+      }else{//NOT FIRST RUN
+        //run through the array and set the valid date that has a game as the active key in the dateArray (attached to weeklyDates)
+        if( (selectedDate == date.fullDate) && date.clickable){
+          validatedDate = dateUnix;
+          activeIndex = i;
+          dateArray[activeIndex].active = true;
+        }
+      }
+    });
+    if(firstRun != null && dateArray.length > 0 && this.failSafe <= 12){
+
+      // run a loop 12 times(12 weeks) to try to grab the nearest most recently played game
+      //if no clickable date has been found and the 12 week check still works
+      if(mostRecent == null && validatedDate == 0 && this.failSafe < 12){
+        this.failSafe++;
+
+        //set new curent date and chosent parameter to the last day of previous week and make that as the new view
+        var curDate = moment(minDateUnix).subtract(1, 'days').tz('America/New_York').format('YYYY-MM-DD');
+        this.chosenParam.date = curDate;
+
+        var params = this.chosenParam;
+        this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+
+        //recall function with same chosenParam for validating
+        this.callWeeklyApi(this.chosenParam)
+        .subscribe( data => {
+          this.validateDate(this.chosenParam.date, this.weeklyDates, true);
+          return;
+        })
+      }else{
+        if(activeIndex != null){
+          //reset failsafe
+          this.failSafe = 0;
+          //make sure to only set new params if new number has been validatedDated
+          //otherwise set the new chosenParam to the mostRecent date that has been found
+          if(validatedDate != 0){
+            validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
+            this.chosenParam.date = validatedDate;
+            dateArray[activeIndex].active = true;
+          }else{
+            validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
+            this.chosenParam.date = validatedDate;
+            dateArray[activeIndex].active = true;
+          }
+
+          //sets new params and emit the date
+          let params = this.chosenParam;
+          this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+          this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+          this.setActive(this.weeklyDates[activeIndex]);
+          return;
+        }else{
+          this.failSafe = 0;
+          return;
+        }
+      }
+    }else{
+      return;
+    }
    }
 }

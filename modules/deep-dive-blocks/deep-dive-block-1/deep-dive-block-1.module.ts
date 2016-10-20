@@ -101,9 +101,7 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   ngOnChanges(event) {
-    this.scope = event.scope ? event.scope.currentValue: null;
-    this.geoLocation = event.geoLocation ? event.geoLocation.currentValue: null;
-    this.category = event.category ? event.category.currentValue: null;
+    console.log(this.scope);
     this.dateParam.scope = this.scope;
     this.callModules();
   }
