@@ -1,12 +1,12 @@
-<div class="user-search-input"> <i class="fa fa-list-ul" aria-hidden="true"></i> <div class="user-search-input_res">Results for <b>User Input</b></div></div>
+<div class="user-search-input"> <i class="fa fa-list-ul" aria-hidden="true"></i> <div class="user-search-input_res">Results for <b>{{userInput}}</b></div></div>
 <div class="s-filter container-fluid">
     <span class="filter-left">
         <i class="fa fa-sliders"></i>
        <span><p>Applied Filters & Sorts:</p></span>
     </span>
     <span class="filter-right">
-   <span class="s-filter_fil-hline"> Filter: </span><dropdown [list]="keywords" [selectedKey]="All" [icon]="icon" (selectionChanged)="keywordClick($event) "></dropdown>
-     <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="Sorting" [selectedKey]="Date - MostRecent" [icon]="icon" (selectionChanged)="sortingClick($event)"></dropdown>
+   <span class="s-filter_fil-hline"> Filter: </span><dropdown [list]="keywords" selectedKey="All" [icon]="icon"  ddtitle='select a Keyword' (selectionChanged)="keywordClick($event) "></dropdown>
+   <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="sorting" selectedKey="Date-MostRecent" [icon]="icon"  ddtitle='Sort/Filter By' (selectionChanged)="keywordClick($event) "></dropdown>
 
 </span>
 
