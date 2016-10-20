@@ -69,6 +69,7 @@ export class SearchBoxModule {
   navigateSearch(){
 
     window.location.replace(this.fullSearchUrl);
+
       //this.router.navigate(['/deep-dive',this.category, this.userInput]);
   }
 
