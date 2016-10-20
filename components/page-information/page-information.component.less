@@ -1,3 +1,21 @@
+.condition-page{
+  min-width: 320px;
+  .flexDisplay;
+  &-widget{
+    margin: 0 auto;
+  }
+  &-container2b{
+    display: none;
+    @media @desktop-l{
+      display: block;
+      position: relative;
+      width: 300px;
+      height: 600px;
+      margin-top: 20px;
+    }
+  }
+}
+
 .info{
   &-contain{
     padding: 15px 10px 1px;
@@ -11,7 +29,7 @@
       .st_sharethis_large{
         .stButton{
           margin: 0;
-          display: none;
+          display: none!important;
         }
         margin-right: 10px;
         cursor: pointer;
