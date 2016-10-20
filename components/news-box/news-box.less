@@ -1,7 +1,9 @@
 .videoActive{
   max-height: none !important;
+  min-height: none !important;
   @media @desktop-l{
     max-height:420px !important;
+    min-height:420px !important;
     .newsbox-item{
       height:420px;
       max-width: none;
@@ -168,13 +170,15 @@
     height: 100%;
     .flexDisplay;
     .flexAlignItems(center);
+    .flexDirection(row);
     .flexJustify(center);
     .video-width {
         width: 100%;
         margin: auto;
     }
     @media @tablet {
-        max-height: 420px;
+      max-height: 420px;
+      min-height: 420px;
     }
 
     &-item {
