@@ -10,7 +10,7 @@
     <div class="dropdown-caret-top">
 
     </div>
-    <div class="droptitle">{{ddtitle}}</div>
+    <div class="droptitle" *ngIf="!isModule">{{ddtitle}}</div>
     <scrollable-content class="dropdown-list dropdown-list-scroll"
       (reloadScroller)="_reloadScroller"
       [class.dropdown-list-scroll]="list.length > 4">
