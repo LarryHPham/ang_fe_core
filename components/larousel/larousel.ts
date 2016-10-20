@@ -1,4 +1,4 @@
-import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {Component, OnChanges, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
 declare var jQuery:any;
 declare var moment:any;
@@ -8,7 +8,7 @@ declare var moment:any;
     templateUrl: './app/fe-core/components/larousel/larousel.html',
 })
 
-export class Larousel{
+export class Larousel implements OnChanges{
   @Input() maxLength:any;
   @Input() current:any;
   @Input() graphData: any;
@@ -50,17 +50,21 @@ export class Larousel{
     this.originalData = null;
     this.currentScroll = null;
     var ssItems = [];//side scroll item
+    if(event.carData != null){
+      this.carData = event.carData.currentValue;
+      this.maxLength = null;
+    }
     if(event.videoData != null){
-      this.graphData = null;
+      this.videoData = event.videoData.currentValue;
+      this.graphData = event.graphData != null ? event.graphData.currentValue:null;
       this.maxLength = null;
     }
     if(event.graphData != null){
-      this.videoData = null;
+      this.videoData = event.videoData != null ? event.videoData.currentValue:null;
+      this.graphData = event.graphData.currentValue;
       this.maxLength = null;
     }
-    console.log(this.carData);
-    console.log(this.videoData);
-    console.log(this.graphData);
+
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
@@ -135,7 +139,6 @@ export class Larousel{
     if(this.maxLength == null){
       this.maxLength = this.originalData.length;
     }
-
     this.generateArray();
     this.onResize(window);
   }
@@ -170,7 +173,12 @@ export class Larousel{
       } else {
         this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
       }
+      this.transition = "";
       this.rightText = this.currentScroll+'px';
+      //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
+      setTimeout(function(){
+        this.transition = "score-transition2";
+      },200);
     }
     this.numResizes = this.numResizes + 1;
   }
@@ -186,7 +194,6 @@ export class Larousel{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
-    console.log(this.displayedItems);
     this.displayedData.emit(this.displayedItems);
   }
 
