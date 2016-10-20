@@ -60,6 +60,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
   @Input() selectedKey: string;
 
   @Input() icon: string;
+  @Input() ddtitle:string;
 
   dropdownVisibleIcon: string;
 
