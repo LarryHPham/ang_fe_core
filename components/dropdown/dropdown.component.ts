@@ -62,6 +62,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
   @Input() icon: string;
   @Input() ddtitle:string;
   @Input() dropdownhdr:string;
+  @Input() isModule:boolean;
   prefixString:string = "Date";
 
   dropdownVisibleIcon: string;

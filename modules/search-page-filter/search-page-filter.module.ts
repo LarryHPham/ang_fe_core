@@ -16,8 +16,8 @@ keywords=[
         value:"All Keywords",
     },
     {
-        key:"Automative",
-        value:"Automative",
+        key:"Automotive",
+        value:"Automotive",
     },
     {
         key:"Business",
