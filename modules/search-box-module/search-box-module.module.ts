@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef } from '@angular/core';
+import {Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef, Renderer} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {GlobalSettings} from "../../../global/global-settings";
 import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
@@ -13,7 +13,8 @@ export class SearchBoxModule {
   @Input() category:string;
   modSearchTitle:string;
   modSearchSubTitle:string;
-    ddIcon="caret-down";
+  userInput;
+
     searchPlaceHolderText: string;
     searchBoxBackground:string;
 
@@ -48,6 +49,7 @@ export class SearchBoxModule {
       this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
       this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
       this.searchBoxBackground=GlobalSettings.getTCXscope(this.scope).searchBackground;
+      console.log(this.category);
   }
   //ssearchBoxDescription: string = 'Find the players and teams you love.';
   //searchPlaceHolderText: string = 'Search for a Team or Player...';
@@ -55,20 +57,24 @@ export class SearchBoxModule {
 
   fullSearchUrl: string;
 
-  constructor(private activeRoute:ActivatedRoute, private router:Router) {}
+  constructor(private activeRoute:ActivatedRoute, private router:Router, private render:Renderer) {}
 
   onKey(event:any) {
+      this.userInput=event.target.value;
       var rel_url= VerticalGlobalFunctions.createSearchLink(this.scope)+ event.target.value;
       this.fullSearchUrl = GlobalSettings.getOffsiteLink(this.scope,rel_url);
 
   }
 
   navigateSearch(){
-    window.location.assign(this.fullSearchUrl);
+
+    window.location.replace(this.fullSearchUrl);
+      //this.router.navigate(['/deep-dive',this.category, this.userInput]);
   }
 
     selectedSport(e){
     e=e.toLowerCase();
     this.router.navigate(['/deep-dive',this.category, e]);
+
 }
 }

@@ -16,14 +16,14 @@
 -->
     <div class="search-input-container">
         <span *ngIf=" category == 'sports' " class="category-dropdown">
-            <dropdown [list]="sportsList" [selectedKey]="scope.toUpperCase()" [icon]="ddIcon" (selectionChanged)="selectedSport($event)"></dropdown>
+            <dropdown [list]="sportsList" [selectedKey]="scope.toUpperCase()" icon="caret-down" ddtitle='Select A Sport'  (selectionChanged)="selectedSport($event) "></dropdown>
         </span>
         <!--<input
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
         placeholder="{{searchPlaceHolderText}}"
         class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />-->
-        <input
+        <input autocomplete="off"
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch()"
         placeholder="{{searchPlaceHolderText}}"
