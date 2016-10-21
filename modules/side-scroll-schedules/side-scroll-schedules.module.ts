@@ -98,8 +98,8 @@ export class SideScrollSchedule{
       this.localTopScope = this.topScope;
       switch(this.topScope) {
       case "weather":
-        this.titleText = "<span class='hide-mobile'>" + this.sideScrollData.current.currentTemperature + "°<span class='weather-divider'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></span>" + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
-        this.titleIcon = this.sideScrollData.current.currentIcon;
+        this.titleText = "<span class='hide-mobile'>" + this.sideScrollData.current.current_temperature + "°<span class='weather-divider'>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></span>" + this.sideScrollData.current.city + ", " + this.sideScrollData.current.state;
+        this.titleIcon = this.sideScrollData.current.current_icon;
           break;
       case "finance":
         this.titleText = "Market Movers: <span class='hide-mobile'>All Exchanges</span>"
