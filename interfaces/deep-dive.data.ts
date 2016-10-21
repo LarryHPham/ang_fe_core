@@ -2,10 +2,15 @@ import { RectangleImageData } from '../components/images/image-data';
 
 export interface ArticleStackData{
     article_id: string,
+    event_id: string,
     source: string,
     report_type: string,
-    keywords: Array<string>,
     title: string,
+    keywords: Array<string>,
+    article_type: string,
+    article_sub_type?: string,
+    category?: string,
+    subcategory?: string,
     headline?: string,
     image_url: string,
     time_stamp?: string,
@@ -14,7 +19,8 @@ export interface ArticleStackData{
     keyUrl?: any,
     author?: string,
     publisher?: string,
-    teaser?: string
+    teaser?: string,
+    scope?: string
   }
 
 export interface VideoStackData{
