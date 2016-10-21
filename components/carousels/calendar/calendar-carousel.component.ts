@@ -40,7 +40,7 @@ export class CalendarCarousel implements OnInit {
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
 
-    console.log(this.chosenParam);
+    // console.log(this.chosenParam);
     //make call to week api to grab to see if any games are available (true/false)
     this.callWeeklyApi(this.chosenParam)
     .subscribe( data => {
@@ -51,9 +51,9 @@ export class CalendarCarousel implements OnInit {
   } //ngOnInit
 
   ngOnChanges(event){
-    console.log('CALENDAR NGONCHANGES',event);
+    // console.log('CALENDAR NGONCHANGES',event);
     //any changes made to the input from outside will cause the fuction to rerun
-    console.log(this.chosenParam);
+    // console.log(this.chosenParam);
     if(event.chosenParam.previousValue.scope != null && event.chosenParam.currentValue.scope != event.chosenParam.previousValue.scope){// if route has changed
       this.chosenParam.scope = event.currentValue;
 

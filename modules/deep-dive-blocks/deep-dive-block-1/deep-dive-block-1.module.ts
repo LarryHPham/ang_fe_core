@@ -39,7 +39,6 @@ export class DeepDiveBlock1 implements OnInit {
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
-          console.log('first article stack', data);
           let stackTop = [data[0]];
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);
           let stackRow = data.splice(1,8);
@@ -77,15 +76,15 @@ export class DeepDiveBlock1 implements OnInit {
     if ( dateParams != null ) {
       this.dateParam = dateParams;
     }
-    console.log('this.dateParam',this.dateParam);
-    console.log(this.boxScoresData);
+    // console.log('this.dateParam',this.dateParam);
+    // console.log(this.boxScoresData);
     this._boxScoresService.getBoxScores(this.boxScoresData, this.dateParam.scope, this.dateParam, (boxScoresData, currentBoxScores) => {
         this.boxScoresData = boxScoresData;
         this.currentBoxScores = currentBoxScores;
         if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
           if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
             this.dateParam.date = boxScoresData.previousGameDate.event_date;
-            console.log('No games today new date', this.dateParam.date);
+            // console.log('No games today new date', this.dateParam.date);
             this.getBoxScores(this.dateParam);
           }
           return;
@@ -104,15 +103,15 @@ export class DeepDiveBlock1 implements OnInit {
   }
 
   ngOnChanges(event) {
-    console.log('ON CHANGES',event);
+    // console.log('ON CHANGES',event);
     if(event.scope != null){
       if(event.scope.currentValue != event.scope.previousValue){// if route has changed
         this.scope = event.scope.currentValue;
         this.boxScoresData = null;
         this.currentBoxScores = null;
         this.dateParam == null;
-        console.log('change scope', this.scope);
-        console.log('change boxScoresData', this.boxScoresData);
+        // console.log('change scope', this.scope);
+        // console.log('change boxScoresData', this.boxScoresData);
         this.getDateParams();
       }
     }
