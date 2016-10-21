@@ -55,7 +55,6 @@ export class CalendarCarousel implements OnInit {
     //any changes made to the input from outside will cause the fuction to rerun
     // console.log(this.chosenParam);
     if(event.chosenParam.previousValue.scope != null && event.chosenParam.currentValue.scope != event.chosenParam.previousValue.scope){// if route has changed
-      this.chosenParam.scope = event.currentValue;
 
       var currentUnixDate = new Date().getTime();
       this.chosenParam.date = moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD');

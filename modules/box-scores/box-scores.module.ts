@@ -46,11 +46,6 @@ export class BoxScoresModule implements OnInit {
   }
 
   ngOnChanges(event){
-    // console.log('boxscore module CHANGES',event);
-    if(event.calendarParams != null){
-      this.calendarParams = event.calendarParams.currentValue;
-    }
-    // console.log('boxScore module calendarParams',this.calendarParams);
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
@@ -82,12 +77,16 @@ export class BoxScoresModule implements OnInit {
         this.heightStyle = 'auto';
       }
     }
-    if(this.refreshBoxScores.length > 10){
-      this.refreshBoxScores = "";
-    }else{
-      this.refreshBoxScores += " ";
-    }
-    ScrollerFunctions.initializeScroller(this._elementRef.nativeElement, document);
+
+    //wait a brief period for the page to redraw after the new data has come in before checking side of page objects
+    setTimeout(() => {
+      if(this.refreshBoxScores.length > 10){
+        this.refreshBoxScores = "";
+      }else{
+        this.refreshBoxScores += " ";
+      }
+    }, 100);
+
   }
 
   private onWindowLoadOrResize(event) {

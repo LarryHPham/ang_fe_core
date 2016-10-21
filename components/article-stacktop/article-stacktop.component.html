@@ -5,7 +5,7 @@
       <span class="font-weight-normal" [innerHTML]="item.timeStamp | safeHtml"></span>
     </div>
   </div>
-  <a *ngIf="item.articleUrl" class="stacktop" [routerLink]="item.articleUrl">
+  <a *ngIf="!item.extUrl" class="stacktop" [routerLink]="item.articleUrl">
     <div class="stacktop-title-headline" [innerHTML]="item.title | safeHtml"></div>
     <div class="stacktop-titleinfo">
       <span class="stacktop-titleinfo-provider">
@@ -17,7 +17,7 @@
     </div>
     <div class="stacktop-desc" [innerHTML]="item.teaser | safeHtml"></div>
   </a>
-  <a *ngIf="item.extUrl" class="stacktop" href="item.extUrl">
+  <a *ngIf="item.extUrl" class="stacktop" href="{{item.articleUrl}}">
     <div class="stacktop-title-headline" [innerHTML]="item.title | safeHtml"></div>
     <div class="stacktop-titleinfo">
       <span class="stacktop-titleinfo-provider">
