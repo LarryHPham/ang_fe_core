@@ -19,6 +19,7 @@ export interface ImageData {
    */
   imageUrl?: any;
 
+  url?: any;
   /**
    * The list of classes to use to style the image. If it's a main image, then
    * the style typically just specifies the border style. If it's a sub element,
@@ -86,7 +87,8 @@ export interface CircleImageData {
 export interface RectangleImageData{
   imageUrl: any;
   imageClass?: string;
-  urlRouteArray?: Array<any>;
+  urlRouteArray?: any;
+  extUrl?: boolean;
   imageDesc?: string;
   /*hoverText?: string;*/
 }
