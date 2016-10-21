@@ -97,10 +97,12 @@ export class DeepDiveBlock1 implements OnInit {
   callModules(){
     this.getDeepDiveVideo();
     this.getFirstArticleStackData();
+    console.log("date param",this.dateParam);
     this.getBoxScores(this.dateParam);
   }
 
   ngOnChanges(event) {
+    console.log(event);
     /*this.scope = event.scope ? event.scope.currentValue: null;
     this.geoLocation = event.geoLocation ? event.geoLocation.currentValue: null;
     this.category = event.category ? event.category.currentValue: null;*/
