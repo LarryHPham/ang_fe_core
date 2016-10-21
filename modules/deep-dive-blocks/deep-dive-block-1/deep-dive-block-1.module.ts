@@ -42,7 +42,7 @@ export class DeepDiveBlock1 implements OnInit {
     }
   }
   getFirstArticleStackData(){
-    this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
+    this._deepDiveData.getDeepDiveBatchService(this.scope, this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
           let stackTop = [data[0]];
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);

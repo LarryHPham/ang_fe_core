@@ -1,6 +1,11 @@
 <section class="stackRows row">
   <div class="stackRow col-sm-12 col-md-6 col-lg-12" *ngFor="let stackRow of stackRowData;">
-    <a class="stackSmall" [routerLink]="stackRow.articleUrl">
+    <a *ngIf="!stackRow.extUrl" class="stackSmall" [routerLink]="stackRow.articleUrl">
+      <div class="stackSmall-image">
+        <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
+      </div>
+    </a>
+    <a *ngIf="stackRow.extUrl" class="stackSmall" href="{{stackRow.extUrl}}">
       <div class="stackSmall-image">
         <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
       </div>
@@ -10,7 +15,10 @@
         <a class="masterHover" [routerLink]="stackRow.keyUrl" [innerHTML]="stackRow.keyword"></a>
         <span class="font-weight-normal" [innerHTML]="stackRow.timeStamp"></span>
       </div>
-      <a class="stackSmall-text-teaser masterHover" [routerLink]="stackRow.articleUrl">
+      <a *ngIf="!stackRow.extUrl" class="stackSmall-text-teaser masterHover" [routerLink]="stackRow.articleUrl">
+        <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.title"></div>
+      </a>
+      <a *ngIf="stackRow.extUrl" class="stackSmall-text-teaser masterHover" href="{{stackRow.articleUrl}}">
         <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.title"></div>
       </a>
     </div>

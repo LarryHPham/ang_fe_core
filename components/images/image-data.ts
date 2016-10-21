@@ -86,7 +86,8 @@ export interface CircleImageData {
 export interface RectangleImageData{
   imageUrl: any;
   imageClass?: string;
-  urlRouteArray?: Array<any>;
+  urlRouteArray?: any;
+  extUrl?: boolean;
   imageDesc?: string;
   /*hoverText?: string;*/
 }
