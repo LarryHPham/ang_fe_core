@@ -46,9 +46,11 @@ export class BoxScoresModule implements OnInit {
   }
 
   ngOnChanges(event){
+    // console.log('boxscore module CHANGES',event);
     if(event.calendarParams != null){
       this.calendarParams = event.calendarParams.currentValue;
     }
+    // console.log('boxScore module calendarParams',this.calendarParams);
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
