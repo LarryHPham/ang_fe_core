@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
 import {SafeStyle, DomSanitizer} from "@angular/platform-browser";
 import {ModuleHeaderData} from "../../module-header/module-header.component";
 
@@ -23,7 +23,7 @@ export class ImagesMedia implements OnInit {
     @Input() imageTitle:string;
     @Input() isProfilePage:boolean;
 
-    expand:boolean;
+    expand:boolean = false;
     isSmall:boolean = false;
     expandText:string = 'Expand';
     expandIcon:string = 'fa-expand';
@@ -47,16 +47,22 @@ export class ImagesMedia implements OnInit {
     modHeadData:ModuleHeaderData;
 
 
-    constructor(private _sanitizer:DomSanitizer) {
+    constructor(private _sanitizer:DomSanitizer, private elementRef:ElementRef, private render:Renderer) {
     }
 
     modalExpand() {
+       /* console.log(this.expand);*/
         if (this.expand == true) {
             this.expand = false;
-            jQuery("body").css({"overflow": "auto", "pointer-events": "auto"});
-        } else {
+           /* jQuery("body").css({"overflow": "auto", "pointer-events": "auto"});*/
+           this.render.setElementStyle('body', 'overflow','auto');
+            this.render.setElementStyle('body', 'pointer-events','auto');
+        } else
+            {
             this.expand = true;
-            jQuery("body").css({"overflow": "hidden", "pointer-events": "none"});
+                this.render.setElementStyle('body', 'overflow','hidden');
+                this.render.setElementStyle('body', 'pointer-events','none');
+            /*jQuery("body").css({"overflow": "hidden", "pointer-events": "none"});*/
         }
         return this.expand;
     }
