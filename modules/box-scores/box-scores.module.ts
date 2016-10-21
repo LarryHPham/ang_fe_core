@@ -78,7 +78,7 @@ export class BoxScoresModule implements OnInit {
       }
     }
 
-    //wait a brief period for the page to redraw after the new data has come in before checking side of page objects
+    //wait a brief period for the page to redraw after the new data has come in before checking size of page objects
     setTimeout(() => {
       if(this.refreshBoxScores.length > 10){
         this.refreshBoxScores = "";
