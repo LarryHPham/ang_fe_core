@@ -3,8 +3,7 @@
   <div class="hamburger">
     <ul id="hamburger-list" class="hamburger-topics-list">
       <span  *ngFor="let menuData of menuData">
-        <a *ngIf="(menuData.menuTitle == 'Home' && isHome) && menuData.nesterChildren == null" class="disabled"><li class="hamburger-topics-list-item menucheck">{{menuData.menuTitle}}</li></a>
-        <a *ngIf="(menuData.menuTitle != 'Home' || !isHome) && menuData.nesterChildren == null" [routerLink]="menuData.url"><li class="hamburger-topics-list-item menucheck">{{menuData.menuTitle}}</li></a>
+        <a *ngIf="menuData.nesterChildren == null" [routerLink]="menuData.url"><li class="hamburger-topics-list-item menucheck">{{menuData.menuTitle}}</li></a>
 
         <li *ngIf="menuData.nesterChildren != null" class="nester-parent menucheck">
           <a [routerLink]="menuData.url" class="nester-parent-title menucheck">{{menuData.menuTitle}}</a>
