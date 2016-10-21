@@ -75,7 +75,7 @@ export class SearchBoxModule {
 
     selectedSport(e){
     e=e.toLowerCase();
-    this.router.navigate(['/deep-dive',this.category, e]);
+    //this.router.navigate(['/deep-dive',this.category, e]);
 
 }
 }
