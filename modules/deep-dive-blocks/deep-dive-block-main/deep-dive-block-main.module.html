@@ -1,7 +1,7 @@
 <div id="deep-dive-block-main" class="deep-dive-block">
   <!-- BREAKING NEWS -->
   <!-- ARTICLE STACK TYPE 1 -->
-  <div *ngIf="breakingStack" class="deep-dive-module">
+  <div *ngIf="breakingStack && breakingStack.length > 3" class="deep-dive-module">
     <section-name-component [secName]="secName[0]"></section-name-component>
     <article-stack-1-module [stackTop]="[breakingStack[0]]" [stackRow]="breakingStack.slice(1,7)"></article-stack-1-module>
   </div>
