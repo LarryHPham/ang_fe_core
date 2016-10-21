@@ -40,7 +40,7 @@
 </div><!--</schedule-box-football>-->
 
 <div *ngIf="topScope=='weather'" class="schedule_box weather"><!--become a component <schedule-box>-->
-  <div class="weather-date">{{boxData.unixTimestamp}}</div>
+  <div class="weather-date">{{boxData.unix_timestamp}}</div>
   <img class="condition-image" src="{{boxData.icon}}">
   <div class="condition">{{boxData.condition}}</div>
   <div class="temp" [innerHTML]="boxData.temperature"></div>
