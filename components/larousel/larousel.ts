@@ -1,4 +1,4 @@
-import {Component, AfterContentChecked, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {Component, OnChanges, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
 declare var jQuery:any;
 declare var moment:any;
@@ -6,16 +6,14 @@ declare var moment:any;
 @Component({
     selector: 'larousel',
     templateUrl: './app/fe-core/components/larousel/larousel.html',
-    outputs: ['carouselCount'],
 })
 
-export class Larousel{
+export class Larousel implements OnChanges{
   @Input() maxLength:any;
   @Input() current:any;
   @Input() graphData: any;
   @Input() videoData: any;
   @Input() carData: any;
-  public carouselCount = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
   private itemSize:number = 205;
@@ -37,6 +35,8 @@ export class Larousel{
   @Input('fade') fade:boolean;
   @Input('button-class') buttonClass: string;
   @Output() displayedData = new EventEmitter();//outputs and array of objects for other components to use
+  @Output() displayedItem = new EventEmitter();//outputs and array of objects for other components to use
+  @Output() carouselCount = new EventEmitter();
   private startIndex:number = 0;
   private endIndex:number = 1;
   private originalData: any;
@@ -47,13 +47,24 @@ export class Larousel{
 
   }
   ngOnChanges(event){
+    this.originalData = null;
+    this.currentScroll = null;
     var ssItems = [];//side scroll item
+    if(event.carData != null){
+      this.carData = event.carData.currentValue;
+      this.maxLength = null;
+    }
     if(event.videoData != null){
-      this.graphData = null;
+      this.videoData = event.videoData.currentValue;
+      this.graphData = event.graphData != null ? event.graphData.currentValue:null;
+      this.maxLength = null;
     }
     if(event.graphData != null){
-      this.videoData = null;
+      this.videoData = event.videoData != null ? event.videoData.currentValue:null;
+      this.graphData = event.graphData.currentValue;
+      this.maxLength = null;
     }
+
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
@@ -74,7 +85,6 @@ export class Larousel{
         })
       });
     }
-
     //push in carousels items next this can probably handle arguments in future
     startLength = ssItems.length;
     if(this.carData != null){
@@ -90,32 +100,23 @@ export class Larousel{
     startLength = ssItems.length; //get total valid items
     for(var c = 1; c <= this.clones; c++){
       //push clones at end of array
+      ssItems.push({
+        id: ssItems[0].id,
+        data:ssItems[0].data,
+        type:ssItems[0].type
+      })
+      //unshift pushes clones before array only if we have that extra carousel in front
       ssItems.unshift({
         id:ssItems[startLength-1].id,
         data:ssItems[startLength-1].data,
         type:ssItems[startLength-1].type
       })
-      //unshift pushes clones before array only if we have that extra carousel in front
-      if(this.videoData != null || this.graphData != null){
-        ssItems.push({
-          id: ssItems[1].id,
-          data:ssItems[1].data,
-          type:ssItems[1].type
-        })
-      }
     }
-
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
     this.currentScroll = this.itemSize * this.clones;
     this.currentItem = this.originalData[this.clones];
-    if(event.videoData != null){
-      this.currentItem = this.originalData[this.clones];
-    }
-    if(event.graphData != null){
-      this.currentItem = this.originalData[this.clones];
-    }
-
+    this.displayedItem.emit(this.currentItem);
     //delete below when done testing
     // this.carData.length = 2;
     //if loop is not given default to infinite looping
@@ -138,9 +139,7 @@ export class Larousel{
     if(this.maxLength == null){
       this.maxLength = this.originalData.length;
     }
-
     this.generateArray();
-    this.videoCheck();
     this.onResize(window);
   }
 
@@ -150,13 +149,13 @@ export class Larousel{
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
     this.currentItem = this.originalData[this.clones];
-
+    this.displayedItem.emit(this.currentItem);
     //once scrolls are set declare the min and max scrolls if loops is set false
     if(!this.loop){
       this.minScroll = this.currentScroll < this.itemSize * this.clones;
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
-    this.videoCheck();
+    this.generateArray();
     this.onResize(window);
   }
 
@@ -166,26 +165,24 @@ export class Larousel{
   //   }
   // }
 
-  onResize(event){
+  onResize(event?){
     if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
       this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-      if (this.currentItem.id == "0"){
+      if (this.currentItem.id == 0){
         this.currentScroll = this.itemSize;
-      }
-      else {
+      } else {
         this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
-        jQuery(".carousel_scroll-item").removeClass("videoActive");
       }
+      this.transition = "";
       this.rightText = this.currentScroll+'px';
+      //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
+      setTimeout(function(){
+        this.transition = "score-transition2";
+      },200);
     }
-    this.videoCheck();
     this.numResizes = this.numResizes + 1;
   }
 
-  ngOnDestroy(){
-    this.videoCheck();
-  }
-s
   generateArray(){
     var self = this;
     var originalData = this.originalData;
@@ -200,32 +197,14 @@ s
     this.displayedData.emit(this.displayedItems);
   }
 
-  videoCheck() {
-      if (this.currentItem.type == "video") {
-        jQuery(".newsbox").addClass("videoActive");
-      }else{
-        jQuery(".newsbox").removeClass("videoActive");
-      }
-    }
-
   left(event) {
     //moves the current scroll over the item size
     this.currentScroll -= (this.itemSize);
-    if(this.currentScroll < 0){
-      this.currentScroll = (this.itemSize * this.maxLength-1);
-    }
     this.checkCurrent(this.currentScroll);
-    this.videoCheck();
   }
   right(event) {
     this.currentScroll += this.itemSize;
-    if(this.maxLength >= Math.round(this.currentScroll/this.itemSize)){
-      this.checkCurrent(this.currentScroll);
-    }else{
-      this.currentScroll = 0;
-      this.checkCurrent(this.currentScroll);
-    }
-    this.videoCheck();
+    this.checkCurrent(this.currentScroll);
   }
 
   //For mobile screen swiping events
@@ -237,7 +216,6 @@ s
       this.right('right');
     }
     this.checkCurrent(this.currentScroll);
-    this.videoCheck();
   }
 
   scrollX(event){
@@ -284,40 +262,41 @@ s
 
   checkCurrent(currentScroll){
     var self = this;
+    let currentItem;
     //set maxScroll and minScroll if loops is set to false
     if(!this.loop){
-      this.minScroll = this.currentScroll < (this.itemSize * this.clones);
-      this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
+      this.minScroll = currentScroll < (this.itemSize * this.clones);
+      this.maxScroll = !((this.maxLength) > Math.round(currentScroll/(this.itemSize)));
     }
-    let pos = (currentScroll / this.itemSize);
+    let pos = Math.round((currentScroll / this.itemSize));
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
-    if(pos > this.maxLength){
-      currentScroll = 0;
-    }else if (pos < 0){
-      currentScroll = this.itemSize * (this.maxLength-1);
+    if(pos > (this.maxLength-(this.clones*2))){//if position is larger or same as the length of array
+      currentItem = this.clones;
+    }else if (pos < this.clones){//othwerwise if position is less than the first item after clones
+      currentItem = this.maxLength-(this.clones*2);
     }else{
+      currentItem = pos;
       this.transition = "score-transition2";
     }
-
     //if pos (position) is between then round to nearest  whole number and move carousel
-    this.currentScroll = Math.round(pos) * this.itemSize;
-    this.currentItem = this.originalData[(Math.round(pos))];
+    this.currentScroll = Math.round(currentItem) * this.itemSize;
+    this.currentItem = this.originalData[currentItem];
+    this.displayedItem.emit(this.currentItem);
     this.carouselCount.emit(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 
     //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
     setTimeout(function(){
-      if(pos <= 0){
+      if(pos <= this.clones){
         self.transition = "";
         self.currentScroll = (self.maxLength-2) * self.itemSize;
         self.rightText = self.currentScroll+'px';
       }
-      if(pos >= self.maxLength - 1){
+      if(pos >= self.maxLength - this.clones){
         self.transition = "";
         self.currentScroll = self.itemSize;
         self.rightText = self.currentScroll+'px';
       }
     },200);
   }
-
 }

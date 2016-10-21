@@ -7,7 +7,6 @@ declare var moment:any;
 @Component({
     selector: 'news-box',
     templateUrl: './app/fe-core/components/news-box/news-box.html',
-    outputs: ['carouselCount'],
 })
 
 export class NewsBox{
@@ -15,9 +14,14 @@ export class NewsBox{
   @Input() videoData: any;
   @Input() carData: any;
   private displayedItems: any;
+  private currentDisplayed: any;
 
   constructor(private _elRef: ElementRef){
 
+  }
+
+  checkCurrent(item){
+    this.currentDisplayed = item;
   }
 
   displayArray(event){

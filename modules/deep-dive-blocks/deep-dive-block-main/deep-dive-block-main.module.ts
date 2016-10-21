@@ -41,7 +41,7 @@ export class DeepDiveBlockMain implements OnInit {
    this.homePageBlocks.forEach(function(val, index){
      var d = {
        icon: val != 'video' ? GlobalSettings.getTCXscope(val).icon : 'fa-play-circle',
-       title: val != 'video' ? GlobalFunctions.toTitleCase(GlobalSettings.getTCXscope(val).displayName) : 'Video',
+       title: val != 'video' ? GlobalFunctions.toTitleCase(GlobalSettings.getTCXscope(val).displayName) : 'Videos',
        route: val != 'video' ? VerticalGlobalFunctions.formatSectionFrontRoute(GlobalSettings.getTCXscope(val).topScope) : null
      }
      sectionNameArray.push(d);
@@ -148,6 +148,15 @@ export class DeepDiveBlockMain implements OnInit {
             console.log("Error getting Automotive News data");
         });
   }
+  getFoodData(){
+    this._deepDiveData.getDeepDiveBatchService("food", 7, this.batchNum, this.geoLocation)
+        .subscribe(data => {
+          this.foodStack = this._deepDiveData.transformToArticleStack(data, "food");
+        },
+        err => {
+            console.log("Error getting Food News data");
+        });
+  }
   getDeepDiveVideo(){
       this._deepDiveData.getDeepDiveVideoBatchService("sports", 15, 1, this.geoLocation)
       .subscribe(data => {
@@ -174,6 +183,7 @@ export class DeepDiveBlockMain implements OnInit {
     this.getTravelData();
     this.getWeatherData();
     this.getAutomotiveData();
+    this.getFoodData();
     this.getDeepDiveVideo();
   }
 
