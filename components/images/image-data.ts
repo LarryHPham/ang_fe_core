@@ -19,6 +19,7 @@ export interface ImageData {
    */
   imageUrl?: any;
 
+  url?: any;
   /**
    * The list of classes to use to style the image. If it's a main image, then
    * the style typically just specifies the border style. If it's a sub element,
