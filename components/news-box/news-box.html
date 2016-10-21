@@ -4,8 +4,8 @@
       <!-- BELOW VIDEO CAROUSEL -->
       <div class="newsbox"
       *ngIf="item.type == 'video' || item.type == 'clone'"
-      [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.video_thumbnail + ')'}"
       [ngClass]="{'clone': item.type == 'clone', 'videoActive': currentDisplayed.type == 'video'}">
+        <div class="newsbox-background" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.video_thumbnail + ')'}"></div>
         <div class="newsbox-item video-width" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-left">
@@ -16,7 +16,7 @@
             <div class="newsbox-item-container-right" id="lrgvidnewsbox-right">
               <div class="newsbox-item-container-right-key">TOP VIDEOS</div>
               <div class="newsbox-item-container-right-title">
-                <span class="newsbox-item-container-right-title-span">Today's Top Videos:</span>
+                <span class="newsbox-item-container-right-title-span">Today's News:</span>
                 <div id="cardivetitle" class="newsbox-item-container-right-title-headline" [innerHTML]="item.data.title | safeHtml"></div>
               </div>
               <div class="newsbox-item-container-right-title-border"></div>
@@ -44,20 +44,22 @@
             <div class="weather-graph">
               <div class="weather-graph-container1">
                 <div class="weather-graph-info">
-                  <div class="weather-graph-info-image"><img src="{{item.data.current.currentIcon}}" alt='Weather Icon'/></div>
-                  <div class="weather-graph-info-data">{{item.data.current.currentTemperature}}&deg;<span *ngIf="item.data.current.currentLow" class="weather-graph-info-subdata">/{{item.data.current.currentLow}}&deg;</span></div>
+                  <div class="weather-graph-info-image"><img src="{{item.data.current.current_icon}}" alt='Weather Icon'/></div>
+                  <div class="weather-graph-info-data">{{item.data.current.current_temperature}}&deg;<span *ngIf="item.data.current.temperature_low" class="weather-graph-info-subdata">/{{item.data.current.temperature_low}}&deg;</span></div>
                 </div>
                 <div class="weather-graph-border1"></div>
                 <div class="weather-graph-content">
                   <div class="weather-graph-content-text1">{{item.data.current.location}}</div>
-                  <div class="weather-graph-content-text2 text-heavy">{{item.data.current.currentTime}}</div>
+                  <div class="weather-graph-content-text2">{{item.data.current.current_time}}</div>
                   <div class="weather-graph-content-text3" [innerHTML]="item.data.current.description"></div>
                 </div>
               </div>
               <div class="weather-graph-border2"></div>
               <div class="weather-graph-container2">
                 <div class="weather-graph-subtitle">Daily Forecast</div>
-                <line-chart *ngIf="item.data.current.options" [options]="item.data.current.options"></line-chart>
+                <div class="weather-graph-chart">
+                  <line-chart *ngIf="item.data.current.options" [options]="item.data.current.options"></line-chart>
+                </div>
               </div>
             </div>
           </div>
