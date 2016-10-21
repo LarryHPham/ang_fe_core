@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DeepDiveService } from '../../../../services/deep-dive.service';
 import { VideoStackData, ArticleStackData, SectionNameData } from "../../../interfaces/deep-dive.data";
 import { BoxScoresService } from '../../../../services/box-scores.service';
+import { GlobalSettings } from "../../../../global/global-settings";
 
 declare var moment;
 
@@ -30,20 +31,15 @@ export class DeepDiveBlock1 implements OnInit {
   dateParam: any;
   boxScoresTempVar: string = "nfl";
   boxScoresScroll: boolean= true;
+
+  routeSubscription:any;
   constructor(private _boxScoresService: BoxScoresService, private _deepDiveData: DeepDiveService){
-    //Box Scores
-    var currentUnixDate = new Date().getTime();
-    //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
-    this.dateParam ={
-      scope: this.scope,//current profile page
-      teamId: '',
-      date: '2016-10-22'
-      // date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
-    }
+
   }
   getFirstArticleStackData(){
     this._deepDiveData.getDeepDiveBatchService("nfl", this.articleCallLimit, this.batchNum, this.geoLocation)
         .subscribe(data => {
+          console.log('first article stack', data);
           let stackTop = [data[0]];
           this.firstStackTop = this._deepDiveData.transformToArticleStack(stackTop, this.scope);
           let stackRow = data.splice(1,8);
@@ -81,12 +77,15 @@ export class DeepDiveBlock1 implements OnInit {
     if ( dateParams != null ) {
       this.dateParam = dateParams;
     }
-    this._boxScoresService.getBoxScores(this.boxScoresData, this.boxScoresTempVar, this.dateParam, (boxScoresData, currentBoxScores) => {
+    console.log('this.dateParam',this.dateParam);
+    console.log(this.boxScoresData);
+    this._boxScoresService.getBoxScores(this.boxScoresData, this.dateParam.scope, this.dateParam, (boxScoresData, currentBoxScores) => {
         this.boxScoresData = boxScoresData;
         this.currentBoxScores = currentBoxScores;
         if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
           if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
             this.dateParam.date = boxScoresData.previousGameDate.event_date;
+            console.log('No games today new date', this.dateParam.date);
             this.getBoxScores(this.dateParam);
           }
           return;
@@ -97,16 +96,45 @@ export class DeepDiveBlock1 implements OnInit {
   callModules(){
     this.getDeepDiveVideo();
     this.getFirstArticleStackData();
-    this.getBoxScores(this.dateParam);
+    if(GlobalSettings.getTCXscope(this.scope).showBoxScores){
+      this.getBoxScores(this.dateParam);
+    }else{
+      this.dateParam = null;
+    }
   }
 
   ngOnChanges(event) {
-    console.log(this.scope);
-    this.dateParam.scope = this.scope;
+    console.log('ON CHANGES',event);
+    if(event.scope != null){
+      if(event.scope.currentValue != event.scope.previousValue){// if route has changed
+        this.scope = event.scope.currentValue;
+        this.boxScoresData = null;
+        this.currentBoxScores = null;
+        this.dateParam == null;
+        console.log('change scope', this.scope);
+        console.log('change boxScoresData', this.boxScoresData);
+        this.getDateParams();
+      }
+    }
+    if(this.dateParam == null){
+      this.getDateParams();
+    }
     this.callModules();
   }
 
   ngOnInit() {
+    this.getDateParams();
     this.callModules();
+  }
+
+  getDateParams(){
+    //Box Scores
+    var currentUnixDate = new Date().getTime();
+    //convert currentDate(users local time) to Unix and push it into boxScoresAPI as YYYY-MM-DD in EST using moment timezone (America/New_York)
+    this.dateParam ={
+      scope: this.scope,//current profile page
+      teamId: '',
+      date: moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD')
+    }
   }
 }

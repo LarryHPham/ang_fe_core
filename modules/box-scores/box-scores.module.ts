@@ -46,7 +46,9 @@ export class BoxScoresModule implements OnInit {
   }
 
   ngOnChanges(event){
+    console.log(event);
     if(event.calendarParams != null){
+      this.boxScores = null;
       this.calendarParams = event.calendarParams.currentValue;
     }
     if(this.boxScores != null){
