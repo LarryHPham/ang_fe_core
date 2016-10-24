@@ -45,7 +45,7 @@ export class SearchBoxModule {
       },
       ]
   ngOnChanges(){
-      this.category=="sports"?   this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + this.scope.toUpperCase():this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle;
+      this.category=="sports"?   this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + GlobalSettings.getTCXscope(this.scope).displayName.toUpperCase():this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle;
       this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
       this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
       this.searchBoxBackground=GlobalSettings.getTCXscope(this.scope).searchBackground;
@@ -67,13 +67,16 @@ export class SearchBoxModule {
 
   navigateSearch(){
 
-    window.location.replace(this.fullSearchUrl);
+    window.location.href=this.fullSearchUrl;
 
       //this.router.navigate(['/deep-dive',this.category, this.userInput]);
   }
 
     selectedSport(e){
     e=e.toLowerCase();
+        this.scope=e;
+        this.modSearchTitle=GlobalSettings.getTCXscope(this.scope).searchTitle + " " + GlobalSettings.getTCXscope(this.scope).displayName.toUpperCase();
+        this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
     //this.router.navigate(['/deep-dive',this.category, e]);
 
 }
