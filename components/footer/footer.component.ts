@@ -9,9 +9,9 @@ export class FooterComponent implements OnInit {
     @Input() partner: string;
     pageName: string;
     currentUrl: string = window.location.href;
-    _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl(this.currentUrl);
-    _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl(this.currentUrl);
-    _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.currentUrl);
+    _siteTwitterUrl: string = GlobalSettings.getVerticalTwitter();
+    _siteFacebookUrl: string = GlobalSettings.getVerticalFB();
+    // _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.currentUrl);
     au: string = "About Us";
     service: string = "Terms of Service";
     privacy: string = "Privacy Policy";
