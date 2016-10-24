@@ -22,14 +22,25 @@ export class SyndicatedTrendingComponent {
     @Input() currentArticleId: any;
     @Input() scope;
     @Input() trendingData:any;
-
+    @Input() category;
+    @Input() subCategory;
+//http://dev-tcxmedia-api.synapsys.us/articles?source=tca&count=10&category=entertainment&subCategory=television
 
     constructor(private _synService:SyndicateArticleService){}
 
-    private getDeepDiveArticle(scope, numItems, state, currentArticleId) {
-        var startNum=Math.floor((Math.random() * 29) + 1);
+    private getDeepDiveArticle() {
+        //var startNum=Math.floor((Math.random() * 29) + 1);
+         this._synService.getTrendingArticles(this.category,this.subCategory,20).subscribe(
+         data => {
+         this.articleData = this._synService.transformTrending(data.data);
+         if (this.trendingLength <= 20) {
 
-        this._synService.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
+         this.trendingLength = this.trendingLength + 10;
+         }
+         }
+
+         )
+       /* this._synService.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
             data => {
                 this.articleData = this._synService.transformTrending(data.data, currentArticleId);
 
@@ -40,13 +51,13 @@ export class SyndicatedTrendingComponent {
                 }
             }
 
-        )
+        )*/
 
 
     }
 
     ngOnInit(){
-        this.getDeepDiveArticle(this.scope, 10 , this.geoLocation, this.currentArticleId);
+        this.getDeepDiveArticle();
 
 
 
