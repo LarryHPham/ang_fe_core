@@ -14,7 +14,8 @@ export class RecommendationsComponent{
 
     formatDate(date) {
         //moment(date, "YYYY-MM-Do").format("MM DD, YYYY at HH:MM A");
-        return moment(date).format("MMMM DD, YYYY | h:mm A")
+        return moment(date).format("dddd MMMM, YYYY | h:mm A")
+
     }
     ngOnInit(){}
 
