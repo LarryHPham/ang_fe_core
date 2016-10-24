@@ -50,19 +50,19 @@ export class ImagesMedia implements OnInit {
     constructor(private _sanitizer:DomSanitizer, private elementRef:ElementRef, private render:Renderer) {
     }
 
-    modalExpand() {
-       /* console.log(this.expand);*/
+    modalExpand(e) {
+        console.log(e);
+        console.log(this.expand);
         if (this.expand == true) {
             this.expand = false;
-           /* jQuery("body").css({"overflow": "auto", "pointer-events": "auto"});*/
-           this.render.setElementStyle('body', 'overflow','auto');
-            this.render.setElementStyle('body', 'pointer-events','auto');
+            this.render.setElementClass(e.target.parentElement,'modal-open',false);
+
+
         } else
             {
             this.expand = true;
-                this.render.setElementStyle('body', 'overflow','hidden');
-                this.render.setElementStyle('body', 'pointer-events','none');
-            /*jQuery("body").css({"overflow": "hidden", "pointer-events": "none"});*/
+                this.render.setElementClass(e.target.parentElement,'modal-open',true);
+
         }
         return this.expand;
     }
@@ -129,6 +129,7 @@ export class ImagesMedia implements OnInit {
 
     //makes sure to show first image and run the modifyMedia function once data has been established
     ngOnChanges(event) {
+
         if (typeof this.imageData != 'undefined') {
             //if data coming from module to variable mediaImages changes in what way then reset to first image and rerun function
             this.smallObjCounter = 0;
