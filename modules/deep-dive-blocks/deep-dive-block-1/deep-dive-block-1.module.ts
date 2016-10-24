@@ -83,14 +83,15 @@ export class DeepDiveBlock1 implements OnInit {
         this.currentBoxScores = currentBoxScores;
         if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
           if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
-            this.dateParam.date = boxScoresData.previousGameDate.event_date;
+            this.dateParam.date = boxScoresData.previousGameDate;
             // console.log('No games today new date', this.dateParam.date);
-            this.getBoxScores(this.dateParam);
+            // this.getBoxScores(this.dateParam);
           }
           return;
         }
     });
   }
+
 
   callModules(){
     this.getDeepDiveVideo();

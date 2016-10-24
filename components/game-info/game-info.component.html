@@ -1,5 +1,5 @@
 <div class="game" *ngIf="gameInfo">
-  <div class="game-title">
+  <div class="game-title ">
 
     <span
       *ngIf="!gameInfo.liveStatus"
@@ -31,10 +31,10 @@
   </div>
 </div>
 
-<div class="game-title game-cat">
-  <div class="game-title-headeCategory1"></div>
-  <div class="game-title-headeCategory2">
-    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category">{{cat}}</span>
+<div class="game-title game-cat row">
+  <div class="game-title-headeCategory1 col-sm-6"></div>
+  <div class="game-title-headeCategory2 col-sm-6 row">
+    <span *ngFor="let cat of gameInfo.dataPointCategories" class="game-title-category col-sm-4">{{cat}}</span>
   </div>
 </div>
 
