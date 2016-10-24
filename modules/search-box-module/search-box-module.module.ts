@@ -49,7 +49,6 @@ export class SearchBoxModule {
       this.modSearchSubTitle=GlobalSettings.getTCXscope(this.scope).searchSubTitle ;
       this.searchPlaceHolderText=GlobalSettings.getTCXscope(this.scope).placeHolderText;
       this.searchBoxBackground=GlobalSettings.getTCXscope(this.scope).searchBackground;
-      console.log(this.category);
   }
   //ssearchBoxDescription: string = 'Find the players and teams you love.';
   //searchPlaceHolderText: string = 'Search for a Team or Player...';

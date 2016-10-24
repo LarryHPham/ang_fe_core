@@ -30,7 +30,7 @@
 </section>
 
 <div class="modal" (keyup)="close($event)" [ngClass]="{'modal-open': expand == true}">
-    <div class="modal-exit" (click)="modalExpand()">X</div>
+    <div class="modal-exit" (click)="modalExpand($event)" >X</div>
     <div class="modal-container">
         <span [style.background-image]="backgroundImage"
               class="modal-container-img">
