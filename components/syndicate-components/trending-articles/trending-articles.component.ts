@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {SyndicateArticleService} from "../../../../services/syndicate-article.service";
+import {Router} from "@angular/router";
 
 
 declare var moment;
@@ -24,22 +25,40 @@ export class SyndicatedTrendingComponent {
     @Input() trendingData:any;
     @Input() category;
     @Input() subCategory;
+    @Input() articletype;
+    @Input() articleId;
+
 //http://dev-tcxmedia-api.synapsys.us/articles?source=tca&count=10&category=entertainment&subCategory=television
 
-    constructor(private _synService:SyndicateArticleService){}
+    constructor(private _synService:SyndicateArticleService, private router:Router){}
 
     private getDeepDiveArticle() {
         //var startNum=Math.floor((Math.random() * 29) + 1);
-         this._synService.getTrendingArticles(this.category,this.subCategory,20).subscribe(
-         data => {
-         this.articleData = this._synService.transformTrending(data.data);
-         if (this.trendingLength <= 20) {
+        if(this.subCategory) {
+            this._synService.getTrendingArticles(this.category, 40, this.subCategory).subscribe(
+                data => {
+                    this.articleData = this._synService.transformTrending(data.data,this.subCategory, this.articletype, this.articleId);
 
-         this.trendingLength = this.trendingLength + 10;
-         }
-         }
+                    if (this.trendingLength <= 40) {
 
-         )
+                        this.trendingLength = this.trendingLength + 10;
+                    }
+                }
+            )
+        }
+        else{
+            this._synService.getTrendingArticles(this.category,20).subscribe(
+                data => {
+                    this.articleData = this._synService.transformTrending(data.data,this.category, this.articletype, this.articleId);
+
+                    if (this.trendingLength <= 20) {
+
+                        this.trendingLength = this.trendingLength + 10;
+                    }
+                }
+
+            )
+        }
        /* this._synService.getDeepDiveBatchService(scope, numItems, startNum, state).subscribe(
             data => {
                 this.articleData = this._synService.transformTrending(data.data, currentArticleId);
@@ -78,6 +97,9 @@ export class SyndicatedTrendingComponent {
 
         return moment(date).format("MMMM DD, YYYY | h:mm A")
 
+    }
+    onNav(){
+        this.router.navigateByUrl(this.articleData.newsRoute)
     }
 }
 

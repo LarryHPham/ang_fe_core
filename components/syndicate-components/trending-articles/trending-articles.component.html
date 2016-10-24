@@ -22,9 +22,9 @@
                 <div class=" syndicated-trending-article-content_both col-sm-8 col-md-9 col-lg-6">
             <div class="syndicated-trending-article-content " [innerHTML]="item.teaser | safeHtml">
             </div>
-            <a [routerLink]="item.newsRoute">
+            <div (click)="onNav()">
                 <div class="syndicated-trending-read-more col-sm-12 col-md-7">Read the Story <i class="fa fa-arrow-right-1"></i></div>
-            </a>
+            </div>
                 </div>
             </div>
 
