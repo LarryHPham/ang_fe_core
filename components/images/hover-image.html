@@ -4,12 +4,12 @@
 <!--image (with hover link)-->
 <a *ngIf="imageData.urlRouteArray && !textOnly" [routerLink]="imageData.urlRouteArray" class="image-round-hover">
   <img [src]="imageData.imageUrl" [alt]="imageData.imageDesc" (error)="onError($event)" />
-  <div [innerHtml]="imageData.hoverText"></div>
+  <div class="dynamic-background-hover" [innerHtml]="imageData.hoverText"></div>
 </a>
 <!-- image with offsite url not router link -->
 <a *ngIf="imageData.url && !textOnly" href="{{imageData.url}}" target="_blank" class="image-round-hover">
   <img [src]="imageData.imageUrl" [alt]="imageData.imageDesc" (error)="onError($event)" />
-  <div [innerHtml]="imageData.hoverText"></div>
+  <div class="dynamic-background-hover" [innerHtml]="imageData.hoverText"></div>
 </a>
 
 <!--text (no image or hover link)-->
