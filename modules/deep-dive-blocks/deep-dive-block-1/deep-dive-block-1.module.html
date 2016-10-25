@@ -12,8 +12,9 @@
     <responsive-widget [embedPlace]="widgetPlace"></responsive-widget>
   </div>
    <!-- BOX SCORE -->
-  <div *ngIf="dateParam" class="deep-dive-module">
+  <div *ngIf="dateParam" class="deep-dive-boxScores row">
     <box-scores
+      class="col-lg-8"
       [boxScores]="currentBoxScores"
       [calendarParams]="dateParam"
       [maxHeight]="maxHeight"
@@ -23,7 +24,7 @@
     <!-- AiContent for BoxScores-->
     <game-article
       *ngIf="currentBoxScores && currentBoxScores.aiContent"
-      [gameArticle]="boxScores.aiContent"
+      [gameArticle]="currentBoxScores.aiContent"
       class="col-lg-4">
     </game-article>
   </div>

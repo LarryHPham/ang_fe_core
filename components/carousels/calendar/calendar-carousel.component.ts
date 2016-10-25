@@ -51,19 +51,23 @@ export class CalendarCarousel implements OnInit {
   } //ngOnInit
 
   ngOnChanges(event){
-    // console.log('CALENDAR NGONCHANGES',event);
     //any changes made to the input from outside will cause the fuction to rerun
     // console.log(this.chosenParam);
     if(event.chosenParam.previousValue.scope != null && event.chosenParam.currentValue.scope != event.chosenParam.previousValue.scope){// if route has changed
-
       var currentUnixDate = new Date().getTime();
       this.chosenParam.date = moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD');
-    }
-    if(this.chosenParam != null){
+      this.weeklyDates = null;
       this.callWeeklyApi(this.chosenParam)
       .subscribe( data => {
-        this.validateDate(this.chosenParam.date, this.weeklyDates);
+        this.validateDate(this.chosenParam.date, this.weeklyDates, true);
       })
+    }else{
+      if(this.chosenParam != null){
+        this.callWeeklyApi(this.chosenParam)
+        .subscribe( data => {
+          this.validateDate(this.chosenParam.date, this.weeklyDates);
+        })
+      }
     }
   }
 
