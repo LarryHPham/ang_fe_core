@@ -49,6 +49,12 @@ export class DatePicker implements AfterViewInit {
     this.init();
   }
 
+  ngOnChanges(event){
+    if(event.chosenParam.previousValue.scope != null && event.chosenParam.currentValue.scope != event.chosenParam.previousValue.scope){// if route has changed
+      this.monthlyDates = null;
+    }
+  }
+
   ngAfterViewInit() {
     this.curDateView = {scope: this.chosenParam.scope, teamId:this.chosenParam.teamId, date:this.chosenParam.date}
     this.callMonthApi(this.chosenParam)

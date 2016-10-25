@@ -31,6 +31,7 @@ export class DeepDiveBlock1 implements OnInit {
   dateParam: any;
   boxScoresTempVar: string = "nfl";
   boxScoresScroll: boolean= true;
+  safeCounter: number = 0;
 
   routeSubscription:any;
   constructor(private _boxScoresService: BoxScoresService, private _deepDiveData: DeepDiveService){
@@ -72,24 +73,31 @@ export class DeepDiveBlock1 implements OnInit {
 
   //API for Box Scores
   private getBoxScores(dateParams?) {
-    // console.log('1. deep-dive-page, getBoxScores - dateParams - ',dateParams);
-    if ( dateParams != null ) {
-      this.dateParam = dateParams;
-    }
-    // console.log('this.dateParam',this.dateParam);
-    // console.log(this.boxScoresData);
-    this._boxScoresService.getBoxScores(this.boxScoresData, this.dateParam.scope, this.dateParam, (boxScoresData, currentBoxScores) => {
+    if(this.safeCounter > 10){
+      // console.log('1. deep-dive-page, getBoxScores - dateParams - ',dateParams);
+      if ( dateParams != null ) {
+        this.dateParam = dateParams;
+      }
+      // console.log('this.dateParam',this.dateParam);
+      this._boxScoresService.getBoxScores(this.boxScoresData, this.dateParam.scope, this.dateParam, (boxScoresData, currentBoxScores) => {
         this.boxScoresData = boxScoresData;
         this.currentBoxScores = currentBoxScores;
         if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
           if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
-            this.dateParam.date = boxScoresData.previousGameDate;
-            // console.log('No games today new date', this.dateParam.date);
-            // this.getBoxScores(this.dateParam);
+            this.dateParam.date = boxScoresData.previousGameDate.event_date;
+            this.boxScoresData = null;
+            this.currentBoxScores = null;
+            this.safeCounter++;
+            this.getBoxScores(this.dateParam);
           }
           return;
         }
-    });
+      });
+    }else{
+      this.dateParam = null;
+      this.boxScoresData = null;
+      this.currentBoxScores = null;
+    }
   }
 
 
