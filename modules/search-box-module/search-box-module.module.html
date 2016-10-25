@@ -25,16 +25,17 @@
         class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />-->
         <input autocomplete="off"
         (keyup)="onKey($event)"
-        (keyup.enter)="navigateSearch()"
+        (keyup.enter)="navigateSearch($event)"
         placeholder="{{searchPlaceHolderText}}"
         class="search-input main searchcheck"  [ngClass]="category =='sports'? 'left-pad-dd':''" />
 
 
     </div>
-    <a href="{{fullSearchUrl}}"
+    <span
+      (click)="navigateSearch($event)"
       target="_blank"
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
-    </a>
+    </span>
   </div>
 </div>
