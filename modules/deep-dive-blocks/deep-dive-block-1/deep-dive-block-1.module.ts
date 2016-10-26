@@ -73,7 +73,7 @@ export class DeepDiveBlock1 implements OnInit {
 
   //API for Box Scores
   private getBoxScores(dateParams?) {
-    if(this.safeCounter > 10){
+    if(this.safeCounter < 10){
       // console.log('1. deep-dive-page, getBoxScores - dateParams - ',dateParams);
       if ( dateParams != null ) {
         this.dateParam = dateParams;
@@ -82,6 +82,7 @@ export class DeepDiveBlock1 implements OnInit {
       this._boxScoresService.getBoxScores(this.boxScoresData, this.dateParam.scope, this.dateParam, (boxScoresData, currentBoxScores) => {
         this.boxScoresData = boxScoresData;
         this.currentBoxScores = currentBoxScores;
+        this.safeCounter = 0;
         if(this.currentBoxScores == null && boxScoresData.transformedDate[dateParams.date] == null){
           if(boxScoresData.previousGameDate != null && boxScoresData.transformedDate[dateParams.date] == null){
             this.dateParam.date = boxScoresData.previousGameDate.event_date;
@@ -99,7 +100,6 @@ export class DeepDiveBlock1 implements OnInit {
       this.currentBoxScores = null;
     }
   }
-
 
   callModules(){
     this.getDeepDiveVideo();
