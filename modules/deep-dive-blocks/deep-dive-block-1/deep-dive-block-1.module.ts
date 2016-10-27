@@ -90,6 +90,8 @@ export class DeepDiveBlock1 implements OnInit {
             this.currentBoxScores = null;
             this.safeCounter++;
             this.getBoxScores(this.dateParam);
+          }else{
+            this.safeCounter = 0;
           }
           return;
         }
