@@ -1,11 +1,17 @@
 import {Component, Input, ViewChildren, OnChanges, EventEmitter, Output,ChangeDetectionStrategy} from '@angular/core';
-import {TableModel, TableColumn, CellData} from '../../components/custom-table/table-data.component';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TableHeader} from '../../components/custom-table/table-header.component';
+import {TableCell} from '../../components/custom-table/table-cell.component';
+import {TableModel, TableColumn, CellData} from '../../components/custom-table/table-data.component';
+import {CircleImage} from '../../components/images/circle-image';
+import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
+import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 @Component({
   selector: 'custom-table',
   templateUrl: './app/fe-core/components/custom-table/custom-table.component.html',
-  changeDetection:ChangeDetectionStrategy.OnPush
+  directives: [NoDataBox, TableHeader, TableCell, CircleImage, ROUTER_DIRECTIVES, ResponsiveWidget],
+  changeDetection:ChangeDetectionStrategy.CheckOnce
 })
 
 export class CustomTable implements OnChanges {

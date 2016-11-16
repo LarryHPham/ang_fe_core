@@ -25,7 +25,7 @@ export class TableHeader implements OnInit {
     this.isSortable = !this.headerData.ignoreSort;
     this.iconSortType = this.headerData.isNumericType ? "numeric" : "alpha";
     this.setSortIcon();
-
+    
   }
 
   setSortIcon() {
