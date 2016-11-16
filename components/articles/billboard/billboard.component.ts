@@ -11,8 +11,8 @@ export class BillboardComponent implements OnInit{
     dangerousBillBoardUrl:string;
     safeBillBoardUrl:SafeResourceUrl;
     @Input() partnerId;
-    @Input() teamId;
     @Input() scope;
+    @Input() teamId;
     //constructor(private _sanitizer:DomSanitizationService) {
     //}
 

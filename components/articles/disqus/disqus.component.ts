@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {GlobalSettings} from "../../../../global/global-settings";
 
 declare var DISQUS: any;
 
 @Component({
     selector: 'disqus-component',
-    templateUrl: './app/fe-core/components/articles/disqus/disqus.component.html',
-    inputs: ["comment"]
+    templateUrl: './app/fe-core/components/articles/disqus/disqus.component.html'
 })
 
 export class DisqusComponent implements OnInit{
+    @Input() comment:any;
     ngOnInit(){
         var script:any = document.createElement("script");
 

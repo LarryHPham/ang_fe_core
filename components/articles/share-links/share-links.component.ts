@@ -8,8 +8,8 @@ declare var stButtons:any;
 })
 
 export class ShareLinksComponent implements OnInit {
-    @Input() shareUrl:string;
     @Input() isMain:boolean;
+    @Input() shareUrl:string;
     shareLinks:Array<any>;
 
     getLinks() {
