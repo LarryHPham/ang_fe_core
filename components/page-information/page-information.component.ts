@@ -20,9 +20,10 @@ declare var stButtons: any;
 export class InfoComponent{
   @Input() infoData: infoData;
   currentUrl: string = window.location.href;
-  _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl(this.currentUrl);
-  _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl(this.currentUrl);
-  _siteLinkedinUrl: string = GlobalSettings.getLinkedInUrl(this.currentUrl);
+  // _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl(this.currentUrl); //TODO - old
+  _siteTwitterUrl: string = GlobalSettings.getSiteTwitterUrl();
+  // _siteFacebookUrl: string = GlobalSettings.getSiteFacebookUrl(this.currentUrl);//TODO - old
+  //_siteLinkedinUrl: string = GlobalSettings.getLinkedInUrl(this.currentUrl);//TODO - old
   _siteGoogleUrl: string = GlobalSettings.getSiteGoogleUrl(this.currentUrl);
   public locateShareThis = function(){
     stButtons.locateElements();
