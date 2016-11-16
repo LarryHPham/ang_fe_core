@@ -1,151 +1,106 @@
-.stackSmall {
-    .col-xs-12;
-    margin: 0 0 10px;
-    float:left;
-    height: 56px;
-    .flexDisplay;
-    &-image {
-      width: 100px;
-      background-color: @masterBackgroundColor;
-      margin-right: 10px;
-      height: 56px;
-    }
-    &-text {
-      line-height: 1.2em;
-      text-align: left;
-      width: auto;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      height: 3.7em;
-      max-width: ~"calc(100% - 110px)";
-      &-keyword {
-         text-transform: uppercase;
-         margin-bottom: 5px;
-         overflow: hidden;
-         text-overflow: ellipsis;
-         .globalDefaultModFont(10px, 800, @black);
-         > span:last-child{
-           margin-left: 5px;
-           color: @bulletGrey;
-           overflow: hidden;
-           height: 20px;
-           text-transform: none;
-         }
-      }
-      &-subHeadline {
-         .globalDefaultFont(12px, 400);
-         line-height: 1em;
-         max-height: 3em;
-         overflow: hidden;
-         @media @mobile{
-           max-height: 2em;
-         }
-         p{
-           line-height: 1em;
-         }
-      }
-    }
-    &:hover{
-      color: @masterBrandColor;
-      .image-rectangle-hover div{
-        .flexDisplay;
-      }
-    }
-}
 .stackRows{
-  height: 385px;
   overflow: hidden;
   padding: 0 10px;
   div:last-of-type {
-    .stacksmall {
-      margin-bottom:0;
-    }
-    .stackSmall-breakLine {
-      display:none;
-    }
+    .stacksmall {margin-bottom:0;}
   }
 }
-@media @small-grid {
-  .stackSmall {
-    .col-xs-6;
-    &-image{
-      margin-right: 5px;
+
+.stackSmall {
+    float:left;
+    .flexDisplay;
+    &-image {
+      background-color: @white;
+      margin-right: 10px;
+      min-width: 85px;
     }
     &-text{
-      width: 155px;
-      height: auto;
-      &-keyword{
-        height: auto;
-        overflow: visible;
+      .flexDisplay;
+      .flexDirection(column);
+      &-keyword {
+        display: inline-block;
+         margin-bottom: 5px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         text-transform: uppercase;
+         .globalDefaultModFont(10px, 800, @black);
+         > a{
+           margin-right: 5px;
+         }
+         > span:last-child{
+           color: @bulletGrey;
+           overflow: hidden;
+           height: 20px;
+           white-space: nowrap;
+         }
+      }
+      &-subHeadline {
+        .globalDefaultModFont(14px, 400, @black);
+        line-height: 1em;
+        margin-right: 15px;
+        p{line-height: 1em;}
       }
     }
+}
+.stackRow{padding-bottom: 15px; margin-bottom: 15px}
+.stackRow:nth-child(n+7){display: none}
+@media @mobile{
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
+    .flexDisplay;
   }
-  .stackRows {
-    height: 190px;
+  .stackRow:nth-child(6){
+    border-bottom: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
+  //Select all but the first six
 }
 @media @tablet {
   .stackSmall {
-    .col-xs-6;
+    &-image{min-width: 82px}
+    &-text {
+      &-keyword {z-index: 1}
+    }
+  }
+  .stackRow{
+    border-bottom: 1px solid @strokeGrey;
     margin-bottom: 15px;
-    &-text {
-      width: 180px;
-      height: 4.2em;
-      &-keyword {
-         > span:last-child{
-           height: 50px;
-         }
-      }
-    }
+    margin-right: 15px;
+    max-width: 47.5%;
+  }
+  .stackRow:nth-child(even){
+    max-width: 50%;
+    margin-right: 0;
   }
   .stackRows{
-    height: 200px;
     padding: 0;
+    margin-bottom: -15px;
   }
 }
 
-@media @desktop {
- .stackSmall {
-    &-text {
-      width: 200px;
-      height: 4em;
-      &-keyword {
-        font-size: 10px;
-      }
-      &-subHeadline{
-        font-size: 14px;
-        p{
-          line-height: 1.2em;
-        }
-      }
-    }
+@media @desktop-m {
+  .stackRows {
+      display: block;
+      height: auto;
+      overflow: visible;
+      margin-left: 15px;
   }
-}
-
-@media @desktop-xl {
-  .stackRows{
-    height: auto;
-    overflow: visible;
+  .stackRow{max-width: 100%}
+  .stackRow:nth-child(even){
+    max-width: 100%;
+    margin-right: 0;
   }
   .stackSmall {
-    margin: 20px 0 10px;
     width: 313px;
     height: auto;
     .col-xs-12;
-
-    &-image {
-      display: none;
-    }
+    &-image {display: none}
     &-text {
       height: auto;
       width: 313px;
       max-width: 313px;
-    }
-    &-breakLine {
-      display: inline-block;
-      width: 315px;
-      height: 1px;
-      background-color: @highlightGrey;
+      &-keyword{margin-left: 0}
     }
   }//stackSmall ends
 }
