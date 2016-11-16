@@ -66,28 +66,28 @@ export class CircleImage implements OnInit {
       var testImage = "/app/public/profile_placeholder.png";
       if(typeof this.data === undefined || this.data == null){
         this.data = {
-                      imageClass: "image-150",
-                      mainImage: {
-                        urlRouteArray: ['/syndicated-article'],
-                        imageUrl: testImage,
-                        imageClass: "border-large",
-                        hoverText: "<p>Test</p> Image",
-                        imageDesc: "Something about this image"
-                    },
-                    subImages: [
-                      {
-                        imageUrl: testImage,
-                        urlRouteArray: ['/syndicated-article'],
-                        hoverText: "<i class='fa fa-mail-forward'></i>",
-                        imageClass: "image-50-sub image-round-lower-right",
-                        imageDesc: "Something about this image"
-                      },
-                      {
-                        text: "#1",
-                        imageClass: "image-38-rank image-round-upper-left image-round-sub-text"
-                      }
-                    ],
-                  }
+            imageClass: "image-150",
+            mainImage: {
+              urlRouteArray: ['/syndicated-article'],
+              imageUrl: testImage,
+              imageClass: "border-large",
+              hoverText: "<p>Test</p> Image",
+              imageDesc: "Something about this image"
+          },
+          subImages: [
+            {
+              imageUrl: testImage,
+              urlRouteArray: ['/syndicated-article'],
+              hoverText: "<i class='fa fa-mail-forward'></i>",
+              imageClass: "image-50-sub image-round-lower-right",
+              imageDesc: "Something about this image"
+            },
+            {
+              text: "#1",
+              imageClass: "image-38-rank image-round-upper-left image-round-sub-text"
+            }
+          ],
+        }
       }
     }
 }
