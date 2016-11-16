@@ -7,8 +7,8 @@ import { GlobalSettings } from '../../../global/global-settings';
 import { VerticalGlobalFunctions } from '../../../global/vertical-global-functions';
 
 // Interfaces
-import { DataItem, ProfileHeaderData } from "../../../services/profile-header.service";
 import { CircleImageData } from "../../interfaces/image-data";
+import { DataItem, ProfileHeaderData } from "../../../services/profile-header.service";
 
 //pipes
 import { NaValuePipe } from "../../pipes/na.pipe";
