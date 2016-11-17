@@ -9,5 +9,7 @@ declare var moment;
 })
 
 export class VideoStackComponent{
+  @Input() page: number;
+  @Input() isProfilePage:boolean;
   @Input() videoData: Array<VideoStackData>;
 }
