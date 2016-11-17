@@ -4,7 +4,6 @@ declare var stButtons:any;
 @Component({
     selector: 'share-links-component',
     templateUrl: './app/fe-core/components/articles/share-links/share-links.component.html'
-
 })
 
 export class ShareLinksComponent implements OnInit {
