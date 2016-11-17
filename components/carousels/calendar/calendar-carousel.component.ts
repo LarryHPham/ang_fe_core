@@ -228,7 +228,6 @@ export class CalendarCarousel implements OnInit {
   }
 
   validateDate(selectedDate, dateArray, firstRun?) {
-    // console.log('5. calendar-carousel - validateDate - dateArray - ', dateArray);
     var curUnix = moment(selectedDate,"YYYY-MM-DD").unix()*1000;
     var validatedDate = 0;
     var minDateUnix =  Number(dateArray[0].unixDate);
