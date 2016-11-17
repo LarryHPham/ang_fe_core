@@ -1,5 +1,5 @@
 import {Component,OnInit,EventEmitter,Input} from '@angular/core';
-import {DeepDiveService} from '../../../services/deep-dive.service';
+// import {DeepDiveService} from '../../../services/deep-dive.service';
 import {GlobalFunctions} from '../../../global/global-functions';
 
 declare var jQuery:any;
@@ -15,7 +15,7 @@ export class CarouselDiveModule{
   @Input() state:any;
   @Input() videoData: any;
 
-  constructor(private _deepdiveservice:DeepDiveService){
+  constructor(){
     window.addEventListener("resize", this.onResize);
   }
 
