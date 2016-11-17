@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RectangleImageData } from '../../components/images/image-data';
+import { StackRowsComponent } from '../../components/stack-rows/stack-rows.component';
 // import { StackRowsInput } from '../../components/stack-rows/stack-rows.component';
 // import { StackTopInput } from '../../components/article-stacktop/article-stacktop.component';
 
