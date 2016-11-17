@@ -1,17 +1,32 @@
-<a class="stacktop" [routerLink]="stackTopData.articleStackRoute">
+<div *ngFor="let item of stackTopData;">
   <div class="stacktop-title">
     <div class="stacktop-title-date">
-      <span [innerHTML]="stackTopData.keyword | safeHtml"></span>
-      <span  [innerHTML]="stackTopData.date"></span>
+      <span><a class="stacktop-title-keyword" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a></span>
+      <span class="font-weight-normal" [innerHTML]="item.timeStamp | safeHtml"></span>
     </div>
-    <div class="stacktop-title-headline" [innerHTML]="stackTopData.headline | safeHtml"></div>
   </div>
-  <div class="stacktop-titleinfo">
-    <span class="stacktop-titleinfo-provider" [innerHTML]="stackTopData.provider1 | safeHtml"></span>
-    <span class="stacktop-titleinfo-provider-pub" [innerHTML]="stackTopData.provider2 | safeHtml"></span>
-  </div>
-  <div class="stacktop-image">
-    <rectangle-image [data]="stackTopData.imageConfig"></rectangle-image>
-  </div>
-  <div class="stacktop-desc" [innerHTML]="stackTopData.description | safeHtml"></div>
-</a>
+  <a *ngIf="!item.extUrl" class="stacktop" [routerLink]="item.articleUrl">
+    <div class="stacktop-title-headline" [innerHTML]="item.title | safeHtml"></div>
+    <div class="stacktop-titleinfo">
+      <span class="stacktop-titleinfo-provider">
+        <span class='font-weight-normal'>Written By: </span><span class='text-master' [innerHTML]="item.author + item.publisher | safeHtml"></span>
+      </span>
+    </div>
+    <div class="stacktop-image">
+      <rectangle-image [data]="item.imageConfig"></rectangle-image>
+    </div>
+    <div class="stacktop-desc" [innerHTML]="item.teaser | safeHtml"></div>
+  </a>
+  <a *ngIf="item.extUrl" class="stacktop" href="{{item.articleUrl}}">
+    <div class="stacktop-title-headline" [innerHTML]="item.title | safeHtml"></div>
+    <div class="stacktop-titleinfo">
+      <span class="stacktop-titleinfo-provider">
+        <span class='font-weight-normal'>Written By: </span><span class='text-master' [innerHTML]="item.author + item.publisher | safeHtml"></span>
+      </span>
+    </div>
+    <div class="stacktop-image">
+      <rectangle-image [data]="item.imageConfig"></rectangle-image>
+    </div>
+    <div class="stacktop-desc" [innerHTML]="item.teaser | safeHtml"></div>
+  </a>
+</div>

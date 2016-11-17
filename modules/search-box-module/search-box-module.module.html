@@ -1,12 +1,12 @@
-<div class="search-box-module-container container-fluid" [ngStyle]="{'background-image':'url('+searchBoxBackground+')'}">
+<div *ngIf="searchData" class="search-box-module-container container-fluid" [ngStyle]="{'background-image':'url('+searchData.searchBackground+')'}">
 <!--
   <article-search-bar [searchTitle]="modSearchTitle" [searchSubTitle]="modSearchSubTitle" [subCategoryList]="sportsList" [isSearchModule]="true" [scope]="scope"></article-search-bar>
 -->
   <h4 class="search-box-module-header">
-    {{modSearchTitle}}
+    {{searchData.searchModTitle}}
   </h4>
   <p class="search-box-module-desc">
-    {{modSearchSubTitle}}
+    {{searchData.searchSubText}}
   </p>
 
   <div class="search-box-container">
@@ -15,8 +15,8 @@
     <search [searchInput]="searchInput" [isModule]="true" [DDarray]="sportsList"></search>
 -->
     <div class="search-input-container">
-        <span *ngIf=" category == 'sports' " class="category-dropdown">
-            <dropdown [list]="sportsList" [selectedKey]="scope.toUpperCase()" icon="caret-down" ddtitle='Select A Sport'  (selectionChanged)="selectedSport($event) "></dropdown>
+        <span *ngIf="searchData.searchScopeDropdown" class="category-dropdown">
+            <dropdown [list]="searchData.searchScopeDropdown" [selectedKey]="scope.toUpperCase()" icon="caret-down" ddtitle='Select A Sport'  (selectionChanged)="selectedSport($event) "></dropdown>
         </span>
         <!--<input
         (keyup)="onKey($event)"
@@ -26,8 +26,8 @@
         <input autocomplete="off"
         (keyup)="onKey($event)"
         (keyup.enter)="navigateSearch($event)"
-        placeholder="{{searchPlaceHolderText}}"
-        class="search-input main searchcheck"  [ngClass]="category =='sports'? 'left-pad-dd':''" />
+        placeholder="{{searchData.searchPlaceHolderText}}"
+        class="search-input main searchcheck"  [ngClass]="searchData.searchScopeDropdown ? 'left-pad-dd':''" />
 
 
     </div>
