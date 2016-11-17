@@ -12,15 +12,14 @@ declare var jQuery:any;
 @Component({
     selector: 'trending-component',
     templateUrl: './app/fe-core/components/articles/trending/trending.component.html',
-    providers: [DeepDiveService],
-    inputs: ['currentArticleId']
+    providers: [DeepDiveService]
 })
 
 export class TrendingComponent implements OnInit {
     @Input() currentArticleId:string;
-    @Input() scope:string;
     @Input() eventType:string;
     @Input() geoLocation:string;
+    @Input() scope:string;
     public params;
     hasRun:boolean = false;
     throttle:any;
