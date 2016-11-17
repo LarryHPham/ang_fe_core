@@ -1,6 +1,47 @@
-<larousel [videoData]="videoData" [graphData]="graphData" [carData]="carData" (displayedData)="displayArray($event)" (displayedItem)="checkCurrent($event)">
+<larousel [videoData]="videoData" [graphData]="graphData" [carData]="carData" [toggleData]="toggleData" (displayedData)="displayArray($event)" (displayedItem)="checkCurrent($event)">
   <template  [ngIf]="displayedItems">
     <template  ngFor let-item [ngForOf]="displayedItems">
+      <!-- BELOW TOGGLE CAROUSEL -->
+      <div class="newsbox" *ngIf="item.type == 'toggle'" [ngClass]="{'clone': item.type == 'clone'}">
+        <div class="carousel_toggle">
+          <img src="{{item.data.midImage}}" onerror="this.src='/app/public/Image-Placeholder-2.jpg'" alt="Football Image"/>
+          <div class="carousel_toggle-container">
+            <img src="{{item.data.nfl.image}}" onerror="this.src='/app/public/Image-Placeholder-2.jpg'" alt="Football Image"/>
+            <div class="carousel_toggle-container-left">
+              <div class="carousel_toggle-container-content">
+                <div class="carousel_toggle-mainText">
+                    {{item.data.nfl.title}}
+                </div>
+                <div class="carousel_toggle-subText">
+                    {{item.data.nfl.subtext}}
+                </div>
+                <button (click)="routeNavigate(item.data.nfl.buttonScope)" class="{{item.data.nfl.buttonClass}}">
+                  <span class="carousel_toggle-button-text1">{{item.data.nfl.scope}}</span>
+                  <span class="carousel_toggle-button-text2">{{item.data.nfl.buttonText}}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel_toggle-container">
+            <img src="{{item.data.ncaaf.image}}" onerror="this.src='/app/public/Image-Placeholder-2.jpg'" alt="Football Image"/>
+            <div class="carousel_toggle-container-right">
+              <div class="carousel_toggle-container-content">
+                <div class="carousel_toggle-mainText">
+                    {{item.data.ncaaf.title}}
+                </div>
+                <div class="carousel_toggle-subText">
+                    {{item.data.ncaaf.subtext}}
+                </div>
+                <button (click)="routeNavigate(item.data.ncaaf.buttonScope)" class="{{item.data.ncaaf.buttonClass}}">
+                  <span class="carousel_toggle-button-text1">{{item.data.ncaaf.scope}}</span>
+                  <span class="carousel_toggle-button-text2">{{item.data.ncaaf.buttonText}}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ABOVE TOGGLE CAROUSEL -->
       <!-- BELOW VIDEO CAROUSEL -->
       <div class="newsbox"
       *ngIf="item.type == 'video' || item.type == 'clone'"

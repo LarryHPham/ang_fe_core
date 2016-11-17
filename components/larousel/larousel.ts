@@ -13,6 +13,7 @@ export class Larousel implements OnChanges{
   @Input() current:any;
   @Input() graphData: any;
   @Input() videoData: any;
+  @Input() toggleData: any;
   @Input() carData: any;
   public currentScroll = 0;
   public rightText:string = '0px';
@@ -29,6 +30,7 @@ export class Larousel implements OnChanges{
   private boundary:any = {};
 
   private transition:any = '';
+  private transition2:any = '';
 
   @Input('show-item-num') totalItems:number;
   @Input('loop') loop:boolean;
@@ -42,6 +44,13 @@ export class Larousel implements OnChanges{
   private originalData: any;
   private displayedItems:any;
   private currentItem:any;
+
+  private prevImage:any;
+  private currentImage:any;
+  private nextImage:any;
+  private imageTransition:string = '0px';
+  private transitionDirection:any;
+
   private clones:number = 1;
   constructor(private _elRef: ElementRef){
 
@@ -68,12 +77,24 @@ export class Larousel implements OnChanges{
     //push in video items first this can probably handle arguments in future
     var startLength = ssItems.length;
 
+    if(this.toggleData != null){
+      this.toggleData.forEach(function(val, index){
+        ssItems.push({
+          id: startLength + index,
+          data:val,
+          type:'toggle'
+        })
+      });
+      startLength = ssItems.length
+    }
+
     if(this.graphData != null){
       ssItems.push({
         id: startLength,
         data:this.graphData,
         type:'graph'
       })
+      startLength = ssItems.length
     }
 
     if(this.videoData != null){
@@ -84,9 +105,10 @@ export class Larousel implements OnChanges{
           type:'video'
         })
       });
+      startLength = ssItems.length
     }
+
     //push in carousels items next this can probably handle arguments in future
-    startLength = ssItems.length;
     if(this.carData != null){
       this.carData.forEach(function(val, index){
         ssItems.push({
@@ -95,9 +117,9 @@ export class Larousel implements OnChanges{
           type:'carousel'
         })
       });
+      startLength = ssItems.length; //get total valid items
     }
 
-    startLength = ssItems.length; //get total valid items
     for(var c = 1; c <= this.clones; c++){
       //push clones at end of array
       ssItems.push({
@@ -194,17 +216,29 @@ export class Larousel implements OnChanges{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
+    console.log('displayedItems',this.displayedItems);
     this.displayedData.emit(this.displayedItems);
   }
 
   left(event) {
     //moves the current scroll over the item size
     this.currentScroll -= (this.itemSize);
+    this.transitionDirection = 'left';
+    if(this.currentScroll < 0){
+      this.currentScroll = (this.itemSize * this.maxLength-1);
+    }
     this.checkCurrent(this.currentScroll);
   }
+
   right(event) {
     this.currentScroll += this.itemSize;
-    this.checkCurrent(this.currentScroll);
+    this.transitionDirection = 'right';
+    if(this.maxLength >= Math.round(this.currentScroll/this.itemSize)){
+      this.checkCurrent(this.currentScroll);
+    }else{
+      this.currentScroll = 0;
+      this.checkCurrent(this.currentScroll);
+    }
   }
 
   //For mobile screen swiping events
@@ -265,9 +299,10 @@ export class Larousel implements OnChanges{
     let currentItem;
     //set maxScroll and minScroll if loops is set to false
     if(!this.loop){
-      this.minScroll = currentScroll < (this.itemSize * this.clones);
-      this.maxScroll = !((this.maxLength) > Math.round(currentScroll/(this.itemSize)));
+      this.minScroll = this.currentScroll < (this.itemSize * this.clones);
+      this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
     }
+
     let pos = Math.round((currentScroll / this.itemSize));
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
     if(pos > (this.maxLength-(this.clones*2))){//if position is larger or same as the length of array
@@ -277,26 +312,66 @@ export class Larousel implements OnChanges{
     }else{
       currentItem = pos;
       this.transition = "score-transition2";
+      this.transition2 = "score-transition2";
     }
+    console.log('currentItem',currentItem);
     //if pos (position) is between then round to nearest  whole number and move carousel
-    this.currentScroll = Math.round(currentItem) * this.itemSize;
-    this.currentItem = this.originalData[currentItem];
-    this.displayedItem.emit(this.currentItem);
-    this.carouselCount.emit(Math.round(pos));
+    this.currentScroll = Math.round(pos) * this.itemSize;
+    this.currentItem = this.originalData[(Math.round(pos))];
+    this.carouselCount.next(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 
+    //this will determine which direction the image is going to transition (from left function || right function)
+    if(this.transitionDirection == 'right'){//shift image left
+      this.imageTransition = (this.itemSize*2)+'px';
+    }else{//shift image right start at item.size
+      this.imageTransition = '0px';
+    }
     //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
     setTimeout(function(){
-      if(pos <= this.clones){
+      self.transition2 = "";
+      if(pos <= 0){
         self.transition = "";
         self.currentScroll = (self.maxLength-2) * self.itemSize;
         self.rightText = self.currentScroll+'px';
       }
-      if(pos >= self.maxLength - this.clones){
+      if(pos >= self.maxLength - 1){
         self.transition = "";
         self.currentScroll = self.itemSize;
         self.rightText = self.currentScroll+'px';
       }
+      self.imageTransition = self.itemSize+'px';
+      self.preLoadImage();
     },200);
+  }
+
+  preLoadImage(){
+    let currentItem = this.currentItem;
+    let prevNum = Number(this.currentItem.id);
+    let nextNum = Number(this.currentItem.id) + 2
+
+    this.prevImage = this.imageCase(this.displayedItems[prevNum]);
+    this.currentImage = this.imageCase(currentItem);
+    this.nextImage = this.imageCase(this.displayedItems[nextNum]);
+  }
+
+  imageCase(currentItem){
+    let currentImage;
+    let currentType = currentItem != null ? currentItem.type: null;
+    switch(currentType){
+      case "toggle":
+      currentImage = '';
+      break;
+      case "carousel":
+      currentImage = currentItem.data.image_url;
+      break;
+      case "video":
+      currentImage = currentItem.data.thumbnail;
+      break;
+      default:
+      currentImage = '';
+      break;
+    }
+    return currentImage;
   }
 }
