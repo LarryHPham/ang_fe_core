@@ -19,11 +19,6 @@ export class CarouselDiveModule{
     window.addEventListener("resize", this.onResize);
   }
 
-  formatDate(date) {
-    // return moment(date, "YYYY-MM-Do, h:mm:ss").format("MMM. Do, YYYY h:mm:ss a");
-    return GlobalFunctions.sntGlobalDateFormatting(date,"timeZone");
-  }
-
   ngOnInit() {
 
     setTimeout(function(){
