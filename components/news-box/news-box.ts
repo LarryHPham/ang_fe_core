@@ -13,11 +13,15 @@ export class NewsBox{
   @Input() graphData: any;
   @Input() videoData: any;
   @Input() carData: any;
+  @Input() toggleData: any;
+
   private displayedItems: any;
   private currentDisplayed: any;
 
   constructor(private _elRef: ElementRef){
+  }
 
+  ngOnChanges(){
   }
 
   checkCurrent(item){

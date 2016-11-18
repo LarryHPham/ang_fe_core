@@ -1,0 +1,34 @@
+<div class="main-article large-article">
+    <span *ngIf="eventType">
+        <a [routerLink]="['Article-pages', {eventType: eventType, eventID: mainEventID}]">
+            <img class="main-article-image" [src]="mainImage"
+                 onerror="this.src='http://images.synapsys.us/TDL/stock_images/TDL_Stock-3.png'"
+                 alt="Article main image"/>
+            <div class="main-article-container">
+                <div class="main-article-container-title" [ngStyle]="titleFontSize">
+                    {{mainTitle}}
+                </div>
+                <div class="main-article-container-content">
+                    <span class="main-article-container-content-text" [innerHTML]="mainContent + '' | safeHtml"></span>...
+                    <span class="main-article-container-content-read-more">Read More</span>
+                </div>
+            </div>
+        </a>
+    </span>
+</div>
+
+<div class="main-article small-article">
+    <span *ngIf="eventType">
+        <div class="main-article-container-keyword">{{keyword}} <span
+                class="main-article-container-date">{{timeStamp}}</span></div>
+        <a [routerLink]="['Article-pages', {eventType: eventType, eventID: mainEventID}]">
+            <div class="main-article-container-title" [ngStyle]="titleFontSize">
+                {{mainTitle}}
+            </div>
+            <div class="main-article-image" [style.background-image]="'url(' + mainImage + ')'"></div>
+            <div class="main-article-container-content-small">
+                <span class="main-article-container-content-text-small" [innerHTML]="mainContent | safeHtml"></span>
+            </div>
+        </a>
+    </span>
+</div>

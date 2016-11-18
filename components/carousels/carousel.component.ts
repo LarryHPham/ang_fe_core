@@ -17,7 +17,6 @@ export class Carousel implements OnInit, OnChanges {
   public scrollRight = new EventEmitter();
   public scrollLeft = new EventEmitter();
 
-  public schedule:boolean;
   public counter: number = 0;
   public max: number = 0;
   // public type2:boolean; unused
