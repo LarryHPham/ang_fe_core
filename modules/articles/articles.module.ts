@@ -1,5 +1,4 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
-import {HeadlineData} from "../../../global/global-interface";
 import {GlobalFunctions} from '../../../global/global-functions';
 import {HeadlineDataService} from "../../../services/headline-module-service";
 import {Router, ActivatedRoute} from '@angular/router';
