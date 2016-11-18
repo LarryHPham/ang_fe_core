@@ -1,3 +1,4 @@
+
 <template ngFor let-item [ngForOf]="textItems">
   <span *ngIf="item.text != 'empty'">
     <a *ngIf="item.route" [routerLink]="item.route" class="main-text" [innerHtml]="item.text | safeHtml"></a>

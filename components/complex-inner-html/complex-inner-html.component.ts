@@ -1,5 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Link} from '../../../global/global-interface';
+
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Link } from '../../../global/global-interface';
+import { SanitizeHtml } from "../../pipes/safe.pipe";
 
 @Component({
     selector: 'complex-inner-html',
@@ -11,8 +14,7 @@ import {Link} from '../../../global/global-interface';
            z-index: 1;
        }
     `],
-    templateUrl: './app/fe-core/components/complex-inner-html/complex-inner-html.component.html',
-    providers: []
+    templateUrl: './app/fe-core/components/complex-inner-html/complex-inner-html.component.html'
 })
 
 export class ComplexInnerHtml {
