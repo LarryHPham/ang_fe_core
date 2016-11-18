@@ -1,6 +1,5 @@
 import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Injectable} from '@angular/core';
-import {TransactionsService} from '../../../services/transactions.service';
 
 import {TransactionsListItem, TransactionsListInput} from '../../components/transactions-list-item/transactions-list-item.component';
 import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
@@ -52,7 +51,7 @@ export class TransactionsComponent implements OnInit {
   private selectedFilterTitle: string;
   private tabsLoaded: {[index:number]:string};
 
-  constructor(private _transactionsService:TransactionsService) {}
+  constructor() {}
 
   ngDoCheck() {
     if ( this.newSelectionMade == true ) {

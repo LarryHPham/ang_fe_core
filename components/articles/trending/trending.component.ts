@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {HeadlineDataService} from "../../../../services/headline-module-service";
+// import {HeadlineDataService} from "../../../../services/headline-module-service";
 import {GlobalFunctions} from "../../../../global/global-functions";
 import {GlobalSettings} from "../../../../global/global-settings";
 import {VerticalGlobalFunctions} from "../../../../global/vertical-global-functions";
@@ -11,8 +11,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'trending-component',
-    templateUrl: './app/fe-core/components/articles/trending/trending.component.html',
-    providers: [DeepDiveService]
+    templateUrl: './app/fe-core/components/articles/trending/trending.component.html'
 })
 
 export class TrendingComponent implements OnInit {
@@ -28,42 +27,42 @@ export class TrendingComponent implements OnInit {
     public imageData:any;
     public trendingData:any;
     public trendingLength:number = 10;
-    partnerID:string;
+    // partnerID:string;
 
     constructor(private _router:Router,
-                private _headlineDataService:HeadlineDataService,
+                // private _headlineDataService:HeadlineDataService,
                 private _deepDiveService:DeepDiveService) {
-        GlobalSettings.getParentParams(_router, parentParams => {
-            this.partnerID = parentParams.partnerID;
-        });
+        // GlobalSettings.getParentParams(_router, parentParams => {
+        //     this.partnerID = parentParams.partnerID;
+        // });
     }
 
     private getTrendingArticles(count, currentArticleId) {
-        if (this.eventType != "story" && this.eventType != "video") {
-            this._headlineDataService.getAiTrendingData(count, this.scope).subscribe(
-                data => {
-                    if (!this.hasRun) {
-                        this.hasRun = true;
-                        this.trendingData = this.transformTrending(data['data'], currentArticleId);
-                        if (this.trendingLength <= 100) {
-                            this.trendingLength = this.trendingLength + 10;
-                        }
-                    }
-                }
-            )
-        } else {
-            this._deepDiveService.getDeepDiveBatchService(this.scope, count, 1, this.geoLocation).subscribe(
-                data => {
-                    if (!this.hasRun) {
-                        this.hasRun = true;
-                        this.trendingData = this.transformTrending(data['data'], currentArticleId);
-                        if (this.trendingLength <= 100) {
-                            this.trendingLength = this.trendingLength + 10;
-                        }
-                    }
-                }
-            )
-        }
+        // if (this.eventType != "story" && this.eventType != "video") {
+        //     this._headlineDataService.getAiTrendingData(count, this.scope).subscribe(
+        //         data => {
+        //             if (!this.hasRun) {
+        //                 this.hasRun = true;
+        //                 this.trendingData = this.transformTrending(data['data'], currentArticleId);
+        //                 if (this.trendingLength <= 100) {
+        //                     this.trendingLength = this.trendingLength + 10;
+        //                 }
+        //             }
+        //         }
+        //     )
+        // } else {
+        //     this._deepDiveService.getDeepDiveBatchService(this.scope, count, 1, this.geoLocation).subscribe(
+        //         data => {
+        //             if (!this.hasRun) {
+        //                 this.hasRun = true;
+        //                 this.trendingData = this.transformTrending(data['data'], currentArticleId);
+        //                 if (this.trendingLength <= 100) {
+        //                     this.trendingLength = this.trendingLength + 10;
+        //                 }
+        //             }
+        //         }
+        //     )
+        // }
     }
 
     ngOnInit() {
@@ -85,7 +84,7 @@ export class TrendingComponent implements OnInit {
             var articleData;
             if (self.eventType != "story" && self.eventType != "video") {
                 if (val.event_id != currentArticleId) {
-                    var date = GlobalFunctions.sntGlobalDateFormatting(moment.unix(val.last_updated), 'timeZone');
+                    var date = "TODO";
                     val["date"] = date;
                     articleData = {
                         title: val.title,
@@ -94,13 +93,13 @@ export class TrendingComponent implements OnInit {
                         eventId: val.event_id,
                         eventType: "pregame-report",
                         image: GlobalSettings.getImageUrl(val.image_url),
-                        url: VerticalGlobalFunctions.formatArticleRoute("pregame-report", val.event_id),
+                        url: "TODO",
                         rawUrl: window.location.protocol + "//" + window.location.host + "/" + self.scope + "/articles/pregame-report/" + val.event_id
                     };
                 }
             } else {
                 if (val.id != currentArticleId) {
-                    var date = GlobalFunctions.sntGlobalDateFormatting(val.publishedDate, 'timeZone');
+                    var date = "TODO";
                     val["date"] = date;
                     articleData = {
                         title: val.title,
@@ -109,7 +108,7 @@ export class TrendingComponent implements OnInit {
                         eventId: val.id,
                         eventType: "story",
                         image: GlobalSettings.getImageUrl(val.imagePath),
-                        url: VerticalGlobalFunctions.formatArticleRoute("story", val.id),
+                        url: "TODO",
                         rawUrl: window.location.protocol + "//" + window.location.host + "/" + self.scope + "/articles/story/" + val.id
                     };
                 }
