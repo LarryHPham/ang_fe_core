@@ -1,11 +1,10 @@
 import {Component, Input, Output, OnInit, DoCheck, EventEmitter} from '@angular/core';
 
+//interfaces
 import {SchedulesCarousel, SchedulesCarouselInput} from '../carousels/schedules-carousel/schedules-carousel.component';
-import {CustomTable} from '../custom-table/custom-table.component';
 import {TableModel} from '../custom-table/table-data.component';
-import {LoadingComponent} from '../loading/loading.component';
-import {DropdownComponent} from '../../components/dropdown/dropdown.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
+
+
 
 export interface TableTabData<T> {
   title: string;
