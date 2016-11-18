@@ -1,4 +1,7 @@
 // height should only be specified for the module when it's on a profile page
+.images-media{
+  height:100%;
+}
 .profile-carousel-container {
 
   .carousel {
@@ -8,38 +11,16 @@
       width: 100%;
     }
   }
-
-  @media @mobile {
-    .expand-button {
-         color:@white;
-      &:hover {
-        color: @white;
-        background-color: @textEmphasisGrey;;
-      }
-    }
-  }
 }
 
 .carousel {
-
   width: 100%;
+  height:100%;
   position: relative;
-  .img-fluid{
-    @media @mobile{
-
-    }
-  }
-
 }
 
 .container {
-  @media @mobile{
-    margin: 10px 0px;
-    padding: 0px;
-  }
-  @media @tablet{
-    padding: 0px;
-  }
+  height: 100%;
   width: 100%;
   position: relative;
   &-img {
@@ -51,10 +32,29 @@
     background-repeat: no-repeat;
     &-navigation {
       position: relative;
-      top: 48%;
       .flexDisplay;
       .flexAlignItems(center);
       .flexJustify(flex-end);
+      @media @new-mobile{
+        top: 39%;
+        .sliders-left, .sliders-right{
+          .globalDefaultFont(20px, 400);
+          width: 20px;
+          height: 50px;
+          background-color: @masterBrandColor;
+          .flexDisplay;
+          .flexDirection(column);
+          .flexJustify(center);
+        }
+        .sliders-left{border-radius: 0 12px 12px 0}
+        .sliders-right{border-radius: 12px 0 0 12px}
+      }
+      @media @new-tablet{
+        top: 43%;
+        .sliders-left, .sliders-right{
+          .globalDefaultFont(60px, 400);
+        }
+      }
     }
   }
 
@@ -97,7 +97,10 @@
     }
   }
   &-title {
+    width: ~"calc(100% - 270px)";
     text-align: left;
+    .line-clamp;
+    .line-clamp-1;
     @media @mobile {
       display: none;
     }
@@ -122,11 +125,7 @@
   top: 10px;
   left: 25px;
 }
-.expand-button{
-  .fa{
-    color: @white;
-  }
-}
+
 .expand-button {
   cursor: pointer;
   width: 35px;
@@ -142,13 +141,11 @@
   padding-left: 8px;
   font-size: 16px;
   color: @white;
-
-  &:hover {
-    .fa {
-      color: @black;
-
-    }
+}
+@media @new-tablet{
+  .expand-button:hover {
     background-color: @white;
+    color: @textEmphasisGrey;
   }
 }
 

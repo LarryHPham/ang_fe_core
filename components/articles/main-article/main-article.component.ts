@@ -8,6 +8,7 @@ import {Component, Input}  from "@angular/core";
 export class ArticleMainComponent {
     @Input() eventType:any;
     @Input() keyword:any;
+    @Input() league:any;
     @Input() mainContent:any;
     @Input() mainEventID:any;
     @Input() mainImage:any;

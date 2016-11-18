@@ -4,17 +4,17 @@ import {Component, Input, OnInit } from "@angular/core";
 @Component({
     selector: 'article-schedule-component',
     templateUrl: './app/fe-core/components/articles/article-schedule/article-schedule.component.html',
-    inputs: ['articleData', 'league', 'homeData', 'awayData']
 })
 
 export class ArticleScheduleComponent implements OnInit {
-    @Input() homeData:any;
+    @Input() articleData:any;
     @Input() awayData:any;
+    @Input() homeData:any;
     homeHex:string;
     awayHex:string;
     gradient:Object;
     defaultGradient:string;
-    public league:boolean;
+    public isLeague:boolean;
 
     ngOnInit() {
     }
