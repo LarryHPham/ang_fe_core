@@ -18,10 +18,11 @@ export interface MediaImageItem {
 })
 
 export class ImagesMedia implements OnInit {
-    @Input() imageData:string;
-    @Input() copyright:string;
-    @Input() imageTitle:string;
-    @Input() isProfilePage:boolean;
+    @Input() profHeader: any;
+    @Input() imageData: string;
+    @Input() copyright: string;
+    @Input() imageTitle: string;
+    @Input() isProfilePage: boolean;
 
     expand:boolean = false;
     isSmall:boolean = false;
@@ -42,13 +43,15 @@ export class ImagesMedia implements OnInit {
     displayCounter:number;
     imageCredit:string;
     description:string;
-    profHeader:any;
+    //profHeader:any;
     arraySize:number = 5;
     modHeadData:ModuleHeaderData;
 
 
-    constructor(private _sanitizer:DomSanitizer, private elementRef:ElementRef, private render:Renderer) {
-    }
+    constructor(
+      private _sanitizer:DomSanitizer,
+      private elementRef:ElementRef,
+      private render:Renderer) {}
 
     modalExpand(e) {
         console.log(e);
@@ -129,7 +132,6 @@ export class ImagesMedia implements OnInit {
 
     //makes sure to show first image and run the modifyMedia function once data has been established
     ngOnChanges(event) {
-
         if (typeof this.imageData != 'undefined') {
             //if data coming from module to variable mediaImages changes in what way then reset to first image and rerun function
             this.smallObjCounter = 0;
