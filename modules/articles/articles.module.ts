@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {HeadlineData} from "../../../global/global-interface";
 import {GlobalFunctions} from '../../../global/global-functions';
-import {HeadlineDataService} from "../../../services/headline-module-service";
+// import {HeadlineDataService} from "../../../services/headline-module-service";
 import {Router, ActivatedRoute} from '@angular/router';
 import {ModuleHeaderData} from "../../components/module-header/module-header.component";
 import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 import {GlobalSettings} from "../../../global/global-settings";
-import {ImagesService} from "../../../services/carousel.service";
+// import {ImagesService} from "../../../services/carousel.service";
 
 declare var moment:any;
 declare var jQuery:any;
@@ -42,8 +42,8 @@ export class ArticlesModule implements OnInit {
 
     public scope: string;
     public leagueModTitle: string;
-    public sportLeagueAbbrv: string = GlobalSettings.getSportLeagueAbbrv().toLowerCase();
-    public collegeDivisionFullAbbrv: string = GlobalSettings.getCollegeDivisionFullAbbrv();
+    public sportLeagueAbbrv: string = "TODO";
+    public collegeDivisionFullAbbrv: string = "TODO";
 
     public headerInfo:ModuleHeaderData = {
         moduleTitle: "",
@@ -60,9 +60,9 @@ export class ArticlesModule implements OnInit {
             }
         );
 
-        GlobalSettings.getParentParams(this._router, parentParams => {
-            this.scope = parentParams.scope;
-        });
+        // GlobalSettings.getParentParams(this._router, parentParams => {
+        //     this.scope = parentParams.scope;
+        // });
 
     }
 
@@ -104,8 +104,10 @@ export class ArticlesModule implements OnInit {
     getHeaderData(header) {
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
-            this.timeStamp = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"defaultDate");
-            var dateString = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"shortDate"); // mm/dd/yy
+            // this.timeStamp = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"defaultDate");
+            this.timeStamp = "TODO";
+            // var dateString = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"shortDate"); // mm/dd/yy
+            var dateString = "TODO"; // mm/dd/yy
             var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
             var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
             if (isPost) {

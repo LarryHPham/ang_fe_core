@@ -13,7 +13,7 @@
   width: 100%;
   display: inline-block;
   overflow: hidden;
-  @media @new-mobile {
+  @media @mobile {
     width: 100%;
     padding-top: 10px;
   }
@@ -25,12 +25,12 @@
       .globalDefaultModFont(22px, 400, #ff3131);
       text-align: left;
       margin-right: 10px;
-      @media @new-mobile {margin: 0 10px}
+      @media @mobile {margin: 0 10px}
     }
     &-text {
       .globalDefaultFont(22px, 400);
       text-align: left;
-      @media @new-mobile {font-size: 20px}
+      @media @mobile {font-size: 20px}
     }
   }
 
@@ -39,14 +39,14 @@
     .flexJustify(space-between);
     margin: 15px 0 0;
     &-blocks{width: 100%}
-    @media @new-mobile {
+    @media @mobile {
       display: block;
       margin-top: 15px;
       &-blocks .blocks-image:last-child{
         .recommendations-articles-six-content{margin-bottom: 0}
       }
     }
-    @media @new-tablet{
+    @media @tablet{
       &-blocks .blocks-image:first-child{padding-right: 10px}
       &-blocks .blocks-image:nth-child(2){padding-right: 5px; padding-left: 5px}
       &-blocks .blocks-image:last-child{padding-left: 10px}
@@ -79,7 +79,7 @@
         position: relative;
         top: 15px;
         margin: -10px 0 35px;
-        @media @new-mobile {
+        @media @mobile {
           top: auto;
           margin: 10px 0 14px 10px;
         }
@@ -97,7 +97,7 @@
       }
     }
   }
-  @media @new-mobile{
+  @media @mobile{
     &:last-child{margin-bottom: 30px}
   }
 }
@@ -209,7 +209,7 @@
 }
 
 //Media Queries for .deep_recs elements;
-@media @new-mobile {
+@media @mobile {
   .deep_recs {
     .row{margin-right: 10px}
     display: inline-block;
@@ -356,6 +356,6 @@
   }
 }
 
-@media @new-mobile {
+@media @mobile {
   .news-headline {font-size:20px}
 }
