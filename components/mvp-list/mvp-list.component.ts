@@ -1,9 +1,6 @@
 import { Injectable, Component, OnInit, DoCheck, Output, EventEmitter, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-//globals
-import { VerticalGlobalFunctions } from '../../../global/vertical-global-functions';
-
 //interfaces
 import { DetailedListItem, DetailListInput } from '../../components/detailed-list-item/detailed-list-item.component';
 import { SliderCarousel, SliderCarouselInput } from '../../components/carousels/slider-carousel/slider-carousel.component';
