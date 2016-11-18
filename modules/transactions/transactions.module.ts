@@ -1,10 +1,10 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Injectable, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
 
-import {ModuleFooter, FooterStyle, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {TransactionsComponent, TransactionTabData} from '../../components/transactions/transactions.component';
+//interfaces
+import { ModuleFooter, ModuleFooterData } from '../../components/module-footer/module-footer.component';
+import { ModuleHeader, ModuleHeaderData } from '../../components/module-header/module-header.component';
+import { TransactionTabData } from '../../components/transactions/transactions.component';
 
 export interface TransactionModuleData {
   tabs: Array<TransactionTabData>;

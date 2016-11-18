@@ -1,14 +1,11 @@
-import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
-import {Injectable} from '@angular/core';
-import {TransactionsService} from '../../../services/transactions.service';
+import { Component, OnInit, Injectable, Output, EventEmitter, Input } from '@angular/core';
 
-import {TransactionsListItem, TransactionsListInput} from '../../components/transactions-list-item/transactions-list-item.component';
-import {SliderCarousel, SliderCarouselInput} from '../../components/carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../../components/tabs/tabs.component';
-import {Tab} from '../../components/tabs/tab.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
-import {DropdownComponent} from "../../components/dropdown/dropdown.component";
-import {LoadingComponent} from '../../components/loading/loading.component';
+//services
+import { TransactionsService } from '../../../services/transactions.service';
+
+//interfaces
+import { TransactionsListInput } from '../../components/transactions-list-item/transactions-list-item.component';
+import { SliderCarousel, SliderCarouselInput } from '../../components/carousels/slider-carousel/slider-carousel.component';
 
 export interface TransactionTabData {
   tabDataKey: string;
