@@ -1,0 +1,26 @@
+.content-container {
+  text-align: left;
+  width: 100%;
+  @media @fluid {
+    width: 100%;
+  }
+  a {
+    color: @masterBrandColor;
+    font-weight: 800;
+    &:hover {
+      color: @black;
+    }
+  }
+}
+
+.content {
+  .globalDefaultFont(14px, 400);
+  line-height: 21px;
+  position: relative;
+  top: 5px;
+  &-first {
+    margin: 10px auto 0;
+    display: inline-block;
+    line-height: 1.5em;
+  }
+}

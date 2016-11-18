@@ -1,24 +1,8 @@
 .art-hdr {
-
-  div:nth-child(2){
-    color:@facebook;
-  }
-  div:nth-child(3){
-    color:@twitter;
-  }
-  div:nth-child(4){
-    color:@linkedin;
-  }
-  div:nth-child(5){
-    color:@googlePlus;
-  }
-
   .share {
     font-size: 16px;
     position: relative;
     top: 15px;
-    height: 30px;
-
   }
   .st_sharethis_large {
     cursor: pointer;
@@ -38,19 +22,16 @@
     }
   }
   .shareOptions {
-    margin-right: 5px;
-    display: inline-flex;
+    display:none;
   }
-  .globalDefaultModFont(16px, 400, #5ab53f);
+  .globalDefaultModFont(18px, 400, #5ab53f);
   .flexDisplay;
   .flexAlignItems(center);
 }
 @media @mobile {
   .art-hdr {
-      .globalDefaultModFont(16px, 400, #5ab53f);
-      margin: 10px 0px;
-
-
+    margin-top: 15px;
+    padding-bottom: 15px;
   }
   .st_sharethis_large {
     span {
