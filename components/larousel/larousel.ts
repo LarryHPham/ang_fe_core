@@ -216,7 +216,6 @@ export class Larousel implements OnChanges{
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
-    console.log('displayedItems',this.displayedItems);
     this.displayedData.emit(this.displayedItems);
   }
 
@@ -314,10 +313,10 @@ export class Larousel implements OnChanges{
       this.transition = "score-transition2";
       this.transition2 = "score-transition2";
     }
-    console.log('currentItem',currentItem);
     //if pos (position) is between then round to nearest  whole number and move carousel
     this.currentScroll = Math.round(pos) * this.itemSize;
-    this.currentItem = this.originalData[(Math.round(pos))];
+    this.currentItem = this.originalData[currentItem];
+    this.displayedItem.emit(this.currentItem);
     this.carouselCount.next(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 
