@@ -58,13 +58,12 @@ export class ImagesMedia implements OnInit {
         console.log(this.expand);
         if (this.expand == true) {
             this.expand = false;
-            this.render.setElementClass(e.target.parentElement,'modal-open',false);
+            this.render.setElementClass(e.target.parentElement, 'modal-open', false);
 
 
-        } else
-            {
+        } else {
             this.expand = true;
-                this.render.setElementClass(e.target.parentElement,'modal-open',true);
+            this.render.setElementClass(e.target.parentElement, 'modal-open', true);
 
         }
         return this.expand;
