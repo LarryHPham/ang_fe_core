@@ -1,7 +1,7 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GlobalFunctions } from '../../../global/global-functions';
 
+//interfaces
 import { ModuleHeader, ModuleHeaderData } from '../../components/module-header/module-header.component';
 
 @Component({
@@ -45,6 +45,13 @@ export class SchedulesModule{
     }
     modHeadData: ModuleHeaderData;
 
+    toLowerKebab(str:string):string {
+        str = str.toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[\.,']/g, '');
+        return str;
+    }
+
     getFooter(tabDisplay?){
         this.modHeadData = {
           moduleTitle: "Weekly Schedules <span class='mod-info'>- " + this.profHeader.profileName + "</span>",
@@ -61,11 +68,11 @@ export class SchedulesModule{
             this.dropdownKey1 = new Date().getFullYear().toString();
           }
           if(matches == 'pregame'){
-            url = ['Schedules-page-team',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName),
+            url = ['Schedules-page-team',{teamName:this.toLowerKebab(this.profHeader.profileName),
               year:'all',teamId:this.teamID,
               pageNum:1}];
           }else{
-            url = ['Schedules-page-team-tab',{teamName:GlobalFunctions.toLowerKebab(this.profHeader.profileName),
+            url = ['Schedules-page-team-tab',{teamName:this.toLowerKebab(this.profHeader.profileName),
               year:this.dropdownKey1, tab: matches,teamId:this.teamID,
               pageNum:1}]
           }
