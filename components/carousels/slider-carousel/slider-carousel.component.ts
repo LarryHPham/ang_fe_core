@@ -224,7 +224,7 @@ export class SliderCarousel implements OnInit {
           },
           {//Last Updated line
             class: 'scc-details-type1-date',
-            textData: item.lastUpdatedDate ? ["Last Updated On " + GlobalFunctions.sntGlobalDateFormatting(item.lastUpdatedDate,"dayOfWeek")] : []
+            textData: item.lastUpdatedDate ? ["Last Updated: TODO "] : []
           }
         ],
       imageConfig: {
@@ -292,7 +292,7 @@ export class SliderCarousel implements OnInit {
           },
           {//Last Updated line
             class: 'scc-details-type2-date',
-            textData: item.lastUpdatedDate ? ["Last Updated On " + GlobalFunctions.sntGlobalDateFormatting(item.lastUpdatedDate,"dayOfWeek")] : []
+            textData: item.lastUpdatedDate ? ["Last Updated: TODO"] : []
           }
         ],
       imageConfig: {

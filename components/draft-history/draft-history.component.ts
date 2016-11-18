@@ -1,7 +1,7 @@
 import {Component, OnInit, OnChanges, Input} from '@angular/core';
 
-import {ListPageService} from '../../../services/list-page.service';
-import {DraftHistoryTab, DraftHistoryService} from '../../../services/draft-history.service';
+// import {ListPageService} from '../../../services/list-page.service';
+// import {DraftHistoryTab, DraftHistoryService} from '../../../services/draft-history.service';
 
 import {IProfileData} from '../../modules/profile-header/profile-header.module';
 import {SliderCarouselInput} from '../carousels/slider-carousel/slider-carousel.component';
@@ -19,7 +19,8 @@ export class DraftHistoryComponent implements OnInit {
  */
   @Input() type: string;
 
-  private dataArray: Array<DraftHistoryTab>;
+  // private dataArray: Array<DraftHistoryTab>;
+  private dataArray: any;
 
   private carouselDataArray: Array<Array<SliderCarouselInput>>;
 
@@ -31,40 +32,43 @@ export class DraftHistoryComponent implements OnInit {
 
   private currentTab: any;
 
-  constructor(private _draftService:DraftHistoryService) {}
+  constructor(
+    //private _draftService:DraftHistoryService
+  ) {}
 
   ngOnInit() {
-    if ( this.profileData != null ) {
-      this.dataArray = this._draftService.getDraftHistoryTabs(this.profileData);
-      if ( this.dataArray && this.dataArray.length > 0 ) {
-        this.getDraftPage(this.dataArray[0], "1");
-      }
-    }
-    this.currentTab = this.dataArray[0];
+    // if ( this.profileData != null ) {
+    //   this.dataArray = this._draftService.getDraftHistoryTabs(this.profileData);
+    //   if ( this.dataArray && this.dataArray.length > 0 ) {
+    //     this.getDraftPage(this.dataArray[0], "1");
+    //   }
+    // }
+    // this.currentTab = this.dataArray[0];
   }
 
-  getDraftPage(tab: DraftHistoryTab, sortBy) {
-    if ( tab.isLoaded ) {
-      if ( tab.paginationDetails ) {
-        tab.paginationDetails.index = this.currentIndex + 1;
-      }
-      this.carouselDataArray = tab.carouselDataArray;
-    }
-    this._draftService.getDraftHistoryService(this.profileData, tab, this.currentIndex, this.type, sortBy)
-        .subscribe(
-            draftData => {
-              tab.isLoaded = true;
-              tab.detailedDataArray = draftData.detailedDataArray;
-              tab.carouselDataArray = draftData.carouselDataArray;
-              tab.paginationDetails = draftData.paginationDetails;
-              this.carouselDataArray = tab.carouselDataArray;
-            },
-            err => {
-              tab.isLoaded = true;
-              this.isError = true;
-              console.log('Error: draftData API: ', err);
-            }
-        );
+  // getDraftPage(tab: DraftHistoryTab, sortBy) {
+  getDraftPage(tab: any, sortBy) {
+    // if ( tab.isLoaded ) {
+    //   if ( tab.paginationDetails ) {
+    //     tab.paginationDetails.index = this.currentIndex + 1;
+    //   }
+    //   this.carouselDataArray = tab.carouselDataArray;
+    // }
+    // this._draftService.getDraftHistoryService(this.profileData, tab, this.currentIndex, this.type, sortBy)
+    //     .subscribe(
+    //         draftData => {
+    //           tab.isLoaded = true;
+    //           tab.detailedDataArray = draftData.detailedDataArray;
+    //           tab.carouselDataArray = draftData.carouselDataArray;
+    //           tab.paginationDetails = draftData.paginationDetails;
+    //           this.carouselDataArray = tab.carouselDataArray;
+    //         },
+    //         err => {
+    //           tab.isLoaded = true;
+    //           this.isError = true;
+    //           console.log('Error: draftData API: ', err);
+    //         }
+    //     );
   }
 
   selectedTab(tabTitle) {

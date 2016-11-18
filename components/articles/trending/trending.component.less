@@ -8,8 +8,8 @@
   @media (min-width: 385px) and (max-width: 476px){padding-top: ~'calc(1.5em * 4)'}
   @media (min-width: 477px) and (max-width: 566px){padding-top: ~'calc(1.5em * 5)'}
   @media @small-grid{padding-top: ~'calc(1.42em * 6)'}
-  @media (min-width: 640px) and @new-mobile{padding-top: ~'calc(1.5em * 7)'}
-  @media @new-tablet{padding-top: 0}
+  @media (min-width: 640px) and @mobile{padding-top: ~'calc(1.5em * 7)'}
+  @media @tablet{padding-top: 0}
   &-text{
     display: block;
     max-width: 100%;
@@ -17,16 +17,16 @@
     top: -2px;
     bottom: 0;
     line-height: 1.57em;
-    @media @new-mobile{position: absolute}
-    @media @new-tablet{max-height: ~'calc(1.5em * 6)'}
+    @media @mobile{position: absolute}
+    @media @tablet{max-height: ~'calc(1.5em * 6)'}
     @media (min-width: 830px){max-height: ~'calc(1.5em * 7)'}
-    @media @new-desktop-m{max-height: ~'calc(1.5em * 9)'}
+    @media @desktop-m{max-height: ~'calc(1.5em * 9)'}
   }
 }
 
 .featured-articles{
-  @media @new-mobile{display: none}
-  @media @new-tablet{
+  @media @mobile{display: none}
+  @media @tablet{
     background-color: @masterBrandColor;
     display: inline-block;
     height: 85px;
@@ -38,7 +38,7 @@
     .globalDefaultModFont(10px, 400, @white);
     i{font-size: 30px}
   }
-  @media @new-desktop-l{right: 10px}
+  @media @desktop-l{right: 10px}
 }
 .featured-tag {
   background-color: @masterBrandColor;
@@ -234,7 +234,7 @@
 
 .trending-small {
   width: 100%;
-  @media @new-mobile{padding: 0 10px}
+  @media @mobile{padding: 0 10px}
   &-hr-title {
     background-color: @strokeGrey;
     width: 100%;
@@ -281,14 +281,14 @@
       .trending-small-article-read-more {color: @black}
     }//hover ends
     &-img{
-      @media @new-mobile{padding-right: 5px}
-      @media @new-tablet{padding-right: 15px}
+      @media @mobile{padding-right: 5px}
+      @media @tablet{padding-right: 15px}
     }
     &-title {
       .globalDefaultFont(18px, 800);
       text-align: left;
       margin: 10px 0 10px;
-      @media @new-tablet{font-size: 28px; width: ~'calc(100% - 80px)'}
+      @media @tablet{font-size: 28px; width: ~'calc(100% - 80px)'}
     }
     &-date{
       margin-bottom: 15px;
@@ -304,7 +304,7 @@
       padding-top: 15px;
       text-align: left;
       display: inline-block;
-      @media @new-mobile{width: 40%}
+      @media @mobile{width: 40%}
     }
   }//trending-small-article ends
 }
