@@ -113,8 +113,6 @@ export class ComparisonModule implements OnInit, OnChanges {
                 this.teamTwoPlayerList = this.modelData.playerLists[1].playerList;
             }
             if ( this.modelData.data && this.tabs ) {
-                console.log('---ngOnChanges---');
-                console.log('this.modelData.data - ',this.modelData.data);
                 this.formatData(this.modelData.data);
                 this.modelData.loadTeamList(teamList => {
                     this.teamList = teamList;
@@ -189,8 +187,6 @@ export class ComparisonModule implements OnInit, OnChanges {
     }
 
     setupTile(player: PlayerData): ComparisonTileInput {
-      console.log('---setUpTile---');
-      console.log('playerData - ',player);
         var playerName = player.playerFirstName != null && player.playerLastName != null ? player.playerFirstName + ' ' + player.playerLastName : 'N/A';
         var teamName = player.teamMarket + ' ' + player.teamName;
 
