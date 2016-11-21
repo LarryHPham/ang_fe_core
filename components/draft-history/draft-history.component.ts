@@ -13,10 +13,6 @@ import {SliderCarouselInput} from '../carousels/slider-carousel/slider-carousel.
 
 export class DraftHistoryComponent implements OnInit {
   @Input() profileData: IProfileData;
-
-/**
- * 'page' or 'module'
- */
   @Input() type: string;
 
   // private dataArray: Array<DraftHistoryTab>;
