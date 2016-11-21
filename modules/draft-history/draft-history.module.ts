@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, Injectable, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-// import { ProfileHeaderService } from '../../../services/profile-header.service';
 
 import { IProfileData } from "../profile-header/profile-header.module";
 
