@@ -3,6 +3,7 @@ import {CircleImageData} from '../images/image-data';
 
 
 export interface scheduleBoxInput{
+  eos:any;
   date:string;
   awayImageConfig:CircleImageData,
   homeImageConfig:CircleImageData,
@@ -31,6 +32,7 @@ export class ScheduleBox{
     ngOnInit(){
       if(typeof this.boxData == 'undefined'){
         this.boxData = [{
+          eos: 'false',
           date:"[Month] [DD] [YYYY] <i class='fa fa-circle'></i> [Time PM]",
           awayImageConfig:{//interface is found in image-data.ts
               imageClass: 'image-44',
