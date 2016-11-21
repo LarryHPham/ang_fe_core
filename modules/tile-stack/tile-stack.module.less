@@ -3,7 +3,9 @@
   min-width: 320px;
   margin: 0 auto;
   height: auto;
-
+  &-items{
+    display:block;
+  }
   &-item {
     height: 180px;
     width:100%;
@@ -31,7 +33,8 @@
 }
 @media @tablet {
   .tile-stack {
-    width: 610px;
+    width: 100%;
+    max-width: 1086px;
     height: 141px;
     margin: 0 auto;
     &-items{
@@ -56,21 +59,14 @@
   }
 }
 
-@media @desktop-m {
+@media @desktop-l {
   .tile-stack {
-    width: 670px;
+    height: 220px;
+    margin-left:3px;
     &-item {
       &-text {
         font-size:20px;
       }
     }
-  }
-}
-
-@media @desktop-xl {
-  .tile-stack {
-    width: 1086px;
-    height: 220px;
-    margin-left:3px;
   }
 }
