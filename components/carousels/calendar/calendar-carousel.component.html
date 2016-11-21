@@ -2,7 +2,7 @@
 <div class="calendar-picker" *ngIf="chosenParam && weeklyApi" (window:resize)="onWindowLoadOrResize($event)">
 
   <div class="calendar-picker-carousel" *ngIf="windowWidth >= 768">
-    <div class="calendar-picker-circles left" (click)="left()"><i class="fa fa-angle-left-1"></i></div>
+    <div class="calendar-picker-circles left" (click)="left()"><i class="fa fa-angle-left"></i></div>
     <div class="calendar-picker-dates">
       <span *ngFor="let dates of weeklyDates">
         <div class="calendar-picker-dates-select" *ngIf="dates.clickable" [class.active]="dates.active == true" [class.dynamic-background]="dates.active == true" [class.hover]="dates.clickable == true && dates.active == false" (click)="setActive(dates)">
@@ -17,11 +17,11 @@
         </div>
       </span>
     </div>
-    <div class="calendar-picker-circles right" (click)="right()"><i class="fa fa-angle-right-1"></i></div>
+    <div class="calendar-picker-circles right" (click)="right()"><i class="fa fa-angle-right"></i></div>
   </div>
 
   <div class="calendar-picker-carousel" *ngIf="windowWidth < 768">
-    <div class="calendar-picker-circles left" (click)="leftDay()"><i class="fa fa-angle-left-1"></i></div>
+    <div class="calendar-picker-circles left" (click)="leftDay()"><i class="fa fa-angle-left"></i></div>
     <div class="calendar-picker-dates">
       <span *ngFor="let dates of weeklyDates">
         <div class="calendar-picker-dates-select" *ngIf="dates.clickable" [class.active]="dates.active == true" [class.hover]="dates.clickable == true && dates.active == false" [class.dynamic-color-hover]="dates.clickable == true && dates.active == false" (click)="setActive(dates)">
@@ -32,7 +32,7 @@
         </div>
       </span>
     </div>
-    <div class="calendar-picker-circles right" (click)="rightDay()"><i class="fa fa-angle-right-1"></i></div>
+    <div class="calendar-picker-circles right" (click)="rightDay()"><i class="fa fa-angle-right"></i></div>
   </div>
 
 
