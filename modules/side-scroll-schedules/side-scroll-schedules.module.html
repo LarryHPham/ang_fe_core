@@ -28,7 +28,7 @@
     </span>
 
   </div>
-  <side-scroll *ngIf="usableData && localTopScope != 'sports' && localTopScope != 'entertainment'" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
+  <side-scroll *ngIf="usableData && localTopScope != 'sports' && localTopScope != 'entertainment' && sideScrollData" (reloadSame)="reloadSame($event)" (carouselCount)="counter($event)" [current]="curCount" [maxLength]="scrollLength" [data]="sideScrollData">
     <template ngFor let-item [ngForOf]="usableData.blocks">
       <schedule-box *ngIf="item" [topScope]="localTopScope" [scope]="scope" [boxData]="item"></schedule-box>
     </template>
