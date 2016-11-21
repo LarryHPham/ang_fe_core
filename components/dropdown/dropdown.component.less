@@ -1,6 +1,5 @@
 .dropdown {
   position: relative;
-
   &-hdr {
     background-color: @backgroundGrey;
     padding: 7px 10px 0;
@@ -16,10 +15,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       b{
-        @media @mobile{
-          display: none;
-        }
-
+        @media @mobile{display: none}
       }
     }
 
@@ -33,12 +29,9 @@
   &-active, &:hover {
     border-color: @masterBrandColor;
     cursor: pointer;
-
   }
 
-  &-wrapper {
-    position: relative;
-  }
+  &-wrapper {position: relative}
 
   &-list {
     background-color: @white;
@@ -47,25 +40,17 @@
     border-bottom-right-radius: 3px;
     width: 100%;
     height: 162px;
-
     position: absolute;
     top: 32px;
     z-index: 100;
-
     &-scroll .scrollable-item {
       height: 160px;
-
       .dropdown-list-option {
         padding: 10px 9px;
         box-sizing: content-box;
         width:100%;
       }
-
-      &-scroller {
-        border-radius: 5px;
-        //background: @textEmphasisGrey;
-      }
-
+      &-scroller {border-radius: 5px}
       &.showScroll::after {
         right: 5px;
         background-color: @backgroundGrey;
@@ -78,12 +63,7 @@
       .globalDefaultFont(12px, 400);
       padding: 10px 8px;
       border-bottom: 1px solid @strokeGrey;
-
-
-      &:last-child {
-        border-bottom: none;
-      }
-
+      &:last-child {border-bottom: none}
       &.active, &:hover {
         cursor: pointer;
         background-color: @masterBrandColor;
@@ -91,13 +71,6 @@
         margin-left: 0px !important;
         padding-left:14px !important;
         border-color: @masterBackgroundColor;
-        /*@media @mobile{
-          width:73% !important;
-        }*/
-        /*@media @tablet {
-          width: 83% !important;
-        }*/
-
         &.dropdown-grp-lbl {
           cursor: default;
           background-color: @white;
@@ -108,10 +81,7 @@
   }
 
   .dropdown-grp {
-    &-lbl {
-      color: @bulletGrey;
-    }
-
+    &-lbl {color: @bulletGrey}
     &-item-txt {
       padding-left: 15px;
       display: block;
@@ -127,7 +97,6 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     z-index: 101; //to move caret-top above dropdown
-
     &::after {
       content: '';
       position: absolute;
@@ -138,18 +107,14 @@
       border-right: 9px solid transparent;
     }
 
-    &-hover::after, &-active::after {
-      border-bottom-color: @backgroundGrey;
-    }
+    &-hover::after, &-active::after {border-bottom-color: @backgroundGrey}
   }
 
   .scrollable-item-wrapper {
     max-height:100%;
     overflow:scroll;
   }
-  .scrollable-item-scroller{
-    width: 5px;
-  }
+  .scrollable-item-scroller{width: 5px}
   .droptitle{
     position: relative;
     top: 12px;
@@ -166,7 +131,5 @@
   }
 }
 .hy{
-  @media @mobile{
-    display:none;
-  }
+  @media @mobile{display:none}
 }
