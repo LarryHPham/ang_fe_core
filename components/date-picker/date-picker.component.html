@@ -1,6 +1,6 @@
 
 <div class="calendar-picker-selection">
-  <i class="fa fa-calendar-1"></i>
+  <i class="fa fa-calendar"></i>
   <input type="text"
      (click)="openDatepicker()"
      [value]="viewValue"
@@ -15,13 +15,13 @@
   <div class="controls">
     <div class="left">
       <i class="fa fa-backward prev-year-btn" (click)="prevYear()"></i>
-      <i class="fa fa-angle-left-1 prev-month-btn" (click)="prevMonth()"></i>
+      <i class="fa fa-angle-left prev-month-btn" (click)="prevMonth()"></i>
     </div>
     <span class="date" [innerHTML]="dateValue">
       <!-- {{ dateValue }} -->
     </span>
     <div class="right">
-      <i class="fa fa-angle-right-1 next-month-btn" (click)="nextMonth()"></i>
+      <i class="fa fa-angle-right next-month-btn" (click)="nextMonth()"></i>
       <i class="fa fa-forward next-year-btn" (click)="nextYear()"></i>
     </div>
   </div>
