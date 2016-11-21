@@ -14,7 +14,7 @@ export interface MediaImageItem {
 
 @Component({
     selector: 'images-media-carousel',
-    templateUrl: './app/fe-core/components/carousels/images-media-carousel/images-media-carousel.component.html',
+    templateUrl: './app/fe-core/components/carousels/images-media-carousel/images-media-carousel.component.html'
 })
 
 export class ImagesMedia implements OnInit {

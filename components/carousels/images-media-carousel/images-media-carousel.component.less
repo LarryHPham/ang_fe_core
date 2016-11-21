@@ -1,7 +1,8 @@
 // height should only be specified for the module when it's on a profile page
-.images-media{
-  height:100%;
+.images-media {
+  height: 100%;
 }
+
 .profile-carousel-container {
 
   .carousel {
@@ -17,7 +18,7 @@
 
   @media @mobile {
     .expand-button {
-         color:@white;
+      color: @white;
       &:hover {
         color: @white;
         background-color: @textEmphasisGrey;;
@@ -28,7 +29,7 @@
 
 .carousel {
   width: 100%;
-  height:100%;
+  height: 100%;
   position: relative;
 }
 
@@ -48,9 +49,9 @@
       .flexDisplay;
       .flexAlignItems(center);
       .flexJustify(flex-end);
-      @media @mobile{
+      @media @mobile {
         top: 39%;
-        .sliders-left, .sliders-right{
+        .sliders-left, .sliders-right {
           .globalDefaultFont(20px, 400);
           width: 20px;
           height: 50px;
@@ -59,12 +60,18 @@
           .flexDirection(column);
           .flexJustify(center);
         }
-        .sliders-left{border-radius: 0 12px 12px 0}
-        .sliders-right{border-radius: 12px 0 0 12px}
+
+        .sliders-left {
+          border-radius: 0 12px 12px 0
+        }
+
+        .sliders-right {
+          border-radius: 12px 0 0 12px
+        }
       }
-      @media @tablet{
+      @media @tablet {
         top: 43%;
-        .sliders-left, .sliders-right{
+        .sliders-left, .sliders-right {
           .globalDefaultFont(60px, 400);
         }
       }
@@ -155,7 +162,8 @@
   font-size: 16px;
   color: @white;
 }
-@media @tablet{
+
+@media @tablet {
   .expand-button:hover {
     background-color: @white;
     color: @textEmphasisGrey;
