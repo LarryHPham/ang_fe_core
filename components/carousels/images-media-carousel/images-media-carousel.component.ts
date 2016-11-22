@@ -54,8 +54,7 @@ export class ImagesMedia implements OnInit {
       private render:Renderer) {}
 
     modalExpand(e) {
-        console.log(e);
-        console.log(this.expand);
+
         if (this.expand == true) {
             this.expand = false;
             this.render.setElementClass(e.target.parentElement, 'modal-open', false);
@@ -102,6 +101,7 @@ export class ImagesMedia implements OnInit {
     }
 
     modifyMedia(images, copyright, imageTitle, forward = true):Array<MediaImageItem> {
+        console.log(images, copyright,imageTitle);
         if (this.modalButton) {//just so the carousel knows that the expand button is
             this.expandText = 'Collapse';
             this.expandIcon = 'fa-compress';
@@ -126,6 +126,7 @@ export class ImagesMedia implements OnInit {
                 newImageArray.push({id: index, image: images[index]});
             }
         }
+        console.log(newImageArray,"what ever");
         return newImageArray;
     }
 
@@ -160,6 +161,7 @@ export class ImagesMedia implements OnInit {
                 }
             }
         }
+
     }
 
     ngOnInit() {

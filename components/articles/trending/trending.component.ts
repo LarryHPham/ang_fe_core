@@ -14,6 +14,5 @@ export class TrendingComponent {
     @Input() trendingData:string;
 
     ngOnInit(){
-        //console.log(this.trendingData,"trending data");
     }
 }
