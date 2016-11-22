@@ -13,7 +13,7 @@
         <div class="search-dropdown-caret"></div>
         <div class="search-dropdown-title">Suggestions</div>
         <div *ngIf="dropdownList.length === 0" class="autocomplete-error">
-          <i class="fa fa-search-icon-01"></i>
+          <i class="fa fa-search-icon"></i>
           <span class="error-text">
             Sorry we can’t find any results matching your search request.
           </span>
@@ -23,7 +23,7 @@
             <a [routerLink]="item.routerLink" class="search-dropdown-item searchcheck" [ngClass]="{active: (i === selectedIndex)}">
               <!-- <span class="search-dropdown-item-img"><circle-image [data]="item.imageUrl"></circle-image></span> -->
               <span class="search-dropdown-item-title" [innerHtml]="item.title"></span>
-              <!-- <i class="fa fa-angle-right-1"></i> -->
+              <!-- <i class="fa fa-angle-right"></i> -->
             </a>
           </li>
         </ul>

@@ -25,7 +25,7 @@ export class VideoModule implements OnInit,OnChanges {
   ngOnInit(){
     this.embedUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.firstVideo);
   } //ngOnInit
-  
+
   ngOnChanges(){
     if(this.isProfilePage){
       this.modHeadData = {
