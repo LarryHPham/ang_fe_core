@@ -39,6 +39,7 @@ export interface SeasonStatsTabData {
 export class SeasonStatsModule implements OnChanges {
 
   @Input() data: SeasonStatsModuleData;
+  @Input() pageParams;
 
   public noDataMessage = "Sorry, there are no values for this season.";
 
