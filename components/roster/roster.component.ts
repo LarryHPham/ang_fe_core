@@ -1,12 +1,7 @@
 import {Component, Input, OnInit, DoCheck, Output, EventEmitter} from '@angular/core';
 
-import {SliderCarousel, SliderCarouselInput} from '../carousels/slider-carousel/slider-carousel.component';
-import {Tabs} from '../tabs/tabs.component';
-import {Tab} from '../tabs/tab.component';
-import {CustomTable} from '../custom-table/custom-table.component';
-import {LoadingComponent} from '../loading/loading.component';
+import {SliderCarouselInput} from '../carousels/slider-carousel/slider-carousel.component';
 import {TableModel} from '../custom-table/table-data.component';
-import {NoDataBox} from '../../components/error/data-box/data-box.component';
 
 export interface RosterTabData<T> {
   title: string;
@@ -21,7 +16,6 @@ export interface RosterTabData<T> {
 @Component({
   selector: "roster-component",
   templateUrl: "./app/fe-core/components/roster/roster.component.html",
-  directives: [SliderCarousel, Tabs, Tab, CustomTable, LoadingComponent, NoDataBox],
 })
 export class RosterComponent implements DoCheck {
   private tabsLoaded: {[index:number]:string};

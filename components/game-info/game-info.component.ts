@@ -19,7 +19,6 @@ export class GameInfo implements OnInit {
     }
     ngOnChanges(){
       if(this.gameInfo != null){
-        console.log(this.gameInfo);
         this.homeInfo = this.gameInfo.homeData;
         this.awayInfo = this.gameInfo.awayData;
       }

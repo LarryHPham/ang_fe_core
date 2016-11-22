@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {RosterComponent, RosterTabData} from "../../components/roster/roster.component";
+import { ModuleHeaderData } from '../../components/module-header/module-header.component';
+import { ModuleFooterData } from '../../components/module-footer/module-footer.component';
+import { RosterTabData } from "../../components/roster/roster.component";
 
 export interface RosterModuleData<T> {
   moduleTitle: string;
