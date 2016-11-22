@@ -20,6 +20,6 @@
   </div>
   <div class="carousel_scroll-overlayright" *ngIf="fade"></div>
   <div class="carousel_scroll-overlayleft" *ngIf="fade"></div>
-  <button *ngIf="buttonClass" class="{{buttonClass}} carousel_scroll-left" (click)="left($event)" [ngClass]="{'disabled': minScroll === true }"><i class="fa fa-angle-left-1"></i></button>
-  <button *ngIf="buttonClass" class="{{buttonClass}} carousel_scroll-right" (click)="right($event)" [ngClass]="{'disabled': maxScroll === true}"><i class="fa fa-angle-right-1"></i></button>
+  <button *ngIf="buttonClass" class="{{buttonClass}} carousel_scroll-left" (click)="left($event)" [ngClass]="{'disabled': minScroll === true }"><i class="fa fa-angle-left"></i></button>
+  <button *ngIf="buttonClass" class="{{buttonClass}} carousel_scroll-right" (click)="right($event)" [ngClass]="{'disabled': maxScroll === true}"><i class="fa fa-angle-right"></i></button>
 </div>
