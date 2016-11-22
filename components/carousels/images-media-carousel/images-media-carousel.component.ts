@@ -101,7 +101,6 @@ export class ImagesMedia implements OnInit {
     }
 
     modifyMedia(images, copyright, imageTitle, forward = true):Array<MediaImageItem> {
-        console.log(images, copyright,imageTitle);
         if (this.modalButton) {//just so the carousel knows that the expand button is
             this.expandText = 'Collapse';
             this.expandIcon = 'fa-compress';
