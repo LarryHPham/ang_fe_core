@@ -29,16 +29,16 @@ export class WidgetModule {
         if (!this.syndicated && !this.aiSidekick) {
             this.headerHeight = padding + 'px';
         } else {
-            if (titleHeight == 40) {
-                this.headerHeight = padding + 95 + 'px';
-            } else if (titleHeight == 80) {
-                this.headerHeight = padding + 135 + 'px';
+            if (titleHeight == 44) {
+                this.headerHeight = padding + 99 + 'px';
+            } else if (titleHeight == 84) {
+                this.headerHeight = padding + 139 + 'px';
             }
-            else if (titleHeight == 70) {
-                this.headerHeight = padding + 128 + 'px';
+            else if (titleHeight == 74) {
+                this.headerHeight = padding + 132 + 'px';
             }
-            else if (titleHeight == 35) {
-                this.headerHeight = padding + 102 + 'px';
+            else if (titleHeight == 39) {
+                this.headerHeight = padding + 106 + 'px';
             }
         }
     }
@@ -58,16 +58,16 @@ export class WidgetModule {
             this.sidekickHeight = 0;
         } else {
             titleHeight = jQuery('.articles-page-title').height();
-            if (titleHeight == 40) {//
-                this.sidekickHeight = 95;
-            } else if (titleHeight == 80) {
-                this.sidekickHeight = 135;
+            if (titleHeight == 44) {//
+                this.sidekickHeight = 99;
+            } else if (titleHeight == 84) {
+                this.sidekickHeight = 139;
             }
-            else if (titleHeight == 70) {
-                this.sidekickHeight = 128;
+            else if (titleHeight == 74) {
+                this.sidekickHeight = 132;
             }
-            else if (titleHeight == 35) {
-                this.sidekickHeight = 102;
+            else if (titleHeight == 39) {
+                this.sidekickHeight = 106;
             }
             if (maxScroll <= 0) {
                 this.sidekickHeight += maxScroll;
