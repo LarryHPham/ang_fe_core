@@ -62,17 +62,22 @@ export class SchedulesModule{
         var year = this.dropdownKey1;
 
         //generate the route for the footer url
-        url = ['/'+params.scope,'schedules', params.teamName];
-        if(params.teamID != null){
-          url.push(params.teamID);
+        if (params == undefined) {
+          this.footerData = null;
         }
-        url.push(year, params.tab, params.pageNum);
+        else {
+          url = ['/'+params.scope,'schedules', params.teamName];
+          if(params.teamID != null){
+            url.push(params.teamID);
+          }
+          url.push(year, params.tab, params.pageNum);
 
-        this.footerData = {
-          infoDesc: 'Want to see the full season schedule?',
-          text: 'VIEW SCHEDULE',
-          url: url
-        };
+          this.footerData = {
+            infoDesc: 'Want to see the full season schedule?',
+            text: 'VIEW SCHEDULE',
+            url: url
+          };
+        }
     }
 
     ngOnChanges(){
