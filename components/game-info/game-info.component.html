@@ -44,7 +44,7 @@
       <circle-image [data]="awayInfo.awayImageConfig"></circle-image>
     </div>
     <div class="game-box-main-details">
-      <span *ngIf="awayInfo.awayLink" class="link">{{awayInfo.awayTeamName}}</span>
+      <span *ngIf="awayInfo.awayLink" class="link"><a [routerLink]="awayInfo.awayLink">{{awayInfo.awayTeamName}}</a></span>
       <span *ngIf="!awayInfo.awayLink">{{awayInfo.awayTeamName}}</span>
       <span>Away {{awayInfo.awayRecord}}</span>
     </div>
@@ -64,7 +64,7 @@
         <circle-image [data]="homeInfo.homeImageConfig"></circle-image>
       </div>
       <div class="game-box-main-details">
-        <span *ngIf="homeInfo.homeLink" class="link">{{homeInfo.homeTeamName}}</span>
+        <span *ngIf="homeInfo.homeLink" class="link" [routerLink]="homeInfo.homeLink"><a [routerLink]="homeInfo.awayLink">{{homeInfo.homeTeamName}}</a></span>
         <span *ngIf="!homeInfo.homeLink">{{homeInfo.homeTeamName}}</span>
         <span>Home {{homeInfo.homeRecord}}</span>
       </div>
