@@ -11,12 +11,18 @@
         </div>
       </div>
     </a>
-    <div class="video-stack-info">
-      <div class="video-title-top">
-        <a class="video-title-top-key masterHover" [routerLink]="item.keyUrl" [innerHTML]="item.keyword | safeHtml"></a>
-        <span class="video-title-top-date" [innerHTML]="item.time_stamp | safeHtml"></span>
+    <div class="video-stack-right">
+      <div class="video-stack-right-title">
+        <span class="video-title-top" *ngIf="!isProfilePage">
+          <span class="video-title-top-key">FOOTBALL</span>
+          <span class="video-title-top-date">{{formatDate(item.pubDate, isProfilePage)}}</span>
+        </span>
+        <a [routerLink]="item.urlRoute">
+        <span class="video-title-mid" [innerHTML]="item.title | safeHtml"></span>
+        </a>
+        <span class="video-title-top" *ngIf="isProfilePage"><span style="position: relative; top: 10px">{{formatDate(item.pubDate, isProfilePage)}}</span></span>
       </div>
-      <a class="video-title-mid" [innerHTML]="item.title | safeHtml" [routerLink]='item.video_url'></a>
+      <!-- <div class="video-stack-right-text" [innerHTML]="item.description | safeHtml"></div> -->
     </div>
   </div>
 </div>
