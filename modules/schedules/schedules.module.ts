@@ -13,6 +13,7 @@ export class SchedulesModule{
     @Input() data;
     @Input() profHeader;
     @Input() error;
+    @Input() footerParams: any;
 
     @Input() filter1;
     @Input() filter2;
@@ -27,21 +28,13 @@ export class SchedulesModule{
     tabDisplay:any ;
 
     public partnerID: string;
-    public scope: string;
     public teamID: string;
-    public params: any;
 
     constructor(
       private _router:Router,
       private activateRoute: ActivatedRoute
     ){
-      this.params= this.activateRoute.params.subscribe(
-            (param :any)=> {
-              this.partnerID = param['partnerID'];
-              this.teamID = param['teamID'];
-              this.scope = param['scope'] != null ? param['scope'] : 'nfl';
-            }
-      );
+
     }
     modHeadData: ModuleHeaderData;
 
@@ -59,43 +52,27 @@ export class SchedulesModule{
           iconClass: '',
         }
         var url;
+        var params = this.footerParams;
         var matches = this.data.tabs.filter(tab => tab.display == this.tabDisplay);
         matches = matches.length > 0 ? matches[0].data : 'pregame';
+
+        if(this.dropdownKey1 == null){
+          this.dropdownKey1 = new Date().getFullYear().toString();
+        }
         var year = this.dropdownKey1;
 
-        if(this.teamID != null){
-          if(this.dropdownKey1 == null){
-            this.dropdownKey1 = new Date().getFullYear().toString();
-          }
-          if(matches == 'pregame'){
-            url = ['Schedules-page-team',{teamName:this.toLowerKebab(this.profHeader.profileName),
-              year:'all',teamId:this.teamID,
-              pageNum:1}];
-          }else{
-            url = ['Schedules-page-team-tab',{teamName:this.toLowerKebab(this.profHeader.profileName),
-              year:this.dropdownKey1, tab: matches,teamId:this.teamID,
-              pageNum:1}]
-          }
-          this.footerData = {
-            infoDesc: 'Want to see the full season schedule?',
-            text: 'VIEW SCHEDULE',
-            url: url
-          };
-        }else{
-          if(this.dropdownKey1 == null){
-            this.dropdownKey1 = new Date().getFullYear().toString();
-          }
-          if(matches == 'pregame'){
-            url = ['Schedules-page-league', {year:'all',pageNum:1}]
-          }else{
-            url = ['Schedules-page-league-tab', {year:this.dropdownKey1,tab: matches,pageNum:1}]
-          }
-          this.footerData = {
-            infoDesc: 'Want to see the full season schedule?',
-            text: 'VIEW SCHEDULE',
-            url: url
-          };
+        //generate the route for the footer url
+        url = ['/'+params.scope,'schedules', params.teamName];
+        if(params.teamID != null){
+          url.push(params.teamID);
         }
+        url.push(year, params.tab, params.pageNum);
+
+        this.footerData = {
+          infoDesc: 'Want to see the full season schedule?',
+          text: 'VIEW SCHEDULE',
+          url: url
+        };
     }
 
     ngOnChanges(){
