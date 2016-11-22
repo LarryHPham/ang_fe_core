@@ -27,7 +27,7 @@ export class RosterComponent implements DoCheck {
 
   private selectedKey: string;
 
-  public noDataMessage: string = "This team is a National League team and has no designated hitters.";
+  public noDataMessage: string = "No Data Is Available";
 
   public footerStyle = {
     ctaBoxClass: "list-footer",
