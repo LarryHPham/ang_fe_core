@@ -11,14 +11,14 @@
           <p class="stat-wrapper-table-subtitle">Last Updated: {{data.lastUpdateDate}}</p>
           <div class="datapoints">
             <p *ngFor="let item of data.seasonStats" class="datapoints-item">
-              <span class="pull-xs-left"><i class="fa {{item.icon}}"></i>{{item.name}}</span>
-              <span class="pull-xs-right"><span class="text-heavy">{{item.value}}</span></span>
+              <span class="pull-left"><i class="fa {{item.icon}}"></i>{{item.name}}</span>
+              <span class="pull-right"><span class="text-heavy">{{item.value}}</span></span>
             </p>
           </div>
         </div>
         <div *ngIf="data.chart" class="stat-wrapper-charts" [ngStyle]="data.wrapperStyle">
           <div class="stat-wrapper-charts-key">
-            <h4 class="pull-xs-left chart-title">Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
+            <h4 class="pull-left chart-title">Previous {{comparisonCount}} {{comparisonCount == 1 ? 'Game' : 'Games'}}:</h4>
             <div id="foragainst">
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-secondary">{{data.chart.dataSeries[1].name}}</span>
               <span class="stat-wrapper-charts-key-item stat-wrapper-charts-key-primary">{{data.chart.dataSeries[0].name}}</span>
@@ -30,8 +30,8 @@
     <!--</div>-->
     <!-- Temporarily Hide Daily Updates on player profiles-->
     <div class="article-teaser" *ngIf="data.postGameArticle && data.postGameArticle.text && data.postGameArticle.text.length > 0 && data.postGameArticle.text[0] != null">
-      <circle-image class="pull-xs-left" *ngIf="imageConfig" [data]="imageConfig"></circle-image>
-      <div class="article-teaser-text pull-xs-right">
+      <circle-image class="pull-left" *ngIf="imageConfig" [data]="imageConfig"></circle-image>
+      <div class="article-teaser-text pull-right">
         <h4 class="article-teaser-text-title">
           <a *ngIf="data.postGameArticle.url && data.type != 'Player'" [routerLink]="data.postGameArticle.url">{{profileName | possessive}} Most Recent Game</a>
           <span *ngIf="data.type == 'Player'">{{data.postGameArticle.headline}}</span>
