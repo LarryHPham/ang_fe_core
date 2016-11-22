@@ -2,17 +2,13 @@ import { Component, Input} from '@angular/core';
 import { Router } from "@angular/router";
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
-//globals
-import { GlobalSettings } from "../../../global/global-settings";
-
 //interfaces
 import { ModuleHeaderData } from '../../components/module-header/module-header.component';
 import { CircleImageData } from "../../components/images/image-data";
 import { CircleImage } from "../../components/images/circle-image/circle-image";
 import { NoDataBox } from '../../components/error/data-box/data-box.component';
 import { BarChartComponent } from '../../components/bar-chart/bar-chart.component';
-import { SanitizeHtml } from "../../pipes/safe.pipe";
-import { PossessivePipe } from "../../pipes/possessive.pipe";
+
 
 declare var jQuery:any;
 
@@ -74,6 +70,7 @@ export interface PostGameArticleData {
 export class DailyUpdateModule {
   @Input() profileName: string;
   @Input() data: DailyUpdateData;
+  @Input() imageConfig: CircleImageData;
 
   public chartOptions: any;
 
@@ -90,18 +87,8 @@ export class DailyUpdateModule {
 
   public comparisonCount: number;
 
-  public imageConfig: CircleImageData;
 
-  constructor(private _sanitizer: DomSanitizer){
-    this.imageConfig = {
-      imageClass: "image-121",
-      mainImage: {
-        imageClass: "border-2",
-        imageUrl: GlobalSettings.getSiteLogoUrl(),
-        placeholderImageUrl: GlobalSettings.getSiteLogoUrl()
-      }
-    };
-  }
+  constructor(private _sanitizer: DomSanitizer){}
 
   ngOnChanges(event) {
     this.headerInfo.moduleIdentifier = " - "+this.profileName;
@@ -121,7 +108,7 @@ export class DailyUpdateModule {
     if(event.data['currentValue'] != null && event.data['currentValue'].postGameArticle != null && event.data['currentValue'].postGameArticle.img != null){
       // setting of value below supports both old and new way (HRL & TDL)
       var img = event.data['currentValue'].postGameArticle.img.image != null ? event.data['currentValue'].postGameArticle.img.image : event.data['currentValue'].postGameArticle.img;
-      this.imageConfig.mainImage.imageUrl = img != null ? img : GlobalSettings.getImageUrl(null);
+      this.imageConfig.mainImage.imageUrl = img != null ? img : null;
     }
   }
 
