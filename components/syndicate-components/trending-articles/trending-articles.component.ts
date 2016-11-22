@@ -37,7 +37,7 @@ export class SyndicatedTrendingComponent {
         if(this.subCategory) {
             this._synService.getTrendingArticles(this.category, 40, this.subCategory).subscribe(
                 data => {
-                    this.articleData = this._synService.transformTrending(data.data,this.subCategory, this.articletype, this.articleId);
+                    this.articleData = this._synService.transformTrending(data,this.subCategory, this.articletype, this.articleId);
 
                     if (this.trendingLength <= 40) {
 
@@ -49,7 +49,7 @@ export class SyndicatedTrendingComponent {
         else{
             this._synService.getTrendingArticles(this.category,20).subscribe(
                 data => {
-                    this.articleData = this._synService.transformTrending(data.data,this.category, this.articletype, this.articleId);
+                    this.articleData = this._synService.transformTrending(data,this.category, this.articletype, this.articleId);
 
                     if (this.trendingLength <= 20) {
 

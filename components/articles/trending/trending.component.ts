@@ -12,4 +12,8 @@ export class TrendingComponent {
     @Input() geoLocation:string;
     @Input() scope:string;
     @Input() trendingData:string;
+
+    ngOnInit(){
+        //console.log(this.trendingData,"trending data");
+    }
 }
