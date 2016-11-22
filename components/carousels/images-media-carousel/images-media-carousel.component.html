@@ -1,4 +1,4 @@
-<section *ngIf="totalImageCount > 0" [class.module-container]="isProfilePage"
+<section *ngIf="totalImageCount > 0" class="images-media" [class.module-container]="isProfilePage"
          [class.images-media-module]="isProfilePage && arraySize > 1"
          [class.images-media-module-small]="isProfilePage && arraySize == 1"
          (window:resize)="onResize($event)">

@@ -18,11 +18,11 @@ export interface MediaImageItem {
 })
 
 export class ImagesMedia implements OnInit {
-    @Input() profHeader: any;
-    @Input() imageData: string;
     @Input() copyright: string;
+    @Input() imageData: string;
     @Input() imageTitle: string;
     @Input() isProfilePage: boolean;
+    @Input() profHeader: any;
 
     expand:boolean = false;
     isSmall:boolean = false;
@@ -51,7 +51,7 @@ export class ImagesMedia implements OnInit {
     constructor(
       private _sanitizer:DomSanitizer,
       private elementRef:ElementRef,
-      private render:Renderer) {}
+      private render:Renderer){}
 
     modalExpand(e) {
         console.log(e);
