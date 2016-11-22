@@ -2,8 +2,6 @@ import {Component, Input, ElementRef} from '@angular/core';
 import { Larousel } from '../larousel/larousel';
 import { LineChartComponent } from '../line-chart/line-chart.component';
 
-declare var moment:any;
-
 @Component({
     selector: 'news-box',
     templateUrl: './app/fe-core/components/news-box/news-box.html',
@@ -19,9 +17,6 @@ export class NewsBox{
   private currentDisplayed: any;
 
   constructor(private _elRef: ElementRef){
-  }
-
-  ngOnChanges(){
   }
 
   checkCurrent(item){
