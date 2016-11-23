@@ -12,10 +12,8 @@ import { DetailListInput } from '../../components/detailed-list-item/detailed-li
 })
 
 export class DraftHistoryModule implements OnInit {
-
   modHeadData: Object;
-  footerData: Object;
-
+  @Input() footerData: Object;
   @Input() profileData: IProfileData;
 
   constructor() {}
@@ -27,10 +25,12 @@ export class DraftHistoryModule implements OnInit {
   }
 
   displayData(){
-    var pageRoute = '';
-    // var pageRoute = this.profileData.profileType == "team" ?
-    //   ['Draft-history-page',{teamName: this.profileData.profileName, teamId:this.profileData.profileId}] :
-    //   ["Draft-history-mlb-page"];
+    var pageRoute;
+    if(this.profileData.profileType == 'team'){
+      pageRoute = ['/'+this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
+    }else{
+      pageRoute = ['/'+this.footerData.scope, 'draft-history'];
+    }
 
     this.footerData = {
       infoDesc: 'Want to see the full list?',
