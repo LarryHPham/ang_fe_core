@@ -125,7 +125,6 @@ export class ImagesMedia implements OnInit {
                 newImageArray.push({id: index, image: images[index]});
             }
         }
-        console.log(newImageArray,"what ever");
         return newImageArray;
     }
 
