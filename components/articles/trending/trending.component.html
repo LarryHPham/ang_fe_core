@@ -13,13 +13,11 @@
             <div class="trending-small-article-title" [innerHTML]="data.title | safeHtml"></div>
             <div class="trending-small-article-date">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
-                <div class="trending-small-article-img col-xs-5 col-">
-                    <div class="sixteen-nine">
+                <div class="trending-small-article-img col-sm-4 col-md-3 col-lg-6 image-fluid">
                         <img src="{{data.image}}"
                              onerror="this.src='/app/public/no-image.svg'"/>
-                    </div>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-sm-8 col-md-9 col-lg-6">
                     <div class="responsive-content">
                         <div class="responsive-content-text" [innerHTML]="data.content | safeHtml"></div>
                     </div>
