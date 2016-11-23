@@ -13,6 +13,4 @@ export class TrendingComponent {
     @Input() scope:string;
     @Input() trendingData:string;
 
-    ngOnInit(){
-    }
 }
