@@ -31,7 +31,7 @@ export class ShareLinksComponent implements OnInit {
             },
             {
                 link: "https://plus.google.com/share?url=" + this.shareUrl,
-                fontAwesome: "fontawesome-webfont"
+                fontAwesome: "g-plus"
             }
         ];
     }
