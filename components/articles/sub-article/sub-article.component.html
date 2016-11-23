@@ -1,6 +1,6 @@
 <span *ngFor="let subData of randomArticles; let even=even; let odd=odd; let last=last; let i=index;">
     <div *ngIf="even && i < 8" class="sub-container large" style="float: left;">
-        <a [routerLink]="['Article-pages', {eventType: subData.eventType, eventID: subData.eventID}]">
+        <a [routerLink]="subData.articleUrl">
             <img class="sub-container-image" src="{{subData.images}}"
                  onerror="this.src='/app/public/no-image.svg'" alt="Sub Article Image"/>
             <div class="sub-container-content">
@@ -10,7 +10,7 @@
         <div *ngIf="i != 6" class="sub-container-hr"></div>
     </div>
     <div *ngIf="odd && i < 8" class="sub-container large" style="float: right;">
-        <a [routerLink]="['Article-pages', {eventType: subData.eventType, eventID: subData.eventID}]">
+        <a [routerLink]="subData.articleUrl">
             <img class="sub-container-image" src="{{subData.images}}"
                  onerror="this.src='/app/public/no-image.svg'" alt="Sub Article Image"/>
             <div class="sub-container-content">
@@ -20,7 +20,7 @@
         <div *ngIf="i != 7" class="sub-container-hr"></div>
     </div>
     <div *ngIf="i < 6" class="sub-container small">
-        <a [routerLink]="['Article-pages', {eventType: subData.eventType, eventID: subData.eventID}]">
+        <a [routerLink]="subData.articleUrl">
             <img class="sub-container-image" src="{{subData.images}}"
                  onerror="this.src='/app/public/no-image.svg'" alt="Sub Article Image"/>
             <div class="sub-container-content">

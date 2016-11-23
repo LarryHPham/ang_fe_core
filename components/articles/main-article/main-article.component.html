@@ -1,6 +1,6 @@
 <div class="main-article large-article">
     <span *ngIf="eventType">
-        <a [routerLink]="['Article-pages', {eventType: eventType, eventID: mainEventID}]">
+        <a [routerLink]="articleUrl">
             <img class="main-article-image" [src]="mainImage"
                  onerror="this.src='http://images.synapsys.us/TDL/stock_images/TDL_Stock-3.png'"
                  alt="Article main image"/>
@@ -21,7 +21,7 @@
     <span *ngIf="eventType">
         <div class="main-article-container-keyword">{{keyword}} <span
                 class="main-article-container-date">{{timeStamp}}</span></div>
-        <a [routerLink]="['Article-pages', {eventType: eventType, eventID: mainEventID}]">
+        <a [routerLink]="articleUrl">
             <div class="main-article-container-title" [ngStyle]="titleFontSize">
                 {{mainTitle}}
             </div>
