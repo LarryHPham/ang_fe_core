@@ -1,4 +1,4 @@
-<section *ngIf="totalImageCount > 0" [class.module-container]="isProfilePage"
+<section *ngIf="totalImageCount > 0" class="images-media" [class.module-container]="isProfilePage"
          [class.images-media-module]="isProfilePage && arraySize > 1"
          [class.images-media-module-small]="isProfilePage && arraySize == 1"
          (window:resize)="onResize($event)">
@@ -9,11 +9,10 @@
             <a class='expand-button' (click)="modalExpand()">
                 <i class='fa {{expandIcon}}'></i>
             </a>
-            <div [style.background-image]="backgroundImage"
+            <span [style.background-image]="backgroundImage"
                   class="container-img">
-                <circle-button *ngIf="arraySize > 1" class="container-img-navigation" (scrollLeft)="left()"
-                               (scrollRight)="right()"></circle-button>
-            </div>
+                <circle-button *ngIf="arraySize > 1" class="container-img-navigation" (scrollLeft)="left()" (scrollRight)="right()"></circle-button>
+            </span>
             <div class="grey-bar">
                 <span class='grey-bar-counter'>
                     <i class='fa fa-file-image-o'></i>

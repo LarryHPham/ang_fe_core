@@ -32,6 +32,7 @@ export class ArticlesModule implements OnInit {
     mainContent:string;
     mainImage:string;
     mainTitle:string;
+    scope:string;
     teamID:string;
     timeStamp:string;
     eventID:number;
@@ -55,14 +56,10 @@ export class ArticlesModule implements OnInit {
     constructor(private _activateRoute:ActivatedRoute, private _router:Router) {
         this.params = this._activateRoute.params.subscribe(
             (param:any)=> {
-                this.teamID = param['teamId'];
+                this.scope = param['scope'];
+                this.teamID = param['teamId'] ? param['teamId'] : null;
             }
         );
-
-        // GlobalSettings.getParentParams(this._router, parentParams => {
-        //     this.scope = parentParams.scope;
-        // });
-
     }
 
     getArticles(data) {
@@ -150,7 +147,7 @@ export class ArticlesModule implements OnInit {
                 subImages: []
             };
         } else {
-            let homeLink = VerticalGlobalFunctions.formatTeamRoute(homeName, homeData.id);
+            let homeLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, homeName, homeData.id);
             val['url'] = homeLink;
             val['homeLogo'] = {
                 imageClass: "image-66",
@@ -181,7 +178,7 @@ export class ArticlesModule implements OnInit {
                 subImages: []
             };
         } else {
-            let awayLink = VerticalGlobalFunctions.formatTeamRoute(awayName, awayData.id);
+            let awayLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, awayName, awayData.id);
             val['url'] = awayLink;
             val['awayLogo'] = {
                 imageClass: "image-66",
