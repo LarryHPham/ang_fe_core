@@ -9,12 +9,23 @@ declare var jQuery:any;
 
 export class BillboardModule implements OnInit{
     isSmall:boolean = false;
-
+    @Input() category: string;
+    @Input() subCategory: string;
+    srcLink: string;
     ngOnInit() {
-        this.isSmall = window.innerWidth <= 814;
+      if(this.category && this.subCategory){
+        if(this.category == "sports"){
+          this.srcLink = "/app/ads/billboard.html?category="+this.category+"&sub_category="+this.subCategory;
+        }
+      } else if(this.category != this.subCategory || this.subCategory == null){
+        this.srcLink = "/app/ads/billboard.html?category="+this.category;
+      } else {
+        this.srcLink = null;
+      }
+      this.isSmall = window.innerWidth <= 814;
     }
 
     onResize(event) {
-            this.isSmall = event.target.innerWidth <= 814;
+      this.isSmall = event.target.innerWidth <= 814;
     }
 }
