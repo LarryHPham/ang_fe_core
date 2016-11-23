@@ -54,8 +54,7 @@ export class ImagesMedia implements OnInit {
       private render:Renderer){}
 
     modalExpand(e) {
-        console.log(e);
-        console.log(this.expand);
+
         if (this.expand == true) {
             this.expand = false;
             this.render.setElementClass(e.target.parentElement, 'modal-open', false);
@@ -160,6 +159,7 @@ export class ImagesMedia implements OnInit {
                 }
             }
         }
+
     }
 
     ngOnInit() {
