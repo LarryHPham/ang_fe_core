@@ -26,7 +26,6 @@ export class DraftHistoryModule implements OnInit {
 
   displayData(){
     var pageRoute;
-    console.log(this.footerData);
     if(this.profileData.profileType == 'team'){
       pageRoute = ['/'+this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
     }else{
