@@ -4,13 +4,14 @@
   width: 100%;
   overflow: hidden;
   padding-top: ~'calc(1.5em * 5)';
-  @media (max-width: 384px){padding-top: ~'calc(1.5em * 3)'}
-  @media (min-width: 385px) and (max-width: 476px){padding-top: ~'calc(1.5em * 4)'}
-  @media (min-width: 477px) and (max-width: 566px){padding-top: ~'calc(1.5em * 5)'}
-  @media @small-grid{padding-top: ~'calc(1.42em * 6)'}
+  @media (max-width: 384px){padding-top: ~'calc(1.5em * 2.5)'}
+  @media (min-width: 385px) and (max-width: 476px){padding-top: ~'calc(1.5em * 3.5)'}
+  @media (min-width: 477px) and (max-width: 566px){padding-top: ~'calc(1.5em * 4.5)'}
+  @media @small-grid{padding-top: ~'calc(1.42em * 5.6)'}
   @media (min-width: 640px) and @mobile{padding-top: ~'calc(1.5em * 7)'}
   @media @tablet{padding-top: 0}
   &-text{
+    .globalDefaultFont(14px, 400);
     display: block;
     max-width: 100%;
     height: auto;
@@ -20,7 +21,7 @@
     @media @mobile{position: absolute}
     @media @tablet{max-height: ~'calc(1.5em * 6)'}
     @media (min-width: 830px){max-height: ~'calc(1.5em * 7)'}
-    @media @desktop-m{max-height: ~'calc(1.5em * 9)'}
+    @media @desktop-m{max-height: ~'calc(1.42em * 9)'}
   }
 }
 
@@ -283,6 +284,15 @@
     &-img{
       @media @mobile{padding-right: 5px}
       @media @tablet{padding-right: 15px}
+      @media @desktop-m{height: 262px;overflow: hidden}
+      img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-size: cover;
+        padding-right: 15px;
+      }
     }
     &-title {
       .globalDefaultFont(18px, 800);
@@ -301,7 +311,8 @@
     }
     &-read-more {
       .globalDefaultModFont(14px, 800, @masterBrandColor);
-      padding-top: 15px;
+      position: absolute;
+      bottom:0;
       text-align: left;
       display: inline-block;
       @media @mobile{width: 40%}
