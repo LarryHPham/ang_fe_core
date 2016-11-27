@@ -275,11 +275,11 @@
     .flexDisplay;
     .flexDirection(column);
     .flexJustify(space-between);
-    a {color: @black}
+
     &:hover {
-      a {color: @masterBrandColor}
-      .trending-small-article-content {color: @black}
-      .trending-small-article-read-more {color: @black}
+    /*  a {color: @masterBrandColor}*/
+     /* .trending-small-article-content {color: @black}*/
+      /*.trending-small-article-read-more {color: @black}*/
     }//hover ends
     &-img{
       @media @mobile{padding-right: 5px}
@@ -315,7 +315,32 @@
       bottom:0;
       text-align: left;
       display: inline-block;
+      cursor: pointer;
+      color:@masterBrandColor;
       @media @mobile{width: 40%}
+      &:hover{
+        color:@black
+      }
     }
   }//trending-small-article ends
+}
+.loading-more{
+  justify-content: center;
+  align-content: center;
+  width:100%;
+  height:45px;
+  border: 2px solid @masterBrandColor;
+  color:@masterBrandColor;
+  display: inline-flex;
+  text-align: center;
+  &_text{
+
+    margin:12px;
+    .globalDefaultFont(16px, 900);
+  }
+  &-gif{
+    margin:3px;
+    width:35px;
+    height: 35px;
+  }
 }
