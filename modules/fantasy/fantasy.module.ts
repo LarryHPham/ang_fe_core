@@ -11,6 +11,7 @@ import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions
 })
 
 export class FantasyModule implements OnChanges {
+    @Input() fantasyDate;
     @Input() fantasyData;
     @Input() profHeader;
     articleUrl:Array<any>;
