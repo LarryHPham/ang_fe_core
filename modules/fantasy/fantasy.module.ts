@@ -3,6 +3,7 @@ import { Component, Input, OnChanges }  from "@angular/core";
 //interfaces
 import { ModuleHeaderData } from "../../components/module-header/module-header.component";
 import { GlobalSettings } from "../../../global/global-settings";
+import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 
 declare var jQuery:any;
 
@@ -27,10 +28,7 @@ export class FantasyModule implements OnChanges {
         try {
             this.backgroundImage = GlobalSettings.getImageUrl(this.fantasyData['article_data']['images'][0].image_url);
             this.profileImage = GlobalSettings.getImageUrl(this.fantasyData['article_data'].headshot_image);
-            this.articleUrl = ['Article-pages', {
-                eventType: 'player-fantasy',
-                eventID: this.fantasyData['article_id']
-            }];
+            this.articleUrl = VerticalGlobalFunctions.formatArticleRoute("nfl", "player-fantasy", this.fantasyData['article_id']);
             this.modHeadData = {
                 moduleTitle: "Fantasy Report - " + this.profHeader.profileName,
                 hasIcon: false,
