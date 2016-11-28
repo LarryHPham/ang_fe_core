@@ -13,7 +13,7 @@ export interface TableTabData<T> {
   isLoaded: boolean;
   hasError: boolean;
   sections: Array<TableComponentData<T>>;
-  convertToCarouselItem(item:T, index:number):SliderCarouselInput
+  convertToCarouselItem(item:T, index:number, scope?):SliderCarouselInput
 }
 
 export interface TableComponentData<T> {
@@ -32,7 +32,6 @@ export class SeasonStatsComponent implements DoCheck {
   public carouselData: Array<SliderCarouselInput> = [];
 
   @Input() tabs: Array<TableTabData<any>>;
-
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
   private selectedTabTitle: string;
@@ -107,6 +106,7 @@ export class SeasonStatsComponent implements DoCheck {
 
   updateCarousel(sortedRows?) {
     var selectedTab = this.getSelectedTab();
+
     if ( selectedTab === undefined || selectedTab === null ) {
       return;
     }
@@ -114,11 +114,12 @@ export class SeasonStatsComponent implements DoCheck {
     let carouselData: Array<SliderCarouselInput> = [];
     let index = 0;
     let selectedIndex = -1;
+
     if ( selectedTab.sections ) {
       selectedTab.sections.forEach(section => {
         section.tableData.rows
           .map((value) => {
-            let item = selectedTab.convertToCarouselItem(value, index);
+            let item = selectedTab.convertToCarouselItem(value, index, 'nfl');
             if ( section.tableData.isRowSelected(value, index) ) {
               selectedIndex = index;
             }
