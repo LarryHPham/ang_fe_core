@@ -6,7 +6,7 @@
     <div class="trending-small-hr-title"></div>
     <div *ngFor="let data of trendingData; let even=even; let i = index">
         <span class="featured-tag" *ngIf="i == 0">FEATURED</span>
-        <share-links-component [shareUrl]="data.rawUrl" [isMain]="false"></share-links-component>
+        <share-links-component [shareUrl]="data.url" [isMain]="false"></share-links-component>
         <div *ngIf="i == 0" class="featured-articles"><i class="fa fa-newspaper-o"></i><span>FEATURED ARTICLE</span>
         </div>
         <div class="trending-small-article">
@@ -14,15 +14,15 @@
             <div class="trending-small-article-date">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
 
-                <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-img col-sm-4 col-md-3 col-lg-6 image-fluid">
+                <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-img col-sm-4 col-md-4 col-lg-6 image-fluid">
                         <img src="{{data.image}}"
                              onerror="this.src='/app/public/no-image.svg'"/>
                 </a>
-                <a *ngIf="data.extUrl" [href]="data.url" class="trending-small-article-img col-sm-4 col-md-3 col-lg-6 image-fluid">
+                <a *ngIf="data.extUrl" [href]="data.url" class="trending-small-article-img col-sm-4 col-md-4 col-lg-6 image-fluid">
                     <img src="{{data.image}}"
                          onerror="this.src='/app/public/no-image.svg'"/>
                 </a>
-                <div class="col-sm-8 col-md-9 col-lg-6">
+                <div class="col-sm-8 col-md-8 col-lg-6">
                     <div class="responsive-content">
                         <div class="responsive-content-text" [innerHTML]="data.content | safeHtml"></div>
                     </div>
@@ -34,10 +34,10 @@
                     </a>
                 </div>
             </div>
-            <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-read-more hide-768">Read the story <i
+            <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-read-more hide-768" style="position: relative; margin-top: 10px">Read the story <i
                     class="fa fa-arrow-right margin"></i>
             </a>
-            <a *ngIf="data.extUrl" [href]="data.url" class="trending-small-article-read-more hide-768">Read the story <i
+            <a *ngIf="data.extUrl" [href]="data.url" class="trending-small-article-read-more hide-768" style="position: relative; margin-top: 10px">Read the story <i
                     class="fa fa-arrow-right margin"></i>
             </a>
         </div>

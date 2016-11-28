@@ -18,8 +18,9 @@
     top: -2px;
     bottom: 0;
     line-height: 1.57em;
-    @media @mobile{position: absolute}
-    @media @tablet{max-height: ~'calc(1.5em * 6)'}
+    text-overflow: ellipsis;
+    @media @mobile{position: absolute; height: 51px; overflow: hidden; line-height: 1.25em}
+    @media @tablet{max-height: ~'calc(1em * 6)'}
     @media (min-width: 830px){max-height: ~'calc(1.5em * 7)'}
     @media @desktop-m{max-height: ~'calc(1.48em * 9)'}
   }
@@ -282,8 +283,10 @@
       /*.trending-small-article-read-more {color: @black}*/
     }//hover ends
     &-img{
-      @media @mobile{padding-right: 5px}
-      @media @tablet{padding-right: 15px}
+      overflow:hidden;
+      cursor:pointer;
+      @media @mobile{padding-right: 5px; min-height: ~'calc(1.25em * 3)'}
+      @media @tablet{padding-right: 15px;min-height: 146px}
       @media @desktop-m{height: 262px;overflow: hidden}
       img{
         width: 100%;
@@ -292,6 +295,9 @@
         top: 0;
         background-size: cover;
         padding-right: 15px;
+        @media @mobile{
+          padding-right: 5px;
+        }
       }
     }
     &-title {
