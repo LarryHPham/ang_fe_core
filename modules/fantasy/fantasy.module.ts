@@ -5,22 +5,18 @@ import { ModuleHeaderData } from "../../components/module-header/module-header.c
 import { GlobalSettings } from "../../../global/global-settings";
 import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
 
-declare var jQuery:any;
-
 @Component({
     selector: 'fantasy-module',
     templateUrl: './app/fe-core/modules/fantasy/fantasy.module.html'
 })
 
 export class FantasyModule implements OnChanges {
-    @Input() fantasyDate;
     @Input() fantasyData;
     @Input() profHeader;
     articleUrl:Array<any>;
     footerData:any;
     modHeadData:ModuleHeaderData;
     isError:boolean = false;
-    isSmall:boolean = false;
     backgroundImage:string;
     profileImage:string;
 
