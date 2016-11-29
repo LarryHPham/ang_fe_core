@@ -97,12 +97,10 @@ export class PaginationFooter implements OnChanges{
     public paginationButtonsModuleMobile: Array<Number>;
     public paginationButtonsPage: Array<{
         index: number,
-        page: string;
         params: Object;
     }>;
     public paginationButtonsPageForMobile: Array<{
       index: number,
-      page: string,
       params: Object;
     }>;
     //Output event emitter
@@ -266,8 +264,7 @@ export class PaginationFooter implements OnChanges{
               //Push button parameters to array
               this.paginationButtonsPage.push({
                   index: (index - p),
-                  page: navigationPage,
-                  params: params
+                  params: this.getArrayLink(navigationPage, params)
               });
             }
         }
@@ -278,8 +275,7 @@ export class PaginationFooter implements OnChanges{
             //Push button parameters to array
             this.paginationButtonsPage.push({
                 index: index,
-                page: navigationPage,
-                params: params
+                params: this.getArrayLink(navigationPage, params)
             });
         }
 
@@ -298,8 +294,7 @@ export class PaginationFooter implements OnChanges{
                 //Push button parameters to array
                 this.paginationButtonsPage.push({
                     index: (index + n),
-                    page: navigationPage,
-                    params: params
+                    params: this.getArrayLink(navigationPage, params)
                 });
             }
         }
@@ -307,12 +302,14 @@ export class PaginationFooter implements OnChanges{
         //Build min button parameters
         var params = this.copyDynamicParams();
         params[indexKey] = 1;
-        this.minButtonParameters = params;
+
+        this.minButtonParameters = this.getArrayLink(navigationPage, params);
 
         //Build max button parameters
         var params = this.copyDynamicParams();
         params[indexKey] = max;
-        this.maxButtonParameters = params;
+
+        this.maxButtonParameters = this.getArrayLink(navigationPage, params);
 
         //Determine if next/previous and last/first buttons should be inactive
         if(max <= 1){
@@ -338,7 +335,7 @@ export class PaginationFooter implements OnChanges{
         }
         var firstParams = this.copyDynamicParams();
         firstParams[indexKey] = 1;
-        this.firstButtonParameters = firstParams;
+        this.firstButtonParameters = this.getArrayLink(navigationPage, firstParams);
 
         //Build parameters of previous angle button
         var prevParams = this.copyDynamicParams();
@@ -347,7 +344,7 @@ export class PaginationFooter implements OnChanges{
         } else {
             prevParams[indexKey] = 1;
         }
-        this.previousButtonParameters = prevParams;
+        this.previousButtonParameters = this.getArrayLink(navigationPage, prevParams);
 
         //Build parameters of next angle button
         var nextParams = this.copyDynamicParams();
@@ -356,11 +353,11 @@ export class PaginationFooter implements OnChanges{
         } else {
             nextParams[indexKey] = max;
         }
-        this.nextButtonParameters = nextParams;
+        this.nextButtonParameters = this.getArrayLink(navigationPage, nextParams);
 
         var lastParams = params;
         lastParams[indexKey] = max;
-        this.lastButtonParameters = lastParams;
+        this.lastButtonParameters = this.getArrayLink(navigationPage, lastParams);
     }
 
 
@@ -372,6 +369,7 @@ export class PaginationFooter implements OnChanges{
       this.paginationButtonsPageForMobile = [];
 
       var navigationPage = this.paginationParameters.navigationPage;
+      let pageNav;
       var indexKey = this.paginationParameters.indexKey;
       //Determine values before index that can be added to button array
       var r = 0;
@@ -389,8 +387,7 @@ export class PaginationFooter implements OnChanges{
             //Push button parameters to array
             this.paginationButtonsPageForMobile.push({
                 index: (index - p),
-                page: navigationPage,
-                params: params
+                params: this.getArrayLink(navigationPage, params)
             });
           }
       }
@@ -401,8 +398,7 @@ export class PaginationFooter implements OnChanges{
           //Push button parameters to array
           this.paginationButtonsPageForMobile.push({
               index: index,
-              page: navigationPage,
-              params: params
+              params: this.getArrayLink(navigationPage, params)
           });
       }
 
@@ -422,8 +418,7 @@ export class PaginationFooter implements OnChanges{
               //Push button parameters to array
               this.paginationButtonsPageForMobile.push({
                   index: (index + n),
-                  page: navigationPage,
-                  params: params
+                  params: this.getArrayLink(navigationPage, params)
               });
           }
       }
@@ -431,12 +426,12 @@ export class PaginationFooter implements OnChanges{
       //Build min button parameters
       var params = this.copyDynamicParams();
       params[indexKey] = 1;
-      this.minButtonParameters = params;
+      this.minButtonParameters = this.getArrayLink(navigationPage, params);
 
       //Build max button parameters
       var params = this.copyDynamicParams();
       params[indexKey] = max;
-      this.maxButtonParameters = params;
+      this.maxButtonParameters = this.getArrayLink(navigationPage, params);
 
       //Determine if next/previous and last/first buttons should be inactive
       if(max <= 1){
@@ -462,7 +457,7 @@ export class PaginationFooter implements OnChanges{
       }
       var firstParams = this.copyDynamicParams();
       firstParams[indexKey] = 1;
-      this.firstButtonParameters = firstParams;
+      this.firstButtonParameters = this.getArrayLink(navigationPage, firstParams);
 
       //Build parameters of previous angle button
       var prevParams = this.copyDynamicParams();
@@ -471,7 +466,7 @@ export class PaginationFooter implements OnChanges{
       } else {
           prevParams[indexKey] = 1;
       }
-      this.previousButtonParameters = prevParams;
+      this.previousButtonParameters = this.getArrayLink(navigationPage, prevParams);
 
       //Build parameters of next angle button
       var nextParams = this.copyDynamicParams();
@@ -480,11 +475,11 @@ export class PaginationFooter implements OnChanges{
       } else {
           nextParams[indexKey] = max;
       }
-      this.nextButtonParameters = nextParams;
+      this.nextButtonParameters = this.getArrayLink(navigationPage, nextParams);
 
       var lastParams = params;
       lastParams[indexKey] = max;
-      this.lastButtonParameters = lastParams;
+      this.lastButtonParameters = this.getArrayLink(navigationPage, lastParams);
     } //buildPageButtonsMobile()
 
     //Copy object of input navigationParameters
@@ -544,6 +539,14 @@ export class PaginationFooter implements OnChanges{
         this.paginationParameters.index = newIndex;
         this.buildModuleButtons();
         this.buildModuleButtonsMobile();
+    }
+
+    getArrayLink(navigationPage, params){
+      let pageNav = [navigationPage];
+      for(var param in params){
+        pageNav.push(params[param]);
+      }
+      return pageNav;
     }
 
     ngOnChanges(event){
