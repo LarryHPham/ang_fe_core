@@ -18,6 +18,62 @@
 //   }
 // }
 
+@footballColor: #2d3e50;
+@basketballColor: #f26f26;
+@baseballColor: #bc2027;
+
+.scope-specific-box-score(@hex, @rgba) {
+  .module-header {
+    border-top: 3px solid @hex;
+  }
+  .calendar-picker-dates-select.active {
+    background-color: @hex;
+  }
+  .game-cat {
+    background-color: @hex;
+  }
+  .calendar-picker-circles.right:hover, .calendar-picker-circles.left:hover {
+    background-color: @hex;
+    border-color: @hex;
+  }
+  .calendar-picker-selection:hover {
+    i { color: @hex; }
+  }
+  .image-round-hover:hover {
+    .dynamic-background-hover {
+      background-color: @rgba;
+    }
+  }
+  .box-scores-info.rightPag, .box-scores-info.leftPag {
+    background-color: @hex;
+  }
+  .ng-datepicker>.controls {
+    background-color: @hex;
+  }
+  .ng-datepicker>.day-names {
+    background-color: @hex;
+  }
+  .ng-datepicker>.calendar>span>span.day.selected {
+    background-color: @hex;
+  }
+} //.scope-specific-box-score(@hex, @rgba)
+
+.box-scores-container {
+  &.nfl, &.ncaam {
+    .scope-specific-box-score( @footballColor, rgba(45, 62, 80, 0.75) );
+  }
+
+  &.nba, &.ncaam {
+    .scope-specific-box-score( @basketballColor, rgba(242, 111, 38, 0.75) );
+  }
+
+  &.mlb {
+    .scope-specific-box-score( @baseballColor, rgba(188, 32, 39, 0.75) );
+  }
+} //.box-scores-container
+
+
+
 @media @mobile {
   .box-scores {
     width:100%!important;
@@ -26,6 +82,9 @@
     }
   }
 }
+
+
+
 .box-scores {// BOX-SCORES CONTAINER
   width: 100%;
   height:auto;
