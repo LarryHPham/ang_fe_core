@@ -1,11 +1,13 @@
 import { Injectable, Component, OnInit, DoCheck, Output, EventEmitter, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 //interfaces
 import { DetailedListItem, DetailListInput } from '../../components/detailed-list-item/detailed-list-item.component';
 import { SliderCarousel, SliderCarouselInput } from '../../components/carousels/slider-carousel/slider-carousel.component';
 import { FooterStyle } from '../../components/module-footer/module-footer.component';
 import { PaginationParameters } from "../../interfaces/pagination.data";
+
+
 
 export interface MVPTabData {
   tabDisplayTitle: string;
@@ -26,14 +28,12 @@ export class MVPListComponent implements DoCheck, OnInit  {
   @Output() dropdownPositionSelection = new EventEmitter();
 
   @Input() tabs: Array<MVPTabData>;
-
   @Input() carouselFooter: FooterStyle;
-
   @Input() selectedTabTitle: string;
-
   @Input() position: string;
-
   @Input() sortOptions: Array<any>;
+  @Input() selectedKey;
+
   detailedDataArray: DetailListInput[]; //variable that is just a list of the detailed DataArray
   carouselDataArray: Array<any>;
   dropDownFirstRun: boolean = true;
@@ -71,10 +71,7 @@ export class MVPListComponent implements DoCheck, OnInit  {
     }
   } //ngDoCheck()
 
-  constructor(
-    private _router:Router,
-    private activateRoute: ActivatedRoute
-  ) {
+  constructor( private activateRoute: ActivatedRoute ) {
     this.activateRoute.params.subscribe(
       (param :any) => {
         this.listType = param['type'] ? param['type'] : null;
