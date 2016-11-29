@@ -38,6 +38,6 @@ export interface DetailListInput {
     templateUrl: './app/fe-core/components/detailed-list-item/detailed-list-item.component.html'
 })
 
-export class DetailedListItem{
+export class DetailedListItem {
   @Input() detailedItemData: DetailListInput[];
 }
