@@ -9,7 +9,6 @@ import {DropdownComponent} from '../../components/dropdown/dropdown.component';
 import {LoadingComponent} from '../../components/loading/loading.component';
 import {NoDataBox} from '../../components/error/data-box/data-box.component';
 import {GlossaryComponent} from "../glossary/glossary.component";
-import {ResponsiveWidget} from "../responsive-widget/responsive-widget.component";
 
 
 
