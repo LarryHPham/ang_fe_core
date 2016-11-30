@@ -19,7 +19,7 @@
   </a>
   <a *ngIf="item.extUrl" class="stacktop" href="{{item.articleUrl}}">
     <div class="stacktop-title-headline" [innerHTML]="item.title | safeHtml"></div>
-    <div class="stacktop-titleinfo">
+    <div *ngIf="item.publisher" class="stacktop-titleinfo">
       <span class="stacktop-titleinfo-provider">
         <span class='font-weight-normal'[innerHTML]="item.publisher | safeHtml"></span>
       </span>
