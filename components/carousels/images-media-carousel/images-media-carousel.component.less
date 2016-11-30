@@ -5,14 +5,9 @@
 .profile-carousel-container {
 
   .carousel {
-    height: 506px;
     @media @fluid {
-      height: 60vw;
       width: 100%;
     }
-  }
-  .container {
-    height: 100%;
   }
 
   @media @mobile {
@@ -33,13 +28,7 @@
 }
 
 .container {
-  height: 100%;
-  width: 100%;
-  position: relative;
   &-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -49,7 +38,7 @@
       .flexAlignItems(center);
       .flexJustify(flex-end);
       @media @mobile{
-        top: 39%;
+        margin-top: 20%;
         .sliders-left, .sliders-right{
           .globalDefaultFont(20px, 400);
           width: 20px;
@@ -63,7 +52,7 @@
         .sliders-right{border-radius: 12px 0 0 12px}
       }
       @media @tablet{
-        top: 43%;
+        margin-top: 25%;
         .sliders-left, .sliders-right{
           .globalDefaultFont(60px, 400);
         }
@@ -217,29 +206,16 @@
   border: 2px solid @masterBrandColor;
 }
 
-.modal-open {
+.carousel-modal-open {
   display: block !important;
 }
 
-.modal {
+.carousel-modal {
   width: 60%;
-  height: 85%;
   position: fixed;
   top: 10%;
   left: 20%;
   @media (max-width: 1023px) {
-    width: 80%;
-    height: 85%;
-    left: 5%;
-  }
-  @media (max-width: 700px) {
-    width: 550px;
-    height: 385px;
-  }
-  @media @mobile {
-    width: ~"calc(85% + 10px)";
-    height: 60vw;
-    left: 3%;
     top: 25%;
   }
   z-index: 9999;
@@ -254,16 +230,13 @@
   pointer-events: auto !important;
   &-container {
     height: 100%;
-    width: 100%;
-    position: relative;
     &-img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
       &-navigation {
+        position: relative;
+        margin-top: 25%;
         .flexDisplay;
         .flexDirection(column);
         .flexAlignItems(center);
@@ -294,7 +267,7 @@
   }
 }
 
-.modal-grey-bar {
+.carousel-modal-grey-bar {
   width: 100%;
   height: 26px;
   background-color: @masterButtonBackground;

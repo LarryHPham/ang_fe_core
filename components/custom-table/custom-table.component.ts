@@ -1,7 +1,6 @@
 import {Component, Input, ViewChildren, OnChanges, EventEmitter, Output,ChangeDetectionStrategy} from '@angular/core';
 import {TableHeader} from '../../components/custom-table/table-header.component';
 import {TableModel, TableColumn, CellData} from '../../components/custom-table/table-data.component';
-import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 
 @Component({
   selector: 'custom-table',
