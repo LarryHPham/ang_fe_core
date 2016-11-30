@@ -306,7 +306,13 @@
       margin: 10px 0 10px;
       @media @tablet{font-size: 28px; width: ~'calc(100% - 80px)'}
     }
+    &-author{
+
+      .globalDefaultModFont(12px,400,@black);
+      &-blue{ .globalDefaultModFont(12px,400,@masterBrandColor);}
+    }
     &-date{
+      margin-top:5px;
       margin-bottom: 15px;
       .globalDefaultModFont(10px, 400, @bulletGrey);
       // span{text-transform: uppercase}
@@ -349,4 +355,10 @@
     width:35px;
     height: 35px;
   }
+}
+@media @mobile {
+  .trending-small-article-author{
+    margin-bottom: 17px;
+  }
+
 }

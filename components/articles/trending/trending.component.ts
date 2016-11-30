@@ -12,5 +12,6 @@ export class TrendingComponent {
     @Input() geoLocation:string;
     @Input() scope:string;
     @Input() trendingData:string;
+    @Input() showLoading:boolean;
 
 }
