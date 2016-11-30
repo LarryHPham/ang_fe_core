@@ -46,8 +46,8 @@
                 *ngIf="!even"></sidekick-container-component>
         <div *ngIf="!even" class="trending-small-hr hide-under-lg"></div>
     </div>
-    <div *ngIf="trendingData && trendingData.length<100" class="loading-more">
-        <img class="loading-more-gif" src="/app/public/page_loading.gif" />
+    <div *ngIf="showLoading" class="loading-more">
+        <img class="loading-more-gif" src="/app/public/tcx-loading.gif" />
         <span class="loading-more_text"> Loading More</span>
 
 
