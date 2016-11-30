@@ -21,7 +21,7 @@ export class ListOfListsModule {
   @Input() profileType : string;
   @Input() teamId : string;
   @Input() playerId : string;
-
+  @Input() scope : string;
 
   moduleHeader: ModuleHeaderData;
   displayData: Array<any>;
@@ -65,15 +65,9 @@ export class ListOfListsModule {
       id = this.playerId;
     }
 
-
   // path: '/list-of-lists/:target/:targetId/:perPageCount/:pageNumber',
   // name: 'List-of-lists-page-scoped',
-  this.footerData['url'] = ['List-of-lists-page-scoped',{
-    target: this.profileType,
-    targetId: id, //league and player id.
-    perPageCount: params.limit,
-    pageNumber: params.pageNum
-  }];
+  this.footerData['url'] = ['/'+this.scope,'list-of-lists', this.profileType, id, params.limit, params.pageNum];
   }
 
 }

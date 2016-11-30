@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 
-import {ModuleHeader, ModuleHeaderData} from '../../components/module-header/module-header.component';
-import {ModuleFooter, ModuleFooterData} from '../../components/module-footer/module-footer.component';
-import {PlayerStatsComponent, StatsTableTabData} from '../../components/player-stats/player-stats.component';
+import {ModuleHeaderData} from '../../components/module-header/module-header.component';
+import {ModuleFooterData} from '../../components/module-footer/module-footer.component';
+import {StatsTableTabData} from '../../components/player-stats/player-stats.component';
 
 export interface PlayerStatsModuleData {
   moduleTitle: string;
@@ -21,7 +21,6 @@ export interface PlayerStatsModuleData {
 @Component({
   selector: "player-stats-module",
   templateUrl: "./app/fe-core/modules/player-stats/player-stats.module.html",
-  directives: [ModuleHeader, ModuleFooter, PlayerStatsComponent],
 })
 export class PlayerStatsModule implements OnChanges {
   @Input() data: PlayerStatsModuleData;
