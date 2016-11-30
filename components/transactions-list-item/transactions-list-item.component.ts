@@ -4,7 +4,6 @@ import {CircleImage} from '../images/circle-image/circle-image';
 import {CircleImageData} from '../../components/images/image-data';
 import {Link} from '../../../global/global-interface';
 import {ComplexInnerHtml} from '../complex-inner-html/complex-inner-html.component';
-import {ResponsiveWidget} from '../../components/responsive-widget/responsive-widget.component';
 
 export interface TransactionsListInput {
   // must have a length of 3 or the styling will be off
