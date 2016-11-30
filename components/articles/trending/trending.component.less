@@ -306,7 +306,19 @@
       margin: 10px 0 10px;
       @media @tablet{font-size: 28px; width: ~'calc(100% - 80px)'}
     }
+    &-author{
+      .globalDefaultFont(12px,400);
+      color: @black;
+      &-blue{
+        .globalDefaultFont(12px,800);
+        color: @masterBrandColor;
+      }
+      @media @mobile{
+        margin-bottom: 17px;
+      }
+    }
     &-date{
+      margin-top: 5px;
       margin-bottom: 15px;
       .globalDefaultModFont(10px, 400, @bulletGrey);
       // span{text-transform: uppercase}
