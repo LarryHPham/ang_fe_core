@@ -11,7 +11,7 @@
         </div>
         <div class="trending-small-article">
             <div class="trending-small-article-title" [innerHTML]="data.title | safeHtml"></div>
-            <div class="trending-small-article-author">Written By: <span class="trending-small-article-author-blue" [innerHTML]="data.author | safeHtml"></span>, &nbsp;<span class="trending-small-article-author-blue" [innerHTML]="data.publisher | safeHtml"></span></div>
+            <div *ngIf="data.publisher != 'SNT Media'" class="trending-small-article-author">Written By: <span class="trending-small-article-author-blue" [innerHTML]="data.author | safeHtml"></span>, &nbsp;<span class="trending-small-article-author-blue" [innerHTML]="data.publisher | safeHtml"></span></div>
             <div class="trending-small-article-date hide-new320">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
 
