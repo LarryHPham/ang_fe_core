@@ -9,7 +9,7 @@
   @media (min-width: 477px) and (max-width: 566px){padding-top: ~'calc(1.5em * 4.5)'}
   @media @small-grid{padding-top: ~'calc(1.42em * 5.6)'}
   @media (min-width: 640px) and @mobile{padding-top: ~'calc(1.5em * 7)'}
-  @media @tablet{padding-top: 0}
+  @media @tablet{padding-top: 0; margin-bottom:30px}
   &-text{
     .globalDefaultFont(14px, 400);
     display: block;
@@ -235,6 +235,7 @@
 }
 
 .trending-small {
+  margin-top: 30px;
   width: 100%;
   @media @mobile{padding: 0 10px}
   &-hr-title {
@@ -310,9 +311,10 @@
 
       .globalDefaultModFont(12px,400,@black);
       &-blue{ .globalDefaultModFont(12px,400,@masterBrandColor);}
+      margin-bottom:5px;
     }
     &-date{
-      margin-top:5px;
+
       margin-bottom: 15px;
       .globalDefaultModFont(10px, 400, @bulletGrey);
       // span{text-transform: uppercase}
@@ -324,7 +326,6 @@
     &-read-more {
       .globalDefaultModFont(14px, 800, @masterBrandColor);
       position: absolute;
-      bottom:0;
       text-align: left;
       display: inline-block;
       cursor: pointer;
@@ -336,6 +337,7 @@
     }
   }//trending-small-article ends
 }
+
 .loading-more{
   justify-content: center;
   align-content: center;
@@ -345,6 +347,7 @@
   color:@masterBrandColor;
   display: inline-flex;
   text-align: center;
+  margin-bottom: 20px;
   &_text{
 
     margin:12px;
