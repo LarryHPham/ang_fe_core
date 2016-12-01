@@ -25,7 +25,6 @@
         class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />-->
         <input autocomplete="off"
         (keyup)="onKey($event)"
-        (keyup.enter)="navigateSearch($event)"
         placeholder="{{searchData.searchPlaceHolderText}}"
         class="search-input main searchcheck"  [ngClass]="searchData.searchScopeDropdown ? 'left-pad-dd':''" />
 

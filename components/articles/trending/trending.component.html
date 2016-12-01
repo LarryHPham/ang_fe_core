@@ -11,6 +11,7 @@
         </div>
         <div class="trending-small-article">
             <div class="trending-small-article-title" [innerHTML]="data.title | safeHtml"></div>
+            <div *ngIf="data.publisher != 'SNT Media'" class="trending-small-article-author">Written By: <span class="trending-small-article-author-blue" [innerHTML]="data.author | safeHtml"></span>, &nbsp;<span class="trending-small-article-author-blue" [innerHTML]="data.publisher | safeHtml"></span></div>
             <div class="trending-small-article-date">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
 
@@ -42,12 +43,11 @@
             </a>
         </div>
         <div class="trending-small-hr"></div>
-        <sidekick-container-component
-                *ngIf="!even"></sidekick-container-component>
-        <div *ngIf="!even" class="trending-small-hr hide-under-lg"></div>
+        <responsive-widget *ngIf="!even"></responsive-widget>
+        <div *ngIf="!even" class="trending-small-hr hide-1280"></div>
     </div>
-    <div *ngIf="trendingData && trendingData.length<100" class="loading-more">
-        <img class="loading-more-gif" src="/app/public/page_loading.gif" />
+    <div *ngIf="showLoading" class="loading-more">
+        <img class="loading-more-gif" src="/app/public/tcx-loading.gif" />
         <span class="loading-more_text"> Loading More</span>
 
 
