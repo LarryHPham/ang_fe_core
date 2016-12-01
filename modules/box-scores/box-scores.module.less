@@ -18,6 +18,8 @@
 //   }
 // }
 
+
+
 @media @mobile {
   .box-scores {
     width:100%!important;
@@ -26,14 +28,30 @@
     }
   }
 }
+
+
+
 .box-scores {// BOX-SCORES CONTAINER
   width: 100%;
   height:auto;
   overflow: visible;
   margin: 0 auto;
-  padding: 15px 0;
   &-container{
     overflow: visible;
+    .even {
+      @media @tablet {
+        .box-scores-info-padding {
+          padding: 10px 5px 10px 10px;
+        }
+      }
+    }
+    .odd {
+      @media @tablet {
+        .box-scores-info-padding {
+          padding: 10px 10px 10px 5px;
+        }
+      }
+    }
   }
   &-leagueNav {
     width:100%;
@@ -59,9 +77,6 @@
       }
       width:100%;
       height:auto;
-    }
-    &-padding{
-      padding: 10px;
     }
     .pageIndicator {
       display:block;
@@ -172,6 +187,10 @@
   }
   .schedule-next-vs{
     font-weight: 800;
+  }
+  .module-container {
+    margin-bottom: 0;
+    overflow: visible;
   }
 }//end of box-scores container
 

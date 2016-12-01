@@ -1,5 +1,5 @@
 import { Component, OnChanges, Output, Input, EventEmitter, ElementRef, OnInit } from '@angular/core';
-import {ScrollerFunctions} from '../../../global/scroller-functions';
+import { ScrollerFunctions } from '../../../global/scroller-functions';
 
 @Component({
   selector: 'box-scores',
@@ -8,6 +8,7 @@ import {ScrollerFunctions} from '../../../global/scroller-functions';
 })
 
 export class BoxScoresModule implements OnInit {
+  @Input() scope: string;
   @Input() boxScores:any;
   @Input() calendarParams:any;
   @Input() scroll:boolean;

@@ -16,7 +16,7 @@ export class Larousel implements OnChanges{
   @Input() toggleData: any;
   @Input() carData: any;
   public currentScroll = 0;
-  public rightText:string = '0px';
+  public rightText:string;
   private itemSize:number = 205;
   private minScroll:boolean = false;
   private maxScroll:boolean = false;
@@ -168,7 +168,9 @@ export class Larousel implements OnChanges{
 
   ngAfterViewInit(){
     //make sure to run the element ref after the content has loaded to get the full size;
-    this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    if(this.itemSize == null){
+      this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    }
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
     this.currentItem = this.originalData[this.clones];
@@ -197,6 +199,7 @@ export class Larousel implements OnChanges{
         this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
       }
       this.transition = "";
+      this.imageTransition = this.itemSize+'px';
       this.rightText = this.currentScroll+'px';
       //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
       setTimeout(function(){

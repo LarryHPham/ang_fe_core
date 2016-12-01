@@ -1,4 +1,4 @@
-<div class="main-article large-article">
+<div class="main-article large-article col-xs-12">
     <span *ngIf="eventType">
         <a [routerLink]="articleUrl">
             <img class="main-article-image" [src]="mainImage"
@@ -17,7 +17,7 @@
     </span>
 </div>
 
-<div class="main-article small-article">
+<div class="main-article small-article col-xs-12">
     <span *ngIf="eventType">
         <div class="main-article-container-keyword">{{keyword}} <span
                 class="main-article-container-date">{{timeStamp}}</span></div>
@@ -25,7 +25,10 @@
             <div class="main-article-container-title" [ngStyle]="titleFontSize">
                 {{mainTitle}}
             </div>
-            <div class="main-article-image" [style.background-image]="'url(' + mainImage + ')'"></div>
+            <div class="small-article-container embed-responsive embed-responsive-16by9">
+                <div class="main-article-image embed-responsive-item"
+                     [style.background-image]="'url(' + mainImage + ')'"></div>
+            </div>
             <div class="main-article-container-content-small">
                 <span class="main-article-container-content-text-small" [innerHTML]="mainContent | safeHtml"></span>
             </div>
