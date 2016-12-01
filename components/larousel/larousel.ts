@@ -350,7 +350,7 @@ export class Larousel implements OnChanges{
   preLoadImage(){
     let currentItem = this.currentItem;
     let prevNum = Number(currentItem.id);
-    let nextNum = Number(currentItem.id) + 2
+    let nextNum = Number(currentItem.id) + 2;
     this.prevImage = this.imageCase(this.displayedItems[prevNum]);
     this.currentImage = this.imageCase(currentItem);
     this.nextImage = this.imageCase(this.displayedItems[nextNum]);
