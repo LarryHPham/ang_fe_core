@@ -9,7 +9,8 @@
   @media (min-width: 477px) and (max-width: 566px){padding-top: ~'calc(1.5em * 4.5)'}
   @media @small-grid{padding-top: ~'calc(1.42em * 5.6)'}
   @media (min-width: 640px) and @mobile{padding-top: ~'calc(1.5em * 7)'}
-  @media @tablet{padding-top: 0; margin-bottom:30px}
+  @media @mobile{padding-left: 5px}
+  @media @tablet{padding-top: 0; margin-bottom:30px;padding-left: 15px}
   &-text{
     .globalDefaultFont(14px, 400);
     display: block;
@@ -100,7 +101,7 @@
   vertical-align: middle;
   @media @fluid {
     span {
-      display: none;
+      //display: none;
     }
   }
   .st_sharethis_large, .share-buttons {
@@ -286,19 +287,15 @@
     &-img{
       overflow:hidden;
       cursor:pointer;
-      @media @mobile{padding-right: 5px; min-height: ~'calc(1.25em * 3)'}
-      @media @tablet{padding-right: 15px;min-height: 146px}
+      @media @mobile{min-height: ~'calc(1.25em * 3)'}
+      @media @tablet{min-height: 146px}
       @media @desktop-m{height: 262px;overflow: hidden}
       img{
+
         width: 100%;
-        height: 100%;
         position: absolute;
         top: 0;
         background-size: cover;
-        padding-right: 15px;
-        @media @mobile{
-          padding-right: 5px;
-        }
       }
     }
     &-title {
@@ -334,6 +331,9 @@
       &:hover{
         color:@black
       }
+      @media @tablet{
+        padding-left:15px;
+      }
     }
   }//trending-small-article ends
 }
@@ -361,7 +361,7 @@
 }
 @media @mobile {
   .trending-small-article-author{
-    margin-bottom: 17px;
+    //margin-bottom: 17px;
   }
 
 }
