@@ -3,11 +3,16 @@
   (window:resize)="onWindowLoadOrResize($event)"
   class="box-scores row box-scores-inherit">
 
-  <div class="module-container box-scores-container col-lg-12">
+  <div class="module-container box-scores-container col-lg-12 {{scope}}">
     <div id="box-header">
-      <module-header *ngIf="boxScores" [modHeadData]="boxScores.moduleTitle"></module-header>
+      <module-header
+        *ngIf="boxScores"
+        [modHeadData]="boxScores.moduleTitle"></module-header>
       <!--for calendar-->
-      <calendar-carousel *ngIf="calendarParams" [chosenParam]="calendarParams" (dateEmit)="dateTransfer($event)"></calendar-carousel>
+      <calendar-carousel
+        *ngIf="calendarParams"
+        [chosenParam]="calendarParams"
+        (dateEmit)="dateTransfer($event)"></calendar-carousel>
       <!--for calendar-->
 
       <!--for team profile-->
@@ -20,27 +25,28 @@
         <div class="box-scores-info">
           <div class="row">
             <div
-            *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
-            class="box-scores-info-container col-md-6"
-            [class.odd]="i" [class.even]="!i">
+              *ngFor="let gameBox of boxScores.gameInfo; let i = odd"
+              class="box-scores-info-container col-md-6"
+              [class.odd]="i"
+              [class.even]="!i">
             <!--game info that affects only how league box scores are displayed-->
               <div *ngIf="calendarParams.profile == 'league'" class="box-scores-info-padding">
                 <game-info
-                *ngFor="let game of gameBox; let g = index"
-                [gameInfo]="game.game"></game-info>
+                  *ngFor="let game of gameBox; let g = index"
+                  [gameInfo]="game.game"></game-info>
               </div>
 
               <!--game info that affects only how team box scores are displayed-->
               <div *ngIf="calendarParams.profile != 'league'" class="box-scores-info-padding">
                 <game-info
-                *ngIf=" calendarParams.profile != 'league' "
-                [gameInfo]="gameBox[gameNum].game"
-                class="float-left"></game-info>
-                <template [ngIf]="gameBox[gameNum].aiContent > 1">
-                  <game-article
                   *ngIf=" calendarParams.profile != 'league' "
-                  [gameArticle]="gameBox[gameNum].aiContent"
-                  class="float-right"></game-article>
+                  [gameInfo]="gameBox[gameNum].game"
+                  class="float-left"></game-info>
+                <template [ngIf]="boxScores.aiContent > 1">
+                  <game-article
+                    *ngIf=" calendarParams.profile != 'league' "
+                    [gameArticle]="gameBox[gameNum].aiContent"
+                    class="float-right"></game-article>
                 </template>
               </div>
             </div> <!-- *ngFor="let gameBox of boxScores.gameInfo -->
@@ -75,10 +81,10 @@
                   *ngIf=" calendarParams.profile != 'league' "
                   [gameInfo]="gameBox[gameNum].game"
                   class="float-left"></game-info>
-                  <template [ngIf]="gameBox[gameNum].aiContent > 1">
+                  <template [ngIf]="boxScores.aiContent > 1">
                     <game-article
                     *ngIf=" calendarParams.profile != 'league' "
-                    [gameArticle]="gameBox[gameNum].aiContent"
+                    [gameArticle]="boxScores.aiContent"
                     class="float-right"></game-article>
                   </template>
                 </div>
