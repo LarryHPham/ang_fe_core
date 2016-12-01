@@ -104,7 +104,6 @@ export class CalendarCarousel implements OnInit {
   }
 
   leftDay(){
-    console.log('---leftDay---');
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
       var curParams = this.currDateView;
