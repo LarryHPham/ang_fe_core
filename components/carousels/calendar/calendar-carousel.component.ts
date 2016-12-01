@@ -104,16 +104,19 @@ export class CalendarCarousel implements OnInit {
   }
 
   leftDay(){
+    console.log('---leftDay---');
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
       var curParams = this.currDateView;
       curParams.date = moment(curParams.date).subtract(1, 'days').format('YYYY-MM-DD');
       var dayNum = 0;
+
       this.weeklyDates.forEach(function(val,index){
         if(val.fullDate == curParams.date){
           dayNum = index;
         }
       })
+
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
@@ -136,7 +139,7 @@ export class CalendarCarousel implements OnInit {
         }
       }
     }
-  }
+  } //leftDay
 
   rightDay(){
     if(this.failSafe <= 12){

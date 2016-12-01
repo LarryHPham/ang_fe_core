@@ -1,5 +1,5 @@
 import { Component, OnChanges, Output, Input, EventEmitter, ElementRef, OnInit } from '@angular/core';
-import {ScrollerFunctions} from '../../../global/scroller-functions';
+import { ScrollerFunctions } from '../../../global/scroller-functions';
 
 @Component({
   selector: 'box-scores',
@@ -47,8 +47,6 @@ export class BoxScoresModule implements OnInit {
   }
 
   ngOnChanges(event){
-    console.log('this.boxScores input - ',this.boxScores);
-
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
