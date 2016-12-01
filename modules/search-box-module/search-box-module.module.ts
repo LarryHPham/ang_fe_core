@@ -33,11 +33,7 @@ export class SearchBoxModule {
   constructor(private activeRoute: ActivatedRoute, private router: Router, private render: Renderer) { }
 
   onKey(e: any) {
-    this.userInput.emit(e.target.value);
-  }
-
-  navigateSearch(e) {
-    this.userInput.emit(e.target.value);
+    this.userInput.emit(e);
   }
 
   selectedSport(e) {
