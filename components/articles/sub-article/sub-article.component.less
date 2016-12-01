@@ -11,19 +11,11 @@
 }
 
 .sub-container {
-  width: 48%;
-  float: left;
-  position: relative;
-  margin: 10px 0 10px 10px;
+  margin: 10px 0;
+  padding: 0 10px;
   .flexDisplay;
   .flexDirection(column);
   .flexJustify(space-around);
-  @media @desktop-xl {
-    width: 440px;
-  }
-  @media @mobile {
-    width: 100%;;
-  }
   &:hover {
     a {
       color: @masterBrandColor;
@@ -46,22 +38,15 @@
     .globalDefaultFont(16px, 400);
     text-align: left;
     margin-bottom: 15px;
-    width: ~'calc(100% - 100px)';
-    float: right;
     height: 60px;
     align-items: center;
     padding: 0 10px;
     overflow: hidden;
     display: block;
-    @media @desktop-xl {
-      width: 330px;
-    }
     @media @mobile {
       font-size: 14px;
-      width: auto;
-      float: left;
       height: 50px;
-      margin-left: 10px;
+      margin-left: 20px;
       position: absolute;
       left: 100px;
       padding-right: 25px;

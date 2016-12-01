@@ -2,7 +2,6 @@
   height: 100px;
   width: 100%;
   position: relative;
-  //background-image: url(/../public/BG-dark.png);
   background-size: 640px 310px;
   background: -webkit-linear-gradient(0deg, rgba(0, 34, 180, 0.75) 0%, rgba(45, 45, 45, 0.75) 50%, rgba(246, 176, 0, 0.75) 100%);
   background: -moz-linear-gradient(0deg, rgba(0, 34, 180, 0.75) 0%, rgba(45, 45, 45, 0.75) 50%, rgba(246, 176, 0, 0.75) 100%);
@@ -36,18 +35,6 @@
       position: absolute;
       top: 15px;
       z-index: 1;
-      &-left {
-        left: 34%;
-        @media @desktop-m {
-          left: 31%;
-        }
-      }
-      &-right {
-        right: 34%;
-        @media @desktop-m {
-          right: 31%;
-        }
-      }
       @media @mobile {
         display: none;
       }
@@ -60,10 +47,9 @@
       text-overflow: ellipsis;
       overflow: hidden;
       color: @white;
-      width: 32%;
 
       &-left {
-        left: 0px;
+        left: 0;
         text-align: right;
         z-index: 1;
         top: 30px;
@@ -97,9 +83,9 @@
         @media @mobile {
           font-size: 14px;
         }
-        &-firstName{
-          @media @mobile{
-            display:none;
+        &-firstName {
+          @media @mobile {
+            display: none;
           }
         }
         &-bold {
@@ -118,9 +104,7 @@
     }
     &-vs {
       .globalDefaultModFont(20px, 800, @white);
-      position: absolute;
       top: 40px;
-      width: 100%;
       text-align: center;
       line-height: 10px;
       @media @mobile {
@@ -130,13 +114,3 @@
   }
 }
 
-.schedule-next-team.schedule-next-team-left {
-  @media @desktop-m {
-    padding-right: 25px;
-  }
-}
-.schedule-next-team.schedule-next-team-right {
-  @media @desktop-m {
-    padding-left: 25px;
-  }
-}
