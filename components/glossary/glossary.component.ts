@@ -9,7 +9,6 @@ export interface GlossaryData{
 @Component({
   selector: 'glossary-component',
   templateUrl: './app/fe-core/components/glossary/glossary.component.html',
-  pipes: [SanitizeHtml]
 })
 
 export class GlossaryComponent implements OnInit{
