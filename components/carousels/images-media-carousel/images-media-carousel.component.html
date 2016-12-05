@@ -6,7 +6,7 @@
     <div class="carousel col-xs-12">
         <loading-component *ngIf="!imageData"></loading-component>
         <div *ngIf="imageData" class="embed-responsive embed-responsive-16by9">
-            <a class='expand-button' (click)="modalExpand()">
+            <a class='expand-button' (click)="modalExpand($event)">
                 <i class='fa {{expandIcon}}'></i>
             </a>
             <span [style.background-image]="backgroundImage"
@@ -28,12 +28,12 @@
     </div>
 </section>
 
-<div class="carousel-modal" (keyup)="close($event)" (click)="modalExpand($event)" [ngClass]="{'carousel-modal-open': expand == true}">
+<div class="carousel-modal" (keyup)="close($event)" [ngClass]="{'carousel-modal-open': expand == true}">
     <div class="carousel-modal-exit" (click)="modalExpand($event)">X</div>
     <div class="carousel-modal-container embed-responsive embed-responsive-16by9">
         <span [style.background-image]="backgroundImage"
               class="carousel-modal-container-img embed-responsive-item">
-            <circle-button class="carousel-modal-container-img-navigation" (scrollLeft)="left()"
+            <circle-button *ngIf="arraySize > 1" class="carousel-modal-container-img-navigation" (scrollLeft)="left()"
                            (scrollRight)="right()"></circle-button>
         </span>
         <div class="carousel-modal-grey-bar row"><span class="carousel-modal-grey-bar-title col-sm-4">
