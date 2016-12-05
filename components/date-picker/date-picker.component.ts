@@ -236,7 +236,6 @@ export class DatePicker implements AfterViewInit {
 
     let selectedDate = moment(date.year + '-' + date.month + '-' + date.day, 'YYYY-MM-DD');
     this.setValue(selectedDate);
-    // this.closeDatepicker();
     this.changed.emit(selectedDate.toDate());
     this.closeDatepicker();
   }
