@@ -3,7 +3,7 @@
     <div class="trending-small-container">
         <div class="trending-small-container-main-title">TRENDING ARTICLES</div>
     </div>
-    <div class="trending-small-hr-title"></div>
+    <div class="trending-small-hr-title" [ngStyle]="{'margin-bottom': '22px'}"></div>
     <div *ngFor="let data of trendingData; let even=even; let i = index">
         <span *ngIf="i == 0">
             <span class="featured-tag">FEATURED</span>
