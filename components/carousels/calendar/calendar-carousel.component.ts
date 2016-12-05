@@ -91,6 +91,7 @@ export class CalendarCarousel implements OnInit {
     .subscribe( data => {
       this.validateDate(this.chosenParam.date, this.weeklyDates);
     })
+    this.checkForLastGame.emit(moment(event).tz('America/New_York').format('YYYY-MM-DD'));
     this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
   }
 
