@@ -26,7 +26,7 @@ export interface weekDate {
 export class CalendarCarousel implements OnInit {
   @Input() chosenParam:any;
   @Output() dateEmit = new EventEmitter();
-  @Output() resetControls = new EventEmitter();
+  @Output() checkForLastGame = new EventEmitter();
 
   public currDateView:any;
   public weeklyApi:any;
@@ -111,9 +111,6 @@ export class CalendarCarousel implements OnInit {
   }
 
   leftDay(){
-    console.log('---leftDay---');
-    this.checkForLastGame('prevGame');
-
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
       var curParams = this.currDateView;
@@ -126,11 +123,6 @@ export class CalendarCarousel implements OnInit {
         }
       })
 
-      console.log('dayNum - ',dayNum);
-      console.log('weeklyDates - ',this.weeklyDates);
-      console.log('curParams.date - ',curParams.date);
-      console.log('this.weeklyDates[dayNum].fullDate - ',this.weeklyDates[dayNum].fullDate);
-
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
@@ -138,7 +130,7 @@ export class CalendarCarousel implements OnInit {
           this.leftDay();
           return;
         });
-      }else{
+      } else {
         if(this.weeklyDates[dayNum].clickable){
           this.failSafe = 0;
           this.callWeeklyApi(curParams).subscribe(data=>{
@@ -152,13 +144,14 @@ export class CalendarCarousel implements OnInit {
           this.leftDay();
         }
       }
+      this.checkForLastGame.emit(curParams.date);
     }
-    else {}
+    else {
+      this.checkForLastGame.emit(null);
+    }
   } //leftDay
 
   rightDay(){
-    console.log('---rightDay---');
-    this.checkForLastGame('nextGame');
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
 
@@ -170,11 +163,6 @@ export class CalendarCarousel implements OnInit {
           dayNum = index;
         }
       })
-
-      console.log('dayNum - ',dayNum);
-      console.log('weeklyDates - ',this.weeklyDates);
-      console.log('curParams.date - ',curParams.date);
-      console.log('this.weeklyDates[dayNum].fullDate - ',this.weeklyDates[dayNum].fullDate);
 
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
@@ -198,15 +186,14 @@ export class CalendarCarousel implements OnInit {
           this.rightDay();
         }
       }
+      this.checkForLastGame.emit(curParams.date);
     }
-    else {}
+    else {
+      this.checkForLastGame.emit(null); //if no dates are found send null
+    }
   } //rightDay
 
 
-
-  checkForLastGame(value?) {
-    this.resetControls.emit(value);
-  }
 
 
 

@@ -25,8 +25,9 @@ export class BoxScoresModule implements OnInit {
   public rightDisabled = "";
   public leftDisabled = "disabled";
   private refreshBoxScores = "";
+  public lastAvailableGameDate: string;
   public lastAvailableGame: boolean;
-  public checkForLastGameFirstRun: boolean = true;
+  public lastAvailableGameSet:boolean = false;
   private counter:number = 0;
 
   constructor(
@@ -43,7 +44,6 @@ export class BoxScoresModule implements OnInit {
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
-        this.checkForLastGame(this.boxScores.nextGameDate.event_date);
       } else {
         this.maxHeight = 650;
       }
@@ -54,22 +54,18 @@ export class BoxScoresModule implements OnInit {
 
 
   ngOnChanges(event){
-    console.log('---ngOnChanges---');
-    console.log('event - ',event);
-    console.log('this.boxScores - ',this.boxScores);
-
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
 
-      let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : '';
-      let previousNextGameDate = event.boxScores.previousValue && event.boxScores.previousValue.nextGameDate ? event.boxScores.previousValue.nextGameDate.event_date : '';
+      let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : null;
+      if ( currentNextGameDate == null && this.lastAvailableGameSet == false ) {
+        this.lastAvailableGameDate = this.boxScores.gameDate;
+        this.lastAvailableGameSet = true;
+        this.checkForLastGame(this.lastAvailableGameDate);
+      }
 
-      console.log('currentNextGameDate - ',currentNextGameDate);
-      console.log('previousNextGameDate - ',previousNextGameDate);
-
-      this.checkForLastGame();
     }
     if (this.scroll) {
       if(this.boxScores != null){
@@ -89,26 +85,12 @@ export class BoxScoresModule implements OnInit {
 
 
   checkForLastGame(value?) {
-    console.log('---checkForLastGame---');
-    console.log('value - ',value);
-    console.log('this.boxScores.nextGameDate.event_date - ',this.boxScores.nextGameDate.event_date);
-    if ( value == 'prevGame' ) {
-      console.log('this.counter - ',this.counter);
-      this.counter --;
-      console.log('this.counter - ',this.counter);
-    }
-    else if ( value == 'nextGame' ) {
-      this.counter ++;
-    }
-
-    if ( this.counter >= 0 && this.boxScores.nextGameDate.event_date == null ) {
+    if ( value == this.lastAvailableGameDate ) {
       this.lastAvailableGame = true;
     }
-    else {
+    else if ( value != this.lastAvailableGameDate) {
       this.lastAvailableGame = false;
     }
-    console.log('counter - ',this.counter);
-    console.log('this.lastAvailableGame - ',this.lastAvailableGame);
   } //checkForLastGame
 
 
