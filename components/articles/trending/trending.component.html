@@ -32,7 +32,7 @@
                 </a>
                 <div class="col-sm-8 col-md-8 col-lg-6">
                     <div class="responsive-content">
-                        <div class="responsive-content-text" [innerHTML]="data.content | safeHtml"></div>
+                        <div class="responsive-content-text" [innerHTML]="data.teaser| safeHtml"></div>
                     </div>
                     <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-read-more hide-new320">Read the story <i
                             class="fa fa-arrow-right margin"></i>
