@@ -10,9 +10,12 @@
         [modHeadData]="boxScores.moduleTitle"></module-header>
       <!--for calendar-->
       <calendar-carousel
+        [class.last-game-date]="windowWidth < 768 && boxScores && lastAvailableGame == true"
         *ngIf="calendarParams"
         [chosenParam]="calendarParams"
-        (dateEmit)="dateTransfer($event)"></calendar-carousel>
+        (dateEmit)="dateTransfer($event)"
+        (checkForLastGame)="checkForLastGame($event)">
+      </calendar-carousel>
       <!--for calendar-->
 
       <!--for team profile-->

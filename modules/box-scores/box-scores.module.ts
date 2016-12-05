@@ -16,6 +16,7 @@ export class BoxScoresModule implements OnInit {
 
   // private moduleHeight: string;
   public dateEmit = new EventEmitter();
+  public resetControls = new EventEmitter();
   public liveArray = new EventEmitter();
   public heightStyle: string;
   private gameNum:number = 0;
@@ -24,6 +25,10 @@ export class BoxScoresModule implements OnInit {
   public rightDisabled = "";
   public leftDisabled = "disabled";
   private refreshBoxScores = "";
+  public lastAvailableGameDate: string;
+  public lastAvailableGame: boolean;
+  public lastAvailableGameSet:boolean = false;
+  private counter:number = 0;
 
   constructor(
     private _elementRef:ElementRef,
@@ -32,39 +37,63 @@ export class BoxScoresModule implements OnInit {
 
   ngOnInit(){
     this.windowWidth = window.innerWidth;
-    if(this.scroll){
+    if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
-      }else{
+      } else {
         this.maxHeight = 650;
       }
     }
     this.checkHeight();
-  }
+  } //ngOnInit
+
+
 
   ngOnChanges(event){
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
+
+      let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : null;
+      if ( currentNextGameDate == null && this.lastAvailableGameSet == false ) {
+        this.lastAvailableGameDate = this.boxScores.gameDate;
+        this.lastAvailableGameSet = true;
+        this.checkForLastGame(this.lastAvailableGameDate);
+      }
+
     }
-    if(this.scroll){
+    if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
-      }else{
+      } else {
         this.maxHeight = 650;
       }
     }
+
     this.checkHeight();
-  }
+  } //ngOnChanges
+
+
+
+  checkForLastGame(value?) {
+    if ( value == this.lastAvailableGameDate ) {
+      this.lastAvailableGame = true;
+    }
+    else if ( value != this.lastAvailableGameDate) {
+      this.lastAvailableGame = false;
+    }
+  } //checkForLastGame
+
+
 
   checkHeight(){
     if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
