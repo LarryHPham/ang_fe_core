@@ -28,8 +28,8 @@
     </div>
 </section>
 
-<div class="carousel-modal" (keyup)="close($event)" [ngClass]="{'carousel-modal-open': expand == true}">
-    <div class="carousel-modal-exit" (click)="modalExpand($event)" >X</div>
+<div class="carousel-modal" (keyup)="close($event)" (click)="modalExpand($event)" [ngClass]="{'carousel-modal-open': expand == true}">
+    <div class="carousel-modal-exit" (click)="modalExpand($event)">X</div>
     <div class="carousel-modal-container embed-responsive embed-responsive-16by9">
         <span [style.background-image]="backgroundImage"
               class="carousel-modal-container-img embed-responsive-item">
