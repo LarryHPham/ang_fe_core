@@ -16,6 +16,7 @@ export class BoxScoresModule implements OnInit {
 
   // private moduleHeight: string;
   public dateEmit = new EventEmitter();
+  public resetControls = new EventEmitter();
   public liveArray = new EventEmitter();
   public heightStyle: string;
   private gameNum:number = 0;
@@ -24,6 +25,9 @@ export class BoxScoresModule implements OnInit {
   public rightDisabled = "";
   public leftDisabled = "disabled";
   private refreshBoxScores = "";
+  public lastAvailableGame: boolean;
+  public checkForLastGameFirstRun: boolean = true;
+  private counter:number = 0;
 
   constructor(
     private _elementRef:ElementRef,
@@ -32,39 +36,82 @@ export class BoxScoresModule implements OnInit {
 
   ngOnInit(){
     this.windowWidth = window.innerWidth;
-    if(this.scroll){
+    if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
-      }else{
+        this.checkForLastGame(this.boxScores.nextGameDate.event_date);
+      } else {
         this.maxHeight = 650;
       }
     }
     this.checkHeight();
-  }
+  } //ngOnInit
+
+
 
   ngOnChanges(event){
+    console.log('---ngOnChanges---');
+    console.log('event - ',event);
+    console.log('this.boxScores - ',this.boxScores);
+
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
+
+      let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : '';
+      let previousNextGameDate = event.boxScores.previousValue && event.boxScores.previousValue.nextGameDate ? event.boxScores.previousValue.nextGameDate.event_date : '';
+
+      console.log('currentNextGameDate - ',currentNextGameDate);
+      console.log('previousNextGameDate - ',previousNextGameDate);
+
+      this.checkForLastGame();
     }
-    if(this.scroll){
+    if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {
           this.rightDisabled = "disabled";
         }
         let gameinfoHeight = this.boxScores.gameInfo.length < 3 ? (this.boxScores.gameInfo.length * 280): 650;
         this.maxHeight = gameinfoHeight;
-      }else{
+      } else {
         this.maxHeight = 650;
       }
     }
+
     this.checkHeight();
-  }
+  } //ngOnChanges
+
+
+
+  checkForLastGame(value?) {
+    console.log('---checkForLastGame---');
+    console.log('value - ',value);
+    console.log('this.boxScores.nextGameDate.event_date - ',this.boxScores.nextGameDate.event_date);
+    if ( value == 'prevGame' ) {
+      console.log('this.counter - ',this.counter);
+      this.counter --;
+      console.log('this.counter - ',this.counter);
+    }
+    else if ( value == 'nextGame' ) {
+      this.counter ++;
+    }
+
+    if ( this.counter >= 0 && this.boxScores.nextGameDate.event_date == null ) {
+      this.lastAvailableGame = true;
+    }
+    else {
+      this.lastAvailableGame = false;
+    }
+    console.log('counter - ',this.counter);
+    console.log('this.lastAvailableGame - ',this.lastAvailableGame);
+  } //checkForLastGame
+
+
 
   checkHeight(){
     if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){

@@ -26,11 +26,14 @@ export interface weekDate {
 export class CalendarCarousel implements OnInit {
   @Input() chosenParam:any;
   @Output() dateEmit = new EventEmitter();
+  @Output() resetControls = new EventEmitter();
+
   public currDateView:any;
   public weeklyApi:any;
   public weeklyDates: Array<any>;
   public failSafe: number = 0;
   public windowWidth: number = 10;
+  public lastAvailableGame: boolean;
 
   constructor(private _boxScores:BoxScoresService){}
 
@@ -49,6 +52,8 @@ export class CalendarCarousel implements OnInit {
       this.validateDate(this.chosenParam.date, this.weeklyDates, true);
     })
   } //ngOnInit
+
+
 
   ngOnChanges(event){
     //any changes made to the input from outside will cause the fuction to rerun
@@ -69,7 +74,9 @@ export class CalendarCarousel implements OnInit {
         })
       }
     }
-  }
+  } //ngOnChanges
+
+
 
   private onWindowLoadOrResize(event) {
     this.windowWidth = event.target.innerWidth;
@@ -105,6 +112,7 @@ export class CalendarCarousel implements OnInit {
 
   leftDay(){
     console.log('---leftDay---');
+    this.checkForLastGame('prevGame');
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
       var curParams = this.currDateView;
@@ -117,6 +125,11 @@ export class CalendarCarousel implements OnInit {
         }
       })
 
+      console.log('dayNum - ',dayNum);
+      console.log('weeklyDates - ',this.weeklyDates);
+      console.log('curParams.date - ',curParams.date);
+      console.log('this.weeklyDates[dayNum].fullDate - ',this.weeklyDates[dayNum].fullDate);
+
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
@@ -139,9 +152,12 @@ export class CalendarCarousel implements OnInit {
         }
       }
     }
+    else {}
   } //leftDay
 
   rightDay(){
+    console.log('---rightDay---');
+    this.checkForLastGame('nextGame');
     if(this.failSafe <= 12){
       //take parameters and convert using moment to add a week from it and recall the week api
 
@@ -153,6 +169,12 @@ export class CalendarCarousel implements OnInit {
           dayNum = index;
         }
       })
+
+      console.log('dayNum - ',dayNum);
+      console.log('weeklyDates - ',this.weeklyDates);
+      console.log('curParams.date - ',curParams.date);
+      console.log('this.weeklyDates[dayNum].fullDate - ',this.weeklyDates[dayNum].fullDate);
+
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
         this.callWeeklyApi(curParams).subscribe(data=>{
@@ -160,7 +182,8 @@ export class CalendarCarousel implements OnInit {
           this.rightDay();
           return;
         });
-      }else{
+
+      } else {
         if(this.weeklyDates[dayNum].clickable){
           this.failSafe = 0;
           this.callWeeklyApi(curParams).subscribe(data=>{
@@ -175,7 +198,16 @@ export class CalendarCarousel implements OnInit {
         }
       }
     }
+    else {}
+  } //rightDay
+
+
+
+  checkForLastGame(value?) {
+    this.resetControls.emit(value);
   }
+
+
 
   //whatever is clicked on gets emitted and highlight on the carousel
   setActive(event){
@@ -221,9 +253,8 @@ export class CalendarCarousel implements OnInit {
         month:month,
         day:day,
         weekDay:weekDay,
-        ordinal:ordinal,
+        ordinal:ordinal
       }
-
       //push all dateObj into array
       formattedArray.push(dateObj);
     }
