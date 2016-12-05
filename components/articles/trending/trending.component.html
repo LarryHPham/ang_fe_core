@@ -12,7 +12,12 @@
         <div *ngIf="i == 0" class="featured-articles"><i class="fa fa-newspaper-o"></i><span>FEATURED ARTICLE</span>
         </div>
         <div class="trending-small-article">
-            <div class="trending-small-article-title" [innerHTML]="data.title | safeHtml"></div>
+            <a [routerLink]="data.url" class="trending-small-article-title" *ngIf="!data.extUrl" [innerHTML]="data.title | safeHtml">
+
+            </a>
+            <a [href]="data.url" class="trending-small-article-title" *ngIf="data.extUrl" [innerHTML]="data.title | safeHtml">
+
+            </a>
             <div *ngIf="data.publisher != 'SNT Media'" class="trending-small-article-author">Written By: <span class="trending-small-article-author-blue" [innerHTML]="data.author | safeHtml"></span>, &nbsp;<span class="trending-small-article-author-blue" [innerHTML]="data.publisher | safeHtml"></span></div>
             <div class="trending-small-article-date">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
@@ -27,7 +32,7 @@
                 </a>
                 <div class="col-sm-8 col-md-8 col-lg-6">
                     <div class="responsive-content">
-                        <div class="responsive-content-text" [innerHTML]="data.content | safeHtml"></div>
+                        <div class="responsive-content-text" [innerHTML]="data.teaser| safeHtml"></div>
                     </div>
                     <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-read-more hide-new320">Read the story <i
                             class="fa fa-arrow-right margin"></i>
