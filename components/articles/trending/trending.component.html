@@ -5,14 +5,16 @@
     </div>
     <div class="trending-small-hr-title"></div>
     <div *ngFor="let data of trendingData; let even=even; let i = index">
-        <span class="featured-tag" *ngIf="i == 0">FEATURED</span>
+        <span *ngIf="i == 0">
+            <span class="featured-tag">FEATURED</span>
+        </span>
         <share-links-component [shareUrl]="data.url" [isMain]="false"></share-links-component>
         <div *ngIf="i == 0" class="featured-articles"><i class="fa fa-newspaper-o"></i><span>FEATURED ARTICLE</span>
         </div>
         <div class="trending-small-article">
             <div class="trending-small-article-title" [innerHTML]="data.title | safeHtml"></div>
             <div *ngIf="data.publisher != 'SNT Media'" class="trending-small-article-author">Written By: <span class="trending-small-article-author-blue" [innerHTML]="data.author | safeHtml"></span>, &nbsp;<span class="trending-small-article-author-blue" [innerHTML]="data.publisher | safeHtml"></span></div>
-            <div class="trending-small-article-date hide-new320">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
+            <div class="trending-small-article-date">Posted on: <span [innerHTML]="data.date | safeHtml"></span></div>
             <div class="row">
 
                 <a *ngIf="!data.extUrl" [routerLink]="data.url" class="trending-small-article-img col-sm-4 col-md-4 col-lg-6 image-fluid">
@@ -43,8 +45,7 @@
             </a>
         </div>
         <div class="trending-small-hr"></div>
-        <sidekick-container-component
-                *ngIf="!even"></sidekick-container-component>
+        <responsive-widget *ngIf="!even"></responsive-widget>
         <div *ngIf="!even" class="trending-small-hr hide-1280"></div>
     </div>
     <div *ngIf="showLoading" class="loading-more">

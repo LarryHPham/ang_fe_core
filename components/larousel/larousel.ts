@@ -16,7 +16,7 @@ export class Larousel implements OnChanges{
   @Input() toggleData: any;
   @Input() carData: any;
   public currentScroll = 0;
-  public rightText:string = '0px';
+  public rightText:string;
   private itemSize:number = 205;
   private minScroll:boolean = false;
   private maxScroll:boolean = false;
@@ -24,7 +24,7 @@ export class Larousel implements OnChanges{
 
   private isMouseDown: boolean = false;
   private drag: number = 0;
-  private mouseDown:number = 0;
+  private mouseDown:number = null;
   private mouseUp:number = 0;
   private swipeDirection:string;
   private boundary:any = {};
@@ -197,6 +197,7 @@ export class Larousel implements OnChanges{
         this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
       }
       this.transition = "";
+      this.imageTransition = this.itemSize+'px';
       this.rightText = this.currentScroll+'px';
       //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
       setTimeout(function(){
@@ -225,13 +226,13 @@ export class Larousel implements OnChanges{
     this.currentScroll -= (this.itemSize);
     this.transitionDirection = 'left';
     if(this.currentScroll < 0){
-      this.currentScroll = (this.itemSize * this.maxLength-1);
+      this.currentScroll = (this.itemSize * this.maxLength-(this.clones*2));
     }
     this.checkCurrent(this.currentScroll);
   }
 
   right(event) {
-    this.currentScroll += this.itemSize;
+    this.currentScroll += (this.itemSize);
     this.transitionDirection = 'right';
     if(this.maxLength >= Math.round(this.currentScroll/this.itemSize)){
       this.checkCurrent(this.currentScroll);
@@ -260,37 +261,13 @@ export class Larousel implements OnChanges{
         this.mouseDown = event.clientX;
       }
       if(mouseType == 'mouseup'){
+        this.mouseUp = event.clientX;
+        this.drag = this.mouseDown - this.mouseUp;
         if(this.drag >= 0){//this is for quick fix but not final version
           this.right('right');
         }else{
           this.left('left');
         }
-        this.mouseUp = event.clientX;
-        this.checkCurrent(this.currentScroll);
-      }
-    }
-  }
-
-  movingMouse(event){
-    //if mouse down set event to true and allow drag
-    this.isMouseDown = event.buttons === 1;
-    if(!this.loop){
-      this.maxScroll = !((this.maxLength-this.clones) > Math.round(this.currentScroll/(this.itemSize)));
-    }
-
-    if(this.isMouseDown && !this.maxScroll){
-
-      //if mousedown is detected and not at maxLength then detect distance by pixel of drag and use the correct function right or left
-      this.drag = (this.mouseDown - event.clientX);
-      this.currentScroll -= this.drag;
-      if(this.currentScroll < 0){
-        this.currentScroll = (this.maxLength-1) * this.itemSize;
-      }else if (this.currentScroll > (this.maxLength-1) * this.itemSize){
-        this.currentScroll = 0;
-      }
-      this.mouseDown = event.clientX;
-      if(event.type == 'click'){
-        this.rightText = this.currentScroll+'px';
         this.checkCurrent(this.currentScroll);
       }
     }
@@ -304,7 +281,6 @@ export class Larousel implements OnChanges{
       this.minScroll = this.currentScroll < (this.itemSize * this.clones);
       this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
     }
-
     let pos = Math.round((currentScroll / this.itemSize));
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
     if(pos > (this.maxLength-(this.clones*2))){//if position is larger or same as the length of array

@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
-import {GlobalFunctions} from '../../../global/global-functions';
-// import {HeadlineDataService} from "../../../services/headline-module-service";
 import {Router, ActivatedRoute} from '@angular/router';
-import {ModuleHeaderData} from "../../components/module-header/module-header.component";
-import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
-import {GlobalSettings} from "../../../global/global-settings";
-// import {ImagesService} from "../../../services/carousel.service";
 
+//globals
+import {GlobalSettings} from "../../../global/global-settings";
+import {GlobalFunctions} from '../../../global/global-functions';
+import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions";
+
+//libraries
 declare var moment:any;
 declare var jQuery:any;
 
@@ -37,7 +37,6 @@ export class ArticlesModule implements OnInit {
     teamID:string;
     timeStamp:string;
     eventID:number;
-    mainEventID:number;
     isSmall:boolean = false;
     league:boolean = false;
 
@@ -45,15 +44,13 @@ export class ArticlesModule implements OnInit {
     public sportLeagueAbbrv: string = "TODO";
     public collegeDivisionFullAbbrv: string = "TODO";
 
-    public headerInfo:ModuleHeaderData = {
+    public headerInfo = {
         moduleTitle: "",
         hasIcon: false,
         iconClass: ""
     };
 
-    public hasProperties: boolean;
-
-    constructor(private _activateRoute:ActivatedRoute, private _router:Router) {
+    constructor(private _activateRoute:ActivatedRoute) {
         this.params = this._activateRoute.params.subscribe(
             (param:any)=> {
                 this.scope = param['scope'];
