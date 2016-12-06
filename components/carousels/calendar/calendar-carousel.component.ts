@@ -187,6 +187,7 @@ export class CalendarCarousel implements OnInit {
           this.rightDay();
         }
       }
+
       this.checkForLastGame.emit(curParams.date);
     }
     else {

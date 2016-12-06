@@ -125,14 +125,18 @@
     &.left {
       padding-right: 2px;
       i:before {
+        display: inline-block;
         font-size: 25px;
-      } 
+        margin-top: 2px;
+      }
     }
     &.right {
       padding-left: 2px;
       i:before {
+        display: inline-block;
         font-size: 25px;
-      } 
+        margin-top: 2px;
+      }
     }
     &.right {}
     @media @tablet{
@@ -164,3 +168,9 @@
     opacity: .25;
   }
 } //last-game-date
+.inactive {
+  .calendar-picker-circles.right, .calendar-picker-circles.left {
+    pointer-events: none;
+    opacity: .25;
+  }      
+} //.inactive

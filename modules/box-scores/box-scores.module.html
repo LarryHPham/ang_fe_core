@@ -10,6 +10,7 @@
         [modHeadData]="boxScores.moduleTitle"></module-header>
       <!--for calendar-->
       <calendar-carousel
+        [class.inactive]="!ActivateControls"
         [class.last-game-date]="windowWidth < 768 && boxScores && lastAvailableGame == true"
         *ngIf="calendarParams"
         [chosenParam]="calendarParams"
