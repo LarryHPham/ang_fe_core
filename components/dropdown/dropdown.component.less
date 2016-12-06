@@ -43,6 +43,10 @@
     position: absolute;
     top: 32px;
     z-index: 100;
+    &.no-title {
+      top: 12px;
+    }
+
     &-scroll .scrollable-item {
       height: 160px;
       .dropdown-list-option {
@@ -55,7 +59,7 @@
         right: 5px;
         background-color: @backgroundGrey;
       }
-    }
+    } //&-scroll .scrollable-item
 
     &-option {
       height: auto;
@@ -77,7 +81,7 @@
           color: @bulletGrey;
         }
       }
-    }
+    } //&-option
   }
 
   .dropdown-grp {
@@ -115,7 +119,7 @@
     overflow:scroll;
   }
   .scrollable-item-scroller{width: 5px}
-  .droptitle{
+  .droptitle {
     position: relative;
     top: 12px;
     height: 21px;
