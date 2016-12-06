@@ -48,7 +48,8 @@
         background-color: @masterBrandColor;
         @media @mobile {
           display: block;
-          color: @bulletGrey;
+          color: @medGrey;
+          font-weight: 800;
           background-color: transparent;
           left: ~"calc( 50% - 35px)";
           position: absolute;
@@ -98,7 +99,7 @@
       left: ~"calc(50% - 70px)";
     }
     & > i{
-      color:@fontIconGrey;
+      color:@medGrey;
       line-height: 2em;
       cursor: pointer;
     }
@@ -172,5 +173,5 @@
   .calendar-picker-circles.right, .calendar-picker-circles.left {
     pointer-events: none;
     opacity: .25;
-  }      
+  }
 } //.inactive
