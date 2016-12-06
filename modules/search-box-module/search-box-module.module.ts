@@ -36,10 +36,10 @@ export class SearchBoxModule {
     this.userInput.emit(e);
   }
 
+
   selectedSport(e) {
     e = e.toLowerCase();
     this.scope = e;
-
     this.scopeEmit.emit(e);
     //this.router.navigate(['/deep-dive',this.category, e]);
   }
