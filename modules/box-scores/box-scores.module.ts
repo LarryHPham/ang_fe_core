@@ -65,11 +65,12 @@ export class BoxScoresModule implements OnInit {
         let currentGameDate = event.boxScores.currentValue ? event.boxScores.currentValue.gameDate : null;
         let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : null;
         let previousGameDate = event.boxScores.previousValue ? event.boxScores.previousValue.gameDate : null;
+        let lastActiveDate;
 
         //once a new date is returned re-activate carousel controls (prevents user from clicking quickly)
         if ( currentGameDate != lastActiveDate ) {
           this.ActivateControls = true;
-          let lastActiveDate = currentGameDate
+          lastActiveDate = currentGameDate
         }
 
         // if next game returns null and the last date of the season has not been set
