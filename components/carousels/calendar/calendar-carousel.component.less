@@ -48,7 +48,8 @@
         background-color: @masterBrandColor;
         @media @mobile {
           display: block;
-          color: @bulletGrey;
+          color: @medGrey;
+          font-weight: 800;
           background-color: transparent;
           left: ~"calc( 50% - 35px)";
           position: absolute;
@@ -98,7 +99,7 @@
       left: ~"calc(50% - 70px)";
     }
     & > i{
-      color:@fontIconGrey;
+      color:@medGrey;
       line-height: 2em;
       cursor: pointer;
     }
@@ -123,18 +124,35 @@
     z-index: 1;
     .no-select;
     &.left {
-      padding-right: 2px;
-      i:before {
-        font-size: 25px;
-      } 
-    }
+      position: relative;
+      i {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        &:before {
+          position: absolute;
+          width: 35px;
+          top: 3px;
+          right: 0;
+          font-size: 25px;
+        } //&:before
+      } //i
+    } // &.left
     &.right {
-      padding-left: 2px;
-      i:before {
-        font-size: 25px;
-      } 
-    }
-    &.right {}
+      position: relative;
+      i {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        &:before {
+          position: absolute;
+          width: 35px;
+          top: 3px;
+          left: 0;
+          font-size: 25px;
+        } //&:before
+      } //i
+    } //&.right
     @media @tablet{
       &:hover{
         color: @white;
@@ -164,3 +182,9 @@
     opacity: .25;
   }
 } //last-game-date
+.inactive {
+  .calendar-picker-circles.right, .calendar-picker-circles.left {
+    pointer-events: none;
+    opacity: .25;
+  }
+} //.inactive
