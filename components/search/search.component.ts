@@ -1,10 +1,14 @@
-import {Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef} from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {SearchService} from '../../../services/search.service';
-import {Observable} from 'rxjs/Rx';
-import {FormControl} from '@angular/forms';
-import {CircleImage} from '../images/circle-image/circle-image';
-import {ImageData} from '../images/image-data';
+import { Observable } from 'rxjs/Rx';
+import { FormControl } from '@angular/forms';
+
+//services
+import { SearchService } from '../../../services/search.service';
+
+//interfaces
+import { CircleImage } from '../images/circle-image/circle-image';
+import { ImageData } from '../images/image-data';
 /*
  * Search Component
  * Lutz Lai - 05/13/2016
@@ -25,7 +29,6 @@ import {ImageData} from '../images/image-data';
 
 //Interface for single search result item
 export interface SearchComponentResult {
-
     //Html string that is displayed in the dropdown
     title: string;
     //Value to compare against for autocomplete text
