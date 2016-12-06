@@ -18,20 +18,15 @@
         <span *ngIf="searchData.searchScopeDropdown" class="category-dropdown">
             <dropdown [list]="searchData.searchScopeDropdown" [selectedKey]="scope.toUpperCase()" icon="caret-down" ddtitle='Select A Sport'  (selectionChanged)="selectedSport($event) "></dropdown>
         </span>
-        <!--<input
-        (keyup)="onKey($event)"
-        (keyup.enter)="navigateSearch()"
-        placeholder="{{searchPlaceHolderText}}"
-        class="search-input main searchcheck" [ngStyle]=" category =='sports'? {'padding-left':'140px'}:{'padding-left':'25px'}" />-->
+
         <input autocomplete="off"
         (keyup)="onKey($event)"
         placeholder="{{searchData.searchPlaceHolderText}}"
         class="search-input main searchcheck"  [ngClass]="searchData.searchScopeDropdown ? 'left-pad-dd':''" />
 
-
     </div>
     <span
-      (click)="navigateSearch($event)"
+      (click)="onKey($event)"
       target="_blank"
       class="search-button searchcheck">
       <i class="fa fa-search"></i>
