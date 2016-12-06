@@ -56,12 +56,12 @@ export class ImagesMedia implements OnInit {
     modalExpand(e) {
         if (this.expand == true) {
             this.expand = false;
-            this.render.setElementClass(e.target.parentElement, 'carousel-modal-open', true);
+            this.render.setElementClass(e.target.parentElement, 'carousel-modal-open', false);
 
 
         } else {
             this.expand = true;
-            this.render.setElementClass(e.target.parentElement, 'carousel-modal-open', false);
+            this.render.setElementClass(e.target.parentElement, 'carousel-modal-open', true);
 
         }
         return this.expand;
