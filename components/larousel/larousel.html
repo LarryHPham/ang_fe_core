@@ -1,5 +1,5 @@
 <!-- (swipe)="onSwipe($event)" -->
-<div class="carousel_scroll" (mousemove)="movingMouse($event)"  (window:resize)="onResize($event)">
+<div class="carousel_scroll" (window:resize)="onResize($event)">
   <div *ngIf="currentImage" class="carousel_scroll-image">
     <div class="carousel_scroll-image-box {{transition2}}"  [style.right]="imageTransition | safeStyle">
       <div class="carousel_scroll-image-box-img" [ngStyle]="{'background-image': 'url(' + prevImage + ')'}"></div>

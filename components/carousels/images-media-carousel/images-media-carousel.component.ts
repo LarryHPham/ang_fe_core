@@ -54,7 +54,6 @@ export class ImagesMedia implements OnInit {
       private render:Renderer){}
 
     modalExpand(e) {
-
         if (this.expand == true) {
             this.expand = false;
             this.render.setElementClass(e.target.parentElement, 'carousel-modal-open', false);
