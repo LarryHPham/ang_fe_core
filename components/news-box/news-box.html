@@ -108,14 +108,14 @@
       </div>
       <!-- ABOVE GRAPH CAROUSEL -->
       <!-- BELOW NEWS CAROUSEL -->
-      <div class="newsbox story-item"
-      *ngIf="item.type == 'carousel'"
-      [routerLink]="item.data.articlelink"
+      <a class="newsbox story-item"
+      *ngIf="item.type == 'carousel' && !item.data.extUrl"
+      [routerLink]="item.data.articlelink "
       [ngClass]="{'clone': item.type == 'clone'}">
         <div class="newsbox-item">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-right" id="lrgnewsbox-right" style="display:block;">
-              <div class="newsbox-item-container-right-key" [innerHtml]="item.data.keywords | safeHtml"></div>
+              <a class="newsbox-item-container-right-key" [routerLink]="item.data.keyUrl" [innerHtml]="item.data.keywords | safeHtml"></a>
               <div class="newsbox-item-container-right-title">
                 <span class="newsbox-item-container-right-title-span" [innerHTML]="item.data.title | safeHtml"></span>
                 <span class="newsbox-item-container-right-title-headline" [innerHTML]="item.data.headline | safeHtml"></span>
@@ -129,7 +129,29 @@
             </div>
           </div>
         </div>
-      </div>
+      </a>
+      <a class="newsbox story-item"
+      *ngIf="item.type == 'carousel' && item.data.extUrl"
+      href="{{item.data.articlelink}}"
+      [ngClass]="{'clone': item.type == 'clone'}">
+        <div class="newsbox-item">
+          <div class="newsbox-item-container">
+            <div class="newsbox-item-container-right" id="lrgnewsbox-right" style="display:block;">
+              <div class="newsbox-item-container-right-key" [innerHtml]="item.data.keywords | safeHtml"></div>
+              <div class="newsbox-item-container-right-title">
+                <span class="newsbox-item-container-right-title-span" [innerHTML]="item.data.title | safeHtml"></span>
+                <span class="newsbox-item-container-right-title-headline" [innerHTML]="item.data.headline | safeHtml"></span>
+              </div>
+              <div class="newsbox-item-container-right-title-border"></div>
+              <div class="newsbox-item-container-right-content" [innerHTML]="item.data.teaser | safeHtml">
+              </div>
+              <a href="{{item.data.articlelink}}">
+                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right-1"></i></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </a>
       <!-- ABOVE NEWS CAROUSEL -->
     </template>
   </template>

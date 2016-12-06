@@ -18,6 +18,8 @@
 //   }
 // }
 
+
+
 @media @mobile {
   .box-scores {
     width:100%!important;
@@ -26,14 +28,30 @@
     }
   }
 }
+
+
+
 .box-scores {// BOX-SCORES CONTAINER
   width: 100%;
   height:auto;
   overflow: visible;
   margin: 0 auto;
-  padding: 15px 0;
   &-container{
     overflow: visible;
+    .even {
+      @media @tablet {
+        .box-scores-info-padding {
+          padding: 10px 5px 10px 10px;
+        }
+      }
+    }
+    .odd {
+      @media @tablet {
+        .box-scores-info-padding {
+          padding: 10px 10px 10px 5px;
+        }
+      }
+    }
   }
   &-leagueNav {
     width:100%;
@@ -57,11 +75,15 @@
       @media @mobile {
         padding: 15px 10px 0;
       }
+      &:nth-child(4n-1), &:nth-child(4n) {
+        background: @backgroundGrey;
+      }
+
+      &.odd {
+
+      }
       width:100%;
       height:auto;
-    }
-    &-padding{
-      padding: 10px;
     }
     .pageIndicator {
       display:block;
@@ -69,6 +91,10 @@
       padding: 10px 0;
       text-align:center;
       font-size: 12px;
+      color: @bulletGrey;
+      b {
+        color: @black;
+      }
     }
     .pagButton {
       cursor: pointer;
@@ -173,16 +199,20 @@
   .schedule-next-vs{
     font-weight: 800;
   }
+  .module-container {
+    margin-bottom: 0;
+    overflow: visible;
+  }
+  .dynamic-background-hover i {
+    margin-top: 2px;
+  }
 }//end of box-scores container
 
 .box-scores-scroll{
   width: 100%;
   height: 400px;
   .scrollable-item{
-    padding-right:15px;
-    @media @desktop-l{
-      padding-right:20px;
-    }
+    padding-right:22px;
   }
   .scrollable-item-wrapper{
     max-height:555px;
@@ -191,10 +221,10 @@
   }
   .scrollable-item-scroller{
     width:5px;
-    right:2px;
+    right: 4px;
   }
   .scrollable-item.showScroll::after{
     width:5px;
-    right:3px;
+    right: 5px;
   }
 } // END .box-scores-scroll

@@ -26,7 +26,6 @@ export class SideScroll{
 
   private transition:any = null;
   constructor(){
-
   }
 
   scrollX(event){

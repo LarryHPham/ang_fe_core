@@ -1,19 +1,26 @@
-.box-article{
-  padding:15px 0 0 15px;
-}
 
 .game-article {
   width:100%;
   height:auto;
-  padding: 15px 0 0 0;
-  @media @tablet {
-    padding: 0 10px;
+  @media @mobile {
+    padding: 15px 0 0;
   }
-  @media @desktop-m {
+  @media @tablet {
     margin: 0;
     padding: 15px 0 0 0;
     &:first-child {
-      padding: 0;
+      padding-right: 7px;
+    }
+    &:last-child {
+      padding-left: 7px;
+    }
+  }
+  @media @desktop-m {
+    &:first-child {
+      padding: 0 0 0 15px;
+    }
+    &:last-child {
+      padding: 15px 0 0 15px;
     }
   }
   &-title {

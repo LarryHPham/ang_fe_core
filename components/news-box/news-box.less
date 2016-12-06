@@ -181,6 +181,7 @@
     background-repeat: no-repeat;
     min-width: 100%;
     min-height: 240px;
+    background-color: @storyOverlay;
     // max-height: 240px;
     height: 100%;
     .flexDisplay;
@@ -244,7 +245,7 @@
                     font-weight: 800;
                     padding: 0 15px;
                     border-radius: 3px;
-                    background-color: @masterBrandColor;
+                    background-color: @masterBrandColor !important;
                     text-align: center;
                     color: @white;
                     line-height: 25px;
@@ -253,7 +254,8 @@
                     margin-right:10px;
                     &:hover{
                       @media @tablet{
-                          background-color: @black;
+                          background-color: @black !important;
+                          color:white
                       }
                     }
                 }
@@ -279,7 +281,8 @@
                     &-headline {
                         .globalDefaultModFont(18px, 800, @white);
                         line-height: 1.4em;
-                        max-height: 48px;
+                        max-height: 2.4em;
+                        overflow: hidden;
                         display: inline-block;
                         @media @mobile {
                             overflow: hidden;

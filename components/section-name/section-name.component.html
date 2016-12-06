@@ -1,5 +1,5 @@
 <section *ngIf="secName" class="section-name row">
-  <div class="section-name-title col-xs-8"><i class="fa {{secName.icon}}"></i><p [innerHTML]="secName.title | safeHtml"></p></div>
-  <div class="section-more col-xs-4"><a *ngIf="secName.route" class="section-name-link text-master" [routerLink]="secName.route">See More</a></div>
-  <section-front-top-nav *ngIf="topNav" [pageScope]="pageScope" [scope]="scope" [topScope]="topScope" [scopeList]="scopeList"></section-front-top-nav>
+  <div class="section-name-title"><i class="fa {{secName.icon}}"></i><p [innerHTML]="secName.title | safeHtml"></p></div>
+  <div class="section-more"><a *ngIf="secName.route" class="section-name-link text-master" [routerLink]="secName.route">See More</a></div>
+  <section-front-top-nav *ngIf="topNav" class="section-front-top-nav" [pageScope]="pageScope" [scope]="scope" [topScope]="topScope" [scopeList]="scopeList"></section-front-top-nav>
 </section>
