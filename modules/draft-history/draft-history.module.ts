@@ -13,7 +13,7 @@ import { DetailListInput } from '../../components/detailed-list-item/detailed-li
 
 export class DraftHistoryModule implements OnInit {
   modHeadData: Object;
-  @Input() footerData: Object;
+  @Input() footerData: any;
   @Input() profileData: IProfileData;
 
   constructor() {}
