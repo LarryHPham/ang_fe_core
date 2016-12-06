@@ -245,7 +245,7 @@
                     font-weight: 800;
                     padding: 0 15px;
                     border-radius: 3px;
-                    background-color: @masterBrandColor;
+                    background-color: @masterBrandColor !important;
                     text-align: center;
                     color: @white;
                     line-height: 25px;
@@ -254,7 +254,8 @@
                     margin-right:10px;
                     &:hover{
                       @media @tablet{
-                          background-color: @black;
+                          background-color: @black !important;
+                          color:white
                       }
                     }
                 }
