@@ -124,22 +124,35 @@
     z-index: 1;
     .no-select;
     &.left {
-      padding-right: 2px;
-      i:before {
-        display: inline-block;
-        font-size: 25px;
-        margin-top: 2px;
-      }
-    }
+      position: relative;
+      i {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        &:before {
+          position: absolute;
+          width: 35px;
+          top: 3px;
+          right: 0;
+          font-size: 25px;
+        } //&:before
+      } //i
+    } // &.left
     &.right {
-      padding-left: 2px;
-      i:before {
-        display: inline-block;
-        font-size: 25px;
-        margin-top: 2px;
-      }
-    }
-    &.right {}
+      position: relative;
+      i {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        &:before {
+          position: absolute;
+          width: 35px;
+          top: 3px;
+          left: 0;
+          font-size: 25px;
+        } //&:before
+      } //i
+    } //&.right
     @media @tablet{
       &:hover{
         color: @white;
