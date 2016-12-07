@@ -4,7 +4,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll',
-    templateUrl: './app/fe-core/components/side-scroll/side-scroll.component.html',
+    templateUrl: './app/fe-core/components/carousels/side-scroll/side-scroll.component.html',
     outputs: ['carouselCount', 'reloadSame']
 })
 
