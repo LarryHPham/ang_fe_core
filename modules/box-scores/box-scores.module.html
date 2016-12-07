@@ -20,7 +20,11 @@
       <!--for calendar-->
 
       <!--for team profile-->
-      <!-- <article-schedule-component *ngIf=" calendarParams.profile != 'league' && boxScores" [homeData]="boxScores.schedule.home" [awayData]="boxScores.schedule.away"></article-schedule-component> -->
+      <article-schedule-component
+        *ngIf="boxScores && boxScores.schedule && calendarParams.profile != 'league'"
+        [homeData]="boxScores.schedule.home"
+        [awayData]="boxScores.schedule.away">
+      </article-schedule-component>
     </div> <!--END box-header-->
 
     <!--box-scores info with no max height and no scroll bar on side-->

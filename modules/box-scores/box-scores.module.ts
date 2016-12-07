@@ -60,21 +60,29 @@ export class BoxScoresModule implements OnInit {
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
-      let currentGameDate = event.boxScores.currentValue ? event.boxScores.currentValue.gameDate : null;
-      let currentNextGameDate = event.boxScores.currentValue ? event.boxScores.currentValue.nextGameDate.event_date : null;
-      let previousGameDate = event.boxScores.previousValue ? event.boxScores.previousValue.gameDate : null;
+      if ( event.boxScores.currentValue.nextGameDate ) { //if the right info exists in api cal
+        this.ActivateControls = false;
 
-      //once a new date is returned re-activate carousel controls (prevents user from clicking quickly)
-      if ( currentGameDate != lastActiveDate ) {
-        this.ActivateControls = true;
-        let lastActiveDate = currentGameDate
+        let currentGameDate = event.boxScores.currentValue ? event.boxScores.currentValue.gameDate : null;
+        let currentNextGameDate = event.boxScores.currentValue && event.boxScores.currentValue.nextGameDate ? event.boxScores.currentValue.nextGameDate.event_date : null;
+        let previousGameDate = event.boxScores.previousValue ? event.boxScores.previousValue.gameDate : null;
+        let lastActiveDate;
+
+        //once a new date is returned re-activate carousel controls (prevents user from clicking quickly)
+        if ( currentGameDate != lastActiveDate ) {
+          this.ActivateControls = true;
+          lastActiveDate = currentGameDate
+        }
+
+        // if next game returns null and the last date of the season has not been set
+        if ( currentNextGameDate == null && this.lastAvailableGameSet == false ) {
+          this.lastAvailableGameDate = this.boxScores.gameDate;
+          this.lastAvailableGameSet = true;
+          this.checkForLastGame(this.lastAvailableGameDate);
+        }
       }
-
-      // if next game returns null and the last date of the season has not been set
-      if ( currentNextGameDate == null && this.lastAvailableGameSet == false ) {
-        this.lastAvailableGameDate = this.boxScores.gameDate;
-        this.lastAvailableGameSet = true;
-        this.checkForLastGame(this.lastAvailableGameDate);
+      else {
+        this.ActivateControls = true;
       }
     }
     if (this.scroll) {
