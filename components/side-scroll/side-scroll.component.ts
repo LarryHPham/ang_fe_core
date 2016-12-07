@@ -4,8 +4,8 @@ declare var jQuery:any;
 
 @Component({
     selector: 'side-scroll',
-    templateUrl: './app/fe-core/components/carousels/side-scroll/side-scroll.component.html',
-    outputs: ['carouselCount']
+    templateUrl: './app/fe-core/components/side-scroll/side-scroll.component.html',
+    outputs: ['carouselCount', 'reloadSame']
 })
 
 export class SideScroll{
@@ -13,9 +13,10 @@ export class SideScroll{
   @Input() current:any;
   @Input() data: any;
   public carouselCount = new EventEmitter();
+  public reloadSame = new EventEmitter();
   public currentScroll = 0;
   public rightText:string = '0px';
-  private itemSize:number = 205;
+  private itemSize:number = 230;
   private maxScroll:boolean = false;
 
   private isMouseDown: boolean = false;
@@ -26,6 +27,17 @@ export class SideScroll{
 
   private transition:any = null;
   constructor(){
+
+  }
+
+  ngOnChanges(event) {
+    if (event.data) { //if we get new data from the api, reset to the first item on scroller
+      setTimeout(() => {
+        this.currentScroll = 0;
+        this.checkCurrent(this.currentScroll);
+      }, 10);
+
+    }
   }
 
   scrollX(event){
@@ -76,6 +88,10 @@ export class SideScroll{
     if((this.maxLength-1) > Math.round(this.currentScroll/this.itemSize)){
       this.currentScroll += this.itemSize;
       this.checkCurrent(this.currentScroll);
+    }
+
+    if ((this.maxLength-5) == Math.round(this.currentScroll/this.itemSize)) { // append current data to end of scroller if reached near the end
+      this.reloadSame.next(null);
     }
   }
 
