@@ -11,7 +11,12 @@
       <div class="schedule_box-image">
         <circle-image [data]="boxData.awayImageConfig"></circle-image>
       </div>
-      <a target="_blank" href="{{boxData.awayLink}}">
+      <a *ngIf="!boxData.extUrl" target="_blank" [routerLink]="boxData.awayLink">
+        <span class="schedule_box-text">
+          {{boxData.awayTeamName}}
+        </span>
+      </a>
+      <a *ngIf="boxData.extUrl" target="_blank" href="{{boxData.awayLink}}">
         <span class="schedule_box-text">
           {{boxData.awayTeamName}}
         </span>
@@ -22,13 +27,26 @@
       <div class="schedule_box-image">
         <circle-image [data]="boxData.homeImageConfig"></circle-image>
       </div>
-      <a target="_blank" href="{{boxData.homeLink}}">
+      <a *ngIf="!boxData.extUrl" target="_blank" [routerLink]="boxData.homeLink">
+        <span class="schedule_box-text">
+          {{boxData.homeTeamName}}
+        </span>
+      </a>
+      <a *ngIf="boxData.extUrl" target="_blank" href="{{boxData.homeLink}}">
         <span class="schedule_box-text">
           {{boxData.homeTeamName}}
         </span>
       </a>
     </div>
-    <a target="_blank" href="{{boxData.reportLink}}">
+    <a *ngIf="!boxData.extUrl" target="_blank" [routerLink]="boxData.reportLink">
+      <div *ngIf="boxData.isLive != 'schedule-live'" class="schedule_box-linkbox">
+        <span>{{boxData.reportDisplay}}</span>
+      </div>
+      <div *ngIf="boxData.isLive == 'schedule-live'" class="schedule_box-linkbox-live">
+        <span><i class="fa fa-circle"></i> LIVE GAME REPORT</span>
+      </div>
+    </a>
+    <a *ngIf="boxData.extUrl" target="_blank" href="{{boxData.reportLink}}">
       <div *ngIf="boxData.isLive != 'schedule-live'" class="schedule_box-linkbox">
         <span>{{boxData.reportDisplay}}</span>
       </div>

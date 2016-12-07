@@ -13,6 +13,7 @@ export interface scheduleBoxInput{
   homeLink:any;
   reportDisplay:string,
   reportLink:any,
+  extUrl:boolean,
   isLive: string,
   inning: string
 }
@@ -54,10 +55,11 @@ export class ScheduleBox{
           },
           awayTeamName:'Blue Jays',
           homeTeamName:'Orioles',
-          awayLink:['Error-page'],
-          homeLink:['Error-page'],
+          awayLink:['/'],
+          homeLink:['/'],
           reportDisplay:'Mid Game Report',
-          reportLink:'/pick-a-team',
+          reportLink:['/'],
+          extUrl:false,
           isLive: '',
           inning: '0'
         }]
