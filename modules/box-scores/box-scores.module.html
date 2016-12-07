@@ -130,5 +130,10 @@
       </template>
 
     </div> <!-- END *ngIf="boxScores" -->
+
+    <score-board
+      *ngIf=" calendarParams.profile != 'league' && boxScores"
+      [scoreBoard]="boxScores.scoreBoard">
+    </score-board>
   </div> <!--END box-scores-container -->
 </div>

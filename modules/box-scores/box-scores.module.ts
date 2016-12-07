@@ -54,12 +54,11 @@ export class BoxScoresModule implements OnInit {
 
 
   ngOnChanges(event){
-    this.ActivateControls = false;
-
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
+
       if ( event.boxScores.currentValue.nextGameDate ) { //if the right info exists in api cal
         this.ActivateControls = false;
 
@@ -84,6 +83,7 @@ export class BoxScoresModule implements OnInit {
       else {
         this.ActivateControls = true;
       }
+
     }
     if (this.scroll) {
       if(this.boxScores != null){

@@ -50,8 +50,7 @@ class Dropdown {
 
 @Component({
   selector: 'dropdown',
-  templateUrl: './app/fe-core/components/dropdown/dropdown.component.html',
-
+  templateUrl: './app/fe-core/components/dropdown/dropdown.component.html'
 })
 
 export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
@@ -96,14 +95,13 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
   }
 
   ngOnChanges() {
-
     if ( !this.icon ) {
 
       this.dropdownVisibleIcon = "fa-sort";
       this.dropdownHiddenIcon = "fa-sort";
     }
     else if (this.icon == "fa-caret-down") {
-       
+
       this.dropdownVisibleIcon = "fa-caret-up";
       this.dropdownHiddenIcon = "fa-caret-down";
     }
