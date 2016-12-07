@@ -140,6 +140,14 @@
               Next Game <i class="fa fa-angle-right"></i>
             </span>
           </div>
+
+          <!-- <template ngFor let-gameBox [ngForOf]="boxScores.gameInfo">
+            <game-article
+              class="float-right"
+              *ngIf="calendarParams.profile != 'league' && gameBox[gameNum].aiContent"
+              [gameArticle]="gameBox[gameNum].aiContent">
+            </game-article>
+          </template> -->
         </div>
       </template>
 
