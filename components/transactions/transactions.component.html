@@ -12,7 +12,9 @@
             <span class="sort-title-text">
               {{tab.sortTitle}}
             </span>
-            <dropdown *ngIf="transactionFilter1"
+            <dropdown
+              *ngIf="transactionFilter1"
+              [isModule]="'true'"
               [list]="transactionFilter1"
               [selectedKey]="dropdownKey1"
               (selectionChanged)="transactionDropdownChange($event)">
