@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef} from '@angular/core';
+import {Component, Input, ElementRef, Output, EventEmitter} from '@angular/core';
 import { Larousel } from '../larousel/larousel';
 import { LineChartComponent } from '../line-chart/line-chart.component';
 
@@ -13,6 +13,7 @@ export class NewsBox{
   @Input() carData: any;
   @Input() toggleData: any;
 
+  @Output() changeScope = new EventEmitter();
   private displayedItems: any;
   private currentDisplayed: any;
 
@@ -28,4 +29,9 @@ export class NewsBox{
       this.displayedItems = event;
     }
   }
+
+  routeNavigate($event) {
+      this.changeScope.next($event);
+  }
+
 }
