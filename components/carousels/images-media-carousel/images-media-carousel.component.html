@@ -14,14 +14,14 @@
                 <circle-button *ngIf="arraySize > 1" class="container-img-navigation" (scrollLeft)="left()" (scrollRight)="right()"></circle-button>
             </span>
             <div class="grey-bar col-xs-12">
-                <span class='grey-bar-counter'>
+                <span *ngIf="arraySize > 1" class='grey-bar-counter'>
                     <i class='fa fa-file-image-o'></i>
                     {{imagesTitle}} <span class='grey-bar-counter-bold'>{{displayCounter}}</span>&nbsp;of&nbsp;
                     <span class='grey-bar-counter-bold'>{{totalImageCount}}</span>
                 </span>
                 <!--<span class="grey-bar-title">{{description}}</span>-->
-                <span class="grey-bar-credit"><span [ngStyle]="{color: '#ccc'}">Provided By:</span>
-                    <span class="grey-bar-credit-bold">{{imageCredit}}</span>
+                <span *ngIf="imageCredit" class="grey-bar-credit"><span [ngStyle]="{color: '#ccc'}">Provided By:</span>
+                    <span *ngIf="imageCredit" class="grey-bar-credit-bold">{{imageCredit}}</span>
                 </span>
             </div>
         </div>
@@ -36,11 +36,10 @@
             <circle-button *ngIf="arraySize > 1" class="carousel-modal-container-img-navigation" (scrollLeft)="left()"
                            (scrollRight)="right()"></circle-button>
         </span>
-        <div class="carousel-modal-grey-bar row"><span class="carousel-modal-grey-bar-title col-sm-4">
+        <div *ngIf="arraySize > 1" class="carousel-modal-grey-bar row">
             <span class='grey-bar-counter-bold'>{{displayCounter}}</span>&nbsp;of&nbsp;
-                    <span class='grey-bar-counter-bold'>{{totalImageCount}}</span></span>
-            <span
-                class="carousel-modal-grey-bar-credit col-sm-8">Provided By: <span
+                    <span class='grey-bar-counter-bold'>{{totalImageCount}}</span>
+            <span *ngIf="imageCredit">&nbsp;|&nbsp; Provided By: <span *ngIf="imageCredit"
                 class="carousel-modal-grey-bar-credit-bold">{{imageCredit}}</span></span></div>
     </div>
 </div>

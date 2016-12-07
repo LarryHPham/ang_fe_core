@@ -5,11 +5,11 @@
         <div class="fantasy-container-image" [style.background-image]="'url(' + profileImage + ')'"></div>
         <div class="fantasy-container-content col-xs-12">
             <span [innerHTML]="fantasyData.title | safeHtml"></span>
-            <div class="fantasy-container-published">Published <span [innerHTML]="fantasyDate | safeHtml"></span>...</div>
+            <div class="fantasy-container-published">Published <span [innerHTML]="fantasyDate | safeHtml"></span>...
+            </div>
             <div class="fantasy-container-article col-xs-12">
                 <span [innerHTML]="fantasyData.teaser | safeHtml"></span>
-                <a [routerLink]="['Article-pages', {eventType: 'player-fantasy', eventID: fantasyData.id}]"
-                   class="fantasy-container-article-read-more">
+                <a [routerLink]="articleUrl" class="fantasy-container-article-read-more">
                     <span class="fantasy-container-article-ellipsis">...</span>Read More</a>
             </div>
         </div>
