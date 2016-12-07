@@ -13,12 +13,32 @@
           </span>
           <div class="sort-title conferences">
             <span class="sort-title-text">Conference: </span>
-            <dropdown class="sort-title-conf" *ngIf="sortConference" [list]="sortConference" [selectedKey]="sortConferenceSelected" (selectionChanged)="conferenceChanged($event)"></dropdown>
-            <dropdown class="sort-title-div" *ngIf="sortDivision" [list]="sortDivision" [selectedKey]="sortDivisionSelected" (selectionChanged)="divisionChanged($event)"></dropdown>
+            <dropdown
+              class="sort-title-conf"
+              *ngIf="sortConference"
+              [isModule]="'true'"
+              [list]="sortConference"
+              [selectedKey]="sortConferenceSelected"
+              (selectionChanged)="conferenceChanged($event)">
+            </dropdown>
+            <dropdown
+              class="sort-title-div"
+              *ngIf="sortDivision"
+              [isModule]="'true'"
+              [list]="sortDivision"
+              [selectedKey]="sortDivisionSelected"
+              (selectionChanged)="divisionChanged($event)">
+            </dropdown>
           </div>
           <div class="sort-title">
             <span class="sort-title-text">Season: </span>
-            <dropdown class="sort-title-season" *ngIf="sortSeason" [list]="sortSeason" [selectedKey]="sortSeasonSelected" (selectionChanged)="seasonChanged($event)"></dropdown>
+            <dropdown
+              class="sort-title-season"
+              *ngIf="sortSeason"
+              [isModule]="'true'"
+              [list]="sortSeason"
+              [selectedKey]="sortSeasonSelected"
+              (selectionChanged)="seasonChanged($event)"></dropdown>
           </div>
         </div>
         <div *ngFor="let section of tab.sections; let i = index;" class="standings-tab-section">

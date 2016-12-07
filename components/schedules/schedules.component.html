@@ -14,25 +14,28 @@
             <span class="filter-box-sort">{{filter1.type}}</span>
             <div  class="col-xs-6 filter-dropdown">
               <dropdown *ngIf="windowWidth >= 640"
-              [list]="filter1.data"
-              [selectedKey]="dropdownKey1"
-              [icon]="'fa-caret-down'"
-              (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
+                [isModule]="'true'"
+                [list]="filter1.data"
+                [selectedKey]="dropdownKey1"
+                [icon]="'fa-caret-down'"
+                (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
               <dropdown *ngIf="windowWidth < 640"
-              [list]="filter1.dataSml"
-              [selectedKey]="dropdownKey1"
-              [icon]="'fa-caret-down'"
-              (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
+                [isModule]="'true'"
+                [list]="filter1.dataSml"
+                [selectedKey]="dropdownKey1"
+                [icon]="'fa-caret-down'"
+                (selectionChanged)="filterSwitch({key:$event,value:'filter1'})"></dropdown>
             </div>
           </div>
           <div *ngIf="filter2" class="filter-box">
             <span class="filter-box-sort">{{filter2.type}}</span>
             <div class="col-xs-6 filter-dropdown">
               <dropdown
-              [list]="filter2.data"
-              [selectedKey]="dropdownKey2"
-              [icon]="'fa-caret-down'"
-              (selectionChanged)="filterSwitch({key:$event,value:'filter2'})"></dropdown>
+                [isModule]="'true'"
+                [list]="filter2.data"
+                [selectedKey]="dropdownKey2"
+                [icon]="'fa-caret-down'"
+                (selectionChanged)="filterSwitch({key:$event,value:'filter2'})"></dropdown>
             </div>
           </div>
         </div>

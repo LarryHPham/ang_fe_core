@@ -20,7 +20,7 @@
         [ngClass]="{active: (i === selectedIndex)}"
         [attr.data-key]="item.key"
         (click)="setSelected(item)">
-        <span class="{{item.class}}-txt" [innerHtml]="item.value" [ngStyle]="{position: 'relative', left: '-9px' }"></span>
+        <span class="{{item.class}}-txt" [innerHtml]="item.value" [ngStyle]="{position: 'relative'}"></span>
       </div>
     </scrollable-content>
   </div>
