@@ -43,6 +43,10 @@
     position: absolute;
     top: 32px;
     z-index: 100;
+    &.no-title {
+      top: 12px;
+    }
+
     &-scroll .scrollable-item {
       height: 160px;
       .dropdown-list-option {
@@ -55,7 +59,7 @@
         right: 5px;
         background-color: @backgroundGrey;
       }
-    }
+    } //&-scroll .scrollable-item
 
     &-option {
       height: auto;
@@ -77,7 +81,7 @@
           color: @bulletGrey;
         }
       }
-    }
+    } //&-option
   }
 
   .dropdown-grp {
@@ -93,9 +97,9 @@
     position: absolute;
     top: 2px;
     right: 5px;
-    border-bottom: 11px solid @strokeGrey;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    border-bottom: 6px solid @touchDownLoyalBlue;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
     z-index: 101; //to move caret-top above dropdown
     &::after {
       content: '';
@@ -115,7 +119,7 @@
     overflow:scroll;
   }
   .scrollable-item-scroller{width: 5px}
-  .droptitle{
+  .droptitle {
     position: relative;
     top: 12px;
     height: 21px;
