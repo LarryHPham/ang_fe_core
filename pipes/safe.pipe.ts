@@ -1,6 +1,4 @@
-/**
- * Created by navyaeetaram on 9/26/16.
- */
+
 import {Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 
