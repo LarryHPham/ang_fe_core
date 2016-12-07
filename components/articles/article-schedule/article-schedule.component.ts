@@ -1,5 +1,5 @@
-import {Component, Input, OnChanges} from "@angular/core";
-import {Gradient} from '../../../../global/global-gradient';
+import { Component, Input, OnChanges } from "@angular/core";
+import { Gradient } from '../../../../global/global-gradient';
 
 @Component({
     selector: 'article-schedule-component',
