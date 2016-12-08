@@ -1,6 +1,5 @@
 // height should only be specified for the module when it's on a profile page
 .images-media{
-  height:100%;
 }
 .profile-carousel-container {
 
@@ -211,13 +210,11 @@
 }
 
 .carousel-modal {
-  width: 60%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   position: fixed;
-  top: 10%;
-  left: 20%;
-  @media (max-width: 1023px) {
-    top: 25%;
-  }
   z-index: 9999;
   box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.8);
   display: none;
@@ -229,72 +226,71 @@
   animation: fadein .5s;
   pointer-events: auto !important;
   &-container {
-    height: 100%;
-    &-img {
-      //background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      &-navigation {
-        position: relative;
-        margin-top: 25%;
-        .flexDisplay;
-        .flexDirection(column);
-        .flexAlignItems(center);
-      }
+    display:flex;
+    @media @mobile{
+      width:90%;
+
+    }
+    height: auto;
+    max-height: 83%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    img{
+      width:100%;
+      height:100%;
     }
   }
   &-exit {
-    .globalDefaultModFont(32px, 400, @white);
+    background-image: url("/app/public/CloseIcon.svg");
+    background-size: contain;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
+    top:-50px;
+    right:0;
     border-radius: 50%;
     position: absolute;
-    top: -50px;
-    right: -50px;
-    background-color: @black;
+    background-color: transparent;
     text-align: center;
-    line-height: 50px;
+    line-height: 30px;
+    overflow: hidden;
+    &:hover{
+      background-image: url("/app/public/CloseIconBlue.svg");
+    }
     @media @mobile {
-      .globalDefaultModFont(20px, 400, @white);
-      width: 35px;
-      height: 35px;
-      top: -30px;
-      right: -30px;
+      width: 22px;
+      height: 22px;
+      top:-30px;
       line-height: 35px;
       z-index: 1;
+      &:hover{
+        background-image: url("/app/public/CloseIcon.svg");
+      }
     }
   }
+
 }
 
 .carousel-modal-grey-bar {
   width: 100%;
   height: 26px;
-  background-color: @masterButtonBackground;
   position: absolute;
-  bottom: 0;
-  padding-right: 10px;
-  padding-left: 10px;
-  justify-content:center;
-  text-align:center;
+  bottom: -40px;
+  left:0;
   .globalDefaultModFont(11.2px, 400, @white);
   .flexDisplay;
   &-title {
     .flexDisplay;
     .flexJustify(flex-start);
     .flexAlignItems(center);
-    height: 26px;
-    width: 100%;
     @media @mobile {
       display: none;
     }
   }
   &-credit {
-    .flexDisplay;
-    .flexJustify(flex-end);
-    .flexAlignItems(center);
-    height: 26px;
-    width: 100%;
+    text-align: right;
     &-bold {
       font-style: italic;
       padding-left: 3px;

@@ -123,9 +123,14 @@ schedules-component{
     }
     .filter-dropdown{
       float:right;
+      flex: none;
+      max-width: none;
       .dropdown {
         &-hdr{
           height:30px;
+        }
+        .dropdown-list-option span {
+          left: 0;
         }
       }
       @media @mobile{
