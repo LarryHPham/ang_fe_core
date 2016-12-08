@@ -53,10 +53,11 @@
         <responsive-widget *ngIf="!even"></responsive-widget>
         <div *ngIf="!even" class="trending-small-hr hide-1280"></div>
     </div>
+    <div *ngIf="showLoading" class="loading-more">
+        <img class="loading-more-gif" src="/app/public/tcx-loading.gif" />
+        <span class="loading-more_text"> Loading More</span>
+    </div>
 
 </div>
-<div *ngIf="showLoading" class="loading-more">
-    <img class="loading-more-gif" src="/app/public/tcx-loading.gif" />
-    <span class="loading-more_text"> Loading More</span>
-</div>
+
 
