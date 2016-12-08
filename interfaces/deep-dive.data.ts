@@ -16,6 +16,7 @@ export interface ArticleStackData{
     time_stamp?: string,
     article_url?: string,
     last_updated?: string,
+    publication_date?: string, //replace for last_updated
     keyUrl?: any,
     author?: string,
     publisher?: string,

@@ -13,7 +13,7 @@
                   class="container-img embed-responsive-item">
                 <circle-button *ngIf="arraySize > 1" class="container-img-navigation" (scrollLeft)="left()" (scrollRight)="right()"></circle-button>
             </span>
-            <div class="grey-bar col-xs-12">
+            <div class="grey-bar col-xs-12" *ngIf="arraySize > 1 || imageCredit">
                 <span *ngIf="arraySize > 1" class='grey-bar-counter'>
                     <i class='fa fa-file-image-o'></i>
                     {{imagesTitle}} <span class='grey-bar-counter-bold'>{{displayCounter}}</span>&nbsp;of&nbsp;
@@ -33,7 +33,8 @@
     <div class="carousel-modal-container img-fluid">
         <circle-button *ngIf="arraySize > 1" class="hide-768" (scrollLeft)="left()"
                        (scrollRight)="right()"></circle-button>
-        <div class="carousel-modal-exit" (click)="modalExpand($event)">X</div>
+
+        <div class="carousel-modal-exit" (click)="modalExpand($event)"></div>
         <div [ngStyle]="{'max-height': '75%', 'overflow':'hidden'}">
             <img src="{{backgroundImage}}">
         </div>

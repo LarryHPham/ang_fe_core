@@ -75,10 +75,8 @@
     & > i {
       line-height: 100px;// same as height of button
      }
-    &:hover{
-      background-color: @masterBrandColor;
-    }
   }
+
   &-right{
     width: 40px;
     height: 100px;
@@ -94,10 +92,14 @@
     & > i {
       line-height: 100px;// same as height of button
      }
-     &:hover{
-       background-color: @masterBrandColor;
-     }
   }
+
+  @media @desktop-m{
+    .side_scroll-left:hover, .side_scroll-right:hover{
+      background-color: @masterBrandColor;
+    }
+  }
+
   .disabled{
     cursor: default;
     background-color:@strokeGrey;

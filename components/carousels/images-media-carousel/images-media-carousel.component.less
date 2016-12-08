@@ -243,26 +243,34 @@
     }
   }
   &-exit {
-    .globalDefaultModFont(32px, 400, @white);
+    background-image: url("/app/public/CloseIcon.svg");
+    background-size: contain;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     top:-50px;
     right:0;
     border-radius: 50%;
     position: absolute;
-    background-color: @black;
+    background-color: transparent;
     text-align: center;
-    line-height: 50px;
+    line-height: 30px;
+    overflow: hidden;
+    &:hover{
+      background-image: url("/app/public/CloseIconBlue.svg");
+    }
     @media @mobile {
-      .globalDefaultModFont(20px, 400, @white);
-      width: 35px;
-      height: 35px;
-      top:-37px;
+      width: 22px;
+      height: 22px;
+      top:-30px;
       line-height: 35px;
       z-index: 1;
+      &:hover{
+        background-image: url("/app/public/CloseIcon.svg");
+      }
     }
   }
+
 }
 
 .carousel-modal-grey-bar {
