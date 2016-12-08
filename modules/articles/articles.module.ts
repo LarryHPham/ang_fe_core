@@ -40,9 +40,7 @@ export class ArticlesModule implements OnInit {
     isSmall:boolean = false;
     league:boolean = false;
 
-    public leagueModTitle: string;
-    public sportLeagueAbbrv: string = "TODO";
-    public collegeDivisionFullAbbrv: string = "TODO";
+    public _collegeDivisonFullAbbrv:string = GlobalSettings.getCollegeDivisionFullAbbrv();
 
     public headerInfo = {
         moduleTitle: "",
@@ -60,16 +58,16 @@ export class ArticlesModule implements OnInit {
     }
 
     getArticles(data) {
-      //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
-      this.headlineError = false;
-      let objNotEmpty : boolean;
-      for ( var prop in data.featuredReport ) {
-        objNotEmpty = true;
-      }
+        //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
+        this.headlineError = false;
+        let objNotEmpty:boolean;
+        for (var prop in data.featuredReport) {
+            objNotEmpty = true;
+        }
         //////
         ///if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0)
         ////// ^^ old condition for displaying AI on team pages
-        if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true ) {
+        if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
@@ -80,27 +78,25 @@ export class ArticlesModule implements OnInit {
             }
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-        //////
-        ///else if (data.featuredReport != null && data.featuredReport.length > 0)
-        ////// ^^ old condition for displaying AI on league pages
-        } else if (this.isLeague)  {
+            //////
+            ///else if (data.featuredReport != null && data.featuredReport.length > 0)
+            ////// ^^ old condition for displaying AI on league pages
+        } else if (this.isLeague) {
             this.getHeaderData(data);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
         }
         else {
-          this.headlineError = true;
-          console.log('headline error');
+            this.headlineError = true;
+            console.log('headline error');
         }
     }
 
     getHeaderData(header) {
         if (!this.isLeague && ArticlesModule.checkData(header)) {
             moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
-            // this.timeStamp = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"defaultDate");
-            this.timeStamp = "TODO";
-            // var dateString = GlobalFunctions.sntGlobalDateFormatting(header.timestamp,"shortDate"); // mm/dd/yy
-            var dateString = "TODO"; // mm/dd/yy
+            this.timeStamp = GlobalFunctions.sntGlobalDateFormatting(header.timestamp, "defaultDate");
+            var dateString = GlobalFunctions.sntGlobalDateFormatting(header.timestamp, "shortDate");
             var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
             var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
             if (isPost) {
@@ -117,10 +113,7 @@ export class ArticlesModule implements OnInit {
                 }
             }
         } else {
-          if ( header.data[0].scope ) {
-            this.leagueModTitle = header.data[0].scope == 'ncaa' ? this.collegeDivisionFullAbbrv : header.data[0].scope;
-          }
-            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - "+this.leagueModTitle.toUpperCase()+"</span>";
+            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - " + this._collegeDivisonFullAbbrv + "</span>";
         }
     } //getHeaderData(header)
 
@@ -292,8 +285,8 @@ export class ArticlesModule implements OnInit {
     onResize(event) {
         this.isSmall = event.target.innerWidth <= 639;
         this.fitText();
-        if ( this.moduleData != null ) {
-          this.getHeaderData(this.moduleData);
+        if (this.moduleData != null) {
+            this.getHeaderData(this.moduleData);
         }
     }
 
