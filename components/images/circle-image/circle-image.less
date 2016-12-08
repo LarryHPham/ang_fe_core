@@ -22,8 +22,10 @@
   }
 }
 .imageHover(@hoverColor) {
-  .image-round-hover div {
-    background-color: @hoverColor;
+  @media @desktop-m{    
+    .image-round-hover div {
+      background-color: @hoverColor;
+    }
   }
 }
 .image-round {
