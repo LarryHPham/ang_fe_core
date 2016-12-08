@@ -33,7 +33,8 @@
     <div class="carousel-modal-container img-fluid">
         <circle-button *ngIf="arraySize > 1" class="hide-768" (scrollLeft)="left()"
                        (scrollRight)="right()"></circle-button>
-        <div class="carousel-modal-exit" (click)="modalExpand($event)">X</div>
+
+        <div class="carousel-modal-exit" (click)="modalExpand($event)"></div>
         <div [ngStyle]="{'max-height': '75%', 'overflow':'hidden'}">
             <img src="{{backgroundImage}}">
         </div>
