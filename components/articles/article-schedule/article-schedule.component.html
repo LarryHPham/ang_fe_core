@@ -1,5 +1,5 @@
 <div *ngIf="!league" class="schedule">
-    <div class="schedule-next {{defaultGradient}} col-xs-12" [ngStyle]="gradient">
+    <div class="schedule-next {{defaultGradient}} col-xs-12 row" [ngStyle]="gradient">
         <div *ngFor="let away of awayData" class="col-xs-5">
             <div class="schedule-next-team schedule-next-team-left col-xs-9">
                 <a *ngIf="away.url" [routerLink]="away.url">
