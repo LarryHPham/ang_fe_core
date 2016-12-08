@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer} from '@angular/core';
-import {SafeStyle, DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {ModuleHeaderData} from "../../module-header/module-header.component";
 
 
@@ -34,7 +34,7 @@ export class ImagesMedia implements OnInit {
     // smallImage: MediaImageItem;
 
     smallObjCounter:number = 0;
-    backgroundImage:SafeStyle;
+    backgroundImage:String;
     totalImageCount:number = 0;
     imageCounter:number = 0;
     imagesTitle:string = "Image";
@@ -93,7 +93,7 @@ export class ImagesMedia implements OnInit {
         this.displayCounter = this.imageCounter + 1;
         // this.smallImage = this.mediaImages;
         if (this.mediaImages && this.smallObjCounter < this.mediaImages.length) {
-            this.backgroundImage = this._sanitizer.bypassSecurityTrustStyle("url(" + this.mediaImages[this.smallObjCounter].image + ")");
+            this.backgroundImage = this.mediaImages[this.smallObjCounter].image;
             this.imageCredit = this.mediaImages[this.smallObjCounter].copyData;
             this.description = this.mediaImages[this.smallObjCounter].title;
         }
@@ -116,7 +116,7 @@ export class ImagesMedia implements OnInit {
                 newImageArray.push({
                     id: index,
                     image: images[index],
-                    backgroundImage: this._sanitizer.bypassSecurityTrustStyle("url(" + images[index] + ")"),
+                    backgroundImage: images[index],
                     copyData: copyright[index],
                     title: imageTitle[index]
                 });
