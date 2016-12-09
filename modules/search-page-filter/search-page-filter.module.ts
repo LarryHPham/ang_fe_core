@@ -92,8 +92,8 @@ keywords=[
         value:"Trending",
     },
     {
-        key:'TV Shows',
-        value:"TV Shows",
+        key:'Television Shows',
+        value:"Television Shows",
     },
     {
         key:'Weather',
