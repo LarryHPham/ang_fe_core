@@ -33,7 +33,7 @@ export class TransactionsModule {
     this.footerData = {
       infoDesc: 'Want to see more transactions?',
       text: 'VIEW TRANSACTIONS',
-      url: this.data.ctaRoute
+      url: this.transactionModuleFooterParams
     };
     this.modHeadData = {
       moduleTitle: "Transactions",
@@ -44,14 +44,6 @@ export class TransactionsModule {
   } //ngOnChanges()
 
   tabSelected(tab) {
-    // change route of module footer link when tabs change
-    // var routeParams = this.transactionModuleFooterParams;
-    // if ( routeParams.teamId ) {
-    //     this.footerData.url = ['Transactions-page',{teamName: routeParams.teamName, teamId: routeParams.teamId, limit:20, pageNum: 1, type: tab.tabDisplay}];
-    // }
-    // else {
-    //     this.footerData.url = ['Transactions-tdl-page',{limit:20, pageNum: 1, type: tab.tabDisplay}];
-    // }
     this.tabSwitched.next(tab);
   }
 
