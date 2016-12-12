@@ -20,7 +20,9 @@ export interface TransactionsListInput {
   //as it would appear on the module itself
   dataPoints: Array<{
       style?:string;
-      data: string;
+      data?: string;
+      data_shortFormDate?: string;
+      data_longFormDate?:  string;
       value: Array<Link | string>;
       url?:[any];
       icon?:string;

@@ -550,15 +550,15 @@ export class PaginationFooter implements OnChanges{
     }
 
     ngOnChanges(event){
-        this.verifyInput();
-        // window.scrollTo(0, 0);
-        //Call button build function based on pagination Type
-        if(this.paginationParameters.paginationType == 'module') {
-            this.buildModuleButtons();
-            this.buildModuleButtonsMobile();
-        }else if(this.paginationParameters.paginationType == 'page'){
-            this.buildPageButtons();
-            this.buildPageButtonsMobile();
-        }
+      this.verifyInput();
+      // window.scrollTo(0, 0);
+      //Call button build function based on pagination Type
+      if(this.paginationParameters.paginationType == 'module') {
+          this.buildModuleButtons();
+          this.buildModuleButtonsMobile();
+      }else if(this.paginationParameters.paginationType == 'page'){
+          this.buildPageButtons();
+          this.buildPageButtonsMobile();
+      }
     }
 }
