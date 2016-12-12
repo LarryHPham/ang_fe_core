@@ -14,7 +14,6 @@ import {GlossaryComponent} from "../glossary/glossary.component";
 
 
 export interface StatsTableTabData<T> {
-
     tabTitle: string;
     isActive: boolean;
     isLoaded: boolean;
@@ -40,9 +39,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
 
     public carouselData: Array<SliderCarouselInput> = [];
     @Input() tabName;
-
     @Input() tabs: Array<StatsTableTabData<any>>;
-
     @Input() showGlossary: boolean;
 
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
@@ -53,9 +50,7 @@ export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
     private noDataMessage = "Sorry, there is no data available.";
     private selectedSubTab:string;
 
-    constructor() {
-
-    }
+    constructor() {}
 
     ngDoCheck() {
 
