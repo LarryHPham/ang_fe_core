@@ -28,7 +28,5 @@ export class GameArticle implements OnInit{
     @Input() gameArticle:any;
     constructor() {}
 
-    ngOnInit(){
-      console.log('this.gameArticle - ',this.gameArticle);
-    }
+    ngOnInit(){}
 }
