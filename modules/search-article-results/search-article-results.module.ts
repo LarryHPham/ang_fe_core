@@ -1,4 +1,5 @@
-import {Component, Input, ElementRef, Renderer} from "@angular/core";
+import {Component, Input, ElementRef, Renderer, Output, EventEmitter} from "@angular/core";
+
 @Component({
     selector:'search-results',
     templateUrl:'./app/fe-core/modules/search-article-results/search-article-results.module.html'
@@ -6,8 +7,12 @@ import {Component, Input, ElementRef, Renderer} from "@angular/core";
 export class SearchArticleResults{
     @Input() searchArticlesData:Array<any>;
     @Input() userInput:string;
+    @Input() totalPages:any;
+    @Input() articleTotalCount:number;
+    @Output() emitPageNum: EventEmitter<any>=new EventEmitter();
+    startCount:number=1;
+    EndCount:number=this.startCount*10;
     pageNum:number =1;
-    totalPages:number = 10;
     constructor(private elementRef:ElementRef, private render:Renderer){
     }
     previousPage(e){
@@ -32,6 +37,9 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[0].lastElementChild.firstElementChild,'opacity','0.2');
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.firstElementChild,'opacity','0.2');
         }
+        this.emitPageNum.emit(this.pageNum);
+        this.startCount=(this.pageNum-1)*10+1;
+        this.EndCount=this.startCount+9;
 
     }
     nextPage(e){
@@ -57,5 +65,8 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.lastElementChild,'cursor','default');
 
         }
+        this.emitPageNum.emit(this.pageNum);
+        this.startCount=(this.pageNum-1)*10+1;
+        this.EndCount=this.startCount+9;
     }
 }
