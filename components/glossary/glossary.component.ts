@@ -17,11 +17,6 @@ export class GlossaryComponent implements OnInit{
   public classType: string;
   getClassType(){
     var termsCount = this.glossaryData.length;
-    if(termsCount > 6){
-      this.classType = "col-xs-4";
-    } else {
-      this.classType = "col-xs-6";
-    }
   }
   ngOnInit() {
     this.getClassType();
