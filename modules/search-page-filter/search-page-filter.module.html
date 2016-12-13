@@ -6,7 +6,7 @@
     </span>
     <span class="filter-right">
    <span class="s-filter_fil-hline"> Filter: </span><dropdown [list]="keywords" selectedKey="All" [icon]="icon"  ddtitle='Select A Keyword' (selectionChanged)="keywordClick($event) "></dropdown>
-   <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="sorting" selectedKey="MostRecent" [icon]="icon"  dropdownhdr="Most Recent" ddtitle='Sort/Filter By' (selectionChanged)="keywordClick($event) "></dropdown>
+   <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="sortingFilter" selectedKey="MostRecent" [icon]="icon"  dropdownhdr="Most Recent" ddtitle='Sort/Filter By' (selectionChanged)="sortingClick($event)"></dropdown>
 
 </span>
 

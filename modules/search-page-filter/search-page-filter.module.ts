@@ -1,4 +1,4 @@
-import {Component, Input, Renderer, ElementRef} from "@angular/core";
+import {Component, Input, Renderer, ElementRef, Output, EventEmitter} from "@angular/core";
 import {Router} from "@angular/router";
 @Component({
     selector:"search-filter",
@@ -6,144 +6,19 @@ import {Router} from "@angular/router";
 })
 export class SearchPageFilter{
     @Input() userInput:string;
+    @Input() keywords:any;
+    @Input() sortingFilter:any;
+    @Output() emitFilterOption: EventEmitter<any> = new EventEmitter;
+    @Output() emitSortOption:EventEmitter<any> = new EventEmitter;
     icon="caret-down";
     constructor(private router:Router, private _keywordRender:Renderer, private _keyRef:ElementRef){
 
     }
-keywords=[
-    {
-        key:"All",
-        value:"All Keywords",
-    },
-    {
-        key:"Automotive",
-        value:"Automotive",
-    },
-    {
-        key:"Business",
-        value:"Business",
-    },
-    {
-        key:'Celebreties',
-        value:"Celebreties",
-    },
-    {
-        key:'Entertainment',
-        value:"Entertainment",
-    },
-    {
-        key:'Food',
-        value:"Food",
-    },
-    {
-        key:'Health',
-        value:"Health",
-    },
-    {
-        key:'Lifestyle',
-        value:"Lifestyle",
-    },
-    {
-        key:'MLB',
-        value:"MLB",
-    },
-    {
-        key:'Movies',
-        value:"Movies",
-    },
-    {
-        key:'Music',
-        value:"Music",
-    },
-    {
-        key:'NBA',
-        value:"NBA",
-    },
-    {
-        key:'NCAAF',
-        value:"NCAAF",
-    },
-    {
-        key:'NCAAM',
-        value:"NCAAM",
-    },
-    {
-        key:'NFL',
-        value:"NFL",
-    },
-    {
-        key:'Politics',
-        value:"Politics",
-    },
-    {
-        key:'Real Estate',
-        value:"Real Estate",
-    },
-    {
-        key:'Sports',
-        value:"Sports",
-    },
-    {
-        key:'Travel',
-        value:"Travel",
-    },
-    {
-        key:'Trending',
-        value:"Trending",
-    },
-    {
-        key:'Television Shows',
-        value:"Television Shows",
-    },
-    {
-        key:'Weather',
-        value:"Weather",
-    }];
 
-    sorting=[
-        {
-            key:'None',
-            value:"None",
-        },
-
-        {
-            key:"MostRecent",
-            value:"Most Recent",
-        },
-        {
-            key:'Oldest',
-            value:"Oldest",
-        },
-        {
-            key:'last24Hours',
-            value:"Last 24 Hours",
-        },
-        {
-            key:'past7days',
-            value:"Past 7 Days",
-        },
-        /*{
-            key:'MostShares',
-            value:"Most Shares",
-        },
-        {
-            key:'MostViews',
-            value:"Most Views",
-        },*/
-        ];
     keywordClick(e){
-/*
-        console.log(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[0].innerHTML);
-*/
-
-/*
-        this._keywordRender.setElementStyle(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[0],'font-weight','bold')
-*/
+        this.emitFilterOption.emit(e);
     }
     sortingClick(e){
-
-     //   this._keywordRender.setElementStyle(this._keyRef.nativeElement.getElementsByClassName('dropdown-hdr-value')[1],'font-weight','bold')
-
-
+        this.emitSortOption.emit(e);
     }
 }
