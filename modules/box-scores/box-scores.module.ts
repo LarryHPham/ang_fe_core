@@ -96,7 +96,6 @@ export class BoxScoresModule implements OnInit {
         this.maxHeight = 650;
       }
     }
-
     this.checkHeight();
   } //ngOnChanges
 
@@ -134,8 +133,9 @@ export class BoxScoresModule implements OnInit {
         this.refreshBoxScores += " ";
       }
     }, 100);
+  } //checkHeight
 
-  }
+
 
   private onWindowLoadOrResize(event) {
     this.windowWidth = event.target.innerWidth;

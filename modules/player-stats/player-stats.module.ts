@@ -26,9 +26,10 @@ export class PlayerStatsModule implements OnChanges {
   @Input() data: PlayerStatsModuleData;
   @Input() profileHeader;
   @Input() isProfilePage:boolean;
-    @Input() profileData;
+  @Input() profileData;
+  @Input() tabName;
+  
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
-    @Input() tabName;
     //headerInfo: ModuleHeaderData;
  public headerInfo: ModuleHeaderData = {
      moduleTitle: "Player Stats",
