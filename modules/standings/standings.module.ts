@@ -27,6 +27,8 @@ export interface StandingsModuleData {
 export class StandingsModule implements OnChanges {
   @Input() data: StandingsModuleData;
   @Input() scope: string;
+  @Input() storedPartnerParam: string;
+
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
   @Output("filterSelected") filterSelectedListener = new EventEmitter();
 
@@ -41,7 +43,9 @@ export class StandingsModule implements OnChanges {
     text: "VIEW FULL STANDINGS",
     url: ['Standings-page']
   };
+
   constructor(){}
+
   ngOnChanges() {
     if ( !this.data ) {
       this.headerInfo.moduleTitle = "Standings";

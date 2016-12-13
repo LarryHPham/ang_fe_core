@@ -20,14 +20,15 @@ export class MVPModule implements OnChanges {
   @Input() title: string;
   @Input() query: any;
   @Input() filter1: any;
-
   @Input() collegeDivisionAbbrv: string;
   @Input() collegeDivisionFullAbbrv: string;
   @Input() positionNameDisplay: string;
+  @Input() storedPartnerParam: string;
 
   modHeadData: ModuleHeaderData;
   footerData: ModuleFooterData;
   tabKey: string;
+  partnerIdParam: string;
 
   public scope: string;
 
@@ -36,6 +37,9 @@ export class MVPModule implements OnChanges {
   }
 
   displayData(scope, position){
+    var type = this.query.statName.indexOf(position)>=0 ? position : "k";
+    var url;
+    this.partnerIdParam = this.storedPartnerParam ? '/'+this.storedPartnerParam : '/';
 
     if ( scope == this.collegeDivisionAbbrv.toLowerCase() ) {
       scope = this.collegeDivisionFullAbbrv;
@@ -51,14 +55,13 @@ export class MVPModule implements OnChanges {
         iconClass: '',
     };
 
-    var type = this.query.statName.indexOf(position)>=0 ? position : "k";
-    var url;
-
-    url = ['MVP-list-tab-page', {
-      type: this.query.position,
-      tab: this.query.statName,
-      pageNum: "1"
-    }];
+    url = [
+      this.partnerIdParam,
+      'mvp-list',
+      this.query.position,
+      this.query.statName,
+      "1"
+    ];
 
     this.footerData = {
       infoDesc: 'Want to see everybody involved in this list?',
