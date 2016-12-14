@@ -23,8 +23,7 @@ export class TitleComponent implements OnChanges {
     public titleImage: CircleImageData;
     @Input() runMeta:boolean;
 
-    constructor(
-    ){}
+    constructor(){}
 
     ngOnInit(){}
 
