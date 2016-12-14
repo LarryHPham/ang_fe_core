@@ -60,7 +60,6 @@ export class ListOfListsModule {
     // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
 
     var id = this.teamId;
-
     if (this.profileType == 'league') {
       id = 'all';
     }
