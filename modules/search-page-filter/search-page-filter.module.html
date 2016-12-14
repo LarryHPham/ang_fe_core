@@ -5,8 +5,23 @@
        <span><p>Applied Filters & Sorts:</p></span>
     </span>
     <span class="filter-right">
-   <span class="s-filter_fil-hline"> Filter: </span><dropdown [list]="keywords" selectedKey="All" [icon]="icon"  ddtitle='Select A Keyword' (selectionChanged)="keywordClick($event) "></dropdown>
-   <span class="s-filter_fil-hline"> Sorting: </span><dropdown [list]="sortingFilter" selectedKey="MostRecent" [icon]="icon"  dropdownhdr="Most Recent" ddtitle='Sort/Filter By' (selectionChanged)="sortingClick($event)"></dropdown>
+   <span class="s-filter_fil-hline"> Filter: </span>
+   <dropdown
+     selectedKey="All"
+     ddtitle='Select A Keyword'
+     [list]="keywords"
+     [icon]="icon"
+     (selectionChanged)="keywordClick($event)">
+   </dropdown>
+   <span class="s-filter_fil-hline"> Sorting: </span>
+   <dropdown
+     selectedKey="MostRecent"
+     dropdownhdr="Most Recent"
+     ddtitle='Sort/Filter By'
+     [list]="sortingFilter"
+     [icon]="icon"
+     (selectionChanged)="sortingClick($event)">
+   </dropdown>
 
 </span>
 
