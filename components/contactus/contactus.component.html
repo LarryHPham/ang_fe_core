@@ -1,10 +1,12 @@
-<!-- 
+
 <section class="contactus">
   <backtab-component></backtab-component>
-  <title-component *ngIf="contactusInput" [titleData]="contactusInput.titleData"></title-component>
+  <title-component
+    *ngIf="contactusInput"
+    [titleData]="contactusInput.titleData"></title-component>
   <div class="contactus-container">
       <div class="contactus-required"><span class="text-master">*</span> All fields are required</div>
-      <form *ngIf="active" #f="ngForm" (ngSubmit)="formSubmit(f.value)"> -->
+      <form *ngIf="active" #f="ngForm" (ngSubmit)="formSubmit(f.value)">
 
           <!-- Full Name Text Input -->
           <!-- <div class="row contactus-margin contactus-row-align">
@@ -44,21 +46,21 @@
                           <span class="contactus-checkbox-value">{{item.value}}</span>
                       </label>
                   </div>
-              </div> -->
-          </div>
+              </div>
+          </div> -->
 
           <!-- Message Text area -->
           <!-- <div class="row contactus-margin-large">
               <textarea ngControl="description" class="contactus-textarea" placeholder="Detailed description of your question here..."></textarea>
-          </div>
+          </div> -->
 
-          <div class="contactus-buttons">
+          <!-- <div class="contactus-buttons">
               <a href="javaScript:void(0);" class="contactus-buttons-reset" (click)="reset()">RESET </a>
               <button class="contactus-buttons-submit" [disabled]="!f.form.valid">
                   Submit <i class="fa fa-angle-right"></i>
               </button>
-          </div>
+          </div> -->
 
       </form>
   </div>
-<section class="contactus"> -->
+</section>
