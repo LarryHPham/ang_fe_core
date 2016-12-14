@@ -29,11 +29,10 @@ export class DraftHistoryModule implements OnInit {
 
   displayData(){
     var pageRoute;
-    this.partnerIdParam = this.storedPartnerParam ? '/'+this.storedPartnerParam : '/';
     if(this.profileData.profileType == 'team'){
-      pageRoute = [this.partnerIdParam, this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
+      pageRoute = [this.storedPartnerParam, this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
     }else{
-      pageRoute = [this.partnerIdParam, this.footerData.scope, 'draft-history'];
+      pageRoute = [this.storedPartnerParam, this.footerData.scope, 'draft-history'];
     }
 
     this.footerData = {
