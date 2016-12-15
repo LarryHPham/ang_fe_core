@@ -40,6 +40,7 @@ export class ModuleFooter implements OnInit{
           url:['Disclaimer-page'],
         }
       }
+
       var windowWidth = window.innerWidth;
       this.windowWidth = windowWidth;
     }

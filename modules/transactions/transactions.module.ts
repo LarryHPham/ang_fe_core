@@ -24,8 +24,8 @@ export class TransactionsModule {
   @Input() transactionModuleFooterParams;
   @Input() data: TransactionModuleData;
   @Input() dropdownKey1: string;
-
   @Input() transactionFilter1: Array<any>;
+
   modHeadData: ModuleHeaderData;
   footerData: ModuleFooterData;
 
@@ -35,6 +35,7 @@ export class TransactionsModule {
       text: 'VIEW TRANSACTIONS',
       url: this.transactionModuleFooterParams
     };
+
     this.modHeadData = {
       moduleTitle: "Transactions",
       moduleIdentifier: " - "+this.data.profileName,

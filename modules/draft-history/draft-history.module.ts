@@ -13,8 +13,11 @@ import { DetailListInput } from '../../components/detailed-list-item/detailed-li
 
 export class DraftHistoryModule implements OnInit {
   modHeadData: Object;
+  partnerIdParam: string;
+
   @Input() footerData: any;
   @Input() profileData: IProfileData;
+  @Input() storedPartnerParam: string;
 
   constructor() {}
 
@@ -27,9 +30,9 @@ export class DraftHistoryModule implements OnInit {
   displayData(){
     var pageRoute;
     if(this.profileData.profileType == 'team'){
-      pageRoute = ['/'+this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
+      pageRoute = [this.storedPartnerParam, this.footerData.scope, 'draft-history', this.footerData.teamName, this.footerData.teamID];
     }else{
-      pageRoute = ['/'+this.footerData.scope, 'draft-history'];
+      pageRoute = [this.storedPartnerParam, this.footerData.scope, 'draft-history'];
     }
 
     this.footerData = {

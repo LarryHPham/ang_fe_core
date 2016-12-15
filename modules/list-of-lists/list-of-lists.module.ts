@@ -22,10 +22,13 @@ export class ListOfListsModule {
   @Input() teamId : string;
   @Input() playerId : string;
   @Input() scope : string;
+  @Input() storedPartnerParam: string;
 
   moduleHeader: ModuleHeaderData;
   displayData: Array<any>;
   footerData: Object;
+  partnerIdParam: string;
+
   constructor(private _router: Router) {
     this.footerData = {
       infoDesc:'Want to see more lists like the ones above?',
@@ -57,7 +60,6 @@ export class ListOfListsModule {
     // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
 
     var id = this.teamId;
-
     if (this.profileType == 'league') {
       id = 'all';
     }
@@ -65,9 +67,17 @@ export class ListOfListsModule {
       id = this.playerId;
     }
 
-  // path: '/list-of-lists/:target/:targetId/:perPageCount/:pageNumber',
-  // name: 'List-of-lists-page-scoped',
-  this.footerData['url'] = ['/'+this.scope,'list-of-lists', this.profileType, id, params.limit, params.pageNum];
-  }
+    this.partnerIdParam = this.storedPartnerParam ? '/'+this.storedPartnerParam : '/';
+
+    this.footerData['url'] = [
+      this.partnerIdParam,
+      this.scope,
+      'list-of-lists',
+      this.profileType,
+      id,
+      params.limit,
+      params.pageNum
+    ];
+  } //ngOnChnages
 
 }

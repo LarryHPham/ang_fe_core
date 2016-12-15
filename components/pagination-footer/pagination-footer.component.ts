@@ -104,7 +104,7 @@ export class PaginationFooter implements OnChanges{
       params: Object;
     }>;
     //Output event emitter
-    public newIndex = new EventEmitter();
+    @Output() newIndex = new EventEmitter();
 
     constructor(public myElement:ElementRef){}
     //Verifies component input. If any issues are detected console warning is thrown
