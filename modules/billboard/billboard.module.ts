@@ -14,8 +14,8 @@ export class BillboardModule implements OnInit{
     srcLink: string;
     @Input() category: string;
     @Input() subCategory: string;
-    ngOnInit() {
-      if(this.category){
+    getData(){
+      if(this.category && this.category != "all"){
         var topScope = GlobalSettings.getTCXscope(this.category).topScope;
         topScope = topScope != "real-estate" ? topScope : "real estate";
         this.category = topScope ? topScope : 'keyword-' + this.category;
@@ -25,9 +25,14 @@ export class BillboardModule implements OnInit{
         this.subCategory = "";
       }
       this.srcLink = "/app/ads/billboard.html?category=" + this.category + "&sub_category=" + this.subCategory;
+    }
+    ngOnInit() {
+      this.getData();
       this.isSmall = window.innerWidth <= 814;
     }
-
+    ngOnChanges(){
+      this.getData();
+    }
     onResize(event) {
       this.isSmall = event.target.innerWidth <= 814;
     }
