@@ -211,15 +211,15 @@ export class ArticlesModule implements OnInit {
             this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['featuredReport'][pageIndex][0].image_url);
             this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, pageIndex, headlineData['featuredReport'][pageIndex][0].event_id);
         } else {
-            this.keyword = "PREGAME";
+            this.keyword = "POSTGAME";
             this.mainTitle = headlineData['data'][0].title;
-            this.eventType = "pregame-report";
+            this.eventType = "postgame-report";
             var articleContent = headlineData['data'][0].teaser;
             this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['data'][0].image_url);
             var maxLength = 1000;
             var trimmedArticle = articleContent.substring(0, maxLength);
             this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, "pregame-report", headlineData['data'][0].event_id);
+            this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, "postgame-report", headlineData['data'][0].event_id);
         }
     }
 
@@ -243,10 +243,10 @@ export class ArticlesModule implements OnInit {
                 if (index > 0) {
                     articles = {
                         title: val.title,
-                        eventType: "pregame-report",
+                        eventType: "postgame-report",
                         eventID: val.event_id,
                         images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(val.image_url),
-                        articleUrl: VerticalGlobalFunctions.formatArticleRoute(self.scope, "pregame-report", val.event_id)
+                        articleUrl: VerticalGlobalFunctions.formatArticleRoute(self.scope, "postgame-report", val.event_id)
                     };
                     articleArr.push(articles);
                 }
