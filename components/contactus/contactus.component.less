@@ -1,17 +1,15 @@
-.contactus{
-  .mainTitle{
-    .col-xs-9;
-  }
+.contactus {
   &-container{
     padding: 15px 10px 5px;
     border-top: 1px solid @strokeGrey;
     display: block;
-    width: 100%;
     background-color: @white;
   }
   &-fields{
-    width: 100%;
     .inputPlaceholder(normal, @bulletGrey);
+    div.checkbox:last-child {
+      margin-bottom: 0;
+    }
   }
   &-required{
     margin-bottom: 10px;
@@ -20,7 +18,6 @@
 
   &-question{
     padding-bottom: 10px;
-    .col-xs-4;
   }
 
   &-margin{
@@ -29,23 +26,17 @@
       margin-bottom: 10px;
       .flexDisplay;
       .flexDirection(column);
+      label {
+        width: 100%;
+      }
     }
-
     &-large{
       margin-bottom: 15px;
-      .col-xs-12;
     }
-  }
-
-  &-row-align{
-    .flexDisplay;
-    .flexDirection(column);
-    .flexAlignItems(flex-start);
   }
 
   &-labels{
     margin-bottom: 10px;
-    .col-xs-12;
   }
 
   &-label{
@@ -53,7 +44,6 @@
   }
 
   &-textinput{
-    width: 100%;
     height: 35px;
     padding: 0px 10px;
     border: 1px solid @strokeGrey;
@@ -63,19 +53,13 @@
   }
 
   &-checkbox{
-    float: left;
     margin-right: 10px;
-    &-value{
-      float: right;
-      .col-xs-10;
-    }
     &:focus{
       outline: none;
     }
   }
 
   &-textarea{
-    width: 100%;
     padding: 10px;
     min-height: 168px;
     resize: vertical;
@@ -84,16 +68,16 @@
       outline: 2px solid @masterBrandColor;
     }
   }
-.textAreaPlaceholder(italic, @bulletGrey);
+
+  .textAreaPlaceholder(italic, @bulletGrey);
   &-buttons{
-    width:100%;
     height:36px;
     .flexDisplay;
     .flexJustify(center);
     .flexAlignItems(center);
     &-submit{
       width: 120px;
-      height: 35px;
+      height: 34px;
       border-radius: 5px;
       color: @white;
       border: none;
@@ -130,20 +114,12 @@
 }
 @media @tablet{
   .contactus{
-    .mainTitle{
-      .col-xs-12;
-    }
     &-container{
       padding: 10px 15px;
-      height:535px;
-    }
-    &-fields{
-      .col-xs-9;
     }
 
     &-question{
       padding-right: 10px;
-      .col-xs-3;
     }
 
     &-margin{
@@ -152,27 +128,18 @@
         margin-bottom: 10px;
         .flexDirection(row);
       }
-
       &-large{
         margin-bottom: 50px;
-        .col-xs-9;
-        //.offset-xs-3;
       }
     }
 
-    &-row-align{
-      .flexAlignItems(center);
-      .flexDirection(row);
-    }
     &-labels{
       margin-bottom: 0;
-      .col-xs-3;
     }
 
     &-checkbox{
       border: 1px solid @strokeGrey;
       &-value{
-        float: right;
         width: auto;
       }
     }
