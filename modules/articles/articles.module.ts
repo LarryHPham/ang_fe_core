@@ -19,7 +19,6 @@ export class ArticlesModule implements OnInit {
     @Input() headlineData:Array<any>;
     @Input() isLeague:boolean;
     @Input() headlineError:boolean;
-    public params;
     articleUrl:Array<any>;
     awayData:Array<any>;
     homeData:Array<any>;
@@ -39,20 +38,20 @@ export class ArticlesModule implements OnInit {
     eventID:number;
     isSmall:boolean = false;
     league:boolean = false;
-
     public _collegeDivisonFullAbbrv:string = GlobalSettings.getCollegeDivisionFullAbbrv();
-
     public headerInfo = {
         moduleTitle: "",
         hasIcon: false,
         iconClass: ""
     };
+    public mainHeadlineId:number;
+    public params;
 
     constructor(private _activateRoute:ActivatedRoute) {
         this.params = this._activateRoute.params.subscribe(
             (param:any)=> {
                 this.scope = param['scope'];
-                this.teamID = param['teamId'] ? param['teamId'] : null;
+                this.teamID = param['teamID'] ? param['teamID'] : null;
             }
         );
     }
@@ -64,23 +63,15 @@ export class ArticlesModule implements OnInit {
         for (var prop in data.featuredReport) {
             objNotEmpty = true;
         }
-        //////
-        ///if (!this.isLeague && data != null && data.featuredReport != null && data.featuredReport.length > 0)
-        ////// ^^ old condition for displaying AI on team pages
         if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true) {
             this.eventID = data.event;
             this.scheduleHomeData = data.home;
             this.scheduleAwayData = data.away;
             this.moduleData = data;
             this.getHeaderData(data);
-            if (!this.isLeague) {
-                this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
-            }
+            this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
             this.getMainArticle(data);
             this.getSubArticles(data, this.eventID);
-            //////
-            ///else if (data.featuredReport != null && data.featuredReport.length > 0)
-            ////// ^^ old condition for displaying AI on league pages
         } else if (this.isLeague) {
             this.getHeaderData(data);
             this.getMainArticle(data);
@@ -100,158 +91,117 @@ export class ArticlesModule implements OnInit {
             var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
             var isPost = moment(dateString).isBefore(moment().tz('America/New_York'), 'day');
             if (isPost) {
-                if (!this.isSmall) {
-                    this.headerInfo.moduleTitle = "Post Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name);
-                } else {
-                    this.headerInfo.moduleTitle = "Post Gameday Matchup";
-                }
+                this.headerInfo.moduleTitle = !this.isSmall ? "Post Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name) : "Post Gameday Matchup";
             } else {
-                if (!this.isSmall) {
-                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name);
-                } else {
-                    this.headerInfo.moduleTitle = (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
-                }
+                this.headerInfo.moduleTitle = !this.isSmall ? (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s") + " Gameday Matchup Against the " + (this.teamID == header.home.id ? ' ' + header.away.name : ' ' + header.home.name) :
+                (isToday ? "Today's" : moment(header.timestamp).format("dddd") + "'s" + " Gameday") + " Matchup";
             }
         } else {
-            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - " + this._collegeDivisonFullAbbrv + "</span>";
+            this.headerInfo.moduleTitle = "Headlines<span class='mod-info'> - " + (this.scope.toLowerCase() != 'nfl' ? this._collegeDivisonFullAbbrv : 'NFL') + "</span>";
         }
     } //getHeaderData(header)
 
+    static setImageLogo(data, isHome):any {
+        if (isHome) {
+            return {
+                imageClass: "image-66",
+                mainImage: {
+                    imageUrl: GlobalSettings.getImageUrl(data),
+                    imageClass: "border-logo"
+                }
+            }
+        } else {
+            return {
+                imageClass: "image-66",
+                mainImage: {
+                    imageUrl: GlobalSettings.getImageUrl(data[0]),
+                    urlRouteArray: data[1],
+                    hoverText: "<i class='fa fa-mail-forward'></i>",
+                    imageClass: "border-logo"
+                }
+            }
+        }
+    }
+
     getSchedule(homeData, awayData) {
-        var homeArr = [];
-        var awayArr = [];
+        this.homeData = [];
+        this.awayData = [];
         var val = [];
-        var homeName = homeData.location + ' ' + homeData.name;
-        var awayName = awayData.location + ' ' + awayData.name;
         val['homeID'] = homeData.id;
         val['homeName'] = homeData.name;
         val['homeLocation'] = homeData.location;
         val['homeHex'] = homeData.hex;
         if (this.teamID == homeData.id) {
-            val['homeLogo'] = {
-                imageClass: "image-66",
-                mainImage: {
-                    imageUrl: GlobalSettings.getImageUrl(homeData.logo),
-                    imageClass: "border-logo"
-                },
-                subImages: []
-            };
+            val['homeLogo'] = ArticlesModule.setImageLogo(homeData.logo, true);
         } else {
-            let homeLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, homeName, homeData.id);
+            let homeLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, homeData.location + ' ' + homeData.name, homeData.id);
             val['url'] = homeLink;
-            val['homeLogo'] = {
-                imageClass: "image-66",
-                mainImage: {
-                    imageUrl: GlobalSettings.getImageUrl(homeData.logo),
-                    urlRouteArray: homeLink,
-                    hoverText: "<i class='fa fa-mail-forward'></i>",
-                    imageClass: "border-logo"
-                },
-                subImages: []
-            };
+            val['homeLogo'] = ArticlesModule.setImageLogo([homeData.logo, homeLink], false);
         }
         val['homeWins'] = homeData.wins;
         val['homeLosses'] = homeData.losses;
-        homeArr.push(val);
+        this.homeData.push(val);
         val = [];
         val['awayID'] = awayData.id;
         val['awayName'] = awayData.name;
         val['awayLocation'] = awayData.location;
         val['awayHex'] = awayData.hex;
         if (this.teamID == awayData.id) {
-            val['awayLogo'] = {
-                imageClass: "image-66",
-                mainImage: {
-                    imageUrl: GlobalSettings.getImageUrl(awayData.logo),
-                    imageClass: "border-logo"
-                },
-                subImages: []
-            };
+            val['awayLogo'] = ArticlesModule.setImageLogo(awayData.logo, true);
         } else {
-            let awayLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, awayName, awayData.id);
+            let awayLink = VerticalGlobalFunctions.formatTeamRoute(this.scope, awayData.location + ' ' + awayData.name, awayData.id);
             val['url'] = awayLink;
-            val['awayLogo'] = {
-                imageClass: "image-66",
-                mainImage: {
-                    imageUrl: GlobalSettings.getImageUrl(awayData.logo),
-                    urlRouteArray: awayLink,
-                    hoverText: "<i class='fa fa-mail-forward'></i>",
-                    imageClass: "border-logo"
-                },
-                subImages: []
-            };
+            val['awayLogo'] = ArticlesModule.setImageLogo([awayData.logo, awayLink], false);
         }
         val['awayWins'] = awayData.wins;
         val['awayLosses'] = awayData.losses;
-        awayArr.push(val);
-        this.homeData = homeArr;
-        this.awayData = awayArr;
+        this.awayData.push(val);
+    }
+
+    static setFeatureType(pageIndex) {
+        switch (pageIndex) {
+            case'pregame-report':
+                return 'PREGAME';
+            case'postgame-report':
+                return 'POSTGAME';
+            default:
+                return 'LIVE';
+        }
     }
 
     getMainArticle(headlineData) {
-        if (!this.isLeague) {
-            var pageIndex = Object.keys(headlineData['featuredReport'])[0];
-            switch (pageIndex) {
-                case'pregame-report':
-                    this.keyword = 'PREGAME';
-                    break;
-                case'postgame-report':
-                    this.keyword = 'POSTGAME';
-                    break;
-                default:
-                    this.keyword = 'LIVE';
-                    break;
-            }
-            this.mainTitle = headlineData['featuredReport'][pageIndex][0].title;
-            this.eventType = pageIndex;
-            var articleContent = headlineData['featuredReport'][pageIndex][0].teaser;
-            var maxLength = 1000;
-            var trimmedArticle = articleContent.substring(0, maxLength);
-            this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['featuredReport'][pageIndex][0].image_url);
-            this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, pageIndex, headlineData['featuredReport'][pageIndex][0].event_id);
-        } else {
-            this.keyword = "POSTGAME";
-            this.mainTitle = headlineData['data'][0].title;
-            this.eventType = "postgame-report";
-            var articleContent = headlineData['data'][0].teaser;
-            this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(headlineData['data'][0].image_url);
-            var maxLength = 1000;
-            var trimmedArticle = articleContent.substring(0, maxLength);
-            this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
-            this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, "postgame-report", headlineData['data'][0].event_id);
-        }
+        var pageIndex = !this.isLeague ? Object.keys(headlineData['featuredReport'])[0] : "postgame-report";
+        this.keyword = !this.isLeague ? ArticlesModule.setFeatureType(pageIndex) : "POSTGAME";
+        this.mainTitle = !this.isLeague ? headlineData['featuredReport'][pageIndex][0].title : headlineData['data'][0].title;
+        this.eventType = pageIndex;
+        var articleContent = !this.isLeague ? headlineData['featuredReport'][pageIndex][0].teaser : headlineData['data'][0].teaser;
+        var trimmedArticle = articleContent.substring(0, 1000);
+        this.mainContent = trimmedArticle.substr(0, Math.min(trimmedArticle.length, trimmedArticle.lastIndexOf(" ")));
+        this.mainImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(!this.isLeague ?
+            headlineData['featuredReport'][pageIndex][0].image_url : headlineData['data'][0].image_url);
+        this.articleUrl = VerticalGlobalFunctions.formatArticleRoute(this.scope, pageIndex, !this.isLeague ?
+            headlineData['featuredReport'][pageIndex][0].event_id : headlineData['data'][0].event_id);
+        this.mainHeadlineId = this.isLeague ? headlineData['data'][0].event_id : null;
     }
 
     getSubArticles(data, eventID) {
         var articles;
         var articleArr = [];
         var self = this;
-        if (!this.isLeague) {
-            Object.keys(data['otherReports']).forEach(function (val) {
+        var dataSet = !this.isLeague ? Object.keys(data['otherReports']) : data['data'];
+        dataSet.forEach(function (val) {
+            if (self.mainHeadlineId != (self.isLeague ? val.event_id : 0)) {
                 articles = {
-                    title: data['otherReports'][val].title,
-                    eventType: val,
-                    eventID: val != "player-fantasy" ? eventID : data['otherReports'][val].article_id,
-                    images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data['otherReports'][val].image_url),
-                    articleUrl: VerticalGlobalFunctions.formatArticleRoute(self.scope, val, val != "player-fantasy" ? eventID : data['otherReports'][val].article_id)
+                    title: !self.isLeague ? data['otherReports'][val].title : val.title,
+                    eventType: !self.isLeague ? val : "postgame-report",
+                    eventID: !self.isLeague ? (val != "player-fantasy" ? eventID : data['otherReports'][val].article_id) : val.event_id,
+                    images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(!self.isLeague ? data['otherReports'][val].image_url : val.image_url),
+                    articleUrl: VerticalGlobalFunctions.formatArticleRoute(self.scope, !self.isLeague ? val : "postgame-report", !self.isLeague ?
+                        (val != "player-fantasy" ? eventID : data['otherReports'][val].article_id) : val.event_id)
                 };
                 articleArr.push(articles);
-            });
-        } else {
-            data['data'].forEach(function (val, index) {
-                if (index > 0) {
-                    articles = {
-                        title: val.title,
-                        eventType: "postgame-report",
-                        eventID: val.event_id,
-                        images: VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(val.image_url),
-                        articleUrl: VerticalGlobalFunctions.formatArticleRoute(self.scope, "postgame-report", val.event_id)
-                    };
-                    articleArr.push(articles);
-                }
-            });
-        }
+            }
+        });
         articleArr.sort(function () {
             return 0.5 - Math.random()
         });
