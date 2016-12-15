@@ -3,63 +3,64 @@
   <backtab-component></backtab-component>
   <title-component
     *ngIf="contactusInput"
-    [titleData]="contactusInput.titleData"></title-component>
-  <div class="contactus-container">
+    [titleData]="contactusInput.titleData">
+  </title-component>
+  <div class="contactus-container col-xs-12">
       <div class="contactus-required"><span class="text-master">*</span> All fields are required</div>
-      <form *ngIf="active" #f="ngForm" (ngSubmit)="formSubmit(f.value)">
+      <form *ngIf="active" (ngSubmit)="formSubmit(contactForm.value)" [formGroup]="contactForm">
 
           <!-- Full Name Text Input -->
-          <!-- <div class="row contactus-margin contactus-row-align">
-              <div class="contactus-labels">
+          <div class="row contactus-margin">
+              <div class="contactus-labels col-xs-12 col-sm-12 col-md-3">
                   <label for="contactusName" class="contactus-label">
                       Full Name
                   </label>
               </div>
-              <div class="contactus-fields">
-                  <input ngControl="name" name="name" id="contactusName" class="contactus-textinput" placeholder="John Smith" />
+              <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
+                  <input formControlName="name" name="name" id="contactusName" class="contactus-textinput col-xs-12" placeholder="John Smith" />
               </div>
-          </div> -->
+          </div>
 
           <!-- Email Text Input -->
-          <!-- <div class="row contactus-margin contactus-row-align">
-              <div class="contactus-labels">
+          <div class="row contactus-margin">
+              <div class="contactus-labels col-xs-12 col-sm-12 col-md-3">
                   <label for="contactusEmail" class="contactus-label">
                       Email Address
                   </label>
               </div>
-              <div class="contactus-fields">
-                  <input ngControl="email" type="email" id="contactusEmail" class="contactus-textinput" placeholder="name@domain-name.com" />
+              <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
+                  <input formControlName="email" type="email" id="contactusEmail" class="contactus-textinput col-xs-12" placeholder="name@domain-name.com" />
               </div>
-          </div> -->
+          </div>
 
           <!-- Subject Checkboxes -->
-          <!-- <div class="row contactus-margin-small">
-              <div class="contactus-question">
+          <div class="row contactus-margin">
+              <div class="contactus-question col-xs-12 col-sm-12 col-md-3">
                   <label class="contactus-label">
                       My question is regarding:
                   </label>
               </div>
-              <div class="contactus-fields">
-                  <div class="contactus-margin-small" *ngFor="let item of contactusInput.subjects">
+              <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
+                  <div *ngFor="let item of contactusInput.subjects" class="checkbox contactus-margin-small">
                       <label>
-                          <input ngControl="{{item.id}}" class="contactus-checkbox" type="checkbox" value="{{item.value}}" name="Type" ngControl="{{item.value}}">
+                          <input formControlName="{{item.id}}" class="contactus-checkbox" type="checkbox" value="{{item.value}}" name="Type">
                           <span class="contactus-checkbox-value">{{item.value}}</span>
                       </label>
                   </div>
               </div>
-          </div> -->
+          </div>
 
           <!-- Message Text area -->
-          <!-- <div class="row contactus-margin-large">
-              <textarea ngControl="description" class="contactus-textarea" placeholder="Detailed description of your question here..."></textarea>
-          </div> -->
+          <div class="row contactus-margin-large col-xs-12 col-sm-12 col-md-9 pull-right">
+              <textarea formControlName="description" class="contactus-textarea col-xs-12" placeholder="Detailed description of your question here..."></textarea>
+          </div>
 
-          <!-- <div class="contactus-buttons">
-              <a href="javaScript:void(0);" class="contactus-buttons-reset" (click)="reset()">RESET </a>
-              <button class="contactus-buttons-submit" [disabled]="!f.form.valid">
+          <div class="contactus-buttons col-xs-12">
+              <div class="contactus-buttons-reset" (click)="reset()">RESET</div>
+              <button type="submit" class="contactus-buttons-submit" [disabled]="">
                   Submit <i class="fa fa-angle-right"></i>
               </button>
-          </div> -->
+          </div>
 
       </form>
   </div>
