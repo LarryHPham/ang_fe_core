@@ -1,8 +1,7 @@
 // height should only be specified for the module when it's on a profile page
-.images-media{
-}
-.profile-carousel-container {
+.images-media{}
 
+.profile-carousel-container {
   .carousel {
     @media @fluid {
       width: 100%;
@@ -226,15 +225,17 @@
   animation: fadein .5s;
   pointer-events: auto !important;
   &-container {
-    display:flex;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     @media @mobile{
       width:90%;
-
     }
     height: auto;
     max-height: 83%;
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     img{
