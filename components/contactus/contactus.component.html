@@ -17,7 +17,18 @@
                   </label>
               </div>
               <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
-                  <input formControlName="name" name="name" id="contactusName" class="contactus-textinput col-xs-12" placeholder="John Smith" />
+                  <input
+                    name="name"
+                    placeholder="John Smith"
+                    id="contactusName"
+                    class="contactus-textinput col-xs-12"
+                    [ngClass]="{'has-error': !nameControl.valid && nameControl.touched}"
+                    formControlName="name"/>
+              </div>
+              <div
+                *ngIf="!nameControl.valid && nameControl.touched"
+                class="error-message col-xs-12">
+                * Field Required
               </div>
           </div>
 
@@ -29,7 +40,18 @@
                   </label>
               </div>
               <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
-                  <input formControlName="email" type="email" id="contactusEmail" class="contactus-textinput col-xs-12" placeholder="name@domain-name.com" />
+                  <input
+                    type="email"
+                    placeholder="name@domain-name.com"
+                    id="contactusEmail"
+                    class="contactus-textinput col-xs-12"
+                    [ngClass]="{'has-error': !emailControl.valid && emailControl.touched}"
+                    formControlName="email" />
+              </div>
+              <div
+                *ngIf="!emailControl.valid && emailControl.touched"
+                class="error-message col-xs-12">
+                * Field Required
               </div>
           </div>
 
@@ -43,7 +65,12 @@
               <div class="contactus-fields col-xs-12 col-sm-12 col-md-9">
                   <div *ngFor="let item of contactusInput.subjects" class="checkbox contactus-margin-small">
                       <label>
-                          <input formControlName="{{item.id}}" class="contactus-checkbox" type="checkbox" value="{{item.value}}" name="Type">
+                          <input
+                            formControlName="{{item.id}}"
+                            class="contactus-checkbox"
+                            type="checkbox"
+                            value="{{item.value}}"
+                            name="Type">
                           <span class="contactus-checkbox-value">{{item.value}}</span>
                       </label>
                   </div>
@@ -52,12 +79,22 @@
 
           <!-- Message Text area -->
           <div class="row contactus-margin-large col-xs-12 col-sm-12 col-md-9 pull-right">
-              <textarea formControlName="description" class="contactus-textarea col-xs-12" placeholder="Detailed description of your question here..."></textarea>
+            <textarea
+              placeholder="Detailed description of your question here..."
+              class="contactus-textarea col-xs-12"
+              [ngClass]="{'has-error': !descriptionControl.valid && descriptionControl.touched}"
+              formControlName="description">
+            </textarea>
+            <div
+              *ngIf="!descriptionControl.valid && descriptionControl.touched"
+              class="error-message col-xs-12">
+              * Field Required
+            </div>
           </div>
 
           <div class="contactus-buttons col-xs-12">
               <div class="contactus-buttons-reset" (click)="reset()">RESET</div>
-              <button type="submit" class="contactus-buttons-submit" [disabled]="">
+              <button type="submit" class="contactus-buttons-submit" [disabled]="!contactForm.valid">
                   Submit <i class="fa fa-angle-right"></i>
               </button>
           </div>
