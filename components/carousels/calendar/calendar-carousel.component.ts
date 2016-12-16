@@ -254,8 +254,8 @@ export class CalendarCarousel implements OnInit {
   validateDate(selectedDate, dateArray, firstRun?) {
     var curUnix = moment(selectedDate,"YYYY-MM-DD").unix()*1000;
     var validatedDate = 0;
-    var minDateUnix =  Number(dateArray[0].unixDate);
-    var maxDateUnix = Number(dateArray[dateArray.length - 1].unixDate);
+    var minDateUnix =  dateArray.length > 0 ? Number(dateArray[0].unixDate) : dateArray;
+    var maxDateUnix = dateArray.length > 0 ? Number(dateArray[dateArray.length - 1].unixDate) : dateArray;
     var activeIndex;
     var mostRecent;
     dateArray.forEach(function(date, i){
