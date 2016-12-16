@@ -11,6 +11,12 @@
       margin-bottom: 0;
     }
   }
+  &-ui-error {
+    padding: 5px 0 0 0;
+    font-size: 12px;
+    color: red;
+    text-align: right;
+  }
   &-required{
     margin-bottom: 10px;
     .globalDefaultFont(12px, 800);
@@ -47,6 +53,9 @@
     height: 35px;
     padding: 0px 10px;
     border: 1px solid @strokeGrey;
+    &.has-error {
+      border: 1px solid red;
+    }
     &:focus{
       outline: 2px solid @masterBrandColor;
     }
@@ -64,6 +73,9 @@
     min-height: 168px;
     resize: vertical;
     border: 1px solid @strokeGrey;
+    &.has-error {
+      border: 1px solid red;
+    }
     &:focus{
       outline: 2px solid @masterBrandColor;
     }
@@ -83,14 +95,19 @@
       border: none;
       background-color: @masterBrandColor;
       float: right;
+      cursor: pointer;
       .fa{
-        vertical-align: bottom;
+        vertical-align: middle;
       }
       &:hover{
         background-color: @black;
       }
       &:focus{
         outline: none;
+      }
+      &[disabled] {
+        pointer-events: none;
+        opacity: .75;
       }
     }
 
@@ -110,6 +127,12 @@
         outline: none;
       }
     }
+  }
+  .error-message {
+    text-align: right;
+    padding-top: 5px;
+    font-size: 12px;
+    color: red;
   }
 }
 @media @tablet{
