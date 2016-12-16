@@ -57,6 +57,7 @@ export class MVPModule implements OnChanges {
 
     url = [
       this.partnerIdParam,
+      this.query.scope,
       'mvp-list',
       this.query.position,
       this.query.statName,
