@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {BackTabComponent} from '../../components/backtab/backtab.component';
 import {TitleComponent} from '../../components/title/title.component';
 
@@ -12,22 +12,29 @@ import {TitleComponent} from '../../components/title/title.component';
 export class ContactUsComponent{
     @Input() contactusInput: Object;
     @Output() contactusOutput = new EventEmitter();
-    private active:boolean = true;// by default set the form to a pristine state on load
 
     public contactForm: FormGroup;
+    private active:boolean = true;// by default set the form to a pristine state on load
+    public nameControl: any;
+    public emailControl: any;
+    public descriptionControl: any;
 
     constructor(
       private formBuilder: FormBuilder
     ) {
       this.contactForm = formBuilder.group({
-        'name':[''],
-        'email':[''],
+        'name':['', Validators.required],
+        'email':['', Validators.required],
         'advertisement':[''],
         'copyright':[''],
         'inquire':[''],
         'general':[''],
-        'description':['']
+        'description':['', Validators.required],
       })
+
+      this.nameControl = this.contactForm.controls['name'];
+      this.emailControl = this.contactForm.controls['email'];
+      this.descriptionControl = this.contactForm.controls['description'];
     }
 
 
