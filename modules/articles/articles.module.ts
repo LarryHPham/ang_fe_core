@@ -60,26 +60,31 @@ export class ArticlesModule implements OnInit {
         //Checks to see if data.featuredReport object has properties, previously featuredReport was an array
         this.headlineError = false;
         let objNotEmpty:boolean;
-        for (var prop in data.featuredReport) {
-            objNotEmpty = true;
-        }
-        if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true) {
-            this.eventID = data.event;
-            this.scheduleHomeData = data.home;
-            this.scheduleAwayData = data.away;
-            this.moduleData = data;
-            this.getHeaderData(data);
-            this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
-            this.getMainArticle(data);
-            this.getSubArticles(data, this.eventID);
-        } else if (this.isLeague) {
-            this.getHeaderData(data);
-            this.getMainArticle(data);
-            this.getSubArticles(data, this.eventID);
-        }
-        else {
+        try {
+            for (var prop in data.featuredReport) {
+                objNotEmpty = true;
+            }
+            if (!this.isLeague && data != null && data.featuredReport != null && objNotEmpty == true) {
+                this.eventID = data.event;
+                this.scheduleHomeData = data.home;
+                this.scheduleAwayData = data.away;
+                this.moduleData = data;
+                this.getHeaderData(data);
+                this.getSchedule(this.scheduleHomeData, this.scheduleAwayData);
+                this.getMainArticle(data);
+                this.getSubArticles(data, this.eventID);
+            } else if (this.isLeague) {
+                this.getHeaderData(data);
+                this.getMainArticle(data);
+                this.getSubArticles(data, this.eventID);
+            }
+            else {
+                this.headlineError = true;
+                console.log('headline error');
+            }
+        } catch (e) {
             this.headlineError = true;
-            console.log('headline error');
+            console.log('headline error ', e);
         }
     }
 
