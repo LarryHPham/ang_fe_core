@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="tab.tabData.sections.length > 0" class="schedules-table" [ngClass]="{'schedules-table-padding': filter1 || filter2 }">
+      <div *ngIf="tab.tabData.sections" class="schedules-table" [ngClass]="{'schedules-table-padding': filter1 || filter2 }">
         <div *ngFor="let section of tab.tabData.sections" class="schedules-section">
           <h4 *ngIf="section.groupName" [innerHtml]="section.groupName"></h4>
           <loading-component *ngIf="!section.tableData"></loading-component>
