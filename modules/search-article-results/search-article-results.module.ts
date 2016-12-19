@@ -27,7 +27,6 @@ export class SearchArticleResults{
 
     }
     ngOnChanges(){
-        console.log(this.totalPages,"total pages");
         this.pageNum=this.currentPage+1;
         var topRight=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow-r')[0];
         var bottomRight=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow-r')[1];
