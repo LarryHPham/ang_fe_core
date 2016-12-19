@@ -53,13 +53,13 @@ export class BoxScoresModule implements OnInit {
 
 
 
-  ngOnChanges(event){
+  ngOnChanges(event) {
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";
       }
 
-      if ( event.boxScores.currentValue.nextGameDate ) { //if the right info exists in api cal
+      if ( event.boxScores && event.boxScores.currentValue.nextGameDate ) { //if the right info exists in api cal
         this.ActivateControls = false;
 
         let currentGameDate = event.boxScores.currentValue ? event.boxScores.currentValue.gameDate : null;
