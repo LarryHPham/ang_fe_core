@@ -53,20 +53,24 @@
         max-height: 51px;
         line-height: 23px;
         padding: 5px 0;
+        &:hover{
+          color: @masterBrandColor;
+        }
       }
       @media @desktop-m{
         .globalDefaultFont(26px,800);
          max-height: 65px;
          line-height: 30px;
+        &:hover{
+          color: @masterBrandColor;
+        }
       }
       width:100%;
       padding:10px 0;
       overflow: hidden;
       text-overflow: ellipsis;
 
-      &:hover{
-        color: @masterBrandColor;
-      }
+
 
     }
     &_writeby{
