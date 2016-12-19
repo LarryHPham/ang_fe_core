@@ -1,6 +1,6 @@
 <div class="dropdown">
   <div class="dropdown-hdr" (keydown)="searchKeydown($event)" tabindex="0" >
-    <span class="dropdown-hdr-value"><b *ngIf="dropdownhdr"> {{prefixString}} </b> <span class="hy" *ngIf="dropdownhdr && prefixString!=''"> - </span><span [innerHtml]="selectedItem.value"></span></span>
+    <span class="dropdown-hdr-value"><b *ngIf="dropdownhdr"> {{prefixString}} </b> <span class="hy" *ngIf="dropdownhdr && prefixString!=''"> - &nbsp; </span><span [innerHtml]="selectedItem.value"></span></span>
     <span class="dropdown-hdr-button">
       <i class="fa {{dropdownHiddenIcon}}"></i>
     </span>

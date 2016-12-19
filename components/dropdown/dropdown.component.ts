@@ -144,8 +144,9 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
               'None': '',
               'Most Recent': 'Date',
               'Oldest':'Date',
-              'Last 24 Hours': 'Time',
+              'Past 24 Hours': 'Time',
               'Past 7 Days':'Time',
+              'Past 30 Days': 'Time',
           }[a];
       }
 
