@@ -14,6 +14,13 @@
     min-width: 300px;
     background-size: cover;
     background-position: center;
+    .dropdown-caret-top{
+      top:2px;
+      right:8px;
+    }
+    .dropdown-caret-top-active::after, .dropdown-caret-top-hover::after{
+      border-bottom-color: #f2f2f2;
+    }
 
     @media @tablet{
       min-height: 300px;
@@ -30,14 +37,6 @@
     dropdown .droptitle{
       width:300px;
 
-    }
-
-    .dropdown-caret-top{
-      top:2px;
-      right:8px;
-    }
-    .dropdown-caret-top-active::after, .dropdown-caret-top-hover::after{
-      border-bottom-color: #f2f2f2;
     }
 
     .category-dropdown{
