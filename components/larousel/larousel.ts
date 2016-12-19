@@ -82,7 +82,8 @@ export class Larousel implements OnChanges{
         ssItems.push({
           id: startLength + index,
           data:val,
-          type:'toggle'
+          type:'toggle',
+          type2:'toggle'
         })
       });
       startLength = ssItems.length
@@ -92,7 +93,8 @@ export class Larousel implements OnChanges{
       ssItems.push({
         id: startLength,
         data:this.graphData,
-        type:'graph'
+        type:'graph',
+        type2:'graph'
       })
       startLength = ssItems.length
     }
@@ -102,7 +104,8 @@ export class Larousel implements OnChanges{
         ssItems.push({
           id: startLength + index,
           data:val,
-          type:'video'
+          type:'video',
+          type2:'video'
         })
       });
       startLength = ssItems.length
@@ -114,7 +117,8 @@ export class Larousel implements OnChanges{
         ssItems.push({
           id:startLength + index,
           data:val,
-          type:'carousel'
+          type:'carousel',
+          type2:'carousel'
         })
       });
       startLength = ssItems.length; //get total valid items
@@ -125,13 +129,15 @@ export class Larousel implements OnChanges{
       ssItems.push({
         id: ssItems[0].id,
         data:ssItems[0].data,
-        type:ssItems[0].type
+        type:ssItems[0].type,
+        type2:'clone'
       })
       //unshift pushes clones before array only if we have that extra carousel in front
       ssItems.unshift({
         id:ssItems[startLength-1].id,
         data:ssItems[startLength-1].data,
-        type:ssItems[startLength-1].type
+        type:ssItems[startLength-1].type,
+        type2:'clone'
       })
     }
     //set all inputed data into a single originalData variable to be used
