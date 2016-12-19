@@ -6,4 +6,7 @@ import {SyndicateArticleData} from "../../interfaces/syndicate-article.data";
 })
 export class SearchResultsComponent{
  @Input() singleArticleData:SyndicateArticleData;
+ ngOnInit(){
+     console.log(this.singleArticleData,"dfhdjshfjsd");
+ }
 }
