@@ -30,11 +30,11 @@ export class DirectoryModule implements OnChanges {
   }
 
   // COMMENTED OUT FOR NOW (don't remove yet)
-  // isActive(instruction: any[]): boolean {
-  //   console.log('instruction - ',instruction);
-  //   console.log(this.activatedRoute);
-  //   return true;
-  // }
+  isActive(instruction: any[]): boolean {
+    console.log('instruction - ',instruction);
+    console.log(this.activatedRoute);
+    return true;
+  }
 
   setupData() {
     if ( this.data === undefined || this.data === null ){
@@ -70,5 +70,6 @@ export class DirectoryModule implements OnChanges {
       totalItems: totalItems,
       description: this.data.pagingDescription
     }
-  }
+    
+  } //setUpData
 }
