@@ -10,10 +10,54 @@ export class SearchArticleResults{
     @Input() totalPages:any;
     @Input() articleTotalCount:number;
     @Output() emitPageNum: EventEmitter<any>=new EventEmitter();
+    @Input() currentPage:number;
+
     startCount:number=1;
     EndCount:number=this.startCount*10;
     pageNum:number =1;
+    error:any;
+
     constructor(private elementRef:ElementRef, private render:Renderer){
+    }
+    ngOnInit(){
+        this.error={
+            message:"Sorry we can't find articles matching your search term(s) " +  this.userInput + ", please try your search again.",
+            icon:"fa-search-icon",
+        };
+
+    }
+    ngOnChanges(){
+        console.log(this.totalPages,"total pages");
+        this.pageNum=this.currentPage+1;
+        var topRight=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow-r')[0];
+        var bottomRight=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow-r')[1];
+        var topLeft=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow')[0];
+        var bottomLeft=this.elementRef.nativeElement.getElementsByClassName('s-module_page-num_right_arrow')[1];
+        if(this.totalPages==1){
+            this.render.setElementStyle(topRight,'opacity','0.2');
+            this.render.setElementStyle(topRight,'backgroundColor','#fff');
+            this.render.setElementStyle(topRight,'border','1px solid #444');
+            this.render.setElementStyle(topRight.firstElementChild,'color','#444');
+            this.render.setElementStyle(topRight,'cursor','default');
+            this.render.setElementStyle(bottomRight,'opacity','0.2');
+            this.render.setElementStyle(bottomRight,'backgroundColor','#fff');
+            this.render.setElementStyle(bottomRight,'border','1px solid #444');
+            this.render.setElementStyle(bottomRight.firstElementChild,'color','#444');
+            this.render.setElementStyle(bottomRight,'cursor','default');
+            this.render.setElementStyle(topLeft,'opacity','0.2');
+            this.render.setElementStyle(topLeft,'backgroundColor','#fff');
+            this.render.setElementStyle(topLeft,'border','1px solid #444');
+            this.render.setElementStyle(topLeft.firstElementChild,'color','#444');
+            this.render.setElementStyle(topLeft,'cursor','default');
+            this.render.setElementStyle(bottomLeft,'opacity','0.2');
+            this.render.setElementStyle(bottomLeft,'backgroundColor','#fff');
+            this.render.setElementStyle(bottomLeft,'border','1px solid #444');
+            this.render.setElementStyle(bottomLeft.firstElementChild,'color','#444');
+            this.render.setElementStyle(bottomLeft,'cursor','default');
+
+        }
+
+
     }
     previousPage(e){
         this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[0].lastElementChild.lastElementChild,'opacity','1');
@@ -37,7 +81,7 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[0].lastElementChild.firstElementChild,'opacity','0.2');
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.firstElementChild,'opacity','0.2');
         }
-        this.emitPageNum.emit(this.pageNum);
+        this.emitPageNum.emit(this.pageNum-1);
         this.startCount=(this.pageNum-1)*10+1;
         this.EndCount=this.startCount+9;
 
@@ -65,8 +109,9 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.lastElementChild,'cursor','default');
 
         }
-        this.emitPageNum.emit(this.pageNum);
+        this.emitPageNum.emit(this.pageNum-1);
         this.startCount=(this.pageNum-1)*10+1;
         this.EndCount=this.startCount+9;
     }
+
 }
