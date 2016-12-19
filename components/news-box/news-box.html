@@ -2,7 +2,7 @@
   <template  [ngIf]="displayedItems">
     <template  ngFor let-item [ngForOf]="displayedItems">
       <!-- BELOW TOGGLE CAROUSEL -->
-      <div class="newsbox" *ngIf="item.type == 'toggle'" [ngClass]="{'clone': item.type == 'clone'}">
+      <div class="newsbox" *ngIf="item.type == 'toggle'" [ngClass]="{'clone': item.type2 == 'clone'}">
         <div class="carousel_toggle">
           <img src="{{item.data.midImage}}" onerror="this.src='/app/public/Image-Placeholder-2.jpg'" alt="Football Image"/>
           <div class="carousel_toggle-container">
@@ -44,13 +44,13 @@
       <!-- ABOVE TOGGLE CAROUSEL -->
       <!-- BELOW VIDEO CAROUSEL -->
       <div class="newsbox"
-      *ngIf="item.type == 'video' || item.type == 'clone'"
-      [ngClass]="{'clone': item.type == 'clone', 'videoActive': currentDisplayed.type == 'video'}">
+      *ngIf="item.type == 'video'"
+      [ngClass]="{'clone': item.type2 == 'clone', 'videoActive': currentDisplayed.type == 'video'}">
         <div class="newsbox-background" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.video_thumbnail + ')'}"></div>
         <div class="newsbox-item video-width" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-left">
-              <div class="newsbox-item-container-left-video">
+              <div *ngIf="item.type2 != 'clone'" class="newsbox-item-container-left-video">
                 <iframe width="100%" height="100%"  [src]="item.data.embed_url | safeRUrl" frameborder="0" scrolling = "no" allowfullscreen></iframe>
               </div>
             </div>
@@ -77,9 +77,9 @@
       <!-- ABOVE VIDEO CAROUSEL -->
       <!-- BELOW GRAPH CAROUSEL -->
       <div class="newsbox"
-      *ngIf="item.type == 'graph' || item.type == 'clone'"
+      *ngIf="item.type == 'graph'"
       [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.current.background + ')'}"
-      [ngClass]="{'clone': item.type == 'clone'}">
+      [ngClass]="{'clone': item.type2 == 'clone'}">
         <div class="newsbox-item graph-item" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">
             <div class="weather-graph">
@@ -111,7 +111,7 @@
       <a class="newsbox story-item"
       *ngIf="item.type == 'carousel' && !item.data.extUrl"
       [routerLink]="item.data.articlelink "
-      [ngClass]="{'clone': item.type == 'clone'}">
+      [ngClass]="{'clone': item.type2 == 'clone'}">
         <div class="newsbox-item">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-right" id="lrgnewsbox-right" style="display:block;">
@@ -133,7 +133,7 @@
       <a class="newsbox story-item"
       *ngIf="item.type == 'carousel' && item.data.extUrl"
       href="{{item.data.articlelink}}"
-      [ngClass]="{'clone': item.type == 'clone'}">
+      [ngClass]="{'clone': item.type2 == 'clone'}">
         <div class="newsbox-item">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-right" id="lrgnewsbox-right" style="display:block;">
