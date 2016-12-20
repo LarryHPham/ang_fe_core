@@ -50,7 +50,9 @@
             </a>
         </div>
         <div class="trending-small-hr"></div>
-        <responsive-widget *ngIf="!even"></responsive-widget>
+        <div class="responsive-widget">
+            <responsive-widget *ngIf="!even"></responsive-widget>
+        </div>
         <div *ngIf="!even" class="trending-small-hr hide-under-lg"></div>
     </div>
     <load-more-button *ngIf="showLoading"></load-more-button>
