@@ -96,13 +96,13 @@
         height: 100%;
         float:left;
         overflow: hidden;
-        & > span{
+        & > span {
           width:100%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           display:inline-block;
-          &:first-child{
+          &.game-box-main-details-name, a.game-box-main-details-name {
             font-size: 14px;
             font-weight: 800;
             color:@black;
@@ -114,12 +114,12 @@
               }
             }
           }
-          &:nth-child(2){
+          &.game-box-main-details-record {
             font-size: 12px;
             color:@bulletGrey;
             line-height: 18px;
           }
-        }
+        } //& > span
       }//game-box-details end
     }//game-box-main END
     &-values{

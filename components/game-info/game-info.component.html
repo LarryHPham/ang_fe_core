@@ -45,11 +45,22 @@
     </div>
     <div class="game-box-main-details">
       <span *ngIf="awayInfo.awayLink || awayInfo.awayExternalURL" class="link">
-        <a *ngIf="awayInfo.awayLink != null" [routerLink]="awayInfo.awayLink">{{awayInfo.awayTeamName}}</a>
-        <a *ngIf="awayInfo.awayExternalURL != null" href="{{awayInfo.awayExternalURL}}" target="_blank">{{awayInfo.awayTeamName}}</a>
+        <a
+          *ngIf="awayInfo.awayLink != null"
+          [routerLink]="awayInfo.awayLink"
+          class="game-box-main-details-name">{{awayInfo.awayTeamName}}</a>
+        <a
+          *ngIf="awayInfo.awayExternalURL != null"
+          href="{{awayInfo.awayExternalURL}}"
+          target="_blank"
+          class="game-box-main-details-name">{{awayInfo.awayTeamName}}</a>
       </span>
-      <span *ngIf="!awayInfo.awayLink && !awayInfo.awayExternalURL">{{awayInfo.awayTeamName}}</span>
-      <span>Away {{awayInfo.awayRecord}}</span>
+      <span
+        *ngIf="!awayInfo.awayLink && !awayInfo.awayExternalURL"
+        class="game-box-main-details-name">
+        {{awayInfo.awayTeamName}}
+      </span>
+      <span class="game-box-main-details-record">Away {{awayInfo.awayRecord}}</span>
     </div>
   </div>
   <div class="game-box-values col-xs-6 col-sm-6 container-fluid">
@@ -68,10 +79,21 @@
       </div>
       <div class="game-box-main-details">
         <span *ngIf="homeInfo.homeLink || homeInfo.homeExternalURL" class="link">
-          <a *ngIf="homeInfo.homeLink != null" [routerLink]="homeInfo.homeLink">{{homeInfo.homeTeamName}}</a>
-          <a *ngIf="homeInfo.homeExternalURL != null" href="{{homeInfo.homeExternalURL}}" target="_blank">{{homeInfo.homeTeamName}}</a>
+          <a
+            *ngIf="homeInfo.homeLink != null"
+            [routerLink]="homeInfo.homeLink"
+            class="game-box-main-details-name">{{homeInfo.homeTeamName}}</a>
+          <a
+            *ngIf="homeInfo.homeExternalURL != null"
+            href="{{homeInfo.homeExternalURL}}"
+            target="_blank"
+            class="game-box-main-details-name">{{homeInfo.homeTeamName}}</a>
         </span>
-        <span>Home {{homeInfo.homeRecord}}</span>
+        <span
+          *ngIf="!homeInfo.homeLink && !homeInfo.homeExternalURL"
+          class="game-box-main-details-name">{{homeInfo.homeTeamName}}
+        </span>
+        <span class="game-box-main-details-record">Home {{homeInfo.homeRecord}}</span>
       </div>
     </div>
     <div class="game-box-values col-xs-6 col-sm-6 container-fluid">
