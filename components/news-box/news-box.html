@@ -68,7 +68,7 @@
                 </span>
               </div>
               <a [routerLink]="item.data.video_url">
-                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right-1"></i></div>
+                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right"></i></div>
               </a>
             </div>
           </div>
@@ -86,7 +86,7 @@
               <div class="weather-graph-container1">
                 <div class="weather-graph-info">
                   <div class="weather-graph-info-image"><img src="{{item.data.current.current_icon}}" alt='Weather Icon'/></div>
-                  <div class="weather-graph-info-data">{{item.data.current.current_temperature}}&deg;<span *ngIf="item.data.current.temperature_low" class="weather-graph-info-subdata">/{{item.data.current.temperature_low}}&deg;</span></div>
+                  <div class="weather-graph-info-data"><span *ngIf="item.data.current.temperature_high">{{item.data.current.temperature_high}}</span><span *ngIf="!item.data.current.temperature_high && item.data.current.current_temperature ">{{item.data.current.current_temperature}}</span>&deg;<span *ngIf="item.data.current.temperature_low" class="weather-graph-info-subdata">/{{item.data.current.temperature_low}}&deg;</span></div>
                 </div>
                 <div class="weather-graph-border1"></div>
                 <div class="weather-graph-content">
@@ -124,7 +124,7 @@
               <div class="newsbox-item-container-right-content" [innerHTML]="item.data.teaser | safeHtml">
               </div>
               <a [routerLink]="item.data.articlelink">
-                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right-1"></i></div>
+                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right"></i></div>
               </a>
             </div>
           </div>
@@ -146,7 +146,7 @@
               <div class="newsbox-item-container-right-content" [innerHTML]="item.data.teaser | safeHtml">
               </div>
               <a href="{{item.data.articlelink}}">
-                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right-1"></i></div>
+                <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right"></i></div>
               </a>
             </div>
           </div>

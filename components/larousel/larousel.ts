@@ -172,6 +172,15 @@ export class Larousel implements OnChanges{
     this.onResize(window);
   }
 
+  ngDoCheck(){
+    if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
+      let larouselContainer = this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+      if(larouselContainer != this.itemSize){
+        this.itemSize = larouselContainer;
+      }
+    }
+  }
+
   ngAfterViewInit(){
     //make sure to run the element ref after the content has loaded to get the full size;
     this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
@@ -187,12 +196,6 @@ export class Larousel implements OnChanges{
     this.generateArray();
     this.onResize(window);
   }
-
-  // ngDoCheck(){
-  //   if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
-  //     this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-  //   }
-  // }
 
   onResize(event?){
     if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
