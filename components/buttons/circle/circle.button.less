@@ -17,7 +17,6 @@
   .flexAlignItems(center);
   .flexJustify(center);
   .no-select;
-
   &-right {
     right: 8px;
   }
@@ -25,13 +24,19 @@
   &-left {
     left: 8px;
   }
-  @media @tablet {
-    &:hover{
-      border-color: @black;
-      background-color: @black;
+}
+@media @tablet {
+  .circles {
+    background: none;
+    border: none;
+    .fa {
+      font-size: 60px;
+      &:hover {
+        color: @masterBrandColor;
+      }
     }
   }
-}
+} //@tablet
 @media @mobile{
   .modal-container-img-navigation{
     .circles-right{
