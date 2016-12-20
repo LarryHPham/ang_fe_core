@@ -99,7 +99,7 @@
 
             <!--game info that affects only how team box scores are displayed-->
             <div
-              *ngIf="calendarParams.profile != 'league' || calendarParams.scope != 'league'"
+              *ngIf="calendarParams.profile != 'league' && calendarParams.scope != 'league'"
               class="row col-xs-12">
               <game-info
                 *ngFor="let game of gameBox; let g = index"
