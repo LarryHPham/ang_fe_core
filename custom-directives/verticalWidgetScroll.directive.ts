@@ -22,12 +22,11 @@ export class verticalWidgetScrollDirective{
         var footer = e.target.body.getElementsByClassName('footer')[0];
         let topCSS = 0;
         topCSS = header != null ? topCSS + header.offsetHeight : topCSS;
-        topCSS = sharebtns !=null ? topCSS + sharebtns.offsetHeight : topCSS;
+        topCSS = sharebtns !=null ? topCSS + sharebtns.offsetHeight + 25 : topCSS;
         topCSS = articleTitle != null ? topCSS + articleTitle.offsetHeight : topCSS;
         topCSS = carouselHeight != null? topCSS +carouselHeight.offsetHeight :topCSS;
         topCSS = videoElement != null ? topCSS + videoElement.offsetHeight : topCSS;
         topCSS = topCSS - fixedHeader;
-
         let bottomCSS=0;
         bottomCSS = footer!=null? bottomCSS + footer.offsetHeight: bottomCSS;
 
@@ -38,7 +37,7 @@ export class verticalWidgetScrollDirective{
         this.scrollTopPrev=scrollTop;
         if(this.scrollWidget){
             if(window.scrollY>topCSS){
-                if(scrollUp) {
+               if(scrollUp) {
                     var topstyle = window.scrollY - topCSS + 'px';
                     this._render.setElementStyle(this.scrollWidget, 'top', topstyle);
                 }else{
@@ -47,8 +46,8 @@ export class verticalWidgetScrollDirective{
                     var topstyle = headerTop.offsetHeight? window.scrollY - topCSS + headerTop.offsetHeight + partnerheadTop + 35 + 'px' :window.scrollY - topCSS + partnerheadTop + 'px';
                     this._render.setElementStyle(this.scrollWidget, 'top', topstyle);
                 }
-                if(scrollBottom && window.innerHeight - footer.offsetHeight <600){
-                    var newTopCSS =window.scrollY - topCSS - bottomCSS - 30+ 'px';
+                if(scrollBottom && window.innerHeight - footer.offsetHeight < 650){
+                    var newTopCSS =window.scrollY - topCSS - bottomCSS + 'px';
                     this._render.setElementStyle(this.scrollWidget,'top', newTopCSS);
                 }
 
