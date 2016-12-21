@@ -35,18 +35,19 @@ export class verticalWidgetScrollDirective{
 
         this.scrollTopPrev=scrollTop;
         if(this.scrollWidget){
-            if(window.scrollY>topCSS){
+            var scrollYaxis= window.pageYOffset? window.pageYOffset: window.scrollY;
+            if(scrollYaxis>topCSS){
                if(scrollUp) {
-                    var topstyle = window.scrollY - topCSS + 'px';
+                    var topstyle = scrollYaxis - topCSS + 'px';
                     this._render.setElementStyle(this.scrollWidget, 'top', topstyle);
                 }else{
                     var headerTop=e.target.body.getElementsByClassName('header-top')[0];
                     var partnerheadTop=e.target.getElementById('partner_header')?document.getElementById('partner_header').offsetHeight:0;
-                    var topstyle = headerTop.offsetHeight? window.scrollY - topCSS + headerTop.offsetHeight + partnerheadTop + 35 + 'px' :window.scrollY - topCSS + partnerheadTop + 'px';
+                    var topstyle = headerTop.offsetHeight? scrollYaxis - topCSS + headerTop.offsetHeight + partnerheadTop + 35 + 'px' :scrollYaxis - topCSS + partnerheadTop + 'px';
                     this._render.setElementStyle(this.scrollWidget, 'top', topstyle);
                 }
                 if(scrollBottom && window.innerHeight - footer.offsetHeight < 650){
-                    var newTopCSS =window.scrollY - topCSS - bottomCSS + 'px';
+                    var newTopCSS =scrollYaxis - topCSS - bottomCSS + 'px';
                     this._render.setElementStyle(this.scrollWidget,'top', newTopCSS);
                 }
 
