@@ -1,11 +1,9 @@
-import {Directive, ElementRef, Renderer, HostListener, Input} from "@angular/core";
+import {Directive, ElementRef, Renderer, HostListener} from "@angular/core";
 @Directive({
     selector:'[verticalWidgetScroll]'
 })
 export class verticalWidgetScrollDirective{
-    @Input() scrollWidget;
-    @Input() topCSS;
-    @Input() bottomCSS;
+    scrollWidget;
     scrollTopPrev:number = 0;
     constructor(private _elref:ElementRef, private _render:Renderer){
 
