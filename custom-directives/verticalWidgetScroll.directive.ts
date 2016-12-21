@@ -30,9 +30,10 @@ export class verticalWidgetScrollDirective{
         let bottomCSS=0;
         bottomCSS = footer!=null? bottomCSS + footer.offsetHeight: bottomCSS;
 
-        var scrollTop = e.target.body.scrollTop;
+        var scrollTop =e.target.documentElement.scrollTop?e.target.documentElement.scrollTop:e.target.body.scrollTop;
         let scrollUp = scrollTop - this.scrollTopPrev>0?true:false;
-        var scrollBottom = e.target.body.scrollHeight-e.target.body.scrollTop==e.target.body.clientHeight?true:false;
+        let scrolHeight=e.target.documentElement.scrollHeight?e.target.documentElement.scrollHeight:e.target.body.scrollHeight
+        var scrollBottom = scrolHeight-scrollTop==e.target.body.clientHeight?true:false;
 
         this.scrollTopPrev=scrollTop;
         if(this.scrollWidget){
