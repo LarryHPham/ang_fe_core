@@ -65,7 +65,7 @@
 </div><!--</schedule-box-weather>-->
 
 <div *ngIf="topScope=='business'" class="schedule_box business"><!--become a component <schedule-box>-->
-  <a *ngIf="boxData.exchangeName != 'OTC'" class="masterHover" href="{{boxData.profileUrl}}">
+  <a *ngIf="boxData.exchangeName != 'OTC'" class="masterHover" href="{{boxData.profileUrl}}" target="_blank">
   <!-- <img class="company-logo" src="{{boxData.logoUrl}}"> -->
   <circle-image [data]="boxData.imageConfig"></circle-image>
   <div class="company-name">{{boxData.fullCompanyName}}</div></a>
