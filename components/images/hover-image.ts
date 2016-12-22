@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'hover-image',
-    templateUrl: './app/fe-core/components/images/hover-image.html',
+    templateUrl: './hover-image.html',
 })
 
 export class HoverImage {

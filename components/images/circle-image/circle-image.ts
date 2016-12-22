@@ -57,7 +57,7 @@ import {ImageData, CircleImageData} from '../image-data';
 
 @Component({
     selector: 'circle-image',
-    templateUrl: './app/fe-core/components/images/circle-image/circle-image.html',
+    templateUrl: './circle-image.html',
 })
 
 export class CircleImage implements OnInit {

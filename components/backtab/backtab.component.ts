@@ -3,7 +3,7 @@ import {Input} from "@angular/core";
 
 @Component({
     selector: 'backtab-component',
-    templateUrl: './app/fe-core/components/backtab/backtab.component.html',
+    templateUrl: './backtab.component.html',
 })
 
 export class BackTabComponent{
