@@ -9,14 +9,14 @@ import {Input} from "@angular/core";
 export class BackTabComponent{
     @Input() labelInput : string;
     label : string;
-    history=window.history;
+    // history=window.history;
 
     goBack() {
-      if(history.length <= 2){
-        window.location.href = '/';
-      } else {
-        history.go(-1);
-      }
+      // if(history.length <= 2){
+      //   window.location.href = '/';
+      // } else {
+      //   history.go(-1);
+      // }
     }
 
     ngOnInit(){
