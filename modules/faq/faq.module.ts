@@ -9,7 +9,7 @@ export interface faqModuleData{
 
 @Component({
     selector: 'faq-module',
-    templateUrl: './app/fe-core/modules/faq/faq.module.html'
+    templateUrl: './faq.module.html'
 })
 
 export class FAQModule implements OnChanges {
