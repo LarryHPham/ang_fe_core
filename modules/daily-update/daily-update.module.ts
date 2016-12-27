@@ -9,7 +9,6 @@ import { CircleImage } from "../../components/images/circle-image/circle-image";
 import { NoDataBox } from '../../components/error/data-box/data-box.component';
 import { BarChartComponent } from '../../components/bar-chart/bar-chart.component';
 
-
 declare var jQuery:any;
 
 //interfaces
@@ -64,7 +63,7 @@ export interface PostGameArticleData {
 
 @Component({
     selector: 'daily-update-module',
-    templateUrl: './app/fe-core/modules/daily-update/daily-update.module.html'
+    templateUrl: './daily-update.module.html'
 })
 
 export class DailyUpdateModule {

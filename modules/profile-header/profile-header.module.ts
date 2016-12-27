@@ -162,7 +162,7 @@ export interface LeagueProfileHeaderData {
 
 @Component({
     selector: 'profile-header',
-    templateUrl: './app/fe-core/modules/profile-header/profile-header.module.html'
+    templateUrl: './profile-header.module.html'
 })
 
 export class ProfileHeaderModule implements OnChanges {
