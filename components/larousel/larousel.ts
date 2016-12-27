@@ -1,11 +1,8 @@
-import {Component, OnChanges, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-
-declare var jQuery:any;
-declare var moment:any;
+import {Component, OnChanges, Input, Output, EventEmitter, ElementRef, HostListener, Renderer, ViewChildren} from '@angular/core';
 
 @Component({
     selector: 'larousel',
-    templateUrl: './app/fe-core/components/larousel/larousel.html',
+    templateUrl: './larousel.html',
 })
 
 export class Larousel implements OnChanges{
@@ -39,6 +36,7 @@ export class Larousel implements OnChanges{
   @Output() displayedData = new EventEmitter();//outputs and array of objects for other components to use
   @Output() displayedItem = new EventEmitter();//outputs and array of objects for other components to use
   @Output() carouselCount = new EventEmitter();
+  @ViewChildren('larousel') _elRef: ElementRef;
   private startIndex:number = 0;
   private endIndex:number = 1;
   private originalData: any;
@@ -52,8 +50,8 @@ export class Larousel implements OnChanges{
   private transitionDirection:any;
 
   private clones:number = 1;
-  constructor(private _elRef: ElementRef){
-
+  constructor(private _renderer:Renderer){
+    console.log(this._elRef)
   }
   ngOnChanges(event){
     this.originalData = null;
@@ -169,21 +167,20 @@ export class Larousel implements OnChanges{
     }
     this.generateArray();
     this.preLoadImage();// run the first time
-    this.onResize(window);
   }
 
   ngDoCheck(){
-    if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
-      let larouselContainer = this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-      if(larouselContainer != this.itemSize){
-        this.itemSize = larouselContainer;
-      }
-    }
+    // if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
+    //   let larouselContainer = this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    //   if(larouselContainer != this.itemSize){
+    //     this.itemSize = larouselContainer;
+    //   }
+    // }
   }
 
   ngAfterViewInit(){
     //make sure to run the element ref after the content has loaded to get the full size;
-    this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    // this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
     this.currentItem = this.originalData[this.clones];
@@ -194,25 +191,26 @@ export class Larousel implements OnChanges{
       this.maxScroll = !((this.maxLength) >= Math.round(this.currentScroll/(this.itemSize)));
     }
     this.generateArray();
-    this.onResize(window);
   }
 
+  @HostListener('window:resize', ['$event'])
+
   onResize(event?){
-    if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
-      this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-      if (this.currentItem.id == 0){
-        this.currentScroll = this.itemSize;
-      } else {
-        this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
-      }
-      this.transition = "";
-      this.imageTransition = this.itemSize+'px';
-      this.rightText = this.currentScroll+'px';
-      //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
-      setTimeout(function(){
-        this.transition = "score-transition2";
-      },200);
-    }
+    // if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
+    //   this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    //   if (this.currentItem.id == 0){
+    //     this.currentScroll = this.itemSize;
+    //   } else {
+    //     this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
+    //   }
+    //   this.transition = "";
+    //   this.imageTransition = this.itemSize+'px';
+    //   this.rightText = this.currentScroll+'px';
+    //   //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
+    //   setTimeout(function(){
+    //     this.transition = "score-transition2";
+    //   },200);
+    // }
     this.numResizes = this.numResizes + 1;
   }
 

@@ -4,7 +4,7 @@ import { LineChartComponent } from '../line-chart/line-chart.component';
 
 @Component({
     selector: 'news-box',
-    templateUrl: './app/fe-core/components/news-box/news-box.html',
+    templateUrl: './news-box.html',
 })
 
 export class NewsBox{
