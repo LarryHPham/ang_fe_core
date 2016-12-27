@@ -3,7 +3,7 @@ import {RectangleImageData} from '../image-data';
 
 @Component({
     selector: 'rectangle-image',
-    templateUrl: './app/fe-core/components/images/rectangle-image/rectangle-image.html',
+    templateUrl: './rectangle-image.html',
 })
 export class RectangleImage implements OnInit{
     @Input() data: RectangleImageData;

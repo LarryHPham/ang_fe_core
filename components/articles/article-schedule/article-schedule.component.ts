@@ -3,7 +3,7 @@ import { Gradient } from '../../../../global/global-gradient';
 
 @Component({
     selector: 'article-schedule-component',
-    templateUrl: './app/fe-core/components/articles/article-schedule/article-schedule.component.html'
+    templateUrl: './article-schedule.component.html'
 })
 
 export class ArticleScheduleComponent implements OnChanges {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, ElementRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 //globals
@@ -12,7 +12,7 @@ declare var jQuery:any;
 
 @Component({
     selector: 'articles-module',
-    templateUrl: './app/fe-core/modules/articles/articles.module.html'
+    templateUrl: './articles.module.html'
 })
 
 export class ArticlesModule implements OnInit {
@@ -47,7 +47,7 @@ export class ArticlesModule implements OnInit {
     public mainHeadlineId:number;
     public params;
 
-    constructor(private _activateRoute:ActivatedRoute) {
+    constructor(private _activateRoute:ActivatedRoute, private _elementRef:ElementRef) {
         this.params = this._activateRoute.params.subscribe(
             (param:any)=> {
                 this.scope = param['scope'];
@@ -215,7 +215,7 @@ export class ArticlesModule implements OnInit {
 
     fitText() {
         try {
-            var text = !this.isSmall ? jQuery('.main-article-container-content-text') : jQuery('.main-article-container-content-text-small');
+            var text = !this.isSmall ? this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text')[0] : this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text-small')[0];
             if (text[0].scrollHeight > text[0].clientHeight) {
                 var original = text[0].innerHTML.substring(0, 400),
                     index = 0;

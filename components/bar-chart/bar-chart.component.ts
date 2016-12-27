@@ -1,10 +1,11 @@
 import { Component, AfterViewInit, Input, Inject, ElementRef } from '@angular/core';
+import { isBrowser } from 'angular2-universal';
 
 declare var jQuery:any;
 
 @Component({
   selector: 'bar-chart',
-  templateUrl: './app/fe-core/components/bar-chart/bar-chart.component.html'
+  templateUrl: './bar-chart.component.html'
 })
 
 export class BarChartComponent implements AfterViewInit {
@@ -21,7 +22,7 @@ export class BarChartComponent implements AfterViewInit {
   }
 
   drawChart() {
-    if ( this.options ) {
+    if ( this.options && isBrowser) {
       jQuery(this._elementRef.nativeElement)
         .find('.daily-update-chart-wrapper')
         .highcharts(this.options);

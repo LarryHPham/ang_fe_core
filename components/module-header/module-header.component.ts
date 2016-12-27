@@ -10,7 +10,7 @@ export interface ModuleHeaderData {
 
 @Component({
     selector: 'module-header',
-    templateUrl: './app/fe-core/components/module-header/module-header.component.html'
+    templateUrl: './module-header.component.html'
 })
 
 export class ModuleHeader {

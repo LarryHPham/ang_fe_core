@@ -15,7 +15,7 @@ export interface TitleInputData {
 
 @Component({
     selector: 'title-component',
-    templateUrl: './app/fe-core/components/title/title.component.html',
+    templateUrl: './title.component.html',
 })
 export class TitleComponent implements OnChanges {
     @Input() titleData: TitleInputData;

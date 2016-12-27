@@ -16,7 +16,7 @@ export interface FooterStyle {
 
 @Component({
     selector: 'module-footer',
-    templateUrl: './app/fe-core/components/module-footer/module-footer.component.html'
+    templateUrl: './module-footer.component.html'
 })
 
 export class ModuleFooter implements OnInit{

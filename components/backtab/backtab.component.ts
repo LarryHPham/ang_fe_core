@@ -3,20 +3,20 @@ import {Input} from "@angular/core";
 
 @Component({
     selector: 'backtab-component',
-    templateUrl: './app/fe-core/components/backtab/backtab.component.html',
+    templateUrl: './backtab.component.html',
 })
 
 export class BackTabComponent{
     @Input() labelInput : string;
     label : string;
-    history=window.history;
+    // history=window.history;
 
     goBack() {
-      if(history.length <= 2){
-        window.location.href = '/';
-      } else {
-        history.go(-1);
-      }
+      // if(history.length <= 2){
+      //   window.location.href = '/';
+      // } else {
+      //   history.go(-1);
+      // }
     }
 
     ngOnInit(){
