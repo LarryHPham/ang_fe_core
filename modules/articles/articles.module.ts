@@ -214,10 +214,8 @@ export class ArticlesModule implements OnInit {
     }
 
     fitText() {
-      console.log(this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text'));
-      console.log(this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text-small'));
         try {
-            var text = !this.isSmall ? jQuery('.main-article-container-content-text') : jQuery('.main-article-container-content-text-small');
+            var text = !this.isSmall ? this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text')[0] : this._elementRef.nativeElement.getElementsByClassName('main-article-container-content-text-small')[0];
             if (text[0].scrollHeight > text[0].clientHeight) {
                 var original = text[0].innerHTML.substring(0, 400),
                     index = 0;
