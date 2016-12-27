@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
     selector: 'game-info',
-    templateUrl: './app/fe-core/components/game-info/game-info.component.html'
+    templateUrl: './game-info.component.html'
 })
 
 export class GameInfo implements OnInit {

@@ -14,7 +14,7 @@ export interface TransactionModuleData {
 
 @Component({
   selector: 'transactions-module',
-  templateUrl: './app/fe-core/modules/transactions/transactions.module.html'
+  templateUrl: './transactions.module.html'
 })
 
 export class TransactionsModule {

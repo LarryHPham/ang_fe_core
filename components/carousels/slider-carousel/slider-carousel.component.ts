@@ -100,7 +100,7 @@ export interface Type2CarouselItem {
 
 @Component({
   selector: 'slider-carousel',
-  templateUrl: './app/fe-core/components/carousels/slider-carousel/slider-carousel.component.html'
+  templateUrl: '/slider-carousel.component.html'
 })
 
 export class SliderCarousel implements OnInit {

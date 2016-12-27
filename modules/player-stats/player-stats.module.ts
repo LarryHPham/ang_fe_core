@@ -20,15 +20,16 @@ export interface PlayerStatsModuleData {
 
 @Component({
   selector: "player-stats-module",
-  templateUrl: "./app/fe-core/modules/player-stats/player-stats.module.html",
+  templateUrl: "./player-stats.module.html",
 })
+
 export class PlayerStatsModule implements OnChanges {
   @Input() data: PlayerStatsModuleData;
   @Input() profileHeader;
   @Input() isProfilePage:boolean;
   @Input() profileData;
   @Input() tabName;
-  
+
   @Output("tabSelected") tabSelectedListener = new EventEmitter();
     //headerInfo: ModuleHeaderData;
  public headerInfo: ModuleHeaderData = {

@@ -27,7 +27,7 @@ export interface StatsTableTabData<T> {
 
 @Component({
     selector: "player-stats-component",
-    templateUrl: "./app/fe-core/components/player-stats/player-stats.component.html",
+    templateUrl: "./player-stats.component.html",
 })
 export class PlayerStatsComponent implements DoCheck,OnChanges,OnInit{
     private initialSeasonId: string=new Date().getFullYear().toString();

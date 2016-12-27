@@ -21,7 +21,7 @@ export interface gameAiArticle {
 
 @Component({
     selector: 'game-article',
-    templateUrl: './app/fe-core/components/game-article/game-article.component.html'
+    templateUrl: './game-article.component.html'
 })
 
 export class GameArticle implements OnInit{
