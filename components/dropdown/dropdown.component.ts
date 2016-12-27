@@ -50,7 +50,7 @@ class Dropdown {
 
 @Component({
   selector: 'dropdown',
-  templateUrl: './app/fe-core/components/dropdown/dropdown.component.html'
+  templateUrl: './dropdown.component.html'
 })
 
 export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {

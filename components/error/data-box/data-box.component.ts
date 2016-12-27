@@ -2,7 +2,7 @@ import {Component,Input} from '@angular/core';
 
 @Component({
     selector: 'no-data-box',
-    templateUrl: './app/fe-core/components/error/data-box/data-box.component.html'
+    templateUrl: './data-box.component.html'
 })
 
 export class NoDataBox{

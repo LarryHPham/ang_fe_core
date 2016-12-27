@@ -32,7 +32,7 @@ export interface TransactionsListInput {
 
 @Component({
     selector: 'transactions-list-item',
-    templateUrl: './app/fe-core/components/transactions-list-item/transactions-list-item.component.html'
+    templateUrl: './transactions-list-item.component.html'
 })
 
 export class TransactionsListItem {

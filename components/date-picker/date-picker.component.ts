@@ -7,7 +7,7 @@ declare var moment;
 
 @Component({
   selector: 'datepicker[ngModel]',
-  templateUrl: './app/fe-core/components/date-picker/date-picker.component.html'
+  templateUrl: './date-picker.component.html'
 })
 
 /**

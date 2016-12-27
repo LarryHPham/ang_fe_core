@@ -25,7 +25,7 @@ export interface SchedulesCarouselInput{
 
 @Component({
     selector: 'schedules-carousel',
-    templateUrl: './app/fe-core/components/carousels/schedules-carousel/schedules-carousel.component.html',
+    templateUrl: './schedules-carousel.component.html',
     outputs:['indexNum'],
 })
 

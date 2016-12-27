@@ -18,7 +18,7 @@ export interface TableComponentData<T> {
 }
 @Component({
     selector: 'schedules-component',
-    templateUrl: './app/fe-core/components/schedules/schedules.component.html'
+    templateUrl: './schedules.component.html'
 })
 
 export class SchedulesComponent implements OnInit{
