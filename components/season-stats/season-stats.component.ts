@@ -23,7 +23,7 @@ export interface TableComponentData<T> {
 
 @Component({
   selector: "season-stats-component",
-  templateUrl: "./app/fe-core/components/season-stats/season-stats.component.html"
+  templateUrl: "./season-stats.component.html"
 })
 
 export class SeasonStatsComponent implements DoCheck {

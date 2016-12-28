@@ -14,7 +14,6 @@ import { SliderCarousel, SliderCarouselInput } from '../../components/carousels/
 import { SportPageParameters } from '../../../global/global-interface';
 
 
-
 export interface SeasonStatsModuleData {
   tabs: Array<SeasonStatsTabData>;
   profileName: string;
@@ -33,7 +32,7 @@ export interface SeasonStatsTabData {
 
 @Component({
     selector: 'season-stats-module',
-    templateUrl: './app/fe-core/modules/season-stats/season-stats.module.html'
+    templateUrl: './season-stats.module.html'
 })
 
 export class SeasonStatsModule implements OnChanges {
