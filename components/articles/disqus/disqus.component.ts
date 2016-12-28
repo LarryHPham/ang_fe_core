@@ -5,7 +5,7 @@ declare var DISQUS: any;
 
 @Component({
     selector: 'disqus-component',
-    templateUrl: './app/fe-core/components/articles/disqus/disqus.component.html'
+    templateUrl: './disqus.component.html'
 })
 
 export class DisqusComponent implements OnInit{

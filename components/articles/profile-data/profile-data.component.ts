@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'profile-data-component',
-    templateUrl: './app/fe-core/components/articles/profile-data/profile-data.component.html'
+    templateUrl: './profile-data.component.html'
 })
 
 export class ProfileDataComponent {
