@@ -20,7 +20,7 @@ export interface scheduleBoxInput{
 
 @Component({
     selector: 'schedule-box',
-    templateUrl: './app/fe-core/components/schedule-box/schedule-box.component.html'
+    templateUrl: './schedule-box.component.html'
 })
 
 export class ScheduleBox{

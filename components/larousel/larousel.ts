@@ -51,7 +51,6 @@ export class Larousel implements OnChanges{
 
   private clones:number = 1;
   constructor(private _renderer:Renderer){
-    console.log(this._elRef)
   }
   ngOnChanges(event){
     this.originalData = null;
