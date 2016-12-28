@@ -5,7 +5,7 @@ declare var stButtons: any;
 
 @Component({
     selector: 'news-module',
-    templateUrl: './app/fe-core/modules/news/news.module.html'
+    templateUrl: './news.module.html'
 })
 
 export class NewsModule implements OnInit, OnChanges {
