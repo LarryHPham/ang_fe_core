@@ -3,7 +3,7 @@ import { ArticleStackData } from "../../interfaces/deep-dive.data";
 
 @Component({
   selector: 'article-block-component',
-  templateUrl: './app/fe-core/components/article-block/article-block.component.html',
+  templateUrl: './article-block.component.html',
 })
 
 export class ArticleBlockComponent{
