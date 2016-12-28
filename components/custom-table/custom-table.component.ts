@@ -4,7 +4,7 @@ import {TableModel, TableColumn, CellData} from '../../components/custom-table/t
 
 @Component({
   selector: 'custom-table',
-  templateUrl: './app/fe-core/components/custom-table/custom-table.component.html',
+  templateUrl: './custom-table.component.html',
   changeDetection:ChangeDetectionStrategy.OnPush//Need to look more into CheckOnce and OnPush
 })
 

@@ -27,7 +27,7 @@ export interface ComparisonBarInput {
 
 @Component({
     selector: 'comparison-bar',
-    templateUrl: './app/fe-core/components/comparison-bar/comparison-bar.component.html'
+    templateUrl: './comparison-bar.component.html'
 })
 
 export class ComparisonBar {

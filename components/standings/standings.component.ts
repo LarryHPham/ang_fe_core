@@ -31,7 +31,7 @@ export interface TableComponentData<T> {
 
 @Component({
   selector: "standings-component",
-  templateUrl: "./app/fe-core/components/standings/standings.component.html"
+  templateUrl: "./standings.component.html"
 })
 export class StandingsComponent {
   public selectedIndex;

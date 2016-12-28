@@ -9,7 +9,7 @@ import { MVPTabData } from '../../components/mvp-list/mvp-list.component';
 
 @Component({
   selector: 'mvp-module',
-  templateUrl: './app/fe-core/modules/mvp/mvp.module.html'
+  templateUrl: './mvp.module.html'
 })
 
 export class MVPModule implements OnChanges {

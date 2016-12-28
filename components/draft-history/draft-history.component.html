@@ -1,4 +1,4 @@
-<!-- <slider-carousel
+<slider-carousel
   *ngIf="carouselDataArray && carouselDataArray[currentIndex]"
   [carouselData]="carouselDataArray[currentIndex]"></slider-carousel>
 <tabs
@@ -8,11 +8,11 @@
     *ngFor="let data of dataArray; let i = index"
     [active]="i == 0"
     [tabTitle]="data.tabTitle">
-    <div class="draft-list-title"> -->
+    <div class="draft-list-title">
 
-      <!-- <h4><b>{{data.tabTitle}}:</b> Draft History</h4> -->
+       <h4><b>{{data.tabTitle}}:</b> Draft History</h4>
 
-      <!-- <span class="list-filter-heading">
+      <span class="list-filter-heading">
         <i class="fa fa-cog"></i> List Filters
       </span>
       <div class="sort-title">
@@ -37,4 +37,4 @@
       [paginationParameters]="data.paginationDetails"
       (newIndex)="newIndex($event)"></pagination-footer>
   </tab>
-</tabs> -->
+</tabs>

@@ -12,7 +12,7 @@ export interface ListOfListsData {
 
 @Component({
     selector: 'list-of-lists',
-    templateUrl: './app/fe-core/modules/list-of-lists/list-of-lists.module.html'
+    templateUrl: './list-of-lists.module.html'
 })
 
 export class ListOfListsModule {

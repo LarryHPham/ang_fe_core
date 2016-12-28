@@ -5,8 +5,8 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'circle-button',
-    templateUrl: './app/fe-core/components/buttons/circle/circle.button.html',
-    
+    templateUrl: './circle.button.html',
+
     outputs: ['scrollRight', 'scrollLeft']
 })
 export class CircleButton{

@@ -49,7 +49,7 @@ export interface PaginationParameters {
 
 @Component({
     selector: 'pagination-footer',
-    templateUrl: './app/fe-core/components/pagination-footer/pagination-footer.component.html'
+    templateUrl: './pagination-footer.component.html'
 })
 
 /*

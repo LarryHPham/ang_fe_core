@@ -6,7 +6,7 @@ export interface ScoreBoardInput{
 
 @Component({
     selector: 'score-board',
-    templateUrl: './app/fe-core/components/score-board/score-board.component.html'
+    templateUrl: './score-board.component.html'
 })
 
 export class ScoreBoard implements OnInit{

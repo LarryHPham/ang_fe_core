@@ -15,7 +15,7 @@ export interface RosterTabData<T> {
 
 @Component({
   selector: "roster-component",
-  templateUrl: "./app/fe-core/components/roster/roster.component.html",
+  templateUrl: "./roster.component.html",
 })
 export class RosterComponent implements DoCheck {
   private tabsLoaded: {[index:number]:string};

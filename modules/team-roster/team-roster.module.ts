@@ -19,7 +19,7 @@ export interface RosterModuleData<T> {
 
 @Component({
     selector: 'team-roster-module',
-    templateUrl: './app/fe-core/modules/team-roster/team-roster.module.html',
+    templateUrl: './team-roster.module.html',
 })
 
 export class TeamRosterModule implements OnChanges {

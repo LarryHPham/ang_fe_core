@@ -20,7 +20,7 @@ export interface weekDate {
 
 @Component({
     selector: 'calendar-carousel',
-    templateUrl: './app/fe-core/components/carousels/calendar/calendar-carousel.component.html'
+    templateUrl: './calendar-carousel.component.html'
 })
 
 export class CalendarCarousel implements OnInit {
@@ -38,7 +38,8 @@ export class CalendarCarousel implements OnInit {
   constructor(private _boxScores:BoxScoresService){}
 
   ngOnInit() {
-    this.windowWidth = window.innerWidth;
+    // TODO this.windowWidth = window.innerWidth;
+    this.windowWidth = 960;
     //on load grab the input chosenParam and set new variable for currently viewing dates that is used for any changes without changing initial input while it goes through validation
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};

@@ -3,7 +3,7 @@ import {TableColumn} from '../../components/custom-table/table-data.component';
 
 @Component({
   selector: 'custom-table-header',
-  templateUrl: './app/fe-core/components/custom-table/table-header.component.html'
+  templateUrl: './table-header.component.html'
 })
 
 export class TableHeader implements OnInit {
@@ -25,7 +25,7 @@ export class TableHeader implements OnInit {
     this.isSortable = !this.headerData.ignoreSort;
     this.iconSortType = this.headerData.isNumericType ? "numeric" : "alpha";
     this.setSortIcon();
-    
+
   }
 
   setSortIcon() {

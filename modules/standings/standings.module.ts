@@ -21,7 +21,7 @@ export interface StandingsModuleData {
 
 @Component({
   selector: "standings-module",
-  templateUrl: "./app/fe-core/modules/standings/standings.module.html",
+  templateUrl: "./standings.module.html",
 })
 
 export class StandingsModule implements OnChanges {

@@ -35,7 +35,7 @@ export interface DetailListInput {
 
 @Component({
     selector: 'detailed-list-item',
-    templateUrl: './app/fe-core/components/detailed-list-item/detailed-list-item.component.html'
+    templateUrl: './detailed-list-item.component.html'
 })
 
 export class DetailedListItem {
