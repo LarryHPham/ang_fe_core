@@ -3,7 +3,7 @@ import {SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import {GlobalSettings} from '../../../../global/global-settings';
 @Component({
     selector: 'billboard-component',
-    templateUrl: './app/fe-core/components/articles/billboard/billboard.component.html'
+    templateUrl: './billboard.component.html'
 })
 
 export class BillboardComponent implements OnInit{
