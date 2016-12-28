@@ -24,7 +24,7 @@ export interface ComparisonTileInput {
 
 @Component({
     selector: 'comparison-tile',
-    templateUrl: './app/fe-core/components/comparison-tile/comparison-tile.component.html'
+    templateUrl: './comparison-tile.component.html'
 })
 
 export class ComparisonTile {

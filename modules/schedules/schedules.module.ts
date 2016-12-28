@@ -6,7 +6,7 @@ import { ModuleHeader, ModuleHeaderData } from '../../components/module-header/m
 
 @Component({
     selector: 'schedules',
-    templateUrl: './app/fe-core/modules/schedules/schedules.module.html'
+    templateUrl: './schedules.module.html'
 })
 
 export class SchedulesModule{

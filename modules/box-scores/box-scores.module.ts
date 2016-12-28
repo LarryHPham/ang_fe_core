@@ -3,7 +3,7 @@ import { ScrollerFunctions } from '../../../global/scroller-functions';
 
 @Component({
   selector: 'box-scores',
-  templateUrl: './app/fe-core/modules/box-scores/box-scores.module.html',
+  templateUrl: './box-scores.module.html',
   outputs: ['dateEmit']
 })
 
@@ -36,7 +36,8 @@ export class BoxScoresModule implements OnInit {
   ){}
 
   ngOnInit(){
-    this.windowWidth = window.innerWidth;
+    //TODO// this.windowWidth = window.innerWidth;
+    this.windowWidth = 960;
     if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {

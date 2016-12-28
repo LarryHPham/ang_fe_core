@@ -5,7 +5,7 @@ import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angula
 
 @Component({
     selector: 'carousel',
-    templateUrl: './app/fe-core/components/carousels/carousel.component.html',
+    templateUrl: './carousel.component.html',
     outputs: ['scrollRight', 'scrollLeft','carouselDataPoint']
 })
 

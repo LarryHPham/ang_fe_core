@@ -26,7 +26,7 @@ export interface IListOfListsItem {
 
 @Component({
     selector: 'list-of-lists-item',
-    templateUrl: './app/fe-core/components/list-of-lists-item/list-of-lists-item.component.html'
+    templateUrl: './list-of-lists-item.component.html'
 })
 
 export class ListOfListsItem{

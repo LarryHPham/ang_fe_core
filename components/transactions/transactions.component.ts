@@ -26,7 +26,7 @@ export interface TransactionTabData {
 
 @Component({
   selector: 'transactions',
-  templateUrl: './app/fe-core/components/transactions/transactions.component.html'
+  templateUrl: './transactions.component.html'
 })
 
 export class TransactionsComponent implements OnInit {

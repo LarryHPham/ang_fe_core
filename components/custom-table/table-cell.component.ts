@@ -3,7 +3,7 @@ import {TableColumn, CellData} from '../../components/custom-table/table-data.co
 
 @Component({
   selector: 'table-cell',
-  templateUrl: './app/fe-core/components/custom-table/table-cell.component.html'
+  templateUrl: './table-cell.component.html'
 })
 
 export class TableCell {

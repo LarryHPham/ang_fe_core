@@ -14,7 +14,7 @@ import { SanitizeHtml } from "../../pipes/safe.pipe";
            z-index: 1;
        }
     `],
-    templateUrl: './app/fe-core/components/complex-inner-html/complex-inner-html.component.html'
+    templateUrl: './complex-inner-html.component.html'
 })
 
 export class ComplexInnerHtml {
