@@ -140,7 +140,8 @@ export class SchedulesComponent implements OnInit{
     if(this.filter1 != null){
       this.dropdownKey1 = this.filter1['data'][0].key;
     }
-    this.windowWidth = window.innerWidth;
+    //TODO // this.windowWidth = window.innerWidth;
+    this.windowWidth = 960;
     var selectedTab = this.tabs.filter(value => value.tabData.isActive == true)[0];
     this.tabTitle = selectedTab.display;
   }//ngOnInit ENDS
