@@ -1,7 +1,8 @@
-import {Component, ViewContainerRef, Input, Output, EventEmitter, AfterViewInit, forwardRef} from '@angular/core';
+import { Component, ViewContainerRef, Input, Output, EventEmitter, AfterViewInit, forwardRef} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
-import {BoxScoresService} from '../../../services/box-scores.service';
-import {GlobalFunctions} from '../../../global/global-functions';
+import { BoxScoresService } from '../../../services/box-scores.service';
+import { GlobalFunctions } from '../../../global/global-functions';
+import { isBrowser } from 'angular2-universal';
 
 declare var moment;
 
@@ -74,14 +75,16 @@ export class DatePicker implements AfterViewInit {
   } // private init
 
   private initMouseEvents(): void {
-    let body = document.getElementsByTagName('body')[0];
+    if(isBrowser){
+      let body = document.getElementsByTagName('body')[0];
 
-    body.addEventListener('click', (e) => {
-      if (!this.isOpened || !e.target) return;
-      if (this.el !== e.target && !this.el.contains(e.target)) {
-        this.closeDatepicker();
-      }
-    }, false);
+      body.addEventListener('click', (e) => {
+        if (!this.isOpened || !e.target) return;
+        if (this.el !== e.target && !this.el.contains(e.target)) {
+          this.closeDatepicker();
+        }
+      }, false);
+    }
   } // initMouseEvents
 
   //makes mothly api call and sets reactive variables

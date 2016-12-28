@@ -7,7 +7,7 @@ import {ModuleHeaderData} from '../../components/module-header/module-header.com
 
 @Component({
     selector: 'video-module',
-    templateUrl: './app/fe-core/modules/video/video.module.html'
+    templateUrl: './video.module.html'
 })
 
 export class VideoModule implements OnInit,OnChanges {

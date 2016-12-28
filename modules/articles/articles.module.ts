@@ -246,7 +246,7 @@ export class ArticlesModule implements OnInit {
     }
 
     ngOnInit() {
-        this.isSmall = window.innerWidth <= 639;
+        // this.isSmall = window.innerWidth <= 639;
     }
 
     ngOnChanges() {

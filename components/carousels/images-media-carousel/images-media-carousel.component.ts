@@ -2,9 +2,6 @@ import {Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer} fr
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {ModuleHeaderData} from "../../module-header/module-header.component";
 
-
-declare var jQuery:any;
-
 export interface MediaImageItem {
     id: number;
     image: string;
@@ -14,7 +11,7 @@ export interface MediaImageItem {
 
 @Component({
     selector: 'images-media-carousel',
-    templateUrl: './app/fe-core/components/carousels/images-media-carousel/images-media-carousel.component.html'
+    templateUrl: './images-media-carousel.component.html'
 })
 
 export class ImagesMedia implements OnInit {
@@ -162,7 +159,8 @@ export class ImagesMedia implements OnInit {
     }
 
     ngOnInit() {
-        this.isSmall = window.innerWidth <= 639;
+      // this.isSmall = window.innerWidth <= 639;
+      this.isSmall = false;
     }
 
     onResize(event) {

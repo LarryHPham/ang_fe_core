@@ -15,7 +15,7 @@ export interface twitterModuleData {
 
 @Component({
     selector: 'twitter-module',
-    templateUrl: './app/fe-core/modules/twitter/twitter.module.html'
+    templateUrl: './twitter.module.html'
 })
 
 export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {

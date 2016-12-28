@@ -8,7 +8,7 @@ export interface dykModuleData{
 }
 @Component({
     selector: 'dyk-module',
-    templateUrl: './app/fe-core/modules/dyk/dyk.module.html'
+    templateUrl: './dyk.module.html'
 })
 
 export class DYKModule implements OnChanges {

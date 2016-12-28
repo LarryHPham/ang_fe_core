@@ -20,7 +20,7 @@ export interface MVPTabData {
 
 @Component({
     selector: 'mvp-list',
-    templateUrl: './app/fe-core/components/mvp-list/mvp-list.component.html'
+    templateUrl: './mvp-list.component.html'
 })
 
 export class MVPListComponent implements DoCheck, OnInit  {
