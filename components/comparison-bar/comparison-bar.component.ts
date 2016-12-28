@@ -3,6 +3,7 @@ import { Component, Input, OnInit, OnChanges, ViewChild, AfterViewChecked } from
 //interfaces
 import { ImageData, CircleImageData } from '../images/image-data';
 import { CircleImage} from '../images/circle-image/circle-image';
+import {isBrowser} from "angular2-universal";
 
 export interface ComparisonBarInput {
     title: string;
@@ -58,7 +59,8 @@ export class ComparisonBar {
 
     //Function to reposition labels if needed
     calculateLabelPositions(){
-        if ( this.displayData.data.length < 1 ) {
+
+        if ( this.displayData.data.length < 1 || !isBrowser ) {
             return;
         }
 

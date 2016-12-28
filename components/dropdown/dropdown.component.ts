@@ -1,4 +1,5 @@
 import {Component, OnInit, Inject, OnDestroy, Input, Output, EventEmitter, Renderer, OnChanges, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import {isBrowser} from 'angular2-universal';
 
 import {Scroller, ScrollerFunctions} from '../../../global/scroller-functions';
 
@@ -20,12 +21,14 @@ class Dropdown {
   dropdownIcon: any;
 
   constructor(elementRef: ElementRef) {
-    this.nativeElement = elementRef.nativeElement;
-    this.dropdownHeader = this.nativeElement.getElementsByClassName('dropdown')[0];
-    this.dropdownContainer = this.nativeElement.getElementsByClassName('dropdown-wrapper')[0];
-    this.dropdownIcon = this.nativeElement.getElementsByClassName('dropdown-hdr-button')[0];
-    if ( this.dropdownIcon ) {
-      this.dropdownIcon = this.dropdownIcon.getElementsByTagName("i")[0];
+    if(isBrowser) {
+      this.nativeElement = elementRef.nativeElement;
+      this.dropdownHeader = this.nativeElement.getElementsByClassName('dropdown')[0];
+      this.dropdownContainer = this.nativeElement.getElementsByClassName('dropdown-wrapper')[0];
+      this.dropdownIcon = this.nativeElement.getElementsByClassName('dropdown-hdr-button')[0];
+      if (this.dropdownIcon) {
+        this.dropdownIcon = this.dropdownIcon.getElementsByTagName("i")[0];
+      }
     }
   }
 
@@ -89,9 +92,11 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dropdown = new Dropdown(this._elementRef);
-    this.dropdownSetup();
-    this.hoverSetup();
+    if(isBrowser) {
+      this.dropdown = new Dropdown(this._elementRef);
+      this.dropdownSetup();
+      this.hoverSetup();
+    }
   }
 
   ngOnChanges() {

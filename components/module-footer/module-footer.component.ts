@@ -41,8 +41,9 @@ export class ModuleFooter implements OnInit{
         }
       }
 
-      var windowWidth = window.innerWidth;
-      this.windowWidth = windowWidth;
+      // TODO var windowWidth = window.innerWidth;
+      // TODO this.windowWidth = windowWidth;
+      this.windowWidth = 960;
     }
 
     private onWindowLoadOrResize(event) {

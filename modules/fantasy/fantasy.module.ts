@@ -7,7 +7,7 @@ import {VerticalGlobalFunctions} from "../../../global/vertical-global-functions
 
 @Component({
     selector: 'fantasy-module',
-    templateUrl: './app/fe-core/modules/fantasy/fantasy.module.html'
+    templateUrl: './fantasy.module.html'
 })
 
 export class FantasyModule implements OnChanges {

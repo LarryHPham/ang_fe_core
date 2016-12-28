@@ -40,7 +40,6 @@ export class ListOfListsModule {
   }
 
   ngOnChanges(event) {
-    var origin = window.location.origin;
     if(typeof event.listOfListsData != 'undefined'){
       this.displayData = this.listOfListsData.listData;
     }
