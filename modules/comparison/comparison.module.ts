@@ -38,7 +38,7 @@ export interface ComparisonModuleData {
 
 @Component({
     selector: 'comparison-module',
-    templateUrl: './app/fe-core/modules/comparison/comparison.module.html'
+    templateUrl: './comparison.module.html'
 })
 
 export class ComparisonModule implements OnInit, OnChanges {

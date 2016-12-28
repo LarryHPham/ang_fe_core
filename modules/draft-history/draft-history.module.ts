@@ -8,7 +8,7 @@ import { DetailListInput } from '../../components/detailed-list-item/detailed-li
 
 @Component({
     selector: 'draft-history-module',
-    templateUrl: './app/fe-core/modules/draft-history/draft-history.module.html'
+    templateUrl: './draft-history.module.html'
 })
 
 export class DraftHistoryModule implements OnInit {

@@ -128,6 +128,5 @@ export class RosterComponent implements DoCheck {
     }
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
     this.carDataArray = carouselData;
-    console.log("carDataArray",this.carDataArray);
   }
 }

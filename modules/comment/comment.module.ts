@@ -12,7 +12,7 @@ declare var DISQUS: any;
 
 @Component({
     selector: 'comment-module',
-    templateUrl: './app/fe-core/modules/comment/comment.module.html'
+    templateUrl: './comment.module.html'
 })
 export class CommentModule implements OnInit, OnChanges {
     @Input() profileName: string;
