@@ -3,7 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'trending-component',
-    templateUrl: './app/fe-core/components/articles/trending/trending.component.html'
+    templateUrl: './trending.component.html'
 })
 
 export class TrendingComponent {

@@ -1,5 +1,6 @@
 import { Component, OnChanges, Output, Input, EventEmitter, ElementRef, OnInit } from '@angular/core';
 import { ScrollerFunctions } from '../../../global/scroller-functions';
+import { isBrowser } from 'angular2-universal';
 
 @Component({
   selector: 'box-scores',
@@ -114,16 +115,18 @@ export class BoxScoresModule implements OnInit {
 
 
   checkHeight(){
-    if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
-      var boxHeader = document.getElementById('box-header').offsetHeight;
-      //only for mlb page but subtract the mod title and calendar height from what was sent in
-      if(this.maxHeight != 'auto'){
-        this.maxHeight -= boxHeader;
-        this.heightStyle = this.maxHeight + "px";
-      }else{
-        this.scroll = false;
-        this.heightStyle = 'auto';
-      }
+    if(isBrowser){
+      if(document.getElementById('box-header') != null && this.scroll && this.maxHeight != null && this.boxScores != null){
+        var boxHeader = document.getElementById('box-header').offsetHeight;
+        //only for mlb page but subtract the mod title and calendar height from what was sent in
+        if(this.maxHeight != 'auto'){
+          this.maxHeight -= boxHeader;
+          this.heightStyle = this.maxHeight + "px";
+        }else{
+          this.scroll = false;
+          this.heightStyle = 'auto';
+        }
+    }
     }
 
     //wait a brief period for the page to redraw after the new data has come in before checking size of page objects

@@ -13,7 +13,7 @@ export interface BoxArticleData {
 
 @Component({
   selector: 'box-article-component',
-  templateUrl: './app/fe-core/components/box-article/box-article.component.html',
+  templateUrl: './box-article.component.html',
 })
 
 export class BoxArticleComponent implements OnInit {

@@ -1,9 +1,11 @@
 import {Component, OnInit, Input} from '@angular/core';
+import { isBrowser } from 'angular2-universal';
+
 declare var stButtons:any;
 
 @Component({
     selector: 'share-links-component',
-    templateUrl: './app/fe-core/components/articles/share-links/share-links.component.html'
+    templateUrl: './share-links.component.html'
 })
 
 export class ShareLinksComponent implements OnInit {
@@ -37,7 +39,9 @@ export class ShareLinksComponent implements OnInit {
     }
 
     ngOnInit() {
+      if(isBrowser){
         stButtons.locateElements();
+      }
     }
 
     ngOnChanges() {

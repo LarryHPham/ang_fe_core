@@ -3,7 +3,7 @@ import { ArticleStackData } from "../../interfaces/deep-dive.data";
 
 @Component({
   selector: 'article-stacktop-component',
-  templateUrl: './app/fe-core/components/article-stacktop/article-stacktop.component.html',
+  templateUrl: './article-stacktop.component.html',
 })
 
 export class ArticleStacktopComponent{

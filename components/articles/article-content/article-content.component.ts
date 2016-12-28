@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
     selector: 'article-content-component',
-    templateUrl: './app/fe-core/components/articles/article-content/article-content.component.html'
+    templateUrl: './article-content.component.html'
 })
 
 export class ArticleContentComponent implements OnInit {
