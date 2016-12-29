@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { isBrowser } from 'angular2-universal';
 @Component({
     selector: 'article-content-component',
     templateUrl: './article-content.component.html'
@@ -20,6 +20,8 @@ export class ArticleContentComponent implements OnInit {
     }
 
     ngOnInit() {
+      if(isBrowser){
         this.isSmall = window.innerWidth < 640;
+      }
     }
 }
