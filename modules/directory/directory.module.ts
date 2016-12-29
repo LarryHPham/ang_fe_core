@@ -7,7 +7,7 @@ import { PagingData, DirectoryModuleData } from './directory.data';
 
 @Component({
     selector: 'directory-module',
-    templateUrl: './app/fe-core/modules/directory/directory.module.html'
+    templateUrl: './directory.module.html'
 })
 
 export class DirectoryModule implements OnChanges {
