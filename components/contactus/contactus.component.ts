@@ -6,7 +6,7 @@ import {TitleComponent} from '../../components/title/title.component';
 
 @Component({
     selector: 'contactus-module',
-    templateUrl: './app/fe-core/components/contactus/contactus.component.html'
+    templateUrl: './contactus.component.html'
 })
 
 export class ContactUsComponent{
