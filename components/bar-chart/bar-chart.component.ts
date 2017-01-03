@@ -22,10 +22,12 @@ export class BarChartComponent implements AfterViewInit {
   }
 
   drawChart() {
-    if ( this.options && isBrowser) {
-      jQuery(this._elementRef.nativeElement)
+    if(isBrowser){
+      if ( this.options) {
+        jQuery(this._elementRef.nativeElement)
         .find('.daily-update-chart-wrapper')
         .highcharts(this.options);
+      }
     }
   }
 }

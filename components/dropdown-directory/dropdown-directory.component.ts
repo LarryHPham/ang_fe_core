@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'dropdown-directory',
-  templateUrl: './app/fe-core/components/dropdown-directory/dropdown-directory.component.html'
+  templateUrl: './dropdown-directory.component.html'
 })
 
 export class DropdownDirectoryComponent {

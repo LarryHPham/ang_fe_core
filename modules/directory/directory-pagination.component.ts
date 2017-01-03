@@ -6,7 +6,7 @@ import { PagingData } from './directory.data';
 
 @Component({
     selector: 'directory-pagination',
-    templateUrl: './app/fe-core/modules/directory/directory-pagination.component.html'
+    templateUrl: './directory-pagination.component.html'
 })
 
 export class DirectoryPagination {

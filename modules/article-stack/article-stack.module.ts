@@ -6,7 +6,7 @@ import { StackRowsComponent } from '../../components/stack-rows/stack-rows.compo
 
 @Component({
   selector: 'article-stack-module',
-  templateUrl: './app/fe-core/modules/article-stack/article-stack.module.html'
+  templateUrl: './article-stack.module.html'
 })
 
 export class ArticleStackModule implements OnInit {

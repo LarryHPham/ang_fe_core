@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isBrowser } from 'angular2-universal';
 
 export interface ModuleFooterData {
   infoDesc: string, // text description that describes what is the footer going to display
@@ -40,13 +41,18 @@ export class ModuleFooter implements OnInit{
           url:['Disclaimer-page'],
         }
       }
-
-      var windowWidth = window.innerWidth;
-      this.windowWidth = windowWidth;
+      if( isBrowser ){
+        var windowWidth = window.innerWidth;
+        this.windowWidth = windowWidth;
+      }else{
+        this.windowWidth = 960;
+      }
     }
 
     private onWindowLoadOrResize(event) {
-      var windowWidth = event.target.innerWidth;
-      this.windowWidth = windowWidth;
+      if( isBrowser ){
+        var windowWidth = event.target.innerWidth;
+        this.windowWidth = windowWidth;
+      }
     }
 }

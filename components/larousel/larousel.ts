@@ -1,4 +1,5 @@
-import {Component, OnChanges, Input, Output, EventEmitter, ElementRef, HostListener, Renderer, ViewChildren} from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, ElementRef, HostListener, Renderer, ViewChildren } from '@angular/core';
+import { isBrowser } from 'angular2-universal';
 
 @Component({
     selector: 'larousel',
@@ -36,7 +37,7 @@ export class Larousel implements OnChanges{
   @Output() displayedData = new EventEmitter();//outputs and array of objects for other components to use
   @Output() displayedItem = new EventEmitter();//outputs and array of objects for other components to use
   @Output() carouselCount = new EventEmitter();
-  @ViewChildren('larousel') _elRef: ElementRef;
+  private _elRef: ElementRef;
   private startIndex:number = 0;
   private endIndex:number = 1;
   private originalData: any;
@@ -50,8 +51,8 @@ export class Larousel implements OnChanges{
   private transitionDirection:any;
 
   private clones:number = 1;
-  constructor(private _renderer:Renderer){
-    console.log(this._elRef)
+  constructor(private _renderer:Renderer, private elementRef: ElementRef){
+    this._elRef = elementRef;
   }
   ngOnChanges(event){
     this.originalData = null;
@@ -170,17 +171,21 @@ export class Larousel implements OnChanges{
   }
 
   ngDoCheck(){
-    // if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
-    //   let larouselContainer = this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-    //   if(larouselContainer != this.itemSize){
-    //     this.itemSize = larouselContainer;
-    //   }
-    // }
+    if( isBrowser ){
+      if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0){
+        let larouselContainer = this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+        if(larouselContainer != this.itemSize){
+          this.itemSize = larouselContainer;
+        }
+      }
+    }
   }
 
   ngAfterViewInit(){
+    if( isBrowser ){
+      this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+    }
     //make sure to run the element ref after the content has loaded to get the full size;
-    // this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
     this.currentItem = this.originalData[this.clones];
@@ -196,21 +201,23 @@ export class Larousel implements OnChanges{
   @HostListener('window:resize', ['$event'])
 
   onResize(event?){
-    // if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
-    //   this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
-    //   if (this.currentItem.id == 0){
-    //     this.currentScroll = this.itemSize;
-    //   } else {
-    //     this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
-    //   }
-    //   this.transition = "";
-    //   this.imageTransition = this.itemSize+'px';
-    //   this.rightText = this.currentScroll+'px';
-    //   //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
-    //   setTimeout(function(){
-    //     this.transition = "score-transition2";
-    //   },200);
-    // }
+    if( isBrowser ){
+      if(this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container').length > 0 && this.numResizes > 0){
+        this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+        if (this.currentItem.id == 0){
+          this.currentScroll = this.itemSize;
+        } else {
+          this.currentScroll = this.itemSize * (Number(this.currentItem.id) + 1);
+        }
+        this.transition = "";
+        this.imageTransition = this.itemSize+'px';
+        this.rightText = this.currentScroll+'px';
+        //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
+        setTimeout(function(){
+          this.transition = "score-transition2";
+        },200);
+      }
+    }
     this.numResizes = this.numResizes + 1;
   }
 
