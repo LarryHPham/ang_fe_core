@@ -37,8 +37,11 @@ export class BoxScoresModule implements OnInit {
   ){}
 
   ngOnInit(){
-    //TODO// this.windowWidth = window.innerWidth;
-    this.windowWidth = 960;
+    if( isBrowser ){
+      this.windowWidth = window.innerWidth;
+    }else{
+      this.windowWidth = 960;
+    }
     if (this.scroll) {
       if(this.boxScores != null){
         if (this.currentPage == this.boxScores.gameInfo.length) {

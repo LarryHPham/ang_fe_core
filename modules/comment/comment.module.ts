@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ModuleHeaderData } from '../../components/module-header/module-header.component';
+import { isBrowser } from 'angular2-universal';
 
 //globals
 import { GlobalSettings } from "../../../global/global-settings";
@@ -30,7 +31,6 @@ export class CommentModule implements OnInit, OnChanges {
 
     ngOnInit(){
         var script:any = document.createElement("script");
-
         // DisQus Plugin
         script.innerHTML = (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
