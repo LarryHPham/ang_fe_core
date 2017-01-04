@@ -8,15 +8,5 @@ import {RectangleImageData} from '../image-data';
 export class RectangleImage implements OnInit{
     @Input() data: RectangleImageData;
 
-    ngOnInit() {
-      var testImage = "/app/public/Tile_Overlay.png";
-      if(typeof this.data === undefined || this.data == null){
-        this.data = {
-          imageUrl: testImage,
-          imageClass: "embed-responsive-16by9",
-          urlRouteArray: ["/syndicated-article"],
-          imageDesc: "Something about this image"
-        }
-      }
-    }
+    ngOnInit() {}
 }
