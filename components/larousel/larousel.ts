@@ -15,7 +15,7 @@ export class Larousel implements OnChanges{
   @Input() carData: any;
   public currentScroll = 0;
   public rightText:string;
-  private itemSize:number = 205;
+  private itemSize:number = 0;
   private minScroll:boolean = false;
   private maxScroll:boolean = false;
   public numResizes: number = 0;
