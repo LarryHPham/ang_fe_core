@@ -75,6 +75,5 @@ export class TwitterModule implements OnInit, OnChanges, AfterContentChecked {
   ngOnDestroy() {
     document.getElementById("twitter-wjs").remove();
     // delete window['twttr'];
-
   }
 }
