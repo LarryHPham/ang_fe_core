@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, OnChanges, ElementRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {isBrowser} from 'angular2-universal';
 
 //globals
 import {GlobalSettings} from "../../../global/global-settings";
