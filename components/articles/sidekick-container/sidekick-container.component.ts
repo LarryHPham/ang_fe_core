@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { isBrowser } from 'angular2-universal';
 
 @Component({
     selector: 'sidekick-container-component',
-    templateUrl: './app/fe-core/components/articles/sidekick-container/sidekick-container.component.html'
+    templateUrl: './sidekick-container.component.html'
 })
 
 export class SidekickContainerComponent implements OnInit{
@@ -16,6 +17,8 @@ export class SidekickContainerComponent implements OnInit{
     }
     ngOnInit() {
       this.isProSport = this.scope == 'nfl' ? true : false;
-      this.isSmall = window.innerWidth < 640;
+      if (isBrowser) {
+        this.isSmall = window.innerWidth < 640;
+      }
     }
 }

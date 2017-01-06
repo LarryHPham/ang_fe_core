@@ -32,7 +32,7 @@ export class CommentModule implements OnInit, OnChanges {
     ngOnInit(){
         var script:any = document.createElement("script");
         // DisQus Plugin
-        script.innerHTML = (function(d, s, id) {
+        script.innerHTML = !function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)){
                     DISQUS.reset({
@@ -47,8 +47,9 @@ export class CommentModule implements OnInit, OnChanges {
                     js.src = "//"+GlobalSettings.getHomePageLinkName()+".disqus.com/embed.js";
                     fjs.parentNode.insertBefore(js, fjs);
                 }
-              }(document, 'script', 'disqusJS'));
-              if(typeof script.innerHTML != 'undefined'){
+              }(document, 'script', 'disqusJS');
+
+              if(!script.innerHTML){
                 document.body.appendChild(script);
               }
     }

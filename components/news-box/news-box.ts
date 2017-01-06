@@ -1,4 +1,5 @@
 import {Component, Input, ElementRef, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 import { Larousel } from '../larousel/larousel';
 import { LineChartComponent } from '../line-chart/line-chart.component';
 
@@ -17,7 +18,7 @@ export class NewsBox{
   private displayedItems: any;
   private currentDisplayed: any;
 
-  constructor(private _elRef: ElementRef){
+  constructor(private _elRef: ElementRef, private router: Router){
   }
 
   checkCurrent(item){
@@ -34,4 +35,7 @@ export class NewsBox{
       this.changeScope.next($event);
   }
 
+  articleNavigate(event){
+    this.router.navigate(event);
+  }
 }
