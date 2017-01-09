@@ -41,7 +41,7 @@ export interface ComparisonModuleData {
     templateUrl: './comparison.module.html'
 })
 
-export class ComparisonModule implements OnInit, OnChanges {
+export class ComparisonModule implements OnChanges {
     @Input() modelData: ComparisonModuleData;
 
     @Input() profileName: string;
@@ -51,6 +51,9 @@ export class ComparisonModule implements OnInit, OnChanges {
     @Input() profileType: string;
 
     @Input() scope: string;
+
+    @Input() seasonBase: string;
+
     teamOnePlayerList: Array<{key: string, value: string}>;
 
     teamTwoPlayerList: Array<{key: string, value: string}>;
@@ -81,38 +84,39 @@ export class ComparisonModule implements OnInit, OnChanges {
 
     selectedTabTitle: string;
 
-    constructor() {
-        var year = new Date().getFullYear();
-        this.tabs.push({
-            tabTitle: "Current Season",
-            seasonId: year.toString(),
-            barData: []
-        });
-        for ( var i = 0; i < 3; i++ ) {
-            year--;
-            this.tabs.push({
-                tabTitle: year.toString(),
-                seasonId: year.toString(),
-                barData: []
-            });
-        }
-        this.tabs.push({
-            tabTitle: "Career Stats",
-            seasonId: "career",
-            barData: []
-        });
-    }
-
-    ngOnInit(){}
+    constructor() {}
 
     ngOnChanges() {
-        if ( this.modelData ) {
+
+      if(this.tabs.length == 0 ){
+        var year = this.seasonBase != null ? Number(this.seasonBase) : new Date().getFullYear();
+        this.tabs.push({
+          tabTitle: "Current Season",
+          seasonId: year.toString(),
+          barData: []
+        });
+        for ( var i = 0; i < 3; i++ ) {
+          year--;
+          this.tabs.push({
+            tabTitle: year.toString(),
+            seasonId: year.toString(),
+            barData: []
+          });
+        }
+        this.tabs.push({
+          tabTitle: "Career Stats",
+          seasonId: "career",
+          barData: []
+        });
+      }
+
+        if ( this.modelData && this.tabs) {
             this.teamList = this.modelData.teamList;
             if ( this.modelData.playerLists && this.modelData.playerLists.length >= 2 ) {
                 this.teamOnePlayerList = this.modelData.playerLists[0].playerList;
                 this.teamTwoPlayerList = this.modelData.playerLists[1].playerList;
             }
-            if ( this.modelData.data && this.tabs ) {
+            if ( this.modelData.data) {
                 this.formatData(this.modelData.data);
                 this.modelData.loadTeamList(teamList => {
                     this.teamList = teamList;
@@ -136,54 +140,56 @@ export class ComparisonModule implements OnInit, OnChanges {
         this.comparisonTileDataOne = this.setupTile(data.playerOne);
         this.comparisonTileDataTwo = this.setupTile(data.playerTwo);
         this.gradient = Gradient.getGradientStyles([data.playerOne.mainTeamColor, data.playerTwo.mainTeamColor], 1);
-
         var selectedTab;
-        for ( var i = 0; i < this.tabs.length; i++ ) {
+        if(this.tabs.length > 0){
+          this.selectedTabTitle = this.selectedTabTitle == null && this.tabs[0] ? this.tabs[0].tabTitle : this.selectedTabTitle;
+          for ( var i = 0; i < this.tabs.length; i++ ) {
             if ( !this.selectedTabTitle && i == 0 ) {
-                selectedTab = this.tabs[i];
+              selectedTab = this.tabs[i];
             }
             else if ( this.selectedTabTitle && this.tabs[i].tabTitle == this.selectedTabTitle ) {
-                selectedTab = this.tabs[i];
+              selectedTab = this.tabs[i];
             }
             this.tabs[i].barData = data.bars[this.tabs[i].seasonId];
-        }
+          }
 
-        if ( !selectedTab ) {
+          if ( !selectedTab ) {
             return;
-        }
+          }
+          var legendTitle = selectedTab.tabTitle == "Career Stats" ? selectedTab.tabTitle : selectedTab.seasonId + " Season";
 
-        var legendTitle = selectedTab.tabTitle == "Career Stats" ? selectedTab.tabTitle : selectedTab.seasonId + " Season";
-        this.comparisonLegendData = {
+          this.comparisonLegendData = {
             legendTitle: [
-                {
-                    text: legendTitle,
-                    class: 'text-heavy'
-                },
-                {
-                    text: ' Breakdown',
-                },
-                {
-                    text: '*Qualified players only',
-                    class: 'comparison-legend-title-sub'
-                }
+              {
+                text: legendTitle,
+                class: 'text-heavy'
+              },
+              {
+                text: ' Breakdown',
+              },
+              {
+                text: '*Qualified players only',
+                class: 'comparison-legend-title-sub'
+              }
             ],
             legendValues: [
-                {
-                    title: data.playerOne.playerFirstName != null && data.playerOne.playerLastName != null ? data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName : 'N/A',
-                    // color: data.playerOne.mainTeamColor
-                    color: '#2D3E50'
-                },
-                {
-                    title: data.playerTwo.playerFirstName != null && data.playerTwo.playerLastName != null ? data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName : 'N/A',
-                    // color: data.playerTwo.mainTeamColor
-                    color: '#999999'
-                },
-                {
-                    title: "Stat High",
-                    color: "#E1E1E1"
-                },
+              {
+                title: data.playerOne.playerFirstName != null && data.playerOne.playerLastName != null ? data.playerOne.playerFirstName + ' ' + data.playerOne.playerLastName : 'N/A',
+                // color: data.playerOne.mainTeamColor
+                color: '#2D3E50'
+              },
+              {
+                title: data.playerTwo.playerFirstName != null && data.playerTwo.playerLastName != null ? data.playerTwo.playerFirstName + ' ' + data.playerTwo.playerLastName : 'N/A',
+                // color: data.playerTwo.mainTeamColor
+                color: '#999999'
+              },
+              {
+                title: "Stat High",
+                color: "#E1E1E1"
+              },
             ]
-        };
+          };
+        }
     }
 
     setupTile(player: PlayerData): ComparisonTileInput {
@@ -322,7 +328,7 @@ export class ComparisonModule implements OnInit, OnChanges {
         var selectedTabs = this.tabs.filter(tab => {
            return tab.tabTitle == tabTitle;
         });
-        if ( selectedTabs.length > 0 ) {
+        if ( selectedTabs.length > 0 && this.comparisonLegendData != null) {
             var tab = selectedTabs[0];
             if ( tabTitle == "Career Stats" ) {
                 this.comparisonLegendData.legendTitle[0].text = tabTitle;
