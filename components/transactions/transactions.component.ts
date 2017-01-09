@@ -29,7 +29,7 @@ export interface TransactionTabData {
   templateUrl: './transactions.component.html'
 })
 
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent{
   @Output() tabSelectedListener = new EventEmitter();
   @Output() transactionKeyFilter = new EventEmitter();
 
@@ -80,9 +80,9 @@ export class TransactionsComponent implements OnInit {
   } //ngDoCheck()
 
 
-  ngOnInit() {
-    if ( this.selectedFilterSeason == null ) {
-      this.selectedFilterSeason = new Date().getFullYear() + "/" + (new Date().getFullYear()+1);
+  ngOnChanges() {
+    if ( this.selectedFilterSeason == null && this.dropdownKey1 != null) {
+      this.selectedFilterSeason = this.dropdownKey1 + "/" + (Number(this.dropdownKey1)+1);
     }
   }
 
