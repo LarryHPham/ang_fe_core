@@ -6,14 +6,13 @@
         <div class="ph-hdr-datapts">
           <span *ngFor="let data of profileHeaderData.topDataPoints let isLast = last">
             <span *ngIf="!data.value || data.value != 'N/A' || !data.routerLink" class="ph-hdr-datapts-label">{{data.label}}:</span>
-            <span *ngIf="!data.value || !data.routerLink" class="ph-hdr-datapts-value">{{data.value | naValue}}</span> <!--TODO Needs naValue pipe-->
-            <a *ngIf="data.value && data.routerLink" class="ph-hdr-datapts-value" [routerLink]="data.routerLink">{{data.value | naValue}}</a> <!--TODO Needs naValue pipe-->
+            <span *ngIf="!data.value || !data.routerLink" class="ph-hdr-datapts-value">{{data.value | naValue}}</span>
+            <a *ngIf="data.value && data.routerLink" class="ph-hdr-datapts-value" [routerLink]="data.routerLink">{{data.value | naValue}}</a>
             <span *ngIf="!isLast" class="ph-hdr-datapts-sep">|</span>
           </span>
-        </div> <!--ph-hdr-datapts-->
-
+        </div>
         <div class="ph-hdr-ptr"></div>
-    </div> <!--ph-hdr-->
+    </div>
 
     <div class="ph-content">
       <div class="ph-content-image">
@@ -28,16 +27,16 @@
           <scrollable-content>
              <p class="ph-content-desc-text" [innerHtml]="profileHeaderData.description"></p>
           </scrollable-content>
-        </div> <!--pg-content-desc-->
-      </div> <!--ph-content-wrapper-->
-    </div> <!--ph-content-->
-  </div> <!--ph-banner-image-->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="ph-datapts">
-      <div *ngFor="let data of profileHeaderData.bottomDataPoints" class="ph-datapts-pt">
-        <div class="ph-datapts-label">{{data.label}}</div>
-        <div class="ph-datapts-value">{{data.value | naValue}}</div>
-        <div class="ph-datapts-label" *ngIf="data.labelCont">{{data.labelCont}}</div>
-      </div>
-  </div> <!--ph-datapts-->
+    <div *ngFor="let data of profileHeaderData.bottomDataPoints" class="ph-datapts-pt">
+      <div class="ph-datapts-label">{{data.label}}</div>
+      <div class="ph-datapts-value">{{data.value | naValue}}</div>
+      <div class="ph-datapts-label" *ngIf="data.labelCont">{{data.labelCont}}</div>
+    </div>
+  </div>
 </section> <!--module-container-->
