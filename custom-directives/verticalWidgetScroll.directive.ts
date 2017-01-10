@@ -76,23 +76,25 @@ export class verticalWidgetScrollDirective{
         }
 
         //if the scroll amount reaches the sticky header then add padding in place of the missing header since its fixed and determine if a fixedWidget class needs to be added of not
-        if(scrollAmount < headerbottom.offsetHeight){
-          if(header.getBoundingClientRect().top >= 0){
-            this._render.setElementStyle(widget,'top', header.offsetHeight + 10 + 'px');
-          }else{
-            this._render.setElementStyle(widget,'top', headerbottom.offsetHeight + 10 + 'px');
-          }
-          widget.classList.add('fixedWidget');// add fixedWidget to widget so that it stays fixed
-          if(bottomPadding >= 0){ //once the widget is fixed then check to make sure it does not go below footer
-            if(scrollUp){// when scrolling up need to add the extra padding from header
-              this._render.setElementStyle(widget,'top', (header.offsetHeight - bottomPadding) + 'px');
+        if(widget){
+          if(scrollAmount < headerbottom.offsetHeight){
+            if(header.getBoundingClientRect().top >= 0){
+              this._render.setElementStyle(widget,'top', header.offsetHeight + 10 + 'px');
             }else{
-              this._render.setElementStyle(widget,'top', (headerbottom.offsetHeight - bottomPadding) + 'px');
+              this._render.setElementStyle(widget,'top', headerbottom.offsetHeight + 10 + 'px');
             }
+            widget.classList.add('fixedWidget');// add fixedWidget to widget so that it stays fixed
+            if(bottomPadding >= 0){ //once the widget is fixed then check to make sure it does not go below footer
+              if(scrollUp){// when scrolling up need to add the extra padding from header
+                this._render.setElementStyle(widget,'top', (header.offsetHeight - bottomPadding) + 'px');
+              }else{
+                this._render.setElementStyle(widget,'top', (headerbottom.offsetHeight - bottomPadding) + 'px');
+              }
+            }
+          }else{
+            this._render.setElementStyle(widget,'top', '0px');
+            widget.classList.remove('fixedWidget');
           }
-        }else{
-          this._render.setElementStyle(widget,'top', '0px');
-          widget.classList.remove('fixedWidget');
         }
     }
 }
