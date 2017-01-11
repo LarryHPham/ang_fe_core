@@ -1,31 +1,13 @@
-import { Component, Input, OnChanges } from "@angular/core";
-import { Gradient } from '../../../../global/global-gradient';
+import { Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'article-schedule-component',
-    templateUrl: './article-schedule.component.html'
+  selector: 'article-schedule-component',
+  templateUrl: './article-schedule.component.html'
 })
 
-export class ArticleScheduleComponent implements OnChanges {
-    @Input() articleData:any;
-    @Input() awayData:any;
-    @Input() homeData:any;
-    awayHex:string;
-    defaultGradient:string;
-    homeHex:string;
-    gradient:Object;
-
-    ngOnChanges() {
-        if (typeof this.homeData != 'undefined' && typeof this.awayData != 'undefined') {
-            this.awayHex = this.awayData[0].awayHex;
-            this.homeHex = this.homeData[0].homeHex;
-            var fullGradient = Gradient.getGradientStyles([this.awayHex, this.homeHex], .75);
-            if (fullGradient) {
-                this.gradient = fullGradient;
-            }
-            else {
-                this.defaultGradient = 'default-gradient';
-            }
-        }
-    }
+export class ArticleScheduleComponent {
+  @Input() homeData:any;
+  @Input() awayData:any;
+  @Input() defaultGradient:any;
+  @Input() fullGradient:any;
 }
