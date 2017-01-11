@@ -2,7 +2,7 @@ import { Component, AfterViewInit, Input, Inject, ElementRef } from '@angular/co
 import { isBrowser } from 'angular2-universal';
 
 declare var jQuery:any;
-declare var Highcharts:any;
+declare var highcharts:any;
 
 @Component({
   selector: 'bar-chart',
@@ -25,7 +25,7 @@ export class BarChartComponent implements AfterViewInit {
   drawChart() {
     if(isBrowser && this.options){
       var chartWrapper = document.getElementById('daily-update-chart-container');
-      Highcharts.chart(chartWrapper, this.options);
+      highcharts.chart(chartWrapper, this.options);
     }
   }
 }
