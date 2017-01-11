@@ -6,7 +6,7 @@
     <div class="recommendations-articles-blocks col-xs-12 row">
       <div class="blocks-image col-xs-12 col-md-4" *ngFor="let data of randomHeadlines; let i=index;">
         <div class="recommendations-articles-six article-recommend">
-          <a [routerLink]="data.articleUrl"
+          <a [routerLink]="data.urlRouteArray"
              title="{{data.title}}">
             <div class="sixteenNine">
               <img class="recommendations-articles-six-image" src="{{data.images}}"
