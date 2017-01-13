@@ -2,7 +2,7 @@ import {Component, AfterViewInit, Input, Inject, ElementRef} from '@angular/core
 import { isBrowser } from 'angular2-universal';
 
 declare var jQuery:any;
-declare var Highcharts:any;
+declare var highcharts:any;
 
 @Component({
   selector: 'line-chart',
@@ -25,7 +25,7 @@ export class LineChartComponent implements AfterViewInit {
   drawChart() {
     if(isBrowser && this.options){
       var chartWrapper = document.getElementById('newsbox-chart-container');
-      Highcharts.chart(chartWrapper, this.options);
+      highcharts.chart(chartWrapper, this.options);
     }
   }
 }
