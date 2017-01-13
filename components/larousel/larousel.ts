@@ -6,13 +6,14 @@ import { isBrowser } from 'angular2-universal';
     templateUrl: './larousel.html',
 })
 
-export class Larousel implements OnChanges{
+export class Larousel implements OnChanges {
   @Input() maxLength:any;
   @Input() current:any;
   @Input() graphData: any;
   @Input() videoData: any;
   @Input() toggleData: any;
   @Input() carData: any;
+
   public currentScroll = 0;
   public rightText:string;
   private itemSize:number = 0;
@@ -34,6 +35,7 @@ export class Larousel implements OnChanges{
   @Input('loop') loop:boolean;
   @Input('fade') fade:boolean;
   @Input('button-class') buttonClass: string;
+
   @Output() displayedData = new EventEmitter();//outputs and array of objects for other components to use
   @Output() displayedItem = new EventEmitter();//outputs and array of objects for other components to use
   @Output() carouselCount = new EventEmitter();
@@ -122,7 +124,6 @@ export class Larousel implements OnChanges{
       });
       startLength = ssItems.length; //get total valid items
     }
-
     for(var c = 1; c <= this.clones; c++){
       //push clones at end of array
       ssItems.push({
@@ -183,8 +184,10 @@ export class Larousel implements OnChanges{
 
   ngAfterViewInit(){
     if( isBrowser ){
-      this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+      // this.itemSize = this._elRef.nativeElement.getElementsByClassName('carousel_scroll-container')[0].offsetWidth;
+      this.itemSize = window.innerWidth;
     }
+
     //make sure to run the element ref after the content has loaded to get the full size;
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
