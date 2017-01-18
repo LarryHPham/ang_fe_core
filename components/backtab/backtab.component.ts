@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Input} from "@angular/core";
+import {Component, Input} from '@angular/core';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'backtab-component',
@@ -9,14 +9,12 @@ import {Input} from "@angular/core";
 export class BackTabComponent{
     @Input() labelInput : string;
     label : string;
-    // history=window.history;
 
+    constructor(private _location: Location){
+
+    }
     goBack() {
-      // if(history.length <= 2){
-      //   window.location.href = '/';
-      // } else {
-      //   history.go(-1);
-      // }
+      this._location.back();
     }
 
     ngOnInit(){
