@@ -25,7 +25,8 @@
       <article-schedule-component
         *ngIf="boxScores && boxScores.schedule && calendarParams.profile != 'league' && calendarParams.scope != 'league'"
         [homeData]="boxScores.schedule.home"
-        [awayData]="boxScores.schedule.away">
+        [awayData]="boxScores.schedule.away"
+        [fullGradient]="boxScores.schedule.gradient">
       </article-schedule-component>
     </div> <!--END box-header-->
 
