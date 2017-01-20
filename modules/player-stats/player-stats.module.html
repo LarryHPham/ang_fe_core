@@ -4,6 +4,7 @@
     *ngIf="tabs"
     [tabs]="tabs"
     (tabSelected)="tabSelected($event)"
+    [selectedSeasonId]="seasonBase"
     [tabName]="tabName">
   </player-stats-component>
   <module-footer [footerData]="footerInfo"></module-footer>
