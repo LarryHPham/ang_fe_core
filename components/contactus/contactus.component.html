@@ -66,6 +66,7 @@
                   <div *ngFor="let item of contactusInput.subjects" class="checkbox contactus-margin-small">
                       <label>
                           <input
+                            id="{{item.id}}"
                             formControlName="{{item.id}}"
                             class="contactus-checkbox"
                             type="checkbox"
