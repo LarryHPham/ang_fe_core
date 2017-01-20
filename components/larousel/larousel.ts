@@ -115,31 +115,40 @@ export class Larousel implements OnChanges {
     //push in carousels items next this can probably handle arguments in future
     if(this.carData != null){
       this.carData.forEach(function(val, index){
-        ssItems.push({
-          id:startLength + index,
-          data:val,
-          type:'carousel',
-          type2:'carousel'
-        })
+          ssItems.push({
+            id:startLength + index,
+            data:val,
+            type:'carousel',
+            type2:'carousel'
+          })
+          ssItems.push({
+            id:startLength + index,
+            data:val,
+            type:'carousel',
+            type2:'carousel'
+          })
       });
-      startLength = ssItems.length; //get total valid items
+      startLength = isBrowser ? ssItems.length : 1; //get total valid items
     }
+
     for(var c = 1; c <= this.clones; c++){
-      //push clones at end of array
-      ssItems.push({
-        id: ssItems[0].id,
-        data:ssItems[0].data,
-        type:ssItems[0].type,
-        type2:'clone'
-      })
-      //unshift pushes clones before array only if we have that extra carousel in front
-      ssItems.unshift({
-        id:ssItems[startLength-1].id,
-        data:ssItems[startLength-1].data,
-        type:ssItems[startLength-1].type,
-        type2:'clone'
-      })
+      //push clones at end of array //
+        ssItems.push({
+          id: ssItems[0].id,
+          data:ssItems[0].data,
+          type:ssItems[0].type,
+          type2:'clone'
+        })
+
+        //unshift pushes clones before array only if we have that extra carousel in front
+        ssItems.unshift({
+          id:ssItems[startLength-1].id,
+          data:ssItems[startLength-1].data,
+          type:ssItems[startLength-1].type,
+          type2:'clone'
+        })
     }
+
     //set all inputed data into a single originalData variable to be used
     this.originalData = ssItems;
     this.currentScroll = this.itemSize * this.clones;
