@@ -18,8 +18,7 @@ export class NewsBox{
   private displayedItems: any;
   private currentDisplayed: any;
 
-  constructor(private _elRef: ElementRef, private router: Router){
-  }
+  constructor(private _elRef: ElementRef, private router: Router){}
 
   checkCurrent(item){
     this.currentDisplayed = item;
