@@ -1,4 +1,6 @@
 import {Directive, ElementRef, Renderer, HostListener} from "@angular/core";
+import {isBrowser} from "angular2-universal";
+
 @Directive({
     selector:'[verticalWidgetScroll]'
 })
@@ -67,10 +69,7 @@ export class verticalWidgetScrollDirective{
         let widgetFixed = e.target.getElementsByClassName('fixedWidget')[0]; // if the fixedWidget class exist grab it to be used
         //set the scroll height that the widget needs to meet before sticking
         let scrollAmount = widgetContainer != null ? widgetContainer.getBoundingClientRect().top : 0;
-
         this.scrollTopPrev = scrollTop; // help with determining if scrolling up or down
-
-        let bottomPadding = (scrollTop + scrollAmount) + (header.offsetHeight + headerbottom.offsetHeight) - footer.getBoundingClientRect().top; // add scroll from top, the widget position on load, the height of the headers for padding, and the distance from footer to top of page
 
         if(widgetFixed){// if the widget is already fixed then be sure to add the header height when scrolling up
           scrollAmount = scrollAmount - header.offsetHeight;
@@ -78,18 +77,18 @@ export class verticalWidgetScrollDirective{
 
         //if the scroll amount reaches the sticky header then add padding in place of the missing header since its fixed and determine if a fixedWidget class needs to be added of not
         if(widget){
-          if(scrollAmount < headerbottom.offsetHeight){
+          if( (scrollAmount < headerbottom.offsetHeight) && (scrollAmount <= 10) ){
             if(header.getBoundingClientRect().top >= 0){
               this._render.setElementStyle(widget,'top', header.offsetHeight + 10 + 'px');
             }else{
               this._render.setElementStyle(widget,'top', headerbottom.offsetHeight + 10 + 'px');
             }
             widget.classList.add('fixedWidget');// add fixedWidget to widget so that it stays fixed
-            if(bottomPadding >= 0){ //once the widget is fixed then check to make sure it does not go below footer
-              if(scrollUp){// when scrolling up need to add the extra padding from header
-              }else{
+            if(isBrowser){ //Unable to grab the users window height on server side
+              let bottomStick = (window.innerHeight - headerbottom.offsetHeight) - footer.getBoundingClientRect().top;
+              if( bottomStick > 0){
+                this._render.setElementStyle(widget,'top', "-" + (bottomStick - 20) + 'px');
               }
-              this._render.setElementStyle(widget,'top', (header.offsetHeight - bottomPadding) + 'px');
             }
           }else{
             this._render.setElementStyle(widget,'top', '0px');
