@@ -51,10 +51,12 @@ export class Larousel implements OnChanges {
   private nextImage:any;
   private imageTransition:string = '0px';
   private transitionDirection:any;
+  private isBrowser: boolean;
 
   private clones:number = 1;
   constructor(private _renderer:Renderer, private elementRef: ElementRef){
     this._elRef = elementRef;
+    this.isBrowser = isBrowser;
   }
   ngOnChanges(event){
     this.originalData = null;
@@ -262,7 +264,8 @@ export class Larousel implements OnChanges {
     this.transitionDirection = 'right';
     if(this.maxLength >= Math.round(this.currentScroll/this.itemSize)){
       this.checkCurrent(this.currentScroll);
-    }else{
+    }
+    else{
       this.currentScroll = 0;
       this.checkCurrent(this.currentScroll);
     }
@@ -307,13 +310,13 @@ export class Larousel implements OnChanges {
       this.minScroll = this.currentScroll < (this.itemSize * this.clones);
       this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
     }
-    let pos = Math.round((currentScroll / this.itemSize));
+    let pos = this.itemSize;
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
-    if(pos > (this.maxLength-(this.clones*2))){//if position is larger or same as the length of array
+    if (pos > (this.maxLength-(this.clones*2))) { //if position is larger or same as the length of array
       currentItem = this.clones;
-    }else if (pos < this.clones){//othwerwise if position is less than the first item after clones
+    } else if (pos < this.clones){//othwerwise if position is less than the first item after clones
       currentItem = this.maxLength-(this.clones*2);
-    }else{
+    } else {
       currentItem = pos;
       this.transition = "score-transition2";
       this.transition2 = "score-transition2";
@@ -331,7 +334,8 @@ export class Larousel implements OnChanges {
     }else{//shift image right start at item.size
       this.imageTransition = '0px';
     }
-    //ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
+
+    // ran after the transition to the clone is made and instant switch to the beginning or end of array with no transition
     setTimeout(function(){
       self.transition2 = "";
       if(pos <= 0){
