@@ -314,7 +314,7 @@ export class Larousel implements OnChanges {
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
     if (pos > (this.maxLength-(this.clones*2))) { //if position is larger or same as the length of array
       currentItem = this.clones;
-    } else if (pos < this.clones){ currentScroll//othwerwise if position is less than the first item after clones
+    } else if (pos < this.clones){//othwerwise if position is less than the first item after clones
       currentItem = this.maxLength-(this.clones*2);
     } else {
       currentItem = pos;
