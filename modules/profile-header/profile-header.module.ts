@@ -206,7 +206,7 @@ export class ProfileHeaderModule implements OnChanges {
         this.profileTitle = data.profileTitleFirstPart + "<span class='text-heavy'> " + data.profileTitleLastPart + "</span>";
         this.displayDate = GlobalFunctions.formatUpdatedDate(data.lastUpdatedDate);
 
-        data.description = "<div class=\"ph-content-desc-border\"></div>" + data.description;
+        data.description = "<div class=\"ph-content-desc-border\"></div><p>"+data.description+"</p>";
         if(this.profileType == "team"){
           this.contentTitle = "Quick info about the " + data.profileName;
         }else{
