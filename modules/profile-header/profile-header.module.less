@@ -126,6 +126,7 @@
     }
 
     &-desc {
+      position: relative;
       .globalDefaultModFont(14px, 400, @white);
       @media @mobile {
         margin-left: 0px;
@@ -160,8 +161,8 @@
       }
       .scrollable-item-content {
         position: relative;
-        padding-left: 15px;
-        margin-left: 15px;
+        // padding-left: 15px;
+        // margin-left: 15px;
         @media @mobile {
           padding-left: 0;
           margin-left: 0;
@@ -309,6 +310,10 @@
     } //&-hdr
     &-content {
       &-desc {
+        margin-left: 15px;
+        p {
+          padding-left: 15px;
+        }
       }
     } //&-content
   }
