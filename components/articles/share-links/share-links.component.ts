@@ -11,6 +11,7 @@ declare var stButtons:any;
 export class ShareLinksComponent implements OnInit {
     @Input() isMain:boolean;
     @Input() shareUrl:string;
+    @Input('server_render') showOnClient: boolean = false;
     shareLinks:Array<any>;
 
     getLinks() {
