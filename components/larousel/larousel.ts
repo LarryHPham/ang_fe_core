@@ -123,12 +123,6 @@ export class Larousel implements OnChanges {
             type:'carousel',
             type2:'carousel'
           })
-          ssItems.push({
-            id:startLength + index,
-            data:val,
-            type:'carousel',
-            type2:'carousel'
-          })
       });
       startLength = isBrowser ? ssItems.length : 1; //get total valid items
     }
@@ -310,7 +304,7 @@ export class Larousel implements OnChanges {
       this.minScroll = this.currentScroll < (this.itemSize * this.clones);
       this.maxScroll = !((this.maxLength) > Math.round(this.currentScroll/(this.itemSize)));
     }
-    let pos = this.itemSize;
+    let pos = isBrowser ? this.itemSize : Math.round((currentScroll / this.itemSize));
     //if num which is currentScroll is below the above the clone pos then reset to beginning of array else if current size is below then reset to beginning
     if (pos > (this.maxLength-(this.clones*2))) { //if position is larger or same as the length of array
       currentItem = this.clones;
