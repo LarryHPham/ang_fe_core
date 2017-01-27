@@ -2,18 +2,22 @@
   <loading-component *ngIf="!headlineError && !headlineData"></loading-component>
   <div *ngIf="!headlineError && headlineData">
     <module-header [modHeadData]="headerInfo"></module-header>
-    <article-schedule-component *ngIf="!isLeague"
-                                [homeData]="headlineData['scheduleData']['homeData']"
-                                [awayData]="headlineData['scheduleData']['awayData']"
-                                [defaultGradient]="defaultGradient"
-                                [fullGradient]="fullGradient">
+    <article-schedule-component
+        *ngIf="!isLeague"
+        [homeData]="headlineData['scheduleData']['homeData']"
+        [awayData]="headlineData['scheduleData']['awayData']"
+        [defaultGradient]="defaultGradient"
+        [fullGradient]="fullGradient">
     </article-schedule-component>
-    <article-main-component [mainArticleData]="headlineData['mainArticleData']"
-                            [timeStamp]="timeStamp"></article-main-component>
-    <article-sub-component
-      [subArticles]="headlineData['subArticleData']"
-      [teamID]="teamID"
-      [league]="league"></article-sub-component>
+    <article-main-component
+        *ngIf="headlineData['mainArticleData']"
+        [mainArticleData]="headlineData['mainArticleData']"
+        [timeStamp]="timeStamp"></article-main-component>
+    <article-sub-component  
+        *ngIf="headlineData['subArticleData']"
+        [subArticles]="headlineData['subArticleData']"
+        [teamID]="teamID"
+        [league]="league"></article-sub-component>
   </div>
   <!--Empty div to hide module in the event of an error.-->
   <div *ngIf="headlineError"></div>

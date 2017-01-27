@@ -1,4 +1,4 @@
-<div class="art-hdr">
+<div *ngIf="showOnClient" class="art-hdr">
     <!-- using third party sharethis -->
     <div *ngIf="isMain" class='st_sharethis_large share' [attr.st_url]="shareLinks[0].link"><i
             class='fa fa-share-alt'></i>

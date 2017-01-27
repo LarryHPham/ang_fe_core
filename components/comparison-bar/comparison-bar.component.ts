@@ -45,8 +45,12 @@ export class ComparisonBar {
       if(displayData.active === true){
         return false;
       }
-      this.displayData.infoBoxDetails.forEach(comparisonBarInput => displayData.active = false);
-      displayData.active = true;
+      if(this.displayData){
+        if(this.displayData.infoBoxDetails){
+          this.displayData.infoBoxDetails.forEach(comparisonBarInput => displayData.active = false);
+          displayData.active = true;
+        }
+      }
     }
 
     mouseOff(element){
