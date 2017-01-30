@@ -34,6 +34,7 @@ export class CalendarCarousel implements OnInit {
   public failSafe: number = 0;
   public windowWidth: number = 10;
   public lastAvailableGame: boolean;
+  private storeSubscriptions: any = [];
 
   constructor(private _boxScores:BoxScoresService){}
 
@@ -54,8 +55,6 @@ export class CalendarCarousel implements OnInit {
     })
   } //ngOnInit
 
-
-
   ngOnChanges(event){
     //any changes made to the input from outside will cause the fuction to rerun
     // console.log(this.chosenParam);
@@ -63,21 +62,34 @@ export class CalendarCarousel implements OnInit {
       var currentUnixDate = new Date().getTime();
       this.chosenParam.date = moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD');
       this.weeklyDates = null;
-      this.callWeeklyApi(this.chosenParam)
+      this.storeSubscriptions.push(this.callWeeklyApi(this.chosenParam)
       .subscribe( data => {
         this.validateDate(this.chosenParam.date, this.weeklyDates, true);
-      })
+      }))
     }else{
       if(this.chosenParam != null){
-        this.callWeeklyApi(this.chosenParam)
+        this.storeSubscriptions.push(this.callWeeklyApi(this.chosenParam)
         .subscribe( data => {
           this.validateDate(this.chosenParam.date, this.weeklyDates);
-        })
+        }))
       }
     }
   } //ngOnChanges
 
+  ngOnDestroy(){
+    this.resetSubscription();
+  }
 
+  private resetSubscription(){
+    if(this.storeSubscriptions){
+      var numOfSubs = this.storeSubscriptions.length;
+      for( var i = 0; i < numOfSubs; i++ ){
+        if(this.storeSubscriptions[i]){
+          this.storeSubscriptions[i].unsubscribe();
+        }
+      }
+    }
+  }
 
   private onWindowLoadOrResize(event) {
     this.windowWidth = event.target.innerWidth;
@@ -88,10 +100,10 @@ export class CalendarCarousel implements OnInit {
     this.chosenParam.date = moment(event).tz('America/New_York').format('YYYY-MM-DD');
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-    this.callWeeklyApi(this.chosenParam)
+    this.storeSubscriptions.push(this.callWeeklyApi(this.chosenParam)
     .subscribe( data => {
       this.validateDate(this.chosenParam.date, this.weeklyDates);
-    })
+    }))
     this.checkForLastGame.emit(moment(event).tz('America/New_York').format('YYYY-MM-DD'));
     this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
   }
@@ -100,7 +112,7 @@ export class CalendarCarousel implements OnInit {
     //take parameters and convert using moment to subtract a week from it and recall the week api
     var curParams = this.currDateView;
     curParams.date = moment(curParams.date).subtract(7, 'days').format('YYYY-MM-DD');
-    this.callWeeklyApi(curParams).subscribe(data=>{this.validateDate(this.chosenParam.date, this.weeklyDates)});
+    this.storeSubscriptions.push(this.callWeeklyApi(curParams).subscribe(data=>{this.validateDate(this.chosenParam.date, this.weeklyDates)}));
     this.currDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
   }
 
@@ -127,20 +139,20 @@ export class CalendarCarousel implements OnInit {
 
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
-        this.callWeeklyApi(curParams).subscribe(data=>{
+        this.storeSubscriptions.push(this.callWeeklyApi(curParams).subscribe(data=>{
           this.failSafe++;
           this.leftDay();
           return;
-        });
+        }));
       } else {
         if(this.weeklyDates[dayNum].clickable){
           this.failSafe = 0;
-          this.callWeeklyApi(curParams).subscribe(data=>{
+          this.storeSubscriptions.push(this.callWeeklyApi(curParams).subscribe(data=>{
             this.validateDate(this.chosenParam.date, this.weeklyDates);
             this.currDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
             this.setActive(this.weeklyDates[dayNum]);
             return;
-          });
+          }));
         }else{
           this.failSafe++;
           this.leftDay();
@@ -168,21 +180,21 @@ export class CalendarCarousel implements OnInit {
 
       if(dayNum == 0 && curParams.date != this.weeklyDates[dayNum].fullDate){
         this.currDateView.date = curParams.date;
-        this.callWeeklyApi(curParams).subscribe(data=>{
+        this.storeSubscriptions.push(this.callWeeklyApi(curParams).subscribe(data=>{
           this.failSafe++;
           this.rightDay();
           return;
-        });
+        }));
 
       } else {
         if(this.weeklyDates[dayNum].clickable){
           this.failSafe = 0;
-          this.callWeeklyApi(curParams).subscribe(data=>{
+          this.storeSubscriptions.push(this.callWeeklyApi(curParams).subscribe(data=>{
             this.validateDate(this.chosenParam.date, this.weeklyDates);
             this.currDateView.date = curParams.date;//resets current date to the new parameter so that all functions are updated with new date
             this.setActive(this.weeklyDates[dayNum]);
             return;
-          });
+          }));
         }else{
           this.failSafe++;
           this.rightDay();
@@ -306,11 +318,11 @@ export class CalendarCarousel implements OnInit {
         this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
 
         //recall function with same chosenParam for validating
-        this.callWeeklyApi(this.chosenParam)
+        this.storeSubscriptions.push(this.callWeeklyApi(this.chosenParam)
         .subscribe( data => {
           this.validateDate(this.chosenParam.date, this.weeklyDates, true);
           return;
-        })
+        }));
       }else{
         if(activeIndex != null){
           //reset failsafe
