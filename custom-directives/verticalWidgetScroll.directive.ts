@@ -58,10 +58,12 @@ export class verticalWidgetScrollDirective{
         //     }
         // }
 
+        //currently unused
         let verticalWidget = e.target.getElementById('verticalSideScroller');
+        let scrollUp = scrollTop - this.scrollTopPrev > 0 ? false : true;
+
         let footer = e.target.getElementsByClassName('footer')[0];
         var scrollTop = e.target.body.scrollTop; //find the current scroll of window from top of page
-        let scrollUp = scrollTop - this.scrollTopPrev > 0 ? false : true;
         var header = e.target.getElementById('pageHeader'); // grab the height of the entire header
         var headerbottom = e.target.getElementById('header-bottom'); // grab the bottom piece of the header that sticks on scroll
         var widgetContainer = e.target.getElementById('widgetContainer');// grab the container that the widget lives in
@@ -86,7 +88,7 @@ export class verticalWidgetScrollDirective{
             widget.classList.add('fixedWidget');// add fixedWidget to widget so that it stays fixed
             if(isBrowser){ //Unable to grab the users window height on server side
               let bottomStick = (window.innerHeight - headerbottom.offsetHeight) - footer.getBoundingClientRect().top;
-              if( bottomStick > 0){
+              if( bottomStick > 0 && (window.innerHeight - footer.offsetHeight < 650)){
                 this._render.setElementStyle(widget,'top', "-" + (bottomStick - 20) + 'px');
               }
             }
