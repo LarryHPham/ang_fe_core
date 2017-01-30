@@ -30,6 +30,7 @@ export class DatePicker implements AfterViewInit {
   private today:string;
   private monthlyDates: any;
   private curDateView:any;
+  private storeSubscriptions: any = [];
 
   @Input('model-format') modelFormat: string;
   @Input('view-format') viewFormat: string;
@@ -58,12 +59,27 @@ export class DatePicker implements AfterViewInit {
 
   ngAfterViewInit() {
     this.curDateView = {scope: this.chosenParam.scope, teamId:this.chosenParam.teamId, date:this.chosenParam.date}
-    this.callMonthApi(this.chosenParam)
+    this.storeSubscriptions.push(this.callMonthApi(this.chosenParam)
     .subscribe( data => {
       this.generateDayNames();
       this.generateCalendar(this.date);
       this.initValue();
-    })
+    }))
+  }
+
+  ngOnDestroy(){
+    this.resetSubscription();
+  }
+
+  private resetSubscription(){
+    if(this.storeSubscriptions){
+      var numOfSubs = this.storeSubscriptions.length;
+      for( var i = 0; i < numOfSubs; i++ ){
+        if(this.storeSubscriptions[i]){
+          this.storeSubscriptions[i].unsubscribe();
+        }
+      }
+    }
   }
 
   private init(): void {
@@ -214,21 +230,21 @@ export class DatePicker implements AfterViewInit {
   public nextMonth(): void {
     this.date.add(1, 'M');
     this.curDateView.date = this.date.tz('America/New_York').format('YYYY-MM-DD');
-    this.callMonthApi(this.curDateView)
+    this.storeSubscriptions.push(this.callMonthApi(this.curDateView)
     .subscribe( data => {
       this.generateDayNames();
       this.generateCalendar(this.date);
-    })
+    }));
     this.generateCalendar(this.date);
   }
   public prevMonth(): void {
     this.date.subtract(1, 'M');
     this.curDateView.date = this.date.tz('America/New_York').format('YYYY-MM-DD');
-    this.callMonthApi(this.curDateView)
+    this.storeSubscriptions.push(this.callMonthApi(this.curDateView)
     .subscribe( data => {
       this.generateDayNames();
       this.generateCalendar(this.date);
-    })
+    }));
     this.generateCalendar(this.date);
   }
 

@@ -119,9 +119,11 @@ export class ComparisonModule implements OnChanges {
             if ( this.modelData.data) {
                 this.formatData(this.modelData.data);
                 this.modelData.loadTeamList(teamList => {
+                  if(teamList){
                     this.teamList = teamList;
                     this.loadPlayerList(0, this.modelData.data.playerOne.teamId);
                     this.loadPlayerList(1, this.modelData.data.playerTwo.teamId);
+                  }
                 });
             }
         }
