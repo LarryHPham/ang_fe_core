@@ -46,10 +46,10 @@
           <custom-table [model]="section.tableData" (sortChanged)="updateCarousel($event)" [lastStanding]="false"></custom-table>
         </div>
       </div>
+
       <div *ngIf="!tab.sections && tab.isLoaded" class="standings-no-data">
           <no-data-box [data]="noDataMessage" [icon]="'fa fa-remove'"></no-data-box>
       </div>
     </tab>
   </tabs>
-
 </div>

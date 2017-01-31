@@ -51,7 +51,11 @@
         </div>
         <div class="trending-small-hr"></div>
         <div class="responsive-widget">
-            <responsive-widget *ngIf="!even"></responsive-widget>
+            <responsive-widget
+              [embedPlace]="widgetPlace"
+              [displayAtRes]="'1280'"
+              *ngIf="!even">
+            </responsive-widget>
         </div>
         <div *ngIf="!even" class="trending-small-hr hide-under-lg"></div>
     </div>
