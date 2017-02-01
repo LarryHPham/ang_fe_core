@@ -7,6 +7,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 
 export class TrendingComponent {
+    public widgetPlace: string = "widgetForModule";
+    
     @Input() currentArticleId:string;
     @Input() eventType:string;
     @Input() geoLocation:string;
