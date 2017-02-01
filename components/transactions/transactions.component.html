@@ -14,7 +14,7 @@
             </span>
             <dropdown
               *ngIf="transactionFilter1"
-              [isModule]="'false'"
+              [isModule]="'true'"
               [list]="transactionFilter1"
               [selectedKey]="dropdownKey1"
               (selectionChanged)="transactionDropdownChange($event)">
