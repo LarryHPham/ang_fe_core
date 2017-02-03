@@ -41,6 +41,7 @@ export class ShareLinksComponent implements OnInit {
 
     ngOnInit() {
       if(isBrowser){
+        this.showOnClient = true;
         stButtons.locateElements();
       }
     }
