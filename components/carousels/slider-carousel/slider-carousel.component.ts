@@ -224,7 +224,7 @@ export class SliderCarousel implements OnInit {
           },
           {//Last Updated line
             class: 'scc-details-type1-date',
-            textData: item.lastUpdatedDate ? ["Last Updated: TODO "] : []
+            textData: item.lastUpdatedDate ? ["Last Updated: "+item.lastUpdatedDate] : []
           }
         ],
       imageConfig: {
