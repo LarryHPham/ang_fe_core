@@ -52,7 +52,6 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
   constructor() { }
 
   ngDoCheck() {
-
     if (this.tabs && this.tabs.length > 0) {
       if (!this.tabsLoaded) {
         this.tabsLoaded = {};
@@ -113,7 +112,6 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
     this.selectedTabTitle = newTitle;
     this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
     this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
-
     this.tabSelectedListener.next([this.getSelectedTab(), this.selectedSubTab]);
     this.updateCarousel();
   }
@@ -255,9 +253,7 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
     this.GlossaryData = this.getGlossary("Passing");
   }
   ngOnChanges() {
-
     this.GlossaryData = this.getGlossary(this.tabName);
-
   }
 
 }
