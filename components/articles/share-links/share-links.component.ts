@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, AfterViewInit, Input} from '@angular/core';
 import { isBrowser } from 'angular2-universal';
 
 declare var stButtons:any;
@@ -8,7 +8,7 @@ declare var stButtons:any;
     templateUrl: './share-links.component.html'
 })
 
-export class ShareLinksComponent implements OnInit {
+export class ShareLinksComponent implements AfterViewInit {
     @Input() isMain:boolean;
     @Input() shareUrl:string;
     @Input('server_render') showOnClient: boolean = false;
@@ -21,19 +21,19 @@ export class ShareLinksComponent implements OnInit {
                 fontAwesome: "share-alt"
             },
             {
-                link: "https://www.facebook.com/sharer/sharer.php?u=" + this.shareUrl,
+                link: "//www.facebook.com/sharer/sharer.php?u=" + this.shareUrl,
                 fontAwesome: "facebook"
             },
             {
-                link: "https://twitter.com/home?status=" + this.shareUrl,
+                link: "//twitter.com/home?status=" + this.shareUrl,
                 fontAwesome: "twitter"
             },
             {
-                link: "https://www.linkedin.com/shareArticle?mini=true&url=" + this.shareUrl,
+                link: "//www.linkedin.com/shareArticle?mini=true&url=" + this.shareUrl,
                 fontAwesome: "linkedin"
             },
             {
-                link: "https://plus.google.com/share?url=" + this.shareUrl,
+                link: "//plus.google.com/share?url=" + this.shareUrl,
                 fontAwesome: "g-plus"
             }
         ];
@@ -46,7 +46,7 @@ export class ShareLinksComponent implements OnInit {
       }
     }
 
-    ngOnChanges() {
+    ngAfterViewInit() {
         if (typeof this.shareUrl != 'undefined') {
             this.getLinks();
         }
