@@ -21,19 +21,19 @@ export class ShareLinksComponent implements OnInit {
                 fontAwesome: "share-alt"
             },
             {
-                link: "https://www.facebook.com/sharer/sharer.php?u=" + this.shareUrl,
+                link: "//www.facebook.com/sharer/sharer.php?u=" + this.shareUrl,
                 fontAwesome: "facebook"
             },
             {
-                link: "https://twitter.com/home?status=" + this.shareUrl,
+                link: "//twitter.com/home?status=" + this.shareUrl,
                 fontAwesome: "twitter"
             },
             {
-                link: "https://www.linkedin.com/shareArticle?mini=true&url=" + this.shareUrl,
+                link: "//www.linkedin.com/shareArticle?mini=true&url=" + this.shareUrl,
                 fontAwesome: "linkedin"
             },
             {
-                link: "https://plus.google.com/share?url=" + this.shareUrl,
+                link: "//plus.google.com/share?url=" + this.shareUrl,
                 fontAwesome: "g-plus"
             }
         ];
