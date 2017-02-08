@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, AfterViewInit, Input} from '@angular/core';
 import { isBrowser } from 'angular2-universal';
 
 declare var stButtons:any;
@@ -8,7 +8,7 @@ declare var stButtons:any;
     templateUrl: './share-links.component.html'
 })
 
-export class ShareLinksComponent implements OnInit {
+export class ShareLinksComponent implements AfterViewInit {
     @Input() isMain:boolean;
     @Input() shareUrl:string;
     @Input('server_render') showOnClient: boolean = false;
@@ -46,7 +46,7 @@ export class ShareLinksComponent implements OnInit {
       }
     }
 
-    ngOnChanges() {
+    ngAfterViewInit() {
         if (typeof this.shareUrl != 'undefined') {
             this.getLinks();
         }
