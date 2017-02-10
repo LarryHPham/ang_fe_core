@@ -19,6 +19,7 @@ export class BoxScoresModule implements OnInit {
   public dateEmit = new EventEmitter();
   public resetControls = new EventEmitter();
   public liveArray = new EventEmitter();
+  private _chosenParams: any;
   public heightStyle:string;
   private gameNum:number = 0;
   public currentPage:number = 1;
@@ -59,6 +60,9 @@ export class BoxScoresModule implements OnInit {
 
 
   ngOnChanges(event) {
+    if(this.calendarParams){
+      this._chosenParams = this.calendarParams;
+    }
     if(this.boxScores != null){
       if (this.currentPage == this.boxScores.gameInfo.length) {
         this.rightDisabled = "disabled";

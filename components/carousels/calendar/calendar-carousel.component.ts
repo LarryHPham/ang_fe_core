@@ -290,11 +290,13 @@ export class CalendarCarousel implements OnInit {
             if( (selectedDate == date.fullDate) && date.clickable){
               mostRecent = dateUnix;
               validatedDate = dateUnix;
+              console.log('111', i);
               activeIndex = i;//SETS POSITION IN ARRAY THAT CURRENT DATE IS SET TO if the curUnix date exists within the current dateArray
             }else{
               //sets most recent game before the curUnix date and index if they havent been found, while the validatedDate and clickability still hasn't been found
               if( ((mostRecent < date.unixDate && date.unixDate <= curUnix) && activeIndex == null) || (date.unixDate <= curUnix && date.clickable && validatedDate == 0)){
                 mostRecent = date.unixDate;
+                console.log('222', i);
                 activeIndex = i;
               }
             }
@@ -302,6 +304,7 @@ export class CalendarCarousel implements OnInit {
             //run through the array and set the valid date that has a game as the active key in the dateArray (attached to weeklyDates)
             if( (selectedDate == date.fullDate) && date.clickable){
               validatedDate = dateUnix;
+              console.log('333', i);
               activeIndex = i;
               dateArray[activeIndex].active = true;
             }
@@ -333,21 +336,25 @@ export class CalendarCarousel implements OnInit {
               this.failSafe = 0;
               //make sure to only set new params if new number has been validatedDated
               //otherwise set the new chosenParam to the mostRecent date that has been found
-              if(validatedDate != 0){
-                validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
-                this.chosenParam.date = validatedDate;
-                dateArray[activeIndex].active = true;
-              }else{
-                validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
-                this.chosenParam.date = validatedDate;
-                dateArray[activeIndex].active = true;
-              }
+              if(this.chosenParam.date != validatedDate){
+                if(validatedDate != 0){
+                  validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
+                  this.chosenParam.date = validatedDate;
+                  dateArray[activeIndex].active = true;
+                }else{
+                  validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
+                  this.chosenParam.date = validatedDate;
+                  dateArray[activeIndex].active = true;
+                }
 
-              //sets new params and emit the date
-              let params = this.chosenParam;
-              this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-              this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
-              this.setActive(this.weeklyDates[activeIndex]);
+                //sets new params and emit the date
+                let params = this.chosenParam;
+
+                this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+                // this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+                this.setActive(this.weeklyDates[activeIndex]);
+                return;
+              }
               return;
             }else{
               this.failSafe = 0;
@@ -360,7 +367,8 @@ export class CalendarCarousel implements OnInit {
       }
     } catch(e) {
       console.warn('Calender validation error', e)
+      return;
     }
 
-   }
+  }//end of validateDate()
 }
