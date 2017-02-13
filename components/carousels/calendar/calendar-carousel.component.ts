@@ -44,7 +44,6 @@ export class CalendarCarousel implements OnInit {
     //on load grab the input chosenParam and set new variable for currently viewing dates that is used for any changes without changing initial input while it goes through validation
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-    // console.log(this.chosenParam);
     //make call to week api to grab to see if any games are available (true/false)
     if(params != null){
       this.callWeeklyApi(params)
@@ -227,7 +226,6 @@ export class CalendarCarousel implements OnInit {
 
   //makes weekly api call and sets reactive variables
   callWeeklyApi(params){
-    // // console.log('4. calendar-carousel - callWeeklyApi - params - ',params);
     // this.weeklyApi = null;// resets call to load loading Gif as it waits for data
     return this._boxScores.weekCarousel(params.scope, params.date, params.teamId)
     .map(data=>{
@@ -333,21 +331,25 @@ export class CalendarCarousel implements OnInit {
               this.failSafe = 0;
               //make sure to only set new params if new number has been validatedDated
               //otherwise set the new chosenParam to the mostRecent date that has been found
-              if(validatedDate != 0){
-                validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
-                this.chosenParam.date = validatedDate;
-                dateArray[activeIndex].active = true;
-              }else{
-                validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
-                this.chosenParam.date = validatedDate;
-                dateArray[activeIndex].active = true;
-              }
+              if(this.chosenParam.date != validatedDate){
+                if(validatedDate != 0){
+                  validatedDate = moment(Number(validatedDate)).tz('America/New_York').format('YYYY-MM-DD');
+                  this.chosenParam.date = validatedDate;
+                  dateArray[activeIndex].active = true;
+                }else{
+                  validatedDate = moment(Number(mostRecent)).tz('America/New_York').format('YYYY-MM-DD');
+                  this.chosenParam.date = validatedDate;
+                  dateArray[activeIndex].active = true;
+                }
 
-              //sets new params and emit the date
-              let params = this.chosenParam;
-              this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-              this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
-              this.setActive(this.weeklyDates[activeIndex]);
+                //sets new params and emit the date
+                let params = this.chosenParam;
+
+                this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
+                // this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+                this.setActive(this.weeklyDates[activeIndex]);
+                return;
+              }
               return;
             }else{
               this.failSafe = 0;
@@ -360,7 +362,8 @@ export class CalendarCarousel implements OnInit {
       }
     } catch(e) {
       console.warn('Calender validation error', e)
+      return;
     }
 
-   }
+  }//end of validateDate()
 }
