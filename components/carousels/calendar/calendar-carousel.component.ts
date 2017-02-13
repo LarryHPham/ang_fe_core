@@ -44,7 +44,6 @@ export class CalendarCarousel implements OnInit {
     //on load grab the input chosenParam and set new variable for currently viewing dates that is used for any changes without changing initial input while it goes through validation
     var params = this.chosenParam;
     this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-    // console.log(this.chosenParam);
     //make call to week api to grab to see if any games are available (true/false)
     if(params != null){
       this.callWeeklyApi(params)
@@ -227,7 +226,6 @@ export class CalendarCarousel implements OnInit {
 
   //makes weekly api call and sets reactive variables
   callWeeklyApi(params){
-    // // console.log('4. calendar-carousel - callWeeklyApi - params - ',params);
     // this.weeklyApi = null;// resets call to load loading Gif as it waits for data
     return this._boxScores.weekCarousel(params.scope, params.date, params.teamId)
     .map(data=>{
@@ -290,13 +288,11 @@ export class CalendarCarousel implements OnInit {
             if( (selectedDate == date.fullDate) && date.clickable){
               mostRecent = dateUnix;
               validatedDate = dateUnix;
-              console.log('111', i);
               activeIndex = i;//SETS POSITION IN ARRAY THAT CURRENT DATE IS SET TO if the curUnix date exists within the current dateArray
             }else{
               //sets most recent game before the curUnix date and index if they havent been found, while the validatedDate and clickability still hasn't been found
               if( ((mostRecent < date.unixDate && date.unixDate <= curUnix) && activeIndex == null) || (date.unixDate <= curUnix && date.clickable && validatedDate == 0)){
                 mostRecent = date.unixDate;
-                console.log('222', i);
                 activeIndex = i;
               }
             }
@@ -304,7 +300,6 @@ export class CalendarCarousel implements OnInit {
             //run through the array and set the valid date that has a game as the active key in the dateArray (attached to weeklyDates)
             if( (selectedDate == date.fullDate) && date.clickable){
               validatedDate = dateUnix;
-              console.log('333', i);
               activeIndex = i;
               dateArray[activeIndex].active = true;
             }
