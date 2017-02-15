@@ -14,9 +14,9 @@ export class HoverImage {
       event.src = this.errorIMG;
     }
 
-    // ngOnChanges() {
-    //   if ( this.imageData && this.imageData.imageUrl ) {
-    //       this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(this.imageData.imageUrl);
-    //   }
-    // }
+    ngOnChanges(){
+      if(this.imageData){
+        this.imageData.imageDesc = this.imageData.imageDesc ? this.imageData.imageDesc : 'Profile Image';
+      }
+    }
 }
