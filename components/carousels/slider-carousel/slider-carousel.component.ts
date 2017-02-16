@@ -142,7 +142,7 @@ export class SliderCarousel implements OnInit {
   ngOnInit() {
     //incase there is no backgroundImage being return set the default background
     if(typeof this.backgroundImage == 'undefined' || this.backgroundImage == null || !this.backgroundImage){
-      this.backgroundImage = VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(this.backgroundImage);
+      this.backgroundImage = VerticalGlobalFunctions.getBackgroundImageUrlWithStockFallback(this.backgroundImage, VerticalGlobalFunctions._imgProfileMod);
     }
 
 

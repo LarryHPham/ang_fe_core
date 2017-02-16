@@ -196,7 +196,7 @@ export class ProfileHeaderModule implements OnChanges {
 
       if ( data ) {
         if ( !data.backgroundImageUrl ) {
-          VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data.backgroundImageUrl);
+          VerticalGlobalFunctions.getBackgroundImageUrlWithStockFallback(data.backgroundImageUrl, VerticalGlobalFunctions._imgProfileMod);
         }
         if ( !data.profileImageUrl ) {
           data.profileImageUrl = "/app/public/no-image.svg";
