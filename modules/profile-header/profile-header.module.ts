@@ -118,6 +118,7 @@ export interface TeamProfileHeaderData {
     conferenceName: Conference;
     venueName: string;
     rank: number;
+    description?: string;
     divWins?: number;
     divLosses?: number;
     divRecord: string;

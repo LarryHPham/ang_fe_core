@@ -1,5 +1,5 @@
 <!--image (no hover link)-->
-<img *ngIf="!imageData.urlRouteArray && !imageData.url && !textOnly" [src]="imageData.imageUrl" (error)="onError($event)" />
+<img *ngIf="!imageData.urlRouteArray && !imageData.url && !textOnly" [src]="imageData.imageUrl" [alt]="imageData.imageDesc" (error)="onError($event)" />
 
 <!--image (with hover link)-->
 <a *ngIf="imageData.urlRouteArray && !textOnly" [routerLink]="imageData.urlRouteArray" class="image-round-hover">
