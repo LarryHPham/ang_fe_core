@@ -53,7 +53,6 @@ export class ListOfListsModule {
   //  var routeName = type == "league" ? 'list-of-lists' : 'list-of-lists';
     var params = {
       limit:10,
-      pageNum:1,
       id: ''
     };
     // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
@@ -75,7 +74,6 @@ export class ListOfListsModule {
       this.profileType,
       id,
       params.limit,
-      params.pageNum
     ];
   } //ngOnChnages
 

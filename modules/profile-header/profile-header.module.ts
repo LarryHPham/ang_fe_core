@@ -118,6 +118,7 @@ export interface TeamProfileHeaderData {
     conferenceName: Conference;
     venueName: string;
     rank: number;
+    description?: string;
     divWins?: number;
     divLosses?: number;
     divRecord: string;
@@ -196,7 +197,7 @@ export class ProfileHeaderModule implements OnChanges {
 
       if ( data ) {
         if ( !data.backgroundImageUrl ) {
-          VerticalGlobalFunctions.getBackroundImageUrlWithStockFallback(data.backgroundImageUrl);
+          VerticalGlobalFunctions.getBackgroundImageUrlWithStockFallback(data.backgroundImageUrl, VerticalGlobalFunctions._imgProfileMod);
         }
         if ( !data.profileImageUrl ) {
           data.profileImageUrl = "/app/public/no-image.svg";
