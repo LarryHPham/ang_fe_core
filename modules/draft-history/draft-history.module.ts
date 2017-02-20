@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Injectable, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Injectable, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 //interface
@@ -10,7 +10,7 @@ import { DetailListInput } from '../../components/detailed-list-item/detailed-li
     templateUrl: './draft-history.module.html'
 })
 
-export class DraftHistoryModule implements OnInit {
+export class DraftHistoryModule {
   @Output() tabSelectedListener = new EventEmitter();
   @Output() dropdownSelectedListener = new EventEmitter();
 
@@ -23,6 +23,7 @@ export class DraftHistoryModule implements OnInit {
   @Input() selectedTabName;
   @Input() isError: boolean;
   @Input() pageParams: any;
+  @Input() moduleFooterUrl: Array<any>;
   @Input() storedPartnerParam: string;
 
   modHeadData: Object;
@@ -30,8 +31,6 @@ export class DraftHistoryModule implements OnInit {
   footerData: Object;
 
   constructor() {}
-
-    ngOnInit() {} //ngOnInit
 
 
 
@@ -54,15 +53,11 @@ export class DraftHistoryModule implements OnInit {
 
 
     displayData() {
-        var filter = this.dropdownKey1 == '1' ? 'asc' : 'desc';
-        var pageRoute = this.profileData.profileType == 'team' ?
-                        [this.storedPartnerParam, this.pageParams.scope, 'draft-history', this.selectedTabName, this.pageParams.teamName, this.pageParams.teamID, filter] :
-                        [this.storedPartnerParam, this.pageParams.scope, 'draft-history', this.selectedTabName, this.profileData.profileType, filter];
         var title = '';
         this.footerData = {
             infoDesc: 'Want to see the full list?',
             text: 'VIEW THE FULL LIST',
-            url: pageRoute
+            url: this.moduleFooterUrl
         };
         if(this.profileData.profileType == 'league'){
             title = this.profileData['headerData'].leagueAbbreviatedName;
