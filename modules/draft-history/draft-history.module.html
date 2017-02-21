@@ -1,5 +1,17 @@
 <section class="module-container draft-history">
   <module-header [modHeadData]="modHeadData"></module-header>
-  <draft-history *ngIf="profileData" [profileData]="profileData" [type]="'module'"></draft-history>
+  <draft-history
+      *ngIf="profileData"
+      [profileData]="profileData"
+      [type]="type"
+      [carouselDataArray]="carouselDataArray"
+      [data]="data"
+      [sortOptions]="sortOptions"
+      [dropdownKey1]="dropdownKey1"
+      [selectedTabName]="selectedTabName"
+      [isError]="isError"
+      (tabSelectedListener)="selectedTab($event)"
+      (dropdownSelectedListener)="dropdownChanged($event)">
+  </draft-history>
   <module-footer [footerData]='footerData'></module-footer>
 </section>

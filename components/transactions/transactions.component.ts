@@ -56,7 +56,6 @@ export class TransactionsComponent{
     if ( this.newSelectionMade == true ) {
       this.updateCarousel();
     }
-
     if ( this.tabs && this.tabs.length > 0 ) {
       if ( !this.tabsLoaded  ) {
         this.tabsLoaded = {};
