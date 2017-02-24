@@ -2,7 +2,7 @@
   <section class="info-title row">
     <div class="info-title-share col-xs-12">
       <ul>
-          <div class='st_sharethis_large' (mouseover)="locateShareThis()" data-toggle="tooltip title="><i class='fa fa-share-alt'></i></div>
+          <!--<div class='st_sharethis_large' (mouseover)="locateShareThis()" data-toggle="tooltip title="><i class='fa fa-share-alt'></i></div>-->
           <template [ngIf]="socialMedia">
             <template ngFor let-item [ngForOf]="socialMedia">
               <a href="{{item.url}}" target="{{item.target}}"><li><i class="{{item.iconClass}}"></i></li></a>
