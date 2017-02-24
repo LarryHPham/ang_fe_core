@@ -1,8 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import { ModuleHeaderData } from '../../components/module-header/module-header.component';
 
-declare var stButtons: any;
-
 export interface dykModuleData{
   info: string;
 }
@@ -14,10 +12,6 @@ export interface dykModuleData{
 export class DYKModule implements OnChanges {
   @Input() profileName: string;
   @Input() dykData: Array<dykModuleData>;
-
-  public locateShareThis = function(){
-    stButtons.locateElements();
-  };
 
   public headerInfo: ModuleHeaderData = {
     moduleTitle: "Did You Know - [Profile Name]",

@@ -17,8 +17,6 @@ export interface socialMedia {
   iconClass: string;
 }
 
-declare var stButtons: any;
-
 @Component({
   selector: 'information-component',
   templateUrl: './app/fe-core/components/page-information/page-information.component.html',
@@ -27,8 +25,4 @@ declare var stButtons: any;
 export class InfoComponent{
   @Input() infoData: infoData;
   @Input() socialMedia: Array<socialMedia>;
-
-  public locateShareThis = function(){
-    stButtons.locateElements();
-  };
 }
