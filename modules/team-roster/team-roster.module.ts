@@ -7,11 +7,6 @@ export interface RosterModuleData<T> {
   moduleTitle: string;
   moduleIdentifier: string;
   /**
-    * Used for the link in the footer button
-    */
-  pageRouterLink: Array<any>;
-
-  /**
    * Sent to Roster component
    */
   tabs: Array<RosterTabData<T>>;
@@ -23,29 +18,43 @@ export interface RosterModuleData<T> {
 })
 
 export class TeamRosterModule implements OnChanges {
-  @Input() data: RosterModuleData<any>;
+    @Input() data: RosterModuleData<any>;
+    @Input() activeTab;
+    @Input() rosterModuleFooterUrl: Array<any>;
 
-  public headerInfo: ModuleHeaderData = {
-    moduleTitle: "Team Roster",
-    moduleIdentifier: "",
-    hasIcon: false,
-    iconClass: ""
-  };
+    @Output() tabSelectedListener = new EventEmitter();
 
-  public footerInfo: ModuleFooterData = {
-    infoDesc: "Want to see the full team roster?",
-    text: "VIEW FULL ROSTER",
-    url: ['Team-roster-page']
-  };
+    public headerInfo: ModuleHeaderData = {
+        moduleTitle: "Team Roster",
+        moduleIdentifier: "",
+        hasIcon: false,
+        iconClass: ""
+    }; //headerInfo
 
-  ngOnChanges() {
-    if ( !this.data ) {
-      this.headerInfo.moduleTitle = "Team Roster";
+
+
+    public footerInfo: ModuleFooterData = {
+        infoDesc: "Want to see the full team roster?",
+        text: "VIEW FULL ROSTER",
+        url: this.rosterModuleFooterUrl
+    }; //footerInfo
+
+
+
+    public rosterTabSelected(newTitle) {
+      this.tabSelectedListener.next(newTitle);
+    } //rosterTabSelected
+
+
+
+    ngOnChanges() {
+        if ( !this.data ) {
+          this.headerInfo.moduleTitle = "Team Roster";
+        }
+        else {
+          this.headerInfo.moduleTitle = this.data.moduleTitle;
+          this.headerInfo.moduleIdentifier = this.data.moduleIdentifier;
+          this.footerInfo.url = this.rosterModuleFooterUrl;
+        }
     }
-    else {
-      this.headerInfo.moduleTitle = this.data.moduleTitle;
-      this.headerInfo.moduleIdentifier = this.data.moduleIdentifier;
-      this.footerInfo.url = this.data.pageRouterLink;
-    }
-  }
 }
