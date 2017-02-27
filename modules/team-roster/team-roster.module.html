@@ -1,5 +1,9 @@
 <section *ngIf="data" class="module-container tr">
   <module-header [modHeadData]="headerInfo"></module-header>
-  <roster-component [tabs]="data.tabs"></roster-component>
+  <roster-component
+    [activeTab]="activeTab"
+    [tabs]="data.tabs"
+    (tabSelectedListener)="rosterTabSelected($event)">
+  </roster-component>
   <module-footer [footerData]="footerInfo"></module-footer>
 </section>
