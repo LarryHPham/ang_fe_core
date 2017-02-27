@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ModuleHeaderData } from '../../components/module-header/module-header.component';
 
-declare var stButtons: any;
 
 @Component({
     selector: 'news-module',
@@ -14,9 +13,6 @@ export class NewsModule implements OnInit, OnChanges {
     public newsLink: string;
     public displayData: Object;
     public title: string = "Articles";
-    public locateShareThis = function(){
-      stButtons.locateElements();
-    };
     @Input() newsDataArray: Array<Object>;
     @Input() profileName: string;
     public headerInfo: ModuleHeaderData = {

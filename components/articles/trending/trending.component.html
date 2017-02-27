@@ -8,7 +8,7 @@
         <span *ngIf="i == 0">
             <span class="featured-tag">FEATURED</span>
         </span>
-        <share-links-component [shareUrl]="data.url" [isMain]="false"></share-links-component>
+        <share-links-component [shareUrl]="data.rawUrl"></share-links-component>
         <div *ngIf="i == 0" class="featured-articles"><i class="fa fa-newspaper-o"></i><span>FEATURED ARTICLE</span>
         </div>
         <div class="trending-small-article">

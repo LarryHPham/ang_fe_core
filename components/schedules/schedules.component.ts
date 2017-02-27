@@ -1,4 +1,4 @@
-import {Component, Input, Output, OnInit, DoCheck, EventEmitter} from '@angular/core';
+import {Component, Input, Output, OnInit, DoCheck, OnChanges, EventEmitter} from '@angular/core';
 
 //interfaces
 import {SchedulesCarousel, SchedulesCarouselInput} from '../carousels/schedules-carousel/schedules-carousel.component';
@@ -107,10 +107,10 @@ export class SchedulesComponent implements OnInit{
     this.selectedKeyFilter.next(event);
   }
 
-  ngOnChanges(){
-    if(this.getSelectedTab() != null){
-      this.getSelectedTab()['tabData'].sections = this.data;
-    }
+  ngOnChanges(event) {
+      if ( this.getSelectedTab() != null ) {
+          this.getSelectedTab()['tabData'].sections = this.data;
+      }
   }
 
   updateCarousel(sortedRows?) {// each time a table sort or tab has been changed then update the carousel to fit the newly sorted array
@@ -137,9 +137,6 @@ export class SchedulesComponent implements OnInit{
 
 
   ngOnInit(){//on view load set default data
-    if(this.filter1 != null){
-      this.dropdownKey1 = this.filter1['data'][0].key;
-    }
     //TODO // this.windowWidth = window.innerWidth;
     this.windowWidth = 960;
     var selectedTab = this.tabs.filter(value => value.tabData.isActive == true)[0];
