@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import { Router} from '@angular/router';
-
+import { isBrowser } from 'angular2-universal';
 import { GlobalFunctions } from '../../../global/global-functions';
 import { GlobalSettings } from '../../../global/global-settings';
 import { VerticalGlobalFunctions } from '../../../global/vertical-global-functions';
@@ -185,8 +185,8 @@ export class ProfileHeaderModule implements OnChanges {
     imageClass: "image-40",
       mainImage: {
         imageClass: "",
-        imageUrl: GlobalSettings.getSiteLogoUrl(),
-        placeholderImageUrl: GlobalSettings.getSiteLogoUrl()
+        imageUrl: isBrowser ? GlobalSettings.getSiteLogoUrl() : null,
+        placeholderImageUrl: isBrowser ? GlobalSettings.getSiteLogoUrl() : null,
       }
   };
 
