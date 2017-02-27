@@ -159,6 +159,7 @@ export interface LeagueProfileHeaderData {
   aiDescriptionId: string;
   seasonId: string;
   lastUpdated: string;
+  seasonBase: string;
 }
 
 @Component({

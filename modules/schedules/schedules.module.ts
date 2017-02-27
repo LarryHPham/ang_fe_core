@@ -53,12 +53,13 @@ export class SchedulesModule{
       var url;
       var params = this.footerParams;
       var matches = this.data.tabs.filter(tab => tab.display == this.tabDisplay);
+      let activeTab = '';
       matches = matches.length > 0 ? matches[0].data : 'pregame';
       this.partnerIdParam = this.storedPartnerParam ? this.storedPartnerParam : '/';
       if(this.dropdownKey1 == null && this.filter1){
          this.dropdownKey1 = this.filter1['data'][1] != null ? this.filter1['data'][1].key : null;
        }
-      var year = this.dropdownKey1 == null ? 'all' : this.dropdownKey1;
+      var year = this.dropdownKey1 == null || params.tab == 'pregame' ? 'all' : this.dropdownKey1;
 
       //generate the route for the footer url
       if (params == undefined) {
