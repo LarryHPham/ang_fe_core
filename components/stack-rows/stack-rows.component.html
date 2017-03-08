@@ -5,7 +5,7 @@
         <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
       </div>
     </a>
-    <a *ngIf="stackRow.extUrl" class="stackSmall" href="{{stackRow.articleUrl}}">
+    <a *ngIf="stackRow.extUrl" class="stackSmall" href="{{stackRow.articleUrl}}" target="_blank">
       <div class="stackSmall-image">
         <rectangle-image [data]="stackRow.imageConfig"></rectangle-image>
       </div>
@@ -18,10 +18,11 @@
       <a *ngIf="!stackRow.extUrl" class="stackSmall-text-teaser masterHover" [routerLink]="stackRow.articleUrl">
         <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.title"></div>
       </a>
-      <a *ngIf="stackRow.extUrl" class="stackSmall-text-teaser masterHover" href="{{stackRow.articleUrl}}">
+      <a *ngIf="stackRow.extUrl" class="stackSmall-text-teaser masterHover" href="{{stackRow.articleUrl}}" target="_blank">
         <div class="stackSmall-text-subHeadline" [innerHTML]="stackRow.title"></div>
       </a>
     </div>
+
   </div>
-  <!-- <div class="stackSmall-breakLine"></div> -->
+    <!-- <div class="stackSmall-breakLine"></div> -->
 </section>
