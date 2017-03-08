@@ -6,6 +6,7 @@
 .videoStackBatch{
   display: block;
   .video-stack:nth-child(n+5){display: none}//fallback
+  .video-stack-info{overflow: hidden}
 }//videoStackBatch Ends
 @media @mobile{
   .videoStackTop{
@@ -25,9 +26,7 @@
       margin-bottom: 15px;
       &-thumbnail{margin-bottom: 20px}
     }
-    .video-title-top{
-      bottom: 20px;
-    }
+    .video-title-top{bottom: 20px}
     .video-stack-info{padding-left: 10px; margin-top: 5px}
   }//videoStackBatch Ends
 }//@media @mobile Ends
