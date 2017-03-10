@@ -29,8 +29,6 @@ export class MVPModule implements OnChanges {
   footerData: ModuleFooterData;
 
   ngOnChanges(event) {
-      console.log('---ngOnChanges---');
-      console.log('event - ',event);
       this.displayData();
   }
 
