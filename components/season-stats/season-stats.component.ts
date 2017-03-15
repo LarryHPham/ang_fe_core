@@ -27,18 +27,22 @@ export interface TableComponentData<T> {
 })
 
 export class SeasonStatsComponent implements DoCheck {
-  public selectedIndex;
+    @Input() tabs: Array<TableTabData<any>>;
 
-  public carouselData: Array<SliderCarouselInput> = [];
+    @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
-  @Input() tabs: Array<TableTabData<any>>;
-  @Output("tabSelected") tabSelectedListener = new EventEmitter();
+    public selectedIndex;
+    public carouselData: Array<SliderCarouselInput> = [];
+    private selectedTabTitle: string;
+    private tabsLoaded: {[index:number]:string};
+    private noDataMessage = "Sorry, there is no data available.";
 
-  private selectedTabTitle: string;
-  private tabsLoaded: {[index:number]:string};
-  private noDataMessage = "Sorry, there is no data available.";
+    constructor() {}
 
-  constructor() {}
+
+    ngOnChanges() {} //ngOnChanges
+
+
 
   ngDoCheck() {
     if ( this.tabs && this.tabs.length > 0 ) {
@@ -63,15 +67,19 @@ export class SeasonStatsComponent implements DoCheck {
     }
   }
 
-  getSelectedTab(): TableTabData<any> {
-    var matchingTabs = this.tabs.filter(value => value.title === this.selectedTabTitle);
-    if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
-      return matchingTabs[0];
-    }
-    else {
-      return null;
-    }
-  }
+
+
+    getSelectedTab(): TableTabData<any> {
+        var matchingTabs = this.tabs.filter(value => value.title === this.selectedTabTitle);
+        if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
+          return matchingTabs[0];
+        }
+        else {
+          return null;
+        }
+    } //getSelectedTab
+
+
 
   setSelectedCarouselIndex(tab: TableTabData<any>, index: number) {
     let offset = 0;
@@ -106,7 +114,6 @@ export class SeasonStatsComponent implements DoCheck {
 
   updateCarousel(sortedRows?) {
     var selectedTab = this.getSelectedTab();
-
     if ( selectedTab === undefined || selectedTab === null ) {
       return;
     }
@@ -115,7 +122,7 @@ export class SeasonStatsComponent implements DoCheck {
     let index = 0;
     let selectedIndex = -1;
 
-    if ( selectedTab.sections ) {
+    if ( selectedTab.sections && selectedTab.sections.length ) {
       selectedTab.sections.forEach(section => {
         section.tableData.rows
           .map((value) => {
@@ -130,6 +137,9 @@ export class SeasonStatsComponent implements DoCheck {
             carouselData.push(value);
           });
       });
+    }
+    else {
+
     }
 
     this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;

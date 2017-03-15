@@ -12,7 +12,7 @@
             <custom-table [model]="section.tableData" [isCompactStyle]="'true'" (sortChanged)="updateCarousel($event)"></custom-table>
         </div>
       </div>
-      <div *ngIf="(!tab.sections && tab.isLoaded) || tab.title == 'Career Stats'" class="season-stats-no-data">
+      <div *ngIf="(!tab.sections || tab.sections.length < 1 && tab.isLoaded)" class="season-stats-no-data">
           <no-data-box [data]="noDataMessage" [icon]="'fa fa-remove'"></no-data-box>
       </div>
     </tab>
