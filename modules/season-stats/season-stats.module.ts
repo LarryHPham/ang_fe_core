@@ -36,10 +36,12 @@ export interface SeasonStatsTabData {
 })
 
 export class SeasonStatsModule implements OnChanges {
+    @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
   @Input() data: SeasonStatsModuleData;
   @Input() pageParams;
   @Input() seasonBase;
+  @Input() seasonStatsModuleFooterUrl;
 
   public noDataMessage = "Sorry, there are no values for this season.";
   public moduleHeaderData: ModuleHeaderData;
@@ -67,7 +69,7 @@ export class SeasonStatsModule implements OnChanges {
         this.footerData  = {
             infoDesc: 'Want to see full statistics for this player?',
             text: 'VIEW FULL STATISTICS',
-            url: data.pageRouterLink
+            url: !this.seasonStatsModuleFooterUrl ? data.pageRouterLink : this.seasonStatsModuleFooterUrl
         };
         this.profileName = data.profileName;
         if ( this.data.tabs && this.data.tabs.length > 0 ) {
@@ -107,5 +109,6 @@ export class SeasonStatsModule implements OnChanges {
             this.carouselDataArray = [SeasonStatsService.getCarouselData(this.data.playerInfo, this.data.stats, tab.longSeasonName, tabTitle)];
             this.formatTitle(tab);
         }
+        this.tabSelectedListener.next(tabTitle);
     } //tabSelected
 }

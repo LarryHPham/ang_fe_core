@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, DoCheck, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 //interfaces
 import { SliderCarouselInput } from '../carousels/slider-carousel/slider-carousel.component';
@@ -8,11 +8,12 @@ import { TableModel } from '../custom-table/table-data.component';
 
 export interface TableTabData<T> {
   title: string;
+  year: string;
   tabName: string;
   isActive: boolean;
   isLoaded: boolean;
   hasError: boolean;
-  sections: Array<TableComponentData<T>>;
+  sections: any;
   convertToCarouselItem(item:T, index:number, scope?):SliderCarouselInput
 }
 
@@ -26,53 +27,40 @@ export interface TableComponentData<T> {
   templateUrl: "./season-stats.component.html"
 })
 
-export class SeasonStatsComponent implements DoCheck {
+export class SeasonStatsComponent {
     @Input() tabs: Array<TableTabData<any>>;
+    @Input() selectedTabTitle;
+    @Input() carData;
 
     @Output("tabSelected") tabSelectedListener = new EventEmitter();
 
     public selectedIndex;
     public carouselData: Array<SliderCarouselInput> = [];
-    private selectedTabTitle: string;
     private tabsLoaded: {[index:number]:string};
     private noDataMessage = "Sorry, there is no data available.";
 
     constructor() {}
 
 
-    ngOnChanges() {} //ngOnChanges
+    ngOnChanges(event) {
+        this.tabSelected(this.selectedTabTitle);
+    } //ngOnChanges
 
 
 
-  ngDoCheck() {
-    if ( this.tabs && this.tabs.length > 0 ) {
-      if ( !this.tabsLoaded  ) {
-        this.tabsLoaded = {};
-        var selectedTitle = this.tabs[0].title;
-        this.tabs.forEach(tab => {
-          this.setSelectedCarouselIndex(tab, 0);
-          if ( tab.isActive ) {
-            selectedTitle = tab.title;
-          }
-        });
-        this.tabSelected(selectedTitle);
-      }
-      else {
-        let selectedTab = this.getSelectedTab();
-        if ( selectedTab && selectedTab.sections && selectedTab.sections.length > 0 && !this.tabsLoaded[selectedTab.title] ) {
-          this.updateCarousel();
-          this.tabsLoaded[selectedTab.title] = "1";
-        }
-      }
-    }
-  }
 
+    getSelectedTab(tabTitle): TableTabData<any> {
+        let selectedSeason;
+        if ( tabTitle == 'Current Season' ) { selectedSeason = this.tabs[0].year }
+        else if ( tabTitle == 'Career Stats' ) { selectedSeason = 'career' }
+        else { selectedSeason = tabTitle }
 
-
-    getSelectedTab(): TableTabData<any> {
-        var matchingTabs = this.tabs.filter(value => value.title === this.selectedTabTitle);
+        var matchingTabs = this.tabs.filter(value => value.year === selectedSeason);
         if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
-          return matchingTabs[0];
+            if ( matchingTabs[0] ) {
+                this.updateCarousel(matchingTabs[0]);
+                return matchingTabs[0];
+            }
         }
         else {
           return null;
@@ -81,68 +69,43 @@ export class SeasonStatsComponent implements DoCheck {
 
 
 
-  setSelectedCarouselIndex(tab: TableTabData<any>, index: number) {
-    let offset = 0;
-    if ( !tab.sections ) return;
+    tabSelected(tabTitle) {
+        this.selectedTabTitle = tabTitle;
+        let selectedTab = this.getSelectedTab(tabTitle);
+        this.tabSelectedListener.next(selectedTab);
+    } //tabSelected
 
-    tab.sections.forEach((section, sectionIndex) => {
-      if ( index >= offset && index < section.tableData.rows.length + offset ) {
-        section.tableData.setRowSelected(index-offset);
-      }
-      else {
-        section.tableData.setRowSelected(-1);
-      }
-      offset += section.tableData.rows.length;
-    });
-  }
 
-  tabSelected(newTitle) {
-    this.selectedTabTitle = newTitle;
-    this.noDataMessage = "Sorry, there is no data available";
-    this.tabSelectedListener.next(this.getSelectedTab());
-    this.updateCarousel();
-  }
 
-  indexNum($event) {
-    let selectedIndex = Number($event);
-    let matchingTabs = this.tabs.filter(value => value.title === this.selectedTabTitle);
-    if ( matchingTabs.length > 0 && matchingTabs[0] !== undefined ) {
-      let selectedTab = matchingTabs[0];
-      this.setSelectedCarouselIndex(selectedTab, selectedIndex);
-    }
-  }
+    updateCarousel(selectedTab) {
+        if ( selectedTab === undefined || selectedTab === null ) {
+            return;
+        }
 
-  updateCarousel(sortedRows?) {
-    var selectedTab = this.getSelectedTab();
-    if ( selectedTab === undefined || selectedTab === null ) {
-      return;
-    }
+        let carouselData: Array<SliderCarouselInput> = [];
+        let index = 0;
+        let selectedIndex = -1;
 
-    let carouselData: Array<SliderCarouselInput> = [];
-    let index = 0;
-    let selectedIndex = -1;
+        if ( selectedTab.sections && selectedTab.sections.length ) {
+            selectedTab.sections.forEach(section => {
+                section.tableData.rows
+                .map((value) => {
+                    let item = selectedTab.convertToCarouselItem(value, index, 'nfl');
+                    if ( section.tableData.isRowSelected(value, index) ) {
+                        selectedIndex = index;
+                    }
+                    index++;
+                    return item;
+                })
+                .forEach(value => {
+                    carouselData.push(value);
+                });
+            });
+        }
+        else {}
 
-    if ( selectedTab.sections && selectedTab.sections.length ) {
-      selectedTab.sections.forEach(section => {
-        section.tableData.rows
-          .map((value) => {
-            let item = selectedTab.convertToCarouselItem(value, index, 'nfl');
-            if ( section.tableData.isRowSelected(value, index) ) {
-              selectedIndex = index;
-            }
-            index++;
-            return item;
-          })
-          .forEach(value => {
-            carouselData.push(value);
-          });
-      });
-    }
-    else {
-
-    }
-
-    this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
-    this.carouselData = carouselData;
-  }
+        this.selectedIndex = selectedIndex < 0 ? 0 : selectedIndex;
+        this.carouselData = carouselData;
+        return;
+    } // updateCarousel
 }
