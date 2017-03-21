@@ -49,13 +49,11 @@ export class ListOfListsModule {
       hasIcon: false,
       iconClass: "",
     }
-  //  var type = this.listOfListsData[0]['target'];
-  //  var routeName = type == "league" ? 'list-of-lists' : 'list-of-lists';
+
     var params = {
       limit:10,
       id: ''
     };
-    // localhost:3000/NFL/list-of-lists/:target/:id/:limit/:pagenum
 
     var id = this.teamId;
     if (this.profileType == 'league') {
@@ -65,16 +63,13 @@ export class ListOfListsModule {
       id = this.playerId;
     }
 
-    this.partnerIdParam = this.storedPartnerParam ? '/'+this.storedPartnerParam : '/';
-
     this.footerData['url'] = [
-      this.partnerIdParam,
+      this.storedPartnerParam,
       this.scope,
       'list-of-lists',
       this.profileType,
-      id,
-      params.limit,
-    ];
+      id
+    ];//
   } //ngOnChnages
 
 }
