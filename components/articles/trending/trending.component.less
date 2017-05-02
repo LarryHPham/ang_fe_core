@@ -19,8 +19,8 @@
     top: -2px;
     bottom: 0;
     line-height: 1.57em;
-    text-overflow: ellipsis;
-    @media @mobile{position: absolute; height: 60px; overflow: hidden;line-height: 1.25em;display:-webkit-box;.line-clamp;.line-clamp-3;-webkit-box-orient:vertical;}
+    text-overflow: ellipsis; 
+    @media @mobile{position: absolute; height: 60px; overflow: hidden;line-height: 1.25em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
     @media @tablet{max-height: ~'calc(1em * 6)'; overflow: hidden;}
     @media (min-width: 830px){max-height: ~'calc(1.25em * 6)'}
     @media @desktop-m{max-height: ~'calc(1.48em * 9)'}
