@@ -59,7 +59,7 @@ export class CalendarCarousel implements OnInit {
     //any changes made to the input from outside will cause the fuction to rerun
     if(event.chosenParam.previousValue.scope != null && event.chosenParam.currentValue.scope != event.chosenParam.previousValue.scope){// if route has changed
       var currentUnixDate = new Date().getTime();
-      this.chosenParam.date = moment.tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD');
+      this.chosenParam.date = moment().tz( currentUnixDate , 'America/New_York' ).format('YYYY-MM-DD');
       this.weeklyDates = null;
       if(this.chosenParam != null){
         this.storeSubscriptions.push(this.callWeeklyApi(this.chosenParam)
