@@ -66,7 +66,6 @@ export class ArticlesModule implements OnInit {
 
   getHeaderData(header) {
     if (!this.isLeague && ArticlesModule.checkData(header)) {
-      moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
       this.timeStamp = GlobalFunctions.sntGlobalDateFormatting(header.timestamp, "defaultDate");
       var dateString = GlobalFunctions.sntGlobalDateFormatting(header.timestamp, "shortDate");
       var isToday = moment(dateString).isSame(moment().tz('America/New_York'), 'day');
