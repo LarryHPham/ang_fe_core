@@ -106,6 +106,6 @@ export class CustomTable implements OnChanges {
       }
       return 0;
     });
-    this.sortChanged.next(this.model.rows);
+    this.sortChanged.emit(this.model.rows);
   }
 }

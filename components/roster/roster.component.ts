@@ -51,7 +51,7 @@ export class RosterComponent {
 
 
     tabSelected(newTitle) {
-        this.tabSelectedListener.next(newTitle);
+        this.tabSelectedListener.emit(newTitle);
     } //tabSelected
 
 

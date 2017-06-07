@@ -45,10 +45,10 @@ export class TransactionsModule {
   } //ngOnChanges()
 
   tabSelected(tab) {
-    this.tabSwitched.next(tab);
+    this.tabSwitched.emit(tab);
   }
 
   transactionFilterSelected(event) {
-    this.transactionKeyFilter.next(event);
+    this.transactionKeyFilter.emit(event);
   }
 }

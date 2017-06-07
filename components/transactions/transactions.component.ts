@@ -108,10 +108,10 @@ export class TransactionsComponent{
 
     if ( selectedTab ) {
         selectedTab.isLoaded = true;
-        this.tabSelectedListener.next(selectedTab);
+        this.tabSelectedListener.emit(selectedTab);
     }
     else {
-        this.tabSelectedListener.next(selectedTab);
+        this.tabSelectedListener.emit(selectedTab);
         this.updateCarousel();
     }
 
@@ -119,7 +119,7 @@ export class TransactionsComponent{
   }
 
   transactionDropdownChange(event) {
-    this.transactionKeyFilter.next(event);
+    this.transactionKeyFilter.emit(event);
     this.selectedFilter = event;
     this.selectedFilterSeason = (Number(event)).toString() + "/" + ((Number(event))+1).toString();
 

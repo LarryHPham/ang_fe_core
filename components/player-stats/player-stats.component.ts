@@ -82,7 +82,7 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
 
     if (matchingTabs.length > 0 && matchingTabs[0] !== undefined) {
       let selectedTab = matchingTabs[0];
-      this.tabSelectedListener.next([selectedTab, $event]);
+      this.tabSelectedListener.emit([selectedTab, $event]);
       this.updateCarousel();
     }
   }
@@ -93,7 +93,7 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
     let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
     if (matchingTabs.length > 0 && matchingTabs[0] !== undefined) {
       let selectedTab = matchingTabs[0];
-      this.tabSelectedListener.next([selectedTab, $event]);
+      this.tabSelectedListener.emit([selectedTab, $event]);
       this.updateCarousel();
     }
   }
@@ -112,7 +112,7 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
     this.selectedTabTitle = newTitle;
     this.isSpecialTeam = newTitle == "Special Teams" ? true : false;
     this.noDataMessage = "Sorry, there are no " + newTitle + " stats available.";
-    this.tabSelectedListener.next([this.getSelectedTab(), this.selectedSubTab]);
+    this.tabSelectedListener.emit([this.getSelectedTab(), this.selectedSubTab]);
     this.updateCarousel();
   }
 

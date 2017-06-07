@@ -14,9 +14,9 @@ export class CircleButton{
   public scrollLeft = new EventEmitter();
 
   left(){
-      this.scrollLeft.next(true);
+      this.scrollLeft.emit(true);
   }
   right(){
-      this.scrollRight.next(true);
+      this.scrollRight.emit(true);
   }
 }

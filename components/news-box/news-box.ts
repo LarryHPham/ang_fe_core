@@ -31,7 +31,7 @@ export class NewsBox{
   }
 
   routeNavigate($event) {
-      this.changeScope.next($event);
+      this.changeScope.emit($event);
   }
 
   articleNavigate(event){

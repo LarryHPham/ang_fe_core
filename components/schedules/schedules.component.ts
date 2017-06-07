@@ -67,7 +67,7 @@ export class SchedulesComponent implements OnInit{
 
 
   filterSwitch(event){
-    this.selectedKeyFilter.next(event);
+    this.selectedKeyFilter.emit(event);
   }
 
 

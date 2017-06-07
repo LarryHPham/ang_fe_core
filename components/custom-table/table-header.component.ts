@@ -62,7 +62,7 @@ export class TableHeader implements OnInit {
           break;
       }
       this.setSortIcon();
-      this.sortSwitched.next([this.headerData, this.headerIndex]);
+      this.sortSwitched.emit([this.headerData, this.headerIndex]);
     }
   }
 }

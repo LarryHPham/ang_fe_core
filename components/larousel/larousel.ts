@@ -319,7 +319,7 @@ export class Larousel implements OnChanges {
     this.currentScroll = Math.round(pos) * this.itemSize;
     this.currentItem = this.originalData[currentItem];
     this.displayedItem.emit(this.currentItem);
-    this.carouselCount.next(Math.round(pos));
+    this.carouselCount.emit(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 
     //this will determine which direction the image is going to transition (from left function || right function)

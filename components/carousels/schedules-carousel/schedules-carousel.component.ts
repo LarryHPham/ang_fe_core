@@ -40,7 +40,7 @@ export class SchedulesCarousel implements OnInit{
     //sets the index of the dataPoint of its current position in the array
     // the '?' meaning if there is data to even receive
     if(this.dataPoint && typeof this.dataPoint['index'] != 'undefined'){
-      this.indexNum.next(this.dataPoint['index']);
+      this.indexNum.emit(this.dataPoint['index']);
     }
   }
 
@@ -50,7 +50,7 @@ export class SchedulesCarousel implements OnInit{
       this.dataPoint = this.carouselData[0];
       //if there is rank then initially set it when component is initially in view
       if(this.dataPoint && typeof this.dataPoint['index'] != 'undefined'){
-        this.indexNum.next(this.dataPoint['index']);
+        this.indexNum.emit(this.dataPoint['index']);
       }
     }
   }
