@@ -80,7 +80,7 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[0].lastElementChild.firstElementChild,'opacity','0.2');
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.firstElementChild,'opacity','0.2');
         }
-        this.emitPageNum.emit(this.pageNum-1);
+        this.emitPageNum.next(this.pageNum-1);
         this.startCount=(this.pageNum-1)*10+1;
         this.EndCount=this.startCount+9;
 
@@ -108,7 +108,7 @@ export class SearchArticleResults{
             this.render.setElementStyle(e.target.offsetParent.lastElementChild.children[0].children[2].lastElementChild.lastElementChild,'cursor','default');
 
         }
-        this.emitPageNum.emit(this.pageNum-1);
+        this.emitPageNum.next(this.pageNum-1);
         this.startCount=(this.pageNum-1)*10+1;
         this.EndCount=this.startCount+9;
     }

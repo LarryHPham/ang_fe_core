@@ -105,8 +105,8 @@ export class CalendarCarousel implements OnInit {
     .subscribe( data => {
       this.validateDate(this.chosenParam.date, this.weeklyDates);
     }))
-    this.checkForLastGame.emit(moment(event).tz('America/New_York').format('YYYY-MM-DD'));
-    this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
+    this.checkForLastGame.next(moment(event).tz('America/New_York').format('YYYY-MM-DD'));
+    this.dateEmit.next(this.chosenParam);//sends through output so date can be used outside of component
   }
 
   left(){
@@ -159,10 +159,10 @@ export class CalendarCarousel implements OnInit {
           this.leftDay();
         }
       }
-      this.checkForLastGame.emit(curParams.date);
+      this.checkForLastGame.next(curParams.date);
     }
     else {
-      this.checkForLastGame.emit(null);
+      this.checkForLastGame.next(null);
     }
   } //leftDay
 
@@ -202,10 +202,10 @@ export class CalendarCarousel implements OnInit {
         }
       }
 
-      this.checkForLastGame.emit(curParams.date);
+      this.checkForLastGame.next(curParams.date);
     }
     else {
-      this.checkForLastGame.emit(null); //if no dates are found send null
+      this.checkForLastGame.next(null); //if no dates are found send null
     }
   } //rightDay
 
@@ -221,7 +221,7 @@ export class CalendarCarousel implements OnInit {
       })
       event.active = true;
       this.chosenParam.date = event.fullDate;
-      this.dateEmit.emit(this.chosenParam);//sends through output so date can be used outside of component
+      this.dateEmit.next(this.chosenParam);//sends through output so date can be used outside of component
   }
 
   //makes weekly api call and sets reactive variables
@@ -346,7 +346,7 @@ export class CalendarCarousel implements OnInit {
                 let params = this.chosenParam;
 
                 this.currDateView = {scope: params.scope, teamId: params.teamId, date: params.date};
-                // this.dateEmit.emit({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
+                // this.dateEmit.next({scope: params.scope, teamId: params.teamId, date: params.date});//esmit variable that has been validated
                 this.setActive(this.weeklyDates[activeIndex]);
                 return;
               }

@@ -149,7 +149,7 @@ export class Larousel implements OnChanges {
     this.originalData = ssItems;
     this.currentScroll = this.itemSize * this.clones;
     this.currentItem = this.originalData[this.clones];
-    this.displayedItem.emit(this.currentItem);
+    this.displayedItem.next(this.currentItem);
     //delete below when done testing
     // this.carData.length = 2;
     //if loop is not given default to infinite looping
@@ -197,7 +197,7 @@ export class Larousel implements OnChanges {
     this.currentScroll = this.itemSize * this.clones;
     this.rightText = this.currentScroll+'px';
     this.currentItem = this.originalData[this.clones];
-    this.displayedItem.emit(this.currentItem);
+    this.displayedItem.next(this.currentItem);
     //once scrolls are set declare the min and max scrolls if loops is set false
     if(!this.loop){
       this.minScroll = this.currentScroll < this.itemSize * this.clones;
@@ -240,7 +240,7 @@ export class Larousel implements OnChanges {
       this.displayedItems.push(originalData[item]);
       this.endIndex = originalData[item].id;//set ending index to last item of total items shown
     }
-    this.displayedData.emit(this.displayedItems);
+    this.displayedData.next(this.displayedItems);
   }
 
   left(event) {
@@ -318,7 +318,7 @@ export class Larousel implements OnChanges {
     //if pos (position) is between then round to nearest  whole number and move carousel
     this.currentScroll = Math.round(pos) * this.itemSize;
     this.currentItem = this.originalData[currentItem];
-    this.displayedItem.emit(this.currentItem);
+    this.displayedItem.next(this.currentItem);
     this.carouselCount.next(Math.round(pos));
     this.rightText = this.currentScroll+'px';
 

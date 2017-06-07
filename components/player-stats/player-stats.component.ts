@@ -77,7 +77,7 @@ export class PlayerStatsComponent implements DoCheck, OnChanges, OnInit {
     if ($event != this.selectedSubTab) {
       this.selectedSubTab = $event;
     }
-    //this.tabSelectedListener.emit(this.selectedSubTab);
+    //this.tabSelectedListener.next(this.selectedSubTab);
     let matchingTabs = this.tabs.filter(value => value.tabTitle === this.selectedTabTitle);
 
     if (matchingTabs.length > 0 && matchingTabs[0] !== undefined) {

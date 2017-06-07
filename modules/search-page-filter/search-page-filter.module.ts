@@ -16,9 +16,9 @@ export class SearchPageFilter{
     }
 
     keywordClick(e){
-        this.emitFilterOption.emit(e);
+        this.emitFilterOption.next(e);
     }
     sortingClick(e){
-        this.emitSortOption.emit(e);
+        this.emitSortOption.next(e);
     }
 }

@@ -33,14 +33,14 @@ export class SearchBoxModule {
   constructor(private activeRoute: ActivatedRoute, private router: Router, private render: Renderer) { }
 
   onKey(e: any) {
-    this.userInput.emit(e);
+    this.userInput.next(e);
   }
 
 
   selectedSport(e) {
     e = e.toLowerCase();
     this.scope = e;
-    this.scopeEmit.emit(e);
+    this.scopeEmit.next(e);
     //this.router.navigate(['/deep-dive',this.category, e]);
   }
 }

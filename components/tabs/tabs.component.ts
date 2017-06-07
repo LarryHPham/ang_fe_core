@@ -35,6 +35,6 @@ export class Tabs implements AfterContentInit {
     this.tabs.toArray().forEach(tab => tab.active = false);
     // activate the tab the user has clicked on.
     tab.active = true;
-    this.tabSelected.emit(tab.title);
+    this.tabSelected.next(tab.title);
   }
 }
