@@ -29,7 +29,7 @@ export class FAQModule implements OnChanges {
     faqData.active = !faqData.active;
     this.faqData.forEach(faqData => faqData.active = false);
     faqData.active = true;
-    this.faqSelected.emit(faqData.question);
+    this.faqSelected.next(faqData.question);
   }
 
   ngOnChanges() {

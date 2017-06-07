@@ -35,13 +35,13 @@ export class MVPModule implements OnChanges {
 
 
   tabSelected(tab) {
-      this.tabSelectedListener.emit(tab);
+      this.tabSelectedListener.next(tab);
   }
 
 
 
   dropdownChanged($event) {
-    this.dropdownPositionSelection.emit($event);
+    this.dropdownPositionSelection.next($event);
   }
 
 

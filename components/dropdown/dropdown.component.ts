@@ -166,7 +166,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
       });
       this.selectedIndex = tempIndex;
     }
-    this.dropdownChangedListener.emit($item.key); //item.key must always be emitted, item.value is for DISPLAY ONLY!
+    this.dropdownChangedListener.next($item.key); //item.key must always be emitted, item.value is for DISPLAY ONLY!
       this.prefixString= findPrefix(this.selectedItem.value);
       //console.log(this._elementRef.nativeElement.querySelector('div').lastElementChild.lastElementChild.querySelector('p').find('active'), "border");
       //this._renderer.setElementStyle(this._elementRef.nativeElement.querySelector('div'))
@@ -235,7 +235,7 @@ export class DropdownComponent implements OnDestroy, OnChanges, AfterViewInit {
               var $item = this.list[this.selectedIndex];
               this.selectedItem = $item;
               this.selectedKey = $item.key;
-              this.dropdownChangedListener.emit($item.key);
+              this.dropdownChangedListener.next($item.key);
             }
             this.dropdown.toggleDropdown(false, this.dropdownHiddenIcon, this.dropdownVisibleIcon);
           }

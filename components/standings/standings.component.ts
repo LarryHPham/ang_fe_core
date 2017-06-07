@@ -175,7 +175,7 @@ export class StandingsComponent {
     if ( newTab ) {
       newTab.setSelectedKey(this.selectedKey);
     }
-    this.tabSelectedListener.emit([newTab, this.selectedKey]);
+    this.tabSelectedListener.next([newTab, this.selectedKey]);
     if ( newTab.isLoaded ) {
       this.updateCarousel();
     }
@@ -231,7 +231,7 @@ export class StandingsComponent {
     }
     var params = {conference: event, division: undefined, season: priorTab.season};
     if (newTab.title != "Conference Standings") {
-      this.filterSelectedListener.emit([newTab, this.selectedKey, params]);
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
     }
 
   }
@@ -246,7 +246,7 @@ export class StandingsComponent {
     }
     var params = {conference: priorTab.conference, division: event, season: priorTab.season};
     if (newTab.title != "Conference Standings") {
-      this.filterSelectedListener.emit([newTab, this.selectedKey, params]);
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
     }
 
 
@@ -262,7 +262,7 @@ export class StandingsComponent {
     }
     var params = {conference: priorTab.conference, division: priorTab.division, season: event};
     if (newTab.title != "Conference Standings" || newTab.title != "Division Standings") {
-      this.filterSelectedListener.emit([newTab, this.selectedKey, params]);
+      this.filterSelectedListener.next([newTab, this.selectedKey, params]);
     }
 
   }

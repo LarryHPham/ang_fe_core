@@ -57,10 +57,10 @@ export class StandingsModule implements OnChanges {
   }
 
   tabSelected(tabData) {
-    this.tabSelectedListener.emit(tabData);
+    this.tabSelectedListener.next(tabData);
   }
 
   private standingsFilterSelected(tabData: Array<any>) {
-    this.filterSelectedListener.emit(tabData);
+    this.filterSelectedListener.next(tabData);
   }
 }

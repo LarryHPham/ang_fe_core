@@ -42,7 +42,7 @@ export class TeamRosterModule implements OnChanges {
 
 
     public rosterTabSelected(newTitle) {
-      this.tabSelectedListener.emit(newTitle);
+      this.tabSelectedListener.next(newTitle);
     } //rosterTabSelected
 
 

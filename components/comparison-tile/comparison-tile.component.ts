@@ -39,14 +39,14 @@ export class ComparisonTile {
     @Output() dropdownSwitched = new EventEmitter();
 
     dropdownOneSwitched($event) {
-        this.dropdownSwitched.emit({
+        this.dropdownSwitched.next({
             dropdownIndex: 0,
             key: $event
         });
     }
 
     dropdownTwoSwitched($event) {
-        this.dropdownSwitched.emit({
+        this.dropdownSwitched.next({
             dropdownIndex: 1,
             key: $event
         });

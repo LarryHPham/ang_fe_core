@@ -85,7 +85,7 @@ export class MVPListComponent implements OnInit {
     //each time a tab is selected the carousel needs to change accordingly to the correct list being shown
     tabSelected(tabTitle){
         var selectedTab = this.getSelectedTab(tabTitle);
-        this.tabSelectedListener.emit({
+        this.tabSelectedListener.next({
             tabDataKey: selectedTab.tabDataKey,
             position:this.position
         });
@@ -96,7 +96,7 @@ export class MVPListComponent implements OnInit {
     dropdownChanged($event) {
         this.dropdownSelectedKey = $event;
         var selectedTab = this.getSelectedTab(this.selectedTabTitle);
-        this.dropdownPositionSelection.emit({
+        this.dropdownPositionSelection.next({
             tab: selectedTab.tabDataKey,
             position: $event //position 'key' value
         });

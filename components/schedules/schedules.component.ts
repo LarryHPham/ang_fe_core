@@ -61,13 +61,13 @@ export class SchedulesComponent implements OnInit{
 
   tabSelected(event){
     this.tabTitle = event;
-    this.tabSelectedListener.emit(event);
+    this.tabSelectedListener.next(event);
   }
 
 
 
   filterSwitch(event){
-    this.selectedKeyFilter.emit(event);
+    this.selectedKeyFilter.next(event);
   }
 
 

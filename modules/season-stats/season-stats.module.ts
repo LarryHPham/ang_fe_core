@@ -109,6 +109,6 @@ export class SeasonStatsModule implements OnChanges {
             this.carouselDataArray = [SeasonStatsService.getCarouselData(this.data.playerInfo, this.data.stats, tab.longSeasonName, tabTitle)];
             this.formatTitle(tab);
         }
-        this.tabSelectedListener.emit(tabTitle);
+        this.tabSelectedListener.next(tabTitle);
     } //tabSelected
 }

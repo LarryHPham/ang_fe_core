@@ -73,7 +73,7 @@ export class ContactUsComponent{
         return false;
       }
       //Pass form data to parent component
-      this.contactusOutput.emit(data);
+      this.contactusOutput.next(data);
       alert('Form has been submitted check email:\n '+ data.email +'\n For your ticket');
 
       // reset the  form by removing it and re-adding the form to a new pristine state

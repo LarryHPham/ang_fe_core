@@ -57,7 +57,7 @@ export class Carousel implements OnInit, OnChanges {
   //this is where the angular2 decides what is the main image
   changeMain(num){
     if ( num < this.carouselData.length ) {
-      this.carouselDataPoint.emit(this.carouselData[num]);
+      this.carouselDataPoint.next(this.carouselData[num]);
     }
   }
 

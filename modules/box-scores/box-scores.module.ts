@@ -153,7 +153,7 @@ export class BoxScoresModule implements OnInit {
   }
 
   dateTransfer(event){
-    this.dateEmit.emit(event);
+    this.dateEmit.next(event);
     this.currentPage = 1;
     this.leftDisabled = "disabled";
     this.rightDisabled = "";

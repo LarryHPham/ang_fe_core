@@ -72,7 +72,7 @@ export class SeasonStatsComponent {
     tabSelected(tabTitle) {
         this.selectedTabTitle = tabTitle;
         let selectedTab = this.getSelectedTab(tabTitle);
-        this.tabSelectedListener.emit(selectedTab);
+        this.tabSelectedListener.next(selectedTab);
     } //tabSelected
 
 

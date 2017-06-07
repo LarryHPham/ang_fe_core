@@ -496,7 +496,7 @@ export class PaginationFooter implements OnChanges{
     indexClick(event){
       var newIndex = Number(event.target.innerHTML);
       this.paginationParameters.index = newIndex;
-      this.newIndex.emit(newIndex);
+      this.newIndex.next(newIndex);
       this.buildModuleButtons();
       this.buildModuleButtonsMobile();
     }
@@ -514,7 +514,7 @@ export class PaginationFooter implements OnChanges{
           }
         }
         //Send new index to output event emitter
-        this.newIndex.emit(newIndex);
+        this.newIndex.next(newIndex);
 
         this.paginationParameters.index = newIndex;
         this.buildModuleButtons();
@@ -534,7 +534,7 @@ export class PaginationFooter implements OnChanges{
             }
         }
         //Send new index to output event emitter
-        this.newIndex.emit(newIndex);
+        this.newIndex.next(newIndex);
 
         this.paginationParameters.index = newIndex;
         this.buildModuleButtons();

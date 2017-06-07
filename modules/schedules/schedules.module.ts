@@ -59,12 +59,12 @@ export class SchedulesModule{
 
 
     filterSelected(event){
-      this.selectedKeyFilter.emit(event);
+      this.selectedKeyFilter.next(event);
     } //filterSelected
 
 
 
     tabSelected(tab) {
-        this.tabSelectedListener.emit(tab);
+        this.tabSelectedListener.next(tab);
     } //tabSelected
 }

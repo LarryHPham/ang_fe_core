@@ -36,11 +36,11 @@ export class SortDropdown implements OnDestroy {
 
   //TODO-CJP: setup multiple sort types
   sortAscending($event) {
-    this.sortAscendingListener.emit([]);
+    this.sortAscendingListener.next([]);
   }
 
   sortDescending($event) {
-    this.sortDescendingListener.emit([]);
+    this.sortDescendingListener.next([]);
   }
 
   ngOnDestroy() {

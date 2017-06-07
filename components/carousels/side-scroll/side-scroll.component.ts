@@ -72,7 +72,7 @@ export class SideScroll{
     }
     let pos = (num / this.itemSize);
     this.currentScroll = Math.round(pos) * this.itemSize;
-    this.carouselCount.emit(Math.round(pos));
+    this.carouselCount.next(Math.round(pos));
     this.rightText = this.currentScroll+'px';
   }
 
@@ -91,7 +91,7 @@ export class SideScroll{
     }
 
     if ((this.maxLength-5) == Math.round(this.currentScroll/this.itemSize)) { // append current data to end of scroller if reached near the end
-      this.reloadSame.emit(null);
+      this.reloadSame.next(null);
     }
   }
 
