@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class SidekickWrapper {
   @Input() category: string;
   @Input() subCategory: string;
+  @Input() isProfilePage: string;
 }
