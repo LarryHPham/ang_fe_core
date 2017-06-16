@@ -1,14 +1,16 @@
-.transactions{
-  .image-round, .image-round-sub{
+.transactions {
+  .image-round, .image-round-sub {
     background: @white;
   }
 }
-.center-vertically{
+
+.center-vertically {
   position: relative;
   top: 50%;
   .transformPrefixes(translateY(-50%));
 }
-.transactions-li-timeline{
+
+.transactions-li-timeline {
   display: block;
   position: absolute;
   width: 20px;
@@ -25,13 +27,17 @@
     width: 3px;
     height: 100%;
     position: absolute;
-    left:7.5px;
+    left: 7.5px;
     background-color: @masterBrandColor;
-    &-first{
+    z-index: 0;
+    &-first {
       top: 15px;
     }
+    @media (min-width: 450px) and (max-width: 669px) {
+      z-index: 1;
+    }
   }
-  .transactions-li-timeline-circle{
+  .transactions-li-timeline-circle {
     top: 15px;
     position: absolute;
     display: block;
@@ -43,34 +49,36 @@
     z-index: 1;
   }
 }
+
 transactions-page div .transactions-li-container:last-of-type .transactions-li-timeline-line {
-  height:50%;
+  height: 50%;
 }
-.transactions-li-container{
+
+.transactions-li-container {
   height: auto;
-  width:100%;
+  width: 100%;
   position: relative;
-  .dataBox{
-    width:100%;
-    min-height:50px;
-    color:@black;
+  .dataBox {
+    width: 100%;
+    min-height: 50px;
+    color: @black;
     margin: 0;
     position: relative;
     .flexDisplay;
     .flexAlignItems(center);
     .clearfix;
-    .data-hover{//hover states
+    .data-hover { //hover states
       text-decoration: none;
       color: @black;
-      a{
-        &:hover{
+      a {
+        &:hover {
           text-decoration: none;
-          color:@masterBrandColorLink;
+          color: @masterBrandColorLink;
           cursor: pointer;
         }
       }
     }
-    &-img{
+    &-img {
       position: absolute;
       left: 176px;
       @media @mobile {
@@ -80,8 +88,8 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
         left: 150px;
       }
     }
-    &-text{
-      &-left{
+    &-text {
+      &-left {
         top: 18px;
         position: absolute;
         font-size: 12px;
@@ -108,13 +116,13 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
           }
         }
       }
-      &-right{
+      &-right {
         position: relative;
         left: 242px;
         font-size: 16px;
         min-height: 60px;
         width: 375px;
-        padding-bottom:10px;
+        padding-bottom: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         @media @mobile {
@@ -128,52 +136,54 @@ transactions-page div .transactions-li-container:last-of-type .transactions-li-t
           width: ~"calc(100% - 215px)";
         }
         a:hover {
-          color:@masterBrandColor;
+          color: @masterBrandColor;
         }
       }
     }
-    &-info{
+    &-info {
       font-size: 14px;
       width: 100%;
       display: inline-block;
-      &.detail-small{
+      &.detail-small {
         font-size: 10px;
         font-weight: 800;
         line-height: 1.3em;
-        & > i{
-          color:@masterBrandColor;
+        & > i {
+          color: @masterBrandColor;
         }
       }
-      &.detail-large{
+      &.detail-large {
         font-size: 20px;
         font-weight: 800;
         line-height: 1.2em;
       }
-      &.detail-medium{
+      &.detail-medium {
         font-size: 14px;
         line-height: 1.3em;
-        & > i{
-          float:left;
-          color:@masterBrandColor;
-          padding-right:.2em;
-          padding-top:2px;
+        & > i {
+          float: left;
+          color: @masterBrandColor;
+          padding-right: .2em;
+          padding-top: 2px;
         }
       }
-      &-text{
+      &-text {
+        display: inline;
+        width: 62%;
+        float: left;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &-right {
           display: inline;
-          width:62%;
-          float: left;
-          text-align: left;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        &-right{
-          display: inline;
-          width:33%;
+          width: 33%;
           float: right;
           text-align: right;
         }
-      }//END OF a tag css modifier
-    }//END OF <div> tag css modifier
+      }
+      //END OF a tag css modifier
+    }
+    //END OF <div> tag css modifier
   }
 }
