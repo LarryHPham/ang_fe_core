@@ -186,8 +186,8 @@ export class ProfileHeaderModule implements OnChanges {
     imageClass: "image-40",
       mainImage: {
         imageClass: "",
-        imageUrl: isBrowser ? GlobalSettings.getSiteLogoUrl() : null,
-        placeholderImageUrl: isBrowser ? GlobalSettings.getSiteLogoUrl() : null,
+        imageUrl: GlobalSettings.getSiteLogoUrl(),
+        placeholderImageUrl: GlobalSettings.getSiteLogoUrl(),
       }
   };
 
