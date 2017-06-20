@@ -32,12 +32,13 @@ export class CellData {
   bottomStat2:any;
 
   constructor(display: string, sort: any, routerLink?: Array<any>, imageUrl?: string, bottomStat?:any, bottomStat2?:any,  displayAsRawText?: boolean) {
-    this.display = display;
-    this.sort = sort;
-    this.routerLink = routerLink;
-    this.displayAsRawText = displayAsRawText;
-    this.bottomStat=bottomStat;
-    this.bottomStat2=bottomStat2;
+
+    this.display = display ? display : null;
+    this.sort = sort ? sort : null;
+    this.routerLink = routerLink ? routerLink : null;
+    this.displayAsRawText = displayAsRawText ? displayAsRawText : null;
+    this.bottomStat = bottomStat ? bottomStat : null;
+    this.bottomStat2 = bottomStat2 ? bottomStat2 : null;
     if ( imageUrl ) {
       this.image = {
         imageClass: "image-48",

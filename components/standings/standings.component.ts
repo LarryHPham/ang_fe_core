@@ -261,7 +261,7 @@ export class StandingsComponent {
       newTab.setSelectedKey(priorTab.getSelectedKey());
     }
     var params = {conference: priorTab.conference, division: priorTab.division, season: event};
-    if (newTab.title != "Conference Standings" || newTab.title != "Division Standings") {
+    if (newTab.title != "Conference Standings" && newTab.title != "Division Standings") {
       this.filterSelectedListener.next([newTab, this.selectedKey, params]);
     }
 
