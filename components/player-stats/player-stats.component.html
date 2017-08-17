@@ -3,7 +3,7 @@
         <slider-carousel *ngIf="isCarousel" [carouselData]="carouselData" (indexNum)="indexNum($event)" [indexInput]="selectedIndex"></slider-carousel>
     </div>
     <tabs (tabSelected)="tabSelected($event)">
-        <tab *ngFor="let tab of tabs" [tabTitle]="tab.tabTitle" [active]="tab.isActive">
+        <tab *ngFor="let tab of tabs; let rowIndex = index; let isLast = last" [tabTitle]="tab.tabTitle" [active]="tab.isActive">
             <div class="stats-table-title">
                 <h4 [innerHtml]="tab.tableName"></h4>
                 <p class="stats-season-dropdown" *ngIf="isSpecialTeam">
@@ -52,14 +52,12 @@
                     </ul>
                 </div>
             </div>-->
-
         </tab>
     </tabs>
     <glossary-component *ngIf="showGlossary" [glossaryData]="GlossaryData"></glossary-component>
-    <!--<responsive-widget style="display:table-row;" colspan=50 *ngIf="(!isLast && rowIndex != 10))" embedPlace="widgetForPage"></responsive-widget>-->
-
-    <!--TODO Uncomment out this line of code below when fixed per Larry direction-->
-    <!--<responsive-widget style="display:table-row;" colspan=50 *ngIf="isLessThanTen" embedPlace="widgetForPage"></responsive-widget>-->
+  <div class="list-widget">
+    <responsive-widget embedPlace="widgetForPage"></responsive-widget>
+  </div>
 
 </div>
 

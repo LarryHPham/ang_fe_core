@@ -35,14 +35,7 @@
         </div>
       </td>
     </tr>
-
-    <!-- TODO the next two instances of responsive-widget need to be redone per Larry -->
-    <!--<responsive-widget style="display:table-row;" class="table-widget" colspan=50 *ngIf="!lastStanding && ((isLast && (model.rows.length - 1) < 20) || (isLast && rowIndex <= 5) || (!isLast && model.rows.length > 20 && !((rowIndex + 1) % 10)))" embedPlace="widgetForPage"></responsive-widget>-->
-
-    <!--<responsive-widget style="display:table-row;" class="table-widget-{{isLast}}" colspan=50 *ngIf="lastStanding && ((!((rowIndex + 1) % 10) && model.rows.length > 10) || (!((rowIndex + 1) % 5) && model.rows.length <= 10 && (!isLast && rowIndex != 10)))" embedPlace="widgetForPage"></responsive-widget>-->
-
-    <!--Below was originally commented out-->
-    <!-- <responsive-widget style="display:table-row;" class="table-widget-{{isLast}}" colspan=50 *ngIf="lastStanding && (!((rowIndex + 1) % 10) && model.rows.length > 10)" embedPlace="widgetForPage"></responsive-widget> -->
+    <responsive-widget style="display:table-row;" colspan=50 *ngIf="(!((rowIndex + 1) % 10) && model.rows.length > 10) || (!((rowIndex + 1) % 5) && model.rows.length <= 10 && (!isLast && rowIndex != 10)) || (isLast && rowIndex <= 5)" embedPlace="widgetForPage"></responsive-widget>
   </tbody>
 
   <tfoot *ngIf="model.footer" class="custom-table-footer {{bodyClass}}">
