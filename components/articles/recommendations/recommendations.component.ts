@@ -9,5 +9,6 @@ import {Component, Input} from '@angular/core';
 export class RecommendationsComponent {
   @Input() randomHeadlines:any;
   @Input() images:any;
+  @Input() isAiArticle:boolean;
   @Input() isDeepDive:boolean = false;
 }
