@@ -44,7 +44,7 @@
       <!-- ABOVE TOGGLE CAROUSEL -->
       <!-- BELOW VIDEO CAROUSEL -->
       <div class="newsbox" *ngIf="item.type == 'video'" [ngClass]="{'clone': item.type2 == 'clone', 'videoActive': currentDisplayed.type == 'video'}">
-        <div class="newsbox-background" [ngStyle]="{'background-image': 'linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(24, 24, 24, 0.65) 100%), url(' + item.data.video_thumbnail + ')'}"></div>
+        <div class="newsbox-background" [ngStyle]="{'background-color': '#000000'}"></div>
         <div class="newsbox-item video-width" [ngStyle]="{'cursor':'default'}">
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-left">
