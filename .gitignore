@@ -7,3 +7,4 @@ dist
 coverage/
 .vscode/settings.json
 .DS_Store
+fe-core.iml

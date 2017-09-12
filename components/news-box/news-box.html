@@ -49,10 +49,13 @@
           <div class="newsbox-item-container">
             <div class="newsbox-item-container-left">
               <div *ngIf="item.type2 != 'clone'" class="newsbox-item-container-left-video">
+                <embed-video-deepdive [videoData]="videoData"></embed-video-deepdive>
+<!--
                 <iframe width="100%" height="100%"  [src]="item.data.embed_url | safeRUrl" frameborder="0" scrolling = "no" allowfullscreen></iframe>
+-->
               </div>
             </div>
-            <div class="newsbox-item-container-right" id="lrgvidnewsbox-right">
+          <!--  <div class="newsbox-item-container-right" id="lrgvidnewsbox-right">
               <div class="newsbox-item-container-right-key">TOP VIDEOS</div>
               <div class="newsbox-item-container-right-title">
                 <span class="newsbox-item-container-right-title-span">Today's News:</span>
@@ -68,7 +71,7 @@
               <a [routerLink]="item.data.video_url">
                 <div class="newsbox-item-container-right-fullstory">Read the Full Article <i class="fa fa-arrow-right"></i></div>
               </a>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
